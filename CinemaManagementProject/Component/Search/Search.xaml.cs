@@ -25,6 +25,12 @@ namespace CinemaManagementProject.Component.Search
             InitializeComponent();
             this.DataContext = this;
             PlaceHolder = "Search";
+            PlaceHolder = "Tìm kiếm";
+            Height = 400;
+            Width = 54;
+            Corner = 15;
+            FontSize = 16;
+            IconSize = 30;
         }
         public string PlaceHolder { get; set; }
         public new double Height { get; set; }
