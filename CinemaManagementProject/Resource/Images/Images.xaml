@@ -1,0 +1,9 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <ImageSource x:Key="Popcorn">./popcorn.png</ImageSource>
+    <ImageSource x:Key="BonusGood">./popcorn_drink.jpg</ImageSource>
+    <ImageSource x:Key="ImportFood">./import_Food.png</ImageSource>
+    <ImageSource x:Key="Dustbin">./dustbin.png</ImageSource>
+    <ImageSource x:Key="Pencil">./draw.png</ImageSource>
+    <ImageSource x:Key="Logo">./Logo.png</ImageSource>
+</ResourceDictionary>

@@ -1,0 +1,6 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <ImageSource x:Key="IconSearch">./icon_Search.png</ImageSource>
+    <ImageSource x:Key="IconExit">./Exit_Icon.png</ImageSource>
+    <ImageSource x:Key="IconUpload">./upload.png</ImageSource>
+</ResourceDictionary>

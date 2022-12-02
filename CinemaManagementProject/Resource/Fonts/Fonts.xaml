@@ -1,0 +1,22 @@
+﻿<ResourceDictionary 
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <FontFamily x:Key="Black">./#Montserrat Black</FontFamily>
+    <FontFamily x:Key="BlackItalic">./#Montserrat BlackItalic</FontFamily>
+    <FontFamily x:Key="Bold">./#Montserrat Bold</FontFamily>
+    <FontFamily x:Key="BoldItalic">./#Montserrat BoldItalic</FontFamily>
+    <FontFamily x:Key="ExtraBold">./#Montserrat ExtraBold</FontFamily>
+    <FontFamily x:Key="ExtraBoldItalic">./#Montserrat ExtraBoldItalic</FontFamily>
+    <FontFamily x:Key="ExtraLight">./#Montserrat ExtraLight</FontFamily>
+    <FontFamily x:Key="ExtraLightItalic">./#Montserrat ExtraLightItalic</FontFamily>
+    <FontFamily x:Key="Italic">./#Montserrat Italic</FontFamily>
+    <FontFamily x:Key="Light">./#Montserrat Light</FontFamily>
+    <FontFamily x:Key="LightItalic">./#Montserrat LightItalic</FontFamily>
+    <FontFamily x:Key="Medium">./#Montserrat Medium</FontFamily>
+    <FontFamily x:Key="MediumItalic">./#Montserrat MediumItalic</FontFamily>
+    <FontFamily x:Key="Regular">./#Montserrat Regular</FontFamily>
+    <FontFamily x:Key="SemiBold">./#Montserrat SemiBold</FontFamily>
+    <FontFamily x:Key="SemiBoldItalic">./#Montserrat SemiBoldItalic</FontFamily>
+    <FontFamily x:Key="Thin">./#Montserrat Thin</FontFamily>
+    <FontFamily x:Key="ThinItalic">./#Montserrat ThinItalic</FontFamily>
+</ResourceDictionary>

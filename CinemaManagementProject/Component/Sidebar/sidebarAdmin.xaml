@@ -1,0 +1,152 @@
+﻿<UserControl x:Class="CinemaManagementProject.Component.sidebarAdmin"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"       
+             xmlns:local="clr-namespace:CinemaManagementProject.Component"
+             mc:Ignorable="d" 
+             d:DesignHeight="760" d:DesignWidth="240">
+    
+    <Border CornerRadius="10,0,0,10" Background="#0F2851">
+        <StackPanel>
+            <StackPanel Orientation="Horizontal" Height="100" >
+                <Border Height="50" Width="50" CornerRadius="100" Background="White"
+                           HorizontalAlignment="Left" Margin="28,20,0,0">
+                    <Ellipse>
+                        <Ellipse.Fill>
+                            <ImageBrush ImageSource="{StaticResource Logo}"></ImageBrush>
+                        </Ellipse.Fill>
+                    </Ellipse>
+                </Border>
+                <TextBlock Text="FILMFATFO" Foreground="White" 
+                                   FontSize="22" FontWeight="Bold" VerticalAlignment="Center"
+                                   Margin="20,16,20,0" FontFamily="Montserrat"></TextBlock>
+            </StackPanel>
+            <!--Menu Buttons-->
+            <!--phan tich-->
+            <TextBlock Foreground="White" Margin="10,20,0,5" FontSize="11">Phân tích</TextBlock>
+            <RadioButton    Style="{StaticResource menuButton}"
+                                    Tag="white"
+                                    IsChecked="True"
+                                    Command="{Binding ShowHomeViewCommand}">
+                <StackPanel Orientation="Horizontal">
+                    <materialDesign:PackIcon Kind="ChartBar" Height="20" Width="20" Margin="30,0,10,0" ></materialDesign:PackIcon>
+                    <TextBlock Text="Tổng quan" Style="{StaticResource menuButtonText}" Margin="0,4,0,0" FontSize="14"/>
+                </StackPanel>
+            </RadioButton>
+            <RadioButton    Style="{StaticResource menuButton}"
+                                    Tag="white"
+                                    IsChecked="True"
+                                    Command="{Binding ShowHomeViewCommand}">
+                <StackPanel Orientation="Horizontal">
+                    <materialDesign:PackIcon Kind="Speedometer" Height="20" Width="20" Margin="30,0,10,0" ></materialDesign:PackIcon>
+                    <TextBlock Text="Đánh giá" Style="{StaticResource menuButtonText}" Margin="0,4,0,0" FontSize="14"/>
+                </StackPanel>
+            </RadioButton>
+            <TextBlock Foreground="White" Margin="10,15,0,5">Chức năng</TextBlock>
+            <RadioButton    Style="{StaticResource menuButton}"
+                                    Tag="white"
+                                    IsChecked="True"
+                                    Command="{Binding ShowHomeViewCommand}">
+                <StackPanel Orientation="Horizontal">
+                    <materialDesign:PackIcon Kind="PlaylistStar" Height="20" Width="20" Margin="30,0,10,0" ></materialDesign:PackIcon>
+                    <TextBlock Text="Quản lý phim" Style="{StaticResource menuButtonText}" Margin="0,3,0,0" FontSize="14"/>
+                </StackPanel>
+            </RadioButton>
+            <RadioButton    Style="{StaticResource menuButton}"
+                                    Tag="white"
+                                    IsChecked="True"
+                                    Command="{Binding ShowHomeViewCommand}">
+                <StackPanel Orientation="Horizontal">
+                    <materialDesign:PackIcon Kind="FilmCogOutline" Height="20" Width="20" Margin="30,0,10,0" ></materialDesign:PackIcon>
+                    <TextBlock Text="Quản lý suất chiếu" Style="{StaticResource menuButtonText}" Margin="0,4,0,0" FontSize="14"/>
+                </StackPanel>
+            </RadioButton>
+            <RadioButton    Style="{StaticResource menuButton}"
+                                    Tag="white"
+                                    IsChecked="True"
+                                    Command="{Binding ShowHomeViewCommand}">
+                <StackPanel Orientation="Horizontal">
+                    <materialDesign:PackIcon Kind="Food" Height="20" Width="20" Margin="30,0,10,0" ></materialDesign:PackIcon>
+                    <TextBlock Text="Quản lý sản phẩm" Style="{StaticResource menuButtonText}" Margin="0,4,0,0" FontSize="14"/>
+                </StackPanel>
+            </RadioButton>
+            <RadioButton    Style="{StaticResource menuButton}"
+                                    Tag="white"
+                                    IsChecked="True"
+                                    Command="{Binding ShowHomeViewCommand}">
+                <StackPanel Orientation="Horizontal">
+                    <materialDesign:PackIcon Kind="Account" Height="20" Width="20" Margin="30,0,10,0" ></materialDesign:PackIcon>
+                    <TextBlock Text="Quản lý nhân sự" Style="{StaticResource menuButtonText}" Margin="0,3,0,0" FontSize="14"/>
+                </StackPanel>
+            </RadioButton>
+            <RadioButton    Style="{StaticResource menuButton}"
+                                    Tag="white"
+                                    IsChecked="True"
+                                    Command="{Binding ShowHomeViewCommand}">
+                <StackPanel Orientation="Horizontal">
+                    <materialDesign:PackIcon Kind="CustomerService" Height="20" Width="20" Margin="30,0,10,0" ></materialDesign:PackIcon>
+                    <TextBlock Text="Quản lý khách hàng" Style="{StaticResource menuButtonText}" Margin="0,3,0,0" FontSize="14"/>
+                </StackPanel>
+            </RadioButton>
+            <RadioButton    Style="{StaticResource menuButton}"
+                                    Tag="white"
+                                    IsChecked="True"
+                                    Command="{Binding ShowHomeViewCommand}">
+                <StackPanel Orientation="Horizontal">
+                    <materialDesign:PackIcon Kind="ClockCheck" Height="20" Width="20" Margin="30,0,10,0" ></materialDesign:PackIcon>
+                    <TextBlock Text="Lịch sử" Style="{StaticResource menuButtonText}" Margin="0,3,0,0" FontSize="14"/>
+                </StackPanel>
+            </RadioButton>
+            <RadioButton    Style="{StaticResource menuButton}"
+                                    Tag="white"
+                                    IsChecked="True"
+                                    Command="{Binding ShowHomeViewCommand}">
+                <StackPanel Orientation="Horizontal">
+                    <materialDesign:PackIcon Kind="Discount" Height="20" Width="20" Margin="30,0,10,0" ></materialDesign:PackIcon>
+                    <TextBlock Text="Vouchers" Style="{StaticResource menuButtonText}" Margin="0,3,0,0" FontSize="14"/>
+                </StackPanel>
+            </RadioButton>
+            <RadioButton    Style="{StaticResource menuButton}"
+                                    Tag="white"
+                                    IsChecked="True"
+                                    Command="{Binding ShowHomeViewCommand}">
+                <StackPanel Orientation="Horizontal">
+                    <materialDesign:PackIcon Kind="AutomaticGateOutline" Height="20" Width="20" Margin="30,0,10,0" ></materialDesign:PackIcon>
+                    <TextBlock Text="Sự cố" Style="{StaticResource menuButtonText}" Margin="0,4,0,0" FontSize="14"/>
+                </StackPanel>
+            </RadioButton>
+
+            <!--setting-->
+            <TextBlock Foreground="White" Margin="10,15,0,5">Tiện ích</TextBlock>
+            <RadioButton    Style="{StaticResource menuButton}"
+                                    Tag="white"
+                                    IsChecked="True"
+                                    Command="{Binding ShowHomeViewCommand}">
+                <StackPanel Orientation="Horizontal">
+                    <materialDesign:PackIcon Kind="SettingsApplications" Height="20" Width="20" Margin="30,0,10,0" ></materialDesign:PackIcon>
+                    <TextBlock Text="Cài đặt" Style="{StaticResource menuButtonText}" Margin="0,3,0,0" FontSize="14"/>
+                </StackPanel>
+            </RadioButton>
+            <RadioButton    Style="{StaticResource menuButton}"
+                            Tag="white"
+                            IsChecked="True"
+                            Command="{Binding ShowHomeViewCommand}">
+                <StackPanel Orientation="Horizontal">
+                    <materialDesign:PackIcon Kind="Phone" Height="20" Width="20" Margin="30,0,10,0" ></materialDesign:PackIcon>
+                    <TextBlock Text="Giúp đỡ" Style="{StaticResource menuButtonText}" Margin="0,3,0,0" FontSize="14"/>
+                </StackPanel>
+            </RadioButton>
+            <RadioButton    Style="{StaticResource menuButton}"
+                            Tag="white"
+                            IsChecked="True"
+                            Command="{Binding ShowHomeViewCommand}">
+                <StackPanel Orientation="Horizontal">
+                    <materialDesign:PackIcon Kind="Logout" Height="20" Width="20" Margin="30,0,10,0" ></materialDesign:PackIcon>
+                    <TextBlock Text="Đăng xuất" Style="{StaticResource menuButtonText}" Margin="0,3,0,0" FontSize="14"/>
+                </StackPanel>
+            </RadioButton>
+        </StackPanel>
+    </Border>
+</UserControl>
