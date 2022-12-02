@@ -17,6 +17,8 @@
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Accent/MaterialDesignColor.Lime.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Shadows.xaml" />
                 <ResourceDictionary  Source="./Component/Buttons/ButtonStyle.xaml"/>
+                <ResourceDictionary Source="./Utilities/AdminDataTemplate.xaml"/>
+                <ResourceDictionary Source="./Utilities/StaffDataTemplate.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

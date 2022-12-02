@@ -1,0 +1,156 @@
+﻿<Window x:Class="CinemaManagementProject.View.Admin.FoodManagement.ImportFoodWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CinemaManagementProject.View.Admin.FoodManagement"
+        mc:Ignorable="d"
+          WindowStyle="None"
+        AllowsTransparency="True"
+        Title="AddFoodWindow" Height="320" Width="630"
+        Background="Transparent"
+>
+    <Grid 
+        Height="320" 
+        Width="630"
+    >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50" />
+            <RowDefinition />
+            <RowDefinition Height="60" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Rectangle RadiusX="20" RadiusY="20" Grid.ColumnSpan="2" Grid.RowSpan="3" Fill="White">
+            <Rectangle.Effect>
+                <DropShadowEffect 
+                    BlurRadius="10"
+                    Color="Black"
+                    ShadowDepth="4"
+                    Opacity=".25"
+                    Direction="270"
+                />
+            </Rectangle.Effect>
+        </Rectangle>
+        <Grid x:Name="Header" Grid.Row="0" Grid.ColumnSpan="2" Margin="0,10,0,198" Grid.RowSpan="2">
+            <Label
+                FontSize="33"
+                FontFamily="{StaticResource MaterialDesignFont}"
+                FontWeight="Bold"
+                VerticalAlignment="Center" 
+                HorizontalAlignment="Left"
+                Margin="20,0,0,0"
+            >
+                Thêm sản phẩm
+            </Label>
+            <Image 
+                Source="{StaticResource IconExit}" 
+                HorizontalAlignment="Right"
+                Width="20"
+                Height="20" 
+                Margin="0,0,20,0"
+            />
+        </Grid>
+        <Grid x:Name="ImageProduct" Grid.Row="1" Grid.RowSpan="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0" >
+                <Ellipse
+                    Width="220"
+                    Height="220"
+                    Fill="#D9D9D9" 
+                >
+                    <Ellipse.Effect>
+                        <DropShadowEffect 
+                                BlurRadius="10"
+                                Color="Black"
+                                ShadowDepth="4"
+                                Opacity=".25"
+                                Direction="270"
+                            />
+                    </Ellipse.Effect>
+                </Ellipse>
+                <Image
+                    Source="{StaticResource Popcorn}"
+                    Height="220"
+                    Width="220"
+                />
+            </Grid>
+        </Grid>
+        <Grid x:Name="Infomation" Grid.Column="2" Margin="0,80,0,0" Grid.Row="1">
+            <StackPanel Height="130">
+                <Grid Width="320" Margin="0,10,0,0" >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="2.4*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock 
+                           FontSize="22" 
+                           Foreground="{StaticResource LightGrayTundora}"
+                           FontFamily="{StaticResource MaterialDesignFont}"
+                           FontWeight="Regular"
+                           Grid.Column="0"
+                           Height="25" HorizontalAlignment="Center" VerticalAlignment="Center" 
+                           Margin="15,0,0,0"
+                    >
+                        Type
+                    </TextBlock>
+                    <Grid Height="28" Grid.Column="1">
+                        <ComboBox Width="200" Style="{StaticResource MaterialDesignComboBox}" HorizontalAlignment="Left">
+                            <ComboBoxItem Width="180" IsSelected="True">
+                                <TextBlock Width="182" Foreground="{StaticResource LightGrayTundora}" FontFamily="{StaticResource MaterialDesignFont}" FontWeight="Regular" FontSize="18" HorizontalAlignment="Left">Item1</TextBlock>
+                            </ComboBoxItem>
+                            <ComboBoxItem Width="180">
+                                <TextBlock Width="182" Foreground="{StaticResource LightGrayTundora}" FontFamily="{StaticResource MaterialDesignFont}" FontWeight="Regular" FontSize="18" HorizontalAlignment="Left">Item2</TextBlock>
+                            </ComboBoxItem>
+                            <ComboBoxItem Width="180">
+                                <TextBlock Width="182" Foreground="{StaticResource LightGrayTundora}" FontFamily="{StaticResource MaterialDesignFont}" FontWeight="Regular" FontSize="18" HorizontalAlignment="Left">Item3</TextBlock>
+                            </ComboBoxItem>
+                        </ComboBox>
+                    </Grid>
+                </Grid>
+                <Grid Width="320" Margin="0,10,0,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="2.4*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock 
+                           FontSize="22" 
+                           Foreground="{StaticResource LightGrayTundora}"
+                           FontFamily="{StaticResource MaterialDesignFont}"
+                           FontWeight="Regular"
+                           Grid.Column="0"
+                           Height="25" HorizontalAlignment="Center" VerticalAlignment="Center"
+                           Margin="15,0,0,0"
+                    >
+                       Cost
+                    </TextBlock>
+                    <Grid Height="28" Grid.Column="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="2.4*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBox 
+                           FontSize="18" 
+                           Width="200"
+                           FontFamily="{StaticResource Regular}"
+                           Foreground="{StaticResource LightGrayTundora}" BorderThickness="0,0,0,0" BorderBrush="{x:Null}" SelectionTextBrush="{x:Null}" SelectionBrush="{x:Null}" VerticalAlignment="Center" HorizontalAlignment="Left" Grid.ColumnSpan="2"
+                        >
+                            30,000đ
+                        </TextBox>
+                        <Rectangle Height="1" Width="200" Fill="{StaticResource LightGrayTundora}" VerticalAlignment="Bottom" HorizontalAlignment="Left" Grid.ColumnSpan="2"/>
+                    </Grid>
+                </Grid>
+            </StackPanel>
+        </Grid>
+        <Grid x:Name="Footer" Grid.Row="2" Grid.Column="1" Margin="0,0,0,0">
+            <StackPanel HorizontalAlignment="Right"  Orientation="Horizontal" Margin="0,-15,0,0">
+                <Button Width="90" Margin="10,0,5,0" Style="{StaticResource RedBtn}">Hủy</Button>
+                <Button Width="90" Margin="5,0,20,0"  Style="{StaticResource BlueBtn}">Nhập</Button>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Window>
