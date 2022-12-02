@@ -152,6 +152,9 @@
       <DependentUpon>CinemaManagementDatabase.tt</DependentUpon>
     </Compile>
     <Compile Include="Until.cs" />
+    <Compile Include="Utilities\RelyCommand.cs" />
+    <Compile Include="ViewModel\AdminVM\AdminVM.cs" />
+    <Compile Include="ViewModel\BaseViewModel.cs" />
     <Compile Include="View\Admin\AdminWindow.xaml.cs">
       <DependentUpon>AdminWindow.xaml</DependentUpon>
     </Compile>
@@ -221,6 +224,10 @@
     <Page Include="Resource\Styles\MenuButtonUI.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Utilities\DataTemplate.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Admin\AdminWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -307,7 +314,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="DTOs\" />
-    <Folder Include="ViewModel\" />
+    <Folder Include="Model\Service\" />
+    <Folder Include="ViewModel\LoginVM\" />
+    <Folder Include="ViewModel\StaffVM\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Model\CinemaManagementDatabase.Context.tt">
