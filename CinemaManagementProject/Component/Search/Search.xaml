@@ -48,7 +48,7 @@
         <Image x:Name="IconSeach" 
                Source="{StaticResource IconSearch}"
                Grid.Column="0"
-               Width="{Binding Height}" Height="{Binding IconSize}"
+               Width="{Binding IconSize}" Height="{Binding IconSize}"
                Margin="20,0,0,0"
                HorizontalAlignment="Right"
                VerticalAlignment="Center"
