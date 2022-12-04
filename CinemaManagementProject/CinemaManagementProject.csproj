@@ -155,6 +155,7 @@
     <Compile Include="Utilities\RelyCommand.cs" />
     <Compile Include="ViewModel\AdminVM\AdminVM.cs" />
     <Compile Include="ViewModel\AdminVM\FoodManagementVM\FoodManagementVM.cs" />
+    <Compile Include="ViewModel\AdminVM\MovieManagementVM\MovieManagementVM.cs" />
     <Compile Include="ViewModel\BaseViewModel.cs" />
     <Compile Include="ViewModel\StaffVM\StaffVM.cs" />
     <Compile Include="View\Admin\AdminWindow.xaml.cs">
@@ -172,11 +173,41 @@
     <Compile Include="View\Admin\FoodManagement\ImportFoodWindow.xaml.cs">
       <DependentUpon>ImportFoodWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Admin\MovieManagement\AddMovieWindow.xaml.cs">
+      <DependentUpon>AddMovieWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Admin\MovieManagement\DetailMovieWindow.xaml.cs">
+      <DependentUpon>DetailMovieWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Admin\MovieManagement\EditMovieWindow.xaml.cs">
+      <DependentUpon>EditMovieWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Admin\MovieManagement\MovieManagementPage.xaml.cs">
+      <DependentUpon>MovieManagementPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Admin\StatisticalManagement\IncomeStatistical.xaml.cs">
+      <DependentUpon>IncomeStatistical.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Admin\StatisticalManagement\RankingStatistical.xaml.cs">
+      <DependentUpon>RankingStatistical.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Admin\StatisticalManagement\TotalIncomeStatistical.xaml.cs">
+      <DependentUpon>TotalIncomeStatistical.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\CustomMessageBoxWindow.xaml.cs">
       <DependentUpon>CustomMessageBoxWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Staff\StaffWindow.xaml.cs">
       <DependentUpon>StaffWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Staff\TicketBill\TicketBillPage.xaml.cs">
+      <DependentUpon>TicketBillPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Staff\TicketBill\TicketBill_Food_Page.xaml.cs">
+      <DependentUpon>TicketBill_Food_Page.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Staff\TicketBill\TicketBill_Phim_Page.xaml.cs">
+      <DependentUpon>TicketBill_Phim_Page.xaml</DependentUpon>
     </Compile>
     <Page Include="Component\Buttons\ButtonStyle.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -222,6 +253,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="ResourceXAMl\MainResource.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Resource\Colors\Colors.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -270,11 +305,51 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="View\Admin\MovieManagement\AddMovieWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Admin\MovieManagement\DetailMovieWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Admin\MovieManagement\EditMovieWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Admin\MovieManagement\MovieManagementPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Admin\StatisticalManagement\IncomeStatistical.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Admin\StatisticalManagement\RankingStatistical.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Admin\StatisticalManagement\TotalIncomeStatistical.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\CustomMessageBoxWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
     <Page Include="View\Staff\StaffWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Staff\TicketBill\TicketBillPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Staff\TicketBill\TicketBill_Food_Page.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Staff\TicketBill\TicketBill_Phim_Page.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -369,6 +444,18 @@
       <DependentUpon>CinemaManagementDatabase.edmx</DependentUpon>
       <LastGenOutput>CinemaManagementDatabase.cs</LastGenOutput>
     </Content>
+    <Resource Include="Resource\Icons\Button_AddVoucher.png" />
+    <Resource Include="Resource\Icons\icon_Bell.png" />
+    <Resource Include="Resource\Icons\Icon_Bin.png" />
+    <Resource Include="Resource\Icons\Icon_CloseTab.png" />
+    <Resource Include="Resource\Icons\Icon_Download.png" />
+    <Resource Include="Resource\Icons\Icon_Edit.png" />
+    <Resource Include="Resource\Icons\Icon_Them.png" />
+    <Resource Include="Resource\Icons\Icon_X.png" />
+    <Resource Include="Resource\Icons\Icon_X_Black.png" />
+    <Resource Include="Resource\Icons\XoXuong.png" />
+    <Resource Include="Resource\Images\avata.jpg" />
+    <Resource Include="Resource\Images\Image_Start.png" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
