@@ -4,30 +4,39 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:CinemaManagementProject.View.Admin.CustomerManagement" 
-      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"       
-      xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
-      xmlns:Search="clr-namespace:CinemaManagementProject.Component.Search" x:Class="CinemaManagementProject.View.Admin.CustomerManagement.CustomerManagementPage"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"  
+      xmlns:Search="clr-namespace:CinemaManagementProject.Component.Search" 
+      xmlns:i="http://schemas.microsoft.com/xaml/behaviors"   
+      x:Class="CinemaManagementProject.View.Admin.CustomerManagement.CustomerManagementPage"
       mc:Ignorable="d"       
       Title="CustomerManagementPage"
+      DataContext="{StaticResource CustomerManagementVM}"
       d:DesignHeight="680" d:DesignWidth="1120"
       Background="Transparent"
       ShowsNavigationUI="False" 
       WindowHeight="680" 
-      WindowWidth="1120">
-
-
-   
-        
-    <!--<i:Interaction.Triggers>
+      WindowWidth="1120"
+    >
+    <!--<Page.Triggers>
+        <EventTrigger RoutedEvent="Page.Loaded">
+            <BeginStoryboard>
+                <Storyboard>
+                    <DoubleAnimation Storyboard.TargetName="mainPage"
+                                     Storyboard.TargetProperty="Opacity"
+                                     From="0"
+                                     To="1"
+                                     Duration="0:0:0.5" />
+                </Storyboard>
+            </BeginStoryboard>
+        </EventTrigger>
+    </Page.Triggers>-->
+    <i:Interaction.Triggers>
         <i:EventTrigger EventName="Loaded">
             <i:InvokeCommandAction Command="{Binding GetListViewCommand}"
-                                   CommandParameter="{Binding ElementName=_ListView}" />
+                                   CommandParameter="{Binding ElementName=_ListView}"></i:InvokeCommandAction>
+            <i:InvokeCommandAction Command="{Binding FirstLoadCM}"></i:InvokeCommandAction>
         </i:EventTrigger>
-        <i:EventTrigger EventName="Loaded">
-            <i:InvokeCommandAction Command="{Binding MaskNameCM}"
-                                   CommandParameter="{Binding ElementName=ShadowMask}" />
-        </i:EventTrigger>
-    </i:Interaction.Triggers>-->
+    </i:Interaction.Triggers>
     <Border  Background="{StaticResource LightGrayAthens}" 
              CornerRadius="20" >
         <Border.Effect>
@@ -61,8 +70,11 @@
                                Width="350"
                                Corner="12"
                                FontFamily="{StaticResource MaterialDesignFont}"
-                               FontSize="15"
-                               FontWeight="Thin"/>
+                               FontSize="15"    
+                               FontWeight="Thin" 
+                               SearchTextChange="Search_SearchTextChange"
+                               x:Name="SearchBox">
+                </Search:Search>
                 <Border CornerRadius="12"
                         Margin="20, 17, 0, 17"
                         Background="White"
@@ -80,6 +92,7 @@
                     <ComboBox   SelectedValuePath="Content"
                                 SelectedIndex="0"
                                 Style="{StaticResource styleButton}" 
+                                Name="cbbFilter"
                                 Margin="0,0,0,-3" >
                         <ComboBoxItem Content="Mã khách hàng" />
                         <ComboBoxItem Content="Tên khách hàng" />
@@ -154,14 +167,15 @@
                     <ScrollViewer VerticalScrollBarVisibility="Auto"  >
                         <ListView FontFamily="{StaticResource MaterialDesignFont}" 
                                   FontSize="14"                                 
-                                  FontWeight="Bold"
+                                  FontWeight="Regular"
                                   ItemsSource="{Binding CustomerList}"
                                   SelectedItem="{Binding SelectedItem}"
                                   x:Name="_ListView">
                             <ListView.ItemContainerStyle>
                                 <Style  TargetType="{x:Type ListViewItem}"
                                         BasedOn="{StaticResource MaterialDesignGridViewItem}">
-                                    <Setter Property="Height" Value="50"/>
+                                    
+                                    
                                 </Style>
                             </ListView.ItemContainerStyle>
                             <ListView.View>
@@ -172,7 +186,7 @@
                                                 <TextBlock Text="{Binding Id}"
                                                            FontSize="14" 
                                                            FontFamily="{StaticResource MaterialDesignFont}"
-                                                           Margin="20 30 0 0"/>
+                                                           Margin="20 0 0 -8"/>
                                             </DataTemplate>
                                         </GridViewColumn.CellTemplate>
                                     </GridViewColumn>
@@ -180,7 +194,7 @@
                                         <GridViewColumn.CellTemplate>
                                             <DataTemplate>
                                                 <TextBlock Text="{Binding Name}" 
-                                                           Margin="20 30 0 0"
+                                                           Margin="20 0 0 -8"
                                                            FontSize="14" 
                                                            FontFamily="{StaticResource MaterialDesignFont}"/>
                                             </DataTemplate>
@@ -189,8 +203,8 @@
                                     <GridViewColumn Header="Số điện thoại" Width="160"  >
                                         <GridViewColumn.CellTemplate>
                                             <DataTemplate>
-                                                <TextBlock Text="{Binding PhoneNum}" 
-                                                           Margin="20 30 0 0"
+                                                <TextBlock Text="{Binding PhoneNumber}" 
+                                                           Margin="20 0 0 -8"
                                                            FontSize="14" 
                                                            FontFamily="{StaticResource MaterialDesignFont}"/>
                                             </DataTemplate>
@@ -200,7 +214,7 @@
                                         <GridViewColumn.CellTemplate>
                                             <DataTemplate>
                                                 <TextBlock Text="{Binding Email}" 
-                                                           Margin="20 30 0 0"
+                                                           Margin="20 0 0 -8"
                                                            FontSize="14" 
                                                            FontFamily="{StaticResource MaterialDesignFont}"/>
                                             </DataTemplate>
@@ -209,8 +223,8 @@
                                     <GridViewColumn Header="Ngày đăng ký" Width="165" >
                                         <GridViewColumn.CellTemplate>
                                             <DataTemplate>
-                                                <TextBlock Text="{Binding DateRes}" 
-                                                           Margin="20 30 0 0"
+                                                <TextBlock Text="{Binding StartDate}" 
+                                                           Margin="20 0 0 -8"
                                                            FontSize="14" 
                                                            FontFamily="{StaticResource MaterialDesignFont}"/>
                                             </DataTemplate>
@@ -219,8 +233,8 @@
                                     <GridViewColumn Header="Chi tiêu tháng" Width="170">
                                         <GridViewColumn.CellTemplate>
                                             <DataTemplate>
-                                                <TextBlock Text="{Binding Spendise}" 
-                                                           Margin="20 30 0 0"
+                                                <TextBlock Text="{Binding Expense}" 
+                                                           Margin="20 0 0 -8"
                                                            FontSize="14" 
                                                            FontFamily="{StaticResource MaterialDesignFont}"/>
                                             </DataTemplate>
@@ -231,7 +245,7 @@
                                             <DataTemplate>
                                                 <StackPanel VerticalAlignment="Center"
                                                             Orientation="Horizontal" 
-                                                            Margin="0 25 0 0">
+                                                            Margin="0 0 0 -8">
                                                     <Border BorderBrush="Black"
                                                             BorderThickness="1"
                                                             CornerRadius="6"

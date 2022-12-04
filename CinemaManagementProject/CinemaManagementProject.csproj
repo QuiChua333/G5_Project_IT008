@@ -55,6 +55,12 @@
     <Reference Include="MaterialDesignThemes.Wpf, Version=4.6.1.0, Culture=neutral, PublicKeyToken=df2a72020bd7962a, processorArchitecture=MSIL">
       <HintPath>..\packages\MaterialDesignThemes.4.6.1\lib\net462\MaterialDesignThemes.Wpf.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Expression.Interactions, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Windows.Interactivity.WPF.2.0.20525\lib\net40\Microsoft.Expression.Interactions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Xaml.Behaviors, Version=1.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Xaml.Behaviors.Wpf.1.1.39\lib\net45\Microsoft.Xaml.Behaviors.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
@@ -88,6 +94,8 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="CustomMessageBox.cs" />
+    <Compile Include="DTOs\CustomerDTO.cs" />
+    <Compile Include="DTOs\StaffDTO.cs" />
     <Compile Include="Model\Bill.cs">
       <DependentUpon>CinemaManagementDatabase.tt</DependentUpon>
     </Compile>
@@ -130,6 +138,7 @@
     <Compile Include="Model\SeatSetting.cs">
       <DependentUpon>CinemaManagementDatabase.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\Service\CustomerService.cs" />
     <Compile Include="Model\ShowTime.cs">
       <DependentUpon>CinemaManagementDatabase.tt</DependentUpon>
     </Compile>
@@ -154,7 +163,8 @@
     <Compile Include="Until.cs" />
     <Compile Include="Utilities\RelyCommand.cs" />
     <Compile Include="ViewModel\AdminVM\AdminVM.cs" />
-    <Compile Include="ViewModel\AdminVM\CustomerManagementVM.cs" />
+    <Compile Include="ViewModel\AdminVM\CustomerManagementVM\CustomerManagementViewModel.cs" />
+    <Compile Include="ViewModel\AdminVM\StaffManagementVM\StaffManagementViewModel.cs" />
     <Compile Include="ViewModel\BaseViewModel.cs" />
     <Compile Include="View\Admin\AdminWindow.xaml.cs">
       <DependentUpon>AdminWindow.xaml</DependentUpon>
@@ -233,6 +243,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="ResourceXAML\MainResourceXAML.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Resource\Colors\Colors.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -377,10 +391,7 @@
     <Resource Include="View\Staff\Demo1.txt" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="DTOs\" />
-    <Folder Include="Model\Service\" />
     <Folder Include="ViewModel\LoginVM\" />
-    <Folder Include="ViewModel\StaffVM\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Model\CinemaManagementDatabase.Context.tt">

@@ -6,12 +6,36 @@
       xmlns:local="clr-namespace:CinemaManagementProject.View.Admin.StaffManagement"
       xmlns:Search="clr-namespace:CinemaManagementProject.Component.Search" 
       mc:Ignorable="d" 
+      xmlns:i="http://schemas.microsoft.com/xaml/behaviors"   
+      WindowHeight="680" 
+      WindowWidth="1120"
       Title="StaffManagementPage"
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"             
       Background="Transparent"
       d:DesignHeight="680" 
-      d:DesignWidth="1120">
+      d:DesignWidth="1120"
+      x:Name="mainPage">
 
+    <Page.Triggers>
+        <EventTrigger RoutedEvent="Page.Loaded">
+            <BeginStoryboard>
+                <Storyboard>
+                    <DoubleAnimation Storyboard.TargetName="mainPage"
+                                     Storyboard.TargetProperty="Opacity"
+                                     From="0"
+                                     To="1"
+                                     Duration="0:0:0.5" />
+                </Storyboard>
+            </BeginStoryboard>
+        </EventTrigger>
+    </Page.Triggers>
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding GetListViewCommand}"
+                                   CommandParameter="{Binding ElementName=_ListView}"></i:InvokeCommandAction>
+            <i:InvokeCommandAction Command="{Binding FirstLoadCM}"></i:InvokeCommandAction>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
     <Border   Background="{StaticResource LightGrayAthens}" CornerRadius="20" >
         <Border.Effect>
             <DropShadowEffect
@@ -106,6 +130,8 @@
                                   FontSize="14" 
                                   x:Name="lvStaff" 
                                   Margin="-20 0 0 0" 
+                                  ItemsSource="{Binding StaffList}"
+                                  SelectedItem="{Binding SelectedItem}"
                                   IsSynchronizedWithCurrentItem="False" >
                             <ListView.ItemContainerStyle>
                                 <Style   TargetType="{x:Type ListViewItem}"
