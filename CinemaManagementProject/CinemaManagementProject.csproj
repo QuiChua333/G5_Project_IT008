@@ -154,9 +154,37 @@
     <Compile Include="Until.cs" />
     <Compile Include="Utilities\RelyCommand.cs" />
     <Compile Include="ViewModel\AdminVM\AdminVM.cs" />
+    <Compile Include="ViewModel\AdminVM\CustomerManagementVM.cs" />
     <Compile Include="ViewModel\BaseViewModel.cs" />
     <Compile Include="View\Admin\AdminWindow.xaml.cs">
       <DependentUpon>AdminWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Admin\CustomerManagement\CustomerManagementPage.xaml.cs">
+      <DependentUpon>CustomerManagementPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Admin\CustomerManagement\EditCustomerWindow.xaml.cs">
+      <DependentUpon>EditCustomerWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Admin\HistoryManagement\ExportHistoryPage.xaml.cs">
+      <DependentUpon>ExportHistoryPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Admin\HistoryManagement\HistoryManagementPage.xaml.cs">
+      <DependentUpon>HistoryManagementPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Admin\HistoryManagement\ImportHistoryPage.xaml.cs">
+      <DependentUpon>ImportHistoryPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Admin\StaffManagement\AddStaffWindow.xaml.cs">
+      <DependentUpon>AddStaffWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Admin\StaffManagement\ChangePasswordWindow.xaml.cs">
+      <DependentUpon>ChangePasswordWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Admin\StaffManagement\EditStaffWindow.xaml.cs">
+      <DependentUpon>EditStaffWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Admin\StaffManagement\StaffManagementPage.xaml.cs">
+      <DependentUpon>StaffManagementPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\CustomMessageBoxWindow.xaml.cs">
       <DependentUpon>CustomMessageBoxWindow.xaml</DependentUpon>
@@ -232,6 +260,42 @@
     <Page Include="View\Admin\AdminWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Admin\CustomerManagement\CustomerManagementPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Admin\CustomerManagement\EditCustomerWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Admin\HistoryManagement\ExportHistoryPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Admin\HistoryManagement\HistoryManagementPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Admin\HistoryManagement\ImportHistoryPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Admin\StaffManagement\AddStaffWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Admin\StaffManagement\ChangePasswordWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Admin\StaffManagement\EditStaffWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Admin\StaffManagement\StaffManagementPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\CustomMessageBoxWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
