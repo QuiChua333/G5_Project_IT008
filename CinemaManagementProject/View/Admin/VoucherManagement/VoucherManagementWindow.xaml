@@ -1,15 +1,15 @@
-﻿<Page x:Class="CinemaManagementProject.View.Admin.VoucherManagement.VoucherManagementPage"
-      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:CinemaManagementProject.View.Admin.VoucherManagement"
-      xmlns:Search="clr-namespace:CinemaManagementProject.Component.Search"
+﻿<Window x:Class="CinemaManagementProject.View.Admin.VoucherManagement.VoucherManagementWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CinemaManagementProject.View.Admin.VoucherManagement"
+       xmlns:Search="clr-namespace:CinemaManagementProject.Component.Search"
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
       xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
       mc:Ignorable="d" 
       Title="VoucherManagementPage"
-      d:DesignHeight="660" d:DesignWidth="1040"
+      Height="660" Width="1040"
       DataContext="{StaticResource VoucherVM}">
 
     <i:Interaction.Triggers>
@@ -17,19 +17,7 @@
             <i:InvokeCommandAction Command="{Binding FirstLoadCM}" />
         </i:EventTrigger>
     </i:Interaction.Triggers>
-    <Page.Triggers>
-        <EventTrigger RoutedEvent="Page.Loaded">
-            <BeginStoryboard>
-                <Storyboard>
-                    <DoubleAnimation Storyboard.TargetName="mainPage"
-                                     Storyboard.TargetProperty="Opacity"
-                                     From="0"
-                                     To="1"
-                                     Duration="0:0:0.3" />
-                </Storyboard>
-            </BeginStoryboard>
-        </EventTrigger>
-    </Page.Triggers>
+    
     <Border CornerRadius="0,20,20,0" Background="#BCD8F1" BorderBrush="Gray" BorderThickness="0.3">
         <Border.Effect>
             <DropShadowEffect BlurRadius="10" Direction="270" Color="Black" ShadowDepth="4" Opacity="0.25"/>
@@ -219,4 +207,4 @@
         </Grid>
     </Border>
 
-</Page>
+</Window>

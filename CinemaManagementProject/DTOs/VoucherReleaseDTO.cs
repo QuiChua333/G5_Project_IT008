@@ -19,5 +19,7 @@ namespace CinemaManagementProject.DTOs
         public double MinimizeTotal { get; set; }
         public bool EnableMerge { get; set; }
         public IList<VoucherDTO> Vouchers { get; set; }
+        public int VCount { get; set; }
+        public int UnusedVCount { get; set; }
     }
 }

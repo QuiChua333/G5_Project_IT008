@@ -55,6 +55,9 @@
     <Reference Include="MaterialDesignThemes.Wpf, Version=4.6.1.0, Culture=neutral, PublicKeyToken=df2a72020bd7962a, processorArchitecture=MSIL">
       <HintPath>..\packages\MaterialDesignThemes.4.6.1\lib\net462\MaterialDesignThemes.Wpf.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Xaml.Behaviors, Version=1.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Xaml.Behaviors.Wpf.1.1.39\lib\net45\Microsoft.Xaml.Behaviors.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
@@ -132,6 +135,7 @@
     <Compile Include="Model\SeatSetting.cs">
       <DependentUpon>CinemaManagementDatabase.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\Service\VoucherService.cs" />
     <Compile Include="Model\ShowTime.cs">
       <DependentUpon>CinemaManagementDatabase.tt</DependentUpon>
     </Compile>
@@ -188,6 +192,9 @@
     </Compile>
     <Compile Include="View\Admin\VoucherManagement\VoucherManagementPage.xaml.cs">
       <DependentUpon>VoucherManagementPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Admin\VoucherManagement\VoucherManagementWindow.xaml.cs">
+      <DependentUpon>VoucherManagementWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\CustomMessageBoxWindow.xaml.cs">
       <DependentUpon>CustomMessageBoxWindow.xaml</DependentUpon>
@@ -304,6 +311,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\Admin\VoucherManagement\VoucherManagementWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\CustomMessageBoxWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -383,7 +394,6 @@
     <Resource Include="View\Staff\Demo1.txt" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Model\Service\" />
     <Folder Include="ViewModel\LoginVM\" />
     <Folder Include="ViewModel\StaffVM\" />
   </ItemGroup>
