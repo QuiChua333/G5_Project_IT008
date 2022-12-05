@@ -88,6 +88,8 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="CustomMessageBox.cs" />
+    <Compile Include="DTOs\VoucherDTO.cs" />
+    <Compile Include="DTOs\VoucherReleaseDTO.cs" />
     <Compile Include="Model\Bill.cs">
       <DependentUpon>CinemaManagementDatabase.tt</DependentUpon>
     </Compile>
@@ -154,9 +156,38 @@
     <Compile Include="Until.cs" />
     <Compile Include="Utilities\RelyCommand.cs" />
     <Compile Include="ViewModel\AdminVM\AdminVM.cs" />
+    <Compile Include="ViewModel\AdminVM\VoucherManagementVM\AddWindowVM\AddWindowViewModel.cs" />
+    <Compile Include="ViewModel\AdminVM\VoucherManagementVM\VoucherViewModel.cs" />
     <Compile Include="ViewModel\BaseViewModel.cs" />
-    <Compile Include="View\Admin\AdminWindow.xaml.cs">
-      <DependentUpon>AdminWindow.xaml</DependentUpon>
+    <Compile Include="View\Admin\VoucherManagement\AddWindow\AddInfoPage.xaml.cs">
+      <DependentUpon>AddInfoPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Admin\VoucherManagement\AddWindow\AddListVoucher.xaml.cs">
+      <DependentUpon>AddListVoucher.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Admin\VoucherManagement\AddWindow\AddVoucher.xaml.cs">
+      <DependentUpon>AddVoucher.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Admin\VoucherManagement\AddWindow\AddVoucherPage.xaml.cs">
+      <DependentUpon>AddVoucherPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Admin\VoucherManagement\AddWindow\AddVoucherPageActive.xaml.cs">
+      <DependentUpon>AddVoucherPageActive.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Admin\VoucherManagement\AddWindow\AddWindow.xaml.cs">
+      <DependentUpon>AddWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Admin\VoucherManagement\AddWindow\ListEmail.xaml.cs">
+      <DependentUpon>ListEmail.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Admin\VoucherManagement\AddWindow\ReleaseVoucher.xaml.cs">
+      <DependentUpon>ReleaseVoucher.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Admin\VoucherManagement\EditWindow\EditInfoPage.xaml.cs">
+      <DependentUpon>EditInfoPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Admin\VoucherManagement\VoucherManagementPage.xaml.cs">
+      <DependentUpon>VoucherManagementPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\CustomMessageBoxWindow.xaml.cs">
       <DependentUpon>CustomMessageBoxWindow.xaml</DependentUpon>
@@ -205,6 +236,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="ResourceXAML\MainResource.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Resource\Colors\Colors.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -229,9 +264,45 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\Admin\AdminWindow.xaml">
-      <Generator>MSBuild:Compile</Generator>
+    <Page Include="View\Admin\VoucherManagement\AddWindow\AddInfoPage.xaml">
       <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Admin\VoucherManagement\AddWindow\AddListVoucher.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Admin\VoucherManagement\AddWindow\AddVoucher.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Admin\VoucherManagement\AddWindow\AddVoucherPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Admin\VoucherManagement\AddWindow\AddVoucherPageActive.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Admin\VoucherManagement\AddWindow\AddWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Admin\VoucherManagement\AddWindow\ListEmail.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Admin\VoucherManagement\AddWindow\ReleaseVoucher.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Admin\VoucherManagement\EditWindow\EditInfoPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Admin\VoucherManagement\VoucherManagementPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\CustomMessageBoxWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -308,12 +379,10 @@
     <Resource Include="Resource\Images\icon_Warning.png" />
     <Resource Include="Resource\Images\Logo.png" />
     <Resource Include="Resource\Images\New Text Document.txt" />
-    <Resource Include="View\Admin\Demo1.txt" />
     <Resource Include="View\Login\Demo1.txt" />
     <Resource Include="View\Staff\Demo1.txt" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="DTOs\" />
     <Folder Include="Model\Service\" />
     <Folder Include="ViewModel\LoginVM\" />
     <Folder Include="ViewModel\StaffVM\" />
