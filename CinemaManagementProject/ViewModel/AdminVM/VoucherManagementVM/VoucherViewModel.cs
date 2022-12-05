@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using CinemaManagementProject.Views;
+using System.Windows;
 
 namespace CinemaManagementProject.ViewModel.AdminVM.VoucherManagementVM
 {
@@ -26,7 +27,7 @@ namespace CinemaManagementProject.ViewModel.AdminVM.VoucherManagementVM
             set { selectedItem = value; OnPropertyChanged(); }
         }
         public ICommand FirstLoadCM { get; set; }
-
+        public ICommand LoadAddWindowCM { get; set; }
 
         public VoucherViewModel()
         {
@@ -51,6 +52,8 @@ namespace CinemaManagementProject.ViewModel.AdminVM.VoucherManagementVM
                     CustomMessageBox.ShowOk("Lỗi hệ thống", "Lỗi", "OK", CustomMessageBoxImage.Error);
                 }
             });
+            
+
         }
     }
 }

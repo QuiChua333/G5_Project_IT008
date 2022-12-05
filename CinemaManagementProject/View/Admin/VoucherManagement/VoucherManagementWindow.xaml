@@ -36,12 +36,15 @@
                                 FontWeight="Medium"
                                 FontFamily="{DynamicResource MaterialDesignFont}"
                                 PlaceHolder="Tìm kiếm"
-                                IconSize="23"/>
+                                IconSize="23" 
+                                SearchTextChange="Search_SearchTextChange"
+                                x:Name="SearchBox"/>
                 <Button Style="{StaticResource CustomButton}"
                         Width="100"
                         Height="40"
                         HorizontalAlignment="Left"
-                        Margin="250,0,0,0">
+                        Margin="250,0,0,0"
+                        Command="{Binding LoadAddWindowCM}">
                     <Grid>
                         <TextBlock Text="Thêm"
                                    FontFamily="{DynamicResource MaterialDesignFont}"
@@ -69,14 +72,13 @@
                                 Direction="270"/>
                     </Border.Effect>
                     <materialDesign:Card UniformCornerRadius="20">
-                        <ScrollViewer VerticalScrollBarVisibility="Auto" 
-                                      HorizontalScrollBarVisibility="Visible">
+                        <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
                             <ListView FontFamily="{StaticResource MaterialDesignFont}" 
                                   FontSize="14"                                 
                                   FontWeight="Regular"
                                   ItemsSource="{Binding ListBigVoucher}"
                                   SelectedItem="{Binding SelectedItem,UpdateSourceTrigger=PropertyChanged}"
-                                  x:Name="_ListView">
+                                  x:Name="VoucherListView">
                                 <ListView.ItemContainerStyle>
                                     <Style  TargetType="{x:Type ListViewItem}"
                                         BasedOn="{StaticResource MaterialDesignGridViewItem}">
@@ -203,6 +205,23 @@
                     </materialDesign:Card>
 
                 </Border>
+                <Label Content="Kết quả:"
+                       FontSize="14"   
+                       FontFamily="{DynamicResource MaterialDesignFont}"
+                       FontWeight="Medium"
+                       VerticalAlignment="Bottom"
+                       HorizontalAlignment="Right"
+                       Margin="0,0,20,-35">
+                </Label>
+                <Label Content="{Binding ListBigVoucher.Count}"
+                       FontSize="14"   
+                       FontFamily="{DynamicResource MaterialDesignFont}"
+                       FontWeight="Medium"
+                       VerticalAlignment="Bottom"
+                       HorizontalAlignment="Right"
+                       Margin="0,0,0,-35"
+                       x:Name="result">
+                </Label>
             </Grid>
         </Grid>
     </Border>

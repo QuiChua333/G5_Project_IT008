@@ -74,6 +74,7 @@ namespace CinemaManagementProject.ViewModel.AdminVM.VoucherManagementVM
             set { _MinimizeTotal = value; OnPropertyChanged(); }
         }
         #endregion
+       
         public ICommand SaveNewBigVoucherCM { get; set; }
     }
 
