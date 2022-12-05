@@ -7,29 +7,35 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace CinemaManagementProject.Model
+namespace CinemaManagementProject.Model.Service
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class Seat
+    public partial class Staff
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Seat()
+        public Staff()
         {
-            this.SeatSettings = new HashSet<SeatSetting>();
-            this.Tickets = new HashSet<Ticket>();
+            this.Bills = new HashSet<Bill>();
+            this.Troubles = new HashSet<Trouble>();
+            this.Users = new HashSet<User>();
         }
     
         public int Id { get; set; }
-        public Nullable<int> SeatNumber { get; set; }
-        public Nullable<int> SeatRow { get; set; }
-        public Nullable<int> RoomId { get; set; }
+        public string StaffName { get; set; }
+        public Nullable<int> Gender { get; set; }
+        public Nullable<System.DateTime> DateOfBirth { get; set; }
+        public string Email { get; set; }
+        public string PhoneNumber { get; set; }
+        public Nullable<int> Position { get; set; }
+        public Nullable<System.DateTime> StartDate { get; set; }
     
-        public virtual Room Room { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<SeatSetting> SeatSettings { get; set; }
+        public virtual ICollection<Bill> Bills { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Ticket> Tickets { get; set; }
+        public virtual ICollection<Trouble> Troubles { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<User> Users { get; set; }
     }
 }

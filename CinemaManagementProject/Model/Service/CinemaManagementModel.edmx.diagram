@@ -4,15 +4,15 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="ecd3eb0ee932446a847b0940f3e2ff52" Name="Diagram1">
+      <Diagram DiagramId="e5ce8c4abd7840d492a341fbb89aedcd" Name="Diagram1">
         <EntityTypeShape EntityType="CinemaManagementProjectModel.Bill" Width="1.5" PointX="3" PointY="4.25" IsExpanded="true" />
         <EntityTypeShape EntityType="CinemaManagementProjectModel.BillInfo" Width="1.5" PointX="5.25" PointY="4.625" IsExpanded="true" />
         <EntityTypeShape EntityType="CinemaManagementProjectModel.Customer" Width="1.5" PointX="0.75" PointY="2.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="CinemaManagementProjectModel.Film" Width="1.5" PointX="3.75" PointY="19" IsExpanded="true" />
+        <EntityTypeShape EntityType="CinemaManagementProjectModel.Film" Width="1.5" PointX="3.75" PointY="18.875" IsExpanded="true" />
         <EntityTypeShape EntityType="CinemaManagementProjectModel.Product" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="CinemaManagementProjectModel.ProductStorage" Width="1.5" PointX="5.25" PointY="2.125" IsExpanded="true" />
         <EntityTypeShape EntityType="CinemaManagementProjectModel.Room" Width="1.5" PointX="3.75" PointY="16.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="CinemaManagementProjectModel.Seat" Width="1.5" PointX="6" PointY="15.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="CinemaManagementProjectModel.Seat" Width="1.5" PointX="6" PointY="15.75" IsExpanded="true" />
         <EntityTypeShape EntityType="CinemaManagementProjectModel.SeatSetting" Width="1.5" PointX="8.25" PointY="17.625" IsExpanded="true" />
         <EntityTypeShape EntityType="CinemaManagementProjectModel.ShowTime" Width="1.5" PointX="6" PointY="19.25" IsExpanded="true" />
         <EntityTypeShape EntityType="CinemaManagementProjectModel.Staff" Width="1.5" PointX="0.75" PointY="6.25" IsExpanded="true" />

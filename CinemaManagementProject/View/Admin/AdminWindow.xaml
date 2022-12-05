@@ -91,7 +91,7 @@
                 x:Name="QuanLiPhimButton"
                 Style="{StaticResource menuButton}"
                 Tag="white"
-                Command="{Binding ShowHomeViewCommand}" 
+                Command="{Binding FilmCommand}" 
             >
                     <StackPanel Orientation="Horizontal">
                         <materialDesign:PackIcon Kind="PlaylistStar" Height="20" Width="20" Margin="30,0,10,0" ></materialDesign:PackIcon>

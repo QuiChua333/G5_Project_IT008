@@ -8,8 +8,20 @@
       xmlns:Search="clr-namespace:CinemaManagementProject.Component.Search"
       xmlns:Component="clr-namespace:CinemaManagementProject.Component" 
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:viewmodel="clr-namespace:CinemaManagementProject.ViewModel.AdminVM.MovieManagementVM"
+      xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
       Title="MovieManagementPage"
       Width="1140" Height="760">
+    
+    <Page.DataContext>
+        <viewmodel:MovieManagementVM/>
+    </Page.DataContext>
+
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding FirstLoadCM}" />
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
 
     <Grid Width="1140" Height="760" >
         <Grid Grid.Column="1" Background="#BCD8F1">
@@ -163,17 +175,12 @@
                                                   Focusable="True"
                                                   Height="578"
                                                   ToolTip="Nháy đúp để xem chi tiết">
-                                            <!--<i:Interaction.Triggers>
-                                                <i:EventTrigger EventName="MouseDoubleClick">
-                                                    <i:InvokeCommandAction Command="{Binding LoadInforMovieCM}" />
-                                                </i:EventTrigger>
-                                            </i:Interaction.Triggers>-->
                                             <ListView.View>
                                                 <GridView>
                                                     <GridViewColumn Header="Tên phim" Width="300">
                                                         <GridViewColumn.CellTemplate>
                                                             <DataTemplate>
-                                                                <TextBlock Text="{Binding DisplayName}" FontSize="18" />
+                                                                <TextBlock Text="{Binding FilmName}" Margin="18,0,0,0" FontSize="18" />
                                                             </DataTemplate>
                                                         </GridViewColumn.CellTemplate>
                                                     </GridViewColumn>
@@ -181,9 +188,9 @@
                                                     <GridViewColumn Header="Loại phim" Width="130">
                                                         <GridViewColumn.CellTemplate>
                                                             <DataTemplate>
-                                                                <TextBlock Text="{Binding MovieType}"
-                                                                           Margin="5,0,0,0"
-                                                                           FontSize="18" />
+                                                                <TextBlock Text="{Binding FilmType}"
+                                                                           FontSize="18"
+                                                                           Margin="30,0,0,0"/>
                                                             </DataTemplate>
                                                         </GridViewColumn.CellTemplate>
                                                     </GridViewColumn>
@@ -202,7 +209,7 @@
                                                         <GridViewColumn.CellTemplate>
                                                             <DataTemplate>
                                                                 <TextBlock Text="{Binding Genre}"
-                                                                           Margin="10,0,0,0"
+                                                                           Margin="16,0,0,0"
                                                                            FontSize="18" />
                                                             </DataTemplate>
                                                         </GridViewColumn.CellTemplate>
@@ -211,8 +218,8 @@
                                                     <GridViewColumn Header="Thời lượng(phút)" Width="176">
                                                         <GridViewColumn.CellTemplate>
                                                             <DataTemplate>
-                                                                <TextBlock Text="{Binding RunningTime}"
-                                                                           Margin="10,0,0,0"
+                                                                <TextBlock Text="{Binding DurationFilm}"
+                                                                           Margin="44,0,0,0"
                                                                            FontSize="18" />
                                                             </DataTemplate>
                                                         </GridViewColumn.CellTemplate>

@@ -41,6 +41,7 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Genre" Type="nvarchar" MaxLength="100" />
           <Property Name="FilmName" Type="nvarchar(max)" />
           <Property Name="Duration" Type="int" />
           <Property Name="FilmType" Type="int" />
@@ -505,6 +506,7 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Genre" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="FilmName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Duration" Type="Int32" />
           <Property Name="FilmType" Type="Int32" />
@@ -988,6 +990,7 @@
             <EntityTypeMapping TypeName="CinemaManagementProjectModel.Film">
               <MappingFragment StoreEntitySet="Film">
                 <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Genre" ColumnName="Genre" />
                 <ScalarProperty Name="FilmName" ColumnName="FilmName" />
                 <ScalarProperty Name="Duration" ColumnName="Duration" />
                 <ScalarProperty Name="FilmType" ColumnName="FilmType" />

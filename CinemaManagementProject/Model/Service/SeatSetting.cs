@@ -7,16 +7,19 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace CinemaManagementProject.Model
+namespace CinemaManagementProject.Model.Service
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class ProductStorage
+    public partial class SeatSetting
     {
-        public int ProductId { get; set; }
-        public Nullable<int> Quantity { get; set; }
+        public int Id { get; set; }
+        public Nullable<int> SeatId { get; set; }
+        public Nullable<int> ShowTimeId { get; set; }
+        public Nullable<int> SeatStatus { get; set; }
     
-        public virtual Product Product { get; set; }
+        public virtual Seat Seat { get; set; }
+        public virtual ShowTime ShowTime { get; set; }
     }
 }

@@ -7,33 +7,29 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace CinemaManagementProject.Model
+namespace CinemaManagementProject.Model.Service
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class Bill
+    public partial class Customer
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Bill()
+        public Customer()
         {
-            this.BillInfoes = new HashSet<BillInfo>();
-            this.Tickets = new HashSet<Ticket>();
+            this.Bills = new HashSet<Bill>();
+            this.Vouchers = new HashSet<Voucher>();
         }
     
         public int Id { get; set; }
-        public Nullable<int> CustomerId { get; set; }
-        public Nullable<int> StaffId { get; set; }
-        public Nullable<System.DateTime> CreateDate { get; set; }
-        public Nullable<int> VoucherId { get; set; }
-        public Nullable<float> TotalPrize { get; set; }
+        public string CustomerName { get; set; }
+        public Nullable<int> PhoneNumber { get; set; }
+        public string Email { get; set; }
+        public Nullable<System.DateTime> FirstDate { get; set; }
     
-        public virtual Customer Customer { get; set; }
-        public virtual Staff Staff { get; set; }
-        public virtual Voucher Voucher { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<BillInfo> BillInfoes { get; set; }
+        public virtual ICollection<Bill> Bills { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Ticket> Tickets { get; set; }
+        public virtual ICollection<Voucher> Vouchers { get; set; }
     }
 }
