@@ -12,13 +12,16 @@ namespace CinemaManagementProject.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class User
+    public partial class ProductReceive
     {
         public int Id { get; set; }
+        public Nullable<int> ProductId { get; set; }
+        public Nullable<float> ImportPrice { get; set; }
+        public Nullable<int> Quantity { get; set; }
+        public Nullable<System.DateTime> CreatedAt { get; set; }
         public Nullable<int> StaffId { get; set; }
-        public string UserName { get; set; }
-        public string UserPass { get; set; }
     
+        public virtual Product Product { get; set; }
         public virtual Staff Staff { get; set; }
     }
 }

@@ -14,22 +14,15 @@ namespace CinemaManagementProject.Model
     
     public partial class Voucher
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Voucher()
-        {
-            this.Bills = new HashSet<Bill>();
-        }
-    
         public int Id { get; set; }
         public string VoucherCode { get; set; }
         public Nullable<int> VoucherReleaseId { get; set; }
         public Nullable<int> CustomerId { get; set; }
         public Nullable<bool> VoucherStatus { get; set; }
         public Nullable<System.DateTime> ReleaseAt { get; set; }
-        public Nullable<System.DateTime> UseAt { get; set; }
+        public Nullable<System.DateTime> UsedAt { get; set; }
+        public Nullable<bool> EnableMerge { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Bill> Bills { get; set; }
         public virtual Customer Customer { get; set; }
         public virtual VoucherRelease VoucherRelease { get; set; }
     }

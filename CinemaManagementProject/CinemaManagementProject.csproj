@@ -123,6 +123,9 @@
     <Compile Include="Model\Product.cs">
       <DependentUpon>CinemaManagementDatabase.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\ProductReceive.cs">
+      <DependentUpon>CinemaManagementDatabase.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\ProductStorage.cs">
       <DependentUpon>CinemaManagementDatabase.tt</DependentUpon>
     </Compile>
@@ -146,9 +149,6 @@
       <DependentUpon>CinemaManagementDatabase.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Trouble.cs">
-      <DependentUpon>CinemaManagementDatabase.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\User.cs">
       <DependentUpon>CinemaManagementDatabase.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Voucher.cs">
