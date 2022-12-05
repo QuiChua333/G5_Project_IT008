@@ -150,7 +150,9 @@
           <Property Name="VoucherCode" Type="nvarchar(max)" />
           <Property Name="VoucherReleaseId" Type="int" />
           <Property Name="CustomerId" Type="int" />
-          <Property Name="VoucherStatus" Type="int" />
+          <Property Name="VoucherStatus" Type="bit" />
+          <Property Name="ReleaseAt" Type="datetime" />
+          <Property Name="UseAt" Type="datetime" />
         </EntityType>
         <EntityType Name="VoucherRelease">
           <Key>
@@ -159,11 +161,12 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="VoucherReleaseName" Type="nvarchar(max)" />
           <Property Name="MenhGia" Type="real" />
-          <Property Name="VoucherReleaseStatus" Type="int" />
+          <Property Name="VoucherReleaseStatus" Type="bit" />
           <Property Name="StartDate" Type="datetime" />
           <Property Name="EndDate" Type="datetime" />
           <Property Name="TypeObject" Type="int" />
           <Property Name="MinimizeTotal" Type="real" />
+          <Property Name="EnableMerge" Type="bit" />
         </EntityType>
         <Association Name="FK_Bill_Customer">
           <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
@@ -635,7 +638,9 @@
           <Property Name="VoucherCode" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="VoucherReleaseId" Type="Int32" />
           <Property Name="CustomerId" Type="Int32" />
-          <Property Name="VoucherStatus" Type="Int32" />
+          <Property Name="VoucherStatus" Type="Boolean" />
+          <Property Name="ReleaseAt" Type="DateTime" Precision="3" />
+          <Property Name="UseAt" Type="DateTime" Precision="3" />
           <NavigationProperty Name="Bills" Relationship="Self.FK_Bill_Voucher" FromRole="Voucher" ToRole="Bill" />
           <NavigationProperty Name="Customer" Relationship="Self.FK_Voucher_Customer" FromRole="Voucher" ToRole="Customer" />
           <NavigationProperty Name="VoucherRelease" Relationship="Self.FK_Voucher_VoucherRelease" FromRole="Voucher" ToRole="VoucherRelease" />
@@ -647,11 +652,12 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="VoucherReleaseName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="MenhGia" Type="Single" />
-          <Property Name="VoucherReleaseStatus" Type="Int32" />
+          <Property Name="VoucherReleaseStatus" Type="Boolean" />
           <Property Name="StartDate" Type="DateTime" Precision="3" />
           <Property Name="EndDate" Type="DateTime" Precision="3" />
           <Property Name="TypeObject" Type="Int32" />
           <Property Name="MinimizeTotal" Type="Single" />
+          <Property Name="EnableMerge" Type="Boolean" />
           <NavigationProperty Name="Vouchers" Relationship="Self.FK_Voucher_VoucherRelease" FromRole="VoucherRelease" ToRole="Voucher" />
         </EntityType>
         <Association Name="FK_Bill_Customer">
@@ -1109,6 +1115,8 @@
                 <ScalarProperty Name="VoucherReleaseId" ColumnName="VoucherReleaseId" />
                 <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
                 <ScalarProperty Name="VoucherStatus" ColumnName="VoucherStatus" />
+                <ScalarProperty Name="ReleaseAt" ColumnName="ReleaseAt" />
+                <ScalarProperty Name="UseAt" ColumnName="UseAt" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1123,6 +1131,7 @@
                 <ScalarProperty Name="EndDate" ColumnName="EndDate" />
                 <ScalarProperty Name="TypeObject" ColumnName="TypeObject" />
                 <ScalarProperty Name="MinimizeTotal" ColumnName="MinimizeTotal" />
+                <ScalarProperty Name="EnableMerge" ColumnName="EnableMerge" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

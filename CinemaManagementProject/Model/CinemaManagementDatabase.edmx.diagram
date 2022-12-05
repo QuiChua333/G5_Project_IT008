@@ -4,10 +4,10 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="ecd3eb0ee932446a847b0940f3e2ff52" Name="Diagram1">
+      <Diagram DiagramId="ff69408a8200462fb6c49a346e254904" Name="Diagram1">
         <EntityTypeShape EntityType="CinemaManagementProjectModel.Bill" Width="1.5" PointX="3" PointY="4.25" IsExpanded="true" />
         <EntityTypeShape EntityType="CinemaManagementProjectModel.BillInfo" Width="1.5" PointX="5.25" PointY="4.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="CinemaManagementProjectModel.Customer" Width="1.5" PointX="0.75" PointY="2.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="CinemaManagementProjectModel.Customer" Width="1.5" PointX="0.75" PointY="2.75" IsExpanded="true" />
         <EntityTypeShape EntityType="CinemaManagementProjectModel.Film" Width="1.5" PointX="3.75" PointY="19" IsExpanded="true" />
         <EntityTypeShape EntityType="CinemaManagementProjectModel.Product" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="CinemaManagementProjectModel.ProductStorage" Width="1.5" PointX="5.25" PointY="2.125" IsExpanded="true" />
@@ -19,8 +19,8 @@
         <EntityTypeShape EntityType="CinemaManagementProjectModel.Ticket" Width="1.5" PointX="8.25" PointY="4.625" IsExpanded="true" />
         <EntityTypeShape EntityType="CinemaManagementProjectModel.Trouble" Width="1.5" PointX="3" PointY="9.125" IsExpanded="true" />
         <EntityTypeShape EntityType="CinemaManagementProjectModel.User" Width="1.5" PointX="3" PointY="12.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="CinemaManagementProjectModel.Voucher" Width="1.5" PointX="0.75" PointY="11.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="CinemaManagementProjectModel.VoucherRelease" Width="1.5" PointX="1.5" PointY="16" IsExpanded="true" />
+        <EntityTypeShape EntityType="CinemaManagementProjectModel.Voucher" Width="1.5" PointX="0.75" PointY="10.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="CinemaManagementProjectModel.VoucherRelease" Width="1.5" PointX="1.5" PointY="15.875" IsExpanded="true" />
         <AssociationConnector Association="CinemaManagementProjectModel.FK_Bill_Customer" ManuallyRouted="false" />
         <AssociationConnector Association="CinemaManagementProjectModel.FK_Bill_Staff" ManuallyRouted="false" />
         <AssociationConnector Association="CinemaManagementProjectModel.FK_Bill_Voucher" ManuallyRouted="false" />
