@@ -25,6 +25,7 @@ namespace CinemaManagementProject.View.Admin.VoucherManagement.AddWindow
         {
             InitializeComponent();
         }
+     
 
         private void RadioButton_Checked(object sender, RoutedEventArgs e)
         {

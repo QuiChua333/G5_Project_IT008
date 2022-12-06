@@ -22,9 +22,10 @@
         <Border.Effect>
             <DropShadowEffect BlurRadius="10" Direction="270" Color="Black" ShadowDepth="4" Opacity="0.25"/>
         </Border.Effect>
-        <Grid Margin="20,40,20,40">
+        <Grid Margin="20,20,20,40">
             <Grid.RowDefinitions>
-                <RowDefinition Height="60"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="20"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
             <Grid Grid.Row="0">
@@ -59,7 +60,7 @@
                     </Grid>
                 </Button>
             </Grid>
-            <Grid Grid.Row="1">
+            <Grid Grid.Row="2">
                 <Border 
                     CornerRadius="20" 
                     Background="White">
@@ -72,7 +73,8 @@
                                 Direction="270"/>
                     </Border.Effect>
                     <materialDesign:Card UniformCornerRadius="20">
-                        <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+                        <ScrollViewer VerticalScrollBarVisibility="Auto" 
+                                      HorizontalScrollBarVisibility="Hidden">
                             <ListView FontFamily="{StaticResource MaterialDesignFont}" 
                                   FontSize="14"                                 
                                   FontWeight="Regular"
@@ -90,7 +92,7 @@
                                         <GridViewColumn Header="Mã phát hành" Width="160">
                                             <GridViewColumn.CellTemplate >
                                                 <DataTemplate>
-                                                    <TextBlock Text="{Binding Id}"
+                                                    <TextBlock Text="{Binding VoucherReleaseCode}"
                                                            FontSize="14" 
                                                            FontFamily="{StaticResource MaterialDesignFont}"
                                                            Margin="20 10 0 0"/>
@@ -140,7 +142,7 @@
                                         <GridViewColumn Header="Mệnh giá" Width="150">
                                             <GridViewColumn.CellTemplate>
                                                 <DataTemplate>
-                                                    <TextBlock Text="{Binding MenhGia}" 
+                                                    <TextBlock Text="{Binding Price}" 
                                                            Margin="20 10 0 0"
                                                            FontSize="14" 
                                                            FontFamily="{StaticResource MaterialDesignFont}"/>

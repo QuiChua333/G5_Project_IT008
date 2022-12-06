@@ -38,7 +38,7 @@ namespace CinemaManagementProject.Model.Service
                                         orderby vr.Id descending
                                         select new VoucherReleaseDTO
                                         {
-                                            Id = vr.Id,
+                                            VoucherReleaseCode = vr.VoucherReleaseCode,
                                             VoucherReleaseName = vr.VoucherReleaseName,
                                             StartDate = (DateTime)vr.StartDate,
                                             EndDate = (DateTime)vr.EndDate,

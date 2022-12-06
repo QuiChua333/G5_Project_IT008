@@ -48,12 +48,15 @@
                                 FontWeight="Medium"
                                 FontFamily="{DynamicResource MaterialDesignFont}"
                                 PlaceHolder="Tìm kiếm"
-                                IconSize="23"/>
+                                IconSize="23" 
+                                SearchTextChange="Search_SearchTextChange"
+                                x:Name="SearchBox"/>
                 <Button Style="{StaticResource CustomButton}"
                         Width="100"
                         Height="40"
                         HorizontalAlignment="Left"
-                        Margin="250,0,0,0">
+                        Margin="250,0,0,0"
+                        Command="{Binding LoadAddWindowCM}">
                     <Grid>
                         <TextBlock Text="Thêm"
                                    FontFamily="{DynamicResource MaterialDesignFont}"
@@ -82,13 +85,13 @@
                     </Border.Effect>
                     <materialDesign:Card UniformCornerRadius="20">
                         <ScrollViewer VerticalScrollBarVisibility="Auto" 
-                                      HorizontalScrollBarVisibility="Visible">
+                                      HorizontalScrollBarVisibility="Hidden">
                             <ListView FontFamily="{StaticResource MaterialDesignFont}" 
                                   FontSize="14"                                 
                                   FontWeight="Regular"
                                   ItemsSource="{Binding ListBigVoucher}"
                                   SelectedItem="{Binding SelectedItem,UpdateSourceTrigger=PropertyChanged}"
-                                  x:Name="_ListView">
+                                  x:Name="VoucherListView">
                                 <ListView.ItemContainerStyle>
                                     <Style  TargetType="{x:Type ListViewItem}"
                                         BasedOn="{StaticResource MaterialDesignGridViewItem}">
@@ -100,7 +103,7 @@
                                         <GridViewColumn Header="Mã phát hành" Width="160">
                                             <GridViewColumn.CellTemplate >
                                                 <DataTemplate>
-                                                    <TextBlock Text="{Binding Id}"
+                                                    <TextBlock Text="{Binding VoucherReleaseCode}"
                                                            FontSize="14" 
                                                            FontFamily="{StaticResource MaterialDesignFont}"
                                                            Margin="20 10 0 0"/>
@@ -150,7 +153,7 @@
                                         <GridViewColumn Header="Mệnh giá" Width="150">
                                             <GridViewColumn.CellTemplate>
                                                 <DataTemplate>
-                                                    <TextBlock Text="{Binding MenhGia}" 
+                                                    <TextBlock Text="{Binding Price}" 
                                                            Margin="20 10 0 0"
                                                            FontSize="14" 
                                                            FontFamily="{StaticResource MaterialDesignFont}"/>
@@ -215,8 +218,26 @@
                     </materialDesign:Card>
 
                 </Border>
+                <Label Content="Kết quả:"
+                       FontSize="14"   
+                       FontFamily="{DynamicResource MaterialDesignFont}"
+                       FontWeight="Medium"
+                       VerticalAlignment="Bottom"
+                       HorizontalAlignment="Right"
+                       Margin="0,0,20,-35">
+                </Label>
+                <Label Content="{Binding ListBigVoucher.Count}"
+                       FontSize="14"   
+                       FontFamily="{DynamicResource MaterialDesignFont}"
+                       FontWeight="Medium"
+                       VerticalAlignment="Bottom"
+                       HorizontalAlignment="Right"
+                       Margin="0,0,0,-35"
+                       x:Name="result">
+                </Label>
             </Grid>
         </Grid>
     </Border>
+
 
 </Page>

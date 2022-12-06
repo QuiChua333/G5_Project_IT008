@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using CinemaManagementProject.Views;
 using System.Windows;
+using CinemaManagementProject.View.Admin.VoucherManagement.AddWindow;
+using System.Windows.Controls;
 
 namespace CinemaManagementProject.ViewModel.AdminVM.VoucherManagementVM
 {
@@ -28,6 +30,7 @@ namespace CinemaManagementProject.ViewModel.AdminVM.VoucherManagementVM
         }
         public ICommand FirstLoadCM { get; set; }
         public ICommand LoadAddWindowCM { get; set; }
+        public ICommand LoadViewCM { get; set; }
 
         public VoucherViewModel()
         {
@@ -52,7 +55,29 @@ namespace CinemaManagementProject.ViewModel.AdminVM.VoucherManagementVM
                     CustomMessageBox.ShowOk("Lỗi hệ thống", "Lỗi", "OK", CustomMessageBoxImage.Error);
                 }
             });
-            
+            LoadAddWindowCM = new RelayCommand<object>((p) => { return true;}, async (p)=>
+            {
+                try
+                {
+                   AddWindow wd = new AddWindow();
+                    wd.ShowDialog();
+                }
+                catch (System.Data.Entity.Core.EntityException e)
+                {
+                    Console.WriteLine(e);
+                    CustomMessageBox.ShowOk("Mất kết nối cơ sở dữ liệu", "Lỗi", "OK", CustomMessageBoxImage.Error);
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e);
+                    CustomMessageBox.ShowOk("Lỗi hệ thống", "Lỗi", "OK", CustomMessageBoxImage.Error);
+                }
+            });
+
+            LoadViewCM = new RelayCommand<Frame>((p) => { return true; }, (p) =>
+            {
+                p.Content = new AddInfoPage();
+            });
 
         }
     }
