@@ -25,12 +25,11 @@ namespace CinemaManagementProject.Model
         public Nullable<int> CustomerId { get; set; }
         public Nullable<int> StaffId { get; set; }
         public Nullable<System.DateTime> CreateDate { get; set; }
-        public Nullable<int> VoucherId { get; set; }
+        public Nullable<float> DiscountPrice { get; set; }
         public Nullable<float> TotalPrize { get; set; }
     
         public virtual Customer Customer { get; set; }
         public virtual Staff Staff { get; set; }
-        public virtual Voucher Voucher { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<BillInfo> BillInfoes { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

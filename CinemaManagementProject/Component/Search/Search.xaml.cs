@@ -32,7 +32,13 @@ namespace CinemaManagementProject.Component.Search
         public new double FontSize { get; set; }
         public double Corner { get; set; }
         public double IconSize { get; set; }
-
+        public string Text
+        {
+            get
+            {
+                return SearchType.Text;
+            }
+        }
         public event EventHandler SearchTextChange;
         private void SearchType_GotFocus(object sender, RoutedEventArgs e)
         {

@@ -15,11 +15,11 @@ namespace CinemaManagementProject.Model
     public partial class Trouble
     {
         public int Id { get; set; }
-        public Nullable<int> TroubleType { get; set; }
+        public string TroubleType { get; set; }
         public string TroubleInfo { get; set; }
         public Nullable<System.DateTime> StartDate { get; set; }
         public Nullable<System.TimeSpan> StartTime { get; set; }
-        public Nullable<int> TroubleStatus { get; set; }
+        public string TroubleStatus { get; set; }
         public Nullable<int> StaffId { get; set; }
     
         public virtual Staff Staff { get; set; }

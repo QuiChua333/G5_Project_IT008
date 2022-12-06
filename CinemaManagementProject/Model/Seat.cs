@@ -23,7 +23,7 @@ namespace CinemaManagementProject.Model
     
         public int Id { get; set; }
         public Nullable<int> SeatNumber { get; set; }
-        public Nullable<int> SeatRow { get; set; }
+        public string SeatRow { get; set; }
         public Nullable<int> RoomId { get; set; }
     
         public virtual Room Room { get; set; }
