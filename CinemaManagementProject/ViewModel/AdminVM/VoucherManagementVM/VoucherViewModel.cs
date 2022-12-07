@@ -94,6 +94,7 @@ namespace CinemaManagementProject.ViewModel.AdminVM.VoucherManagementVM
                 LoadAddInfoPageStatus = true;
                 LoadAddVoucherPageStatus = false;
                 ChangeColorBtn();
+                SetDefault();
                 p.Content = new AddInfoPage();
                 mainFrame = p;
             });
