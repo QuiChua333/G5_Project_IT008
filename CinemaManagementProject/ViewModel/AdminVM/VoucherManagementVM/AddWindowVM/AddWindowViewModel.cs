@@ -1,5 +1,6 @@
 ﻿using CinemaManagementProject.DTOs;
 using CinemaManagementProject.Model.Service;
+using CinemaManagementProject.Ultis;
 using CinemaManagementProject.View.Admin.VoucherManagement.EditWindow;
 using CinemaManagementProject.Views;
 using System;
@@ -239,6 +240,17 @@ namespace CinemaManagementProject.ViewModel.AdminVM.VoucherManagementVM
             else BtnAddColor = (SolidColorBrush)new BrushConverter().ConvertFromString("#CCCCCC");
 
         }
+
+        private void SetDefault()
+        {
+            VoucherReleaseName= string.Empty;
+            MinimizeTotal = 0;
+            Price = 0;
+            StartDate= DateTime.Now; EndDate= DateTime.Now;
+            EnableMerge=false;
+        }
+
+       
     }
 
 

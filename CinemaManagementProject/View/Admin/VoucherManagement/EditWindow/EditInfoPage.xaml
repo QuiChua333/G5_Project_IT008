@@ -272,7 +272,7 @@
                                       FontFamily="{DynamicResource MaterialDesignFont}"
                                       Foreground="{StaticResource Gray1}"
                                       HorizontalContentAlignment="Center"
-                                      SelectedItem="{Binding ObjectType}">
+                                      SelectedItem="{Binding TypeObject}">
                             <ComboBoxItem Content="Toàn bộ"/>
                             <ComboBoxItem Content="Vé phim"/>
                             <ComboBoxItem Content="Bắp - Nước"/>

@@ -34,9 +34,10 @@
         <Border.Effect>
             <DropShadowEffect BlurRadius="10" Direction="270" Color="Black" ShadowDepth="4" Opacity="0.25"/>
         </Border.Effect>
-        <Grid Margin="20,40,20,40">
+        <Grid Margin="20,20,20,40">
             <Grid.RowDefinitions>
-                <RowDefinition Height="60"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="20"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
             <Grid Grid.Row="0">
@@ -71,7 +72,7 @@
                     </Grid>
                 </Button>
             </Grid>
-            <Grid Grid.Row="1">
+            <Grid Grid.Row="2">
                 <Border 
                     CornerRadius="20" 
                     Background="White">
@@ -84,8 +85,8 @@
                                 Direction="270"/>
                     </Border.Effect>
                     <materialDesign:Card UniformCornerRadius="20">
-                        <ScrollViewer VerticalScrollBarVisibility="Auto" 
-                                      HorizontalScrollBarVisibility="Hidden">
+                        <ScrollViewer VerticalScrollBarVisibility="Hidden" 
+                                      HorizontalScrollBarVisibility="Hidden" PreviewMouseWheel="ScrollViewer_PreviewMouseWheel">
                             <ListView FontFamily="{StaticResource MaterialDesignFont}" 
                                   FontSize="14"                                 
                                   FontWeight="Regular"
@@ -120,7 +121,7 @@
                                                 </DataTemplate>
                                             </GridViewColumn.CellTemplate>
                                         </GridViewColumn>
-                                        <GridViewColumn Header="Từ ngày" Width="150"  >
+                                        <GridViewColumn Header="Từ ngày" Width="130"  >
                                             <GridViewColumn.CellTemplate>
                                                 <DataTemplate>
                                                     <TextBlock Text="{Binding StartDate, StringFormat=dd/MM/yyyy}" 
@@ -165,7 +166,7 @@
                                                 <DataTemplate>
                                                     <StackPanel VerticalAlignment="Center"
                                                             Orientation="Horizontal" 
-                                                            Margin="-30 5 0 0">
+                                                            Margin="-40 5 0 0">
                                                         <Border BorderBrush="Black"
                                                             BorderThickness="1"
                                                             CornerRadius="6"
@@ -185,6 +186,11 @@
                                                                                  Width="22"
                                                                                  Height="22"
                                                                                  Cursor="Hand" />
+                                                            <i:Interaction.Triggers>
+                                                                <i:EventTrigger EventName="MouseLeftButtonUp">
+                                                                    <i:InvokeCommandAction Command="{Binding ElementName=VoucherListView, Path=DataContext.LoadInforBigVoucherCM}" />
+                                                                </i:EventTrigger>
+                                                            </i:Interaction.Triggers>
                                                         </Border>
                                                         <Border Margin="10 0 0 0"
                                                             BorderBrush="Black"
@@ -238,6 +244,7 @@
             </Grid>
         </Grid>
     </Border>
+
 
 
 </Page>

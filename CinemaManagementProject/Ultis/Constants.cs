@@ -12,4 +12,10 @@ namespace CinemaManagementProject.Ultis
         public static readonly string UNRELEASED = "Chưa phát hành";
         public static readonly string USED = "Đã sử dụng";
     }
+    public class VOUCHER_OBJECT_TYPE
+    {
+        public static readonly string PRODUCT = "Sản phẩm";
+        public static readonly string TICKET = "Vé xem phim";
+        public static readonly string ALL = "Toàn bộ";
+    }
 }

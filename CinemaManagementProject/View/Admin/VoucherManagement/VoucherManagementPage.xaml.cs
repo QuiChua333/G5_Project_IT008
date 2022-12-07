@@ -44,5 +44,12 @@ namespace CinemaManagementProject.View.Admin.VoucherManagement
                 CollectionViewSource.GetDefaultView(VoucherListView.ItemsSource).Refresh();
             }
         }
+
+        private void ScrollViewer_PreviewMouseWheel(object sender, MouseWheelEventArgs e)
+        {
+            ScrollViewer scv = (ScrollViewer)sender;
+            scv.ScrollToVerticalOffset(scv.VerticalOffset - e.Delta);
+            e.Handled = true;
+        }
     }
 }
