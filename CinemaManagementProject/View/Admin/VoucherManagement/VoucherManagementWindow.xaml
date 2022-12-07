@@ -73,8 +73,8 @@
                                 Direction="270"/>
                     </Border.Effect>
                     <materialDesign:Card UniformCornerRadius="20">
-                        <ScrollViewer VerticalScrollBarVisibility="Auto" 
-                                      HorizontalScrollBarVisibility="Hidden">
+                        <ScrollViewer VerticalScrollBarVisibility="Hidden" 
+                                      HorizontalScrollBarVisibility="Hidden" PreviewMouseWheel="ScrollViewer_PreviewMouseWheel">
                             <ListView FontFamily="{StaticResource MaterialDesignFont}" 
                                   FontSize="14"                                 
                                   FontWeight="Regular"
@@ -109,7 +109,7 @@
                                                 </DataTemplate>
                                             </GridViewColumn.CellTemplate>
                                         </GridViewColumn>
-                                        <GridViewColumn Header="Từ ngày" Width="150"  >
+                                        <GridViewColumn Header="Từ ngày" Width="130"  >
                                             <GridViewColumn.CellTemplate>
                                                 <DataTemplate>
                                                     <TextBlock Text="{Binding StartDate, StringFormat=dd/MM/yyyy}" 
@@ -154,7 +154,7 @@
                                                 <DataTemplate>
                                                     <StackPanel VerticalAlignment="Center"
                                                             Orientation="Horizontal" 
-                                                            Margin="-30 5 0 0">
+                                                            Margin="-40 5 0 0">
                                                         <Border BorderBrush="Black"
                                                             BorderThickness="1"
                                                             CornerRadius="6"

@@ -80,12 +80,17 @@
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
 
-                    <Button Grid.Column="0"
+                    <Button x:Name="infoBtn"
+                            IsEnabled="True"
+                            Grid.Column="0"
                             Style="{StaticResource MaterialDesignFlatButton}"
                             BorderThickness="4"
                             materialDesign:ButtonAssist.CornerRadius="0"
                             BorderBrush="#67C6E6"
-                            HorizontalContentAlignment="Stretch" >
+                            Background="{Binding BtnInfoColor}"
+                            HorizontalContentAlignment="Stretch" 
+                            Command="{Binding LoadInforCM}"
+                            CommandParameter="{Binding ElementName=infoBtn}">
 
                         <Label
                             Padding="0"
@@ -100,14 +105,17 @@
                         </Label>
                     </Button>
 
-                    <Button Grid.Column="1"
-                            IsEnabled="False"
+                    <Button x:Name="dsBtn"
+                            Grid.Column="1"
+                            IsEnabled="{Binding Unlock}"
                             Style="{StaticResource MaterialDesignFlatButton}"
-                            Background="#CCCCCC"
+                            Background="{Binding BtnAddColor}"
                             BorderThickness="4"
                             materialDesign:ButtonAssist.CornerRadius="0"
                             BorderBrush="#67C6E6"
-                            HorizontalContentAlignment="Stretch">
+                            HorizontalContentAlignment="Stretch"
+                            Command="{Binding LoadAddVoucherPageCM}"
+                            CommandParameter="{Binding ElementName=dsBtn}">
 
                         <Label
                             Padding="0"
@@ -128,7 +136,7 @@
                    x:Name="mainFrame">
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="Loaded">
-                        <i:InvokeCommandAction Command="{Binding LoadViewCM}"
+                        <i:InvokeCommandAction Command="{Binding LoadAddInfopageCM}"
                                                CommandParameter="{Binding ElementName=mainFrame}" />
                     </i:EventTrigger>
                 </i:Interaction.Triggers>

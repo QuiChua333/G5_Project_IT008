@@ -155,7 +155,7 @@
           <Property Name="VoucherCode" Type="varchar(max)" />
           <Property Name="VoucherReleaseId" Type="int" />
           <Property Name="CustomerId" Type="int" />
-          <Property Name="VoucherStatus" Type="bit" />
+          <Property Name="VoucherStatus" Type="nvarchar(max)" />
           <Property Name="ReleaseAt" Type="datetime" />
           <Property Name="UsedAt" Type="datetime" />
           <Property Name="EnableMerge" Type="bit" />
@@ -651,7 +651,7 @@
           <Property Name="VoucherCode" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="VoucherReleaseId" Type="Int32" />
           <Property Name="CustomerId" Type="Int32" />
-          <Property Name="VoucherStatus" Type="Boolean" />
+          <Property Name="VoucherStatus" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="ReleaseAt" Type="DateTime" Precision="3" />
           <Property Name="UsedAt" Type="DateTime" Precision="3" />
           <Property Name="EnableMerge" Type="Boolean" />

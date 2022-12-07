@@ -157,10 +157,12 @@
     <Compile Include="Model\VoucherRelease.cs">
       <DependentUpon>CinemaManagementDatabase.tt</DependentUpon>
     </Compile>
+    <Compile Include="Ultis\Constants.cs" />
     <Compile Include="Until.cs" />
     <Compile Include="Utilities\RelyCommand.cs" />
     <Compile Include="ViewModel\AdminVM\AdminVM.cs" />
     <Compile Include="ViewModel\AdminVM\VoucherManagementVM\AddWindowVM\AddWindowViewModel.cs" />
+    <Compile Include="ViewModel\AdminVM\VoucherManagementVM\EditWindowVM\EditWindowViewModel.cs" />
     <Compile Include="ViewModel\AdminVM\VoucherManagementVM\VoucherViewModel.cs" />
     <Compile Include="ViewModel\BaseViewModel.cs" />
     <Compile Include="View\Admin\VoucherManagement\AddWindow\AddInfoPage.xaml.cs">

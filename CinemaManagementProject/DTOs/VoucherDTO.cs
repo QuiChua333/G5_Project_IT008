@@ -12,7 +12,7 @@ namespace CinemaManagementProject.DTOs
         public int Id { get; set; }
         public string VoucherCode { get; set; }
         public int VoucherReleaseId { get; set; }
-        public int VoucherStatus { get; set; }
+        public string VoucherStatus { get; set; }
         public int CustomerId { get; set; }
         public string CustomerName { get; set; }
 
@@ -20,6 +20,8 @@ namespace CinemaManagementProject.DTOs
         public double MenhGia { get; set; }
         public bool EnableMerge { get; set; }
         public int TypeObject { get; set; }
+        public DateTime UsedAt { get; set; }
+        public DateTime ReleaseAt { get; set;}
 
     }
 }

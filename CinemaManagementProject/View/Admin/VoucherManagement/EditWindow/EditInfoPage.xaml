@@ -1,10 +1,10 @@
-﻿<Page x:Class="CinemaManagementProject.View.Admin.VoucherManagement.EditInfoWindow.Edit_InfoPage"
+﻿<Page x:Class="CinemaManagementProject.View.Admin.VoucherManagement.EditWindow.EditInfoPage"
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:CinemaManagementProject.View.Admin.VoucherManagement.EditInfoWindow"
+      xmlns:local="clr-namespace:CinemaManagementProject.View.Admin.VoucherManagement.EditWindow"
       mc:Ignorable="d" 
       d:DesignHeight="419.4" d:DesignWidth="939.4"
       Title="AddInfoPage"
@@ -58,7 +58,7 @@
                                    FontSize="16"
                                    FontFamily="{DynamicResource MaterialDesignFont}"
                                    Foreground="{StaticResource Gray1}"
-                                   Content="QQQQ">
+                                   Content="{Binding VoucherReleaseCode}">
 
                         </Label>
                     </Grid>
@@ -86,7 +86,7 @@
                                      FontFamily="{DynamicResource MaterialDesignFont}"
                                      Foreground="{StaticResource Gray1}"
                                      Padding="20,0,0,0"
-                                     Text="{Binding ReleaseName,Mode=OneWayToSource}">
+                                     Text="{Binding VoucherReleaseName,Mode=TwoWay}">
                         </TextBox>
                     </Grid>
 
@@ -113,7 +113,7 @@
                                      FontFamily="{DynamicResource MaterialDesignFont}"
                                      Foreground="{StaticResource Gray1}"
                                      Padding="20,0,0,0"
-                                     Text="{Binding ParValue,Mode=TwoWay}">
+                                     Text="{Binding Price,Mode=TwoWay}">
 
                         </TextBox>
                     </Grid>
@@ -131,9 +131,8 @@
                                    FontFamily="{DynamicResource MaterialDesignFont}"
                                    VerticalContentAlignment="Center">
                         </Label>
-                        <RadioButton 
+                        <RadioButton     x:Name="yes"
                                          Grid.Column="1"
-                                         IsChecked="True"
                                          Content="Kích hoạt"
                                          FontSize="16"
                                          FontWeight="Bold"
@@ -144,9 +143,10 @@
                                          Width="120"
                                          HorizontalAlignment="Left"
                                          Padding="15,0,0,0"
+                                         Checked="yes_Checked"
                                         >
                         </RadioButton>
-                        <RadioButton 
+                        <RadioButton    x:Name="no"
                                          Grid.Column="1"
                                          Content="Chưa áp dụng"
                                          FontSize="16"
@@ -159,7 +159,7 @@
                                          HorizontalAlignment="Left"
                                          Padding="15,0,0,0"
                                          Margin="150,0,0,0"
-                                         >
+                                         Checked="no_Checked">
                         </RadioButton>
                     </Grid>
 
@@ -215,7 +215,7 @@
                     <Grid Grid.Row="5">
                         <CheckBox HorizontalAlignment="Left" 
                                       VerticalAlignment="Center"
-                                      IsChecked="{Binding EnableMerge,Mode=OneWayToSource}">
+                                      IsChecked="{Binding EnableMerge,Mode=TwoWay}">
                         </CheckBox>
 
                         <Label Content="Áp dụng gộp nhiều voucher cho một hóa đơn"
@@ -306,19 +306,81 @@
                                      Text="{Binding MinimizeTotal,Mode=TwoWay}">
                         </TextBox>
                     </Grid>
+                    <Grid Grid.Row="2">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="50*"/>
+                            <ColumnDefinition Width="30*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Grid.Column="0"
+                                   Content="Số lượng voucher còn lại: "
+                                   FontSize="16"
+                                   FontWeight="Bold"
+                                   Foreground="#000000"
+                                   FontFamily="{DynamicResource MaterialDesignFont}"
+                                   VerticalContentAlignment="Center">
+                        </Label>
+                        <StackPanel Orientation="Horizontal"
+                                    Grid.Column="1">
+                            <Label Grid.Column="1"
+                                   x:Name="unused"
+                                   FontSize="16"
+                                   VerticalAlignment="Center"
+                                   FontWeight="Medium"
+                                   FontFamily="{DynamicResource MaterialDesignFont}"
+                                   Foreground="{StaticResource Gray1}"
+                                   VerticalContentAlignment="Center"
+                                   HorizontalAlignment="Left"
+                                    >
+                            </Label>
+                            <TextBlock   FontSize="16"
+                                     VerticalAlignment="Center"
+                                     FontWeight="Medium"
+                                     Grid.Column="1"
+                                     FontFamily="{DynamicResource MaterialDesignFont}"
+                                     Foreground="{StaticResource Gray1}"
+                                     HorizontalAlignment="Left"
+                                     Text="/">
+
+                            </TextBlock>
+                            <Label Grid.Column="1"
+                                   x:Name="total"
+                                   FontSize="16"
+                                   VerticalAlignment="Center"
+                                   FontWeight="Medium"
+                                   FontFamily="{DynamicResource MaterialDesignFont}"
+                                   Foreground="{StaticResource Gray1}"
+                                   VerticalContentAlignment="Center"
+                                   HorizontalAlignment="Right">
+                            </Label>
+                        </StackPanel>
+                        
+                    </Grid>
 
                 </Grid>
             </Grid>
         </Grid>
         <Grid Grid.Row="1">
-            <Button HorizontalAlignment="Right"
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                <Button x:Name="btnSave"
+                        HorizontalAlignment="Right"
                         Style="{StaticResource CustomButton}"
                         Content="Lưu"
                         Background="{StaticResource ColorButtonBlue}"
                         Margin="0,0,20,10"
                         Width="70" 
                         Command="{Binding SaveNewBigVoucherCM}">
-            </Button>
+                </Button>
+                <Button x:Name="btnExit"
+                        Visibility="Collapsed"
+                        HorizontalAlignment="Right"
+                        Style="{StaticResource CustomButton}"
+                        Content="Thoát"
+                        Background="{StaticResource ColorButtonBlue}"
+                        Margin="0,0,20,10"
+                        Width="80" 
+                        Click="btnExit_Click">
+                </Button>
+            </StackPanel>
         </Grid>
     </Grid>
 </Page>

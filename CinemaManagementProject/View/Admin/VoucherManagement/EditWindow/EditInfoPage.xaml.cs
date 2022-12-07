@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CinemaManagementProject.ViewModel.AdminVM.VoucherManagementVM;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -25,9 +26,20 @@ namespace CinemaManagementProject.View.Admin.VoucherManagement.EditWindow
             InitializeComponent();
         }
 
-        private void InitializeComponent()
+        private void yes_Checked(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            VoucherViewModel.Status2 = true;
+        }
+
+        private void no_Checked(object sender, RoutedEventArgs e)
+        {
+            VoucherViewModel.Status2 = false;
+        }
+
+        private void btnExit_Click(object sender, RoutedEventArgs e)
+        {
+            var myWindow = Window.GetWindow(this);
+            myWindow.Close();
         }
     }
 }
