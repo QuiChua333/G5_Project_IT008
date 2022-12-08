@@ -30,6 +30,7 @@ namespace CinemaManagementProject.Model
         public string TypeObject { get; set; }
         public Nullable<float> MinimizeTotal { get; set; }
         public Nullable<bool> EnableMerge { get; set; }
+        public Nullable<bool> IsDelete { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Voucher> Vouchers { get; set; }

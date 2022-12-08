@@ -154,7 +154,7 @@ namespace CinemaManagementProject.ViewModel.AdminVM.VoucherManagementVM
 
             if (isSucess)
             {
-
+                IsUpdate = false;
                 Unlock = true;
                 selectedItem= newVoucherRelease;
                 EditInfoPage w = new EditInfoPage();
@@ -173,10 +173,10 @@ namespace CinemaManagementProject.ViewModel.AdminVM.VoucherManagementVM
                 {
                     CustomMessageBox.ShowOk("Mất kết nối cơ sở dữ liệu", "Lỗi", "OK", CustomMessageBoxImage.Error);
                 }
-                //catch (Exception e)
-                //{
-                //    CustomMessageBox.ShowOk("Lỗi hệ thống", "Lỗi", "OK", CustomMessageBoxImage.Error);
-                //}
+                catch (Exception e)
+                {
+                    CustomMessageBox.ShowOk("Lỗi hệ thống", "Lỗi", "OK", CustomMessageBoxImage.Error);
+                }
 
             }
             else

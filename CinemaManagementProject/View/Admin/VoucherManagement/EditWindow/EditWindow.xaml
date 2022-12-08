@@ -1,10 +1,10 @@
-﻿<Window x:Class="CinemaManagementProject.View.Admin.VoucherManagement.AddWindow.AddWindow"
+﻿<Window x:Class="CinemaManagementProject.View.Admin.VoucherManagement.EditWindow.EditWindow"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:CinemaManagementProject.View.Admin.VoucherManagement.AddWindow"
+        xmlns:local="clr-namespace:CinemaManagementProject.View.Admin.VoucherManagement.EditWindow"
         xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
         mc:Ignorable="d"
         Title="AddWindow" Height="540" Width="940" MinWidth="880" MinHeight="500"
@@ -136,7 +136,7 @@
                    x:Name="mainFrame">
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="Loaded">
-                        <i:InvokeCommandAction Command="{Binding LoadAddInfopageCM}"
+                        <i:InvokeCommandAction Command="{Binding LoadEditInfoPageCM}"
                                                CommandParameter="{Binding ElementName=mainFrame}" />
                     </i:EventTrigger>
                 </i:Interaction.Triggers>

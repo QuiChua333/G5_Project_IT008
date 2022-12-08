@@ -192,6 +192,9 @@
     <Compile Include="View\Admin\VoucherManagement\EditWindow\EditInfoPage.xaml.cs">
       <DependentUpon>EditInfoPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Admin\VoucherManagement\EditWindow\EditWindow.xaml.cs">
+      <DependentUpon>EditWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Admin\VoucherManagement\VoucherManagementPage.xaml.cs">
       <DependentUpon>VoucherManagementPage.xaml</DependentUpon>
     </Compile>
@@ -306,6 +309,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Admin\VoucherManagement\EditWindow\EditInfoPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Admin\VoucherManagement\EditWindow\EditWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

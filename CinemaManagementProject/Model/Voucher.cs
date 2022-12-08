@@ -22,6 +22,7 @@ namespace CinemaManagementProject.Model
         public Nullable<System.DateTime> ReleaseAt { get; set; }
         public Nullable<System.DateTime> UsedAt { get; set; }
         public Nullable<bool> EnableMerge { get; set; }
+        public Nullable<bool> IsDelete { get; set; }
     
         public virtual Customer Customer { get; set; }
         public virtual VoucherRelease VoucherRelease { get; set; }

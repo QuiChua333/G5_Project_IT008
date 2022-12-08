@@ -9,6 +9,9 @@ using System.Xml.Linq;
 using CinemaManagementProject.DTOs;
 using System.Windows;
 using System.Windows.Controls;
+using CinemaManagementProject.Views;
+using CinemaManagementProject.Model.Service;
+using System.Collections.ObjectModel;
 
 namespace CinemaManagementProject.ViewModel.AdminVM.VoucherManagementVM
 {
@@ -38,8 +41,8 @@ namespace CinemaManagementProject.ViewModel.AdminVM.VoucherManagementVM
             get { return waitingMiniVoucher; }
             set { waitingMiniVoucher = value; }
         }
-
-
+        VoucherReleaseDTO oldVer = new VoucherReleaseDTO();
+        public static bool IsUpdate=false;
 
 
 
@@ -47,7 +50,7 @@ namespace CinemaManagementProject.ViewModel.AdminVM.VoucherManagementVM
         {
             if (SelectedItem != null)
             {
-                VoucherReleaseCode=selectedItem.VoucherReleaseCode;
+                VoucherReleaseCode = selectedItem.VoucherReleaseCode;
                 VoucherReleaseName = SelectedItem.VoucherReleaseName;
                 Price = SelectedItem.Price;
                 Status2 = SelectedItem.VoucherReleaseStatus;
@@ -68,41 +71,82 @@ namespace CinemaManagementProject.ViewModel.AdminVM.VoucherManagementVM
                 MinimizeTotal = SelectedItem.MinimizeTotal;
                 w.unused.Content = SelectedItem.UnusedVCount;
                 w.total.Content = SelectedItem.VCount;
-                w.btnSave.Visibility = Visibility.Collapsed;
-                w.btnExit.Visibility = Visibility.Visible;
+                if (IsUpdate)
+                {
+                    w.btnSave.Visibility = Visibility.Visible;
+                    w.btnExit.Visibility = Visibility.Collapsed;
+                }
+                else
+                {
+                    w.btnSave.Visibility = Visibility.Collapsed;
+                    w.btnExit.Visibility = Visibility.Visible;
+                }    
             }
         }
-        //public void LoadEditInfoViewDataAfterSaveFunc(EditInfoPage z)
-        //{
-        //    VoucherReleaseDTO vr = new VoucherReleaseDTO
-        //    {
-        //        VoucherReleaseCode = VoucherReleaseCode,
-        //        StartDate = StartDate,
-        //        EndDate = EndDate,
-        //        EnableMerge = EnableMerge,
-        //        MinimizeTotal = MinimizeTotal,
-        //        TypeObject = TypeObject.Content.ToString(),
-        //        Price = Price,
-        //        VoucherReleaseName = VoucherReleaseName,
-        //        VoucherReleaseStatus = Status,
-        //    };
-        //    if (Status2)
-        //    {
-        //        z.yes.IsChecked = true;
-        //        z.no.IsChecked = false;
-        //    }
-        //    else
-        //    {
-        //        z.yes.IsChecked = false;
-        //        z.no.IsChecked = true;
-        //    }
-        //    z.unused.Content = vr.UnusedVCount.ToString();
-        //        z.total.Content = vr.VCount.ToString();
-        //    z.btnSave.Visibility = Visibility.Collapsed;
-        //    z.btnExit.Visibility = Visibility.Visible;
+        public async Task UpdateBigVoucherFunc()
+        {
+            if (string.IsNullOrEmpty(VoucherReleaseName))
+            {
+                CustomMessageBox.ShowOk("Vui lòng nhập đủ thông tin", "Cảnh báo", "Ok", CustomMessageBoxImage.Warning);
+                return;
+            }
+            if (Price >= MinimizeTotal)
+            {
+                CustomMessageBox.ShowOk("Mệnh giá voucher phải bé hơn tổng tối thiểu", "Cảnh báo", "Ok", CustomMessageBoxImage.Warning);
+                return;
+            }
+            if (StartDate > EndDate)
+            {
+                CustomMessageBox.ShowOk("Ngày hiệu lực không hợp lệ", "Cảnh báo", "Ok", CustomMessageBoxImage.Warning);
+                return;
+            }
 
+            if (SelectedItem != null)
+                oldVer = SelectedItem;
+            VoucherReleaseDTO vr = new VoucherReleaseDTO
+            {
+                VoucherReleaseCode = SelectedItem.VoucherReleaseCode,
+                StartDate = StartDate,
+                EndDate = EndDate,
+                EnableMerge = EnableMerge,
+                MinimizeTotal = MinimizeTotal,
+                TypeObject = TypeObject.Content.ToString(),
+                Price = Price,
+                VoucherReleaseName = VoucherReleaseName,
+                VoucherReleaseStatus = Status2,
+            };
 
-        //}
+            (bool isSucess, string addSuccess) = await VoucherService.Ins.UpdateVoucherRelease(vr);
+
+            if (isSucess)
+            {
+                CustomMessageBox.ShowOk(addSuccess, "Thông báo", "Ok", CustomMessageBoxImage.Success);
+
+                try
+                {
+                    ListBigVoucher = new ObservableCollection<VoucherReleaseDTO>(await VoucherService.Ins.GetAllVoucherReleases());
+                    (VoucherReleaseDTO voucherReleaseDetail, _) = await VoucherService.Ins.GetVoucherReleaseDetails(oldVer.VoucherReleaseCode);
+                    SelectedItem = voucherReleaseDetail;
+                    ListViewVoucher = new ObservableCollection<VoucherDTO>(SelectedItem.Vouchers);
+                    StoreAllMini = new ObservableCollection<VoucherDTO>(ListViewVoucher);
+                    NumberSelected = 0;
+                }
+                catch (System.Data.Entity.Core.EntityException e)
+                {
+                    CustomMessageBox.ShowOk("Mất kết nối cơ sở dữ liệu", "Lỗi", "OK", CustomMessageBoxImage.Error);
+                }
+                catch (Exception e)
+                {
+                    CustomMessageBox.ShowOk("Lỗi hệ thống", "Lỗi", "OK", CustomMessageBoxImage.Error);
+                }
+
+            }
+            else
+            {
+                CustomMessageBox.ShowOk(addSuccess, "Lỗi", "OK", CustomMessageBoxImage.Error);
+            }
+        }
+
 
     }
 }

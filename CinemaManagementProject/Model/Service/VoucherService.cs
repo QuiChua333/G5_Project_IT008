@@ -36,6 +36,7 @@ namespace CinemaManagementProject.Model.Service
                 using (var context = new CinemaManagementProjectEntities())
                 {
                     var VrList = await (from vr in context.VoucherReleases
+                                        where vr.IsDelete==false
                                         orderby vr.Id descending
                                         select new VoucherReleaseDTO
                                         {
@@ -89,6 +90,7 @@ namespace CinemaManagementProject.Model.Service
                         Price = (float)newVR.Price,
                         TypeObject = newVR.TypeObject,
                         VoucherReleaseStatus = newVR.VoucherReleaseStatus,
+                        IsDelete = false
                     };
 
                     context.VoucherReleases.Add(voucherRelease);
@@ -140,6 +142,34 @@ namespace CinemaManagementProject.Model.Service
             catch (Exception e)
             {
                 throw e;
+            }
+        }
+        public async Task<(bool, string)> UpdateVoucherRelease(VoucherReleaseDTO upVoucherR)
+        {
+            try
+            {
+                using (var context = new CinemaManagementProjectEntities())
+                {
+
+                    VoucherRelease voucherRelease = await context.VoucherReleases.FirstOrDefaultAsync(x => x.VoucherReleaseCode == upVoucherR.VoucherReleaseCode);
+
+                    voucherRelease.VoucherReleaseName = upVoucherR.VoucherReleaseName;
+                    voucherRelease.StartDate = upVoucherR.StartDate;
+                    voucherRelease.EndDate = upVoucherR.EndDate;
+                    voucherRelease.EnableMerge = upVoucherR.EnableMerge;
+                    voucherRelease.MinimizeTotal = (float)upVoucherR.MinimizeTotal;
+                    voucherRelease.Price = (float)upVoucherR.Price;
+                    voucherRelease.TypeObject = upVoucherR.TypeObject;
+                    voucherRelease.VoucherReleaseStatus = upVoucherR.VoucherReleaseStatus;
+
+                    await context.SaveChangesAsync();
+
+                    return (true, "Cập nhật đợt phát hành thành công!");
+                }
+            }
+            catch (Exception e)
+            {
+                return (false, "Lỗi");
             }
         }
 

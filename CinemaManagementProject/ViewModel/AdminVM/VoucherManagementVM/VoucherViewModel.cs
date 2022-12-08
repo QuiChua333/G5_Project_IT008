@@ -45,6 +45,9 @@ namespace CinemaManagementProject.ViewModel.AdminVM.VoucherManagementVM
         public ICommand SaveNewBigVoucherCM { get; set; }
         public ICommand LoadAddVoucherPageCM { get; set; }
         public ICommand LoadInforCM { get; set; }
+        public ICommand LoadInfoBigVRCM { get; set; }
+        public ICommand LoadEditInfoPageCM { get; set; }
+        public ICommand UpdateBigVoucherCM { get;set; }
 
         public VoucherViewModel()
         {
@@ -119,18 +122,7 @@ namespace CinemaManagementProject.ViewModel.AdminVM.VoucherManagementVM
 
                 AddVoucherPage w = new AddVoucherPage();
                 GetVoucherList();
-                //if (SelectedItem.VoucherReleaseStatus == false)
-                //{
-                //    w.releasebtn.Visibility = Visibility.Collapsed;
-                //    w.releasebtn2.Visibility = Visibility.Collapsed;
-                //}
-
-                //else
-                //{
-                //    w.releasebtn.Visibility = Visibility.Visible;
-                //    w.releasebtn2.Visibility = Visibility.Visible;
-                //}
-
+               
                 mainFrame.Content = w;
 
                 WaitingMiniVoucher = new List<int>();
@@ -151,6 +143,56 @@ namespace CinemaManagementProject.ViewModel.AdminVM.VoucherManagementVM
                 LoadEditInfoViewDataFunc(w);
                 mainFrame.Content = w;
             });
+
+            LoadEditInfoPageCM = new RelayCommand<Frame>((p) => { return true; }, (p) =>
+            {
+                mainFrame = p;
+                EditInfoPage w = new EditInfoPage();
+                LoadEditInfoViewDataFunc(w);
+                p.Content = w;
+                Unlock = true;
+            });
+            LoadInfoBigVRCM = new RelayCommand<object>((p) =>
+            {
+                return true;
+            },
+           async (p) =>
+           {
+               if (SelectedItem is null) return;
+               try
+               {
+                   IsUpdate = true;
+                   EditWindow w = new EditWindow();
+                   await Task.Run(async () =>
+                   {
+                       (VoucherReleaseDTO voucherRelease, bool haveAny) = await VoucherService.Ins.GetVoucherReleaseDetails(SelectedItem.VoucherReleaseCode);
+                       SelectedItem = voucherRelease;
+
+                       
+                   });
+                  
+
+                   w.ShowDialog();
+               }
+               catch (System.Data.Entity.Core.EntityException e)
+               {
+                   Console.WriteLine(e);
+                   CustomMessageBox.ShowOk("Mất kết nối cơ sở dữ liệu", "Lỗi", "OK", CustomMessageBoxImage.Error);
+               }
+               catch (Exception e)
+               {
+                   Console.WriteLine(e);
+                   CustomMessageBox.ShowOk("Lỗi hệ thống", "Lỗi", "OK", CustomMessageBoxImage.Error);
+               }
+           });
+
+            UpdateBigVoucherCM = new RelayCommand<object>((p) => { if (IsSaving) return false; return true; }, async (p) =>
+            {
+                IsSaving = true;
+                await UpdateBigVoucherFunc();
+                IsSaving = false;
+            });
+
         }
        
 

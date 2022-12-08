@@ -159,6 +159,7 @@
           <Property Name="ReleaseAt" Type="datetime" />
           <Property Name="UsedAt" Type="datetime" />
           <Property Name="EnableMerge" Type="bit" />
+          <Property Name="IsDelete" Type="bit" />
         </EntityType>
         <EntityType Name="VoucherRelease">
           <Key>
@@ -174,6 +175,7 @@
           <Property Name="TypeObject" Type="nvarchar(max)" />
           <Property Name="MinimizeTotal" Type="real" />
           <Property Name="EnableMerge" Type="bit" />
+          <Property Name="IsDelete" Type="bit" />
         </EntityType>
         <Association Name="FK_Bill_Customer">
           <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
@@ -655,6 +657,7 @@
           <Property Name="ReleaseAt" Type="DateTime" Precision="3" />
           <Property Name="UsedAt" Type="DateTime" Precision="3" />
           <Property Name="EnableMerge" Type="Boolean" />
+          <Property Name="IsDelete" Type="Boolean" />
           <NavigationProperty Name="Customer" Relationship="Self.FK_Voucher_Customer" FromRole="Voucher" ToRole="Customer" />
           <NavigationProperty Name="VoucherRelease" Relationship="Self.FK_Voucher_VoucherRelease" FromRole="Voucher" ToRole="VoucherRelease" />
         </EntityType>
@@ -672,6 +675,7 @@
           <Property Name="TypeObject" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="MinimizeTotal" Type="Single" />
           <Property Name="EnableMerge" Type="Boolean" />
+          <Property Name="IsDelete" Type="Boolean" />
           <NavigationProperty Name="Vouchers" Relationship="Self.FK_Voucher_VoucherRelease" FromRole="VoucherRelease" ToRole="Voucher" />
         </EntityType>
         <Association Name="FK_Bill_Customer">
@@ -1137,6 +1141,7 @@
                 <ScalarProperty Name="ReleaseAt" ColumnName="ReleaseAt" />
                 <ScalarProperty Name="UsedAt" ColumnName="UsedAt" />
                 <ScalarProperty Name="EnableMerge" ColumnName="EnableMerge" />
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1153,6 +1158,7 @@
                 <ScalarProperty Name="TypeObject" ColumnName="TypeObject" />
                 <ScalarProperty Name="MinimizeTotal" ColumnName="MinimizeTotal" />
                 <ScalarProperty Name="EnableMerge" ColumnName="EnableMerge" />
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

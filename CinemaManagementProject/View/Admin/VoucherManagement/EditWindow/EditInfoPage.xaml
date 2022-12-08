@@ -368,7 +368,7 @@
                         Background="{StaticResource ColorButtonBlue}"
                         Margin="0,0,20,10"
                         Width="70" 
-                        Command="{Binding SaveNewBigVoucherCM}">
+                        Command="{Binding UpdateBigVoucherCM}">
                 </Button>
                 <Button x:Name="btnExit"
                         Visibility="Collapsed"
