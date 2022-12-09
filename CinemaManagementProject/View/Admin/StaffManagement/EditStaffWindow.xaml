@@ -4,60 +4,78 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CinemaManagementProject.View.Admin.StaffManagement"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"         
+        xmlns:i="http://schemas.microsoft.com/xaml/behaviors"   
         mc:Ignorable="d"
         Title="EditStaffWindow" 
-        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"         
-        Height="700" Width="600"
+        Height="500" Width="500"
         WindowStyle="none" 
+        Name="SuaNV"   
+        DataContext="{StaticResource StaffManagementVM}"
+        ResizeMode="NoResize"
+        AllowsTransparency="True"
+        WindowStartupLocation="CenterScreen"
         Background="Transparent"
         BorderBrush="Transparent">
 
+    <Window.Triggers>
+        <EventTrigger RoutedEvent="Window.Loaded">
+            <BeginStoryboard>
+                <Storyboard>
+                    <DoubleAnimation Storyboard.TargetName="SuaNV"
+                                     Storyboard.TargetProperty="Opacity"
+                                     From="0"
+                                     To="1"
+                                     Duration="0:0:0.3" />
+                </Storyboard>
+            </BeginStoryboard>
+        </EventTrigger>
+    </Window.Triggers>
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="MouseLeftButtonDown">
+            <i:InvokeCommandAction Command="{Binding MouseMoveCommand}"
+                                   CommandParameter="{Binding ElementName=SuaNV}" />
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
     <Border Background="White" 
-            CornerRadius="20">
+            CornerRadius="20"
+            BorderBrush="Gray"
+            BorderThickness="1">
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="80"></RowDefinition>
+                <RowDefinition Height="60"></RowDefinition>
                 <RowDefinition Height="*"></RowDefinition>
             </Grid.RowDefinitions>
 
             <Grid Grid.Row="0" 
                   VerticalAlignment="Center"  >
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="540"></ColumnDefinition>
+                    <ColumnDefinition Width="440"></ColumnDefinition>
                     <ColumnDefinition Width="*"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
                 <TextBlock Grid.Column="0" 
                            Text="SỬA THÔNG TIN NHÂN VIÊN"  
                            FontFamily="{StaticResource MaterialDesignFont}" 
-                           FontSize="36" 
+                           FontSize="28" 
                            FontWeight="Bold" 
                            Foreground="#FF80CDED" 
                            HorizontalAlignment="Center"
-                           Margin="50 0 0 0"/>
+                           Margin="60 0 0 0"/>
                 <Button  Grid.Column="1" 
                          Background="Transparent" 
-                         BorderBrush="Transparent">
-                    <materialDesign:PackIcon Kind="Close" 
-                                             Width="30" 
-                                             Height="30" 
-                                             Margin="0 -8 0 0" 
-                                             Foreground="Black" ></materialDesign:PackIcon>
-                </Button>
+                         BorderBrush="Transparent"/>
             </Grid>
             <Grid Grid.Row="1">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="45"></RowDefinition>
-                    <RowDefinition Height="45"></RowDefinition>
-                    <RowDefinition Height="45"></RowDefinition>
-                    <RowDefinition Height="45"></RowDefinition>
-                    <RowDefinition Height="45"></RowDefinition>
-                    <RowDefinition Height="45"></RowDefinition>
-                    <RowDefinition Height="45"></RowDefinition>
-                    <RowDefinition Height="45"></RowDefinition>
-                    <RowDefinition Height="50"></RowDefinition>
-                    <RowDefinition Height="45"></RowDefinition>
-                    <RowDefinition Height="45"></RowDefinition>
-                    <RowDefinition Height="45"></RowDefinition>
+                    <RowDefinition Height="40"></RowDefinition>
+                    <RowDefinition Height="40"></RowDefinition>
+                    <RowDefinition Height="40"></RowDefinition>
+                    <RowDefinition Height="40"></RowDefinition>
+                    <RowDefinition Height="40"></RowDefinition>
+                    <RowDefinition Height="40"></RowDefinition>
+                    <RowDefinition Height="40"></RowDefinition>
+                    <RowDefinition Height="40"></RowDefinition>
+                    <RowDefinition Height="40"></RowDefinition>
                     <RowDefinition Height="*"></RowDefinition>
                 </Grid.RowDefinitions>
                 <Grid.Resources>
@@ -77,6 +95,9 @@
                                     Value="0 0 20 0" />
                         <Setter Property="VerticalContentAlignment"
                                     Value="Center" />
+                        <Setter Property="FontSize" Value="15"></Setter>
+                        <Setter Property="FontFamily" Value="{StaticResource MaterialDesignFont}"></Setter>
+
                     </Style>
                 </Grid.Resources>
                 <Grid.ColumnDefinitions>
@@ -85,12 +106,12 @@
                 </Grid.ColumnDefinitions>
                 <Grid  Grid.Row="0" 
                        Grid.ColumnSpan="2">
-                    <TextBlock Text="Thông tin cơ bản" 
+                    <TextBlock Text="Thông tin nhân viên" 
                                FontFamily="{StaticResource MaterialDesignFont}"
-                               FontSize="24" 
+                               FontSize="20" 
                                FontWeight="Bold" 
                                HorizontalAlignment="Left"
-                               Margin="20 0 0 0 "></TextBlock>
+                               Margin="20,0,0,0"></TextBlock>
                 </Grid>
                 <Grid Grid.Row="1" 
                       Grid.ColumnSpan="2" >
@@ -99,12 +120,15 @@
                         <ColumnDefinition />
                     </Grid.ColumnDefinitions>
                     <TextBlock Text="Họ và tên:"  
+                               
                                FontFamily="{StaticResource MaterialDesignFont}"
-                               FontSize="20" 
-                               FontWeight="Regular" 
+                               FontSize="15" 
+                               FontWeight="Normal" 
                                HorizontalAlignment="Right" 
                                VerticalAlignment="Center"/>
-                    <TextBox Grid.Column="1" ></TextBox>
+                    <TextBox Grid.Column="1"
+                             Name="_FullName"
+                             Text="{Binding Fullname, Mode=TwoWay}"></TextBox>
                 </Grid>
                 <Grid Grid.Row="2" 
                       Grid.ColumnSpan="2" >
@@ -114,7 +138,7 @@
                     </Grid.ColumnDefinitions>
                     <TextBlock Text="Giới tính:"  
                                FontFamily="{StaticResource MaterialDesignFont}"
-                               FontSize="20" 
+                               FontSize="15" 
                                FontWeight="Regular" 
                                HorizontalAlignment="Right" 
                                VerticalAlignment="Center"/>
@@ -122,8 +146,10 @@
                                 Padding="0 12 0 0"
                                 Margin="20 -20 45 0"
                                 Grid.Column="1"
+                                FontFamily="{StaticResource MaterialDesignFont}"
+                                FontSize="15"
                                 Height="40"
-                                x:Name="_Gender"
+                                x:Name="Gender"
                                 SelectedItem="{Binding Gender, Mode=TwoWay}">
                         <ComboBoxItem Content="Nam" />
                         <ComboBoxItem Content="Nữ" />
@@ -137,15 +163,17 @@
                     </Grid.ColumnDefinitions>
                     <TextBlock Text="Ngày sinh:"  
                                FontFamily="{StaticResource MaterialDesignFont}"
-                               FontSize="20" 
+                               FontSize="15" 
                                FontWeight="Regular" 
                                HorizontalAlignment="Right" 
                                VerticalAlignment="Center"/>
                     <DatePicker     Margin="20 -20 45 0"
                                     Style="{StaticResource MaterialDesignFloatingHintDatePicker}"
                                     Grid.Column="1"
-                                    x:Name="_Born"
-                                    SelectedDate="{Binding Born, Mode=TwoWay}" />
+                                    x:Name="Date"
+                                    SelectedDate="{Binding Born, Mode=TwoWay}" 
+                                    FontFamily="{StaticResource MaterialDesignFont}"
+                                    FontSize="15"/>
                 </Grid>
                 <Grid Grid.Row="4" 
                       Grid.ColumnSpan="2" >
@@ -155,11 +183,13 @@
                     </Grid.ColumnDefinitions>
                     <TextBlock Text="Email:" 
                                FontFamily="{StaticResource MaterialDesignFont}"
-                               FontSize="20" 
+                               FontSize="15" 
                                FontWeight="Regular" 
                                HorizontalAlignment="Right" 
                                VerticalAlignment="Center"/>
-                    <TextBox Grid.Column="1" ></TextBox>
+                    <TextBox Grid.Column="1"
+                             Name="_Mail"
+                             Text="{Binding Mail,Mode=TwoWay}"></TextBox>
                 </Grid>
                 <Grid Grid.Row="5" 
                       Grid.ColumnSpan="2" >
@@ -169,11 +199,13 @@
                     </Grid.ColumnDefinitions>
                     <TextBlock Text="Số điện thoại:"  
                                FontFamily="{StaticResource MaterialDesignFont}"
-                               FontSize="20" 
+                               FontSize="15" 
                                FontWeight="Regular" 
                                HorizontalAlignment="Right" 
                                VerticalAlignment="Center"/>
-                    <TextBox Grid.Column="1" ></TextBox>
+                    <TextBox Grid.Column="1"
+                             Name="_Phone"
+                             Text="{Binding Phone,Mode=TwoWay}"></TextBox>
                 </Grid>
                 <Grid Grid.Row="6" 
                       Grid.ColumnSpan="2" >
@@ -183,7 +215,7 @@
                     </Grid.ColumnDefinitions>
                     <TextBlock Text="Chức vụ:" 
                                FontFamily="{StaticResource MaterialDesignFont}"
-                               FontSize="20" 
+                               FontSize="15" 
                                FontWeight="Regular" 
                                HorizontalAlignment="Right" 
                                VerticalAlignment="Center"/>
@@ -192,7 +224,10 @@
                                 Margin="20 -20 45 0"
                                 Grid.Column="1"
                                 Height="40"
-                                SelectedItem="{Binding Gender, Mode=TwoWay}">
+                                x:Name="Role"
+                                FontFamily="{StaticResource MaterialDesignFont}"
+                                FontSize="15"
+                                SelectedItem="{Binding Role,Mode=TwoWay}">
                         <ComboBoxItem Content="Quản lý" />
                         <ComboBoxItem Content="Nhân viên" />
                     </ComboBox>
@@ -205,22 +240,23 @@
                     </Grid.ColumnDefinitions>
                     <TextBlock Text="Ngày bắt đầu:" 
                                FontFamily="{StaticResource MaterialDesignFont}"
-                               FontSize="20" 
+                               FontSize="15" 
+                               
                                FontWeight="Regular" 
                                HorizontalAlignment="Right" 
                                VerticalAlignment="Center"/>
-                    <TextBox Grid.Column="1" ></TextBox>
+                    <DatePicker Width="358"
+                            Style="{StaticResource MaterialDesignFloatingHintDatePicker}"
+                            HorizontalAlignment="Left"
+                            Margin="20 -20 45 0"                          
+                            Grid.Column="1"
+                            x:Name="StartDate"
+                            SelectedDate="{Binding StartDate, Mode=TwoWay}">
+                    </DatePicker>
+
                 </Grid>
-                <Grid  Grid.Row="8" 
-                       Grid.ColumnSpan="2">
-                    <TextBlock Text="Tài khoản đăng nhập" 
-                               FontFamily="{StaticResource MaterialDesignFont}"
-                               FontSize="24" 
-                               FontWeight="Bold" 
-                               HorizontalAlignment="Left"
-                               Margin="20 5 0 0"></TextBlock>
-                </Grid>
-                <Grid Grid.Row="9" 
+              
+                <Grid Grid.Row="8" 
                       Grid.ColumnSpan="2" >
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="180" />
@@ -228,53 +264,45 @@
                     </Grid.ColumnDefinitions>
                     <TextBlock Text="Tài khoản:"  
                                FontFamily="{StaticResource MaterialDesignFont}"
-                               FontSize="20" 
+                               FontSize="15" 
                                FontWeight="Regular" 
                                HorizontalAlignment="Right" 
                                VerticalAlignment="Center"/>
-                    <TextBox Grid.Column="1" ></TextBox>
+                    <TextBox Grid.Column="1"
+                             Name="_TaiKhoan"
+                             Text="{Binding TaiKhoan,Mode=TwoWay}"></TextBox>
                 </Grid>
-                <Grid Grid.Row="10" 
-                      Grid.ColumnSpan="2" >
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="180" />
-                        <ColumnDefinition />
-                    </Grid.ColumnDefinitions>
-                    <TextBlock Text="Mật khẩu:"  
-                               FontFamily="{StaticResource MaterialDesignFont}"
-                               FontSize="20" 
-                               FontWeight="Regular" 
-                               HorizontalAlignment="Right" 
-                               VerticalAlignment="Center"/>
-                    <TextBox Grid.Column="1" ></TextBox>
-                </Grid>
-                <Grid Grid.Row="11" 
-                      Grid.ColumnSpan="2" >
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="180" />
-                        <ColumnDefinition />
-                    </Grid.ColumnDefinitions>
-                    <TextBlock Text="Nhập lại mật khẩu:"  
-                               FontFamily="{StaticResource MaterialDesignFont}"
-                               FontSize="20" 
-                               FontWeight="Regular" 
-                               HorizontalAlignment="Right" 
-                               VerticalAlignment="Center"/>
-                    <TextBox Grid.Column="1" ></TextBox>
-                </Grid>
-                <Grid Grid.Row="12" 
+               
+                <Grid Grid.Row="9" 
                       HorizontalAlignment="Right" 
                       VerticalAlignment="Bottom">
+                    <Label>
+                        <TextBlock HorizontalAlignment="Left"
+                               VerticalAlignment="Center"
+                               Margin="50 5 0 10"
+                                   FontSize="15"
+                                   FontFamily="{StaticResource MaterialDesignFont}">
+                            
+                    <Hyperlink Command="{Binding OpenChangePassCommand}">Đổi mật khẩu</Hyperlink>
+                        </TextBlock>
+
+                    </Label>
                     <Button Style="{StaticResource CustomButton}" 
-                            Width="100" 
+                            Width="90" 
+                            Height="35"
                             Content="Hủy" 
-                            Margin="300,10,-20,30" 
+                            Margin="230,2,-50,29" 
+                            Command="{Binding CloseCommand}"
+                            CommandParameter="{Binding ElementName=SuaNV}"
                             RenderTransformOrigin="0.956,0.455"
                             Background="Red"/>
                     <Button Style="{StaticResource CustomButton}" 
-                            Width="100" 
-                            Content="Hoàn tất" 
-                            Margin="420,10,-150,27"/>
+                            Width="90" 
+                            Height="35"                      
+                            Content="Lưu" 
+                            Command="{Binding EditStaffCommand}"
+                            CommandParameter="{Binding ElementName=SuaNV}"
+                            Margin="320,0,-150,27"/>
                 </Grid>
             </Grid>
         </Grid>

@@ -16,8 +16,8 @@
       ShowsNavigationUI="False" 
       WindowHeight="680" 
       WindowWidth="1120"
-    >
-    <!--<Page.Triggers>
+      x:Name="mainPage">
+    <Page.Triggers>
         <EventTrigger RoutedEvent="Page.Loaded">
             <BeginStoryboard>
                 <Storyboard>
@@ -29,7 +29,7 @@
                 </Storyboard>
             </BeginStoryboard>
         </EventTrigger>
-    </Page.Triggers>-->
+    </Page.Triggers>
     <i:Interaction.Triggers>
         <i:EventTrigger EventName="Loaded">
             <i:InvokeCommandAction Command="{Binding GetListViewCommand}"
@@ -63,18 +63,50 @@
                 <RowDefinition Height="80"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <StackPanel Grid.Row="0" Orientation="Horizontal" >
-                <Search:Search IconSize="20" 
-                               Height="46" 
-                               Margin="20, 17, 0, 17"  
-                               Width="350"
-                               Corner="12"
-                               FontFamily="{StaticResource MaterialDesignFont}"
-                               FontSize="15"    
-                               FontWeight="Thin" 
-                               SearchTextChange="Search_SearchTextChange"
-                               x:Name="SearchBox">
-                </Search:Search>
+            <StackPanel Grid.Row="0" 
+                        Orientation="Horizontal" >
+                <Grid Height="46"
+                      Width="350" 
+                      Margin="20, 17, 0, 17"  >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="52"/>
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <Rectangle
+                            Fill="White"
+                            Grid.ColumnSpan="2"
+                            RadiusX="20"
+                            RadiusY="20">
+                        <Rectangle.Effect>
+                            <DropShadowEffect
+                                    BlurRadius="10"
+                                    Color="Black"
+                                    ShadowDepth="4"
+                                    Opacity=".25"
+                                    Direction="270"/>   
+                        </Rectangle.Effect>
+                    </Rectangle>
+                    <TextBox x:Name="FilterBox" 
+                             materialDesign:HintAssist.Hint="Search"
+                             Grid.Column="1"
+                             AllowDrop="True"
+                             VerticalAlignment="Center" 
+                             Margin="20,0,20,0" 
+                             FontSize="15" 
+                             Opacity=".5" 
+                             FontFamily="{StaticResource MaterialDesignFont}"
+                             FontWeight="Regular"
+                             TextChanged="FilterBox_TextChanged"
+                             BorderThickness="0,0,0,0" 
+                             Padding="0,4,0,4"/>
+                    <Image x:Name="IconSeach" 
+                           Source="{StaticResource IconSearch}"
+                           Grid.Column="0"
+                           Width="20" Height="20"
+                           Margin="20,0,0,0"
+                           HorizontalAlignment="Right"
+                           VerticalAlignment="Center"/>
+                </Grid>
                 <Border CornerRadius="12"
                         Margin="20, 17, 0, 17"
                         Background="White"
@@ -100,7 +132,7 @@
                     </ComboBox>
                 </Border>
                 <Border CornerRadius="12"
-                        Margin="10, 17, 20, 17"
+                        Margin="220, 17, 10, 17"
                         Background="White"
                         Height="46"
                         Width="140"
@@ -116,39 +148,57 @@
                     <ComboBox   SelectedValuePath="Content"
                                 SelectedIndex="0"
                                 Style="{StaticResource styleButton}" 
-                                Margin="0,0,0,-3" >
-                        <ComboBoxItem Content="Mới nhất" FontSize="15"/>
-                        <ComboBoxItem Content="Theo tháng" FontSize="15"/>
+                                Margin="0,0,0,-3" 
+                                x:Name="periodbox1"
+                                SelectedItem="{Binding SelectedPeriod}"
+                                SelectionChanged="periodbox1_SelectionChanged"
+                                Loaded="periodbox1_Loaded">
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="Loaded">
+                                <i:InvokeCommandAction Command="{Binding ChangePeriodCM}"
+                                                   CommandParameter="{Binding ElementName=periodbox1}" />
+                            </i:EventTrigger>
+                            <i:EventTrigger EventName="SelectionChanged">
+                                <i:InvokeCommandAction Command="{Binding ChangePeriodCM}"
+                                                   CommandParameter="{Binding ElementName=periodbox1}" />
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                        <ComboBoxItem Content="Toàn bộ" FontSize="15"/>
                         <ComboBoxItem Content="Theo năm" FontSize="15"/>
+                        <ComboBoxItem Content="Theo tháng" FontSize="15"/>
                     </ComboBox>
                 </Border>
-                <Border>
+                <Border CornerRadius="12"
+                        Margin="10, 17, 30, 17"
+                        Background="White"
+                        Height="46"
+                        Width="140"
+                        BorderBrush="Black">
                     <Border.Effect>
                         <DropShadowEffect
-                                    BlurRadius="10"
-                                    Color="Black"
-                                    ShadowDepth="4"
-                                    Opacity=".25"
-                                    Direction="270"/>
+                            BlurRadius="10"
+                            Color="Black"
+                            ShadowDepth="4"
+                            Opacity=".25"
+                            Direction="270"/>
                     </Border.Effect>
-                    <Button Style="{StaticResource CustomButton}" 
-                            Width="150" 
-                            Height="46" 
-                            Margin="208,0,0,0">
-                        <StackPanel Orientation="Horizontal" 
-                                Width="143" 
-                                HorizontalAlignment="Center" >
-                            <materialDesign:PackIcon Kind="Download" 
-                                                     Width="30" 
-                                                     Height="30"/>
-                            <TextBlock FontFamily="{StaticResource MaterialDesignFont}" 
-                                       Text="Tải danh sách" 
-                                       FontSize="15"
-                                       FontWeight="Normal"
-                                       Margin="2,5,0,0"/>
-                        </StackPanel>
-                    </Button>
+                    <ComboBox   Style="{StaticResource styleButton}" 
+                                Margin="0,0,0,-3" 
+                                x:Name="Time1"
+                                SelectedItem="{Binding SelectedTime,Mode=OneWayToSource}">
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="Loaded">
+                                <i:InvokeCommandAction Command="{Binding ChangePeriodCM}"
+                                                   CommandParameter="{Binding ElementName=Time1}" />
+                            </i:EventTrigger>
+                            <i:EventTrigger EventName="SelectionChanged">
+                                <i:InvokeCommandAction Command="{Binding ChangePeriodCM}"
+                                                   CommandParameter="{Binding ElementName=Time1}" />
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </ComboBox>
                 </Border>
+              
                 
             </StackPanel>
             <Border Grid.Row="1" 
@@ -223,7 +273,7 @@
                                     <GridViewColumn Header="Ngày đăng ký" Width="165" >
                                         <GridViewColumn.CellTemplate>
                                             <DataTemplate>
-                                                <TextBlock Text="{Binding StartDate}" 
+                                                <TextBlock Text="{Binding FirstDate, StringFormat=dd/MM/yyyy}" 
                                                            Margin="20 0 0 -8"
                                                            FontSize="14" 
                                                            FontFamily="{StaticResource MaterialDesignFont}"/>
@@ -265,6 +315,11 @@
                                                                                  Width="22"
                                                                                  Height="22"
                                                                                  Cursor="Hand" />
+                                                        <i:Interaction.Triggers>
+                                                            <i:EventTrigger EventName="MouseLeftButtonUp">
+                                                                <i:InvokeCommandAction Command="{Binding ElementName=_ListView, Path=DataContext.OpenEditCustomerCM}" />
+                                                            </i:EventTrigger>
+                                                        </i:Interaction.Triggers>
                                                     </Border>
                                                     <Border Margin="10 0 0 0"
                                                             BorderBrush="Black"
@@ -286,6 +341,11 @@
                                                                                  Width="22"
                                                                                  Height="22"
                                                                                  Cursor="Hand" />
+                                                        <i:Interaction.Triggers>
+                                                            <i:EventTrigger EventName="MouseLeftButtonUp">
+                                                                <i:InvokeCommandAction Command="{Binding ElementName=_ListView, Path=DataContext.DeleteCustomerCommand}" />
+                                                            </i:EventTrigger>
+                                                        </i:Interaction.Triggers>
                                                     </Border>
                                                 </StackPanel>
                                             </DataTemplate>

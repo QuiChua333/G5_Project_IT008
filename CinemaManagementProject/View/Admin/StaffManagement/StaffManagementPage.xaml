@@ -12,9 +12,11 @@
       Title="StaffManagementPage"
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"             
       Background="Transparent"
+      DataContext="{StaticResource StaffManagementVM}"
       d:DesignHeight="680" 
       d:DesignWidth="1120"
-      x:Name="mainPage">
+      x:Name="mainPage"
+      ShowsNavigationUI="False">
 
     <Page.Triggers>
         <EventTrigger RoutedEvent="Page.Loaded">
@@ -66,48 +68,64 @@
             <StackPanel Grid.Row="0" 
                         Orientation="Horizontal" 
                         HorizontalAlignment="Left">
-                <Search:Search IconSize="20" 
-                               Height="46" 
-                               Margin="20, 17, 0, 17"  
-                               Width="300"
-                               Corner="12"
-                               FontFamily="{StaticResource MaterialDesignFont}"
-                               FontSize="15"
-                               FontWeight="Thin"/>
-                <Border CornerRadius="12"
-                        Margin="20, 17, 0, 17"
-                        Background="White"
-                        Height="46"
-                        Width="160"
-                        BorderBrush="Black">
-                    <Border.Effect>
-                        <DropShadowEffect
-                            BlurRadius="10"
-                            Color="Black"
-                            ShadowDepth="4"
-                            Opacity=".25"
-                            Direction="270"/>
-                    </Border.Effect>
-                    <ComboBox   SelectedValuePath="Content"
-                                SelectedIndex="0"
-                                Style="{StaticResource styleButton}" 
-                                Margin="0,0,0,-3" >
-                        <ComboBoxItem Content="Mã khách hàng" />
-                        <ComboBoxItem Content="Tên khách hàng" />
-                        <ComboBoxItem Content="Số điện thoại" />
-                    </ComboBox>
-                </Border>
+                <Grid Height="46"
+                      Width="350" 
+                      Margin="20, 17, 0, 17"  >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="52"/>
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <Rectangle
+                            Fill="White"
+                            Grid.ColumnSpan="2"
+                            RadiusX="20"
+                            RadiusY="20">
+                        <Rectangle.Effect>
+                            <DropShadowEffect
+                                    BlurRadius="10"
+                                    Color="Black"
+                                    ShadowDepth="4"
+                                    Opacity=".25"
+                                    Direction="270"/>
+                        </Rectangle.Effect>
+                    </Rectangle>
+                    <TextBox x:Name="FilterBox" 
+                             materialDesign:HintAssist.Hint="Search"
+                             Grid.Column="1"
+                             AllowDrop="True"
+                             VerticalAlignment="Center" 
+                             Margin="20,0,20,0" 
+                             FontSize="15" 
+                             Opacity=".5" 
+                             FontFamily="{StaticResource MaterialDesignFont}"
+                             FontWeight="Regular"
+                             TextChanged="FilterBox_TextChanged"
+                             BorderThickness="0,0,0,0" 
+                             Padding="0,4,0,4"/>
+                    <Image x:Name="IconSeach" 
+                           Source="{StaticResource IconSearch}"
+                           Grid.Column="0"
+                           Width="20" Height="20"
+                           Margin="20,0,0,0"
+                           HorizontalAlignment="Right"
+                           VerticalAlignment="Center"/>
+                </Grid>
+                
                 <Button Style="{StaticResource CustomButton}" 
-                        Width="190" 
-                        Height="54" 
-                        Margin="341,0,0,0">
+                        Width="100" 
+                        Height="40" 
+                        Margin="30,0,0,0"
+                        Command="{Binding OpenAddStaffCommand}">
                     <StackPanel Orientation="Horizontal" 
                                 Width="143" >
-                        <materialDesign:PackIcon Kind="Download" 
-                                                 Width="30" Height="30"/>
+                        <materialDesign:PackIcon Kind="PlusCircleOutline" 
+                                                 Width="28" 
+                                                 Height="28"/>
                         <TextBlock FontFamily="{StaticResource Medium}" 
-                                   Text="Tải danh sách" 
-                                   Margin="0,4,0,0"/>
+                                   Text="Thêm" 
+                                   FontWeight="Bold"
+                                   FontSize="16"
+                                   Margin="5,4,0,0"/>
                     </StackPanel>
                 </Button>
             </StackPanel>
@@ -126,13 +144,14 @@
                 <materialDesign:Card UniformCornerRadius="20" 
                                      Background="Transparent">
                     <ScrollViewer VerticalScrollBarVisibility="Auto"  >
-                        <ListView FontFamily="{StaticResource SemiBold}" 
+                        <ListView  
                                   FontSize="14" 
                                   x:Name="lvStaff" 
                                   Margin="-20 0 0 0" 
+                                  FontFamily="{StaticResource MaterialDesignFont}"
                                   ItemsSource="{Binding StaffList}"
                                   SelectedItem="{Binding SelectedItem}"
-                                  IsSynchronizedWithCurrentItem="False" >
+                                   >
                             <ListView.ItemContainerStyle>
                                 <Style   TargetType="{x:Type ListViewItem}"
                                          BasedOn="{StaticResource MaterialDesignGridViewItem}"/>
@@ -144,8 +163,8 @@
                                             <DataTemplate>
                                                 <TextBlock Text="{Binding Id}"
                                                            FontSize="14" 
-                                                           FontFamily="{StaticResource Medium}"
-                                                           Margin="20 30 0 0"/>
+                                                           FontFamily="{StaticResource MaterialDesignFont}"
+                                                           Margin="20 0 0 0"/>
                                             </DataTemplate>
                                         </GridViewColumn.CellTemplate>
                                     </GridViewColumn>
@@ -153,10 +172,10 @@
                                                     Width="145" >
                                         <GridViewColumn.CellTemplate>
                                             <DataTemplate>
-                                                <TextBlock Text="{Binding Name}" 
-                                                           Margin="-5 30 0 0"
+                                                <TextBlock Text="{Binding StaffName}" 
+                                                           Margin="-5 0 0 0"
                                                            FontSize="14" 
-                                                           FontFamily="{StaticResource Medium}"/>
+                                                           FontFamily="{StaticResource MaterialDesignFont}"/>
                                             </DataTemplate>
                                         </GridViewColumn.CellTemplate>
                                     </GridViewColumn>
@@ -164,10 +183,10 @@
                                                     Width="85"  >
                                         <GridViewColumn.CellTemplate>
                                             <DataTemplate>
-                                                <TextBlock Text="{Binding Sex}" 
-                                                           Margin="20 30 0 0"
+                                                <TextBlock Text="{Binding Gender}" 
+                                                           Margin="20 0 0 0"
                                                            FontSize="14" 
-                                                           FontFamily="{StaticResource Medium}"/>
+                                                           FontFamily="{StaticResource MaterialDesignFont}"/>
                                             </DataTemplate>
                                         </GridViewColumn.CellTemplate>
                                     </GridViewColumn>
@@ -175,10 +194,10 @@
                                                     Width="120">
                                         <GridViewColumn.CellTemplate>
                                             <DataTemplate>
-                                                <TextBlock Text="{Binding BirDate}" 
-                                                           Margin="16 30 0 0"
+                                                <TextBlock Text="{Binding DateOfBirth,StringFormat=dd-MM-yyyy}" 
+                                                           Margin="16 0 0 0"
                                                            FontSize="14" 
-                                                           FontFamily="{StaticResource Medium}"/>
+                                                           FontFamily="{StaticResource MaterialDesignFont}"/>
                                             </DataTemplate>
                                         </GridViewColumn.CellTemplate>
                                     </GridViewColumn>
@@ -186,10 +205,10 @@
                                                     Width="130" >
                                         <GridViewColumn.CellTemplate>
                                             <DataTemplate>
-                                                <TextBlock Text="{Binding PhoneNum}" 
-                                                           Margin="0 30 0 0"
+                                                <TextBlock Text="{Binding PhoneNumber}" 
+                                                           Margin="0 0 0 0"
                                                            FontSize="14" 
-                                                           FontFamily="{StaticResource Medium}"/>
+                                                           FontFamily="{StaticResource MaterialDesignFont}"/>
                                             </DataTemplate>
                                         </GridViewColumn.CellTemplate>
                                     </GridViewColumn>
@@ -197,10 +216,10 @@
                                                     Width="130">
                                         <GridViewColumn.CellTemplate>
                                             <DataTemplate>
-                                                <TextBlock Text="{Binding Mail}" 
-                                                           Margin="0 30 0 0"
+                                                <TextBlock Text="{Binding Email}" 
+                                                           Margin="0 0 0 0"
                                                            FontSize="14" 
-                                                           FontFamily="{StaticResource Medium}"/>
+                                                           FontFamily="{StaticResource MaterialDesignFont}"/>
                                             </DataTemplate>
                                         </GridViewColumn.CellTemplate>
                                     </GridViewColumn>
@@ -208,10 +227,10 @@
                                                     Width="131">
                                         <GridViewColumn.CellTemplate>
                                             <DataTemplate>
-                                                <TextBlock Text="{Binding DateStart}" 
-                                                           Margin="16 30 0 0"
+                                                <TextBlock Text="{Binding StartDate,StringFormat=dd-MM-yyyy}" 
+                                                           Margin="16 0 0 0"
                                                            FontSize="14" 
-                                                           FontFamily="{StaticResource Medium}"/>
+                                                           FontFamily="{StaticResource MaterialDesignFont}"/>
                                             </DataTemplate>
                                         </GridViewColumn.CellTemplate>
                                     </GridViewColumn>
@@ -220,9 +239,9 @@
                                         <GridViewColumn.CellTemplate>
                                             <DataTemplate>
                                                 <TextBlock Text="{Binding Position}" 
-                                                           Margin="16 30 0 0"
+                                                           Margin="16 0 0 0"
                                                            FontSize="14" 
-                                                           FontFamily="{StaticResource Medium}"/>
+                                                           FontFamily="{StaticResource MaterialDesignFont}"/>
                                             </DataTemplate>
                                         </GridViewColumn.CellTemplate>
                                     </GridViewColumn>
@@ -231,7 +250,7 @@
                                             <DataTemplate>
                                                 <StackPanel VerticalAlignment="Center"
                                                             Orientation="Horizontal" 
-                                                            Margin="0 25 0 0">
+                                                            Margin="0 0 0 5">
                                                     <Border BorderBrush="Black"
                                                             BorderThickness="1"
                                                             CornerRadius="6"
@@ -251,6 +270,11 @@
                                                                                  Width="22"
                                                                                  Height="22"
                                                                                  Cursor="Hand" />
+                                                        <i:Interaction.Triggers>
+                                                            <i:EventTrigger EventName="MouseLeftButtonUp">
+                                                                <i:InvokeCommandAction Command="{Binding ElementName=lvStaff, Path=DataContext.OpenEditStaffCommand}" />
+                                                            </i:EventTrigger>
+                                                        </i:Interaction.Triggers>
                                                     </Border>
                                                     <Border Margin="10 0 0 0"
                                                             BorderBrush="Black"
@@ -272,6 +296,11 @@
                                                                                  Width="22"
                                                                                  Height="22"
                                                                                  Cursor="Hand" />
+                                                        <i:Interaction.Triggers>
+                                                            <i:EventTrigger EventName="MouseLeftButtonUp">
+                                                                <i:InvokeCommandAction Command="{Binding ElementName=lvStaff, Path=DataContext.DeleteStaffCommand}" />
+                                                            </i:EventTrigger>
+                                                        </i:Interaction.Triggers>
                                                     </Border>
                                                 </StackPanel>
                                             </DataTemplate>

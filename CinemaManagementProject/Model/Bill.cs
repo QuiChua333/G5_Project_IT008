@@ -24,9 +24,9 @@ namespace CinemaManagementProject.Model
         public int Id { get; set; }
         public Nullable<int> CustomerId { get; set; }
         public Nullable<int> StaffId { get; set; }
-        public Nullable<System.DateTime> CreateDate { get; set; }
-        public Nullable<float> DiscountPrice { get; set; }
-        public Nullable<float> TotalPrize { get; set; }
+        public System.DateTime CreateDate { get; set; }
+        public float DiscountPrice { get; set; }
+        public float TotalPrize { get; set; }
     
         public virtual Customer Customer { get; set; }
         public virtual Staff Staff { get; set; }

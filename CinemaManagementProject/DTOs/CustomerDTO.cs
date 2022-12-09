@@ -15,11 +15,12 @@ namespace CinemaManagementProject.DTOs
 
         public int Id { get; set; }
         public string Name { get; set; }
-        public int PhoneNumber { get; set; }
+        public string PhoneNumber { get; set; }
         public string Email { get; set; }
-        public string StartDate { get; set; }
+        public DateTime FirstDate { get; set; }
 
         //Expense
+        public bool IsDeleted { get; set; }
         public string Expense { get; set; }
         //public string ExpenseStr
         //{

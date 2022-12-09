@@ -3,7 +3,7 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:CinemaManagementProject.View.Admin.HistoryManagement"
+      xmlns:local="clr-namespace:CinemaManagementProject.View.Admin.HistoryManagement" xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
       mc:Ignorable="d" 
       d:DesignHeight="680" d:DesignWidth="1120"
       Title="HistoryManagementPage" 
@@ -25,6 +25,8 @@
                             FontSize="16"
                             IsChecked="True"
                             Content="Nhập kho"
+                            Command="{Binding LoadImportPageCM}"
+                            CommandParameter="{Binding ElementName=MainListViewFrame}"
                             Margin="20,5,0,0"/>
             <RadioButton    Style="{StaticResource MaterialDesignTabRadioButtonTop}"
                             BorderBrush="Blue"
@@ -34,7 +36,9 @@
                             FontSize="16"
                             IsChecked="False"
                             Margin="10,5,0,0"
-                            Content="Hóa đơn"/>
+                            Content="Hóa đơn"
+                            Command="{Binding LoadExportPageCM}"
+                            CommandParameter="{Binding ElementName=MainListViewFrame}"/>
         </StackPanel>
         <Border Grid.Row="1" 
                 Background="{StaticResource LightGrayAthens}" 
@@ -47,9 +51,16 @@
                     Opacity=".25"
                     Direction="270"/>
             </Border.Effect>
-            <Frame>
-                <!--content-->
-            </Frame>
+            <Grid>
+                <Frame x:Name="MainListViewFrame">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="Loaded">
+                            <i:InvokeCommandAction Command="{Binding LoadImportPageCM}"
+                                                       CommandParameter="{Binding ElementName=MainListViewFrame}" />
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </Frame>
+            </Grid>
         </Border>
     </Grid>
 </Page>

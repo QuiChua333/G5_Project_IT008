@@ -94,7 +94,10 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="CustomMessageBox.cs" />
+    <Compile Include="DTOs\BillDTO.cs" />
     <Compile Include="DTOs\CustomerDTO.cs" />
+    <Compile Include="DTOs\ProductBillInfoDTO.cs" />
+    <Compile Include="DTOs\ProductReceiptDTO.cs" />
     <Compile Include="DTOs\StaffDTO.cs" />
     <Compile Include="Model\Bill.cs">
       <DependentUpon>CinemaManagementDatabase.tt</DependentUpon>
@@ -141,7 +144,9 @@
     <Compile Include="Model\SeatSetting.cs">
       <DependentUpon>CinemaManagementDatabase.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\Service\BillService.cs" />
     <Compile Include="Model\Service\CustomerService.cs" />
+    <Compile Include="Model\Service\StaffService.cs" />
     <Compile Include="Model\ShowTime.cs">
       <DependentUpon>CinemaManagementDatabase.tt</DependentUpon>
     </Compile>
@@ -162,8 +167,16 @@
     </Compile>
     <Compile Include="Until.cs" />
     <Compile Include="Utilities\RelyCommand.cs" />
+    <Compile Include="Utils\Constant.cs" />
+    <Compile Include="Utils\Helper.cs" />
+    <Compile Include="Utils\RegexUtilities.cs" />
     <Compile Include="ViewModel\AdminVM\AdminVM.cs" />
     <Compile Include="ViewModel\AdminVM\CustomerManagementVM\CustomerManagementViewModel.cs" />
+    <Compile Include="ViewModel\AdminVM\HistoryManagementVM\HistoryManagementViewModel.cs" />
+    <Compile Include="ViewModel\AdminVM\Import_ExportManagementVM\Import_ExportManagementViewModel.cs" />
+    <Compile Include="ViewModel\AdminVM\StaffManagementVM\AddStaffViewModel.cs" />
+    <Compile Include="ViewModel\AdminVM\StaffManagementVM\ChangePasswordViewModel.cs" />
+    <Compile Include="ViewModel\AdminVM\StaffManagementVM\EditStaffViewModel.cs" />
     <Compile Include="ViewModel\AdminVM\StaffManagementVM\StaffManagementViewModel.cs" />
     <Compile Include="ViewModel\BaseViewModel.cs" />
     <Compile Include="View\Admin\AdminWindow.xaml.cs">
@@ -175,6 +188,9 @@
     <Compile Include="View\Admin\CustomerManagement\EditCustomerWindow.xaml.cs">
       <DependentUpon>EditCustomerWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Admin\HistoryManagement\ExportDetail.xaml.cs">
+      <DependentUpon>ExportDetail.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Admin\HistoryManagement\ExportHistoryPage.xaml.cs">
       <DependentUpon>ExportHistoryPage.xaml</DependentUpon>
     </Compile>
@@ -183,6 +199,12 @@
     </Compile>
     <Compile Include="View\Admin\HistoryManagement\ImportHistoryPage.xaml.cs">
       <DependentUpon>ImportHistoryPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Admin\HistoryManagement\ProductDetail.xaml.cs">
+      <DependentUpon>ProductDetail.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Admin\HistoryManagement\TicketDetailsWindow.xaml.cs">
+      <DependentUpon>TicketDetailsWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Admin\StaffManagement\AddStaffWindow.xaml.cs">
       <DependentUpon>AddStaffWindow.xaml</DependentUpon>
@@ -283,6 +305,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\Admin\HistoryManagement\ExportDetail.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\Admin\HistoryManagement\ExportHistoryPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -292,6 +318,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Admin\HistoryManagement\ImportHistoryPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Admin\HistoryManagement\ProductDetail.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Admin\HistoryManagement\TicketDetailsWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
