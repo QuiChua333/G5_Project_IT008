@@ -14,8 +14,9 @@
         x:Name="mainWin"
         Height="720"
         Width="450"
+        FontFamily="{StaticResource MaterialDesignFont}"
         MouseLeftButtonDown="Window_MouseLeftButtonDown"
-        >
+        DataContext="{StaticResource Import_ExportManagementVM}">
     <Window.Triggers>
         <EventTrigger RoutedEvent="Window.Loaded">
             <BeginStoryboard>
@@ -45,12 +46,14 @@
 
             <!---HEADER-->
             <Grid Grid.Row="0">
-                <Label Content="  Chi tiết hoá đơn"
-                       FontSize="25"
-                       FontWeight="Bold"
-                       BorderThickness="0,0,0,0.5"
-                       BorderBrush="Black"
-                       Padding="10,10,0,0" />
+                <Label  Content=" CHI TIẾT HÓA ĐƠN"
+                        FontFamily="{StaticResource MaterialDesignFont}" 
+                        FontSize="28" 
+                        FontWeight="Bold" 
+                        Foreground="#FF80CDED"
+                        BorderThickness="0,0,0,0.5"
+                        BorderBrush="Black"
+                        Padding="10,10,0,0" />
                 <StackPanel Orientation="Horizontal"
                             VerticalAlignment="Top"
                             HorizontalAlignment="Right"
@@ -91,7 +94,7 @@
                         <Border BorderBrush="Gray"
                                 BorderThickness="0,0,0,0.5">
                             <Label Content="Thông tin sản phẩm"
-                                   FontSize="30"
+                                   FontSize="25"
                                    FontWeight="Bold"
                                    Margin="20,0,0,0" />
                         </Border>
@@ -114,26 +117,8 @@
                                                     <ColumnDefinition Width="70*" />
                                                     <ColumnDefinition Width="30*" />
                                                 </Grid.ColumnDefinitions>
-                                                <StackPanel Orientation="Horizontal"
-                                                            Grid.Column="0">
-                                                    <StackPanel>
-                                                        <TextBlock Text="{Binding ProductName}"
-                                                                   FontSize="25" />
-                                                        <StackPanel Orientation="Horizontal"
-                                                                    Margin="0,10,0,0">
-                                                            <TextBlock Text="{Binding Quantity}"
-                                                                       FontSize="25" />
-                                                            <TextBlock Text="x"
-                                                                       FontSize="20"
-                                                                       VerticalAlignment="Bottom"
-                                                                       Margin="3,0,0,1" />
-                                                            <TextBlock Text="{Binding PricePerItemStr}"
-                                                                       VerticalAlignment="Bottom"
-                                                                       FontSize="20"
-                                                                       Margin="5,0,0,1" />
-                                                        </StackPanel>
-                                                    </StackPanel>
-                                                </StackPanel>
+                                                
+                                                
                                                 <StackPanel Grid.Column="1"
                                                             Orientation="Horizontal"
                                                             HorizontalAlignment="Right">
@@ -189,7 +174,7 @@
                     <Label Content="Tổng tiền"
                            FontSize="20"
                            Grid.Column="0" />
-                    <Label Content="{Binding BillDetail.OriginalTotalPriceStr}"
+                    <Label Content="{Binding BillDetail.TotalPriceStr}"
                            FontSize="20"
                            HorizontalAlignment="Right"
                            Grid.Column="1" />
@@ -228,7 +213,7 @@
                     <Label Content="Sau khuyến mãi"
                            FontSize="20"
                            Grid.Column="0" />
-                    <Label Content="{Binding BillDetail.TotalPriceStr}"
+                    <Label Content="{Binding BillDetail.OriginalTotalPriceStr}"
                            FontSize="20"
                            Grid.Column="1"
                            FontWeight="Bold"

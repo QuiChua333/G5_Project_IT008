@@ -6,9 +6,9 @@
       xmlns:local="clr-namespace:CinemaManagementProject.View.Admin.CustomerManagement" 
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"  
       xmlns:Search="clr-namespace:CinemaManagementProject.Component.Search" 
-      xmlns:i="http://schemas.microsoft.com/xaml/behaviors"   
       x:Class="CinemaManagementProject.View.Admin.CustomerManagement.CustomerManagementPage"
-      mc:Ignorable="d"       
+      mc:Ignorable="d"  
+      xmlns:i="http://schemas.microsoft.com/xaml/behaviors"   
       Title="CustomerManagementPage"
       DataContext="{StaticResource CustomerManagementVM}"
       d:DesignHeight="680" d:DesignWidth="1120"
@@ -184,7 +184,8 @@
                     </Border.Effect>
                     <ComboBox   Style="{StaticResource styleButton}" 
                                 Margin="0,0,0,-3" 
-                                x:Name="Time1"
+                                x:Name="Time1"   
+                                Visibility="Collapsed"
                                 SelectedItem="{Binding SelectedTime,Mode=OneWayToSource}">
                         <i:Interaction.Triggers>
                             <i:EventTrigger EventName="Loaded">
@@ -196,6 +197,7 @@
                                                    CommandParameter="{Binding ElementName=Time1}" />
                             </i:EventTrigger>
                         </i:Interaction.Triggers>
+                        
                     </ComboBox>
                 </Border>
               

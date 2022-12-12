@@ -15,7 +15,8 @@
         Width="900"
         x:Name="mainWin"
         FontFamily="{StaticResource MaterialDesignFont}"
-        MouseLeftButtonDown="Window_MouseLeftButtonDown">
+        MouseLeftButtonDown="Window_MouseLeftButtonDown"
+        DataContext="{StaticResource Import_ExportManagementVM}">
     <Window.Triggers>
         <EventTrigger RoutedEvent="Window.Loaded">
             <BeginStoryboard>
@@ -45,9 +46,11 @@
 
             <!---HEADER-->
             <Grid Grid.Row="0">
-                <Label Content="  Chi tiết hoá đơn"
-                       FontSize="25"
-                       FontWeight="Bold"
+                <Label Content="  CHI TIẾT HÓA ĐƠN"
+                       FontFamily="{StaticResource MaterialDesignFont}" 
+                        FontSize="28" 
+                        FontWeight="Bold" 
+                        Foreground="#FF80CDED"
                        BorderThickness="0,0,0,0.5"
                        BorderBrush="Black"
                        Padding="10,10,0,0" />
@@ -98,7 +101,7 @@
                                 BorderThickness="0,0,0,0.5"
                                 BorderBrush="Gray">
                             <Label Content="Vé xem phim"
-                                   FontSize="30"
+                                   FontSize="25"
                                    FontWeight="Bold"
                                    Margin="20,0,0,0" />
                         </Border>
@@ -312,7 +315,7 @@
                         <Border BorderBrush="Gray"
                                 BorderThickness="0,0,0,0.5">
                             <Label Content="Sản phẩm"
-                                   FontSize="30"
+                                   FontSize="25"
                                    FontWeight="Bold"
                                    Margin="20,0,0,0" />
                         </Border>
@@ -335,20 +338,20 @@
                                                     <ColumnDefinition Width="70*"/>
                                                     <ColumnDefinition Width="30*"/>
                                                 </Grid.ColumnDefinitions>
-                                                <StackPanel Orientation="Horizontal"
+                                                <StackPanel Orientation="Vertical"
                                                             Grid.Column="0">
-                                                    <StackPanel>
+                                                    <StackPanel Orientation="Horizontal">
                                                         <TextBlock Text="{Binding ProductName}"
                                                                    FontSize="25" />
                                                         <StackPanel Orientation="Horizontal"
-                                                                    Margin="0,10,0,0">
+                                                                    Margin="50,0,0,0">
                                                             <TextBlock Text="{Binding Quantity}"
-                                                                       FontSize="25" />
+                                                                       FontSize="20" />
                                                             <TextBlock Text="x"
                                                                        FontSize="20"
                                                                        VerticalAlignment="Bottom"
                                                                        Margin="3,0,0,1" />
-                                                            <TextBlock Text="{Binding PricePerItemStr}"
+                                                            <TextBlock Text="{Binding PrizePerProduct}"
                                                                        VerticalAlignment="Bottom"
                                                                        FontSize="20"
                                                                        Margin="5,0,0,1" />

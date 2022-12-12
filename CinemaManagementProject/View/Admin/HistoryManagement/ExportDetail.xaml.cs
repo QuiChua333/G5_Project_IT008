@@ -23,5 +23,20 @@ namespace CinemaManagementProject.View.Admin.HistoryManagement
         {
             InitializeComponent();
         }
+
+        private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void Button_MouseEnter_1(object sender, MouseEventArgs e)
+        {
+
+        }
+
+        private void Button_MouseLeave_1(object sender, MouseEventArgs e)
+        {
+
+        }
     }
 }

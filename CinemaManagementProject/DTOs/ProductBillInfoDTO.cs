@@ -13,6 +13,7 @@ namespace CinemaManagementProject.DTOs
         public Nullable<int> ProductId { get; set; }
         public Nullable<int> BillId { get; set; }
         public Nullable<int> Quantity { get; set; }
+        public string ProductName { get; set; }
         public Nullable<int> PrizePerProduct { get; set; }
 
         public virtual Bill Bill { get; set; }

@@ -51,18 +51,30 @@ namespace CinemaManagementProject.View.Admin.CustomerManagement
         private void periodbox1_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             ComboBoxItem s = (ComboBoxItem)periodbox1.SelectedItem;
-            switch (s.Content.ToString())
+            if(Time1!= null)
             {
-                case "Theo năm":
-                    {
-                        GetYearSource(Time1);
-                        return;
-                    }
-                case "Theo tháng":
-                    {
-                        GetMonthSource(Time1);
-                        return;
-                    }
+                switch (s.Content.ToString())
+                {
+                    case "Theo năm":
+                        {
+                            Time1.Visibility = Visibility.Visible;
+                            GetYearSource(Time1);
+                            return;
+                        }
+                    case "Theo tháng":
+                        {
+                            Time1.Visibility = Visibility.Visible;
+                            GetMonthSource(Time1);
+                            return;
+                        }
+                    case "Toàn bộ":
+                        {
+                            Time1.Visibility = Visibility.Collapsed;
+                            return;
+                        }
+
+                }
+
             }
         }
         public void GetYearSource(ComboBox cbb)

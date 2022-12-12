@@ -1,0 +1,342 @@
+﻿<Window x:Class="CinemaManagementProject.View.Admin.ShowtimeManagement.AddShowtimeWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CinemaManagementProject.View.Admin.ShowtimeManagement" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+        mc:Ignorable="d"
+        Title="AddShowtimeWindow" 
+        Height="550"
+        Width="800"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        Background="Transparent"
+        PreviewKeyUp="AddSuatChieu_PreviewKeyUp"
+        x:Name="AddSuatChieu"
+        MouseLeftButtonDown="AddSuatChieu_MouseLeftButtonDown"
+        DataContext="{StaticResource ShowtimeManagementVM}"
+        FontFamily="{DynamicResource MaterialDesignFont}">
+    <Window.Triggers>
+        <EventTrigger RoutedEvent="Window.Loaded">
+            <BeginStoryboard>
+                <Storyboard>
+                    <DoubleAnimation Storyboard.TargetName="AddSuatChieu"
+                                     Storyboard.TargetProperty="Opacity"
+                                     From="0"
+                                     To="1"
+                                     Duration="0:0:0.3" />
+
+
+                </Storyboard>
+            </BeginStoryboard>
+        </EventTrigger>
+    </Window.Triggers>
+
+    <Border Background="White"
+            CornerRadius="10"
+            BorderBrush="Gray"
+            BorderThickness="1">
+
+        <Grid>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="10*" />
+                <RowDefinition Height="35*" />
+                <RowDefinition Height="55*" />
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <Border BorderThickness="0,0,0,1"
+                        BorderBrush="Black">
+                    <Grid>
+                        <TextBlock Text="THÊM SUẤT CHIẾU"
+                                   FontFamily="{StaticResource MaterialDesignFont}" 
+                                   FontSize="28" 
+                                   Foreground="#FF80CDED"
+                                   FontWeight="Bold" 
+                                   Margin="20,10,0,0"/>
+                        <StackPanel Orientation="Horizontal"
+                                    VerticalAlignment="Top"
+                                    HorizontalAlignment="Right"
+                                    Grid.Row="0">
+
+                            <Button Click="Button_Click_1"
+                                    ToolBar.OverflowMode="AsNeeded"
+                                    Background="Transparent"
+                                    Foreground="Black"
+                                    BorderBrush="Transparent"
+                                    MouseEnter="Button_MouseEnter_1"
+                                    MouseLeave="Button_MouseLeave_1"
+                                    materialDesign:ButtonAssist.CornerRadius="0,10,0,0" Height="44">
+                                <materialDesign:PackIcon Kind="WindowClose"
+                                                         Padding="10"
+                                                         Height="30"
+                                                         Width="30"
+                                                         Margin="0 5 0 0"/>
+                            </Button>
+                        </StackPanel>
+                    </Grid>
+
+                </Border>
+            </Grid>
+            <Grid  Grid.Row="1"
+                   Margin="0,15,0,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+
+                <Grid Grid.Row="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="70*" />
+                        <ColumnDefinition Width="30*" />
+                    </Grid.ColumnDefinitions>
+
+                    <!--NAME-->
+                    <StackPanel Grid.Column="0"
+                                Margin="25,0,25,10"
+                                Orientation="Horizontal">
+                        <StackPanel>
+                            <Label Content="Tên phim"
+                                   FontSize="20" />
+                            <ComboBox SelectedItem="{Binding movieSelected}"
+                                      ItemsSource="{Binding MovieList}"
+                                      DisplayMemberPath="DisplayName"
+                                      Style="{StaticResource MaterialDesignComboBox}"
+                                      VerticalAlignment="Bottom"
+                                      FontSize="20"
+                                      Background="Transparent"
+                                      BorderThickness="0,0,0,1"
+                                      Foreground="Black"
+                                      Height="47"
+                                      Width="479"
+                                      x:Name="_movieName">
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="SelectionChanged">
+                                        <i:InvokeCommandAction Command="{Binding CalculateRunningTimeCM}"
+                                                               CommandParameter="{Binding ElementName=_movieName}" />
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                            </ComboBox>
+                        </StackPanel>
+                    </StackPanel>
+
+                    <!--Ngay chieu-->
+                    <StackPanel Grid.Column="2">
+                        <Label Content="Ngày chiếu"
+                               FontSize="20"
+                               Height="40" />
+                        <StackPanel>
+                            <DatePicker materialDesign:HintAssist.Hint="{Binding SetCurrentDate}"
+                                        FirstDayOfWeek="Monday"
+                                        SelectedDateFormat="Short"
+                                        Foreground="Black"
+                                        FontSize="20"
+                                        Height="39"
+                                        Padding="10,0,0,0"
+                                        Margin="0,0,64,0"
+                                        x:Name="_movieDate"
+                                        DisplayDateStart="{Binding GetCurrentDate}"
+                                        SelectedDate="{Binding showtimeDate, Mode=TwoWay}"
+                                        materialDesign:HintAssist.IsFloating="False"
+                                        Style="{StaticResource MaterialDesignFloatingHintDatePicker}"
+                                        Focusable="False" />
+
+                        </StackPanel>
+                    </StackPanel>
+                </Grid>
+
+                <StackPanel Grid.Row="1"
+                            Orientation="Horizontal">
+
+                    <!--Suat chieu-->
+                    <StackPanel Margin="25,10,25,0"
+                                Width="200"
+                                VerticalAlignment="Bottom"
+                                HorizontalAlignment="Left">
+                        <Label Content="Suất chiếu"
+                               FontSize="20"
+                               Height="40" />
+                        <StackPanel>
+                            <materialDesign:TimePicker Is24Hours="True"
+                                                       WithSeconds="False"
+                                                       FontSize="20"
+                                                       VerticalContentAlignment="Bottom"
+                                                       Height="35"
+                                                       materialDesign:ValidationAssist.FontSize="0.001"
+                                                       SelectedTime="{Binding Showtime}"
+                                                       x:Name="_movieTime"
+                                                       Focusable="False">
+                            </materialDesign:TimePicker>
+                        </StackPanel>
+                    </StackPanel>
+
+                    <!--Room-->
+                    <StackPanel VerticalAlignment="Bottom">
+                        <Label Content="Phòng chiếu"
+                               FontSize="20" />
+                        <ComboBox Width="175"
+                                  Height="43"
+                                  FontSize="20"
+                                  ItemsSource="{Binding ListRoom}"
+                                  SelectedItem="{Binding ShowtimeRoom}"
+                                  DisplayMemberPath="Id"
+                                  x:Name="_movieRoom">
+                        </ComboBox>
+                    </StackPanel>
+
+                    <!--Price-->
+                    <StackPanel VerticalAlignment="Bottom"
+                                Margin="130,0,0,0">
+                        <Label Content="Giá vé"
+                               FontSize="20" />
+                        <TextBox Width="175"
+                                 Height="43"
+                                 FontSize="20"
+                                 Text="{Binding moviePrice}"
+                                 PreviewTextInput="_moviePrice_PreviewTextInput"
+                                 x:Name="_moviePrice"
+                                 TextChanged="_moviePrice_TextChanged">
+                        </TextBox>
+                    </StackPanel>
+                </StackPanel>
+
+            </Grid>
+            <Grid Grid.Row="2">
+                <Grid>
+                    <Grid Grid.Column="0"
+                          Margin="0,50,0,0">
+                        <!--Descripstion-->
+                        <StackPanel HorizontalAlignment="Left"
+                                    Width="290"
+                                    Margin="25,0,0,0">
+
+                            <StackPanel >
+                                <Label Content="Mô tả"
+                                       FontSize="20"
+                                       Foreground="Black"
+                                       Margin="0,10,0,0" />
+                                <Border BorderThickness="1"
+                                        BorderBrush="Black"
+                                        Height="188"
+                                        CornerRadius="8">
+                                    <StackPanel>
+                                        <StackPanel.Resources>
+                                            <Style TargetType="Label">
+                                                <Setter Property="Margin"
+                                                        Value="5,10,0,0" />
+                                                <Setter Property="FontSize"
+                                                        Value="15" />
+                                            </Style>
+                                        </StackPanel.Resources>
+                                        <StackPanel>
+                                            <Label Content="{Binding movieSelected.DisplayName}" />
+                                        </StackPanel>
+                                        <StackPanel Orientation="Horizontal">
+                                            <Label Content="Ngày chiếu:" />
+                                            <Label Content="{Binding showtimeDate.Date}"
+                                                   ContentStringFormat="dd/MM/yyyy" />
+                                        </StackPanel>
+                                        <StackPanel Orientation="Horizontal">
+                                            <Label Content="Giờ chiếu:" />
+                                            <Label Content="{Binding Showtime.TimeOfDay}" />
+                                            <Label Content="->" />
+                                            <Label Content="{Binding EndTime.TimeOfDay}" />
+                                        </StackPanel>
+                                        <StackPanel Orientation="Horizontal">
+                                            <Label Content="Phòng chiếu:" />
+                                            <Label Content="{Binding ShowtimeRoom.Id}" />
+                                        </StackPanel>
+                                        <StackPanel Orientation="Horizontal">
+                                            <Label Content="Giá vé:" />
+                                            <Label  x:Name="_desPrice"
+                                                    Content="{Binding Path=Text, ElementName=_moviePrice}" />
+                                            <Label  Content="VND" />
+                                        </StackPanel>
+                                    </StackPanel>
+                                </Border>
+                            </StackPanel>
+                        </StackPanel>
+                    </Grid>
+
+                    <Grid Margin="-10,0,10,0">
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition />
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+
+                        <!--Button-->
+                        <Grid Grid.Row="1">
+                            <StackPanel VerticalAlignment="Bottom"
+                                        HorizontalAlignment="Right"
+                                        Orientation="Horizontal"
+                                        Margin="0,0,20,20">
+                                <Button Content="Lưu"
+                                        FontSize="20"
+                                        Height="40"
+                                        Foreground="White"
+                                        VerticalAlignment="Top"
+                                        Style="{StaticResource CustomButton}"
+                                        materialDesign:ButtonAssist.CornerRadius="8"
+                                        Width="100"
+                                        Command="{Binding SaveCM}"
+                                        CommandParameter="{Binding  ElementName=AddSuatChieu}">
+                                </Button>
+                            </StackPanel>
+                        </Grid>
+                    </Grid>
+                </Grid>
+            </Grid>
+            <Grid Grid.RowSpan="3"
+                  Background="LightGray"
+                  Opacity="0.3">
+                <Grid.Style>
+                    <Style TargetType="Grid">
+                        <Setter Property="Visibility"
+                                Value="Collapsed" />
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding IsSaving}"
+                                         Value="True">
+                                <Setter Property="Visibility"
+                                        Value="Visible" />
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Grid.Style>
+            </Grid>
+            <materialDesign:Card Height="120"
+                                 Width="140"
+                                 Grid.RowSpan="3"
+                                 UniformCornerRadius="5">
+                <StackPanel>
+                    <ProgressBar Style="{StaticResource MaterialDesignCircularProgressBar}"
+                                 IsIndeterminate="True"
+                                 Margin="0,30,0,0"
+                                 x:Name="prg" />
+                    <Label HorizontalContentAlignment="Center"
+                           FontSize="15"
+                           Margin="0,10,0,0">
+                        <Label.Content>
+                            <TextBlock TextAlignment="Center">Đang thiết lập <LineBreak /> suất chiếu mới...</TextBlock>
+                        </Label.Content>
+                    </Label>
+                </StackPanel>
+                <materialDesign:Card.Style>
+                    <Style TargetType="materialDesign:Card">
+                        <Setter Property="Visibility"
+                                Value="Collapsed" />
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding IsSaving}"
+                                         Value="True">
+                                <Setter Property="Visibility"
+                                        Value="Visible" />
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </materialDesign:Card.Style>
+            </materialDesign:Card>
+        </Grid>
+    </Border>
+
+</Window>

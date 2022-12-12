@@ -126,9 +126,9 @@ namespace CinemaManagementProject.Model.Service
 
                     var maxId = await context.Staffs.MaxAsync(s => s.Id);
                     Staff st = Copy(newStaff);
-                    st.Id = maxId+1;
+                    st.Id = maxId + 1;
                     newStaff.Id = st.Id;
-                    st.UserPass = Helper.MD5Hash(newStaff.UserPass);
+                    //st.UserPass = Helper.MD5Hash(newStaff.UserPass);
 
                     context.Staffs.Add(st);
                     await context.SaveChangesAsync();

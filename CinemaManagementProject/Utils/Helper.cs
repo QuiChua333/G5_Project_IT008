@@ -81,7 +81,7 @@ namespace CinemaManagementProject.Utils
             return Path.Combine(Environment.CurrentDirectory, @"..\..\Resources\EmailTemplate", $"{fileName}" /*SelectedItem.Image*/);
         }
 
-        public static string FormatVNMoney(decimal money)
+        public static string FormatVNMoney(float money)
         {
             if (money == 0)
             {

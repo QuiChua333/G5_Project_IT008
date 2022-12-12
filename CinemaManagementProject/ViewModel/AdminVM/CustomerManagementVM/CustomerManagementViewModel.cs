@@ -137,6 +137,15 @@ namespace CinemaManagementProject.ViewModel.AdminVM.CustomerManagementVM
                                 }
                                 return;
                             }
+                        case "Toàn bộ":
+                            {
+                                if (SelectedPeriod != null)
+                                {
+                                    CustomerList = new ObservableCollection<CustomerDTO>(await Task.Run(() => CustomerService.Ins.GetAllCustomer()));
+                                    IsGettingSource = false;
+                                }
+                                return;
+                            }
                     }
                 }
 

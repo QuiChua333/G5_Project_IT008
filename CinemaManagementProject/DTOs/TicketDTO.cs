@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CinemaManagementProject.ViewModel.AdminVM.HistoryManagementVM
+namespace CinemaManagementProject.DTOs
 {
-    public class HistoryManagementViewModel
+    public class TicketDTO
     {
     }
 }

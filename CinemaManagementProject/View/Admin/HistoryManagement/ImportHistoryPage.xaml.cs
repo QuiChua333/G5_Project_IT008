@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CinemaManagementProject.DTOs;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,56 @@ namespace CinemaManagementProject.View.Admin.HistoryManagement
         public ImportHistoryPage()
         {
             InitializeComponent();
+        }
+
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            CollectionViewSource.GetDefaultView(_ListView.ItemsSource).Refresh();
+            CollectionView view = (CollectionView)CollectionViewSource.GetDefaultView(_ListView.ItemsSource);
+            //result.Content = _ListView.Items.Count;
+            view.Filter = Filter;
+        }
+        private bool Filter(object item)
+        {
+            if (String.IsNullOrEmpty(FilterBox.Text))
+                return true;
+
+            switch (cbbFilter.SelectedValue)
+            {
+                case "Mã đơn":
+                    return ((item as ProductReceiptDTO).Id.ToString().IndexOf(FilterBox.Text, StringComparison.OrdinalIgnoreCase) >= 0);
+                case "Nhân viên":
+                    return ((item as ProductReceiptDTO).StaffName.IndexOf(FilterBox.Text, StringComparison.OrdinalIgnoreCase) >= 0);
+                case "Sản phẩm":
+                    return ((item as ProductReceiptDTO).ProductName.IndexOf(FilterBox.Text, StringComparison.OrdinalIgnoreCase) >= 0);
+                default:
+                    return ((item as ProductReceiptDTO).Id.ToString().IndexOf(FilterBox.Text, StringComparison.OrdinalIgnoreCase) >= 0);
+            }
+
+        }
+
+        private void ComboBox_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
+        {
+            ComboBox cbb = sender as ComboBox;
+
+            if (cbbmonth != null)
+            {
+                switch (cbb.SelectedIndex)
+                {
+                    case 0:
+                        {
+                            bodermonth.Visibility = System.Windows.Visibility.Collapsed;
+
+                            break;
+                        }
+                    case 1:
+                        {
+                            bodermonth.Visibility = System.Windows.Visibility.Visible;
+                            break;
+                        }
+                }
+            }
+
         }
     }
 }

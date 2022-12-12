@@ -29,7 +29,8 @@ namespace CinemaManagementProject.Model
         public string Genre { get; set; }
         public Nullable<System.DateTime> ReleaseDate { get; set; }
         public string FilmInfo { get; set; }
-    
+        public bool IsDeleted { get; set; }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ShowTime> ShowTimes { get; set; }
     }

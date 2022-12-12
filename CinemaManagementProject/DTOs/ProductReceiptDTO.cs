@@ -12,19 +12,19 @@ namespace CinemaManagementProject.DTOs
         public ProductReceiptDTO()
         {
         }
-        public string Id { get; set; }
+        public int Id { get; set; }
         public int ProductId { get; set; }
         public string ProductName { get; set; }
         public float ImportPrice { get; set; }
-        //public string ImportPriceStr
-        //{
-        //    get
-        //    {
-        //        return Helper.FormatVNMoney(ImportPrice);
-        //    }
-        //}
+        public string ImportPriceStr
+        {
+            get
+            {
+                return Helper.FormatVNMoney(ImportPrice);
+            }
+        }
         public int Quantity { get; set; }
-        public string StaffId { get; set; }
+        public int StaffId { get; set; }
         public string StaffName { get; set; }
         public Nullable<System.DateTime> CreatedAt { get; set; }
     }

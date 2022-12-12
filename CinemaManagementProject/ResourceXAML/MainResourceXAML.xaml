@@ -2,8 +2,11 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:ViewModel="clr-namespace:CinemaManagementProject.ViewModel.AdminVM.CustomerManagementVM"
                     xmlns:ViewModel1="clr-namespace:CinemaManagementProject.ViewModel.AdminVM.StaffManagementVM"
-                    xmlns:ViewModel2="clr-namespace:CinemaManagementProject.ViewModel.AdminVM.Import_ExportManagementVM">
+                    xmlns:ViewModel2="clr-namespace:CinemaManagementProject.ViewModel.AdminVM.Import_ExportManagementVM"
+                    xmlns:ViewModel3="clr-namespace:CinemaManagementProject.ViewModel.AdminVM.ShowtimeManagementVM">
+    
     <ViewModel:CustomerManagementViewModel x:Key="CustomerManagementVM"></ViewModel:CustomerManagementViewModel>
     <ViewModel1:StaffManagementViewModel x:Key="StaffManagementVM"></ViewModel1:StaffManagementViewModel>
     <ViewModel2:Import_ExportManagementViewModel x:Key="Import_ExportManagementVM"></ViewModel2:Import_ExportManagementViewModel>
+    <ViewModel3:ShowtimeMangementViewModel x:Key="ShowtimeManagementVM"></ViewModel3:ShowtimeMangementViewModel>
 </ResourceDictionary>

@@ -5,9 +5,29 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:CinemaManagementProject.View.Admin.HistoryManagement" xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
       mc:Ignorable="d" 
-      d:DesignHeight="680" d:DesignWidth="1120"
       Title="HistoryManagementPage" 
-      Background="{StaticResource LightBlueSpindle}">
+      Background="{StaticResource LightBlueSpindle}"
+      DataContext="{StaticResource Import_ExportManagementVM}"
+      d:DesignHeight="680" d:DesignWidth="1120"
+      ShowsNavigationUI="False" 
+      WindowHeight="680" 
+      WindowWidth="1120"
+      x:Name="mainPage">
+    <Page.Triggers>
+        <EventTrigger RoutedEvent="Page.Loaded">
+            <BeginStoryboard>
+                <Storyboard>
+                    <DoubleAnimation Storyboard.TargetName="mainPage"
+                                     Storyboard.TargetProperty="Opacity"
+                                     From="0"
+                                     To="1"
+                                     Duration="0:0:0.5" />
+
+
+                </Storyboard>
+            </BeginStoryboard>
+        </EventTrigger>
+    </Page.Triggers>
 
     <Grid>
         <Grid.RowDefinitions>

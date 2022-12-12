@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CinemaManagementProject.Utils;
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
@@ -65,7 +66,7 @@ namespace CinemaManagementProject.DTOs
         public string StaffName { get; set; }
 
         //Price
-        //public string OriginalTotalPriceStr { get => Helper.FormatVNMoney(TotalPrice - DiscountPrice); }
+        public string OriginalTotalPriceStr { get => Helper.FormatVNMoney((float)TotalPrice - DiscountPrice); }
 
         public float TotalPrice { get; set; }
         public string TotalPriceStr
@@ -81,13 +82,13 @@ namespace CinemaManagementProject.DTOs
             }
         }
         public float DiscountPrice { get; set; }
-        //public string DiscountPriceStr
-        //{
-        //    get
-        //    {
-        //        return Helper.FormatVNMoney(DiscountPrice);
-        //    }
-        //}
+        public string DiscountPriceStr
+        {
+            get
+            {
+                return Helper.FormatVNMoney(DiscountPrice);
+            }
+        }
         public DateTime CreatedAt { get; set; }
         public List<int> VoucherIdList { get; set; }
 

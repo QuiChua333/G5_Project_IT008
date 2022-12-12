@@ -51,9 +51,10 @@
                     <TextBlock HorizontalAlignment="Left"
                                Margin="20,10,0,10"
                                Text="SỬA THÔNG TIN KHÁCH HÀNG"
-                               Foreground="Black"
-                               FontWeight="Bold"
-                               FontSize="20" />
+                               FontFamily="{StaticResource MaterialDesignFont}" 
+                               FontSize="28" 
+                               FontWeight="Bold" 
+                               Foreground="#FF80CDED" />
                 </Border>
 
             </Grid>

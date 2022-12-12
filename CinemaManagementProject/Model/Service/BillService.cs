@@ -151,7 +151,7 @@ namespace CinemaManagementProject.Model.Service
                                              {
                                                  BillId = pi.BillId,
                                                  ProductId = pi.ProductId,
-                                                 //ProductName = pi.Product.DisplayName,
+                                                 ProductName = pi.Product.ProductName,
                                                  PrizePerProduct = pi.PrizePerProduct,
                                                  Quantity = pi.Quantity
                                              }).ToList(),
@@ -180,10 +180,10 @@ namespace CinemaManagementProject.Model.Service
                         billInfo.TicketInfo = new TicketBillInfoDTO()
                         {
                             roomId = roomId,
-                            movieName = showtime.Movie.DisplayName,
-                            ShowDate = showtime.ShowtimeSetting.ShowDate,
-                            StartShowTime = showtime.StartTime,
-                            TotalPriceTicket = tickets.Count() * showtime.TicketPrice,
+                            movieName = showtime.Film.FilmName,
+                            ShowDate = (DateTime)showtime.StartTime,
+                            //StartShowTime = showtime.StartTime,
+                            TotalPriceTicket = (float)(tickets.Count() * showtime.Price),
                             seats = seatList,
                         };
                     }

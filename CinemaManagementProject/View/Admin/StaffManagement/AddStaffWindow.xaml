@@ -248,6 +248,7 @@
                                 Margin="20 -10 45 0"                          
                                 Grid.Column="1"
                                 x:Name="StartDate"
+                                FontSize="15"
                                 SelectedDate="{Binding StartDate, Mode=TwoWay}" VerticalAlignment="Top">
                     </DatePicker>
                 </Grid>
