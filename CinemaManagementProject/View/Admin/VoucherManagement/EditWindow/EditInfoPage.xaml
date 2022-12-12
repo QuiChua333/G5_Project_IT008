@@ -76,7 +76,8 @@
                                    FontFamily="{DynamicResource MaterialDesignFont}"
                                    VerticalContentAlignment="Center">
                         </Label>
-                        <TextBox Grid.Column="1"
+                        <TextBox     x:Name="vrName"
+                                     Grid.Column="1"
                                      Width="auto"
                                      Height="25"
                                      FontSize="16"
@@ -103,7 +104,8 @@
                                    FontFamily="{DynamicResource MaterialDesignFont}"
                                    VerticalContentAlignment="Center">
                         </Label>
-                        <TextBox Grid.Column="1"
+                        <TextBox     x:Name="price"
+                                     Grid.Column="1"
                                      Width="auto"
                                      Height="25"
                                      FontSize="16"
@@ -159,8 +161,8 @@
                                          HorizontalAlignment="Left"
                                          Padding="15,0,0,0"
                                          Margin="150,0,0,0"
-                                         Checked="no_Checked">
-                        </RadioButton>
+                                         Checked="no_Checked"
+                                         />
                     </Grid>
 
                     <Grid Grid.Row="4">
@@ -177,7 +179,8 @@
                                    VerticalContentAlignment="Center">
                         </Label>
 
-                        <DatePicker Grid.Column="1"
+                        <DatePicker    x:Name="date1"
+                                        Grid.Column="1"
                                         Width="130"
                                         HorizontalAlignment="Left"
                                         FontSize="16"
@@ -198,7 +201,8 @@
                                                      Height="20"
                                                      Opacity="0.8"/>
 
-                        <DatePicker Grid.Column="1"
+                        <DatePicker     x:Name="date2"
+                                        Grid.Column="1"
                                         Width="130"
                                         HorizontalAlignment="Right"
                                         FontSize="16"
@@ -213,7 +217,8 @@
                     </Grid>
 
                     <Grid Grid.Row="5">
-                        <CheckBox HorizontalAlignment="Left" 
+                        <CheckBox     x:Name="chkBox"
+                                      HorizontalAlignment="Left" 
                                       VerticalAlignment="Center"
                                       IsChecked="{Binding EnableMerge,Mode=TwoWay}">
                         </CheckBox>
@@ -264,7 +269,8 @@
                                    FontFamily="{DynamicResource MaterialDesignFont}"
                                    VerticalContentAlignment="Center">
                         </Label>
-                        <ComboBox Grid.Column="1"
+                        <ComboBox       x:Name="cbb"
+                                      Grid.Column="1"
                                       BorderBrush="#67C6E6"
                                       SelectedIndex="0"
                                       FontWeight="Medium"
@@ -292,7 +298,8 @@
                                    FontFamily="{DynamicResource MaterialDesignFont}"
                                    VerticalContentAlignment="Center">
                         </Label>
-                        <TextBox Grid.Column="1"
+                        <TextBox    x:Name="minitotal"
+                                    Grid.Column="1"
                                      Width="auto"
                                      Height="25"
                                      FontSize="16"

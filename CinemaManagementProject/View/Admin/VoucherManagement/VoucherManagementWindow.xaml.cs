@@ -49,5 +49,7 @@ namespace CinemaManagementProject.View.Admin.VoucherManagement
             scv.ScrollToVerticalOffset(scv.VerticalOffset - e.Delta);
             e.Handled = true;
         }
+
+     
     }
 }

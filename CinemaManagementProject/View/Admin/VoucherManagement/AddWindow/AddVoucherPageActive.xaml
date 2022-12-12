@@ -5,16 +5,24 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:Search="clr-namespace:CinemaManagementProject.Component.Search"
-      xmlns:local="clr-namespace:CinemaManagementProject.View.Admin.VoucherManagement.AddWindow"
+      xmlns:local="clr-namespace:CinemaManagementProject.View.Admin.VoucherManagement.AddWindow" xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
       mc:Ignorable="d" 
       d:DesignHeight="419.4" d:DesignWidth="939.4"
-      Title="AddVoucherPageActive">
+      Title="AddVoucherPageActive"
+      DataContext="{StaticResource VoucherVM}">
 
-    <Grid>
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding FirstLoadMiniCM}" />
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+
+    <Grid Grid.Row="3">
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="30"/>
+            <RowDefinition Height="30" />
         </Grid.RowDefinitions>
+
         <Grid Grid.Row="0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="5*"/>
@@ -39,7 +47,7 @@
                             <ColumnDefinition Width="109*"/>
                         </Grid.ColumnDefinitions>
                         <Label  Background="#F0DE7E"
-                                    Content="GIÁNG SINH BÙNG NỔ"
+                                    Content="{Binding VoucherReleaseName}"
                                     Foreground="#000000"
                                     FontFamily="{DynamicResource MaterialDesignFont}"
                                     FontWeight="Black"
@@ -60,7 +68,10 @@
                                            Height="30"
                                            Corner="10"
                                            PlaceHolder="Tìm Kiếm"
-                                           IconSize="20"/>
+                                           IconSize="20"
+                                           Margin="0,0,0,5"
+                                       x:Name="SearchBox"
+                                           SearchTextChange="Search_SearchTextChange"/>
                     </Grid>
 
                     <Grid Grid.Column="1">
@@ -103,7 +114,8 @@
                                               Background="White"
                                               Foreground="#000000"
                                               
-                                              Margin="0,-7,0,-7">
+                                              Margin="0,-7,0,-7"
+                                              Command="{Binding DeleteMiniVoucherCM}">
                                         <MenuItem.Header>
                                             <StackPanel Orientation="Horizontal" Margin="-12,0,0,0"
                                                         Height="32">
@@ -128,7 +140,8 @@
                                               Background="White"
                                               Foreground="#000000"
                                               
-                                              Margin="0,-7,0,-7">
+                                              Margin="0,-7,0,-7"
+                                              Command="{Binding LoadAddMiniVoucherCM}">
                                         <MenuItem.Header>
                                             <StackPanel Orientation="Horizontal" Margin="-12,0,0,0"
                                                         Height="32">
@@ -154,7 +167,8 @@
                                               Background="White"
                                               Foreground="#000000"
                                               
-                                              Margin="0,-7,0,-7">
+                                              Margin="0,-7,0,-7"
+                                              Command="{Binding LoadAddListMiniVoucherCM}">
                                         <MenuItem.Header>
                                             <StackPanel Orientation="Horizontal" Margin="-12,0,0,0"
                                                         Height="32">
@@ -215,7 +229,8 @@
                                               Background="White"
                                               Foreground="#000000"
                                               
-                                              Margin="0,-7,0,-7">
+                                              Margin="0,-7,0,-7"
+                                              Command="{Binding ReleaseVoucherExcelCM}">
                                         <MenuItem.Header>
                                             <StackPanel Orientation="Horizontal" Margin="-12,0,0,0"
                                                         Height="32">
@@ -239,8 +254,10 @@
                                     <MenuItem Cursor="Hand"
                                               Background="White"
                                               Foreground="#000000"
-                                              
-                                              Margin="0,-7,0,-7">
+                                              x:Name="releasebtn"
+                                              Margin="0,-7,0,-7"
+                                              Command="{Binding OpenReleaseVoucherCM}"
+                                              CommandParameter="{Binding ElementName=releasebtn}">
                                         <MenuItem.Header>
                                             <StackPanel Orientation="Horizontal" Margin="-12,0,0,0"
                                                         Height="32">
@@ -267,7 +284,8 @@
 
                     </Grid>
 
-                    <Grid Grid.Column="2" Margin="-20,0,0,0">
+
+                    <Grid Grid.Column="2" Margin="-30,0,0,0">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="50*"/>
                             <ColumnDefinition Width="60*"/>
@@ -281,7 +299,8 @@
                                    VerticalContentAlignment="Center"
                                    Margin="0,0,0,5">
                         </Label>
-                        <ComboBox Grid.Column="1"
+                        <ComboBox     x:Name="cbb"
+                                      Grid.Column="1"
                                       BorderBrush="#67C6E6"
                                       SelectedIndex="0"
                                       FontWeight="Medium"
@@ -289,10 +308,12 @@
                                       FontFamily="{DynamicResource MaterialDesignFont}"
                                       Foreground="{StaticResource Gray1}"
                                       HorizontalContentAlignment="Center"
->
-                            <ComboBoxItem Content="Toàn bộ" FontSize="14"/>
-                            <ComboBoxItem Content="Chưa phát hành" FontSize="14"/>
-                            <ComboBoxItem Content="Đã phát hành" FontSize="14"/>
+                                      SelectionChanged="ComboBox_SelectionChanged"
+                                      SelectedItem="{Binding SelectedCbbFilter,Mode=OneWayToSource}">
+                            <ComboBoxItem Tag="Toàn bộ" Content="Toàn bộ" FontSize="14"/>
+                            <ComboBoxItem Tag="Chưa phát hành" Content="Chưa phát hành" FontSize="14"/>
+                            <ComboBoxItem Tag="Đã phát hành" Content="Đã phát hành" FontSize="14"/>
+                            <ComboBoxItem Tag="Đã sử dụng" Content="Đã sử dụng" FontSize="14"/>
                         </ComboBox>
                     </Grid>
                 </Grid>
@@ -303,16 +324,19 @@
                         </Border.Effect>
 
                         <ScrollViewer VerticalScrollBarVisibility="Auto"
-                                          HorizontalScrollBarVisibility="Disabled" PreviewMouseWheel="ScrollViewer_PreviewMouseWheel" >
+                                          HorizontalScrollBarVisibility="Disabled" 
+                                      PreviewMouseWheel="ScrollViewer_PreviewMouseWheel">
 
                             <Grid >
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="151*"/>
-                                    <ColumnDefinition Width="276*"/>
+                                    <ColumnDefinition Width="118*"/>
+                                    <ColumnDefinition Width="171*"/>
+                                    <ColumnDefinition Width="566*"/>
                                 </Grid.ColumnDefinitions>
                                 <ListView x:Name="Listviewmini"
                                 ItemsSource="{Binding ListViewVoucher,UpdateSourceTrigger=PropertyChanged}"
-                                Focusable="False" Grid.ColumnSpan="2">
+                                Focusable="False"  
+                                 Grid.ColumnSpan="3">
                                     <ListView.View>
                                         <GridView>
                                             <GridViewColumn Width="30">
@@ -320,11 +344,16 @@
                                                     <DataTemplate>
                                                         <StackPanel Orientation="Horizontal"
                                                         Focusable="False">
-                                                            <CheckBox Content="{Binding id}"
+                                                            <CheckBox Content="{Binding Id}"
                                                           x:Name="allcheck"
-                                                          IsChecked="{Binding IsChecked}"
-                                                         >
+                                                          IsChecked="{Binding IsChecked}" >
 
+                                                                <i:Interaction.Triggers>
+                                                                    <i:EventTrigger EventName="Click">
+                                                                        <i:InvokeCommandAction Command="{Binding ElementName=Listviewmini, Path=DataContext.StoreWaitingListCM}"
+                                                                                   CommandParameter="{Binding ElementName=allcheck}" />
+                                                                    </i:EventTrigger>
+                                                                </i:Interaction.Triggers>
                                                             </CheckBox>
 
                                                         </StackPanel>
@@ -335,7 +364,7 @@
                                                 Width="140">
                                                 <GridViewColumn.CellTemplate>
                                                     <DataTemplate>
-                                                        <TextBlock Text="{Binding code}"
+                                                        <TextBlock Text="{Binding VoucherCode}"
                                                        Margin="15,0,0,0"
                                                        FontSize="14" />
                                                     </DataTemplate>
@@ -345,7 +374,7 @@
                                                 Width="200">
                                                 <GridViewColumn.CellTemplate>
                                                     <DataTemplate>
-                                                        <TextBlock Text="{Binding name}"
+                                                        <TextBlock Text="{Binding CustomerName}"
                                                        Margin="18,0,0,0"
                                                        FontSize="14" />
                                                     </DataTemplate>
@@ -355,7 +384,7 @@
                                                 Width="160">
                                                 <GridViewColumn.CellTemplate>
                                                     <DataTemplate>
-                                                        <TextBlock Text="{Binding nph,StringFormat=dd/MM/yyyy}"
+                                                        <TextBlock Text="{Binding ReleaseAt,StringFormat=dd/MM/yyyy}"
                                                        Margin="20,0,0,0"
                                                        FontSize="14" />
                                                     </DataTemplate>
@@ -365,7 +394,7 @@
                                                 Width="150">
                                                 <GridViewColumn.CellTemplate>
                                                     <DataTemplate>
-                                                        <TextBlock Text="{Binding nsd,StringFormat=dd/MM/yyyy}"
+                                                        <TextBlock Text="{Binding UsedAt,StringFormat=dd/MM/yyyy}"
                                                        Margin="20,0,0,0"
                                                        FontSize="14" />
                                                     </DataTemplate>
@@ -375,7 +404,7 @@
                                                 Width="135">
                                                 <GridViewColumn.CellTemplate>
                                                     <DataTemplate>
-                                                        <TextBlock Text="{Binding trangthai}"
+                                                        <TextBlock Text="{Binding VoucherStatus}"
                                                        Margin="20,0,0,0"
                                                        FontSize="14" />
                                                     </DataTemplate>
@@ -406,7 +435,8 @@
                        HorizontalAlignment="Left"
                        Margin="10,0,0,0">
             </Label>
-            <TextBlock Text="0"
+            <TextBlock    
+                           Text="{Binding NumberSelected}"
                            FontFamily="{DynamicResource MaterialDesignFont}"
                            FontSize="14"
                            FontWeight="Medium"          
@@ -416,7 +446,8 @@
 
             </TextBlock>
 
-            <TextBlock Text="0"
+            <TextBlock     x:Name="result"
+                            Text="{Binding ListViewVoucher.Count}"
                            FontFamily="{DynamicResource MaterialDesignFont}"
                            FontWeight="Medium"   
                            FontSize="14" 
@@ -426,6 +457,7 @@
 
             </TextBlock>
             <Label Content="Kết quả:"
+                   
                        FontSize="14"   
                        FontFamily="{DynamicResource MaterialDesignFont}"
                        FontWeight="Medium"

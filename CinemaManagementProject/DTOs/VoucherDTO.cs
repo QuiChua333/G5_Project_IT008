@@ -23,5 +23,13 @@ namespace CinemaManagementProject.DTOs
         public DateTime UsedAt { get; set; }
         public DateTime ReleaseAt { get; set;}
 
+        private bool _IsChecked;
+
+        public bool IsChecked
+        {
+            get { return _IsChecked; }
+            set { _IsChecked = value; OnPropertyChanged(); }
+        }
+
     }
 }

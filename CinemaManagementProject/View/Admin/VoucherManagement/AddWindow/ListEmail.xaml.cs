@@ -23,5 +23,15 @@ namespace CinemaManagementProject.View.Admin.VoucherManagement.AddWindow
         {
             InitializeComponent();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void listbox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }

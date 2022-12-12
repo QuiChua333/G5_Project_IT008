@@ -12,6 +12,7 @@ using System.Windows.Controls;
 using CinemaManagementProject.Views;
 using CinemaManagementProject.Model.Service;
 using System.Collections.ObjectModel;
+using CinemaManagementProject.View.Admin.VoucherManagement.AddWindow;
 
 namespace CinemaManagementProject.ViewModel.AdminVM.VoucherManagementVM
 {
@@ -41,9 +42,11 @@ namespace CinemaManagementProject.ViewModel.AdminVM.VoucherManagementVM
             get { return waitingMiniVoucher; }
             set { waitingMiniVoucher = value; }
         }
+
+       
         VoucherReleaseDTO oldVer = new VoucherReleaseDTO();
         public static bool IsUpdate=false;
-
+        public static bool HaveUsed = false;
 
 
         public void LoadEditInfoViewDataFunc(EditInfoPage w)
@@ -58,6 +61,7 @@ namespace CinemaManagementProject.ViewModel.AdminVM.VoucherManagementVM
                 {
                     w.yes.IsChecked = true;
                     w.no.IsChecked = false;
+                    w.no.IsEnabled = false;
                 }
                 else
                 {
@@ -130,6 +134,9 @@ namespace CinemaManagementProject.ViewModel.AdminVM.VoucherManagementVM
                     ListViewVoucher = new ObservableCollection<VoucherDTO>(SelectedItem.Vouchers);
                     StoreAllMini = new ObservableCollection<VoucherDTO>(ListViewVoucher);
                     NumberSelected = 0;
+                    EditInfoPage w = new EditInfoPage();
+                    LoadEditInfoViewDataFunc(w);
+                    mainFrame.Content = w;
                 }
                 catch (System.Data.Entity.Core.EntityException e)
                 {
@@ -146,6 +153,83 @@ namespace CinemaManagementProject.ViewModel.AdminVM.VoucherManagementVM
                 CustomMessageBox.ShowOk(addSuccess, "Lỗi", "OK", CustomMessageBoxImage.Error);
             }
         }
+        public async Task DeleteMiniVoucherFunc()
+        {
+            if (WaitingMiniVoucher.Count == 0)
+            {
+                CustomMessageBox.ShowOk("Danh sách chọn đang trống!", "Cảnh báo", "Ok", CustomMessageBoxImage.Warning);
+                return;
+            }
+
+            (bool deleteSuccess, string messageFromDelete) = await VoucherService.Ins.DeteleVouchers(WaitingMiniVoucher);
+
+            if (deleteSuccess)
+            {
+                CustomMessageBox.ShowOk(messageFromDelete, "Thông báo", "Ok", CustomMessageBoxImage.Success);
+                try
+                {
+                    (VoucherReleaseDTO voucherReleaseDetail, bool haveAnyUsedVoucher) = await VoucherService.Ins.GetVoucherReleaseDetails(SelectedItem.VoucherReleaseCode);
+                    SelectedItem = voucherReleaseDetail;
+                    ListViewVoucher = new ObservableCollection<VoucherDTO>(SelectedItem.Vouchers);
+                    StoreAllMini = new ObservableCollection<VoucherDTO>(ListViewVoucher);
+                    if (AddVoucherPage.TopCheck != null )
+                    {
+                        AddVoucherPage.TopCheck.IsChecked = false;
+                    }
+                    if (AddVoucherPageActive.TopCheck != null )
+                    {
+                        AddVoucherPageActive.TopCheck.IsChecked = false;
+                    }
+                    NumberSelected = 0;
+                }
+                catch (System.Data.Entity.Core.EntityException e)
+                {
+                    Console.WriteLine(e);
+                    CustomMessageBox.ShowOk("Mất kết nối cơ sở dữ liệu", "Lỗi", "OK", CustomMessageBoxImage.Error);
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e);
+                    CustomMessageBox.ShowOk("Lỗi hệ thống", "Lỗi", "OK", CustomMessageBoxImage.Error);
+                }
+            }
+            else
+            {
+                CustomMessageBox.ShowOk(messageFromDelete, "Lỗi", "Ok", CustomMessageBoxImage.Error);
+            }
+        }
+        public void CheckAllMiniVoucherFunc(bool func)
+        {
+            if (func)
+            {
+                WaitingMiniVoucher.Clear();
+                foreach (var item in StoreAllMini)
+                {
+                    if (item.VoucherStatus != "Ðã phát hành")
+                    {
+                        WaitingMiniVoucher.Add(item.Id);
+                        item.IsChecked = true;
+                    }
+
+                }
+                NumberSelected = WaitingMiniVoucher.Count;
+            }
+            else
+            {
+                WaitingMiniVoucher.Clear();
+                foreach (var item in StoreAllMini)
+                {
+                    if (item.VoucherStatus != "Ðã phát hành")
+                    {
+                        item.IsChecked = false;
+                    }
+
+                }
+                NumberSelected = 0;
+            }
+        }
+
+
 
 
     }

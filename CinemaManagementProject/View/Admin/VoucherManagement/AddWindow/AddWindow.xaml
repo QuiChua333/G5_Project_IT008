@@ -133,7 +133,8 @@
             </Grid>
 
             <Frame Grid.Row="3"
-                   x:Name="mainFrame">
+                   x:Name="mainFrame"
+                   NavigationUIVisibility="Hidden">
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="Loaded">
                         <i:InvokeCommandAction Command="{Binding LoadAddInfopageCM}"

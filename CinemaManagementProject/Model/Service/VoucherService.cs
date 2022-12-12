@@ -1,13 +1,12 @@
 ﻿using CinemaManagementProject.DTOs;
-using CinemaManagementProject.Ultis;
+using CinemaManagementProject.Utils;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
-
+using System.Windows;
 
 namespace CinemaManagementProject.Model.Service
 {
@@ -61,7 +60,7 @@ namespace CinemaManagementProject.Model.Service
         }
         private string CreateNextVoucherReleaseId(string maxCode)
         {
-            //NVxxx
+            
             if (maxCode is null)
             {
                 return "FatFimFoo0000";
@@ -115,6 +114,7 @@ namespace CinemaManagementProject.Model.Service
                     bool haveAnyUsedVoucher = voucherRelease.Vouchers.Any(v => v.VoucherStatus == VOUCHER_STATUS.USED);
                     return (new VoucherReleaseDTO
                     {
+                        Id= voucherRelease.Id,
                         VoucherReleaseCode = voucherRelease.VoucherReleaseCode,
                         VoucherReleaseName = voucherRelease.VoucherReleaseName,
                         StartDate = (DateTime)voucherRelease.StartDate,
@@ -132,9 +132,9 @@ namespace CinemaManagementProject.Model.Service
                             VoucherCode = vR.VoucherCode,
                             VoucherStatus = vR.VoucherStatus,
                             VoucherReleaseId = (int)vR.VoucherReleaseId,
-                            UsedAt = (DateTime)vR.UsedAt,
+                            UsedAt = (DateTime)vR.UsedAt.GetValueOrDefault(),
                             CustomerName = vR.Customer?.CustomerName,
-                            ReleaseAt = (DateTime)vR.ReleaseAt,
+                            ReleaseAt = (DateTime)vR.ReleaseAt.GetValueOrDefault(),
                         }).ToList()
                     }, haveAnyUsedVoucher); ;
                 }
@@ -170,6 +170,127 @@ namespace CinemaManagementProject.Model.Service
             catch (Exception e)
             {
                 return (false, "Lỗi");
+            }
+        }
+        public async Task<(bool, string)> DeteleVoucherRelease(string VrCode)
+        {
+            try
+            {
+                using (var context = new CinemaManagementProjectEntities())
+                {
+                    VoucherRelease voucherRelease = (await context.VoucherReleases.FirstOrDefaultAsync(x => x.VoucherReleaseCode == VrCode));
+                    voucherRelease.IsDelete= true;
+                    await context.SaveChangesAsync();
+                    return (true, "Xóa đợt phát hành thành công");
+                }
+            }
+            catch (Exception e)
+            {
+                return (false, "Lỗi hệ thống");
+            }
+        }
+        public async Task<(bool, string)> DeteleVouchers(List<int> ListCodeId)
+        {
+            try
+            {
+                using (var context = new CinemaManagementProjectEntities())
+                {
+                    context.Vouchers.RemoveRange(context.Vouchers.Where(v => ListCodeId.Contains(v.Id)));
+                    await context.SaveChangesAsync();
+                    return (true, "Xóa danh sách voucher thành công");
+                }
+            }
+            catch (Exception e)
+            {
+                return (false, "Lỗi hệ thống");
+            }
+        }
+        public async Task<(bool, string, List<VoucherDTO> voucherList)> CreateVoucher(int voucherReleaseId, List<VoucherDTO> ListVoucher)
+        {
+            try
+            {
+                List<string> ListCode = ListVoucher.Select(v => v.VoucherCode).ToList();
+               
+                using (var context = new CinemaManagementProjectEntities())
+                {
+                    var IsExist = context.Vouchers.Any(v => ListCode.Contains(v.VoucherCode));
+                    
+                    if (IsExist)
+                    {
+                        return (false, "Mã voucher đã tồn tại!", null);
+                    }
+                    VoucherRelease vl = await context.VoucherReleases.FindAsync(voucherReleaseId);
+                    List<Voucher> vouchers = ListCode.Select(c => new Voucher
+                    {
+                        VoucherCode = c,
+                        VoucherReleaseId = voucherReleaseId,
+                        VoucherStatus = VOUCHER_STATUS.UNRELEASED,
+                        EnableMerge=vl.VoucherReleaseStatus,
+                    }).ToList();
+
+                    context.Vouchers.AddRange(vouchers);
+                    await context.SaveChangesAsync();
+                    return (true, "Thêm voucher thành công", vouchers.Select(v => new VoucherDTO
+                    {
+                        VoucherReleaseId = (int)v.VoucherReleaseId,
+                        Id = v.Id,
+                        VoucherCode = v.VoucherCode,
+                        VoucherStatus=VOUCHER_STATUS.UNRELEASED,       
+                    }).ToList());
+                }
+            }
+            catch (Exception e) 
+            {
+                return (false, "Lỗi hệ thống", null);
+            }
+        }
+        public async Task<(bool, string, List<VoucherDTO> voucherList)> CreateRandomVoucherList(VoucherReleaseDTO voucherRelease, List<string> ListCode)
+        {
+            try
+            {
+                List<Voucher> vouchers = ListCode.Select(c => new Voucher
+                {
+                    VoucherCode = c,
+                    VoucherReleaseId = voucherRelease.Id,
+                    VoucherStatus = VOUCHER_STATUS.UNRELEASED,
+                    EnableMerge = voucherRelease.VoucherReleaseStatus,
+                    
+                }).ToList();
+
+                using (var context = new CinemaManagementProjectEntities())
+                {
+                    context.Vouchers.AddRange(vouchers);
+                    await context.SaveChangesAsync();
+                    return (true, "Thêm danh sách voucher thành công", vouchers.Select(v => new VoucherDTO
+                    {
+                        VoucherReleaseId = (int)v.VoucherReleaseId,
+                        Id = v.Id,
+                        VoucherCode = v.VoucherCode,
+                        VoucherStatus = v.VoucherStatus,
+                        
+                    }).ToList());
+                }
+            }
+            catch (Exception)
+            {
+                return (false, "Lỗi hệ thống", null);
+            }
+        }
+        public async Task<(bool, string)> ReleaseMultiVoucher(List<int> ListCodeId)
+        {
+            try
+            {
+                string idList = string.Join(",", ListCodeId);
+                using (var context = new CinemaManagementProjectEntities())
+                {
+                    var sql = $@"Update [Voucher] SET VoucherStatus = '{VOUCHER_STATUS.REALEASED}', ReleaseAt = GETDATE()  WHERE Id IN ({idList})";
+                    await context.Database.ExecuteSqlCommandAsync(sql);
+                }
+                return (true, "Phát hành thành công");
+            }
+            catch (Exception e)
+            {
+                return (false, "Lỗi hệ thống");
             }
         }
 

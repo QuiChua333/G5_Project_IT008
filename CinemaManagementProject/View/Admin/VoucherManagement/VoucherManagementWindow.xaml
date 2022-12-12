@@ -10,6 +10,7 @@
       mc:Ignorable="d" 
       Title="VoucherManagementPage"
       Height="660" Width="1040"
+        WindowStartupLocation="CenterScreen"
       DataContext="{StaticResource VoucherVM}">
 
     <i:Interaction.Triggers>
@@ -191,6 +192,11 @@
                                                             BorderThickness="1"
                                                             CornerRadius="6"
                                                             Cursor="Hand">
+                                                            <i:Interaction.Triggers>
+                                                                <i:EventTrigger EventName="MouseLeftButtonUp">
+                                                                    <i:InvokeCommandAction Command="{Binding ElementName=VoucherListView, Path=DataContext.LoadDeleteVoucherCM}" />
+                                                                </i:EventTrigger>
+                                                            </i:Interaction.Triggers>
                                                             <Border.Style>
                                                                 <Style TargetType="{x:Type Border}">
                                                                     <Style.Triggers>

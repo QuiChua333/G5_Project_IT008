@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CinemaManagementProject.Ultis
+namespace CinemaManagementProject.Utils
 {
     public class VOUCHER_STATUS
     {

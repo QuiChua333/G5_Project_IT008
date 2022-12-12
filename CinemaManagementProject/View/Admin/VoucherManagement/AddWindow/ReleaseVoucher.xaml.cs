@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CinemaManagementProject.ViewModel.AdminVM.VoucherManagementVM;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,6 +23,20 @@ namespace CinemaManagementProject.View.Admin.VoucherManagement.AddWindow
         public ReleaseVoucher()
         {
             InitializeComponent();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+       
+
+            VoucherViewModel.WaitingMiniVoucher.Clear();
+            this.Close();
+        }
+
+        private void TextBox_Loaded(object sender, RoutedEventArgs e)
+        {
+            TextBox tb = sender as TextBox;
+            tb.Text = DateTime.Today.ToString();
         }
     }
 }

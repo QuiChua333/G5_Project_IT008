@@ -52,7 +52,7 @@
             <Grid Grid.Row="1">
                 <Label
                     Padding="0"
-                    Content="THÊM ĐỢT PHÁT HÀNH VOUCHER"
+                    Content="THÔNG TIN ĐỢT PHÁT HÀNH"
                     FontSize="25"
                     FontWeight="Bold"
                     VerticalAlignment="Center"
@@ -133,7 +133,8 @@
             </Grid>
 
             <Frame Grid.Row="3"
-                   x:Name="mainFrame">
+                   x:Name="mainFrame"
+                   NavigationUIVisibility="Hidden">
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="Loaded">
                         <i:InvokeCommandAction Command="{Binding LoadEditInfoPageCM}"

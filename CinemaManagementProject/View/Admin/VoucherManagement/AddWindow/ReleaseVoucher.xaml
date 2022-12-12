@@ -10,7 +10,8 @@
         Background="Transparent"
         WindowStartupLocation="CenterScreen"
         AllowsTransparency="True" 
-        >
+        xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+        DataContext="{StaticResource VoucherVM}">
     <Border CornerRadius="15" Background="#F5F5F5" BorderBrush="Gray" BorderThickness="0.3">
         <Border.Effect>
             <DropShadowEffect BlurRadius="10" Direction="270" Color="Black" ShadowDepth="4" Opacity="0.25"/>
@@ -31,7 +32,7 @@
                     BorderThickness="0"
                     HorizontalAlignment="Right"
                     Margin="0,10,3,0"
-                    >
+                    Command="{Binding ResetSelectedNumberCM}" Click="Button_Click">
                     <materialDesign:PackIcon Kind="Close" 
                                      Height="25"
                                      Width="25"
@@ -108,11 +109,22 @@
                                                       BorderBrush="#67C6E6"
                                                       SelectedIndex="0"
                                                       FontWeight="Medium"
+    
                                                       FontSize="14"
                                                       FontFamily="{DynamicResource MaterialDesignFont}"
                                                       Foreground="{StaticResource Gray1}"
-                                                      HorizontalContentAlignment="Center">
-                                                <ComboBoxItem Content="Top 5 khách hàng trong tháng"/>
+                                                      HorizontalContentAlignment="Center"
+                                                      SelectedItem="{Binding ReleaseCustomerList}"
+                                                   >
+                                                <i:Interaction.Triggers>
+                                                    <i:EventTrigger EventName="Loaded">
+                                                        <i:InvokeCommandAction Command="{Binding RefreshEmailListCM}" />
+                                                    </i:EventTrigger>
+                                                    <i:EventTrigger EventName="SelectionChanged">
+                                                        <i:InvokeCommandAction Command="{Binding RefreshEmailListCM}" />
+                                                    </i:EventTrigger>
+                                                </i:Interaction.Triggers>
+                                                <ComboBoxItem Tag="TOP_5_CUSTOMER" Content="Top 5 khách hàng trong tháng"/>
                                                 <ComboBoxItem Content="Top "/>
                                                 <ComboBoxItem Content="Top"/>
                                             </ComboBox>
@@ -137,6 +149,7 @@
                                                      FontWeight="Medium"
                                                      FontFamily="{DynamicResource MaterialDesignFont}"
                                                      Foreground="{StaticResource Gray1}"
+                                                     Loaded="TextBox_Loaded"
                                                     Padding="20,0,0,0">
                                             </TextBox>
                                         </Grid>
@@ -151,17 +164,32 @@
                                                    FontFamily="{DynamicResource MaterialDesignFont}" 
                                                    VerticalAlignment="Center" 
                                                    FontSize="14" />
-                                            <TextBox Grid.Column="1"
-                                                     Width="auto"
-                                                     Height="20"
-                                                     FontSize="14"
-                                                     BorderBrush="#67C6E6"
-                                                     VerticalAlignment="Center"
-                                                     FontWeight="Medium"
-                                                     FontFamily="{DynamicResource MaterialDesignFont}"
-                                                     Foreground="{StaticResource Gray1}"
-                                                    Padding="20,0,0,0">
-                                            </TextBox>
+                                           
+                                            <ComboBox     x:Name="percus"
+                                                      Grid.Column="1"
+                                                      Width="50"
+                                                      BorderBrush="#67C6E6"
+                                                      SelectedIndex="0"
+                                                      FontWeight="Medium"
+                                                      FontSize="14"
+                                                      IsReadOnly="True"
+                                                      FontFamily="{DynamicResource MaterialDesignFont}"
+                                                      Foreground="{StaticResource Gray1}"
+                                                      HorizontalContentAlignment="Center"
+                                                      HorizontalAlignment="Left"
+                                                      SelectedItem="{Binding PerCus}">
+                                                <ComboBoxItem Content="1" FontSize="14"/>
+                                                <ComboBoxItem Content="2" FontSize="14"/>
+                                                <ComboBoxItem Content="3" FontSize="14"/>
+                                                <ComboBoxItem Content="4" FontSize="14"/>
+                                                <ComboBoxItem Content="5" FontSize="14"/>
+                                                <i:Interaction.Triggers>
+                                                    <i:EventTrigger EventName="SelectionChanged">
+                                                        <i:InvokeCommandAction Command="{Binding CalculateNumberOfVoucherCM}"
+                                                                           CommandParameter="{Binding ElementName=percus}" />
+                                                    </i:EventTrigger>
+                                                </i:Interaction.Triggers>
+                                            </ComboBox>
                                         </Grid>
                                         <Grid Grid.Row="3">
                                             <Grid.ColumnDefinitions>
@@ -181,7 +209,8 @@
                                                     FontSize="12"
                                                     Background="#67C6E6"
                                                     Margin="20,0,0,0"
-                                                    Width="80">
+                                                    Width="80"
+                                                    Command="{Binding ShowListEmailCM}">
                                                 <Grid>
                                                     <Label Content="Xem"
                                                            FontSize="13"
@@ -209,7 +238,8 @@
                                                    VerticalAlignment="Center" 
                                                    FontSize="14" />
                                             <TextBox Grid.Column="1"
-                                                     Width="auto"
+                                                     HorizontalAlignment="Left"
+                                                     Width="50"
                                                      Height="20"
                                                      FontSize="14"
                                                      BorderBrush="#67C6E6"
@@ -217,7 +247,9 @@
                                                      FontWeight="Medium"
                                                      FontFamily="{DynamicResource MaterialDesignFont}"
                                                      Foreground="{StaticResource Gray1}"
-                                                    Padding="20,0,0,0">
+                                                     IsReadOnly="True"
+                                                    Padding="20,0,0,0"
+                                                     Text="{Binding ListCustomerEmail.Count, Mode=OneWay}">
                                             </TextBox>
                                         </Grid>
 
@@ -244,10 +276,10 @@
                                                    HorizontalAlignment="Center"
                                                    FontSize="14" />
                                         <Grid Grid.Row="1">
-                                            <ListBox 
+                                            <ListBox ItemsSource="{Binding ReleaseVoucherList}"
                                                      x:Name="listbox"
                                                      Margin="0,10,0,0"
-                                                     >
+                                                     SelectedIndex="{Binding SelectedWaitingVoucher}">
                                                 <ListBox.ItemContainerStyle>
                                                     <Style TargetType="ListBoxItem"
                                                            >
@@ -273,28 +305,11 @@
                                                                      FontSize="14" 
                                                                      FontWeight="Regular"
                                                                      FontFamily="{DynamicResource MaterialDesignFont}" 
-                                                                     Text="{Binding Code,Mode=TwoWay}" />
+                                                                     Text="{Binding VoucherCode}" />
                                                         </Grid>
                                                     </DataTemplate>
                                                 </ListBox.ItemTemplate>
-                                                <ListBoxItem>
-                                                    <Grid Margin="90,0,0,0">
-                                                        <Label Content="Mã:" 
-                                                               FontWeight="Regular" 
-                                                               Foreground="Black"
-                                                               FontFamily="{DynamicResource MaterialDesignFont}" 
-                                                               VerticalAlignment="Center" 
-                                                               HorizontalAlignment="Left"
-                                                               FontSize="14" />
-                                                        <TextBlock  VerticalAlignment="Center"
-                                                                    Margin="40,0,0,0"
-                                                                    Foreground="Black"
-                                                                    FontSize="14" 
-                                                                    FontWeight="Regular"
-                                                                    FontFamily="{DynamicResource MaterialDesignFont}" 
-                                                                    Text="abcccccccccc"/>
-                                                    </Grid>
-                                                </ListBoxItem>
+                                                
 
 
                                             </ListBox>
@@ -316,7 +331,7 @@
                                                    VerticalAlignment="Center"
                                                    HorizontalAlignment="Right"
                                                    Margin="10,0,15,0"
-                                                   Text="1"/>
+                                                   Text="{Binding ReleaseVoucherList.Count}"/>
                                         </Grid>
                                     </Grid>
                                 </Border>
@@ -335,7 +350,7 @@
                         Margin="0,0,10,0"
                         Width="60" 
                         Height="30"
-                        >
+                        Command="{Binding ReleaseVoucherCM}">
                 </Button>
             </Grid>
         </Grid>
