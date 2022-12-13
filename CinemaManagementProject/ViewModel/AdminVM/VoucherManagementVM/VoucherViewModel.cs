@@ -324,9 +324,10 @@ namespace CinemaManagementProject.ViewModel.AdminVM.VoucherManagementVM
                     VoucherReleaseId = SelectedItem.Id
                 });
             });
-            SaveMiniVoucherCM = new RelayCommand<object>((p) => { return true; }, async (p) =>
+            SaveMiniVoucherCM = new RelayCommand<Window>((p) => { return true; }, async (p) =>
             {
                 await SaveMiniVoucherFunc();
+                p.Close();
             });
 
             StoreWaitingListCM = new RelayCommand<CheckBox>((p) => { return true; }, (p) =>

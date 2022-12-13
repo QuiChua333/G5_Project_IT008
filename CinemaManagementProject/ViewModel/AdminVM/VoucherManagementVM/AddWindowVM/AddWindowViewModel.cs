@@ -14,6 +14,7 @@ using System.Runtime.Remoting.Messaging;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
+using System.Windows.Forms;
 using System.Windows.Input;
 using System.Windows.Media;
 
@@ -277,6 +278,21 @@ namespace CinemaManagementProject.ViewModel.AdminVM.VoucherManagementVM
                         return;
                     }
                 }
+                try
+                {
+                    (VoucherReleaseDTO voucherReleaseDetail, _) = await VoucherService.Ins.GetVoucherReleaseDetails(selectedItem.VoucherReleaseCode);
+                    SelectedItem = voucherReleaseDetail;
+                    ListViewVoucher = new ObservableCollection<VoucherDTO>(SelectedItem.Vouchers);
+                    StoreAllMini = new ObservableCollection<VoucherDTO>(ListViewVoucher);
+                }
+                catch (System.Data.Entity.Core.EntityException e)
+                {
+                    CustomMessageBox.ShowOk("Mất kết nối cơ sở dữ liệu", "Lỗi", "OK", CustomMessageBoxImage.Error);
+                }
+                catch (Exception e)
+                {
+                    CustomMessageBox.ShowOk("Lỗi hệ thống", "Lỗi", "OK", CustomMessageBoxImage.Error);
+                }
                 if (AddVoucherPage.TopCheck !=null && AddVoucherPage.CBB != null)
                 {
                     AddVoucherPage.TopCheck.IsChecked = false;
@@ -411,7 +427,7 @@ namespace CinemaManagementProject.ViewModel.AdminVM.VoucherManagementVM
             ListMiniVoucher.RemoveAt(SelectedWaitingVoucher);
         }
 
-        public void ActiveButton(Button p)
+        public void ActiveButton(System.Windows.Controls.Button p)
         {
             if (p is null) return;
             p.IsEnabled = true;

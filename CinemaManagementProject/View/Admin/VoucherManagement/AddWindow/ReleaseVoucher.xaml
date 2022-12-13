@@ -125,8 +125,8 @@
                                                     </i:EventTrigger>
                                                 </i:Interaction.Triggers>
                                                 <ComboBoxItem Tag="TOP_5_CUSTOMER" Content="Top 5 khách hàng trong tháng"/>
-                                                <ComboBoxItem Content="Top "/>
-                                                <ComboBoxItem Content="Top"/>
+                                                <ComboBoxItem Tag="NEW_CUSTOMER" Content="Khách hàng mới trong tháng"/>
+                                                <ComboBoxItem  Tag="COMMON" Content="Khác"/>
                                             </ComboBox>
                                         </Grid>
                                         <Grid Grid.Row="1">
@@ -344,11 +344,11 @@
                 <Button HorizontalAlignment="Right"
                         VerticalAlignment="Center"
                         Style="{StaticResource CustomButton}"
-                        Content="Lưu"
+                        Content="Xác nhận"
                         FontSize="12"
                         Background="{StaticResource ColorButtonBlue}"
                         Margin="0,0,10,0"
-                        Width="60" 
+                        Width="80" 
                         Height="30"
                         Command="{Binding ReleaseVoucherCM}">
                 </Button>

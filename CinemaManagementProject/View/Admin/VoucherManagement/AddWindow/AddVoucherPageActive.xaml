@@ -5,12 +5,15 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:Search="clr-namespace:CinemaManagementProject.Component.Search"
-      xmlns:local="clr-namespace:CinemaManagementProject.View.Admin.VoucherManagement.AddWindow" xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+      xmlns:i="http://schemas.microsoft.com/xaml/behaviors" 
+      xmlns:local="clr-namespace:CinemaManagementProject.ViewModel.AdminVM.VoucherManagementVM.AddWindowVM"
       mc:Ignorable="d" 
       d:DesignHeight="419.4" d:DesignWidth="939.4"
       Title="AddVoucherPageActive"
       DataContext="{StaticResource VoucherVM}">
-
+    <Page.Resources>
+        <local:CheckBoxVisibleConverter x:Key="Converter" />
+    </Page.Resources>
     <i:Interaction.Triggers>
         <i:EventTrigger EventName="Loaded">
             <i:InvokeCommandAction Command="{Binding FirstLoadMiniCM}" />
@@ -346,7 +349,8 @@
                                                         Focusable="False">
                                                             <CheckBox Content="{Binding Id}"
                                                           x:Name="allcheck"
-                                                          IsChecked="{Binding IsChecked}" >
+                                                          IsChecked="{Binding IsChecked}"
+                                                          Visibility="{Binding Status,Converter={StaticResource Converter}}">
 
                                                                 <i:Interaction.Triggers>
                                                                     <i:EventTrigger EventName="Click">

@@ -88,27 +88,25 @@
                                    FontFamily="{DynamicResource MaterialDesignFont}" 
                                    VerticalAlignment="Center" 
                                    FontSize="14" />
-                                <TextBox Width="190" 
+                                <TextBox Width="220" 
                                          Margin="90,10,0,10"
-                                         Padding="10,0,0,0"
+                                         Padding="10,0,20,0"
                                          BorderBrush="#67C6E6" 
                                          Foreground="{StaticResource Gray1}"
                                          FontSize="14" 
                                          FontFamily="{DynamicResource MaterialDesignFont}" 
                                          Text="{Binding Email,Mode=TwoWay}" />
-
-                               
                                 <Label   
                                      VerticalAlignment="Center"
                                      HorizontalAlignment="Right"
-                                     Margin="0,0,7,5">
+                                     Margin="0,0,0,5">
                                     <materialDesign:PackIcon Kind="Close" 
                                          Height="20"
                                          Width="20"
                                          Foreground="{StaticResource Gray1}"
                                         VerticalAlignment="Center"
                                          HorizontalAlignment="Right"
-                                        Margin="0,0,7,5"/>
+                                        />
                                     <i:Interaction.Triggers>
                                         <i:EventTrigger EventName="MouseLeftButtonUp">
                                             <i:InvokeCommandAction Command="{Binding ElementName=listbox, Path=DataContext.LessEmailCM}" />
@@ -168,7 +166,7 @@
                         FontSize="12"
                         Background="{StaticResource ColorButtonBlue}"
                         Margin="0,0,10,0"
-                        Width="70" >
+                        Width="70" Click="Button_Click_1" >
                     </Button>
                 </Grid>
             </Grid>

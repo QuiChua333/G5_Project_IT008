@@ -10,6 +10,7 @@
         Background="Transparent"
         WindowStartupLocation="CenterScreen"
         AllowsTransparency="True" 
+        x:Name="mainwd"
         DataContext="{StaticResource VoucherVM}">
     <Border CornerRadius="15" Background="#F5F5F5" BorderBrush="Gray" BorderThickness="0.3">
         <Border.Effect>
@@ -151,7 +152,8 @@
                         Background="{StaticResource ColorButtonBlue}"
                         Margin="0,0,10,0"
                         Width="70" 
-                        Command="{Binding SaveMiniVoucherCM}">
+                        Command="{Binding SaveMiniVoucherCM}"
+                        CommandParameter="{Binding ElementName=mainwd}">
                     </Button>
                 </Grid>
             </Grid>

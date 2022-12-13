@@ -62,6 +62,13 @@ namespace CinemaManagementProject.ViewModel.AdminVM.VoucherManagementVM
                     w.yes.IsChecked = true;
                     w.no.IsChecked = false;
                     w.no.IsEnabled = false;
+                    w.vrName.IsReadOnly = true;
+                    w.price.IsReadOnly = true;
+                    w.date1.IsEnabled = false;
+                    w.date2.IsEnabled = false;
+                    w.cbb.IsEnabled = false;
+                    w.minitotal.IsReadOnly = true;
+                    w.chkBox.IsEnabled = false;
                 }
                 else
                 {
@@ -79,6 +86,7 @@ namespace CinemaManagementProject.ViewModel.AdminVM.VoucherManagementVM
                 {
                     w.btnSave.Visibility = Visibility.Visible;
                     w.btnExit.Visibility = Visibility.Collapsed;
+                    
                 }
                 else
                 {

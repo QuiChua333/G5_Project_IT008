@@ -35,20 +35,8 @@ namespace CinemaManagementProject.ViewModel.AdminVM.VoucherManagementVM
                 _ReleaseCustomerList = value;
             }
         }
-        private ObservableCollection<CustomerEmail> _ListCustomerEmail = new ObservableCollection<CustomerEmail>
-        {
-            new CustomerEmail
-            {
-                Name="Quí",
-                Email = "quichua333@gmail.com",
-            },
-            new CustomerEmail
-            {
-                Name="Nhân",
-                Email = "quichua334@gmail.com",
-            }
-        };
-
+        private ObservableCollection<CustomerEmail> _ListCustomerEmail;
+      
         public ObservableCollection<CustomerEmail> ListCustomerEmail
         {
             get { return _ListCustomerEmail; }
@@ -210,13 +198,10 @@ namespace CinemaManagementProject.ViewModel.AdminVM.VoucherManagementVM
         public async Task RefreshEmailList()
         {
             if (ReleaseCustomerList is null) return;
-            MessageBox.Show(ReleaseCustomerList.Content.ToString());
             switch (ReleaseCustomerList.Content.ToString())
             {
                 case "Top 5 khách hàng trong tháng":
                     {
-                        MessageBox.Show("Vào thành công!");
-
                         List<CustomerDTO> list = await CustomerService.Ins.GetTop5CustomerEmail();
                         ListCustomerEmail = new ObservableCollection<CustomerEmail>();
 
@@ -325,10 +310,10 @@ namespace CinemaManagementProject.ViewModel.AdminVM.VoucherManagementVM
 
         protected async Task<(bool, string)> sendHtmlEmail(string type, List<CustomerEmail> customerList, List<List<string>> ListCodePerEmailList)
         {
+            
             var appSettings = ConfigurationManager.AppSettings;
             APP_EMAIL = appSettings["APP_EMAIL"];
             APP_PASSWORD = appSettings["APP_PASSWORD"];
-
             List<Task> listSendEmailTask = new List<Task>();
             try
             {
@@ -355,7 +340,7 @@ namespace CinemaManagementProject.ViewModel.AdminVM.VoucherManagementVM
             smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
             smtp.UseDefaultCredentials = false;
             smtp.Credentials = new NetworkCredential(APP_EMAIL, APP_PASSWORD);
-
+            
             MailMessage mail = new MailMessage();
             mail.IsBodyHtml = true;
 

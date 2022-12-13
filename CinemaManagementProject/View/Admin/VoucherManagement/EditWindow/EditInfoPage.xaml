@@ -220,17 +220,17 @@
                         <CheckBox     x:Name="chkBox"
                                       HorizontalAlignment="Left" 
                                       VerticalAlignment="Center"
-                                      IsChecked="{Binding EnableMerge,Mode=TwoWay}">
+                                      IsChecked="{Binding EnableMerge,Mode=TwoWay}" Content="Áp dụng gộp nhiều voucher cho một hóa đơn" FontSize="16" FontFamily="Montserrat Medium" FontWeight="Bold">
                         </CheckBox>
 
-                        <Label Content="Áp dụng gộp nhiều voucher cho một hóa đơn"
+                        <!--<Label Content="Áp dụng gộp nhiều voucher cho một hóa đơn"
                                    FontSize="16"
                                    FontWeight="Bold"
                                    Foreground="#000000"
                                    FontFamily="{DynamicResource MaterialDesignFont}"
                                    VerticalContentAlignment="Center"
                                    Margin="30,0,0,0">
-                        </Label>
+                        </Label>-->
                     </Grid>
 
 
@@ -337,7 +337,7 @@
                                    Foreground="{StaticResource Gray1}"
                                    VerticalContentAlignment="Center"
                                    HorizontalAlignment="Left"
-                                    >
+                                   >
                             </Label>
                             <TextBlock   FontSize="16"
                                      VerticalAlignment="Center"
