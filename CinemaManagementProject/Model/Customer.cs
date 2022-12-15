@@ -17,20 +17,20 @@ namespace CinemaManagementProject.Model
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Customer()
         {
-            this.Bills = new HashSet<Bill>();
-            this.Vouchers = new HashSet<Voucher>();
+            this.Bill = new HashSet<Bill>();
+            this.Voucher = new HashSet<Voucher>();
         }
     
         public int Id { get; set; }
         public string CustomerName { get; set; }
         public string PhoneNumber { get; set; }
         public string Email { get; set; }
+        public Nullable<System.DateTime> FirstDate { get; set; }
         public bool IsDeleted { get; set; }
-        public System.DateTime FirstDate { get; set; }
-    
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Bill> Bills { get; set; }
+        public virtual ICollection<Bill> Bill { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Voucher> Vouchers { get; set; }
+        public virtual ICollection<Voucher> Voucher { get; set; }
     }
 }

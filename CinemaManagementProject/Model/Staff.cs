@@ -17,9 +17,9 @@ namespace CinemaManagementProject.Model
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Staff()
         {
-            this.Bills = new HashSet<Bill>();
-            this.ProductReceives = new HashSet<ProductReceive>();
-            this.Troubles = new HashSet<Trouble>();
+            this.Bill = new HashSet<Bill>();
+            this.ProductReceive = new HashSet<ProductReceive>();
+            this.Trouble = new HashSet<Trouble>();
         }
     
         public int Id { get; set; }
@@ -33,12 +33,11 @@ namespace CinemaManagementProject.Model
         public string UserName { get; set; }
         public string UserPass { get; set; }
         public bool IsDeleted { get; set; }
-
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Bill> Bills { get; set; }
+        public virtual ICollection<Bill> Bill { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ProductReceive> ProductReceives { get; set; }
+        public virtual ICollection<ProductReceive> ProductReceive { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Trouble> Troubles { get; set; }
+        public virtual ICollection<Trouble> Trouble { get; set; }
     }
 }

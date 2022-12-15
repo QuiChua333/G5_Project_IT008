@@ -12,25 +12,19 @@ namespace CinemaManagementProject.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class Film
+    public partial class ShowTimeSetting
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Film()
+        public ShowTimeSetting()
         {
             this.ShowTime = new HashSet<ShowTime>();
         }
     
         public int Id { get; set; }
-        public string FilmName { get; set; }
-        public Nullable<int> Duration { get; set; }
-        public string FilmType { get; set; }
-        public string Country { get; set; }
-        public string Author { get; set; }
-        public string Genre { get; set; }
-        public Nullable<System.DateTime> ReleaseDate { get; set; }
-        public string FilmInfo { get; set; }
-        public bool IsDeleted { get; set; }
-
+        public Nullable<int> RoomId { get; set; }
+        public Nullable<System.DateTime> ShowDate { get; set; }
+    
+        public virtual Room Room { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ShowTime> ShowTime { get; set; }
     }

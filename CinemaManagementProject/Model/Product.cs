@@ -17,8 +17,8 @@ namespace CinemaManagementProject.Model
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Product()
         {
-            this.BillInfoes = new HashSet<BillInfo>();
-            this.ProductReceives = new HashSet<ProductReceive>();
+            this.BillInfo = new HashSet<BillInfo>();
+            this.ProductReceive = new HashSet<ProductReceive>();
         }
     
         public int Id { get; set; }
@@ -27,9 +27,9 @@ namespace CinemaManagementProject.Model
         public Nullable<float> Price { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<BillInfo> BillInfoes { get; set; }
+        public virtual ICollection<BillInfo> BillInfo { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ProductReceive> ProductReceives { get; set; }
+        public virtual ICollection<ProductReceive> ProductReceive { get; set; }
         public virtual ProductStorage ProductStorage { get; set; }
     }
 }

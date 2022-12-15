@@ -28,88 +28,88 @@ namespace CinemaManagementProject.Model.Service
         private ShowtimeService() { }
 
 
-        //public async Task<(bool IsSuccess, string message)> AddShowtime(ShowtimeDTO newShowtime)
-        //{
-        //    try
-        //    {
-        //        using (var context = new CinemaManagementProjectEntities())
-        //        {
+        public async Task<(bool IsSuccess, string message)> AddShowtime(ShowtimeDTO newShowtime)
+        {
+            try
+            {
+                using (var context = new CinemaManagementProjectEntities())
+                {
                     //Uncomment when release
                     //if (newShowtime.ShowDate < DateTime.Today)
                     //{
                     //    return (false,"Thời gian này đã qua không thể thêm suất chiếu" ,null);
                     //}
-                    //var showtimeSet = await context.ShowtimeSettings
-                    //.Where(s => DbFunctions.TruncateTime(s.ShowDate) == newShowtime.ShowDate.Date
-                    //&& s.RoomId == newShowtime.RoomId).FirstOrDefaultAsync();
+                    var showtimeSet = await context.ShowTimeSettings
+                    .Where(s => DbFunctions.TruncateTime(s.ShowDate) == newShowtime.ShowDate.Date
+                    && s.RoomId == newShowtime.RoomId).FirstOrDefaultAsync();
 
-                    //if (showtimeSet == null)
-                    //{
-                    //    showtimeSet = new ShowtimeSetting
-                    //    {
-                    //        RoomId = newShowtime.RoomId,
-                    //        ShowDate = newShowtime.ShowDate.Date,
-                    //    }; ;
-                    //    context.ShowtimeSettings.Add(showtimeSet);
-                    //    await context.SaveChangesAsync();
-                    //}
-                    //else
-                    //{
-                    //    Showtime show = null;
+                    if (showtimeSet == null)
+                    {
+                        showtimeSet = new ShowTimeSetting
+                        {
+                            RoomId = newShowtime.RoomId,
+                            ShowDate = newShowtime.ShowDate.Date,
+                        }; ;
+                        context.ShowTimeSettings.Add(showtimeSet);
+                        await context.SaveChangesAsync();
+                    }
+                    else
+                    {
+                        ShowTime show = null;
 
-                    //    Movie m = await context.Movies.FindAsync(newShowtime.MovieId);
-                    //    var newStartTime = newShowtime.StartTime;
-                    //    var newEndTime = newShowtime.StartTime + new TimeSpan(0, m.RunningTime, 0);
-                    //    show = showtimeSet.Showtimes.AsEnumerable().Where(s =>
-                    //    {
-                    //        var endTime = new TimeSpan(0, s.Movie.RunningTime, 0) + s.StartTime;
-                    //        return TimeBetwwenIn(newStartTime, newEndTime, s.StartTime, endTime + TIME.BreakTime);
-                    //    }).FirstOrDefault();
+                        Film m = await context.Films.FindAsync(newShowtime.FilmId);
+                        var newStartTime = newShowtime.StartTime;
+                        var newEndTime = newShowtime.StartTime + new TimeSpan(0, (int)m.Duration, 0);
+                        show = showtimeSet.ShowTime.AsEnumerable().Where(s =>
+                        {
+                            var endTime = new TimeSpan(0, (int)s.Film.Duration, 0) + s.StartTime;
+                            return TimeBetwwenIn((TimeSpan)newStartTime, (TimeSpan)newEndTime, (TimeSpan)s.StartTime, (TimeSpan)(endTime + TIME.BreakTime));
+                        }).FirstOrDefault();
 
-                    //    if (show != null)
-                    //    {
-                    //        var endTime = new TimeSpan(0, show.Movie.RunningTime, 0) + show.StartTime;
-                    //        return (false, $"Khoảng thời gian từ {Helper.GetHourMinutes(show.StartTime)} đến {Helper.GetHourMinutes(endTime + TIME.BreakTime)} đã có phim chiếu tại phòng {showtimeSet.RoomId}");
-                    //    }
-                    //}
+                        if (show != null)
+                        {
+                            var endTime = new TimeSpan(0, (int)show.Film.Duration, 0) + show.StartTime;
+                            return (false, $"Khoảng thời gian từ {Helper.GetHourMinutes((TimeSpan)show.StartTime)} đến {Helper.GetHourMinutes((TimeSpan)(endTime + TIME.BreakTime))} đã có phim chiếu tại phòng {showtimeSet.RoomId}");
+                        }
+                    }
 
-                    //Showtime showtime = new Showtime
-                    //{
-                    //    MovieId = newShowtime.MovieId,
-                    //    ShowtimeSettingId = showtimeSet.Id,
-                    //    StartTime = newShowtime.StartTime,
-                    //    TicketPrice = newShowtime.TicketPrice
-                    //};
-                    //context.Showtimes.Add(showtime);
+                    ShowTime showtime = new ShowTime
+                    {
+                        FilmId = newShowtime.FilmId,
+                        ShowTimeSettingId = showtimeSet.Id,
+                        StartTime = newShowtime.StartTime,
+                        Price = newShowtime.Price
+                    };
+                    context.ShowTimes.Add(showtime);
 
                     //setting seats in room for new showtime 
-                //    var seatIds = await (from s in context.Seats
-                //                         where s.RoomId == showtimeSet.RoomId
-                //                         select s.Id
-                //           ).ToListAsync();
-                //    List<SeatSetting> seatSetList = new List<SeatSetting>();
-                //    foreach (var seatId in seatIds)
-                //    {
-                //        seatSetList.Add(new SeatSetting
-                //        {
-                //            SeatId = seatId,
-                //            ShowTimeId = showtime.Id
-                //        });
-                //    }
-                //    context.SeatSettings.AddRange(seatSetList);
+                    var seatIds = await (from s in context.Seats
+                                         where s.RoomId == showtimeSet.RoomId
+                                         select s.Id
+                           ).ToListAsync();
+                    List<SeatSetting> seatSetList = new List<SeatSetting>();
+                    foreach (var seatId in seatIds)
+                    {
+                        seatSetList.Add(new SeatSetting
+                        {
+                            SeatId = seatId,
+                            ShowTimeId = showtime.Id
+                        });
+                    }
+                    context.SeatSettings.AddRange(seatSetList);
 
 
-                //    await context.SaveChangesAsync();
-                //    newShowtime.Id = showtime.Id;
-                //    return (true, "Thêm suất chiếu thành công");
-                //}
-        //    }
-        //    catch (Exception e)
-        //    {
-        //        return (false, "Lỗi hệ thống" + e.Message);
+                    await context.SaveChangesAsync();
+                    newShowtime.Id = showtime.Id;
+                    return (true, "Thêm suất chiếu thành công");
+                }
+            }
+            catch (Exception e)
+            {
+                return (false, "Lỗi hệ thống" + e.Message);
 
-        //    }
-        //}
+            }
+        }
         public async Task<(bool IsSuccess, string message)> DeleteShowtime(int showtimeId)
         {
 
@@ -125,6 +125,8 @@ namespace CinemaManagementProject.Model.Service
                     context.ShowTimes.Remove(show);
                     await context.SaveChangesAsync();
                 }
+
+
             }
             catch (Exception)
             {

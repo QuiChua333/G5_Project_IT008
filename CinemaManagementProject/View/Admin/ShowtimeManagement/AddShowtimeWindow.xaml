@@ -101,7 +101,9 @@
                                    FontSize="20" />
                             <ComboBox SelectedItem="{Binding movieSelected}"
                                       ItemsSource="{Binding MovieList}"
-                                      DisplayMemberPath="DisplayName"
+                                      DisplayMemberPath="FilmName"
+                                      Margin="0 0 0 0"
+                                      
                                       Style="{StaticResource MaterialDesignComboBox}"
                                       VerticalAlignment="Bottom"
                                       FontSize="20"
@@ -110,7 +112,7 @@
                                       Foreground="Black"
                                       Height="47"
                                       Width="479"
-                                      x:Name="_movieName">
+                                      x:Name="_movieName" VerticalContentAlignment="Bottom">
                                 <i:Interaction.Triggers>
                                     <i:EventTrigger EventName="SelectionChanged">
                                         <i:InvokeCommandAction Command="{Binding CalculateRunningTimeCM}"
@@ -230,7 +232,7 @@
                                             </Style>
                                         </StackPanel.Resources>
                                         <StackPanel>
-                                            <Label Content="{Binding movieSelected.DisplayName}" />
+                                            <Label Content="{Binding movieSelected.FilmName}" />
                                         </StackPanel>
                                         <StackPanel Orientation="Horizontal">
                                             <Label Content="Ngày chiếu:" />

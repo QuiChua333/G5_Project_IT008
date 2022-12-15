@@ -41,7 +41,7 @@ namespace CinemaManagementProject.Model.Service
                                         Name = s.CustomerName,
                                         Email = s.Email,
                                         PhoneNumber = s.PhoneNumber,
-                                        FirstDate = s.FirstDate
+                                        FirstDate = (DateTime)s.FirstDate
                                     }).ToList();
                 }
             }
@@ -87,14 +87,14 @@ namespace CinemaManagementProject.Model.Service
                 {
                     using (var context = new CinemaManagementProjectEntities())
                     {
-                        var customer = await context.Customers.Where(c =>/* !c.IsDeleted &&*/ c.FirstDate.Year == year).Select(c => new CustomerDTO
+                        var customer = await context.Customers.Where(c =>/* !c.IsDeleted &&*/ ((DateTime)c.FirstDate).Year == year).Select(c => new CustomerDTO
                         {
                             Id = c.Id,
                             Name = c.CustomerName,
                             PhoneNumber = c.PhoneNumber,
                             Email = c.Email,
-                            FirstDate = c.FirstDate,
-                            //Expense = (float)c.Bills.Where(b => b.CreateDate.Year == year).Sum(b => b.TotalPrize) 
+                            FirstDate = (DateTime)c.FirstDate,
+                            Expense = (float)c.Bill.Where(b => ((DateTime)c.FirstDate).Year == year).Sum(b => b.TotalPrize)
                         }).ToListAsync();
 
                         return customer;
@@ -104,15 +104,15 @@ namespace CinemaManagementProject.Model.Service
                 {
                     using (var context = new CinemaManagementProjectEntities())
                     {
-                        var customer = await context.Customers.Where(c => /*!c.IsDeleted && */c.FirstDate.Year == DateTime.Today.Year && c.FirstDate.Month == month)
+                        var customer = await context.Customers.Where(c => /*!c.IsDeleted && */((DateTime)c.FirstDate).Year == DateTime.Today.Year && ((DateTime)c.FirstDate).Month == month)
                             .Select(c => new CustomerDTO
                             {
                                 Id = c.Id,
                                 Name = c.CustomerName,
                                 PhoneNumber = c.PhoneNumber,
                                 Email = c.Email,
-                                FirstDate = c.FirstDate,
-                                //Expense = c.Bills.Where(b => b.CreateDate.Year == year && b.CreateDate.Month == month).Sum(b => (float?)b.TotalPrize) ?? 0
+                                FirstDate = (DateTime)c.FirstDate,
+                                Expense = c.Bill.Where(b => ((DateTime)c.FirstDate).Year == year && ((DateTime)c.FirstDate).Month == month).Sum(b => (float?)b.TotalPrize) ?? 0
                             }).ToListAsync();
 
                         return customer;
@@ -257,7 +257,7 @@ namespace CinemaManagementProject.Model.Service
             {
                 using (var context = new CinemaManagementProjectEntities())
                 {
-                    var cusStatistic = await context.Bills.Where(b => b.CreateDate.Year == DateTime.Now.Year && b.CreateDate.Month == DateTime.Now.Month)
+                    var cusStatistic = await context.Bills.Where(b => ((DateTime)b.CreateDate).Year == DateTime.Now.Year && ((DateTime)b.CreateDate).Month == DateTime.Now.Month)
                         .GroupBy(b => b.CustomerId)
                         .Select(grC => new
                         {
@@ -291,7 +291,7 @@ namespace CinemaManagementProject.Model.Service
             {
                 using (var context = new CinemaManagementProjectEntities())
                 {
-                    var customers = await context.Customers.Where(c => c.FirstDate.Year == DateTime.Today.Year && DbFunctions.DiffDays(c.FirstDate, DateTime.Now) <= 30)
+                    var customers = await context.Customers.Where(c => ((DateTime)c.FirstDate).Year == DateTime.Today.Year && DbFunctions.DiffDays(c.FirstDate, DateTime.Now) <= 30)
                         .Select(c => new CustomerDTO
                         {
                             Id = c.Id,

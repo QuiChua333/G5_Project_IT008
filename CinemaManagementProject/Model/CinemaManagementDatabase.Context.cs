@@ -33,9 +33,10 @@ namespace CinemaManagementProject.Model
         public virtual DbSet<ProductReceive> ProductReceives { get; set; }
         public virtual DbSet<ProductStorage> ProductStorages { get; set; }
         public virtual DbSet<Room> Rooms { get; set; }
-        public virtual DbSet<Seat> Seats { get; set; }
+        public virtual DbSet<Seat> Seats{ get; set; }
         public virtual DbSet<SeatSetting> SeatSettings { get; set; }
         public virtual DbSet<ShowTime> ShowTimes { get; set; }
+        public virtual DbSet<ShowTimeSetting> ShowTimeSettings { get; set; }
         public virtual DbSet<Staff> Staffs { get; set; }
         public virtual DbSet<Ticket> Tickets { get; set; }
         public virtual DbSet<Trouble> Troubles { get; set; }

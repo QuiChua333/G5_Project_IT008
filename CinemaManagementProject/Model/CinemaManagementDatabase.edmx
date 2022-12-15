@@ -108,8 +108,17 @@
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="FilmId" Type="int" />
-          <Property Name="StartTime" Type="datetime" />
+          <Property Name="StartTime" Type="time" Precision="7" />
           <Property Name="Price" Type="real" />
+          <Property Name="ShowTimeSettingId" Type="int" />
+        </EntityType>
+        <EntityType Name="ShowTimeSetting">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RoomId" Type="int" />
+          <Property Name="ShowDate" Type="datetime" />
         </EntityType>
         <EntityType Name="Staff">
           <Key>
@@ -307,6 +316,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_ShowTime_ShowTimeSetting">
+          <End Role="ShowTimeSetting" Type="Self.ShowTimeSetting" Multiplicity="0..1" />
+          <End Role="ShowTime" Type="Self.ShowTime" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ShowTimeSetting">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ShowTime">
+              <PropertyRef Name="ShowTimeSettingId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ShowTimeSetting_Room">
+          <End Role="Room" Type="Self.Room" Multiplicity="0..1" />
+          <End Role="ShowTimeSetting" Type="Self.ShowTimeSetting" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Room">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ShowTimeSetting">
+              <PropertyRef Name="RoomId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Ticket_Bill">
           <End Role="Bill" Type="Self.Bill" Multiplicity="0..1" />
           <End Role="Ticket" Type="Self.Ticket" Multiplicity="*" />
@@ -391,6 +424,7 @@
           <EntitySet Name="Seat" EntityType="Self.Seat" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SeatSetting" EntityType="Self.SeatSetting" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ShowTime" EntityType="Self.ShowTime" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ShowTimeSetting" EntityType="Self.ShowTimeSetting" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Staff" EntityType="Self.Staff" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Ticket" EntityType="Self.Ticket" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Trouble" EntityType="Self.Trouble" Schema="dbo" store:Type="Tables" />
@@ -440,6 +474,14 @@
             <End Role="Film" EntitySet="Film" />
             <End Role="ShowTime" EntitySet="ShowTime" />
           </AssociationSet>
+          <AssociationSet Name="FK_ShowTime_ShowTimeSetting" Association="Self.FK_ShowTime_ShowTimeSetting">
+            <End Role="ShowTimeSetting" EntitySet="ShowTimeSetting" />
+            <End Role="ShowTime" EntitySet="ShowTime" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ShowTimeSetting_Room" Association="Self.FK_ShowTimeSetting_Room">
+            <End Role="Room" EntitySet="Room" />
+            <End Role="ShowTimeSetting" EntitySet="ShowTimeSetting" />
+          </AssociationSet>
           <AssociationSet Name="FK_Ticket_Bill" Association="Self.FK_Ticket_Bill">
             <End Role="Bill" EntitySet="Bill" />
             <End Role="Ticket" EntitySet="Ticket" />
@@ -482,8 +524,8 @@
           <Property Name="TotalPrize" Type="Single" />
           <NavigationProperty Name="Customer" Relationship="Self.FK_Bill_Customer" FromRole="Bill" ToRole="Customer" />
           <NavigationProperty Name="Staff" Relationship="Self.FK_Bill_Staff" FromRole="Bill" ToRole="Staff" />
-          <NavigationProperty Name="BillInfoes" Relationship="Self.FK_BillInfo_Bill" FromRole="Bill" ToRole="BillInfo" />
-          <NavigationProperty Name="Tickets" Relationship="Self.FK_Ticket_Bill" FromRole="Bill" ToRole="Ticket" />
+          <NavigationProperty Name="BillInfo" Relationship="Self.FK_BillInfo_Bill" FromRole="Bill" ToRole="BillInfo" />
+          <NavigationProperty Name="Ticket" Relationship="Self.FK_Ticket_Bill" FromRole="Bill" ToRole="Ticket" />
         </EntityType>
         <EntityType Name="BillInfo">
           <Key>
@@ -506,8 +548,8 @@
           <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="FirstDate" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="Bills" Relationship="Self.FK_Bill_Customer" FromRole="Customer" ToRole="Bill" />
-          <NavigationProperty Name="Vouchers" Relationship="Self.FK_Voucher_Customer" FromRole="Customer" ToRole="Voucher" />
+          <NavigationProperty Name="Bill" Relationship="Self.FK_Bill_Customer" FromRole="Customer" ToRole="Bill" />
+          <NavigationProperty Name="Voucher" Relationship="Self.FK_Voucher_Customer" FromRole="Customer" ToRole="Voucher" />
         </EntityType>
         <EntityType Name="Film">
           <Key>
@@ -522,7 +564,7 @@
           <Property Name="Genre" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="ReleaseDate" Type="DateTime" Precision="3" />
           <Property Name="FilmInfo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="ShowTimes" Relationship="Self.FK_ShowTime_Film" FromRole="Film" ToRole="ShowTime" />
+          <NavigationProperty Name="ShowTime" Relationship="Self.FK_ShowTime_Film" FromRole="Film" ToRole="ShowTime" />
         </EntityType>
         <EntityType Name="Product">
           <Key>
@@ -532,8 +574,8 @@
           <Property Name="ProductName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="ProductType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Price" Type="Single" />
-          <NavigationProperty Name="BillInfoes" Relationship="Self.FK_BillInfo_Product" FromRole="Product" ToRole="BillInfo" />
-          <NavigationProperty Name="ProductReceives" Relationship="Self.FK_ProductReceive_Product" FromRole="Product" ToRole="ProductReceive" />
+          <NavigationProperty Name="BillInfo" Relationship="Self.FK_BillInfo_Product" FromRole="Product" ToRole="BillInfo" />
+          <NavigationProperty Name="ProductReceive" Relationship="Self.FK_ProductReceive_Product" FromRole="Product" ToRole="ProductReceive" />
           <NavigationProperty Name="ProductStorage" Relationship="Self.FK_ProductStorage_Product" FromRole="Product" ToRole="ProductStorage" />
         </EntityType>
         <EntityType Name="ProductReceive">
@@ -563,7 +605,8 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="SeatQuantity" Type="Int32" />
-          <NavigationProperty Name="Seats" Relationship="Self.FK_Seat_Room" FromRole="Room" ToRole="Seat" />
+          <NavigationProperty Name="Seat" Relationship="Self.FK_Seat_Room" FromRole="Room" ToRole="Seat" />
+          <NavigationProperty Name="ShowTimeSetting" Relationship="Self.FK_ShowTimeSetting_Room" FromRole="Room" ToRole="ShowTimeSetting" />
         </EntityType>
         <EntityType Name="Seat">
           <Key>
@@ -574,8 +617,8 @@
           <Property Name="SeatRow" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
           <Property Name="RoomId" Type="Int32" />
           <NavigationProperty Name="Room" Relationship="Self.FK_Seat_Room" FromRole="Seat" ToRole="Room" />
-          <NavigationProperty Name="SeatSettings" Relationship="Self.FK_SeatSetting_Seat" FromRole="Seat" ToRole="SeatSetting" />
-          <NavigationProperty Name="Tickets" Relationship="Self.FK_Ticket_Seat" FromRole="Seat" ToRole="Ticket" />
+          <NavigationProperty Name="SeatSetting" Relationship="Self.FK_SeatSetting_Seat" FromRole="Seat" ToRole="SeatSetting" />
+          <NavigationProperty Name="Ticket" Relationship="Self.FK_Ticket_Seat" FromRole="Seat" ToRole="Ticket" />
         </EntityType>
         <EntityType Name="SeatSetting">
           <Key>
@@ -594,11 +637,23 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="FilmId" Type="Int32" />
-          <Property Name="StartTime" Type="DateTime" Precision="3" />
+          <Property Name="StartTime" Type="Time" Precision="7" />
           <Property Name="Price" Type="Single" />
+          <Property Name="ShowTimeSettingId" Type="Int32" />
           <NavigationProperty Name="Film" Relationship="Self.FK_ShowTime_Film" FromRole="ShowTime" ToRole="Film" />
-          <NavigationProperty Name="SeatSettings" Relationship="Self.FK_SeatSetting_ShowTime" FromRole="ShowTime" ToRole="SeatSetting" />
-          <NavigationProperty Name="Tickets" Relationship="Self.FK_Ticket_ShowTime" FromRole="ShowTime" ToRole="Ticket" />
+          <NavigationProperty Name="SeatSetting" Relationship="Self.FK_SeatSetting_ShowTime" FromRole="ShowTime" ToRole="SeatSetting" />
+          <NavigationProperty Name="ShowTimeSetting" Relationship="Self.FK_ShowTime_ShowTimeSetting" FromRole="ShowTime" ToRole="ShowTimeSetting" />
+          <NavigationProperty Name="Ticket" Relationship="Self.FK_Ticket_ShowTime" FromRole="ShowTime" ToRole="Ticket" />
+        </EntityType>
+        <EntityType Name="ShowTimeSetting">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RoomId" Type="Int32" />
+          <Property Name="ShowDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Room" Relationship="Self.FK_ShowTimeSetting_Room" FromRole="ShowTimeSetting" ToRole="Room" />
+          <NavigationProperty Name="ShowTime" Relationship="Self.FK_ShowTime_ShowTimeSetting" FromRole="ShowTimeSetting" ToRole="ShowTime" />
         </EntityType>
         <EntityType Name="Staff">
           <Key>
@@ -614,9 +669,9 @@
           <Property Name="StartDate" Type="DateTime" Precision="3" />
           <Property Name="UserName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="UserPass" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Bills" Relationship="Self.FK_Bill_Staff" FromRole="Staff" ToRole="Bill" />
-          <NavigationProperty Name="ProductReceives" Relationship="Self.FK_ProductReceive_Staff" FromRole="Staff" ToRole="ProductReceive" />
-          <NavigationProperty Name="Troubles" Relationship="Self.FK_Trouble_Staff" FromRole="Staff" ToRole="Trouble" />
+          <NavigationProperty Name="Bill" Relationship="Self.FK_Bill_Staff" FromRole="Staff" ToRole="Bill" />
+          <NavigationProperty Name="ProductReceive" Relationship="Self.FK_ProductReceive_Staff" FromRole="Staff" ToRole="ProductReceive" />
+          <NavigationProperty Name="Trouble" Relationship="Self.FK_Trouble_Staff" FromRole="Staff" ToRole="Trouble" />
         </EntityType>
         <EntityType Name="Ticket">
           <Key>
@@ -672,7 +727,7 @@
           <Property Name="TypeObject" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="MinimizeTotal" Type="Single" />
           <Property Name="EnableMerge" Type="Boolean" />
-          <NavigationProperty Name="Vouchers" Relationship="Self.FK_Voucher_VoucherRelease" FromRole="VoucherRelease" ToRole="Voucher" />
+          <NavigationProperty Name="Voucher" Relationship="Self.FK_Voucher_VoucherRelease" FromRole="VoucherRelease" ToRole="Voucher" />
         </EntityType>
         <Association Name="FK_Bill_Customer">
           <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
@@ -806,6 +861,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_ShowTimeSetting_Room">
+          <End Role="Room" Type="Self.Room" Multiplicity="0..1" />
+          <End Role="ShowTimeSetting" Type="Self.ShowTimeSetting" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Room">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ShowTimeSetting">
+              <PropertyRef Name="RoomId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_SeatSetting_Seat">
           <End Role="Seat" Type="Self.Seat" Multiplicity="0..1" />
           <End Role="SeatSetting" Type="Self.SeatSetting" Multiplicity="*" />
@@ -839,6 +906,18 @@
             </Principal>
             <Dependent Role="SeatSetting">
               <PropertyRef Name="ShowTimeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ShowTime_ShowTimeSetting">
+          <End Role="ShowTimeSetting" Type="Self.ShowTimeSetting" Multiplicity="0..1" />
+          <End Role="ShowTime" Type="Self.ShowTime" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ShowTimeSetting">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ShowTime">
+              <PropertyRef Name="ShowTimeSettingId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -879,89 +958,98 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="CinemaManagementProjectEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Bills" EntityType="Self.Bill" />
-          <EntitySet Name="BillInfoes" EntityType="Self.BillInfo" />
-          <EntitySet Name="Customers" EntityType="Self.Customer" />
-          <EntitySet Name="Films" EntityType="Self.Film" />
-          <EntitySet Name="Products" EntityType="Self.Product" />
-          <EntitySet Name="ProductReceives" EntityType="Self.ProductReceive" />
-          <EntitySet Name="ProductStorages" EntityType="Self.ProductStorage" />
-          <EntitySet Name="Rooms" EntityType="Self.Room" />
-          <EntitySet Name="Seats" EntityType="Self.Seat" />
-          <EntitySet Name="SeatSettings" EntityType="Self.SeatSetting" />
-          <EntitySet Name="ShowTimes" EntityType="Self.ShowTime" />
-          <EntitySet Name="Staffs" EntityType="Self.Staff" />
-          <EntitySet Name="Tickets" EntityType="Self.Ticket" />
-          <EntitySet Name="Troubles" EntityType="Self.Trouble" />
-          <EntitySet Name="Vouchers" EntityType="Self.Voucher" />
-          <EntitySet Name="VoucherReleases" EntityType="Self.VoucherRelease" />
+          <EntitySet Name="Bill" EntityType="Self.Bill" />
+          <EntitySet Name="BillInfo" EntityType="Self.BillInfo" />
+          <EntitySet Name="Customer" EntityType="Self.Customer" />
+          <EntitySet Name="Film" EntityType="Self.Film" />
+          <EntitySet Name="Product" EntityType="Self.Product" />
+          <EntitySet Name="ProductReceive" EntityType="Self.ProductReceive" />
+          <EntitySet Name="ProductStorage" EntityType="Self.ProductStorage" />
+          <EntitySet Name="Room" EntityType="Self.Room" />
+          <EntitySet Name="Seat" EntityType="Self.Seat" />
+          <EntitySet Name="SeatSetting" EntityType="Self.SeatSetting" />
+          <EntitySet Name="ShowTime" EntityType="Self.ShowTime" />
+          <EntitySet Name="ShowTimeSetting" EntityType="Self.ShowTimeSetting" />
+          <EntitySet Name="Staff" EntityType="Self.Staff" />
+          <EntitySet Name="Ticket" EntityType="Self.Ticket" />
+          <EntitySet Name="Trouble" EntityType="Self.Trouble" />
+          <EntitySet Name="Voucher" EntityType="Self.Voucher" />
+          <EntitySet Name="VoucherRelease" EntityType="Self.VoucherRelease" />
           <AssociationSet Name="FK_Bill_Customer" Association="Self.FK_Bill_Customer">
-            <End Role="Customer" EntitySet="Customers" />
-            <End Role="Bill" EntitySet="Bills" />
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="Bill" EntitySet="Bill" />
           </AssociationSet>
           <AssociationSet Name="FK_Bill_Staff" Association="Self.FK_Bill_Staff">
-            <End Role="Staff" EntitySet="Staffs" />
-            <End Role="Bill" EntitySet="Bills" />
+            <End Role="Staff" EntitySet="Staff" />
+            <End Role="Bill" EntitySet="Bill" />
           </AssociationSet>
           <AssociationSet Name="FK_BillInfo_Bill" Association="Self.FK_BillInfo_Bill">
-            <End Role="Bill" EntitySet="Bills" />
-            <End Role="BillInfo" EntitySet="BillInfoes" />
+            <End Role="Bill" EntitySet="Bill" />
+            <End Role="BillInfo" EntitySet="BillInfo" />
           </AssociationSet>
           <AssociationSet Name="FK_Ticket_Bill" Association="Self.FK_Ticket_Bill">
-            <End Role="Bill" EntitySet="Bills" />
-            <End Role="Ticket" EntitySet="Tickets" />
+            <End Role="Bill" EntitySet="Bill" />
+            <End Role="Ticket" EntitySet="Ticket" />
           </AssociationSet>
           <AssociationSet Name="FK_BillInfo_Product" Association="Self.FK_BillInfo_Product">
-            <End Role="Product" EntitySet="Products" />
-            <End Role="BillInfo" EntitySet="BillInfoes" />
+            <End Role="Product" EntitySet="Product" />
+            <End Role="BillInfo" EntitySet="BillInfo" />
           </AssociationSet>
           <AssociationSet Name="FK_Voucher_Customer" Association="Self.FK_Voucher_Customer">
-            <End Role="Customer" EntitySet="Customers" />
-            <End Role="Voucher" EntitySet="Vouchers" />
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="Voucher" EntitySet="Voucher" />
           </AssociationSet>
           <AssociationSet Name="FK_ShowTime_Film" Association="Self.FK_ShowTime_Film">
-            <End Role="Film" EntitySet="Films" />
-            <End Role="ShowTime" EntitySet="ShowTimes" />
+            <End Role="Film" EntitySet="Film" />
+            <End Role="ShowTime" EntitySet="ShowTime" />
           </AssociationSet>
           <AssociationSet Name="FK_ProductReceive_Product" Association="Self.FK_ProductReceive_Product">
-            <End Role="Product" EntitySet="Products" />
-            <End Role="ProductReceive" EntitySet="ProductReceives" />
+            <End Role="Product" EntitySet="Product" />
+            <End Role="ProductReceive" EntitySet="ProductReceive" />
           </AssociationSet>
           <AssociationSet Name="FK_ProductStorage_Product" Association="Self.FK_ProductStorage_Product">
-            <End Role="Product" EntitySet="Products" />
-            <End Role="ProductStorage" EntitySet="ProductStorages" />
+            <End Role="Product" EntitySet="Product" />
+            <End Role="ProductStorage" EntitySet="ProductStorage" />
           </AssociationSet>
           <AssociationSet Name="FK_ProductReceive_Staff" Association="Self.FK_ProductReceive_Staff">
-            <End Role="Staff" EntitySet="Staffs" />
-            <End Role="ProductReceive" EntitySet="ProductReceives" />
+            <End Role="Staff" EntitySet="Staff" />
+            <End Role="ProductReceive" EntitySet="ProductReceive" />
           </AssociationSet>
           <AssociationSet Name="FK_Seat_Room" Association="Self.FK_Seat_Room">
-            <End Role="Room" EntitySet="Rooms" />
-            <End Role="Seat" EntitySet="Seats" />
+            <End Role="Room" EntitySet="Room" />
+            <End Role="Seat" EntitySet="Seat" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ShowTimeSetting_Room" Association="Self.FK_ShowTimeSetting_Room">
+            <End Role="Room" EntitySet="Room" />
+            <End Role="ShowTimeSetting" EntitySet="ShowTimeSetting" />
           </AssociationSet>
           <AssociationSet Name="FK_SeatSetting_Seat" Association="Self.FK_SeatSetting_Seat">
-            <End Role="Seat" EntitySet="Seats" />
-            <End Role="SeatSetting" EntitySet="SeatSettings" />
+            <End Role="Seat" EntitySet="Seat" />
+            <End Role="SeatSetting" EntitySet="SeatSetting" />
           </AssociationSet>
           <AssociationSet Name="FK_Ticket_Seat" Association="Self.FK_Ticket_Seat">
-            <End Role="Seat" EntitySet="Seats" />
-            <End Role="Ticket" EntitySet="Tickets" />
+            <End Role="Seat" EntitySet="Seat" />
+            <End Role="Ticket" EntitySet="Ticket" />
           </AssociationSet>
           <AssociationSet Name="FK_SeatSetting_ShowTime" Association="Self.FK_SeatSetting_ShowTime">
-            <End Role="ShowTime" EntitySet="ShowTimes" />
-            <End Role="SeatSetting" EntitySet="SeatSettings" />
+            <End Role="ShowTime" EntitySet="ShowTime" />
+            <End Role="SeatSetting" EntitySet="SeatSetting" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ShowTime_ShowTimeSetting" Association="Self.FK_ShowTime_ShowTimeSetting">
+            <End Role="ShowTimeSetting" EntitySet="ShowTimeSetting" />
+            <End Role="ShowTime" EntitySet="ShowTime" />
           </AssociationSet>
           <AssociationSet Name="FK_Ticket_ShowTime" Association="Self.FK_Ticket_ShowTime">
-            <End Role="ShowTime" EntitySet="ShowTimes" />
-            <End Role="Ticket" EntitySet="Tickets" />
+            <End Role="ShowTime" EntitySet="ShowTime" />
+            <End Role="Ticket" EntitySet="Ticket" />
           </AssociationSet>
           <AssociationSet Name="FK_Trouble_Staff" Association="Self.FK_Trouble_Staff">
-            <End Role="Staff" EntitySet="Staffs" />
-            <End Role="Trouble" EntitySet="Troubles" />
+            <End Role="Staff" EntitySet="Staff" />
+            <End Role="Trouble" EntitySet="Trouble" />
           </AssociationSet>
           <AssociationSet Name="FK_Voucher_VoucherRelease" Association="Self.FK_Voucher_VoucherRelease">
-            <End Role="VoucherRelease" EntitySet="VoucherReleases" />
-            <End Role="Voucher" EntitySet="Vouchers" />
+            <End Role="VoucherRelease" EntitySet="VoucherRelease" />
+            <End Role="Voucher" EntitySet="Voucher" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -970,7 +1058,7 @@
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="CinemaManagementProjectModelStoreContainer" CdmEntityContainer="CinemaManagementProjectEntities">
-          <EntitySetMapping Name="Bills">
+          <EntitySetMapping Name="Bill">
             <EntityTypeMapping TypeName="CinemaManagementProjectModel.Bill">
               <MappingFragment StoreEntitySet="Bill">
                 <ScalarProperty Name="Id" ColumnName="Id" />
@@ -982,7 +1070,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="BillInfoes">
+          <EntitySetMapping Name="BillInfo">
             <EntityTypeMapping TypeName="CinemaManagementProjectModel.BillInfo">
               <MappingFragment StoreEntitySet="BillInfo">
                 <ScalarProperty Name="Id" ColumnName="Id" />
@@ -993,7 +1081,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Customers">
+          <EntitySetMapping Name="Customer">
             <EntityTypeMapping TypeName="CinemaManagementProjectModel.Customer">
               <MappingFragment StoreEntitySet="Customer">
                 <ScalarProperty Name="Id" ColumnName="Id" />
@@ -1004,7 +1092,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Films">
+          <EntitySetMapping Name="Film">
             <EntityTypeMapping TypeName="CinemaManagementProjectModel.Film">
               <MappingFragment StoreEntitySet="Film">
                 <ScalarProperty Name="Id" ColumnName="Id" />
@@ -1019,7 +1107,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Products">
+          <EntitySetMapping Name="Product">
             <EntityTypeMapping TypeName="CinemaManagementProjectModel.Product">
               <MappingFragment StoreEntitySet="Product">
                 <ScalarProperty Name="Id" ColumnName="Id" />
@@ -1029,7 +1117,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="ProductReceives">
+          <EntitySetMapping Name="ProductReceive">
             <EntityTypeMapping TypeName="CinemaManagementProjectModel.ProductReceive">
               <MappingFragment StoreEntitySet="ProductReceive">
                 <ScalarProperty Name="Id" ColumnName="Id" />
@@ -1041,7 +1129,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="ProductStorages">
+          <EntitySetMapping Name="ProductStorage">
             <EntityTypeMapping TypeName="CinemaManagementProjectModel.ProductStorage">
               <MappingFragment StoreEntitySet="ProductStorage">
                 <ScalarProperty Name="ProductId" ColumnName="ProductId" />
@@ -1049,7 +1137,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Rooms">
+          <EntitySetMapping Name="Room">
             <EntityTypeMapping TypeName="CinemaManagementProjectModel.Room">
               <MappingFragment StoreEntitySet="Room">
                 <ScalarProperty Name="Id" ColumnName="Id" />
@@ -1057,7 +1145,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Seats">
+          <EntitySetMapping Name="Seat">
             <EntityTypeMapping TypeName="CinemaManagementProjectModel.Seat">
               <MappingFragment StoreEntitySet="Seat">
                 <ScalarProperty Name="Id" ColumnName="Id" />
@@ -1067,7 +1155,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="SeatSettings">
+          <EntitySetMapping Name="SeatSetting">
             <EntityTypeMapping TypeName="CinemaManagementProjectModel.SeatSetting">
               <MappingFragment StoreEntitySet="SeatSetting">
                 <ScalarProperty Name="Id" ColumnName="Id" />
@@ -1077,17 +1165,27 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="ShowTimes">
+          <EntitySetMapping Name="ShowTime">
             <EntityTypeMapping TypeName="CinemaManagementProjectModel.ShowTime">
               <MappingFragment StoreEntitySet="ShowTime">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="FilmId" ColumnName="FilmId" />
                 <ScalarProperty Name="StartTime" ColumnName="StartTime" />
                 <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="ShowTimeSettingId" ColumnName="ShowTimeSettingId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Staffs">
+          <EntitySetMapping Name="ShowTimeSetting">
+            <EntityTypeMapping TypeName="CinemaManagementProjectModel.ShowTimeSetting">
+              <MappingFragment StoreEntitySet="ShowTimeSetting">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="RoomId" ColumnName="RoomId" />
+                <ScalarProperty Name="ShowDate" ColumnName="ShowDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Staff">
             <EntityTypeMapping TypeName="CinemaManagementProjectModel.Staff">
               <MappingFragment StoreEntitySet="Staff">
                 <ScalarProperty Name="Id" ColumnName="Id" />
@@ -1103,7 +1201,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Tickets">
+          <EntitySetMapping Name="Ticket">
             <EntityTypeMapping TypeName="CinemaManagementProjectModel.Ticket">
               <MappingFragment StoreEntitySet="Ticket">
                 <ScalarProperty Name="Id" ColumnName="Id" />
@@ -1113,7 +1211,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Troubles">
+          <EntitySetMapping Name="Trouble">
             <EntityTypeMapping TypeName="CinemaManagementProjectModel.Trouble">
               <MappingFragment StoreEntitySet="Trouble">
                 <ScalarProperty Name="Id" ColumnName="Id" />
@@ -1126,7 +1224,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Vouchers">
+          <EntitySetMapping Name="Voucher">
             <EntityTypeMapping TypeName="CinemaManagementProjectModel.Voucher">
               <MappingFragment StoreEntitySet="Voucher">
                 <ScalarProperty Name="Id" ColumnName="Id" />
@@ -1140,7 +1238,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="VoucherReleases">
+          <EntitySetMapping Name="VoucherRelease">
             <EntityTypeMapping TypeName="CinemaManagementProjectModel.VoucherRelease">
               <MappingFragment StoreEntitySet="VoucherRelease">
                 <ScalarProperty Name="Id" ColumnName="Id" />
@@ -1170,7 +1268,7 @@
     <Options>
       <DesignerInfoPropertySet>
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
-        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
         <DesignerProperty Name="UseLegacyProvider" Value="false" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="None" />

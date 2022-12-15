@@ -192,8 +192,6 @@ namespace CinemaManagementProject.ViewModel.AdminVM.ShowtimeManagementVM
                     Console.WriteLine(e);
                     CustomMessageBox.ShowOk("Lỗi hệ thống", "Lỗi", "OK", Views.CustomMessageBoxImage.Error);
                 }
-
-                //ShadowMask.Visibility = Visibility.Visible;
                 temp.ShowDialog();
             });
             SaveCM = new RelayCommand<Window>((p) => { return true; }, async (p) =>
@@ -214,18 +212,16 @@ namespace CinemaManagementProject.ViewModel.AdminVM.ShowtimeManagementVM
                 if (isShowHaveBooking)
                 {
                     message = $"Suất chiếu này có ghế đã được đặt. Bạn có muốn xoá không?";
-                    MessageBoxCustom ms = new MessageBoxCustom("Cảnh báo", message, MessageType.Warning, MessageButtons.YesNo);
-                    ms.ShowDialog();
-                    if (ms.DialogResult == false)
+                    var kq = CustomMessageBox.ShowOkCancel(message, "Cảnh báo", "Yes","No", Views.CustomMessageBoxImage.Warning);
+                    if (kq== Views.CustomMessageBoxResult.None)
                     {
                         return;
                     }
                 }
                 else
                 {
-                    MessageBoxCustom result = new MessageBoxCustom("Cảnh báo", message, MessageType.Warning, MessageButtons.YesNo);
-                    result.ShowDialog();
-                    if (result.DialogResult == false)
+                    var kq = CustomMessageBox.ShowOkCancel(message, "Cảnh báo", "Yes", "No", Views.CustomMessageBoxImage.Warning);
+                    if (kq==Views.CustomMessageBoxResult.None)
                     {
                         return;
                     }
@@ -242,16 +238,14 @@ namespace CinemaManagementProject.ViewModel.AdminVM.ShowtimeManagementVM
                     }
                     oldSelectedItem = SelectedItem;
                     SelectedShowtime = null;
-                    MessageBoxCustom mb = new MessageBoxCustom("Thông báo", messageFromDelete, MessageType.Success, MessageButtons.OK);
-                    mb.ShowDialog();
+                    CustomMessageBox.ShowOk(messageFromDelete, "Thông báo", "OK", Views.CustomMessageBoxImage.Success);
 
                     await ReloadShowtimeList(-1);
                     GetShowingMovieByRoomInDate(SelectedRoomId);
                 }
                 else
                 {
-                    MessageBoxCustom mb = new MessageBoxCustom("Lỗi", messageFromDelete, MessageType.Error, MessageButtons.OK);
-                    mb.ShowDialog();
+                    CustomMessageBox.ShowOk(messageFromDelete, "Lỗi", "OK", Views.CustomMessageBoxImage.Error);
                 }
             });
             ChangedRoomCM = new RelayCommand<RadioButton>((p) => { return true; }, async (p) =>
@@ -302,7 +296,7 @@ namespace CinemaManagementProject.ViewModel.AdminVM.ShowtimeManagementVM
             });
             CloseEditCM = new RelayCommand<Window>((p) => { return true; }, (p) =>
             {
-                ShadowMask.Visibility = Visibility.Collapsed;
+                //ShadowMask.Visibility = Visibility.Collapsed;
                 p.Close();
                 SelectedShowtime = null;
             });
@@ -312,9 +306,9 @@ namespace CinemaManagementProject.ViewModel.AdminVM.ShowtimeManagementVM
                 {
                     await GenerateSeat();
                     if (SelectedShowtime.Price.ToString().Length > 5)
-                        moviePrice = decimal.Parse(SelectedShowtime.Price.ToString().Remove(5, 5));
+                        moviePrice = float.Parse(SelectedShowtime.Price.ToString()/*.Remove(5, 5)*/);
                     else
-                        moviePrice = decimal.Parse(SelectedShowtime.Price.ToString());
+                        moviePrice = float.Parse(SelectedShowtime.Price.ToString());
                 }
 
             });
@@ -327,14 +321,12 @@ namespace CinemaManagementProject.ViewModel.AdminVM.ShowtimeManagementVM
 
                 if (IsSuccess)
                 {
-                    SelectedShowtime.TicketPrice = moviePrice;
-                    MessageBoxCustom mb = new MessageBoxCustom("Thông báo", message, MessageType.Success, MessageButtons.OK);
-                    mb.ShowDialog();
+                    SelectedShowtime.Price = moviePrice;
+                    CustomMessageBox.ShowOk(message, "Thông báo", "OK", Views.CustomMessageBoxImage.Success);
                 }
                 else
                 {
-                    MessageBoxCustom mb = new MessageBoxCustom("Lỗi", message, MessageType.Error, MessageButtons.OK);
-                    mb.ShowDialog();
+                    CustomMessageBox.ShowOk(message, "Lỗi", "OK", Views.CustomMessageBoxImage.Error);
                 }
             });
             SelectedDateCM = new RelayCommand<object>((p) => { return true; }, async (p) =>
@@ -360,13 +352,11 @@ namespace CinemaManagementProject.ViewModel.AdminVM.ShowtimeManagementVM
                 }
                 catch (System.Data.Entity.Core.EntityException)
                 {
-                    MessageBoxCustom mb = new MessageBoxCustom("Lỗi", "Mất kết nối cơ sở dữ liệu", MessageType.Error, MessageButtons.OK);
-                    mb.ShowDialog();
+                    CustomMessageBox.ShowOk("Mất kết nối cơ sở dữ liệu", "Lỗi", "OK", Views.CustomMessageBoxImage.Error);
                 }
                 catch (Exception)
                 {
-                    MessageBoxCustom mb = new MessageBoxCustom("Lỗi", "Lỗi hệ thống", MessageType.Error, MessageButtons.OK);
-                    mb.ShowDialog();
+                    CustomMessageBox.ShowOk("Lỗi hệ thống", "Lỗi", "OK", Views.CustomMessageBoxImage.Error);
                 }
             }
             else
@@ -383,38 +373,36 @@ namespace CinemaManagementProject.ViewModel.AdminVM.ShowtimeManagementVM
                 }
                 catch (System.Data.Entity.Core.EntityException)
                 {
-                    MessageBoxCustom mb = new MessageBoxCustom("Lỗi", "Mất kết nối cơ sở dữ liệu", MessageType.Error, MessageButtons.OK);
-                    mb.ShowDialog();
+                    CustomMessageBox.ShowOk("Mất kết nối cơ sở dữ liệu", "Lỗi", "OK", Views.CustomMessageBoxImage.Error);
                 }
                 catch (Exception)
                 {
-                    MessageBoxCustom mb = new MessageBoxCustom("Lỗi", "Lỗi hệ thống", MessageType.Error, MessageButtons.OK);
-                    mb.ShowDialog();
+                    CustomMessageBox.ShowOk("Lỗi hệ thống", "Lỗi", "OK", Views.CustomMessageBoxImage.Error);
                 }
             }
-            ResultLabel.Content = ShowtimeList.Count;
+            //ResultLabel.Content = ShowtimeList.Count;
         }
         private void GetShowingMovieByRoomInDate(int roomId)
         {
             if (roomId == -1)
             {
                 ShowtimeList = new ObservableCollection<MovieDTO>(listMovieAllRoom);
-                ResultLabel.Content = ShowtimeList.Count;
+                //ResultLabel.Content = ShowtimeList.Count;
                 return;
             }
-            List<MovieDTO> listMoviesByRoom = listMovieAllRoom.Where(m => m.Showtimes.Any(s => s.RoomId == roomId)).Select(m => new MovieDTO
+            List<MovieDTO> listMoviesByRoom = listMovieAllRoom.Where(m => m.ShowTimes.Any(s => s.RoomId == roomId )).Select(m => new MovieDTO
             {
                 Id = m.Id,
-                DisplayName = m.DisplayName,
-                RunningTime = m.RunningTime,
+                FilmName = m.FilmName,
+                Duration = m.Duration,
                 Country = m.Country,
-                Description = m.Description,
-                ReleaseYear = m.ReleaseYear,
-                MovieType = m.MovieType,
-                Director = m.Director,
-                Image = m.Image,
-                Genres = new List<GenreDTO>(m.Genres),
-                Showtimes = m.Showtimes.Where(s => s.RoomId == roomId).ToList()
+                FilmInfo = m.FilmInfo,
+                ReleaseDate = m.ReleaseDate,
+                FilmType = m.FilmType,
+                Author = m.Author,
+                //Image = m.Image,
+                //Genres = new List<GenreDTO>(m.Genres),
+                ShowTimes = m.ShowTimes.Where(s => s.RoomId == roomId ).ToList()
             }).ToList();
             ShowtimeList = new ObservableCollection<MovieDTO>(listMoviesByRoom);
         }

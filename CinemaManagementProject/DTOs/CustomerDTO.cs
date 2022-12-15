@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CinemaManagementProject.Utils;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Remoting.Messaging;
@@ -21,13 +22,13 @@ namespace CinemaManagementProject.DTOs
 
         //Expense
         public bool IsDeleted { get; set; }
-        public string Expense { get; set; }
-        //public string ExpenseStr
-        //{
-        //    get
-        //    {
-        //        return Helper.FormatVNMoney(Expense);
-        //    }
-        //}
+        public float Expense { get; set; }
+        public string ExpenseStr
+        {
+            get
+            {
+                return Helper.FormatVNMoney(Expense);
+            }
+        }
     }
 }

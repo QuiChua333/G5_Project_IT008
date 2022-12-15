@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using System.Windows;
 using CinemaManagementProject.DTOs;
+using CinemaManagementProject.Model.Service;
+using System.Windows.Forms;
+using System.Data;
 
 namespace CinemaManagementProject.ViewModel.AdminVM.ShowtimeManagementVM
 {
@@ -27,54 +30,52 @@ namespace CinemaManagementProject.ViewModel.AdminVM.ShowtimeManagementVM
             get { return isSaving; }
             set { isSaving = value; OnPropertyChanged(); }
         }
-        //public async Task SaveShowtimeFunc(Window p)
-        //{
-        //    if (IsValidData())
-        //    {
+        public async Task SaveShowtimeFunc(Window p)
+        {
+            if (IsValidData())
+            {
 
-        //        ShowtimeDTO temp = new ShowtimeDTO
-        //        {
-        //            FilmId = movieSelected.Id,
-        //            RoomId = ShowtimeRoom.Id,
-        //            ShowDate = showtimeDate,
-        //            StartTime = Showtime.TimeOfDay,
-        //            TicketPrice = moviePrice,
-        //        };
+                ShowtimeDTO temp = new ShowtimeDTO
+                {               
+                    FilmId = movieSelected.Id,
+                    RoomId = ShowtimeRoom.Id,
+                    ShowDate = showtimeDate,
+                    StartTime = Showtime.TimeOfDay,
+                    Price = moviePrice,
+                    //IsDeleted = false,
+                };
 
-        //        (bool IsSuccess, string message) = await ShowtimeService.Ins.AddShowtime(temp);
+                (bool IsSuccess, string message) = await ShowtimeService.Ins.AddShowtime(temp);
 
 
-        //        if (IsSuccess)
-        //        {
-        //            IsSaving = false;
-        //            MessageBoxCustom mb = new MessageBoxCustom("Thông báo", message, MessageType.Success, MessageButtons.OK);
-        //            mb.ShowDialog();
+                if (IsSuccess)
+                {
+                    IsSaving = false;
+                    CustomMessageBox.ShowOk(message, "Thông báo","OK",Views.CustomMessageBoxImage.Success );
 
-        //            p.Close();
-        //            ShadowMask.Visibility = Visibility.Collapsed;
+                    p.Close();
+                    //ShadowMask.Visibility = Visibility.Collapsed;
 
-        //            await ReloadShowtimeList(-1);
-        //            GetShowingMovieByRoomInDate(SelectedRoomId);
-        //        }
-        //        else
-        //        {
-        //            MessageBoxCustom mb = new MessageBoxCustom("Lỗi", message, MessageType.Error, MessageButtons.OK);
-        //            mb.ShowDialog();
-        //        }
-        //    }
-        //    else
-        //    {
-        //        MessageBoxCustom mb = new MessageBoxCustom("Cảnh báo", "Vui lòng nhập đầy đủ thông tin!", MessageType.Warning, MessageButtons.OK);
-        //        mb.ShowDialog();
-        //    }
-        //}
-        //public void CalculateRunningTime()
-        //{
-        //    if (movieSelected != null)
-        //    {
-        //        EndTime = Showtime.AddMinutes(movieSelected.RunningTime);
-        //    }
-        //}
+                    await ReloadShowtimeList(-1);
+                    GetShowingMovieByRoomInDate(SelectedRoomId);
+                }
+                else
+                {
+                    CustomMessageBox.ShowOk(message, "Lỗi", "OK", Views.CustomMessageBoxImage.Error);
+                }
+            }
+            else
+            {
+                CustomMessageBox.ShowOk("Cảnh báo", "Vui lòng nhập đầy đủ thông tin!", "OK", Views.CustomMessageBoxImage.Warning);
+            }
+        }
+        public void CalculateRunningTime()
+        {
+            if (movieSelected != null)
+            {
+                EndTime = Showtime.AddMinutes((double)movieSelected.Duration);
+            }
+        }
         public void RenewData()
         {
             movieSelected = null;

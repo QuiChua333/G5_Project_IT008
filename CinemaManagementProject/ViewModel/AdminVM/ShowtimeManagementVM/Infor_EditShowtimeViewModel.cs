@@ -84,7 +84,7 @@ namespace CinemaManagementProject.ViewModel.AdminVM.ShowtimeManagementVM
                 LoadDataEditWindow(p);
                 EditShowtimeWindow = p;
                 oldSelectedItem = SelectedItem;
-                ShadowMask.Visibility = System.Windows.Visibility.Visible;
+                //ShadowMask.Visibility = System.Windows.Visibility.Visible;
                 ListSeat1 = new ObservableCollection<SeatSettingDTO>();
                 ListSeat2 = new ObservableCollection<SeatSettingDTO>();
                 IsFree = IsBought = 0;

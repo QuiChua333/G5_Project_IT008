@@ -39,12 +39,12 @@ namespace CinemaManagementProject.Model.Service
                                         Id = b.Id,
                                         StaffId =(int)b.StaffId,
                                         StaffName = b.Staff.StaffName,
-                                        TotalPrice = b.TotalPrize,
-                                        DiscountPrice = b.DiscountPrice,
+                                        TotalPrice = (float)b.TotalPrize,
+                                        DiscountPrice = (float)b.DiscountPrice,
                                         CustomerId = (int)b.CustomerId,
                                         CustomerName = b.Customer.CustomerName,
                                         PhoneNumber = b.Customer.PhoneNumber,
-                                        CreatedAt = b.CreateDate
+                                        CreatedAt = (DateTime)b.CreateDate
                                     }).ToListAsync();
                     return await billList;
                 }
@@ -74,12 +74,12 @@ namespace CinemaManagementProject.Model.Service
                                         Id = b.Id,
                                         StaffId = (int)b.StaffId,
                                         StaffName = b.Staff.StaffName,
-                                        TotalPrice = b.TotalPrize,
-                                        DiscountPrice = b.DiscountPrice,
+                                        TotalPrice = (float)b.TotalPrize,
+                                        DiscountPrice = (float)b.DiscountPrice,
                                         CustomerId = (int)b.CustomerId,
                                         CustomerName = b.Customer.CustomerName,
                                         PhoneNumber = b.Customer.PhoneNumber,
-                                        CreatedAt = b.CreateDate
+                                        CreatedAt = (DateTime)b.CreateDate
                                     }).ToListAsync();
                     return await billList;
                 }
@@ -102,19 +102,19 @@ namespace CinemaManagementProject.Model.Service
                 using (var context = new CinemaManagementProjectEntities())
                 {
                     var billList = (from b in context.Bills
-                                    where b.CreateDate.Year == DateTime.Now.Year && b.CreateDate.Month == month
+                                    where ((DateTime)b.CreateDate).Year == DateTime.Now.Year && ((DateTime)b.CreateDate).Month == month
                                     orderby b.CreateDate descending
                                     select new BillDTO
                                     {
                                         Id = b.Id,
                                         StaffId = (int)b.StaffId,
                                         StaffName = b.Staff.StaffName,
-                                        TotalPrice = b.TotalPrize,
-                                        DiscountPrice = b.DiscountPrice,
+                                        TotalPrice = (float)b.TotalPrize,
+                                        DiscountPrice = (float)b.DiscountPrice,
                                         CustomerId = (int)b.CustomerId,
                                         CustomerName = b.Customer.CustomerName,
                                         PhoneNumber = b.Customer.PhoneNumber,
-                                        CreatedAt = b.CreateDate
+                                        CreatedAt = (DateTime)b.CreateDate
                                     }).ToListAsync();
                     return await billList;
                 }
@@ -143,10 +143,10 @@ namespace CinemaManagementProject.Model.Service
                         Id = bill.Id,
                         StaffId = bill.Staff.Id,
                         StaffName = bill.Staff.StaffName,
-                        DiscountPrice = bill.DiscountPrice,
-                        TotalPrice = bill.TotalPrize,
-                        CreatedAt = bill.CreateDate,
-                        ProductBillInfoes = (from pi in bill.BillInfoes
+                        DiscountPrice = (float)bill.DiscountPrice,
+                        TotalPrice = (float)bill.TotalPrize,
+                        CreatedAt = (DateTime)bill.CreateDate,
+                        ProductBillInfoes = (from pi in bill.BillInfo
                                              select new ProductBillInfoDTO
                                              {
                                                  BillId = pi.BillId,
@@ -163,7 +163,7 @@ namespace CinemaManagementProject.Model.Service
                         billInfo.PhoneNumber = bill.Customer.PhoneNumber;
                     }
 
-                    var tickets = bill.Tickets;
+                    var tickets = bill.Ticket;
                     if (tickets.Count != 0)
                     {
                         var showtime = tickets.FirstOrDefault().ShowTime;
@@ -181,8 +181,8 @@ namespace CinemaManagementProject.Model.Service
                         {
                             roomId = roomId,
                             movieName = showtime.Film.FilmName,
-                            ShowDate = (DateTime)showtime.StartTime,
-                            //StartShowTime = showtime.StartTime,
+                            ShowDate = (DateTime)showtime.ShowTimeSetting.ShowDate,
+                            StartShowTime = (TimeSpan)showtime.StartTime,
                             TotalPriceTicket = (float)(tickets.Count() * showtime.Price),
                             seats = seatList,
                         };

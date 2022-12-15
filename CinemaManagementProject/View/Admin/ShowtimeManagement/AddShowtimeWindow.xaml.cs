@@ -49,7 +49,7 @@ namespace CinemaManagementProject.View.Admin.ShowtimeManagement
             Button btn = sender as Button;
 
             btn.Background = (SolidColorBrush)new BrushConverter().ConvertFrom("#FFA5B9D6");
-            btn.Background = new SolidColorBrush(Colors.OrangeRed);
+            btn.Background = new SolidColorBrush(Colors.Red);
         }
         private void Button_MouseLeave_1(object sender, MouseEventArgs e)
         {
