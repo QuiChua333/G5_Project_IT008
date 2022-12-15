@@ -37,7 +37,7 @@ namespace CinemaManagementProject.Model.Service
                                           {
                                               SeatId = s.SeatId,
                                               ShowTimeId = s.ShowTimeId,
-                                              SeatStatus = s.SeatStatus,
+                                              SeatStatus = (bool)s.SeatStatus,
                                               Seat = new SeatDTO
                                               {
                                                   Id = s.Seat.Id,

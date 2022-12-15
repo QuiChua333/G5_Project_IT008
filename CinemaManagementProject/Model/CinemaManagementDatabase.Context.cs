@@ -25,22 +25,22 @@ namespace CinemaManagementProject.Model
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Bill> Bill { get; set; }
-        public virtual DbSet<Customer> Customer { get; set; }
-        public virtual DbSet<Film> Film { get; set; }
-        public virtual DbSet<Product> Product { get; set; }
-        public virtual DbSet<ProductBillInfo> ProductBillInfo { get; set; }
-        public virtual DbSet<ProductReceipt> ProductReceipt { get; set; }
-        public virtual DbSet<ProductStorage> ProductStorage { get; set; }
-        public virtual DbSet<Room> Room { get; set; }
-        public virtual DbSet<Seat> Seat { get; set; }
-        public virtual DbSet<SeatSetting> SeatSetting { get; set; }
-        public virtual DbSet<ShowTime> ShowTime { get; set; }
-        public virtual DbSet<ShowTimeSetting> ShowTimeSetting { get; set; }
-        public virtual DbSet<Staff> Staff { get; set; }
-        public virtual DbSet<Ticket> Ticket { get; set; }
-        public virtual DbSet<Trouble> Trouble { get; set; }
-        public virtual DbSet<Voucher> Voucher { get; set; }
-        public virtual DbSet<VoucherRelease> VoucherRelease { get; set; }
+        public virtual DbSet<Bill> Bills { get; set; }
+        public virtual DbSet<Customer> Customers { get; set; }
+        public virtual DbSet<Film> Films { get; set; }
+        public virtual DbSet<Product> Products { get; set; }
+        public virtual DbSet<ProductBillInfo> ProductBillInfoes { get; set; }
+        public virtual DbSet<ProductReceipt> ProductReceipts { get; set; }
+        public virtual DbSet<ProductStorage> ProductStorages { get; set; }
+        public virtual DbSet<Room> Rooms { get; set; }
+        public virtual DbSet<Seat> Seats { get; set; }
+        public virtual DbSet<SeatSetting> SeatSettings { get; set; }
+        public virtual DbSet<ShowTime> ShowTimes { get; set; }
+        public virtual DbSet<ShowTimeSetting> ShowTimeSettings { get; set; }
+        public virtual DbSet<Staff> Staffs { get; set; }
+        public virtual DbSet<Ticket> Tickets { get; set; }
+        public virtual DbSet<Trouble> Troubles { get; set; }
+        public virtual DbSet<Voucher> Vouchers { get; set; }
+        public virtual DbSet<VoucherRelease> VoucherReleases { get; set; }
     }
 }

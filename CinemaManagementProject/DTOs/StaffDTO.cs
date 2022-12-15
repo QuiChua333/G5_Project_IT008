@@ -20,7 +20,7 @@ namespace CinemaManagementProject.DTOs
         public string UserName { get; set; }
         public string UserPass { get; set; }
         public virtual ICollection<Bill> Bills { get; set; }
-        public virtual ICollection<ProductReceive> ProductReceives { get; set; }
+        public virtual ICollection<ProductReceipt> ProductReceives { get; set; }
         public virtual ICollection<Trouble> Troubles { get; set; }
 
     }

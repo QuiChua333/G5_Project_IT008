@@ -290,7 +290,7 @@ namespace CinemaManagementProject.Model.Service
                 using (var context = new CinemaManagementProjectEntities())
                 {
                     Staff staff = (from p in context.Staffs
-                                   where p.UserName == username && !p.IsDeleted
+                                   where p.UserName == username && !(bool)p.IsDeleted
                                    select p).FirstOrDefault();
                     if (staff is null || staff?.IsDeleted == true)
                     {

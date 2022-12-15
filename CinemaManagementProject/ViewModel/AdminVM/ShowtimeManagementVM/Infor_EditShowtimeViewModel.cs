@@ -138,7 +138,7 @@ namespace CinemaManagementProject.ViewModel.AdminVM.ShowtimeManagementVM
                 {
                     ListSeat1.Add(item);
                 }
-                if (item.SeatStatus == 1)
+                if (item.SeatStatus == true)
                     IsBought++;
             }
             IsFree = ListSeat.Count - IsBought;

@@ -163,7 +163,7 @@ namespace CinemaManagementProject.Model.Service
             {
                 using (var context = new CinemaManagementProjectEntities())
                 {
-                    var IsExist = await context.SeatSettings.AnyAsync(s => s.ShowTimeId == showtimeId && s.SeatStatus==1);
+                    var IsExist = await context.SeatSettings.AnyAsync(s => s.ShowTimeId == showtimeId && s.SeatStatus==true);
                     return IsExist;
                 }
             }

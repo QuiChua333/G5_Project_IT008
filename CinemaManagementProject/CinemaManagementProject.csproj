@@ -126,9 +126,6 @@
     <Compile Include="Model\Bill.cs">
       <DependentUpon>CinemaManagementDatabase.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\BillInfo.cs">
-      <DependentUpon>CinemaManagementDatabase.tt</DependentUpon>
-    </Compile>
     <Compile Include="Model\CinemaManagementDatabase.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -153,7 +150,10 @@
     <Compile Include="Model\Product.cs">
       <DependentUpon>CinemaManagementDatabase.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\ProductReceive.cs">
+    <Compile Include="Model\ProductBillInfo.cs">
+      <DependentUpon>CinemaManagementDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ProductReceipt.cs">
       <DependentUpon>CinemaManagementDatabase.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\ProductStorage.cs">

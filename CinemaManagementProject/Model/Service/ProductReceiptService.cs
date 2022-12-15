@@ -33,7 +33,7 @@ namespace CinemaManagementProject.Model.Service
             {
                 using (var context = new CinemaManagementProjectEntities())
                 {
-                    productReceipts = await (from pr in context.ProductReceives
+                    productReceipts = await (from pr in context.ProductReceipts
                                              orderby pr.CreatedAt descending
                                              select new ProductReceiptDTO
                                              {
@@ -62,7 +62,7 @@ namespace CinemaManagementProject.Model.Service
             {
                 using (var context = new CinemaManagementProjectEntities())
                 {
-                    productReceipts = await (from pr in context.ProductReceives
+                    productReceipts = await (from pr in context.ProductReceipts
                                              where ((DateTime)pr.CreatedAt).Year == DateTime.Today.Year && ((DateTime)pr.CreatedAt).Month == month
                                              orderby pr.CreatedAt descending
                                              select new ProductReceiptDTO
@@ -103,9 +103,9 @@ namespace CinemaManagementProject.Model.Service
                     Product prod = await context.Products.FindAsync(newPReceipt.ProductId);
                     //prod.Quantity += newPReceipt.Quantity;
                     prod.ProductStorage.Quantity += newPReceipt.Quantity;
-                    int maxId = context.ProductReceives.Max(pr => pr.Id);
+                    int maxId = context.ProductReceipts.Max(pr => pr.Id);
 
-                    ProductReceive pR = new ProductReceive
+                    ProductReceipt pR = new ProductReceipt
                     {
                         //Id = CreateNextProdReceiptId(maxId),
                         Id=maxId+1,
@@ -115,7 +115,7 @@ namespace CinemaManagementProject.Model.Service
                         Quantity = newPReceipt.Quantity,
                         StaffId = newPReceipt.StaffId,
                     };
-                    context.ProductReceives.Add(pR);
+                    context.ProductReceipts.Add(pR);
                     await context.SaveChangesAsync();
 
                     newPReceipt.Id = pR.Id;

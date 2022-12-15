@@ -12,7 +12,7 @@ namespace CinemaManagementProject.DTOs
         public int Id { get; set; }
         public Nullable<int> SeatId { get; set; }
         public Nullable<int> ShowTimeId { get; set; }
-        public Nullable<int> SeatStatus { get; set; }
+        public bool SeatStatus { get; set; }
 
         public virtual SeatDTO Seat { get; set; }
         public virtual ShowtimeDTO ShowTime { get; set; }

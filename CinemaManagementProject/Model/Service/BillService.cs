@@ -146,7 +146,7 @@ namespace CinemaManagementProject.Model.Service
                         DiscountPrice = (float)bill.DiscountPrice,
                         TotalPrice = (float)bill.TotalPrize,
                         CreatedAt = (DateTime)bill.CreateDate,
-                        ProductBillInfoes = (from pi in bill.BillInfo
+                        ProductBillInfoes = (from pi in bill.ProductBillInfo
                                              select new ProductBillInfoDTO
                                              {
                                                  BillId = pi.BillId,

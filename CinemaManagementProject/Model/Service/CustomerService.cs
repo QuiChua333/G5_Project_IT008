@@ -144,7 +144,7 @@ namespace CinemaManagementProject.Model.Service
                     var cus = await context.Customers.Where(c => c.PhoneNumber == newCus.PhoneNumber).FirstOrDefaultAsync();
                     if (cus != null)
                     {
-                        if (!cus.IsDeleted)
+                        if (!(bool)cus.IsDeleted)
                         {
                             return (false, "Số điện thoại này đã tồn tại", null);
                         }
@@ -223,7 +223,7 @@ namespace CinemaManagementProject.Model.Service
                 using (var context = new CinemaManagementProjectEntities())
                 {
                     var cus = await context.Customers.FindAsync(id);
-                    if (cus is null || cus.IsDeleted)
+                    if (cus is null || (bool)cus.IsDeleted)
                     {
                         return (false, "Khách hàng không tồn tại!");
                     }
