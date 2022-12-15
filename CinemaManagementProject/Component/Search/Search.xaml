@@ -5,6 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:CinemaManagementProject.Component.Search"
              d:DataContext="{d:DesignInstance Type=local:Search}"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" 
 >
     <Grid Height="{Binding Height}" Width="{Binding Width}">
@@ -30,6 +31,7 @@
         </Rectangle>
         <TextBox x:Name="SearchType" 
                  Grid.Column="1"
+                 materialDesign:HintAssist.Hint="Tìm kiếm"
                  Text="{Binding PlaceHolder, Mode=OneWay}" 
                  VerticalAlignment="Center" 
                  Margin="20,0,20,0" 
@@ -38,7 +40,6 @@
                  BorderBrush="{x:Null}"
                  SelectionBrush="{x:Null}"
                  GotFocus="SearchType_GotFocus" 
-                 LostFocus="SearchType_LostFocus" 
                  FontFamily="{StaticResource MaterialDesignFont}"
                  FontWeight="Medium"
                  TextChanged="SearchType_TextChanged"
@@ -48,7 +49,7 @@
         <Image x:Name="IconSeach" 
                Source="{StaticResource IconSearch}"
                Grid.Column="0"
-               Width="{Binding IconSize}" Height="{Binding IconSize}"
+               Width="{Binding Height}" Height="{Binding IconSize}"
                Margin="20,0,0,0"
                HorizontalAlignment="Right"
                VerticalAlignment="Center"

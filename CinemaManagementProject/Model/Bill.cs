@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace CinemaManagementProject.Model.Service
+namespace CinemaManagementProject.Model
 {
     using System;
     using System.Collections.Generic;
@@ -17,7 +17,7 @@ namespace CinemaManagementProject.Model.Service
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Bill()
         {
-            this.BillInfoes = new HashSet<BillInfo>();
+            this.ProductBillInfoes = new HashSet<ProductBillInfo>();
             this.Tickets = new HashSet<Ticket>();
         }
     
@@ -25,14 +25,13 @@ namespace CinemaManagementProject.Model.Service
         public Nullable<int> CustomerId { get; set; }
         public Nullable<int> StaffId { get; set; }
         public Nullable<System.DateTime> CreateDate { get; set; }
-        public Nullable<int> VoucherId { get; set; }
+        public Nullable<float> DiscountPrice { get; set; }
         public Nullable<float> TotalPrize { get; set; }
     
         public virtual Customer Customer { get; set; }
         public virtual Staff Staff { get; set; }
-        public virtual Voucher Voucher { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<BillInfo> BillInfoes { get; set; }
+        public virtual ICollection<ProductBillInfo> ProductBillInfoes { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Ticket> Tickets { get; set; }
     }

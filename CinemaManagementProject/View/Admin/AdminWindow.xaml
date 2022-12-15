@@ -18,6 +18,7 @@
     <Window.DataContext>
         <vm:AdminVM></vm:AdminVM>
     </Window.DataContext>
+    
     <Grid Height="760" Width="1400">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>

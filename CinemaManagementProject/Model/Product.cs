@@ -7,29 +7,31 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace CinemaManagementProject.Model.Service
+namespace CinemaManagementProject.Model
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class Seat
+    public partial class Product
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Seat()
+        public Product()
         {
-            this.SeatSettings = new HashSet<SeatSetting>();
-            this.Tickets = new HashSet<Ticket>();
+            this.ProductBillInfoes = new HashSet<ProductBillInfo>();
+            this.ProductReceipts = new HashSet<ProductReceipt>();
         }
     
         public int Id { get; set; }
-        public Nullable<int> SeatNumber { get; set; }
-        public Nullable<int> SeatRow { get; set; }
-        public Nullable<int> RoomId { get; set; }
+        public string ProductName { get; set; }
+        public string ProductImage { get; set; }
+        public string ProductType { get; set; }
+        public Nullable<float> Price { get; set; }
+        public Nullable<bool> IsDeleted { get; set; }
     
-        public virtual Room Room { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<SeatSetting> SeatSettings { get; set; }
+        public virtual ICollection<ProductBillInfo> ProductBillInfoes { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Ticket> Tickets { get; set; }
+        public virtual ICollection<ProductReceipt> ProductReceipts { get; set; }
+        public virtual ProductStorage ProductStorage { get; set; }
     }
 }

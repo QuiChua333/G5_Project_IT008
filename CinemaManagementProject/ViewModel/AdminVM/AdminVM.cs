@@ -26,7 +26,7 @@ namespace CinemaManagementProject.ViewModel.AdminVM
             FilmCommand = new RelayCommand(Film);
 
             //StartPage
-            _currentView = new FoodManagementVM.FoodManagementVM();
+            _currentView = new MovieManagementVM.MovieManagementVM();
         }
     }
 }

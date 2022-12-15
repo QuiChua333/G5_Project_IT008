@@ -11,11 +11,11 @@
       xmlns:viewmodel="clr-namespace:CinemaManagementProject.ViewModel.AdminVM.MovieManagementVM"
       xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
       Title="MovieManagementPage"
-      Width="1140" Height="760">
+      x:Name="mainPage"
+      Width="1140" Height="760"
+      DataContext="{StaticResource FilmVM}">
     
-    <Page.DataContext>
-        <viewmodel:MovieManagementVM/>
-    </Page.DataContext>
+    
 
     <i:Interaction.Triggers>
         <i:EventTrigger EventName="Loaded">
@@ -23,9 +23,10 @@
         </i:EventTrigger>
     </i:Interaction.Triggers>
 
+   
     <Grid Width="1140" Height="760" >
         <Grid Grid.Column="1" Background="#BCD8F1">
-
+            
             <Grid.RowDefinitions>
                 <RowDefinition Height="60"/>
                 <RowDefinition/>
@@ -49,7 +50,10 @@
                         Height="50" Width="50" 
                         Background="Transparent" 
                         BorderThickness="0"
-                        Margin="0,0,10,0">
+                        Margin="0,0,10,0" 
+                        MouseEnter="Button_MouseEnter_1"
+                        MouseLeave="Button_MouseLeave_1"
+                        Click="Button_Click">
                         <Image 
                             Height="36" Width="36"
                             Source="{StaticResource Icon_X_Black}" 
@@ -91,14 +95,18 @@
                             <StackPanel Orientation="Horizontal" Grid.Column="0">
 
                                 <Search:Search IconSize="20" 
-                                                Height="46" 
-                                                Margin="20, 17, 0, 17"  
-                                                Width="350"
-                                                Corner="12"
-                                                FontFamily="{StaticResource MaterialDesignFont}"
-                                                FontSize="15"    
-                                                FontWeight="Thin" 
-                                                x:Name="SearchBox"></Search:Search>
+                                               Height="46" 
+                                               Margin="20, 17, 0, 17"  
+                                               Width="400"
+                                               Corner="12"
+                                               FontFamily="{StaticResource MaterialDesignFont}"
+                                               FontSize="15"    
+                                               FontWeight="Thin" 
+                                               PlaceHolder="Tìm kiếm"
+                                               SearchTextChange="Search_SearchTextChange"
+                                               x:Name="SearchBox"/>
+                               
+
                                 <Border>
                                     <Border.Effect>
                                         <DropShadowEffect
@@ -112,7 +120,7 @@
                                     <Button Style="{StaticResource CustomButton}" 
                                             Width="140" 
                                             Height="50" 
-                                            Margin="40,0,0,0">
+                                            Margin="40,0,0,0" Command="{Binding LoadAddMovieCM}">
                                         <StackPanel Orientation="Horizontal" 
                                                     Width="143" 
                                                     HorizontalAlignment="Center" >
@@ -146,13 +154,14 @@
                                     <Button Style="{StaticResource CustomButton}" 
                                             Width="180" 
                                             Height="50" 
-                                            Margin="20,0,0,0">
+                                            Margin="20,0,0,0"
+                                            Command="{Binding ExportFileCM}">
                                         <StackPanel Orientation="Horizontal" 
                                                     Width="143" 
                                                     HorizontalAlignment="Center" >
                                             <materialDesign:PackIcon Kind="Download" Width="30" Height="30"/>
                                             <TextBlock FontFamily="{StaticResource MaterialDesignFont}" 
-                                                       Text="Tải danh sách" 
+                                                       Text="Tải file Excel" 
                                                        FontSize="15"
                                                        FontWeight="Normal"
                                                        Margin="2,5,0,0"/>
@@ -161,7 +170,7 @@
                                 </Border>
                             </Grid>
                         </Grid>
-
+                        
                         <Grid Grid.Row="1">
                             <Border Grid.Row="1" 
                                     Margin="20 0 20 20" 
@@ -170,11 +179,16 @@
                                 <materialDesign:Card UniformCornerRadius="20">
                                     <ScrollViewer VerticalScrollBarVisibility="Auto"  >
                                         <ListView x:Name="MovieListView"
-                                                  ItemsSource="{Binding MovieList}"
+                                                  ItemsSource="{Binding FilmList}"
                                                   SelectedItem="{Binding SelectedItem}"
                                                   Focusable="True"
                                                   Height="578"
                                                   ToolTip="Nháy đúp để xem chi tiết">
+                                            <i:Interaction.Triggers>
+                                                <i:EventTrigger EventName="MouseDoubleClick">
+                                                    <i:InvokeCommandAction Command="{Binding LoadInforMovieCM}" />
+                                                </i:EventTrigger>
+                                            </i:Interaction.Triggers>
                                             <ListView.View>
                                                 <GridView>
                                                     <GridViewColumn Header="Tên phim" Width="300">
@@ -195,7 +209,7 @@
                                                         </GridViewColumn.CellTemplate>
                                                     </GridViewColumn>
 
-                                                    <GridViewColumn Header="Quốc gia" Width="170">
+                                                    <GridViewColumn Header="Quốc gia" Width="120">
                                                         <GridViewColumn.CellTemplate>
                                                             <DataTemplate>
                                                                 <TextBlock Text="{Binding Country}"
@@ -205,7 +219,7 @@
                                                         </GridViewColumn.CellTemplate>
                                                     </GridViewColumn>
 
-                                                    <GridViewColumn Header="Thể loại" Width="150">
+                                                    <GridViewColumn Header="Thể loại" Width="200" >
                                                         <GridViewColumn.CellTemplate>
                                                             <DataTemplate>
                                                                 <TextBlock Text="{Binding Genre}"
@@ -244,14 +258,19 @@
                                                                         </Border.Style>
 
                                                                         <StackPanel>
-                                                                            <Image Source="{StaticResource Icon_Edit}" Width="30" Height="30"/>
+                                                                            <Image Source="{StaticResource Icon_Edit}" 
+                                                                                           VerticalAlignment="Center" 
+                                                                                           HorizontalAlignment="Center" 
+                                                                                           Width="30" Height="30"/>
                                                                         </StackPanel>
-                                                                        <!--<i:Interaction.Triggers>
+                                                                        <i:Interaction.Triggers>
                                                                             <i:EventTrigger EventName="MouseLeftButtonUp">
                                                                                 <i:InvokeCommandAction Command="{Binding ElementName=MovieListView, Path=DataContext.LoadEditMovieCM}" />
                                                                             </i:EventTrigger>
-                                                                        </i:Interaction.Triggers>-->
+                                                                        </i:Interaction.Triggers>
+                                                                        
                                                                     </Border>
+                                                                    
                                                                     <Border BorderThickness="0.5"
                                                                             BorderBrush="Black"
                                                                             CornerRadius="5"
@@ -270,11 +289,11 @@
                                                                         <StackPanel>
                                                                             <materialDesign:PackIcon Kind="GarbageCanEmpty" Width="30" Height="30"/>
                                                                         </StackPanel>
-                                                                        <!--<i:Interaction.Triggers>
+                                                                        <i:Interaction.Triggers>
                                                                             <i:EventTrigger EventName="MouseLeftButtonUp">
                                                                                 <i:InvokeCommandAction Command="{Binding ElementName=MovieListView, Path=DataContext.LoadDeleteMovieCM}" />
                                                                             </i:EventTrigger>
-                                                                        </i:Interaction.Triggers>-->
+                                                                        </i:Interaction.Triggers>
                                                                     </Border>
                                                                 </StackPanel>
 
@@ -289,8 +308,19 @@
                                 </materialDesign:Card>
 
                             </Border>
+                            <StackPanel Orientation="Horizontal"
+                                    HorizontalAlignment="Right"
+                                    Margin="0,568,50,0">
+                                <Label Content="Kết quả: "
+                                       FontSize="11" 
+                                       FontWeight="Bold"/>
+                                <Label Content="{Binding FilmList.Count}"
+                                       x:Name="result"
+                                       FontSize="11"
+                                       FontWeight="Bold"/>
+                            </StackPanel>
                         </Grid>
-
+                       
                     </Grid>
                 </Border>
 

@@ -7,29 +7,32 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace CinemaManagementProject.Model.Service
+namespace CinemaManagementProject.Model
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class VoucherRelease
+    public partial class Film
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public VoucherRelease()
+        public Film()
         {
-            this.Vouchers = new HashSet<Voucher>();
+            this.ShowTimes = new HashSet<ShowTime>();
         }
     
         public int Id { get; set; }
-        public string VoucherReleaseName { get; set; }
-        public Nullable<float> MenhGia { get; set; }
-        public Nullable<int> VoucherReleaseStatus { get; set; }
-        public Nullable<System.DateTime> StartDate { get; set; }
-        public Nullable<System.DateTime> EndDate { get; set; }
-        public Nullable<int> TypeObject { get; set; }
-        public Nullable<float> MinimizeTotal { get; set; }
+        public string FilmName { get; set; }
+        public string Image { get; set; }
+        public Nullable<int> Duration { get; set; }
+        public string FilmType { get; set; }
+        public string Country { get; set; }
+        public string Author { get; set; }
+        public string Genre { get; set; }
+        public Nullable<System.DateTime> ReleaseDate { get; set; }
+        public string FilmInfo { get; set; }
+        public Nullable<bool> IsDeleted { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Voucher> Vouchers { get; set; }
+        public virtual ICollection<ShowTime> ShowTimes { get; set; }
     }
 }

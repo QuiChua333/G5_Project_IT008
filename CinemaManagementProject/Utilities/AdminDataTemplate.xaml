@@ -11,4 +11,5 @@
     <DataTemplate DataType="{x:Type MovieManagementVM:MovieManagementVM}">
         <MovieManagementView:MovieManagementPage></MovieManagementView:MovieManagementPage>
     </DataTemplate>
+    
 </ResourceDictionary>

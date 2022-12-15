@@ -37,6 +37,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CloudinaryDotNet, Version=1.20.0.0, Culture=neutral, PublicKeyToken=c8234dc617ae7841, processorArchitecture=MSIL">
+      <HintPath>..\packages\CloudinaryDotNet.1.20.0\lib\net452\CloudinaryDotNet.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -58,6 +61,13 @@
     <Reference Include="Microsoft.Expression.Interactions, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Windows.Interactivity.WPF.2.0.20525\lib\net40\Microsoft.Expression.Interactions.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Office.Interop.Excel.15.0.4795.1001\lib\net20\Microsoft.Office.Interop.Excel.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
@@ -70,8 +80,16 @@
       <Private>True</Private>
       <Private>True</Private>
     </Reference>
+    <Reference Include="System.Runtime.InteropServices.RuntimeInformation, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.InteropServices.RuntimeInformation.4.3.0\lib\net45\System.Runtime.InteropServices.RuntimeInformation.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
+    <Reference Include="System.Text.Encodings.Web, Version=4.0.3.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Text.Encodings.Web.4.5.1\lib\netstandard2.0\System.Text.Encodings.Web.dll</HintPath>
+    </Reference>
     <Reference Include="System.Windows.Interactivity, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Windows.Interactivity.WPF.2.0.20525\lib\net40\System.Windows.Interactivity.dll</HintPath>
     </Reference>
@@ -95,75 +113,83 @@
     </ApplicationDefinition>
     <Compile Include="CustomMessageBox.cs" />
     <Compile Include="DTOs\FilmDTO.cs" />
-    <Compile Include="Model\Service\Bill.cs">
-      <DependentUpon>CinemaManagementModel.tt</DependentUpon>
+    <Compile Include="Model\Bill.cs">
+      <DependentUpon>CinemaManagementDatabase.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\Service\BillInfo.cs">
-      <DependentUpon>CinemaManagementModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\Service\CinemaManagementModel.Context.cs">
+    <Compile Include="Model\CinemaManagementDatabase.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>CinemaManagementModel.Context.tt</DependentUpon>
+      <DependentUpon>CinemaManagementDatabase.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\Service\CinemaManagementModel.cs">
+    <Compile Include="Model\CinemaManagementDatabase.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>CinemaManagementModel.tt</DependentUpon>
+      <DependentUpon>CinemaManagementDatabase.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\Service\CinemaManagementModel.Designer.cs">
+    <Compile Include="Model\CinemaManagementDatabase.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>CinemaManagementModel.edmx</DependentUpon>
+      <DependentUpon>CinemaManagementDatabase.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Model\Service\Customer.cs">
-      <DependentUpon>CinemaManagementModel.tt</DependentUpon>
+    <Compile Include="Model\Customer.cs">
+      <DependentUpon>CinemaManagementDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Film.cs">
+      <DependentUpon>CinemaManagementDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Product.cs">
+      <DependentUpon>CinemaManagementDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ProductBillInfo.cs">
+      <DependentUpon>CinemaManagementDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ProductReceipt.cs">
+      <DependentUpon>CinemaManagementDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ProductStorage.cs">
+      <DependentUpon>CinemaManagementDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Room.cs">
+      <DependentUpon>CinemaManagementDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Seat.cs">
+      <DependentUpon>CinemaManagementDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\SeatSetting.cs">
+      <DependentUpon>CinemaManagementDatabase.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Service\DataProvider.cs" />
-    <Compile Include="Model\Service\Film.cs">
-      <DependentUpon>CinemaManagementModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Model\Service\FilmService.cs" />
-    <Compile Include="Model\Service\Product.cs">
-      <DependentUpon>CinemaManagementModel.tt</DependentUpon>
+    <Compile Include="Model\ShowTime.cs">
+      <DependentUpon>CinemaManagementDatabase.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\Service\ProductStorage.cs">
-      <DependentUpon>CinemaManagementModel.tt</DependentUpon>
+    <Compile Include="Model\ShowTimeSetting.cs">
+      <DependentUpon>CinemaManagementDatabase.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\Service\Room.cs">
-      <DependentUpon>CinemaManagementModel.tt</DependentUpon>
+    <Compile Include="Model\Staff.cs">
+      <DependentUpon>CinemaManagementDatabase.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\Service\Seat.cs">
-      <DependentUpon>CinemaManagementModel.tt</DependentUpon>
+    <Compile Include="Model\Ticket.cs">
+      <DependentUpon>CinemaManagementDatabase.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\Service\SeatSetting.cs">
-      <DependentUpon>CinemaManagementModel.tt</DependentUpon>
+    <Compile Include="Model\Trouble.cs">
+      <DependentUpon>CinemaManagementDatabase.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\Service\ShowTime.cs">
-      <DependentUpon>CinemaManagementModel.tt</DependentUpon>
+    <Compile Include="Model\Voucher.cs">
+      <DependentUpon>CinemaManagementDatabase.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\Service\Staff.cs">
-      <DependentUpon>CinemaManagementModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\Service\Ticket.cs">
-      <DependentUpon>CinemaManagementModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\Service\Trouble.cs">
-      <DependentUpon>CinemaManagementModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\Service\User.cs">
-      <DependentUpon>CinemaManagementModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\Service\Voucher.cs">
-      <DependentUpon>CinemaManagementModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\Service\VoucherRelease.cs">
-      <DependentUpon>CinemaManagementModel.tt</DependentUpon>
+    <Compile Include="Model\VoucherRelease.cs">
+      <DependentUpon>CinemaManagementDatabase.tt</DependentUpon>
     </Compile>
     <Compile Include="Until.cs" />
     <Compile Include="Utilities\RelyCommand.cs" />
+    <Compile Include="Utils\CloudinaryService.cs" />
+    <Compile Include="Utils\Constant.cs" />
     <Compile Include="ViewModel\AdminVM\AdminVM.cs" />
     <Compile Include="ViewModel\AdminVM\FoodManagementVM\FoodManagementVM.cs" />
+    <Compile Include="ViewModel\AdminVM\MovieManagementVM\Add.MovieVM.cs" />
+    <Compile Include="ViewModel\AdminVM\MovieManagementVM\Edit.MovieVM.cs" />
+    <Compile Include="ViewModel\AdminVM\MovieManagementVM\Info.MovieVM.cs" />
     <Compile Include="ViewModel\AdminVM\MovieManagementVM\MovieManagementVM.cs" />
     <Compile Include="ViewModel\BaseViewModel.cs" />
     <Compile Include="ViewModel\StaffVM\StaffVM.cs" />
@@ -381,13 +407,13 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EntityDeploy Include="Model\Service\CinemaManagementModel.edmx">
+    <EntityDeploy Include="Model\CinemaManagementDatabase.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>CinemaManagementModel.Designer.cs</LastGenOutput>
+      <LastGenOutput>CinemaManagementDatabase.Designer.cs</LastGenOutput>
     </EntityDeploy>
     <None Include="App.Config" />
-    <None Include="Model\Service\CinemaManagementModel.edmx.diagram">
-      <DependentUpon>CinemaManagementModel.edmx</DependentUpon>
+    <None Include="Model\CinemaManagementDatabase.edmx.diagram">
+      <DependentUpon>CinemaManagementDatabase.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -456,15 +482,15 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Model\Service\CinemaManagementModel.Context.tt">
+    <Content Include="Model\CinemaManagementDatabase.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>CinemaManagementModel.edmx</DependentUpon>
-      <LastGenOutput>CinemaManagementModel.Context.cs</LastGenOutput>
+      <DependentUpon>CinemaManagementDatabase.edmx</DependentUpon>
+      <LastGenOutput>CinemaManagementDatabase.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Model\Service\CinemaManagementModel.tt">
+    <Content Include="Model\CinemaManagementDatabase.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>CinemaManagementModel.edmx</DependentUpon>
-      <LastGenOutput>CinemaManagementModel.cs</LastGenOutput>
+      <DependentUpon>CinemaManagementDatabase.edmx</DependentUpon>
+      <LastGenOutput>CinemaManagementDatabase.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

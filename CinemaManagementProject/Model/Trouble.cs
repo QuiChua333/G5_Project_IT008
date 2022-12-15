@@ -7,19 +7,22 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace CinemaManagementProject.Model.Service
+namespace CinemaManagementProject.Model
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class SeatSetting
+    public partial class Trouble
     {
         public int Id { get; set; }
-        public Nullable<int> SeatId { get; set; }
-        public Nullable<int> ShowTimeId { get; set; }
-        public Nullable<int> SeatStatus { get; set; }
+        public string TroubleType { get; set; }
+        public string TroubleInfo { get; set; }
+        public Nullable<System.DateTime> StartDate { get; set; }
+        public Nullable<System.TimeSpan> StartTime { get; set; }
+        public string TroubleStatus { get; set; }
+        public Nullable<int> StaffId { get; set; }
+        public Nullable<bool> IsDeleted { get; set; }
     
-        public virtual Seat Seat { get; set; }
-        public virtual ShowTime ShowTime { get; set; }
+        public virtual Staff Staff { get; set; }
     }
 }

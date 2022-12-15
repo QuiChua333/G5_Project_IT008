@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace CinemaManagementProject.Model.Service
+namespace CinemaManagementProject.Model
 {
     using System;
     using System.Collections.Generic;
@@ -18,24 +18,28 @@ namespace CinemaManagementProject.Model.Service
         public Staff()
         {
             this.Bills = new HashSet<Bill>();
+            this.ProductReceipts = new HashSet<ProductReceipt>();
             this.Troubles = new HashSet<Trouble>();
-            this.Users = new HashSet<User>();
         }
     
         public int Id { get; set; }
+        public string MaNV { get; set; }
         public string StaffName { get; set; }
-        public Nullable<int> Gender { get; set; }
+        public string Gender { get; set; }
         public Nullable<System.DateTime> DateOfBirth { get; set; }
         public string Email { get; set; }
         public string PhoneNumber { get; set; }
-        public Nullable<int> Position { get; set; }
+        public string Position { get; set; }
         public Nullable<System.DateTime> StartDate { get; set; }
+        public string UserName { get; set; }
+        public string UserPass { get; set; }
+        public Nullable<bool> IsDeleted { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Bill> Bills { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Trouble> Troubles { get; set; }
+        public virtual ICollection<ProductReceipt> ProductReceipts { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<User> Users { get; set; }
+        public virtual ICollection<Trouble> Troubles { get; set; }
     }
 }
