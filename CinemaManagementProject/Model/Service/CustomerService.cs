@@ -59,7 +59,7 @@ namespace CinemaManagementProject.Model.Service
             {
                 using (var context = new CinemaManagementProjectEntities())
                 {
-                    var customer = await context.Customers.Where(c => !c.IsDeleted && c.PhoneNumber == phoneNumber).FirstOrDefaultAsync();
+                    var customer = await context.Customers.Where(c => /*!c.IsDeleted && */c.PhoneNumber == phoneNumber).FirstOrDefaultAsync();
                     if (customer is null)
                     {
                         return null;
@@ -125,15 +125,7 @@ namespace CinemaManagementProject.Model.Service
                 throw e;
             }
         }
-        //private string CreateNextCustomerId(string maxId)
-        //{
-        //    if (maxId is null)
-        //    {
-        //        return "KH0001";
-        //    }
-        //    string newIdString = $"000{int.Parse(maxId.Substring(2)) + 1}";
-        //    return "KH" + newIdString.Substring(newIdString.Length - 4, 4);
-        //}
+        
         public async Task<(bool, string, string CustomerId)> CreateNewCustomer(CustomerDTO newCus)
         {
             try
@@ -167,12 +159,9 @@ namespace CinemaManagementProject.Model.Service
                         await context.SaveChangesAsync();
                         return (true, "Đăng ký thành công", cus.Id.ToString());
                     }
-
-
-                    string currentMaxId = await context.Customers.MaxAsync(c => c.Id.ToString());
+                    //string currentMaxId = await context.Customers.MaxAsync(c => c.Id.ToString());
                     Customer newCusomer = new Customer
-                    {
-                        Id = int.Parse( currentMaxId),
+                    {                        
                         CustomerName = newCus.Name,
                         PhoneNumber = newCus.PhoneNumber,
                         Email = newCus.Email,
@@ -238,7 +227,6 @@ namespace CinemaManagementProject.Model.Service
                     {
                         return (false, "Khách hàng không tồn tại!");
                     }
-
                     cus.IsDeleted = true;
                     await context.SaveChangesAsync();
                     return (true, "Xóa thành công");
@@ -249,7 +237,6 @@ namespace CinemaManagementProject.Model.Service
                 return (false, "Lỗi hệ thống");
             }
         }
-
 
         public async Task<List<CustomerDTO>> GetTop5CustomerEmail()
         {
@@ -262,7 +249,7 @@ namespace CinemaManagementProject.Model.Service
                         .Select(grC => new
                         {
                             CustomerId = grC.Key,
-                            Expense = grC.Sum(c => (Decimal?)(c.TotalPrize + c.DiscountPrice)) ?? 0
+                            Expense = grC.Sum(c => (float?)(c.TotalPrize + c.DiscountPrice)) ?? 0
                         })
                         .OrderByDescending(b => b.Expense).Take(5)
                         .Join(

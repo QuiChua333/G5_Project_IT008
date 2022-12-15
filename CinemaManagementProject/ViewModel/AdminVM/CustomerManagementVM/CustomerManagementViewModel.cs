@@ -195,7 +195,7 @@ namespace CinemaManagementProject.ViewModel.AdminVM.CustomerManagementVM
             {
                 EditCustomerWindow wd = new EditCustomerWindow();
                 Fullname = SelectedItem.Name;
-                Phone = SelectedItem.PhoneNumber.ToString();
+                Phone = SelectedItem.PhoneNumber;
                 Mail = SelectedItem.Email;
                 wd.ShowDialog();
             });
@@ -254,7 +254,7 @@ namespace CinemaManagementProject.ViewModel.AdminVM.CustomerManagementVM
             {
                 if (!Utils.RegexUtilities.IsValidEmail(Mail))
                 {
-                    CustomMessageBox.ShowOk("Email không hợp lệ", "", "OK", CustomMessageBoxImage.Warning);
+                    CustomMessageBox.ShowOk("Email không hợp lệ", "Cảnh báo", "OK", CustomMessageBoxImage.Warning);
                     return;
                 }
             }
@@ -302,13 +302,11 @@ namespace CinemaManagementProject.ViewModel.AdminVM.CustomerManagementVM
         }
         public void LoadCustomerListView(Operation oper, CustomerDTO cus = null)
         {
-
             switch (oper)
             {
                 case Operation.UPDATE:
                     var cusfound = CustomerList.FirstOrDefault(c => c.Id == cus.Id);
-                    //MessageBox.Show(cus.Name);
-                    //CustomerList[CustomerList.IndexOf(cusfound)] = cus;
+                    CustomerList[CustomerList.IndexOf(cusfound)] = cus;
                     break;
                 case Operation.DELETE:
                     for (int i = 0; i < CustomerList.Count; i++)

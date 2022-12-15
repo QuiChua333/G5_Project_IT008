@@ -67,7 +67,7 @@
                 <TextBlock Text="Họ và tên" />
                 <TextBox x:Name="_FullName"
                          Grid.Column="1"
-                         Text="{Binding SelectedItem.Name, Mode=TwoWay}" />
+                         Text="{Binding Fullname, Mode=TwoWay}" />
             </Grid>
 
             <Grid Background="Transparent">
@@ -104,7 +104,8 @@
                            Margin="0,20,9,10" />
                 <DatePickerTextBox Width="358"
                          HorizontalAlignment="Left"
-                         Margin="5,0,3,8"
+                         VerticalAlignment="Bottom"
+                         Margin="5,0,0,8"
                          Grid.Column="1"
                          Style="{StaticResource MaterialDesignDatePickerTextBox}"
                          Text="{Binding SelectedItem.FirstDate,StringFormat=dd/MM/yyyy}"
@@ -123,9 +124,8 @@
                 </Grid.ColumnDefinitions>
                 <TextBlock Text="Số điện thoại" />
                 <TextBox Grid.Column="1"
-                         x:Name="_Phone"
-                        
-                         Text="{Binding SelectedItem.PhoneNumber,Mode=TwoWay}" />
+                         x:Name="_Phone"                        
+                         Text="{Binding Phone,Mode=TwoWay}" />
             </Grid>
 
             <Grid Background="Transparent">
@@ -136,7 +136,7 @@
                 <TextBlock Text="Email" />
                 <TextBox Grid.Column="1"
                          x:Name="_Mail"
-                         Text="{Binding SelectedItem.Email,Mode=TwoWay}" />
+                         Text="{Binding Mail,Mode=TwoWay}" />
             </Grid>
             <!--#endregion-->
 
