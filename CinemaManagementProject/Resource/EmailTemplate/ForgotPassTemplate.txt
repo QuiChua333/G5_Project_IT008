@@ -1,0 +1,55 @@
+<html style="background-color: #7da5f5ea;">
+    <body>
+        <div style="width: 548; margin: auto; background-color: white;">
+            <div style="background-color: #7da5f5ea; text-align: center;">
+                <Text style="font-size: 40; font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; ">Squadin Cinema</Text>
+            </div>
+            <div style="padding: 30;">
+                <div>
+                    <Text style="display: block;
+                    color: #0d0c22;
+                    font-family: 'Helvetica Neue',sans-serif;
+                    font-size: 18px;
+                    font-weight: 500;
+                    line-height: 1.3;
+                    margin: 0;">    
+                        Hi,
+                    </Text>
+                    <Text style="    display: block;
+                    color: #9e9ea7;
+                    font-size: 15px;
+                    font-weight: normal;">
+                        Here are your password reset instructions.
+                    </Text>
+                </div>
+                <div style="margin-top: 30;">
+                    <Text style="
+                    margin-bottom: 15px;
+                    color: #555;
+                    font-size: 16px;
+                    line-height: 1.5;
+                    margin-top: 50">    
+                        A request to reset your Dribbble password has been made. If you did not make this request, simply ignore this email. If you did make this request, please reset your password:
+                    </Text>
+                    <div style=" margin:auto;margin-top: 30;margin-bottom: 30;background-color: rgb(219, 161, 170) ; width: 100; height: 40; border-radius: 10;display: flex; justify-content: center; align-items: center; ">
+                        <text>{RESET_PASSWORD_CODE}</text>
+</div>
+                    <text style="    margin-top: 15px;
+                    margin-bottom: 15px;
+                    color: #555;
+                    font-size: 16px;
+                    line-height: 1.5;">Thank you,<br/>
+                        From thầy Toàn with love</text>
+                        <br/>
+                        <div style="height: 30"></div>
+                    <text style="margin-top: 30px;
+                    margin-bottom: 15px;
+                    color: #aaa;
+                    font-size: 13px;
+                    line-height: 1.5;">If the button above does not work, try copying and pasting the URL into your browser. If you continue to have problems, please visit our Help Center.</text>
+                </div>
+                
+            </div>
+        </div>
+    </body>
+</html>

@@ -4,11 +4,15 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CinemaManagementProject.View.Admin.FoodManagement"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         mc:Ignorable="d"
         WindowStyle="None"
         AllowsTransparency="True"
         Title="AddFoodWindow" Height="320" Width="630"
         Background="Transparent"
+        DataContext="{StaticResource FoodVM}"
+        WindowStartupLocation="CenterScreen"
+        Name="AddFoodWD"
 >
     <Grid 
         Height="320" 
@@ -51,7 +55,14 @@
                 Width="20"
                 Height="20" 
                 Margin="0,0,20,0"
-            />
+                Cursor="Hand"
+            >
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="MouseLeftButtonDown">
+                        <i:InvokeCommandAction Command="{Binding CloseEditFoodCM}" CommandParameter="{Binding ElementName=AddFoodWD}"/>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </Image>
         </Grid>
         <Grid x:Name="ImageProduct" Grid.Row="1" Grid.RowSpan="2">
             <Grid.ColumnDefinitions>
@@ -75,17 +86,24 @@
                     </Ellipse.Effect>
                 </Ellipse>
                 <Image
-                    Source="{StaticResource Popcorn}"
                     Height="220"
                     Width="220"
+                    Source="{Binding ImageSource}"
                 />
             </Grid>
             <Image 
-                Source="{StaticResource IconUpload}" 
+                Source="{StaticResource IconUploadImage}" 
                 Grid.Column="1"
                 Width="35"
                 Height="35" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Center" Grid.ColumnSpan="2"
-            />
+                Cursor="Hand"
+            >
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="MouseLeftButtonDown">
+                        <i:InvokeCommandAction Command="{Binding UploadImageCM}"/>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </Image>
         </Grid>
         <Grid x:Name="Infomation" Grid.Column="2" Margin="0,57,0,0" Grid.Row="1">
             <StackPanel Height="130">
@@ -112,8 +130,8 @@
                            FontFamily="{StaticResource MaterialDesignFont}"
                            FontWeight="Normal"
                            Foreground="{StaticResource LightGrayTundora}" BorderThickness="0,0,0,0" BorderBrush="{x:Null}" SelectionTextBrush="{x:Null}" SelectionBrush="{x:Null}" VerticalAlignment="Center" HorizontalAlignment="Left"
+                           Text="{Binding DisplayName, Mode=TwoWay}"
                         >
-                            PopCorn
                         </TextBox>
                         <Rectangle Height="1" Width="200" Fill="{StaticResource LightGrayTundora}" VerticalAlignment="Bottom" HorizontalAlignment="Left"/>
                     </Grid>
@@ -135,15 +153,12 @@
                         Type
                     </TextBlock>
                     <Grid Height="28" Grid.Column="1">
-                        <ComboBox Width="200" Style="{StaticResource MaterialDesignComboBox}" HorizontalAlignment="Left">
-                            <ComboBoxItem Width="180" IsSelected="True">
-                                <TextBlock Width="182" Foreground="{StaticResource LightGrayTundora}" FontFamily="{StaticResource MaterialDesignFont}" FontWeight="Regular" FontSize="18" HorizontalAlignment="Left">Item1</TextBlock>
+                        <ComboBox Width="200" Style="{StaticResource MaterialDesignComboBox}" Text="{Binding Category}" HorizontalAlignment="Left">
+                            <ComboBoxItem Width="180">
+                                <TextBlock Width="182" Foreground="{StaticResource LightGrayTundora}" FontFamily="{StaticResource MaterialDesignFont}" FontWeight="Regular" FontSize="18" HorizontalAlignment="Left">Đồ ăn</TextBlock>
                             </ComboBoxItem>
                             <ComboBoxItem Width="180">
-                                <TextBlock Width="182" Foreground="{StaticResource LightGrayTundora}" FontFamily="{StaticResource MaterialDesignFont}" FontWeight="Regular" FontSize="18" HorizontalAlignment="Left">Item2</TextBlock>
-                            </ComboBoxItem>
-                            <ComboBoxItem Width="180">
-                                <TextBlock Width="182" Foreground="{StaticResource LightGrayTundora}" FontFamily="{StaticResource MaterialDesignFont}" FontWeight="Regular" FontSize="18" HorizontalAlignment="Left">Item3</TextBlock>
+                                <TextBlock Width="182" Foreground="{StaticResource LightGrayTundora}" FontFamily="{StaticResource MaterialDesignFont}" FontWeight="Regular" FontSize="18" HorizontalAlignment="Left">Nước uống</TextBlock>
                             </ComboBoxItem>
                         </ComboBox>
                     </Grid>
@@ -174,8 +189,8 @@
                            Width="200"
                            FontFamily="{StaticResource Regular}"
                            Foreground="{StaticResource LightGrayTundora}" BorderThickness="0,0,0,0" BorderBrush="{x:Null}" SelectionTextBrush="{x:Null}" SelectionBrush="{x:Null}" VerticalAlignment="Center" HorizontalAlignment="Left" Grid.ColumnSpan="2"
+                           Text="{Binding Price, Mode=TwoWay}"
                         >
-                            30,000đ
                         </TextBox>
                         <Rectangle Height="1" Width="200" Fill="{StaticResource LightGrayTundora}" VerticalAlignment="Bottom" HorizontalAlignment="Left" Grid.ColumnSpan="2"/>
                     </Grid>
@@ -184,8 +199,15 @@
         </Grid>
         <Grid x:Name="Footer" Grid.Row="2" Grid.Column="1" Margin="0,0,0,0">
             <StackPanel HorizontalAlignment="Right"  Orientation="Horizontal" Margin="0,-15,0,0">
-                <Button Width="90" Margin="10,0,5,0" Style="{StaticResource RedBtn}" Click="Button_Click">Hủy</Button>
-                <Button Width="90" Margin="5,0,20,0"  Style="{StaticResource BlueBtn}">Thêm</Button>
+                <Button Width="90" Height="35" Margin="10,0,5,0" Background="Red" Style="{StaticResource CustomButton}" Click="Button_Click">Hủy</Button>
+                <Button Width="90" Height="35" Margin="5,0,20,0" Background="Green" Style="{StaticResource CustomButton}" Content="Thêm">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="Click">
+                            <i:InvokeCommandAction Command="{Binding AddFoodCM}"
+                                                   CommandParameter="{Binding ElementName=AddFoodWD}"/>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </Button>
             </StackPanel>
         </Grid>
     </Grid>

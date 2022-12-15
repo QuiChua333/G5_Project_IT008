@@ -1,4 +1,8 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:OrderFoodViewModel="clr-namespace:CinemaManagementProject.ViewModel.StaffVM.OrderFoodManagementVM"
+                    xmlns:OrderFoodView="clr-namespace:CinemaManagementProject.View.Staff.OrderFoodManagement">
+    <DataTemplate DataType="{x:Type OrderFoodViewModel:OrderFoodManagementVM}">
+        <OrderFoodView:OrderFoodPage></OrderFoodView:OrderFoodPage>
+    </DataTemplate>
 </ResourceDictionary>

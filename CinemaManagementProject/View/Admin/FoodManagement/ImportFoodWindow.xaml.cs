@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,6 +23,15 @@ namespace CinemaManagementProject.View.Admin.FoodManagement
         public ImportFoodWindow()
         {
             InitializeComponent();
+        }
+
+        private void PriceTextBox_GotFocus(object sender, RoutedEventArgs e)
+        {
+            PriceTextBox.Text = "";
+        }
+        private void TextQuantity_GotFocus(object sender, RoutedEventArgs e)
+        {
+            TextQuantity.Text = "";
         }
     }
 }

@@ -1,0 +1,109 @@
+﻿<Window x:Class="CinemaManagementProject.View.Admin.TroubleManagement.EditTroubleInformation"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CinemaManagementProject.View.Admin.TroubleManagement"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        mc:Ignorable="d"
+        Title="EditTroubleInformation" WindowStyle="None"
+        Background="Transparent"
+        AllowsTransparency="True"
+        Height="420" Width="640"
+>
+    <Grid Height="400" Width="620">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="6*" />
+        </Grid.RowDefinitions>
+        <Rectangle Grid.Row="0" Grid.RowSpan="2" Fill="White" RadiusX="20" RadiusY="20">
+            <Rectangle.Effect>
+                <DropShadowEffect
+                    BlurRadius="15"
+                    Direction="270"
+                    Opacity="0.3"
+                    Color="Black"
+                />
+            </Rectangle.Effect>
+        </Rectangle>
+        <Grid x:Name="Header" Grid.Row="0">
+            <TextBlock
+                FontFamily="{StaticResource MaterialDesignFont}"
+                FontSize="35"
+                FontWeight="Bold"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center"
+                Margin="30,0,0,0"
+            >Chỉnh sửa sự cố</TextBlock>
+            <Image x:Name="CloseButton" MouseLeftButtonDown="CloseButton_MouseLeftButtonDown" Width="25" Height="25" HorizontalAlignment="Right" Margin="0,0,30,0" Source="{StaticResource IconExit}"></Image>
+        </Grid>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="1.2*"/>
+            </Grid.ColumnDefinitions>
+            <Border BorderThickness="2" Width="230" Height="230" BorderBrush="Black" Margin="20,0,20,20">
+                <Image x:Name="ImageTrouble" Source="{StaticResource Logo}" Stretch="Uniform"></Image>
+            </Border>
+            <Grid Grid.Column="1" Margin="0,33,30,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="3.4*"/>
+                    <RowDefinition Height="1.6*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="1.6*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock FontFamily="{StaticResource MaterialDesignFont}" FontWeight="Bold" FontSize="20" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,20,0">Loại</TextBlock>
+                <TextBlock FontFamily="{StaticResource MaterialDesignFont}" FontWeight="Bold" FontSize="20" Grid.Column="0" Grid.Row="1" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,20,0">Ngày nhận</TextBlock>
+                <TextBlock FontFamily="{StaticResource MaterialDesignFont}" FontWeight="Bold" FontSize="20" Grid.Column="0" Grid.Row="2" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,20,0">Giờ nhận</TextBlock>
+                <TextBlock FontFamily="{StaticResource MaterialDesignFont}" FontWeight="Bold" FontSize="20" Grid.Column="0" Grid.Row="3" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,20,0">Trạng thái</TextBlock>
+                <TextBlock FontFamily="{StaticResource MaterialDesignFont}" FontWeight="Bold" FontSize="20" Grid.Column="0" Grid.Row="4" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,5,20,0">Chi tiết</TextBlock>
+
+                <ComboBox Width="190" Grid.Column="1" Style="{StaticResource MaterialDesignComboBox}" HorizontalAlignment="Left">
+                    <ComboBoxItem Width="180" IsSelected="True">
+                        <TextBlock Width="182" FontFamily="{StaticResource MaterialDesignFont}" FontWeight="Regular" FontSize="18" HorizontalAlignment="Left">Bóng đèn</TextBlock>
+                    </ComboBoxItem>
+                    <ComboBoxItem Width="180">
+                        <TextBlock Width="182" FontFamily="{StaticResource MaterialDesignFont}" FontWeight="Regular" FontSize="18" HorizontalAlignment="Left">Quạt</TextBlock>
+                    </ComboBoxItem>
+                    <ComboBoxItem Width="180">
+                        <TextBlock Width="182" FontFamily="{StaticResource MaterialDesignFont}" FontWeight="Regular" FontSize="18" HorizontalAlignment="Left">Màn chiếu</TextBlock>
+                    </ComboBoxItem>
+                </ComboBox>
+                <Grid Grid.Row="1" Grid.Column="1" Height="30">
+                    <TextBlock FontFamily="{StaticResource MaterialDesignFont}" FontWeight="Regular" FontSize="18" HorizontalAlignment="Left" VerticalAlignment="Center">10-02-2022</TextBlock>
+                    <Image Source="{StaticResource IconCalendar}" Width="22" Height="22" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,5,0"></Image>
+                    <Rectangle Fill="Black" Width="190" Height="0.7" VerticalAlignment="Bottom"></Rectangle>
+                </Grid>
+                <Grid Grid.Row="2" Grid.Column="1" Height="30">
+                    <TextBlock FontFamily="{StaticResource MaterialDesignFont}" FontWeight="Regular" FontSize="18" HorizontalAlignment="Left" VerticalAlignment="Center">11:22:50 PM</TextBlock>
+                    <Image Source="{StaticResource IconClock}" Width="22" Height="22" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,5,0"></Image>
+                    <Rectangle Fill="Black" Width="190" Height="0.7" VerticalAlignment="Bottom"></Rectangle>
+                </Grid>
+
+                <ComboBox Width="190" Grid.Column="1" Grid.Row="3" Style="{StaticResource MaterialDesignComboBox}" HorizontalAlignment="Left">
+                    <ComboBoxItem Width="180" IsSelected="True">
+                        <TextBlock Width="182" FontFamily="{StaticResource MaterialDesignFont}" FontWeight="Regular" FontSize="18" HorizontalAlignment="Left">Đang xử lí</TextBlock>
+                    </ComboBoxItem>
+                    <ComboBoxItem Width="180">
+                        <TextBlock Width="182" FontFamily="{StaticResource MaterialDesignFont}" FontWeight="Regular" FontSize="18" HorizontalAlignment="Left">Chưa xử lí</TextBlock>
+                    </ComboBoxItem>
+                    <ComboBoxItem Width="180">
+                        <TextBlock Width="182" FontFamily="{StaticResource MaterialDesignFont}" FontWeight="Regular" FontSize="18" HorizontalAlignment="Left">Đã xử lí</TextBlock>
+                    </ComboBoxItem>
+                </ComboBox>
+                <TextBlock TextWrapping="Wrap" FontFamily="{StaticResource MaterialDesignFont}" FontWeight="Regular" FontSize="20" Grid.Row="4" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,5,0,20">Sáu bóng đèn sãy A bị hư, từ A1 đến A6 sáng yếu</TextBlock>
+                <StackPanel Grid.Column="1" Grid.Row="5" Orientation="Horizontal">
+                    <Button x:Name="CancelButton" Click="CancelButton_Click"  Style="{StaticResource RedBtn}" Width="90" Height="45" HorizontalAlignment="Right" Margin="0,-12,0,0">Đóng</Button>
+                    <Button x:Name="SaveButton" Click="SaveButton_Click"  Style="{StaticResource BlueBtn}" Width="90" Height="45" HorizontalAlignment="Right" Margin="10,-12,0,0">Lưu</Button>
+                </StackPanel>
+
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>

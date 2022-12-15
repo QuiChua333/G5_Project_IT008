@@ -23,15 +23,13 @@
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="5*"/>
         </Grid.ColumnDefinitions>
-        <Grid Grid.Column="1">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="60"/>
-                <RowDefinition/>
-            </Grid.RowDefinitions>
-        </Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
 
         <!--Overlay-->
-        <Rectangle Fill="{StaticResource LightBlueSpindle}" Grid.Column="0" Grid.ColumnSpan="2" RadiusX="20" RadiusY="20">
+        <Rectangle Fill="{StaticResource LightBlueSpindle}" Grid.ColumnSpan="2" Grid.RowSpan="2" RadiusX="20" RadiusY="20">
             <Rectangle.Effect>
                 <DropShadowEffect
                     Color="Black"
@@ -46,7 +44,7 @@
         <Frame x:Name="Content" Grid.Column="1" Grid.Row="1" Content="{Binding CurrentView}" NavigationUIVisibility="Hidden"></Frame>
 
         <!--SideBar-->
-        <Border Grid.Column="0" CornerRadius="10,0,0,10" Background="#0F2851">
+        <Border Grid.Column="0" Grid.RowSpan="2" CornerRadius="10,0,0,10" Background="#0F2851">
             <StackPanel>
                 <StackPanel Orientation="Horizontal" Height="100" >
                     <Border Height="50" Width="50" CornerRadius="100" Background="White"

@@ -23,12 +23,14 @@ namespace CinemaManagementProject.Model
     
         public int Id { get; set; }
         public Nullable<int> FilmId { get; set; }
-        public Nullable<System.DateTime> StartTime { get; set; }
+        public Nullable<System.TimeSpan> StartTime { get; set; }
         public Nullable<float> Price { get; set; }
+        public Nullable<int> ShowTimeSettingId { get; set; }
     
         public virtual Film Film { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SeatSetting> SeatSettings { get; set; }
+        public virtual ShowTimeSetting ShowTimeSetting { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Ticket> Tickets { get; set; }
     }

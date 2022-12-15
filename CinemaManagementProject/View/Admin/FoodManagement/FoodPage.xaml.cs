@@ -1,4 +1,9 @@
-﻿using System;
+﻿using CinemaManagementProject.Component.Filter;
+using CinemaManagementProject.Component.Search;
+using CinemaManagementProject.DTOs;
+using CinemaManagementProject.ViewModel.AdminVM.FoodManagementVM;
+using MaterialDesignThemes.Wpf;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -36,6 +41,28 @@ namespace CinemaManagementProject.View.Admin.FoodManagement
             EditFoodWindow editFoodWindow = new EditFoodWindow();
             editFoodWindow.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             editFoodWindow.Show();
+        }
+
+        private void FilterCombobox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (FoodManagementVM.StoreAllFood is null) return;
+            var viewmodel = (FoodManagementVM)DataContext;
+            if (viewmodel.FilterComboboxFoodCM.CanExecute(true)) 
+               viewmodel.FilterComboboxFoodCM.Execute(FilterCombobox);
+        }
+        private bool Filter(object item)
+        {
+            if (String.IsNullOrEmpty(SearchBox.Text))
+                return true;
+            else
+                return ((item as ProductDTO).ProductName.IndexOf(SearchBox.Text, StringComparison.OrdinalIgnoreCase) >= 0);
+        }
+
+        private void SearchBox_SearchTextChange(object sender, EventArgs e)
+        {
+            CollectionView view = (CollectionView)CollectionViewSource.GetDefaultView(ListViewProducts.ItemsSource);
+            view.Filter = Filter;
+            CollectionViewSource.GetDefaultView(ListViewProducts.ItemsSource).Refresh();
         }
     }
 }

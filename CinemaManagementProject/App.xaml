@@ -2,7 +2,10 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:CinemaManagementProject"
-             StartupUri="/View/Admin/AdminWindow.xaml">
+             StartupUri="/View/Staff/StaffWindow.xaml"
+             
+             >
+    <!--StartupUri="/View/Admin/AdminWindow.xaml"-->
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -11,14 +14,18 @@
                 <ResourceDictionary Source="./Resource/Icons/Icons.xaml"/>
                 <ResourceDictionary Source="./Resource/Images/Images.xaml"/>
                 <ResourceDictionary Source="./Resource/Styles/MenuButtonUI.xaml"/>
+                <ResourceDictionary Source="./Resource/Styles/ListboxCustom.xaml"/>
+                <ResourceDictionary Source="./Resource/Styles/FilterCombobox.xaml"/>
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.DeepPurple.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Accent/MaterialDesignColor.Lime.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Shadows.xaml" />
-                <ResourceDictionary  Source="./Component/Buttons/ButtonStyle.xaml"/>
+                <ResourceDictionary Source="./Component/Buttons/ButtonStyle.xaml"/>
                 <ResourceDictionary Source="./Utilities/AdminDataTemplate.xaml"/>
                 <ResourceDictionary Source="./Utilities/StaffDataTemplate.xaml"/>
+                <ResourceDictionary Source="./ResourceXAML/ResourceVM.xaml"/>
+
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

@@ -18,6 +18,7 @@ namespace CinemaManagementProject.Model
         public Room()
         {
             this.Seats = new HashSet<Seat>();
+            this.ShowTimeSettings = new HashSet<ShowTimeSetting>();
         }
     
         public int Id { get; set; }
@@ -25,5 +26,7 @@ namespace CinemaManagementProject.Model
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Seat> Seats { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ShowTimeSetting> ShowTimeSettings { get; set; }
     }
 }

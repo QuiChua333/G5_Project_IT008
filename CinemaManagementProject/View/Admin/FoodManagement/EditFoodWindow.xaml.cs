@@ -24,14 +24,5 @@ namespace CinemaManagementProject.View.Admin.FoodManagement
             InitializeComponent();
         }
 
-        private void Image_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            Close();
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            Close();
-        }
     }
 }

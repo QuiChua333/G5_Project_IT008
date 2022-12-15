@@ -1,0 +1,79 @@
+﻿<Page
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:CinemaManagementProject.View.Admin.TroubleManagement" 
+    xmlns:Component="clr-namespace:CinemaManagementProject.Component.Search"
+      xmlns:TroubleItem="clr-namespace:CinemaManagementProject.Component.TroubleItem"  
+    x:Class="CinemaManagementProject.View.Admin.TroubleManagement.TroubleManagementPage"
+      mc:Ignorable="d" 
+      d:DesignHeight="660" d:DesignWidth="1040"
+      Title="TroubleManagementPage">
+    <Grid Width="1040" Height="660">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="691*"/>
+            <ColumnDefinition Width="549*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="6*"/>
+        </Grid.RowDefinitions>
+        <Rectangle 
+            x:Name="FoodPageView"
+            Fill="#F3F5F7"
+            Grid.Row="0"
+            Grid.Column="0"
+            Grid.RowSpan="2"
+            RadiusX="20"
+            RadiusY="20" 
+            Grid.ColumnSpan="2"
+        />
+        <Grid 
+            Grid.Column="0" Grid.ColumnSpan="2" Margin="0,94,0,0" Grid.RowSpan="2" 
+        >
+            <Rectangle 
+                Fill="White"
+                Margin="20,0,20,20"
+                RadiusX="20"
+                RadiusY="20"
+            />
+        </Grid>
+        <Grid 
+            Grid.Row="0" 
+            Grid.Column="0" Grid.ColumnSpan="2"
+        >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="12*"/>
+                <ColumnDefinition Width="6*"/>
+                <ColumnDefinition Width="170"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Component:Search 
+                Grid.Column="1" 
+                Grid.Row="0" 
+                HorizontalAlignment="Left"
+                Width="400"
+                FontSize="18"
+                PlaceHolder="Tìm kiếm"
+                Height="54"
+                Corner="20"
+                IconSize="30"
+            />
+        </Grid>
+        <Grid Grid.Row="1" Margin="30,0,20,18" Grid.ColumnSpan="2">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <!--<TroubleItem:TroubleItem Grid.Row="0" TroubleItemClick="TroubleItem_TroubleItemClick" EditButtonClick="TroubleItem_EditButtonClick"/>
+            <TroubleItem:TroubleItem Grid.Row="1" TroubleItemClick="TroubleItem_TroubleItemClick"/>
+            <TroubleItem:TroubleItem Grid.Row="2" TroubleItemClick="TroubleItem_TroubleItemClick"/>
+            <TroubleItem:TroubleItem Grid.Row="3" />-->
+        </Grid>
+        <Rectangle x:Name="Overlay" RadiusX="20" RadiusY="20" Visibility="Hidden" Grid.Column="0" Grid.Row="0" Grid.RowSpan="2" Grid.ColumnSpan="2" Fill="Black" Opacity="0.25"/>
+    </Grid>
+</Page>
