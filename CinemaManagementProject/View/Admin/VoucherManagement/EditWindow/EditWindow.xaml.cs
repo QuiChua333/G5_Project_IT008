@@ -12,29 +12,19 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace CinemaManagementProject.View.Admin.VoucherManagement.AddWindow
+namespace CinemaManagementProject.View.Admin.VoucherManagement.EditWindow
 {
     /// <summary>
-    /// Interaction logic for ListEmail.xaml
+    /// Interaction logic for EditWindow.xaml
     /// </summary>
-    public partial class ListEmail : Window
+    public partial class EditWindow : Window
     {
-        public ListEmail()
+        public EditWindow()
         {
             InitializeComponent();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            this.Close();
-        }
-
-        private void listbox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
-
-        private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             this.Close();
         }

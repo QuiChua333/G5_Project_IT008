@@ -18,11 +18,12 @@ namespace CinemaManagementProject.Model
         public Staff()
         {
             this.Bills = new HashSet<Bill>();
-            this.ProductReceives = new HashSet<ProductReceive>();
+            this.ProductReceipts = new HashSet<ProductReceipt>();
             this.Troubles = new HashSet<Trouble>();
         }
     
         public int Id { get; set; }
+        public string MaNV { get; set; }
         public string StaffName { get; set; }
         public string Gender { get; set; }
         public Nullable<System.DateTime> DateOfBirth { get; set; }
@@ -32,11 +33,12 @@ namespace CinemaManagementProject.Model
         public Nullable<System.DateTime> StartDate { get; set; }
         public string UserName { get; set; }
         public string UserPass { get; set; }
+        public Nullable<bool> IsDeleted { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Bill> Bills { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ProductReceive> ProductReceives { get; set; }
+        public virtual ICollection<ProductReceipt> ProductReceipts { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Trouble> Troubles { get; set; }
     }

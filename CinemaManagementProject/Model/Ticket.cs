@@ -18,6 +18,7 @@ namespace CinemaManagementProject.Model
         public Nullable<int> BillId { get; set; }
         public Nullable<int> ShowTimeId { get; set; }
         public Nullable<int> SeatId { get; set; }
+        public Nullable<float> Price { get; set; }
     
         public virtual Bill Bill { get; set; }
         public virtual Seat Seat { get; set; }

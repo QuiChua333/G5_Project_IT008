@@ -12,26 +12,20 @@ namespace CinemaManagementProject.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class Product
+    public partial class ShowTimeSetting
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Product()
+        public ShowTimeSetting()
         {
-            this.ProductBillInfoes = new HashSet<ProductBillInfo>();
-            this.ProductReceipts = new HashSet<ProductReceipt>();
+            this.ShowTimes = new HashSet<ShowTime>();
         }
     
         public int Id { get; set; }
-        public string ProductName { get; set; }
-        public string ProductImage { get; set; }
-        public string ProductType { get; set; }
-        public Nullable<float> Price { get; set; }
-        public Nullable<bool> IsDeleted { get; set; }
+        public Nullable<System.DateTime> ShowDate { get; set; }
+        public Nullable<int> RoomId { get; set; }
     
+        public virtual Room Room { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ProductBillInfo> ProductBillInfoes { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ProductReceipt> ProductReceipts { get; set; }
-        public virtual ProductStorage ProductStorage { get; set; }
+        public virtual ICollection<ShowTime> ShowTimes { get; set; }
     }
 }

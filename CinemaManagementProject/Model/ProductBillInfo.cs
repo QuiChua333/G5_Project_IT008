@@ -12,11 +12,10 @@ namespace CinemaManagementProject.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class BillInfo
+    public partial class ProductBillInfo
     {
-        public int Id { get; set; }
-        public Nullable<int> ProductId { get; set; }
-        public Nullable<int> BillId { get; set; }
+        public int ProductId { get; set; }
+        public int BillId { get; set; }
         public Nullable<int> Quantity { get; set; }
         public Nullable<int> PrizePerProduct { get; set; }
     

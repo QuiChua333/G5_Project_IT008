@@ -14,6 +14,7 @@ namespace CinemaManagementProject.Model
     
     public partial class ProductStorage
     {
+        public int Id { get; set; }
         public int ProductId { get; set; }
         public Nullable<int> Quantity { get; set; }
     

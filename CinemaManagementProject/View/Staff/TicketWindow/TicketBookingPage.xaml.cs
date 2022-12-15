@@ -10,23 +10,19 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace CinemaManagementProject.View.Admin.VoucherManagement.AddWindow
+namespace CinemaManagementProject.View.Staff.TicketWindow
 {
     /// <summary>
-    /// Interaction logic for AddVoucher.xaml
+    /// Interaction logic for TicketBookingPage.xaml
     /// </summary>
-    public partial class AddVoucher : Window
+    public partial class TicketBookingPage : Page
     {
-        public AddVoucher()
+        public TicketBookingPage()
         {
             InitializeComponent();
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            this.Close();
         }
     }
 }

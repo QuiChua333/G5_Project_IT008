@@ -6,11 +6,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CinemaManagementProject.View.Admin.VoucherManagement.AddWindow"
         mc:Ignorable="d"
+        xmlns:i="http://schemas.microsoft.com/xaml/behaviors" 
         Title="ListEmail" Height="270" Width="480" WindowStyle="None"
         Background="Transparent"
         WindowStartupLocation="CenterScreen"
         AllowsTransparency="True" 
-        >
+        DataContext="{StaticResource VoucherVM}">
     <Border CornerRadius="15" Background="#F5F5F5" BorderBrush="Gray" BorderThickness="0.3">
         <Border.Effect>
             <DropShadowEffect BlurRadius="10" Direction="270" Color="Black" ShadowDepth="4" Opacity="0.25"/>
@@ -31,7 +32,7 @@
                     Padding="0"
                     BorderThickness="0"
                     HorizontalAlignment="Right"
-                    Margin="0,2,0,0"
+                    Margin="0,2,0,0" Click="Button_Click"
                     >
                     <materialDesign:PackIcon Kind="Close" 
                                      Height="25"
@@ -66,7 +67,8 @@
                 </Grid>
             </Grid>
             <Grid Grid.Row="2">
-                <ListBox ItemsSource="{Binding ListMiniVoucher}"
+
+                <ListBox ItemsSource="{Binding ListCustomerEmail}"
                             Margin="0,10,0,0"
                              x:Name="listbox"
                              SelectedIndex="{Binding SelectedWaitingVoucher}">
@@ -86,103 +88,43 @@
                                    FontFamily="{DynamicResource MaterialDesignFont}" 
                                    VerticalAlignment="Center" 
                                    FontSize="14" />
-                                <TextBox Width="190" 
+                                <TextBox Width="220" 
                                          Margin="90,10,0,10"
-                                         Padding="10,0,0,0"
+                                         Padding="10,0,20,0"
                                          BorderBrush="#67C6E6" 
                                          Foreground="{StaticResource Gray1}"
                                          FontSize="14" 
                                          FontFamily="{DynamicResource MaterialDesignFont}" 
-                                         Text="{Binding Code,Mode=TwoWay}" />
-
-                                <materialDesign:PackIcon Kind="Close" 
-                                     Height="20"
-                                     Width="20"
-                                     Foreground="{StaticResource Gray1}"
+                                         Text="{Binding Email,Mode=TwoWay}" />
+                                <Label   
                                      VerticalAlignment="Center"
                                      HorizontalAlignment="Right"
-                                     Margin="0,0,7,5"/>
+                                     Margin="0,0,0,5">
+                                    <materialDesign:PackIcon Kind="Close" 
+                                         Height="20"
+                                         Width="20"
+                                         Foreground="{StaticResource Gray1}"
+                                        VerticalAlignment="Center"
+                                         HorizontalAlignment="Right"
+                                        />
+                                    <i:Interaction.Triggers>
+                                        <i:EventTrigger EventName="MouseLeftButtonUp">
+                                            <i:InvokeCommandAction Command="{Binding ElementName=listbox, Path=DataContext.LessEmailCM}" />
+                                        </i:EventTrigger>
+                                    </i:Interaction.Triggers>
+
+
+                                </Label>
                             </Grid>
                         </DataTemplate>
                     </ListBox.ItemTemplate>
-                    <ListBoxItem>
-                        <Grid Width="300" Margin="85,-5,0,-15">
-                            <Label Content="Email:"
-                                   FontWeight="Bold" 
-                                   FontFamily="{DynamicResource MaterialDesignFont}" 
-                                   VerticalAlignment="Center" 
-                                   FontSize="14" />
-                            <TextBox Width="190" 
-                                         Margin="90,10,0,10"
-                                         Padding="10,0,20,0"
-                                         BorderBrush="#67C6E6" 
-                                         Foreground="{StaticResource Gray1}"
-                                         FontSize="14" 
-                                         FontFamily="{DynamicResource MaterialDesignFont}" 
-                                         Text="{Binding Code,Mode=TwoWay}" />
-
-                            <materialDesign:PackIcon Kind="Close" 
-                                     Height="20"
-                                     Width="20"
-                                     Foreground="{StaticResource Gray1}"
-                                     VerticalAlignment="Center"
-                                     HorizontalAlignment="Right"
-                                     Margin="0,0,7,5"/>
-                        </Grid>
-                    </ListBoxItem>
-                    <ListBoxItem>
-                        <Grid Width="300" Margin="85,-5,0,-15">
-                            <Label Content="Email:"
-                                   FontWeight="Bold" 
-                                   FontFamily="{DynamicResource MaterialDesignFont}" 
-                                   VerticalAlignment="Center" 
-                                   FontSize="14" />
-                            <TextBox Width="190" 
-                                         Margin="90,10,0,10"
-                                         Padding="10,0,20,0"
-                                         BorderBrush="#67C6E6" 
-                                         Foreground="{StaticResource Gray1}"
-                                         FontSize="14" 
-                                         FontFamily="{DynamicResource MaterialDesignFont}" 
-                                         Text="{Binding Code,Mode=TwoWay}" />
-
-                            <materialDesign:PackIcon Kind="Close" 
-                                     Height="20"
-                                     Width="20"
-                                     Foreground="{StaticResource Gray1}"
-                                     VerticalAlignment="Center"
-                                     HorizontalAlignment="Right"
-                                     Margin="0,0,7,5"/>
-                        </Grid>
-                    </ListBoxItem>
-                    <ListBoxItem>
-                        <Grid Width="300" Margin="85,-5,0,-15">
-                            <Label Content="Email:" 
-                                   FontWeight="Bold" 
-                                   FontFamily="{DynamicResource MaterialDesignFont}" 
-                                   VerticalAlignment="Center" 
-                                   FontSize="14" />
-                            <TextBox Width="190" 
-                                         Margin="90,10,0,10"
-                                         Padding="10,0,20,0"
-                                         BorderBrush="#67C6E6" 
-                                         Foreground="{StaticResource Gray1}"
-                                         FontSize="14" 
-                                         FontFamily="{DynamicResource MaterialDesignFont}" 
-                                         Text="{Binding Code,Mode=TwoWay}" />
-
-                            <materialDesign:PackIcon Kind="Close" 
-                                     Height="20"
-                                     Width="20"
-                                     Foreground="{StaticResource Gray1}"
-                                     VerticalAlignment="Center"
-                                     HorizontalAlignment="Right"
-                                     Margin="0,0,7,5"/>
-                        </Grid>
-                    </ListBoxItem>
+                   
 
 
                 </ListBox>
+
+
+
             </Grid>
             <Grid Grid.Row="3">
                 <Grid.ColumnDefinitions>
@@ -197,7 +139,9 @@
                         FontSize="12"
                         Background="#67C6E6"
                         Margin="20,0,0,0"
-                        Width="110">
+                        Width="110"
+                        Command="{Binding MoreEmailCM}"
+                            x:Name="addnewemail">
                         <Grid>
                             <Label Content="Thêm mới"
                                    FontSize="12"
@@ -222,7 +166,7 @@
                         FontSize="12"
                         Background="{StaticResource ColorButtonBlue}"
                         Margin="0,0,10,0"
-                        Width="70" >
+                        Width="70" Click="Button_Click_1" >
                     </Button>
                 </Grid>
             </Grid>

@@ -4,37 +4,40 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="9cc16269e03c46ce913fa24390843186" Name="Diagram1">
-        <EntityTypeShape EntityType="CinemaManagementProjectModel.Bill" Width="1.5" PointX="3" PointY="6" IsExpanded="true" />
-        <EntityTypeShape EntityType="CinemaManagementProjectModel.BillInfo" Width="1.5" PointX="8.25" PointY="6.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="CinemaManagementProjectModel.Customer" Width="1.5" PointX="0.75" PointY="2.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="CinemaManagementProjectModel.Film" Width="1.5" PointX="0.75" PointY="19.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="CinemaManagementProjectModel.Product" Width="1.5" PointX="6" PointY="10.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="CinemaManagementProjectModel.ProductReceive" Width="1.5" PointX="6" PointY="6.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="CinemaManagementProjectModel.ProductStorage" Width="1.5" PointX="8.25" PointY="10.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="CinemaManagementProjectModel.Room" Width="1.5" PointX="0.75" PointY="17" IsExpanded="true" />
-        <EntityTypeShape EntityType="CinemaManagementProjectModel.Seat" Width="1.5" PointX="3" PointY="16.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="CinemaManagementProjectModel.SeatSetting" Width="1.5" PointX="5.25" PointY="18.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="CinemaManagementProjectModel.ShowTime" Width="1.5" PointX="3" PointY="20" IsExpanded="true" />
-        <EntityTypeShape EntityType="CinemaManagementProjectModel.Staff" Width="1.5" PointX="0.75" PointY="5.75" IsExpanded="true" />
+      <Diagram DiagramId="71e75eb8b21f40ef82737f4eb3b4e7bc" Name="Diagram1">
+        <EntityTypeShape EntityType="CinemaManagementProjectModel.Bill" Width="1.5" PointX="3" PointY="13.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="CinemaManagementProjectModel.Customer" Width="1.5" PointX="0.75" PointY="11.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="CinemaManagementProjectModel.Film" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CinemaManagementProjectModel.Product" Width="1.5" PointX="7.75" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="CinemaManagementProjectModel.ProductBillInfo" Width="1.5" PointX="10" PointY="9.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="CinemaManagementProjectModel.ProductReceipt" Width="1.5" PointX="13" PointY="11" IsExpanded="true" />
+        <EntityTypeShape EntityType="CinemaManagementProjectModel.ProductStorage" Width="1.5" PointX="10" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CinemaManagementProjectModel.Room" Width="1.5" PointX="0.75" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="CinemaManagementProjectModel.Seat" Width="1.5" PointX="3" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="CinemaManagementProjectModel.SeatSetting" Width="1.5" PointX="5.25" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="CinemaManagementProjectModel.ShowTime" Width="1.5" PointX="5.25" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="CinemaManagementProjectModel.ShowTimeSetting" Width="1.5" PointX="3" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="CinemaManagementProjectModel.Staff" Width="1.5" PointX="0.75" PointY="14.625" IsExpanded="true" />
         <EntityTypeShape EntityType="CinemaManagementProjectModel.Ticket" Width="1.5" PointX="5.25" PointY="2.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="CinemaManagementProjectModel.Trouble" Width="1.5" PointX="3" PointY="13.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="CinemaManagementProjectModel.Voucher" Width="1.5" PointX="3" PointY="2" IsExpanded="true" />
-        <EntityTypeShape EntityType="CinemaManagementProjectModel.VoucherRelease" Width="1.5" PointX="0.75" PointY="23.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="CinemaManagementProjectModel.Trouble" Width="1.5" PointX="3" PointY="22.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="CinemaManagementProjectModel.Voucher" Width="1.5" PointX="6" PointY="13.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="CinemaManagementProjectModel.VoucherRelease" Width="1.5" PointX="3.75" PointY="17.875" IsExpanded="true" />
         <AssociationConnector Association="CinemaManagementProjectModel.FK_Bill_Customer" ManuallyRouted="false" />
         <AssociationConnector Association="CinemaManagementProjectModel.FK_Bill_Staff" ManuallyRouted="false" />
         <AssociationConnector Association="CinemaManagementProjectModel.FK_BillInfo_Bill" ManuallyRouted="false" />
         <AssociationConnector Association="CinemaManagementProjectModel.FK_Ticket_Bill" ManuallyRouted="false" />
-        <AssociationConnector Association="CinemaManagementProjectModel.FK_BillInfo_Product" ManuallyRouted="false" />
         <AssociationConnector Association="CinemaManagementProjectModel.FK_Voucher_Customer" ManuallyRouted="false" />
         <AssociationConnector Association="CinemaManagementProjectModel.FK_ShowTime_Film" ManuallyRouted="false" />
+        <AssociationConnector Association="CinemaManagementProjectModel.FK_BillInfo_Product" ManuallyRouted="false" />
         <AssociationConnector Association="CinemaManagementProjectModel.FK_ProductReceive_Product" ManuallyRouted="false" />
         <AssociationConnector Association="CinemaManagementProjectModel.FK_ProductStorage_Product" ManuallyRouted="false" />
         <AssociationConnector Association="CinemaManagementProjectModel.FK_ProductReceive_Staff" ManuallyRouted="false" />
         <AssociationConnector Association="CinemaManagementProjectModel.FK_Seat_Room" ManuallyRouted="false" />
+        <AssociationConnector Association="CinemaManagementProjectModel.FK_ShowTimeSetting_Room" ManuallyRouted="false" />
         <AssociationConnector Association="CinemaManagementProjectModel.FK_SeatSetting_Seat" ManuallyRouted="false" />
         <AssociationConnector Association="CinemaManagementProjectModel.FK_Ticket_Seat" ManuallyRouted="false" />
         <AssociationConnector Association="CinemaManagementProjectModel.FK_SeatSetting_ShowTime" ManuallyRouted="false" />
+        <AssociationConnector Association="CinemaManagementProjectModel.FK_ShowTime_ShowTimeSetting" ManuallyRouted="false" />
         <AssociationConnector Association="CinemaManagementProjectModel.FK_Ticket_ShowTime" ManuallyRouted="false" />
         <AssociationConnector Association="CinemaManagementProjectModel.FK_Trouble_Staff" ManuallyRouted="false" />
         <AssociationConnector Association="CinemaManagementProjectModel.FK_Voucher_VoucherRelease" ManuallyRouted="false" />

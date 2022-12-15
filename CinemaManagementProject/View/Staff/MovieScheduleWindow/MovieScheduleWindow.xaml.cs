@@ -12,21 +12,16 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace CinemaManagementProject.View.Admin.VoucherManagement.AddWindow
+namespace CinemaManagementProject.View.Staff.MovieScheduleWindow
 {
     /// <summary>
-    /// Interaction logic for AddVoucher.xaml
+    /// Interaction logic for MovieScheduleWindow.xaml
     /// </summary>
-    public partial class AddVoucher : Window
+    public partial class MovieScheduleWindow : Window
     {
-        public AddVoucher()
+        public MovieScheduleWindow()
         {
             InitializeComponent();
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            this.Close();
         }
     }
 }

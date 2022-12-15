@@ -12,7 +12,7 @@ namespace CinemaManagementProject.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class ProductReceive
+    public partial class ProductReceipt
     {
         public int Id { get; set; }
         public Nullable<int> ProductId { get; set; }

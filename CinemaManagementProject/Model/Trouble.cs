@@ -21,6 +21,7 @@ namespace CinemaManagementProject.Model
         public Nullable<System.TimeSpan> StartTime { get; set; }
         public string TroubleStatus { get; set; }
         public Nullable<int> StaffId { get; set; }
+        public Nullable<bool> IsDeleted { get; set; }
     
         public virtual Staff Staff { get; set; }
     }

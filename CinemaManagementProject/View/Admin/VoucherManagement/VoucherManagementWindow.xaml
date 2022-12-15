@@ -10,6 +10,7 @@
       mc:Ignorable="d" 
       Title="VoucherManagementPage"
       Height="660" Width="1040"
+        WindowStartupLocation="CenterScreen"
       DataContext="{StaticResource VoucherVM}">
 
     <i:Interaction.Triggers>
@@ -81,6 +82,7 @@
                                   ItemsSource="{Binding ListBigVoucher}"
                                   SelectedItem="{Binding SelectedItem,UpdateSourceTrigger=PropertyChanged}"
                                   x:Name="VoucherListView">
+                                
                                 <ListView.ItemContainerStyle>
                                     <Style  TargetType="{x:Type ListViewItem}"
                                         BasedOn="{StaticResource MaterialDesignGridViewItem}">
@@ -159,6 +161,13 @@
                                                             BorderThickness="1"
                                                             CornerRadius="6"
                                                             Cursor="Hand">
+                                                            <i:Interaction.Triggers>
+                                                                <i:EventTrigger EventName="MouseLeftButtonUp">
+                                                                    <i:InvokeCommandAction Command="{Binding ElementName=VoucherListView, Path=DataContext.LoadInfoBigVRCM}" >
+                                                                    </i:InvokeCommandAction>
+                                                                </i:EventTrigger>
+                                                            </i:Interaction.Triggers>
+                                                            
                                                             <Border.Style>
                                                                 <Style TargetType="{x:Type Border}">
                                                                     <Style.Triggers>
@@ -169,22 +178,25 @@
                                                                         </Trigger>
                                                                     </Style.Triggers>
                                                                 </Style>
+                                                                
                                                             </Border.Style>
                                                             <materialDesign:PackIcon Kind="Pencil"
                                                                                  Width="22"
                                                                                  Height="22"
-                                                                                 Cursor="Hand" />
-                                                            <i:Interaction.Triggers>
-                                                                <i:EventTrigger EventName="MouseLeftButtonUp">
-                                                                    <i:InvokeCommandAction Command="{Binding ElementName=VoucherListView, Path=DataContext.LoadInforBigVoucherCM}" />
-                                                                </i:EventTrigger>
-                                                            </i:Interaction.Triggers>
+                                                                                 Cursor="Hand">
+                                                            </materialDesign:PackIcon>
+
                                                         </Border>
                                                         <Border Margin="10 0 0 0"
                                                             BorderBrush="Black"
                                                             BorderThickness="1"
                                                             CornerRadius="6"
                                                             Cursor="Hand">
+                                                            <i:Interaction.Triggers>
+                                                                <i:EventTrigger EventName="MouseLeftButtonUp">
+                                                                    <i:InvokeCommandAction Command="{Binding ElementName=VoucherListView, Path=DataContext.LoadDeleteVoucherCM}" />
+                                                                </i:EventTrigger>
+                                                            </i:Interaction.Triggers>
                                                             <Border.Style>
                                                                 <Style TargetType="{x:Type Border}">
                                                                     <Style.Triggers>

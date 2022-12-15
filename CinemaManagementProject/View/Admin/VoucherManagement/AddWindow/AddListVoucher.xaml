@@ -10,7 +10,7 @@
         Background="Transparent"
         WindowStartupLocation="CenterScreen"
         AllowsTransparency="True" 
-        >
+        DataContext="{StaticResource VoucherVM}">
     <Border CornerRadius="15" Background="#F5F5F5" BorderBrush="Gray" BorderThickness="0.3">
         <Border.Effect>
             <DropShadowEffect BlurRadius="10" Direction="270" Color="Black" ShadowDepth="4" Opacity="0.25"/>
@@ -31,7 +31,7 @@
                     Padding="0"
                     BorderThickness="0"
                     HorizontalAlignment="Right"
-                    Margin="0,2,0,0"
+                    Margin="0,2,0,0" Click="Button_Click"
                     >
                     <materialDesign:PackIcon Kind="Close" 
                                      Height="25"
@@ -99,8 +99,10 @@
                             </Grid>
                             <Grid Grid.Column="1">
                                 <TextBox Grid.Column="1"
-                                     Width="auto"
-                          
+                                    Width="auto"
+                                    Text="{Binding Quantity}"
+                                    PreviewTextInput="TextBox_PreviewTextInput"
+                                    TextChanged="TextBox_TextChanged"
                                      FontSize="14"
                                      BorderBrush="#67C6E6"
                                      VerticalAlignment="Center"
@@ -127,7 +129,8 @@
                             <Grid Grid.Column="1">
                                 <TextBox Grid.Column="1"
                                      Width="auto"
-      
+                                    Text="{Binding Length}"
+                                    PreviewTextInput="TextBox_PreviewTextInput"
                                      FontSize="14"
                                      BorderBrush="#67C6E6"
                                      VerticalAlignment="Center"
@@ -154,7 +157,7 @@
                             <Grid Grid.Column="1">
                                 <TextBox Grid.Column="1"
                                      Width="auto"
-                                    
+                                    Text="{Binding FirstChar}"
                                      FontSize="14"
                                      BorderBrush="#67C6E6"
                                      VerticalAlignment="Center"
@@ -181,7 +184,7 @@
                             <Grid Grid.Column="1">
                                 <TextBox Grid.Column="1"
                                      Width="auto"
-                               
+                                    Text="{Binding LastChar}"
                                      FontSize="14"
                                      BorderBrush="#67C6E6"
                                      VerticalAlignment="Center"
@@ -211,7 +214,10 @@
                         FontSize="12"
                         Background="{StaticResource ColorButtonBlue}"
                         Margin="0,0,10,0"
-                        Width="70" >
+                        Width="70"  
+                         x:Name="savelistbtn"
+                        Command="{Binding SaveListMiniVoucherCM}"
+                        CommandParameter="{Binding ElementName=savelistbtn}">
                     </Button>
                 </Grid>
             </Grid>

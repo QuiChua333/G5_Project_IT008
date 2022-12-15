@@ -47,8 +47,8 @@ namespace CinemaManagementProject.Component.Search
         }
         private void SearchType_LostFocus(object sender, RoutedEventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(SearchType.Text))
-                SearchType.Text = PlaceHolder;
+            //if (string.IsNullOrWhiteSpace(SearchType.Text))
+            //    SearchType.Text = PlaceHolder;
         }
         protected void SearchType_TextChanged(object sender, TextChangedEventArgs e)
         {
