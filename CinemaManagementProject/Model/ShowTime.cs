@@ -26,7 +26,7 @@ namespace CinemaManagementProject.Model
         public Nullable<System.TimeSpan> StartTime { get; set; }
         public Nullable<float> Price { get; set; }
         public Nullable<int> ShowTimeSettingId { get; set; }
-
+    
         public virtual Film Film { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SeatSetting> SeatSetting { get; set; }

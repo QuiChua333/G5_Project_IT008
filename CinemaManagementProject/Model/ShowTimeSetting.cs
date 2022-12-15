@@ -21,8 +21,8 @@ namespace CinemaManagementProject.Model
         }
     
         public int Id { get; set; }
-        public Nullable<int> RoomId { get; set; }
         public Nullable<System.DateTime> ShowDate { get; set; }
+        public Nullable<int> RoomId { get; set; }
     
         public virtual Room Room { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

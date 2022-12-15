@@ -18,7 +18,7 @@ namespace CinemaManagementProject.Model
         public string VoucherCode { get; set; }
         public Nullable<int> VoucherReleaseId { get; set; }
         public Nullable<int> CustomerId { get; set; }
-        public Nullable<bool> VoucherStatus { get; set; }
+        public string VoucherStatus { get; set; }
         public Nullable<System.DateTime> ReleaseAt { get; set; }
         public Nullable<System.DateTime> UsedAt { get; set; }
         public Nullable<bool> EnableMerge { get; set; }

@@ -16,25 +16,17 @@
           <Property Name="DiscountPrice" Type="real" />
           <Property Name="TotalPrize" Type="real" />
         </EntityType>
-        <EntityType Name="BillInfo">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="ProductId" Type="int" />
-          <Property Name="BillId" Type="int" />
-          <Property Name="Quantity" Type="int" />
-          <Property Name="PrizePerProduct" Type="int" />
-        </EntityType>
         <EntityType Name="Customer">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MaKH" Type="varchar(max)" />
           <Property Name="CustomerName" Type="nvarchar(max)" />
           <Property Name="PhoneNumber" Type="varchar(max)" />
           <Property Name="Email" Type="varchar" MaxLength="50" />
           <Property Name="FirstDate" Type="datetime" />
+          <Property Name="IsDeleted" Type="bit" />
         </EntityType>
         <EntityType Name="Film">
           <Key>
@@ -42,6 +34,7 @@
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="FilmName" Type="nvarchar(max)" />
+          <Property Name="Image" Type="nvarchar(max)" />
           <Property Name="Duration" Type="int" />
           <Property Name="FilmType" Type="nvarchar(max)" />
           <Property Name="Country" Type="nvarchar(max)" />
@@ -49,6 +42,7 @@
           <Property Name="Genre" Type="nvarchar(max)" />
           <Property Name="ReleaseDate" Type="datetime" />
           <Property Name="FilmInfo" Type="nvarchar(max)" />
+          <Property Name="IsDeleted" Type="bit" />
         </EntityType>
         <EntityType Name="Product">
           <Key>
@@ -56,10 +50,22 @@
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ProductName" Type="nvarchar(max)" />
+          <Property Name="ProductImage" Type="nvarchar(max)" />
           <Property Name="ProductType" Type="nvarchar(max)" />
           <Property Name="Price" Type="real" />
+          <Property Name="IsDeleted" Type="bit" />
         </EntityType>
-        <EntityType Name="ProductReceive">
+        <EntityType Name="ProductBillInfo">
+          <Key>
+            <PropertyRef Name="ProductId" />
+            <PropertyRef Name="BillId" />
+          </Key>
+          <Property Name="ProductId" Type="int" Nullable="false" />
+          <Property Name="BillId" Type="int" Nullable="false" />
+          <Property Name="Quantity" Type="int" />
+          <Property Name="PrizePerProduct" Type="int" />
+        </EntityType>
+        <EntityType Name="ProductReceipt">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
@@ -74,7 +80,8 @@
           <Key>
             <PropertyRef Name="ProductId" />
           </Key>
-          <Property Name="ProductId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProductId" Type="int" Nullable="false" />
           <Property Name="Quantity" Type="int" />
         </EntityType>
         <EntityType Name="Room">
@@ -95,12 +102,12 @@
         </EntityType>
         <EntityType Name="SeatSetting">
           <Key>
-            <PropertyRef Name="Id" />
+            <PropertyRef Name="SeatId" />
+            <PropertyRef Name="ShowTimeId" />
           </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="SeatId" Type="int" />
-          <Property Name="ShowTimeId" Type="int" />
-          <Property Name="SeatStatus" Type="int" />
+          <Property Name="SeatId" Type="int" Nullable="false" />
+          <Property Name="ShowTimeId" Type="int" Nullable="false" />
+          <Property Name="SeatStatus" Type="bit" />
         </EntityType>
         <EntityType Name="ShowTime">
           <Key>
@@ -117,14 +124,15 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="RoomId" Type="int" />
           <Property Name="ShowDate" Type="datetime" />
+          <Property Name="RoomId" Type="int" />
         </EntityType>
         <EntityType Name="Staff">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MaNV" Type="varchar(max)" />
           <Property Name="StaffName" Type="nvarchar(max)" />
           <Property Name="Gender" Type="nvarchar(max)" />
           <Property Name="DateOfBirth" Type="datetime" />
@@ -134,6 +142,7 @@
           <Property Name="StartDate" Type="datetime" />
           <Property Name="UserName" Type="varchar(max)" />
           <Property Name="UserPass" Type="varchar(max)" />
+          <Property Name="IsDeleted" Type="bit" />
         </EntityType>
         <EntityType Name="Ticket">
           <Key>
@@ -143,6 +152,7 @@
           <Property Name="BillId" Type="int" />
           <Property Name="ShowTimeId" Type="int" />
           <Property Name="SeatId" Type="int" />
+          <Property Name="Price" Type="real" />
         </EntityType>
         <EntityType Name="Trouble">
           <Key>
@@ -155,6 +165,7 @@
           <Property Name="StartTime" Type="time" Precision="0" />
           <Property Name="TroubleStatus" Type="nvarchar(max)" />
           <Property Name="StaffId" Type="int" />
+          <Property Name="IsDeleted" Type="bit" />
         </EntityType>
         <EntityType Name="Voucher">
           <Key>
@@ -164,7 +175,7 @@
           <Property Name="VoucherCode" Type="varchar(max)" />
           <Property Name="VoucherReleaseId" Type="int" />
           <Property Name="CustomerId" Type="int" />
-          <Property Name="VoucherStatus" Type="bit" />
+          <Property Name="VoucherStatus" Type="nvarchar(max)" />
           <Property Name="ReleaseAt" Type="datetime" />
           <Property Name="UsedAt" Type="datetime" />
           <Property Name="EnableMerge" Type="bit" />
@@ -183,6 +194,7 @@
           <Property Name="TypeObject" Type="nvarchar(max)" />
           <Property Name="MinimizeTotal" Type="real" />
           <Property Name="EnableMerge" Type="bit" />
+          <Property Name="IsDeleted" Type="bit" />
         </EntityType>
         <Association Name="FK_Bill_Customer">
           <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
@@ -209,49 +221,49 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_BillInfo_Bill">
-          <End Role="Bill" Type="Self.Bill" Multiplicity="0..1" />
-          <End Role="BillInfo" Type="Self.BillInfo" Multiplicity="*" />
+          <End Role="Bill" Type="Self.Bill" Multiplicity="1" />
+          <End Role="ProductBillInfo" Type="Self.ProductBillInfo" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Bill">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="BillInfo">
+            <Dependent Role="ProductBillInfo">
               <PropertyRef Name="BillId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_BillInfo_Product">
-          <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
-          <End Role="BillInfo" Type="Self.BillInfo" Multiplicity="*" />
+          <End Role="Product" Type="Self.Product" Multiplicity="1" />
+          <End Role="ProductBillInfo" Type="Self.ProductBillInfo" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Product">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="BillInfo">
+            <Dependent Role="ProductBillInfo">
               <PropertyRef Name="ProductId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_ProductReceive_Product">
           <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
-          <End Role="ProductReceive" Type="Self.ProductReceive" Multiplicity="*" />
+          <End Role="ProductReceipt" Type="Self.ProductReceipt" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Product">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="ProductReceive">
+            <Dependent Role="ProductReceipt">
               <PropertyRef Name="ProductId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_ProductReceive_Staff">
           <End Role="Staff" Type="Self.Staff" Multiplicity="0..1" />
-          <End Role="ProductReceive" Type="Self.ProductReceive" Multiplicity="*" />
+          <End Role="ProductReceipt" Type="Self.ProductReceipt" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Staff">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="ProductReceive">
+            <Dependent Role="ProductReceipt">
               <PropertyRef Name="StaffId" />
             </Dependent>
           </ReferentialConstraint>
@@ -281,7 +293,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_SeatSetting_Seat">
-          <End Role="Seat" Type="Self.Seat" Multiplicity="0..1" />
+          <End Role="Seat" Type="Self.Seat" Multiplicity="1" />
           <End Role="SeatSetting" Type="Self.SeatSetting" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Seat">
@@ -293,7 +305,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_SeatSetting_ShowTime">
-          <End Role="ShowTime" Type="Self.ShowTime" Multiplicity="0..1" />
+          <End Role="ShowTime" Type="Self.ShowTime" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="SeatSetting" Type="Self.SeatSetting" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="ShowTime">
@@ -414,11 +428,11 @@
         </Association>
         <EntityContainer Name="CinemaManagementProjectModelStoreContainer">
           <EntitySet Name="Bill" EntityType="Self.Bill" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="BillInfo" EntityType="Self.BillInfo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Film" EntityType="Self.Film" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="ProductReceive" EntityType="Self.ProductReceive" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProductBillInfo" EntityType="Self.ProductBillInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProductReceipt" EntityType="Self.ProductReceipt" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ProductStorage" EntityType="Self.ProductStorage" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Room" EntityType="Self.Room" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Seat" EntityType="Self.Seat" Schema="dbo" store:Type="Tables" />
@@ -440,19 +454,19 @@
           </AssociationSet>
           <AssociationSet Name="FK_BillInfo_Bill" Association="Self.FK_BillInfo_Bill">
             <End Role="Bill" EntitySet="Bill" />
-            <End Role="BillInfo" EntitySet="BillInfo" />
+            <End Role="ProductBillInfo" EntitySet="ProductBillInfo" />
           </AssociationSet>
           <AssociationSet Name="FK_BillInfo_Product" Association="Self.FK_BillInfo_Product">
             <End Role="Product" EntitySet="Product" />
-            <End Role="BillInfo" EntitySet="BillInfo" />
+            <End Role="ProductBillInfo" EntitySet="ProductBillInfo" />
           </AssociationSet>
           <AssociationSet Name="FK_ProductReceive_Product" Association="Self.FK_ProductReceive_Product">
             <End Role="Product" EntitySet="Product" />
-            <End Role="ProductReceive" EntitySet="ProductReceive" />
+            <End Role="ProductReceipt" EntitySet="ProductReceipt" />
           </AssociationSet>
           <AssociationSet Name="FK_ProductReceive_Staff" Association="Self.FK_ProductReceive_Staff">
             <End Role="Staff" EntitySet="Staff" />
-            <End Role="ProductReceive" EntitySet="ProductReceive" />
+            <End Role="ProductReceipt" EntitySet="ProductReceipt" />
           </AssociationSet>
           <AssociationSet Name="FK_ProductStorage_Product" Association="Self.FK_ProductStorage_Product">
             <End Role="Product" EntitySet="Product" />
@@ -524,30 +538,20 @@
           <Property Name="TotalPrize" Type="Single" />
           <NavigationProperty Name="Customer" Relationship="Self.FK_Bill_Customer" FromRole="Bill" ToRole="Customer" />
           <NavigationProperty Name="Staff" Relationship="Self.FK_Bill_Staff" FromRole="Bill" ToRole="Staff" />
-          <NavigationProperty Name="BillInfo" Relationship="Self.FK_BillInfo_Bill" FromRole="Bill" ToRole="BillInfo" />
+          <NavigationProperty Name="ProductBillInfo" Relationship="Self.FK_BillInfo_Bill" FromRole="Bill" ToRole="ProductBillInfo" />
           <NavigationProperty Name="Ticket" Relationship="Self.FK_Ticket_Bill" FromRole="Bill" ToRole="Ticket" />
-        </EntityType>
-        <EntityType Name="BillInfo">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ProductId" Type="Int32" />
-          <Property Name="BillId" Type="Int32" />
-          <Property Name="Quantity" Type="Int32" />
-          <Property Name="PrizePerProduct" Type="Int32" />
-          <NavigationProperty Name="Bill" Relationship="Self.FK_BillInfo_Bill" FromRole="BillInfo" ToRole="Bill" />
-          <NavigationProperty Name="Product" Relationship="Self.FK_BillInfo_Product" FromRole="BillInfo" ToRole="Product" />
         </EntityType>
         <EntityType Name="Customer">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MaKH" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="CustomerName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="FirstDate" Type="DateTime" Precision="3" />
+          <Property Name="IsDeleted" Type="Boolean" />
           <NavigationProperty Name="Bill" Relationship="Self.FK_Bill_Customer" FromRole="Customer" ToRole="Bill" />
           <NavigationProperty Name="Voucher" Relationship="Self.FK_Voucher_Customer" FromRole="Customer" ToRole="Voucher" />
         </EntityType>
@@ -557,6 +561,7 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="FilmName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Image" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Duration" Type="Int32" />
           <Property Name="FilmType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Country" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
@@ -564,6 +569,7 @@
           <Property Name="Genre" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="ReleaseDate" Type="DateTime" Precision="3" />
           <Property Name="FilmInfo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IsDeleted" Type="Boolean" />
           <NavigationProperty Name="ShowTime" Relationship="Self.FK_ShowTime_Film" FromRole="Film" ToRole="ShowTime" />
         </EntityType>
         <EntityType Name="Product">
@@ -572,13 +578,27 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ProductName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ProductImage" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="ProductType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Price" Type="Single" />
-          <NavigationProperty Name="BillInfo" Relationship="Self.FK_BillInfo_Product" FromRole="Product" ToRole="BillInfo" />
-          <NavigationProperty Name="ProductReceive" Relationship="Self.FK_ProductReceive_Product" FromRole="Product" ToRole="ProductReceive" />
+          <Property Name="IsDeleted" Type="Boolean" />
+          <NavigationProperty Name="ProductBillInfo" Relationship="Self.FK_BillInfo_Product" FromRole="Product" ToRole="ProductBillInfo" />
+          <NavigationProperty Name="ProductReceipt" Relationship="Self.FK_ProductReceive_Product" FromRole="Product" ToRole="ProductReceipt" />
           <NavigationProperty Name="ProductStorage" Relationship="Self.FK_ProductStorage_Product" FromRole="Product" ToRole="ProductStorage" />
         </EntityType>
-        <EntityType Name="ProductReceive">
+        <EntityType Name="ProductBillInfo">
+          <Key>
+            <PropertyRef Name="ProductId" />
+            <PropertyRef Name="BillId" />
+          </Key>
+          <Property Name="ProductId" Type="Int32" Nullable="false" />
+          <Property Name="BillId" Type="Int32" Nullable="false" />
+          <Property Name="Quantity" Type="Int32" />
+          <Property Name="PrizePerProduct" Type="Int32" />
+          <NavigationProperty Name="Bill" Relationship="Self.FK_BillInfo_Bill" FromRole="ProductBillInfo" ToRole="Bill" />
+          <NavigationProperty Name="Product" Relationship="Self.FK_BillInfo_Product" FromRole="ProductBillInfo" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="ProductReceipt">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
@@ -588,14 +608,15 @@
           <Property Name="Quantity" Type="Int32" />
           <Property Name="CreatedAt" Type="DateTime" Precision="3" />
           <Property Name="StaffId" Type="Int32" />
-          <NavigationProperty Name="Product" Relationship="Self.FK_ProductReceive_Product" FromRole="ProductReceive" ToRole="Product" />
-          <NavigationProperty Name="Staff" Relationship="Self.FK_ProductReceive_Staff" FromRole="ProductReceive" ToRole="Staff" />
+          <NavigationProperty Name="Product" Relationship="Self.FK_ProductReceive_Product" FromRole="ProductReceipt" ToRole="Product" />
+          <NavigationProperty Name="Staff" Relationship="Self.FK_ProductReceive_Staff" FromRole="ProductReceipt" ToRole="Staff" />
         </EntityType>
         <EntityType Name="ProductStorage">
           <Key>
             <PropertyRef Name="ProductId" />
           </Key>
-          <Property Name="ProductId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProductId" Type="Int32" Nullable="false" />
           <Property Name="Quantity" Type="Int32" />
           <NavigationProperty Name="Product" Relationship="Self.FK_ProductStorage_Product" FromRole="ProductStorage" ToRole="Product" />
         </EntityType>
@@ -622,12 +643,12 @@
         </EntityType>
         <EntityType Name="SeatSetting">
           <Key>
-            <PropertyRef Name="Id" />
+            <PropertyRef Name="SeatId" />
+            <PropertyRef Name="ShowTimeId" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="SeatId" Type="Int32" />
-          <Property Name="ShowTimeId" Type="Int32" />
-          <Property Name="SeatStatus" Type="Int32" />
+          <Property Name="SeatId" Type="Int32" Nullable="false" />
+          <Property Name="ShowTimeId" Type="Int32" Nullable="false" />
+          <Property Name="SeatStatus" Type="Boolean" />
           <NavigationProperty Name="Seat" Relationship="Self.FK_SeatSetting_Seat" FromRole="SeatSetting" ToRole="Seat" />
           <NavigationProperty Name="ShowTime" Relationship="Self.FK_SeatSetting_ShowTime" FromRole="SeatSetting" ToRole="ShowTime" />
         </EntityType>
@@ -650,8 +671,8 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="RoomId" Type="Int32" />
           <Property Name="ShowDate" Type="DateTime" Precision="3" />
+          <Property Name="RoomId" Type="Int32" />
           <NavigationProperty Name="Room" Relationship="Self.FK_ShowTimeSetting_Room" FromRole="ShowTimeSetting" ToRole="Room" />
           <NavigationProperty Name="ShowTime" Relationship="Self.FK_ShowTime_ShowTimeSetting" FromRole="ShowTimeSetting" ToRole="ShowTime" />
         </EntityType>
@@ -660,6 +681,7 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MaNV" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="StaffName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Gender" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="DateOfBirth" Type="DateTime" Precision="3" />
@@ -669,8 +691,9 @@
           <Property Name="StartDate" Type="DateTime" Precision="3" />
           <Property Name="UserName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="UserPass" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="IsDeleted" Type="Boolean" />
           <NavigationProperty Name="Bill" Relationship="Self.FK_Bill_Staff" FromRole="Staff" ToRole="Bill" />
-          <NavigationProperty Name="ProductReceive" Relationship="Self.FK_ProductReceive_Staff" FromRole="Staff" ToRole="ProductReceive" />
+          <NavigationProperty Name="ProductReceipt" Relationship="Self.FK_ProductReceive_Staff" FromRole="Staff" ToRole="ProductReceipt" />
           <NavigationProperty Name="Trouble" Relationship="Self.FK_Trouble_Staff" FromRole="Staff" ToRole="Trouble" />
         </EntityType>
         <EntityType Name="Ticket">
@@ -681,6 +704,7 @@
           <Property Name="BillId" Type="Int32" />
           <Property Name="ShowTimeId" Type="Int32" />
           <Property Name="SeatId" Type="Int32" />
+          <Property Name="Price" Type="Single" />
           <NavigationProperty Name="Bill" Relationship="Self.FK_Ticket_Bill" FromRole="Ticket" ToRole="Bill" />
           <NavigationProperty Name="Seat" Relationship="Self.FK_Ticket_Seat" FromRole="Ticket" ToRole="Seat" />
           <NavigationProperty Name="ShowTime" Relationship="Self.FK_Ticket_ShowTime" FromRole="Ticket" ToRole="ShowTime" />
@@ -696,6 +720,7 @@
           <Property Name="StartTime" Type="Time" Precision="0" />
           <Property Name="TroubleStatus" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="StaffId" Type="Int32" />
+          <Property Name="IsDeleted" Type="Boolean" />
           <NavigationProperty Name="Staff" Relationship="Self.FK_Trouble_Staff" FromRole="Trouble" ToRole="Staff" />
         </EntityType>
         <EntityType Name="Voucher">
@@ -706,7 +731,7 @@
           <Property Name="VoucherCode" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="VoucherReleaseId" Type="Int32" />
           <Property Name="CustomerId" Type="Int32" />
-          <Property Name="VoucherStatus" Type="Boolean" />
+          <Property Name="VoucherStatus" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="ReleaseAt" Type="DateTime" Precision="3" />
           <Property Name="UsedAt" Type="DateTime" Precision="3" />
           <Property Name="EnableMerge" Type="Boolean" />
@@ -727,6 +752,7 @@
           <Property Name="TypeObject" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="MinimizeTotal" Type="Single" />
           <Property Name="EnableMerge" Type="Boolean" />
+          <Property Name="IsDeleted" Type="Boolean" />
           <NavigationProperty Name="Voucher" Relationship="Self.FK_Voucher_VoucherRelease" FromRole="VoucherRelease" ToRole="Voucher" />
         </EntityType>
         <Association Name="FK_Bill_Customer">
@@ -754,13 +780,13 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_BillInfo_Bill">
-          <End Role="Bill" Type="Self.Bill" Multiplicity="0..1" />
-          <End Role="BillInfo" Type="Self.BillInfo" Multiplicity="*" />
+          <End Role="Bill" Type="Self.Bill" Multiplicity="1" />
+          <End Role="ProductBillInfo" Type="Self.ProductBillInfo" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Bill">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="BillInfo">
+            <Dependent Role="ProductBillInfo">
               <PropertyRef Name="BillId" />
             </Dependent>
           </ReferentialConstraint>
@@ -774,18 +800,6 @@
             </Principal>
             <Dependent Role="Ticket">
               <PropertyRef Name="BillId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_BillInfo_Product">
-          <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
-          <End Role="BillInfo" Type="Self.BillInfo" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Product">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="BillInfo">
-              <PropertyRef Name="ProductId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -813,14 +827,26 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_ProductReceive_Product">
-          <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
-          <End Role="ProductReceive" Type="Self.ProductReceive" Multiplicity="*" />
+        <Association Name="FK_BillInfo_Product">
+          <End Role="Product" Type="Self.Product" Multiplicity="1" />
+          <End Role="ProductBillInfo" Type="Self.ProductBillInfo" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Product">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="ProductReceive">
+            <Dependent Role="ProductBillInfo">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductReceive_Product">
+          <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
+          <End Role="ProductReceipt" Type="Self.ProductReceipt" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ProductReceipt">
               <PropertyRef Name="ProductId" />
             </Dependent>
           </ReferentialConstraint>
@@ -839,12 +865,12 @@
         </Association>
         <Association Name="FK_ProductReceive_Staff">
           <End Role="Staff" Type="Self.Staff" Multiplicity="0..1" />
-          <End Role="ProductReceive" Type="Self.ProductReceive" Multiplicity="*" />
+          <End Role="ProductReceipt" Type="Self.ProductReceipt" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Staff">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="ProductReceive">
+            <Dependent Role="ProductReceipt">
               <PropertyRef Name="StaffId" />
             </Dependent>
           </ReferentialConstraint>
@@ -874,7 +900,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_SeatSetting_Seat">
-          <End Role="Seat" Type="Self.Seat" Multiplicity="0..1" />
+          <End Role="Seat" Type="Self.Seat" Multiplicity="1" />
           <End Role="SeatSetting" Type="Self.SeatSetting" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Seat">
@@ -898,7 +924,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_SeatSetting_ShowTime">
-          <End Role="ShowTime" Type="Self.ShowTime" Multiplicity="0..1" />
+          <End Role="ShowTime" Type="Self.ShowTime" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="SeatSetting" Type="Self.SeatSetting" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="ShowTime">
@@ -959,11 +987,11 @@
         </Association>
         <EntityContainer Name="CinemaManagementProjectEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Bill" EntityType="Self.Bill" />
-          <EntitySet Name="BillInfo" EntityType="Self.BillInfo" />
           <EntitySet Name="Customer" EntityType="Self.Customer" />
           <EntitySet Name="Film" EntityType="Self.Film" />
           <EntitySet Name="Product" EntityType="Self.Product" />
-          <EntitySet Name="ProductReceive" EntityType="Self.ProductReceive" />
+          <EntitySet Name="ProductBillInfo" EntityType="Self.ProductBillInfo" />
+          <EntitySet Name="ProductReceipt" EntityType="Self.ProductReceipt" />
           <EntitySet Name="ProductStorage" EntityType="Self.ProductStorage" />
           <EntitySet Name="Room" EntityType="Self.Room" />
           <EntitySet Name="Seat" EntityType="Self.Seat" />
@@ -985,15 +1013,11 @@
           </AssociationSet>
           <AssociationSet Name="FK_BillInfo_Bill" Association="Self.FK_BillInfo_Bill">
             <End Role="Bill" EntitySet="Bill" />
-            <End Role="BillInfo" EntitySet="BillInfo" />
+            <End Role="ProductBillInfo" EntitySet="ProductBillInfo" />
           </AssociationSet>
           <AssociationSet Name="FK_Ticket_Bill" Association="Self.FK_Ticket_Bill">
             <End Role="Bill" EntitySet="Bill" />
             <End Role="Ticket" EntitySet="Ticket" />
-          </AssociationSet>
-          <AssociationSet Name="FK_BillInfo_Product" Association="Self.FK_BillInfo_Product">
-            <End Role="Product" EntitySet="Product" />
-            <End Role="BillInfo" EntitySet="BillInfo" />
           </AssociationSet>
           <AssociationSet Name="FK_Voucher_Customer" Association="Self.FK_Voucher_Customer">
             <End Role="Customer" EntitySet="Customer" />
@@ -1003,9 +1027,13 @@
             <End Role="Film" EntitySet="Film" />
             <End Role="ShowTime" EntitySet="ShowTime" />
           </AssociationSet>
+          <AssociationSet Name="FK_BillInfo_Product" Association="Self.FK_BillInfo_Product">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="ProductBillInfo" EntitySet="ProductBillInfo" />
+          </AssociationSet>
           <AssociationSet Name="FK_ProductReceive_Product" Association="Self.FK_ProductReceive_Product">
             <End Role="Product" EntitySet="Product" />
-            <End Role="ProductReceive" EntitySet="ProductReceive" />
+            <End Role="ProductReceipt" EntitySet="ProductReceipt" />
           </AssociationSet>
           <AssociationSet Name="FK_ProductStorage_Product" Association="Self.FK_ProductStorage_Product">
             <End Role="Product" EntitySet="Product" />
@@ -1013,7 +1041,7 @@
           </AssociationSet>
           <AssociationSet Name="FK_ProductReceive_Staff" Association="Self.FK_ProductReceive_Staff">
             <End Role="Staff" EntitySet="Staff" />
-            <End Role="ProductReceive" EntitySet="ProductReceive" />
+            <End Role="ProductReceipt" EntitySet="ProductReceipt" />
           </AssociationSet>
           <AssociationSet Name="FK_Seat_Room" Association="Self.FK_Seat_Room">
             <End Role="Room" EntitySet="Room" />
@@ -1070,25 +1098,16 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="BillInfo">
-            <EntityTypeMapping TypeName="CinemaManagementProjectModel.BillInfo">
-              <MappingFragment StoreEntitySet="BillInfo">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
-                <ScalarProperty Name="BillId" ColumnName="BillId" />
-                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
-                <ScalarProperty Name="PrizePerProduct" ColumnName="PrizePerProduct" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Customer">
             <EntityTypeMapping TypeName="CinemaManagementProjectModel.Customer">
               <MappingFragment StoreEntitySet="Customer">
                 <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="MaKH" ColumnName="MaKH" />
                 <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
                 <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
                 <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="FirstDate" ColumnName="FirstDate" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1097,6 +1116,7 @@
               <MappingFragment StoreEntitySet="Film">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="FilmName" ColumnName="FilmName" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
                 <ScalarProperty Name="Duration" ColumnName="Duration" />
                 <ScalarProperty Name="FilmType" ColumnName="FilmType" />
                 <ScalarProperty Name="Country" ColumnName="Country" />
@@ -1104,6 +1124,7 @@
                 <ScalarProperty Name="Genre" ColumnName="Genre" />
                 <ScalarProperty Name="ReleaseDate" ColumnName="ReleaseDate" />
                 <ScalarProperty Name="FilmInfo" ColumnName="FilmInfo" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1112,14 +1133,26 @@
               <MappingFragment StoreEntitySet="Product">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+                <ScalarProperty Name="ProductImage" ColumnName="ProductImage" />
                 <ScalarProperty Name="ProductType" ColumnName="ProductType" />
                 <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="ProductReceive">
-            <EntityTypeMapping TypeName="CinemaManagementProjectModel.ProductReceive">
-              <MappingFragment StoreEntitySet="ProductReceive">
+          <EntitySetMapping Name="ProductBillInfo">
+            <EntityTypeMapping TypeName="CinemaManagementProjectModel.ProductBillInfo">
+              <MappingFragment StoreEntitySet="ProductBillInfo">
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="BillId" ColumnName="BillId" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="PrizePerProduct" ColumnName="PrizePerProduct" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProductReceipt">
+            <EntityTypeMapping TypeName="CinemaManagementProjectModel.ProductReceipt">
+              <MappingFragment StoreEntitySet="ProductReceipt">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="ProductId" ColumnName="ProductId" />
                 <ScalarProperty Name="ImportPrice" ColumnName="ImportPrice" />
@@ -1132,6 +1165,7 @@
           <EntitySetMapping Name="ProductStorage">
             <EntityTypeMapping TypeName="CinemaManagementProjectModel.ProductStorage">
               <MappingFragment StoreEntitySet="ProductStorage">
+                <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="ProductId" ColumnName="ProductId" />
                 <ScalarProperty Name="Quantity" ColumnName="Quantity" />
               </MappingFragment>
@@ -1158,7 +1192,6 @@
           <EntitySetMapping Name="SeatSetting">
             <EntityTypeMapping TypeName="CinemaManagementProjectModel.SeatSetting">
               <MappingFragment StoreEntitySet="SeatSetting">
-                <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="SeatId" ColumnName="SeatId" />
                 <ScalarProperty Name="ShowTimeId" ColumnName="ShowTimeId" />
                 <ScalarProperty Name="SeatStatus" ColumnName="SeatStatus" />
@@ -1180,8 +1213,8 @@
             <EntityTypeMapping TypeName="CinemaManagementProjectModel.ShowTimeSetting">
               <MappingFragment StoreEntitySet="ShowTimeSetting">
                 <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="RoomId" ColumnName="RoomId" />
                 <ScalarProperty Name="ShowDate" ColumnName="ShowDate" />
+                <ScalarProperty Name="RoomId" ColumnName="RoomId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1189,6 +1222,7 @@
             <EntityTypeMapping TypeName="CinemaManagementProjectModel.Staff">
               <MappingFragment StoreEntitySet="Staff">
                 <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="MaNV" ColumnName="MaNV" />
                 <ScalarProperty Name="StaffName" ColumnName="StaffName" />
                 <ScalarProperty Name="Gender" ColumnName="Gender" />
                 <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
@@ -1198,6 +1232,7 @@
                 <ScalarProperty Name="StartDate" ColumnName="StartDate" />
                 <ScalarProperty Name="UserName" ColumnName="UserName" />
                 <ScalarProperty Name="UserPass" ColumnName="UserPass" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1208,6 +1243,7 @@
                 <ScalarProperty Name="BillId" ColumnName="BillId" />
                 <ScalarProperty Name="ShowTimeId" ColumnName="ShowTimeId" />
                 <ScalarProperty Name="SeatId" ColumnName="SeatId" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1221,6 +1257,7 @@
                 <ScalarProperty Name="StartTime" ColumnName="StartTime" />
                 <ScalarProperty Name="TroubleStatus" ColumnName="TroubleStatus" />
                 <ScalarProperty Name="StaffId" ColumnName="StaffId" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1251,6 +1288,7 @@
                 <ScalarProperty Name="TypeObject" ColumnName="TypeObject" />
                 <ScalarProperty Name="MinimizeTotal" ColumnName="MinimizeTotal" />
                 <ScalarProperty Name="EnableMerge" ColumnName="EnableMerge" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
