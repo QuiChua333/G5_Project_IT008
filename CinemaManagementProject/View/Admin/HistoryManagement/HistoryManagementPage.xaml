@@ -9,9 +9,7 @@
       Background="{StaticResource LightBlueSpindle}"
       DataContext="{StaticResource Import_ExportManagementVM}"
       d:DesignHeight="680" d:DesignWidth="1120"
-      ShowsNavigationUI="False" 
-      WindowHeight="680" 
-      WindowWidth="1120"
+      ShowsNavigationUI="False"      
       x:Name="mainPage">
     <Page.Triggers>
         <EventTrigger RoutedEvent="Page.Loaded">

@@ -7,8 +7,6 @@
       xmlns:Search="clr-namespace:CinemaManagementProject.Component.Search" 
       mc:Ignorable="d" 
       xmlns:i="http://schemas.microsoft.com/xaml/behaviors"   
-      WindowHeight="680" 
-      WindowWidth="1120"
       Title="StaffManagementPage"
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"             
       Background="Transparent"

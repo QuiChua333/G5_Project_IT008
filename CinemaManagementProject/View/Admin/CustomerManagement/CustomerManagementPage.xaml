@@ -11,11 +11,10 @@
       xmlns:i="http://schemas.microsoft.com/xaml/behaviors"   
       Title="CustomerManagementPage"
       DataContext="{StaticResource CustomerManagementVM}"
-      d:DesignHeight="680" d:DesignWidth="1120"
+      d:DesignHeight="680" 
+      d:DesignWidth="1120"
       Background="Transparent"
       ShowsNavigationUI="False" 
-      WindowHeight="680" 
-      WindowWidth="1120"
       x:Name="mainPage">
     <Page.Triggers>
         <EventTrigger RoutedEvent="Page.Loaded">
