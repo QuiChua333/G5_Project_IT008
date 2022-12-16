@@ -26,7 +26,7 @@
    
     <Grid Width="1140" Height="760" >
         <Grid Grid.Column="1">
-            <Grid Margin="0,60,0,0" Width="1020" Height="660">
+            <Grid Margin="0,0,0,20" Width="1020" Height="660">
                 <Grid.Effect>
                     <DropShadowEffect 
          			    BlurRadius="10"
