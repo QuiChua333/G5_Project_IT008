@@ -211,6 +211,76 @@ namespace CinemaManagementProject.Model.Service
                 return (false, "Lỗi hệ thống");
             }
         }
+
+        public async Task<List<FilmDTO>> GetShowingMovieByDay(DateTime date)
+        {
+            List<FilmDTO> FilmList = new List<FilmDTO>();
+            try
+            {
+                using (var context = new CinemaManagementProjectEntities())
+                {
+                    var FilmIdList = await (from showSet in context.ShowTimeSettings
+                                            where DbFunctions.TruncateTime(showSet.ShowDate) == date.Date
+                                            select showSet into S
+                                            from show in S.ShowTimes
+                                            select new
+                                            {
+                                                FilmId = show.FilmId,
+                                                ShowTime = show,
+                                            }).GroupBy(m => m.FilmId).ToListAsync();
+                    for (int i = 0; i < FilmIdList.Count(); i++)
+                    {
+                        int id = (int)FilmIdList[i].Key;
+
+                        List<ShowtimeDTO> showtimeDTOsList = new List<ShowtimeDTO>();
+                        FilmDTO fim = null;
+                        foreach (var m in FilmIdList[i])
+                        {
+                            showtimeDTOsList.Add(new ShowtimeDTO
+                            {
+                                Id = m.ShowTime.Id,
+                                FilmId = m.ShowTime.FilmId,
+                                StartTime = m.ShowTime.StartTime,
+                                RoomId = (int)m.ShowTime.ShowTimeSetting.RoomId,
+                                ShowDate = (DateTime)m.ShowTime.ShowTimeSetting.ShowDate,
+                                Price = m.ShowTime.Price
+
+                            });
+                            if (fim is null)
+                            {
+                                Film film = m.ShowTime.Film;
+
+                                if (film is null)
+                                {
+                                    film = await context.Films.FindAsync(m.ShowTime.FilmId);
+                                }
+                                fim = new FilmDTO
+                                {
+                                    Id = film.Id,
+                                    FilmName = film.FilmName,
+                                    DurationFilm = (int)film.Duration,
+                                    Country = film.Country,
+                                    FilmInfor = film.FilmInfo,
+                                    ReleaseDate = (DateTime)film.ReleaseDate,
+                                    FilmType = film.FilmType,
+                                    Author = film.Author,
+                                    Image = film.Image,
+                                    Genre= film.Genre
+                                };
+                            }
+                        }
+                        FilmList.Add(fim);
+                        FilmList[i].ShowTimes = showtimeDTOsList.OrderBy(s => s.StartTime).ToList();
+                    }
+
+                }
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+            return FilmList;
+        }
     }
     
 }

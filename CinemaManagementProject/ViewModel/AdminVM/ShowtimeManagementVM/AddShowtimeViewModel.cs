@@ -73,7 +73,7 @@ namespace CinemaManagementProject.ViewModel.AdminVM.ShowtimeManagementVM
         {
             if (movieSelected != null)
             {
-                EndTime = Showtime.AddMinutes((double)movieSelected.Duration);
+                EndTime = Showtime.AddMinutes((double)movieSelected.DurationFilm);
             }
         }
         public void RenewData()

@@ -8,6 +8,11 @@ namespace CinemaManagementProject.DTOs
 {
     public class FilmDTO
     {
+        public FilmDTO()
+        {
+            FilmType = "2D";
+            
+        }
         public int Id { get; set; }
         public string FilmName { get; set; }
         public int DurationFilm { get; set; }
@@ -19,6 +24,6 @@ namespace CinemaManagementProject.DTOs
         public bool IsDeleted { get; set; }
         public string Image { get; set; }
         public string Genre { get; set; }
-
+        public virtual ICollection<ShowtimeDTO> ShowTimes { get; set; }
     }
 }
