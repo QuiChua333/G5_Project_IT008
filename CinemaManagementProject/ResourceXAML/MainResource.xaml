@@ -28,7 +28,7 @@
     <viewmodel7:FoodManagementVM x:Key="FoodVM" />
     <viewmodel8:LoginVM x:Key="LoginVM"/>
     <viewmodel8:ForgotPassVM x:Key="ForgotVM"/>
-    <viewmodel9:OrderFoodManagementVM x:Key="OrderFoodManagement"/>
+    <viewmodel9:OrderFoodManagementVM x:Key="OrderFoodManagementVM"/>
     <viewmodel10:StaffVM x:Key="StaffVM"/>
 
 
