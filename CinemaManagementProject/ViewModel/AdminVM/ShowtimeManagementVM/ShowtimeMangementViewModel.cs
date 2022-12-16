@@ -32,8 +32,8 @@ namespace CinemaManagementProject.ViewModel.AdminVM.ShowtimeManagementVM
             }
 
             // this is for  binding data
-            private MovieDTO _movieSelected;
-            public MovieDTO movieSelected
+            private FilmDTO _movieSelected;
+            public FilmDTO movieSelected
             {
                 get { return _movieSelected; }
                 set { _movieSelected = value; OnPropertyChanged(); }
@@ -70,20 +70,20 @@ namespace CinemaManagementProject.ViewModel.AdminVM.ShowtimeManagementVM
                 set { _moviePrice = value; OnPropertyChanged(); }
             }
 
-            private List<MovieDTO> listMovieAllRoom = new List<MovieDTO>();
+            private List<FilmDTO> listMovieAllRoom = new List<FilmDTO>();
 
 
 
-            private ObservableCollection<MovieDTO> _showtimeList; // this is  for the main listview
-            public ObservableCollection<MovieDTO> ShowtimeList
+            private ObservableCollection<FilmDTO> _showtimeList; // this is  for the main listview
+            public ObservableCollection<FilmDTO> ShowtimeList
             {
                 get { return _showtimeList; }
                 set { _showtimeList = value; OnPropertyChanged(); }
             }
 
 
-            private ObservableCollection<MovieDTO> _movieList; // for adding showtime
-            public ObservableCollection<MovieDTO> MovieList
+            private ObservableCollection<FilmDTO> _movieList; // for adding showtime
+            public ObservableCollection<FilmDTO> MovieList
             {
                 get => _movieList;
                 set
@@ -123,15 +123,15 @@ namespace CinemaManagementProject.ViewModel.AdminVM.ShowtimeManagementVM
                 set { _SelectedDate = value; OnPropertyChanged(); }
             }
 
-            private MovieDTO _selectedItem; //the item being selected
-            public MovieDTO SelectedItem
+            private FilmDTO _selectedItem; //the item being selected
+            public FilmDTO SelectedItem
             {
                 get { return _selectedItem; }
                 set { _selectedItem = value; OnPropertyChanged(); }
             }
 
-            private MovieDTO _oldselectedItem; //the item being selected
-            public MovieDTO oldSelectedItem
+            private FilmDTO _oldselectedItem; //the item being selected
+            public FilmDTO oldSelectedItem
             {
                 get { return _oldselectedItem; }
                 set { _oldselectedItem = value; OnPropertyChanged(); }
@@ -179,7 +179,7 @@ namespace CinemaManagementProject.ViewModel.AdminVM.ShowtimeManagementVM
                 try
                 {
                     IsLoading = true;
-                    MovieList = new ObservableCollection<MovieDTO>(await MovieService.Ins.GetAllMovie());
+                    MovieList = new ObservableCollection<FilmDTO>(await FilmService.Ins.GetAllFilm());
                     IsLoading = false;
                 }
                 catch (System.Data.Entity.Core.EntityException e)
@@ -363,12 +363,12 @@ namespace CinemaManagementProject.ViewModel.AdminVM.ShowtimeManagementVM
             {
                 try
                 {
-                    ShowtimeList = new ObservableCollection<MovieDTO>();
+                    ShowtimeList = new ObservableCollection<FilmDTO>();
                     IsLoading = true;
 
-                    listMovieAllRoom = await Task.Run(() => MovieService.Ins.GetShowingMovieByDay(SelectedDate));
+                    listMovieAllRoom = await Task.Run(() => FilmService.Ins.GetShowingMovieByDay(SelectedDate));
 
-                    ShowtimeList = new ObservableCollection<MovieDTO>(listMovieAllRoom);
+                    ShowtimeList = new ObservableCollection<FilmDTO>(listMovieAllRoom);
                     IsLoading = false;
                 }
                 catch (System.Data.Entity.Core.EntityException)
@@ -386,25 +386,25 @@ namespace CinemaManagementProject.ViewModel.AdminVM.ShowtimeManagementVM
         {
             if (roomId == -1)
             {
-                ShowtimeList = new ObservableCollection<MovieDTO>(listMovieAllRoom);
+                ShowtimeList = new ObservableCollection<FilmDTO>(listMovieAllRoom);
                 //ResultLabel.Content = ShowtimeList.Count;
                 return;
             }
-            List<MovieDTO> listMoviesByRoom = listMovieAllRoom.Where(m => m.ShowTimes.Any(s => s.RoomId == roomId )).Select(m => new MovieDTO
+            List<FilmDTO> listMoviesByRoom = listMovieAllRoom.Where(m => m.ShowTimes.Any(s => s.RoomId == roomId )).Select(m => new FilmDTO
             {
                 Id = m.Id,
                 FilmName = m.FilmName,
-                Duration = m.Duration,
+                DurationFilm = m.DurationFilm,
                 Country = m.Country,
-                FilmInfo = m.FilmInfo,
+                FilmInfor = m.FilmInfor,
                 ReleaseDate = m.ReleaseDate,
                 FilmType = m.FilmType,
                 Author = m.Author,
-                //Image = m.Image,
-                //Genres = new List<GenreDTO>(m.Genres),
+                Image = m.Image,
+                Genre = m.Genre,
                 ShowTimes = m.ShowTimes.Where(s => s.RoomId == roomId ).ToList()
             }).ToList();
-            ShowtimeList = new ObservableCollection<MovieDTO>(listMoviesByRoom);
+            ShowtimeList = new ObservableCollection<FilmDTO>(listMoviesByRoom);
         }
         public void GenerateListRoom()
         {
