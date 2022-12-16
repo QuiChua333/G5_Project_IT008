@@ -25,48 +25,8 @@
 
    
     <Grid Width="1140" Height="760" >
-        <Grid Grid.Column="1" Background="#BCD8F1">
-            
-            <Grid.RowDefinitions>
-                <RowDefinition Height="60"/>
-                <RowDefinition/>
-            </Grid.RowDefinitions>
-
-            <!--Header-->
-            <Grid Grid.Row="0">
-                <WrapPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                    <Button 
-                        Margin="0, 0, 2, 0" 
-                        Height="50" Width="50" 
-                        Background="Transparent" 
-                        BorderThickness="0">
-                        <Image 
-                            Width="20" Height="20"
-                            Source="{StaticResource Icon_CloseTab}" 
-                            VerticalAlignment="Center" 
-                            HorizontalAlignment="Center"/>
-                    </Button>
-                    <Button 
-                        Height="50" Width="50" 
-                        Background="Transparent" 
-                        BorderThickness="0"
-                        Margin="0,0,10,0" 
-                        MouseEnter="Button_MouseEnter_1"
-                        MouseLeave="Button_MouseLeave_1"
-                        Click="Button_Click">
-                        <Image 
-                            Height="36" Width="36"
-                            Source="{StaticResource Icon_X_Black}" 
-                            VerticalAlignment="Center" 
-                            HorizontalAlignment="Center"
-                        />
-                    </Button>
-                </WrapPanel>
-            </Grid>
-
-            <!--Body-->
-            <Grid Grid.Row="1" Width="1020" Height="660">
-
+        <Grid Grid.Column="1">
+            <Grid Margin="0,60,0,0" Width="1020" Height="660">
                 <Grid.Effect>
                     <DropShadowEffect 
          			    BlurRadius="10"
@@ -319,8 +279,11 @@
                                        FontSize="11"
                                        FontWeight="Bold"/>
                             </StackPanel>
+                            <ProgressBar Style="{StaticResource MaterialDesignCircularProgressBar}"
+                                             Height="50"
+                                             Width="50"
+                                             IsIndeterminate="{Binding IsLoadding}"/>
                         </Grid>
-                       
                     </Grid>
                 </Border>
 

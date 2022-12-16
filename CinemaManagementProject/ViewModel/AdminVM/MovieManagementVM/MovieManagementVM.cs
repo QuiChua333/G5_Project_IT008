@@ -170,9 +170,9 @@ namespace CinemaManagementProject.ViewModel.AdminVM.MovieManagementVM
                 FilmList = new ObservableCollection<FilmDTO>();
                 try
                 {
-
+                    IsLoadding = true;
                     FilmList = new ObservableCollection<FilmDTO>(await Task.Run(() => FilmService.Ins.GetAllFilm()));
-                    
+                    IsLoadding = false;
                 }
                 catch (System.Data.Entity.Core.EntityException)
                 {

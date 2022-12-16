@@ -48,51 +48,6 @@
                            Foreground="Black" 
                            VerticalAlignment="Center" 
                            Margin="10,0,0,0"/>
-
-            <StackPanel Orientation="Horizontal" Width="380" Margin="180,0,0,0">
-                <Image Source="{StaticResource Icon_Bell}" Width="32" Height="32" Margin="10,0,0,0"/>
-                <Ellipse Width="50" Height="50" Margin="20,0,0,0">
-                    <Ellipse.Fill>
-                        <ImageBrush ImageSource="{StaticResource Avata}" Stretch="Fill"></ImageBrush>
-                    </Ellipse.Fill>
-                </Ellipse>
-                <TextBlock Text="Nguyễn Văn Phát" 
-                               FontSize="26" 
-                               FontWeight="Bold" 
-                               Foreground="Black" 
-                               VerticalAlignment="Center" 
-                               Margin="10,0,0,0"/>
-                <Image Source="{StaticResource XoXuong}" 
-                           Width="32" Height="32" 
-                           VerticalAlignment="Center" 
-                           Margin="10,0,0,0"/>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal" Margin="40,0,0,0">
-                <Button 
-                        Margin="0, 0, 2, 0" 
-                        Height="50" Width="50" 
-                        Background="Transparent"
-                        BorderThickness="0">
-                    <Image 
-                            Width="20" Height="20"
-                            Source="{StaticResource Icon_CloseTab}" 
-                            VerticalAlignment="Center" 
-                            HorizontalAlignment="Center"
-                        />
-                </Button>
-                <Button 
-                        Height="50" Width="50" 
-                        Background="Transparent"
-                        BorderThickness="0"
-                    >
-                    <Image 
-                            Height="40" Width="40"
-                            Source="{StaticResource Icon_X_Black}" 
-                            VerticalAlignment="Center" 
-                            HorizontalAlignment="Center"
-                        />
-                </Button>
-            </StackPanel>
         </StackPanel>
 
         <Grid Grid.Row="1">
