@@ -32,6 +32,7 @@
     <DataTemplate DataType="{x:Type HistoryVM:Import_ExportManagementViewModel}">
         <HistoryView:HistoryManagementPage></HistoryView:HistoryManagementPage>
     </DataTemplate>
+
     <DataTemplate DataType="{x:Type MovieManagementVM:MovieManagementVM}">
         <MovieManagementView:MovieManagementPage></MovieManagementView:MovieManagementPage>
     </DataTemplate>
