@@ -166,7 +166,6 @@
     <Compile Include="DTOs\StaffDTO.cs" />
     <Compile Include="DTOs\BillDTO.cs" />
     <Compile Include="DTOs\CustomerDTO.cs" />
-    <Compile Include="DTOs\MovieDTO.cs" />
     <Compile Include="DTOs\ProductBillInfoDTO.cs" />
     <Compile Include="DTOs\ProductReceiptDTO.cs" />
     <Compile Include="DTOs\RoomDTO.cs" />
@@ -229,7 +228,6 @@
     <Compile Include="Model\Service\ProductService.cs" />
     <Compile Include="Model\Service\BillService.cs" />
     <Compile Include="Model\Service\CustomerService.cs" />
-    <Compile Include="Model\Service\MovieService.cs" />
     <Compile Include="Model\Service\SeatService.cs" />
     <Compile Include="Model\Service\ShowtimeService.cs" />
     <Compile Include="Model\Service\StaffService.cs" />
