@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CinemaManagementProject.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,5 +19,9 @@ namespace CinemaManagementProject.DTOs
         public Nullable<System.DateTime> StartDate { get; set; }
         public string UserName { get; set; }
         public string UserPass { get; set; }
+        public virtual ICollection<Bill> Bills { get; set; }
+        public virtual ICollection<ProductReceipt> ProductReceives { get; set; }
+        public virtual ICollection<Trouble> Troubles { get; set; }
+
     }
 }

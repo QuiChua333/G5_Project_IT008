@@ -21,13 +21,45 @@ namespace CinemaManagementProject.Model.Service
             get
             {
                 if (_ins == null)
+                {
                     _ins = new ProductReceiptService();
-                return _ins;    
+                }
+                return _ins;
             }
             private set => _ins = value;
-            
         }
 
+
+
+        public async Task<List<ProductReceiptDTO>> GetProductReceipt(int month)
+        {
+            List<ProductReceiptDTO> productReceipts;
+            try
+            {
+                using (var context = new CinemaManagementProjectEntities())
+                {
+                    productReceipts = await (from pr in context.ProductReceipts
+                                             where ((DateTime)pr.CreatedAt).Year == DateTime.Today.Year && ((DateTime)pr.CreatedAt).Month == month
+                                             orderby pr.CreatedAt descending
+                                             select new ProductReceiptDTO
+                                             {
+                                                 Id = pr.Id,
+                                                 ProductId = (int)pr.ProductId,
+                                                 ProductName = pr.Product.ProductName,
+                                                 StaffId = pr.Staff.Id,
+                                                 StaffName = pr.Staff.StaffName,
+                                                 Quantity = (int)pr.Quantity,
+                                                 ImportPrice = (float)pr.ImportPrice,
+                                                 CreatedAt = (DateTime)pr.CreatedAt,
+                                             }).ToListAsync();
+                }
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+            return productReceipts;
+        }
         public async Task<List<ProductReceiptDTO>> GetProductReceipt()
         {
             List<ProductReceiptDTO> productReceipts;
@@ -56,6 +88,8 @@ namespace CinemaManagementProject.Model.Service
             }
             return productReceipts;
         }
+
+
         public async Task<(bool, string)> CreateProductReceipt(int productId, int quantity, float price)
         {
             try
@@ -63,7 +97,7 @@ namespace CinemaManagementProject.Model.Service
                 using (var db = new CinemaManagementProjectEntities())
                 {
                     Product prod = await db.Products.FindAsync(productId);
-                   
+
                     prod.ProductStorage.Quantity += quantity;
 
                     ProductReceipt pR = new ProductReceipt
@@ -83,6 +117,7 @@ namespace CinemaManagementProject.Model.Service
             {
                 return (false, "Lỗi hệ thống");
             }
+
         }
     }
 }

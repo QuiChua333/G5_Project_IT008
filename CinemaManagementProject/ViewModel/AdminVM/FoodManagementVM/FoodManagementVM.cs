@@ -18,7 +18,6 @@ using System.Windows.Media;
 using Microsoft.Win32;
 using System.Net.Cache;
 using System.Windows.Media.Imaging;
-using CinemaManagement.Utils;
 
 namespace CinemaManagementProject.ViewModel.AdminVM.FoodManagementVM
 {

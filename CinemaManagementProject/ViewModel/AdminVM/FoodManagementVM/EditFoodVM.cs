@@ -13,7 +13,7 @@ using System.Windows.Documents;
 using System.Windows.Media;
 using CinemaManagementProject.Utils;
 using System.Windows.Media.Media3D;
-using CinemaManagement.Utils;
+using CinemaManagementProject.Resource.Styles;
 
 namespace CinemaManagementProject.ViewModel.AdminVM.FoodManagementVM
 {

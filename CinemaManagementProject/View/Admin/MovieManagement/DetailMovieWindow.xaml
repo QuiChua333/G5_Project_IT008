@@ -1,0 +1,288 @@
+﻿<Window x:Class="CinemaManagementProject.View.Admin.MovieManagement.DetailMovieWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CinemaManagementProject.View.Admin.MovieManagement"
+        mc:Ignorable="d"
+        xmlns:Component="clr-namespace:CinemaManagementProject.Component" 
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        Title="DetailMovieWindow"
+        Width="1000" Height="600"
+        x:Name="infoFilm"
+        MouseLeftButtonDown="Window_MouseLeftButtonDown"
+        xmlns:viewmodel="clr-namespace:CinemaManagementProject.ViewModel.AdminVM.MovieManagementVM"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None"
+        DataContext="{StaticResource FilmVM}">
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="80" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <!---HEADER-->
+
+        <Grid Grid.Row="0" Background="Transparent">
+            <Border Background="#0F2851" 
+                    CornerRadius="20 20 0 0" 
+                    BorderBrush="#0F2851" 
+                    BorderThickness="5">
+                <Grid>
+
+                    <TextBlock Text="Chi tiết phim" 
+                               FontSize="30" Foreground="White" 
+                               HorizontalAlignment="Left" 
+                               VerticalAlignment="Center" 
+                               FontFamily="{StaticResource ExtraBold}" 
+                               Margin="40 0 0 0"/>
+
+                    <Button Width="80" Height="80" 
+                            HorizontalAlignment="Right" 
+                            VerticalAlignment="Center" 
+                            Background="Transparent" 
+                            BorderThickness="0"
+                            Margin="0,0,30,0"
+                            MouseEnter="Button_MouseEnter_1"
+                            MouseLeave="Button_MouseLeave_1"
+                            Command="{Binding CloseCM}"
+                            CommandParameter="{Binding ElementName=infoFilm}">
+                        <Image x:Name="click_" Source="{StaticResource Icon_X}" 
+                               Width="80" Height="80" 
+                               HorizontalAlignment="Center" 
+                               VerticalAlignment="Center"/>
+                    </Button>
+
+                </Grid>
+            </Border>
+        </Grid>
+
+        <Grid Grid.Row="1" Background="#BCD8F1">
+            <Grid Width="970" Height="470">
+
+                <Grid.Effect>
+                    <DropShadowEffect 
+         			    BlurRadius="10"
+                        Color="Gray"
+                        ShadowDepth="5"
+                        Opacity=".35"
+                        Direction="270">
+                    </DropShadowEffect>
+                </Grid.Effect>
+
+                <Border BorderBrush="White"  
+                        CornerRadius="20" 
+                        Background="White">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="40*"/>
+                            <RowDefinition Height="60*"/>
+                        </Grid.RowDefinitions>
+
+                        <Grid Grid.Row="0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="45*"/>
+                                <RowDefinition Height="55*"/>
+                            </Grid.RowDefinitions>
+
+                            <Grid Grid.Row="0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="570*"/>
+                                    <ColumnDefinition Width="350*"/>
+                                    <ColumnDefinition Width="350*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <!--Tên phim-->
+                                <StackPanel Grid.Column="0" Margin="10,10,10,0">
+                                    <Label Content="Tên phim" 
+                                           FontSize="20" 
+                                           Height="34" />
+                                    <TextBox Focusable="False"
+                                             Margin="10,0,0,0"
+                                             Padding="0"
+                                             VerticalAlignment="Top"
+                                             AcceptsReturn="True"
+                                             TextWrapping="Wrap"
+                                             FontSize="22"
+                                             Background="Transparent"
+                                             BorderBrush="Gray"
+                                             Foreground="Black"
+                                             Height="28"
+                                             x:Name="_filmName"
+                                             Text="{Binding filmName}"/>
+
+                                </StackPanel>
+
+                                <!--Thể loại-->
+                                <StackPanel Margin="20,10,20,10" Grid.Column="1">
+                                    <Label Content="Thể loại" 
+                                           FontSize="20"
+                                           Height="32"/>
+
+                                    <TextBox x:Name="_Genre"
+                                             Padding="0"
+                                             Margin="10,0,0,0"
+                                             Focusable="False"
+                                             VerticalAlignment="Top"
+                                             AcceptsReturn="True"
+                                             TextWrapping="Wrap"
+                                             FontSize="22"
+                                             Background="Transparent"
+                                             BorderBrush="Gray"
+                                             Foreground="Black"
+                                             Height="30"
+                                             Text="{Binding filmGenre, Mode=TwoWay}"/>
+                                </StackPanel>
+
+                                <StackPanel Margin="20,10,20,10" Grid.Column="2">
+                                    <Label Content="Loại phim" 
+                                           FontSize="20"
+                                           Height="32"/>
+
+                                    <TextBox x:Name="_filmType"
+                                             Margin="6,0,0,0"
+                                             Focusable="False"
+                                             VerticalAlignment="Top"
+                                             AcceptsReturn="True"
+                                             TextWrapping="Wrap"
+                                             FontSize="20"
+                                             Background="Transparent"
+                                             BorderBrush="Gray"
+                                             Foreground="Black"
+                                             Height="30"
+                                             Text="{Binding filmType}"/>
+                                </StackPanel>
+                            </Grid>
+
+                            <Grid Grid.Row="1" Margin="0,10,0,0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="570*"/>
+                                    <ColumnDefinition Width="350*"/>
+                                    <ColumnDefinition Width="350*"/>
+                                </Grid.ColumnDefinitions>
+                                <!--Tác giả-->
+                                <StackPanel Grid.Column="0" Margin="10">
+                                    <Label Content="Tác giả" 
+                                           FontSize="20" 
+                                           Height="36" />
+                                    <TextBox VerticalAlignment="Top"
+                                             AcceptsReturn="True"
+                                             TextWrapping="Wrap"
+                                             FontSize="20"
+                                             Margin="10,0,0,0"
+                                             Focusable="False"
+                                             Background="Transparent"
+                                             BorderBrush="Gray"
+                                             Foreground="Black"
+                                             Height="34"
+                                             x:Name="filmDirector"
+                                             Text="{Binding filmDirector}"/>
+                     
+                                </StackPanel>
+                                <!--Quốc gia-->
+                                <StackPanel Grid.Column="1" Margin="20,0,20,0">
+
+                                    <Label Content="Quốc gia"
+                                           FontSize="20"
+                                           Height="36"/>
+                                    <TextBox AcceptsReturn="True"
+                                             TextWrapping="Wrap"
+                                             FontSize="22"
+                                             Margin="10,0,0,0"
+                                             Focusable="False"
+                                             Background="Transparent"
+                                             BorderBrush="Gray"
+                                             Foreground="Black"
+                                             Height="44"
+                                             VerticalContentAlignment="Bottom"
+                                             x:Name="_filmCountry"
+                                             Text="{Binding filmCountry}"/>
+                                </StackPanel>
+                                <!--Thời Lượng-->
+                                <StackPanel Grid.Column="2" Margin="20,0,20,0">
+                                    <Label Content="Thời lượng (phút)"
+                                           FontSize="20"
+                                           Height="36" />
+                                    <TextBox x:Name="_Duration"
+                                             materialDesign:HintAssist.Hint="Phút"
+                                             FontSize="25"
+                                             Focusable="False"
+                                             Margin="10,0,0,0"
+                                             VerticalContentAlignment="Bottom"
+                                             Height="44"
+                                             Text="{Binding filmDuration}"/>
+                                </StackPanel>
+                            </Grid>
+                        </Grid>
+                        <Grid Grid.Row="1">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="70*" />
+                                <ColumnDefinition Width="30*" />
+                            </Grid.ColumnDefinitions>
+
+                            <Grid Grid.Column="0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="65*"/>
+                                    <ColumnDefinition  Width="35*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <!--Mô tả-->
+                                <StackPanel Grid.Column="0">
+                                    <TextBox Height="256"
+                                             Width="418"
+                                             Margin="10"
+                                             materialDesign:HintAssist.Hint="Mô tả"
+                                             AcceptsReturn="True"
+                                             FontSize="18"
+                                             HorizontalScrollBarVisibility="Disabled"
+                                             IsEnabled="{Binding Path=IsChecked, ElementName=MaterialDesignOutlinedTextBoxEnabledComboBox}"
+                                             Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                                             TextWrapping="Wrap"
+                                             VerticalScrollBarVisibility="Auto" 
+                                             Foreground="Black"
+                                             BorderBrush="Gray"
+                                             BorderThickness="2"
+                                             materialDesign:ValidationAssist.Background="Transparent"
+                                             x:Name="_filmDescribe"
+                                             Text="{Binding filmDescribe}"/>
+                                </StackPanel>
+                                <StackPanel Grid.Column="1"
+                                            Margin="20,10,0,10"
+                                            Orientation="Horizontal">
+                                    <Border BorderBrush="Black"
+                                                BorderThickness="1"
+                                                CornerRadius="10"
+                                                Width="150"
+                                                Height="218"
+                                                Margin="10,0,0,10">
+                                        <Border.Background>
+                                            <ImageBrush x:Name="imgframe" Stretch="Fill" ImageSource="{Binding ImageSource}"/>
+                                        </Border.Background>
+                                    </Border>
+                                </StackPanel>
+                            </Grid>
+                            <Grid Grid.Column="1">
+                                <StackPanel HorizontalAlignment="Right"
+                                                Margin="0,20,50,0">
+                                    <Label Content="Năm phát hành"
+                                               FontSize="20"
+                                               Height="36"/>
+                                    <TextBox x:Name="Year"
+                                             Background="Transparent"
+                                             Padding="0"
+                                             FontSize="22"
+                                             Focusable="False"
+                                             Height="40"
+                                             Width="200"
+                                             Text="{Binding filmYear}"/>
+                                </StackPanel>
+                            </Grid>
+                        </Grid>
+                    </Grid>
+                </Border>
+
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>

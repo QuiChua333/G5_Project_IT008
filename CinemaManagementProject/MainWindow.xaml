@@ -3,16 +3,27 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:CinemaManagementProject" 
-        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        xmlns:local="clr-namespace:CinemaManagementProject"
+        xmlns:Search="clr-namespace:CinemaManagementProject.Component.Search"      
+        xmlns:Component="clr-namespace:CinemaManagementProject.Component"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:FilterCombobox="clr-namespace:CinemaManagementProject.Component.FilterCombobox"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <i:Interaction.Triggers>
-        <i:EventTrigger EventName="Loaded">
-            <i:InvokeCommandAction Command="{Binding LoadWindowCommand}" />
-        </i:EventTrigger>
-    </i:Interaction.Triggers>
-    <Grid>
-        
+        WindowStyle="None"
+        Title="MainWindow"
+        Width="1400" Height="760"
+        WindowStartupLocation="CenterScreen"
+        AllowsTransparency="True">
+    
+    <Grid Background="#BCD8F1">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="121*"/>
+            <ColumnDefinition Width="529*"/>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Column="0">
+            <Component:sidebarAdmin HorizontalAlignment="Left" VerticalAlignment="Center" Height="760"/>
+        </Grid>
+        <Frame Grid.Column="1" Source="./View/Admin/MovieManagement/MovieManagementPage.xaml"></Frame>
     </Grid>
+    
 </Window>

@@ -1,11 +1,17 @@
-﻿using CloudinaryDotNet;
-using CloudinaryDotNet.Actions;
-using System.IO;
-using System.Net;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
+using CloudinaryDotNet;
 using System.Windows.Media.Imaging;
+using System.Security.Principal;
 
-namespace CinemaManagement.Utils
+using CloudinaryDotNet.Actions;
+using System.Net;
+using System.IO;
+
+namespace CinemaManagementProject.Utils
 {
     public class CloudinaryService
     {

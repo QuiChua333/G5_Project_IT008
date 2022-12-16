@@ -1,0 +1,279 @@
+﻿<Page x:Class="CinemaManagementProject.View.Admin.StatisticalManagement.RankingStatistical"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:CinemaManagementProject.View.Admin.StatisticalManagement"
+      mc:Ignorable="d" 
+      xmlns:FilterCombobox="clr-namespace:CinemaManagementProject.Component.FilterCombobox"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
+      xmlns:Component="clr-namespace:CinemaManagementProject.Component"
+      d:DesignHeight="760" d:DesignWidth="1140"
+      Title="RankingStatistical">
+
+    <Grid Background="#BCD8F1">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="10*"/>
+            <RowDefinition Height="90*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Orientation="Horizontal" Margin="30,0,0,0" Grid.Row="0">
+
+            <StackPanel HorizontalAlignment="Left"
+                            Orientation="Horizontal"
+                            Height="57"
+                            Background="#BCD8F1">
+                <materialDesign:Card  Height="57"
+                                          Background="Transparent"
+                                          materialDesign:ShadowAssist.ShadowDepth="Depth2"
+                                          materialDesign:ShadowAssist.ShadowEdges="Bottom"
+                                          x:Name="card1">
+                    <Button Height="57"
+                                Content="Tổng thu chi"
+                                Background="Transparent"
+                                Foreground="Black"
+                                FontSize="24"
+                                FontWeight="Bold"
+                                BorderBrush="Transparent"
+                                BorderThickness="0"
+                                materialDesign:ButtonAssist.CornerRadius="0"
+                                Command="{Binding LoadAllStatisticalCM}"
+                                CommandParameter="{Binding ElementName=card1}" />
+                </materialDesign:Card>
+                <materialDesign:Card Height="57"
+                                     Background="Transparent"
+                                     materialDesign:ShadowAssist.ShadowDepth="Depth2"
+                                     materialDesign:ShadowAssist.ShadowEdges="Bottom"
+                                     BorderThickness="0"
+                                     x:Name="card2">
+                    <Button Height="57"
+                                Content="Bảng xếp hạng"
+                                Background="Transparent"
+                                Foreground="Black"
+                                BorderThickness="0,0,0,4"
+                                BorderBrush="Black"
+                                FontSize="24"
+                                FontWeight="Bold"
+                                materialDesign:ButtonAssist.CornerRadius="0"
+                                Command="{Binding LoadRankStatisticalCM}"
+                                CommandParameter="{Binding ElementName=card2}" />
+                </materialDesign:Card>
+                <materialDesign:Card Height="57"
+                                     Background="Transparent"
+                                     materialDesign:ShadowAssist.ShadowDepth="Depth2"
+                                     materialDesign:ShadowAssist.ShadowEdges="Bottom"
+                                     BorderThickness="0"
+                                     x:Name="card3">
+                    <Button Height="57"
+                                Content="Xu hướng"
+                                Background="Transparent"
+                                Foreground="Black"
+                                BorderThickness="0"
+                                FontSize="24"
+                                FontWeight="Bold"
+                                materialDesign:ButtonAssist.CornerRadius="0"
+                                Command="{Binding LoadBestSellingCM}"
+                                CommandParameter="{Binding ElementName=card3}" Width="184" />
+                </materialDesign:Card>
+
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Width="380" Margin="40,0,0,0">
+                <Image Source="{StaticResource Icon_Bell}" Width="32" Height="32" Margin="10,0,0,0"/>
+                <Ellipse Width="50" Height="50" Margin="20,0,0,0">
+                    <Ellipse.Fill>
+                        <ImageBrush ImageSource="{StaticResource Avata}" Stretch="Fill"></ImageBrush>
+                    </Ellipse.Fill>
+                </Ellipse>
+                <TextBlock Text="Nguyễn Văn Phát" 
+                               FontSize="26" 
+                               FontWeight="Bold" 
+                               Foreground="Black" 
+                               VerticalAlignment="Center" 
+                               Margin="10,0,0,0"/>
+                <Image Source="{StaticResource XoXuong}" 
+                           Width="32" Height="32" 
+                           VerticalAlignment="Center" 
+                           Margin="10,0,0,0"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="20,0,0,0">
+                <Button 
+                        Margin="0, 0, 2, 0" 
+                        Height="50" Width="50" 
+                        Background="Transparent" 
+                        BorderThickness="0">
+                    <Image 
+                            Width="20" Height="20"
+                            Source="{StaticResource Icon_CloseTab}" 
+                            VerticalAlignment="Center" 
+                            HorizontalAlignment="Center"/>
+                </Button>
+                <Button 
+                        Height="50" Width="50" 
+                        Background="Transparent" 
+                        BorderThickness="0">
+                    <Image 
+                            Height="40" Width="40"
+                            Source="{StaticResource Icon_X_Black}" 
+                            VerticalAlignment="Center" 
+                            HorizontalAlignment="Center"
+                        />
+                </Button>
+            </StackPanel>
+        </StackPanel>
+        <Grid Grid.Row="1">
+            <Border CornerRadius="20" Background="White" Margin="20">
+                <Border.Effect>
+                    <DropShadowEffect BlurRadius="14"
+                                Color="Black"
+                                ShadowDepth="4"
+                                Opacity=".35"
+                                Direction="270"/>
+                </Border.Effect>
+                <Grid Margin="10" Background="White">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Grid Grid.Column="0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="10*"/>
+                            <RowDefinition Height="40*"/>
+                            <RowDefinition Height="8*"/>
+                            <RowDefinition Height="42*"/>
+                        </Grid.RowDefinitions>
+
+                        <StackPanel Grid.Row="0">
+                            <FilterCombobox:FilterCombobox VerticalAlignment="Center" HorizontalAlignment="Left" Margin="30,0,0,0"/>
+                        </StackPanel>
+
+                        <Grid Grid.Row="1" Margin="10" Width="500">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <StackPanel Grid.Column="0" Orientation="Horizontal" Margin="10" Width="240">
+                                <Border BorderThickness="2" BorderBrush="Gray" CornerRadius="20">
+                                    <lvc:PieChart LegendLocation="Bottom"
+                                                  InnerRadius="50"
+                                                  Background="Transparent"
+                                                  Series="{Binding SeriesCollectionProduct}" 
+                                                  Width="220" Height="200"/>
+                                </Border>
+                            </StackPanel>
+
+                            <StackPanel Grid.Column="1" Orientation="Horizontal" Margin="10" Width="240">
+                                <Border BorderThickness="2" BorderBrush="Gray" CornerRadius="20">
+                                    <lvc:PieChart LegendLocation="Bottom"
+                                                  InnerRadius="20"
+                                                  Background="Transparent"
+                                                  Series="{Binding SeriesCollectionCustomer}" 
+                                                  Width="220" Height="200"/>
+                                </Border>
+                            </StackPanel>
+                        </Grid>
+
+                        <StackPanel Grid.Row="2">
+                            <Label Grid.RowSpan="3"
+                                       Content="Top 5 khách hàng chi tiêu nhiều nhất"
+                                       VerticalAlignment="Center"
+                                       HorizontalAlignment="Center"
+                                       FontWeight="Bold"
+                                       FontSize="25"
+                                       Margin="10,0,0,0" />
+                        </StackPanel>
+                        <Grid Margin="10,0,10,10" Height="250" Grid.Row="3">
+                            <Border BorderThickness="2" BorderBrush="Gray" CornerRadius="20">
+                                <ListView Foreground="Black" FontSize="16" FontWeight="Bold" ItemsSource="{Binding Top5Movie}"
+                                              ScrollViewer.VerticalScrollBarVisibility="Disabled" Height="250" VerticalAlignment="Bottom" Background="#FF286EA4">
+                                    <ListView.View>
+
+                                        <GridView >
+                                            <GridViewColumn Header="STT" Width="90">
+
+                                            </GridViewColumn>
+                                            <GridViewColumn Header="Tên khách hàng" Width="200">
+
+                                            </GridViewColumn>
+                                            <GridViewColumn Header="SDT" Width="110">
+
+                                            </GridViewColumn>
+                                            <GridViewColumn Header="Chi tiêu">
+
+                                            </GridViewColumn>
+                                        </GridView>
+                                    </ListView.View>
+                                </ListView>
+                            </Border>
+
+                        </Grid>
+                    </Grid>
+
+                    <Grid Grid.Column="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="10*"/>
+                            <RowDefinition Height="40*"/>
+                            <RowDefinition Height="8*"/>
+                            <RowDefinition Height="42*"/>
+                        </Grid.RowDefinitions>
+
+                        <StackPanel Grid.Row="0">
+                            <FilterCombobox:FilterCombobox VerticalAlignment="Center" HorizontalAlignment="Left" Margin="30,0,0,0"/>
+                        </StackPanel>
+
+                        <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="10" Width="500">
+                            <Border BorderThickness="2" BorderBrush="Gray" CornerRadius="20">
+                                <StackPanel Orientation="Horizontal" Width="473">
+                                    <Image Source="{StaticResource Image_Start}" Width="220" Height="200"/>
+
+                                    <lvc:PieChart LegendLocation="Bottom"
+                                                  InnerRadius="10"
+                                                  Background="Transparent"
+                                                  Margin="20,0,0,0"
+                                                  Series="{Binding SeriesCollectionStaff}" 
+                                                  Width="220" Height="200"/>
+                                </StackPanel>
+
+                            </Border>
+                        </StackPanel>
+
+                        <StackPanel Grid.Row="2">
+                            <Label Grid.RowSpan="3"
+                                       Content="Top 5 nhân viên đóng góp nhiều nhất"
+                                       VerticalAlignment="Center"
+                                       HorizontalAlignment="Center"
+                                       FontWeight="Bold"
+                                       FontSize="25"
+                                       Margin="10,0,0,0" />
+                        </StackPanel>
+                        <Grid Margin="10,0,10,10" Height="250" Grid.Row="3">
+                            <Border BorderThickness="2" BorderBrush="Gray" CornerRadius="20">
+                                <ListView Foreground="Black" FontSize="16" FontWeight="Bold" ItemsSource="{Binding Top5Product}"
+                                              ScrollViewer.VerticalScrollBarVisibility="Disabled" Height="250" VerticalAlignment="Bottom" Background="#FF286EA4">
+                                    <ListView.View>
+
+                                        <GridView>
+                                            <GridViewColumn Header="STT" Width="90">
+
+                                            </GridViewColumn>
+                                            <GridViewColumn Header="Tên nhân viên" Width="200">
+
+                                            </GridViewColumn>
+                                            <GridViewColumn Header="Mã nhân viên" Width="110">
+
+                                            </GridViewColumn>
+                                            <GridViewColumn Header="Doanh số">
+
+                                            </GridViewColumn>
+                                        </GridView>
+                                    </ListView.View>
+                                </ListView>
+                            </Border>
+
+                        </Grid>
+                    </Grid>
+                </Grid>
+            </Border>
+        </Grid>
+    </Grid>
+</Page>

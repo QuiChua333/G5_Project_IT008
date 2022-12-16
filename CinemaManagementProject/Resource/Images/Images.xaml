@@ -2,8 +2,11 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <!--<ImageSource x:Key="Popcorn">./popcorn.png</ImageSource>-->
     <ImageSource x:Key="BonusGood">./popcorn_drink.jpg</ImageSource>
+
     <ImageSource x:Key="ImportFood">./import_food.png</ImageSource>
     <ImageSource x:Key="Logo">./Logo.png</ImageSource>
+    <ImageSource x:Key="Avata">./avata.jpg</ImageSource>
+    <ImageSource x:Key="Image_Start">./Image_Start.png</ImageSource>
     <ImageSource x:Key="LoginImage">./LoginImage.png</ImageSource>
 
 </ResourceDictionary>

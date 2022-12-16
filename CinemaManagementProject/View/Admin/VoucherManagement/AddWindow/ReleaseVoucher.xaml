@@ -1,0 +1,358 @@
+﻿<Window x:Class="CinemaManagementProject.View.Admin.VoucherManagement.AddWindow.ReleaseVoucher"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CinemaManagementProject.View.Admin.VoucherManagement.AddWindow"
+        mc:Ignorable="d"
+        Title="ReleaseVoucher" Height="450" Width="840" WindowStyle="None"
+        Background="Transparent"
+        WindowStartupLocation="CenterScreen"
+        AllowsTransparency="True" 
+        xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+        DataContext="{StaticResource VoucherVM}">
+    <Border CornerRadius="15" Background="#F5F5F5" BorderBrush="Gray" BorderThickness="0.3">
+        <Border.Effect>
+            <DropShadowEffect BlurRadius="10" Direction="270" Color="Black" ShadowDepth="4" Opacity="0.25"/>
+        </Border.Effect>
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="50"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <Button 
+                    Background="Transparent"
+                    Width="40"
+                    Height="auto"
+                    Padding="0"
+                    BorderThickness="0"
+                    HorizontalAlignment="Right"
+                    Margin="0,10,3,0"
+                    Command="{Binding ResetSelectedNumberCM}" Click="Button_Click">
+                    <materialDesign:PackIcon Kind="Close" 
+                                     Height="25"
+                                     Width="25"
+                                     VerticalAlignment="Center"
+                                     Foreground="#000000" 
+                                     HorizontalAlignment="Right"
+                                     Margin="5,0"/>
+                </Button>
+            </Grid>
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="5*"/>
+                    <ColumnDefinition Width="90*"/>
+                    <ColumnDefinition Width="5*"/>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0">
+                        <Border  BorderBrush="#67C6E6" BorderThickness="0,0,0,3">
+                        </Border>
+                        <Label Padding="0" 
+                           Content="PHÁT HÀNH VOUCHER" 
+                           FontSize="22" 
+                           FontWeight="Bold" 
+                           VerticalAlignment="Center" 
+                           HorizontalAlignment="Center" 
+                           Foreground="#8DC1F0" 
+                           FontFamily="{DynamicResource MaterialDesignFont}">
+                            <Label.Effect>
+                                <DropShadowEffect BlurRadius="1" Direction="-45" Color="#000000" ShadowDepth="1.5" Opacity="0.5"/>
+                            </Label.Effect>
+                        </Label>
+                    </Grid>
+                    <Grid Grid.Row="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="8*"/>
+                            <RowDefinition Height="90*"/>
+                        </Grid.RowDefinitions>
+                        <Grid Grid.Row="1">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="51*"/>
+                                <ColumnDefinition Width="4*"/>
+                                <ColumnDefinition Width="45*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid Grid.Column="0">
+                                <Border CornerRadius="15" Background="#F5F5F5" BorderBrush="Gray" BorderThickness="0.3">
+                                    <Border.Effect>
+                                        <DropShadowEffect BlurRadius="10" Direction="270" Color="Black" ShadowDepth="4" Opacity="0.25"/>
+                                    </Border.Effect>
+                                    <Grid Margin="20,30,20,30">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="*"/>
+                                            <RowDefinition Height="*"/>
+                                            <RowDefinition Height="*"/>
+                                            <RowDefinition Height="*"/>
+                                            <RowDefinition Height="*"/>
+                                        </Grid.RowDefinitions>
+
+                                        <Grid Grid.Row="0">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="40*"/>
+                                                <ColumnDefinition Width="60*"/>
+                                            </Grid.ColumnDefinitions>
+                                            <Label Grid.Column="0"
+                                                   Content="Đối tượng:" 
+                                                   FontWeight="Bold" 
+                                                   FontFamily="{DynamicResource MaterialDesignFont}" 
+                                                   VerticalAlignment="Center" 
+                                                   FontSize="14" />
+                                            <ComboBox Grid.Column="1"
+                                                      BorderBrush="#67C6E6"
+                                                      SelectedIndex="0"
+                                                      FontWeight="Medium"
+    
+                                                      FontSize="14"
+                                                      FontFamily="{DynamicResource MaterialDesignFont}"
+                                                      Foreground="{StaticResource Gray1}"
+                                                      HorizontalContentAlignment="Center"
+                                                      SelectedItem="{Binding ReleaseCustomerList}"
+                                                   >
+                                                <i:Interaction.Triggers>
+                                                    <i:EventTrigger EventName="Loaded">
+                                                        <i:InvokeCommandAction Command="{Binding RefreshEmailListCM}" />
+                                                    </i:EventTrigger>
+                                                    <i:EventTrigger EventName="SelectionChanged">
+                                                        <i:InvokeCommandAction Command="{Binding RefreshEmailListCM}" />
+                                                    </i:EventTrigger>
+                                                </i:Interaction.Triggers>
+                                                <ComboBoxItem Tag="TOP_5_CUSTOMER" Content="Top 5 khách hàng trong tháng"/>
+                                                <ComboBoxItem Tag="NEW_CUSTOMER" Content="Khách hàng mới trong tháng"/>
+                                                <ComboBoxItem  Tag="COMMON" Content="Khác"/>
+                                            </ComboBox>
+                                        </Grid>
+                                        <Grid Grid.Row="1">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="40*"/>
+                                                <ColumnDefinition Width="60*"/>
+                                            </Grid.ColumnDefinitions>
+                                            <Label Grid.Column="0"
+                                                   Content="Ngày phát hành:" 
+                                                   FontWeight="Bold" 
+                                                   FontFamily="{DynamicResource MaterialDesignFont}" 
+                                                   VerticalAlignment="Center" 
+                                                   FontSize="14" />
+                                            <TextBox Grid.Column="1"
+                                                     Width="auto"
+                                                     Height="20"
+                                                     FontSize="14"
+                                                     BorderBrush="#67C6E6"
+                                                     VerticalAlignment="Center"
+                                                     FontWeight="Medium"
+                                                     FontFamily="{DynamicResource MaterialDesignFont}"
+                                                     Foreground="{StaticResource Gray1}"
+                                                     Loaded="TextBox_Loaded"
+                                                    Padding="20,0,0,0">
+                                            </TextBox>
+                                        </Grid>
+                                        <Grid Grid.Row="2">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="40*"/>
+                                                <ColumnDefinition Width="60*"/>
+                                            </Grid.ColumnDefinitions>
+                                            <Label Grid.Column="0"
+                                                   Content="Số voucher/Khách:" 
+                                                   FontWeight="Bold" 
+                                                   FontFamily="{DynamicResource MaterialDesignFont}" 
+                                                   VerticalAlignment="Center" 
+                                                   FontSize="14" />
+                                           
+                                            <ComboBox     x:Name="percus"
+                                                      Grid.Column="1"
+                                                      Width="50"
+                                                      BorderBrush="#67C6E6"
+                                                      SelectedIndex="0"
+                                                      FontWeight="Medium"
+                                                      FontSize="14"
+                                                      IsReadOnly="True"
+                                                      FontFamily="{DynamicResource MaterialDesignFont}"
+                                                      Foreground="{StaticResource Gray1}"
+                                                      HorizontalContentAlignment="Center"
+                                                      HorizontalAlignment="Left"
+                                                      SelectedItem="{Binding PerCus}">
+                                                <ComboBoxItem Content="1" FontSize="14"/>
+                                                <ComboBoxItem Content="2" FontSize="14"/>
+                                                <ComboBoxItem Content="3" FontSize="14"/>
+                                                <ComboBoxItem Content="4" FontSize="14"/>
+                                                <ComboBoxItem Content="5" FontSize="14"/>
+                                                <i:Interaction.Triggers>
+                                                    <i:EventTrigger EventName="SelectionChanged">
+                                                        <i:InvokeCommandAction Command="{Binding CalculateNumberOfVoucherCM}"
+                                                                           CommandParameter="{Binding ElementName=percus}" />
+                                                    </i:EventTrigger>
+                                                </i:Interaction.Triggers>
+                                            </ComboBox>
+                                        </Grid>
+                                        <Grid Grid.Row="3">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="40*"/>
+                                                <ColumnDefinition Width="60*"/>
+                                            </Grid.ColumnDefinitions>
+                                            <Label Grid.Column="0"
+                                                   Content="Danh sách Email:" 
+                                                   FontWeight="Bold" 
+                                                   FontFamily="{DynamicResource MaterialDesignFont}" 
+                                                   VerticalAlignment="Center" 
+                                                   FontSize="14" />
+                                            <Button Grid.Column="1"
+                                                    HorizontalAlignment="Left"
+                                                    Style="{StaticResource CustomButton}"
+                                                    HorizontalContentAlignment="Stretch"
+                                                    FontSize="12"
+                                                    Background="#67C6E6"
+                                                    Margin="20,0,0,0"
+                                                    Width="80"
+                                                    Command="{Binding ShowListEmailCM}">
+                                                <Grid>
+                                                    <Label Content="Xem"
+                                                           FontSize="13"
+                                                           
+                                                           Foreground="WhiteSmoke"
+                                                           HorizontalAlignment="Left"
+                                                           VerticalAlignment="Center"
+                                                           Margin="-3,-1,0,0">
+                                                    </Label>
+                                                    <materialDesign:PackIcon Kind="FileDocumentEditOutline"
+                                                     VerticalAlignment="Center"
+                                                     Margin="31,2,0,0"/>
+                                                </Grid>
+                                            </Button>
+                                        </Grid>
+                                        <Grid Grid.Row="4">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="40*"/>
+                                                <ColumnDefinition Width="60*"/>
+                                            </Grid.ColumnDefinitions>
+                                            <Label Grid.Column="0"
+                                                   Content="Tổng số Email:" 
+                                                   FontWeight="Bold" 
+                                                   FontFamily="{DynamicResource MaterialDesignFont}" 
+                                                   VerticalAlignment="Center" 
+                                                   FontSize="14" />
+                                            <TextBox Grid.Column="1"
+                                                     HorizontalAlignment="Left"
+                                                     Width="50"
+                                                     Height="20"
+                                                     FontSize="14"
+                                                     BorderBrush="#67C6E6"
+                                                     VerticalAlignment="Center"
+                                                     FontWeight="Medium"
+                                                     FontFamily="{DynamicResource MaterialDesignFont}"
+                                                     Foreground="{StaticResource Gray1}"
+                                                     IsReadOnly="True"
+                                                    Padding="20,0,0,0"
+                                                     Text="{Binding ListCustomerEmail.Count, Mode=OneWay}">
+                                            </TextBox>
+                                        </Grid>
+
+                                    </Grid>
+                                </Border>
+                            </Grid>
+                            <Grid Grid.Column="2">
+                                <Border CornerRadius="15" Background="#F5F5F5" BorderBrush="Gray" BorderThickness="0.3">
+                                    <Border.Effect>
+                                        <DropShadowEffect BlurRadius="10" Direction="270" Color="Black" ShadowDepth="4" Opacity="0.25"/>
+                                    </Border.Effect>
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="35"/>
+                                            <RowDefinition Height="*"/>
+                                            <RowDefinition Height="35"/>
+                                        </Grid.RowDefinitions>
+                                        <Label Grid.Row="0"
+                                                   Content="Danh sách voucher đã chọn" 
+                                                   Foreground="#000000"
+                                                   FontWeight="Medium"
+                                                   FontFamily="{DynamicResource MaterialDesignFont}" 
+                                                   VerticalAlignment="Bottom" 
+                                                   HorizontalAlignment="Center"
+                                                   FontSize="14" />
+                                        <Grid Grid.Row="1">
+                                            <ListBox ItemsSource="{Binding ReleaseVoucherList}"
+                                                     x:Name="listbox"
+                                                     Margin="0,10,0,0"
+                                                     SelectedIndex="{Binding SelectedWaitingVoucher}">
+                                                <ListBox.ItemContainerStyle>
+                                                    <Style TargetType="ListBoxItem"
+                                                           >
+                                                        <Setter Property="materialDesign:ListBoxItemAssist.ShowSelection"
+                                                                Value="False" />
+                                                    </Style>
+                                                </ListBox.ItemContainerStyle>
+
+                                                <ListBox.ItemTemplate>
+                                                    <DataTemplate>
+                                                        <Grid Margin="90,0,0,0">
+                                                            <Label Content="Mã:" 
+                                                                   FontWeight="Regular"
+                                                                   Foreground="Black"
+                                                                   FontFamily="{DynamicResource MaterialDesignFont}" 
+                                                                   VerticalAlignment="Center" 
+                                                                   HorizontalAlignment="Left"
+                                                                   FontSize="14" />
+                                                            <TextBlock VerticalAlignment="Center"
+                                                                     Margin="40,0,0,0"
+                                                                     Padding="10,0,20,0"
+                                                                     Foreground="Black"
+                                                                     FontSize="14" 
+                                                                     FontWeight="Regular"
+                                                                     FontFamily="{DynamicResource MaterialDesignFont}" 
+                                                                     Text="{Binding VoucherCode}" />
+                                                        </Grid>
+                                                    </DataTemplate>
+                                                </ListBox.ItemTemplate>
+                                                
+
+
+                                            </ListBox>
+
+                                        </Grid>
+                                        <Grid Grid.Row="2">
+                                            <Label Content="Số lượng:"
+                                                   FontSize="14"
+                                                   FontWeight="Regular"
+                                                   Foreground="#000000"
+                                                   FontFamily="{StaticResource MaterialDesignFont}"
+                                                   VerticalAlignment="Center"
+                                                   HorizontalAlignment="Right"
+                                                   Margin="0,0,40,0"/>
+                                            <TextBlock FontSize="14"
+                                                   FontWeight="Regular"
+                                                   Foreground="#000000"
+                                                   FontFamily="{StaticResource MaterialDesignFont}"
+                                                   VerticalAlignment="Center"
+                                                   HorizontalAlignment="Right"
+                                                   Margin="10,0,15,0"
+                                                   Text="{Binding ReleaseVoucherList.Count}"/>
+                                        </Grid>
+                                    </Grid>
+                                </Border>
+                            </Grid>
+                        </Grid>
+                    </Grid>
+                </Grid>
+            </Grid>
+            <Grid Grid.Row="2">
+                <Button HorizontalAlignment="Right"
+                        VerticalAlignment="Center"
+                        Style="{StaticResource CustomButton}"
+                        Content="Xác nhận"
+                        FontSize="12"
+                        Background="{StaticResource ColorButtonBlue}"
+                        Margin="0,0,10,0"
+                        Width="80" 
+                        Height="30"
+                        Command="{Binding ReleaseVoucherCM}">
+                </Button>
+            </Grid>
+        </Grid>
+    </Border>
+</Window>

@@ -24,12 +24,6 @@ namespace CinemaManagementProject.Component.Search
         {
             InitializeComponent();
             this.DataContext = this;
-            PlaceHolder = "Tìm kiếm";
-            Height = 400;
-            Width = 54;
-            Corner = 15;
-            FontSize = 16;
-            IconSize = 30;
         }
         public string PlaceHolder { get; set; }
         public new double Height { get; set; }
@@ -44,18 +38,12 @@ namespace CinemaManagementProject.Component.Search
                 return SearchType.Text;
             }
         }
-
         public event EventHandler SearchTextChange;
         private void SearchType_GotFocus(object sender, RoutedEventArgs e)
         {
             SearchType.Text = "";
         }
-        private void SearchType_LostFocus(object sender, RoutedEventArgs e)
-        {
-            //if (string.IsNullOrWhiteSpace(SearchType.Text))
-            //    SearchType.Text = PlaceHolder;
-        }
-        public void SearchType_TextChanged(object sender, TextChangedEventArgs e)
+        protected void SearchType_TextChanged(object sender, TextChangedEventArgs e)
         {
             SearchTextChange?.Invoke(this, e);
         }

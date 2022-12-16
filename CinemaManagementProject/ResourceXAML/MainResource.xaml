@@ -1,0 +1,35 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:viewmodel1="clr-namespace:CinemaManagementProject.ViewModel.AdminVM.VoucherManagementVM" 
+                    xmlns:viewmodel2="clr-namespace:CinemaManagementProject.ViewModel.AdminVM.CustomerManagementVM" 
+                    xmlns:viewmodel3="clr-namespace:CinemaManagementProject.ViewModel.AdminVM.StaffManagementVM" 
+                    xmlns:viewmodel4="clr-namespace:CinemaManagementProject.ViewModel.AdminVM.Import_ExportManagementVM" 
+                    xmlns:viewmodel5="clr-namespace:CinemaManagementProject.ViewModel.AdminVM.ShowtimeManagementVM" 
+                    xmlns:viewmodel6="clr-namespace:CinemaManagementProject.ViewModel.AdminVM.MovieManagementVM"
+                    
+                    xmlns:viewmodel7="clr-namespace:CinemaManagementProject.ViewModel.AdminVM.FoodManagementVM"
+                    xmlns:viewmodel8="clr-namespace:CinemaManagementProject.ViewModel.LoginVM"
+                    xmlns:viewmodel9="clr-namespace:CinemaManagementProject.ViewModel.StaffVM.OrderFoodManagementVM"
+                    xmlns:viewmodel10="clr-namespace:CinemaManagementProject.ViewModel.StaffVM"
+                    >
+
+    <!--xmlns:FoodViewModel="clr-namespace:CinemaManagementProject.ViewModel.AdminVM.FoodManagementVM"   
+                    xmlns:LoginViewModel="clr-namespace:CinemaManagementProject.ViewModel.LoginVM"
+                    xmlns:OrderFoodViewModel="clr-namespace:CinemaManagementProject.ViewModel.StaffVM.OrderFoodManagementVM"
+                    
+                    xmlns:StaffViewModel="clr-namespace:CinemaManagementProject.ViewModel.StaffVM"-->  
+
+    <viewmodel1:VoucherViewModel x:Key="VoucherVM" />
+    <viewmodel2:CustomerManagementViewModel x:Key="CustomerManagementVM"></viewmodel2:CustomerManagementViewModel>
+    <viewmodel3:StaffManagementViewModel x:Key="StaffManagementVM"></viewmodel3:StaffManagementViewModel>
+    <viewmodel4:Import_ExportManagementViewModel x:Key="Import_ExportManagementVM"></viewmodel4:Import_ExportManagementViewModel>
+    <viewmodel5:ShowtimeMangementViewModel x:Key="ShowtimeManagementVM"></viewmodel5:ShowtimeMangementViewModel>
+    <viewmodel6:MovieManagementVM x:Key="FilmVM" />
+    <viewmodel7:FoodManagementVM x:Key="FoodVM" />
+    <viewmodel8:LoginVM x:Key="LoginVM"/>
+    <viewmodel8:ForgotPassVM x:Key="ForgotVM"/>
+    <viewmodel9:OrderFoodManagementVM x:Key="OrderFoodManagement"/>
+    <viewmodel10:StaffVM x:Key="StaffVM"/>
+
+
+</ResourceDictionary>

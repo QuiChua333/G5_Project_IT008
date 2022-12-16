@@ -1,7 +1,8 @@
-﻿using CinemaManagement.Utils;
+﻿
 using CinemaManagementProject.DTOs;
 using CinemaManagementProject.Model;
 using CinemaManagementProject.Model.Service;
+using CinemaManagementProject.Utils;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity.Core;

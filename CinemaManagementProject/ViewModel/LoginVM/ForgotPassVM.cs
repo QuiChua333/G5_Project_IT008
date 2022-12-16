@@ -18,6 +18,7 @@ using System.IO;
 using System.Net;
 using CinemaManagementProject.Model;
 using System.Data.SqlClient;
+using System.Data.Entity;
 
 namespace CinemaManagementProject.ViewModel.LoginVM
 {
@@ -76,32 +77,23 @@ namespace CinemaManagementProject.ViewModel.LoginVM
                 else
                     p.Content = "Mã code vừa nhập chưa chính xác";
             });
-            ConfirmNewPassCM = new RelayCommand<PasswordBox>((p) => { return true; }, (p) =>
+            ConfirmNewPassCM = new RelayCommand<PasswordBox>((p) => { return true; }, async (p) =>
             {
-                if(NewPassword == p.Password)
+                if (NewPassword == p.Password)
                 {
-                    string connectionString = "Data Source=DESKTOP-VNQFQ7G\\SQLEXPRESS;Initial Catalog=CinemaManagementProject;Integrated Security=True";
-                    SqlConnection StrCon = new SqlConnection(connectionString);
-                    try
+                    using (var db = new CinemaManagementProjectEntities())
                     {
+                        Staff updateStaff = await db.Staffs.FirstOrDefaultAsync(x => x.Email == CurrentEmail);
 
-                        StrCon.Open();
-                        string queryString = $"UPDATE Staff SET UserPass='{NewPassword}' WHERE Email='{CurrentEmail}'";
-                        SqlCommand sqlCommand = new SqlCommand();
-                        sqlCommand.CommandType = System.Data.CommandType.Text;
-                        sqlCommand.CommandText = queryString;
-                        sqlCommand.Connection = StrCon;
-                        sqlCommand.ExecuteNonQuery();
-                        MessageBox.Show("Update");
-                        StrCon.Close();
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show("Can not open connection ! ");
+                        if (updateStaff == null)
+                            return;
+
+                        updateStaff.UserPass = NewPassword;
+                        await db.SaveChangesAsync();
                     }
 
                     LoginVM.MainFrame.Content = new LoginPage();
-                }    
+                }
             });
         }
         public bool CheckValidEmail(string email, Label lableError)

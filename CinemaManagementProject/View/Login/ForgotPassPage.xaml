@@ -6,7 +6,7 @@
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       xmlns:local="clr-namespace:CinemaManagementProject.View.Login" 
       xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
-      DataContext="{StaticResource ForgotPassVM}"
+      DataContext="{StaticResource ForgotVM}"
       mc:Ignorable="d" 
       Name="ForgotPassPg">
     <Page.Triggers>
