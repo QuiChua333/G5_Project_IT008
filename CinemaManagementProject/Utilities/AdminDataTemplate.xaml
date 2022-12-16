@@ -1,13 +1,8 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:FoodView="clr-namespace:CinemaManagementProject.View.Admin.FoodManagement"
-                    xmlns:FoodVM="clr-namespace:CinemaManagementProject.ViewModel.AdminVM.FoodManagementVM"
                     xmlns:MovieManagementVM="clr-namespace:CinemaManagementProject.ViewModel.AdminVM.MovieManagementVM"
                     xmlns:MovieManagementView="clr-namespace:CinemaManagementProject.View.Admin.MovieManagement"
 >
-    <DataTemplate DataType="{x:Type FoodVM:FoodManagementVM}">
-        <FoodView:FoodPage></FoodView:FoodPage>
-    </DataTemplate>
     <DataTemplate DataType="{x:Type MovieManagementVM:MovieManagementVM}">
         <MovieManagementView:MovieManagementPage></MovieManagementView:MovieManagementPage>
     </DataTemplate>

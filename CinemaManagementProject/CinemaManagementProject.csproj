@@ -196,18 +196,6 @@
     <Compile Include="View\Admin\AdminWindow.xaml.cs">
       <DependentUpon>AdminWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Admin\FoodManagement\AddFoodWindow.xaml.cs">
-      <DependentUpon>AddFoodWindow.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\Admin\FoodManagement\EditFoodWindow.xaml.cs">
-      <DependentUpon>EditFoodWindow.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\Admin\FoodManagement\FoodPage.xaml.cs">
-      <DependentUpon>FoodPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\Admin\FoodManagement\ImportFoodWindow.xaml.cs">
-      <DependentUpon>ImportFoodWindow.xaml</DependentUpon>
-    </Compile>
     <Compile Include="View\Admin\MovieManagement\AddMovieWindow.xaml.cs">
       <DependentUpon>AddMovieWindow.xaml</DependentUpon>
     </Compile>
@@ -321,22 +309,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Admin\AdminWindow.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="View\Admin\FoodManagement\AddFoodWindow.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="View\Admin\FoodManagement\EditFoodWindow.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="View\Admin\FoodManagement\FoodPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="View\Admin\FoodManagement\ImportFoodWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
