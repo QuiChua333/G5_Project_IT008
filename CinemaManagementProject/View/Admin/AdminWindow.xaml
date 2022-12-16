@@ -7,15 +7,18 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CinemaManagementProject.View.Admin"
         mc:Ignorable="d"
-         WindowStyle="None"
-    Height="760" Width="1400"
-    WindowStartupLocation="CenterScreen"
-    AllowsTransparency="True"
-    Background="Transparent"
+        WindowStyle="None"
+        Height="760" Width="1400"
+        WindowStartupLocation="CenterScreen"
+        AllowsTransparency="True"
+        Background="Transparent"
+        ShowActivated="False"
+        
 >
     <Window.DataContext>
         <vm:AdminVM></vm:AdminVM>
     </Window.DataContext>
+    
     <Grid Height="760" Width="1400">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
@@ -62,12 +65,11 @@
                 <!--Phân tích-->
                 <TextBlock Foreground="White" Margin="10,20,0,5" FontSize="11">Phân tích</TextBlock>
                 <RadioButton    
-                x:Name="TongQuanButton"
-                Style="{StaticResource menuButton}"
-                Tag="white"
-                IsChecked="True"
-               
-            >
+                    x:Name="TongQuanButton"
+                    Style="{StaticResource menuButton}"
+                    Tag="white"
+                    IsChecked="True" 
+                >
                     <!--Command="{Binding FoodCommand}"-->
                     <StackPanel Orientation="Horizontal">
                         <materialDesign:PackIcon Kind="ChartBar" Height="20" Width="20" Margin="30,0,10,0" ></materialDesign:PackIcon>
@@ -90,7 +92,7 @@
                 x:Name="QuanLiPhimButton"
                 Style="{StaticResource menuButton}"
                 Tag="white"
-                Command="{Binding ShowHomeViewCommand}" 
+                Command="{Binding FilmCommand}" 
             >
                     <StackPanel Orientation="Horizontal">
                         <materialDesign:PackIcon Kind="PlaylistStar" Height="20" Width="20" Margin="30,0,10,0" ></materialDesign:PackIcon>
@@ -177,31 +179,33 @@
                 <!--Tiện ích-->
                 <TextBlock Foreground="White" Margin="10,15,0,5">Tiện ích</TextBlock>
                 <RadioButton    
-                x:Name="CaiDatButton"
-                Style="{StaticResource menuButton}"
-                                    Tag="white"
-                                    Command="{Binding ShowHomeViewCommand}">
+                    x:Name="CaiDatButton"
+                    Style="{StaticResource menuButton}"
+                    Tag="white"
+                    Command="{Binding ShowHomeViewCommand}"
+                >
                     <StackPanel Orientation="Horizontal">
                         <materialDesign:PackIcon Kind="SettingsApplications" Height="20" Width="20" Margin="30,0,10,0" ></materialDesign:PackIcon>
                         <TextBlock Text="Cài đặt" Style="{StaticResource menuButtonText}" Margin="0,3,0,0" FontSize="14"/>
                     </StackPanel>
                 </RadioButton>
                 <RadioButton    
-                x:Name="GiupDoButton"
-                Style="{StaticResource menuButton}"
-                Tag="white"
-                 Command="{Binding ShowHomeViewCommand}"
-            >
+                    x:Name="GiupDoButton"
+                    Style="{StaticResource menuButton}"
+                    Tag="white"
+                    Command="{Binding ShowHomeViewCommand}"
+                >
                     <StackPanel Orientation="Horizontal">
                         <materialDesign:PackIcon Kind="Phone" Height="20" Width="20" Margin="30,0,10,0" ></materialDesign:PackIcon>
                         <TextBlock Text="Giúp đỡ" Style="{StaticResource menuButtonText}" Margin="0,3,0,0" FontSize="14"/>
                     </StackPanel>
                 </RadioButton>
                 <RadioButton
-                x:Name="DangXuatButton"
-                Style="{StaticResource menuButton}"
-                            Tag="white"
-                            Command="{Binding ShowHomeViewCommand}">
+                    x:Name="DangXuatButton"
+                    Style="{StaticResource menuButton}"
+                    Tag="white"
+                    Command="{Binding ShowHomeViewCommand}"
+                >
                     <StackPanel Orientation="Horizontal">
                         <materialDesign:PackIcon Kind="Logout" Height="20" Width="20" Margin="30,0,10,0" ></materialDesign:PackIcon>
                         <TextBlock Text="Đăng xuất" Style="{StaticResource menuButtonText}" Margin="0,3,0,0" FontSize="14"/>

@@ -53,6 +53,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CloudinaryDotNet, Version=1.20.0.0, Culture=neutral, PublicKeyToken=c8234dc617ae7841, processorArchitecture=MSIL">
+      <HintPath>..\packages\CloudinaryDotNet.1.20.0\lib\net452\CloudinaryDotNet.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -91,10 +94,19 @@
       <Private>True</Private>
       <Private>True</Private>
     </Reference>
+    <Reference Include="System.Runtime.InteropServices.RuntimeInformation, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.InteropServices.RuntimeInformation.4.3.0\lib\net45\System.Runtime.InteropServices.RuntimeInformation.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
-    <Reference Include="System.Windows.Forms" />
-    <Reference Include="System.Xml" />
+    <Reference Include="System.Text.Encodings.Web, Version=4.0.3.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Text.Encodings.Web.4.5.1\lib\netstandard2.0\System.Text.Encodings.Web.dll</HintPath>
+    </Reference>
+
+	<Reference Include="System.Windows.Forms" />
+	<Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -127,6 +139,7 @@
     <Compile Include="DTOs\TicketDTO.cs" />
     <Compile Include="DTOs\VoucherDTO.cs" />
     <Compile Include="DTOs\VoucherReleaseDTO.cs" />
+	<Compile Include="DTOs\FilmDTO.cs" />
     <Compile Include="Model\Bill.cs">
       <DependentUpon>CinemaManagementDatabase.tt</DependentUpon>
     </Compile>
@@ -180,6 +193,8 @@
     <Compile Include="Model\Service\ShowtimeService.cs" />
     <Compile Include="Model\Service\StaffService.cs" />
     <Compile Include="Model\Service\VoucherService.cs" />
+	<Compile Include="Model\Service\DataProvider.cs" />
+	<Compile Include="Model\Service\FilmService.cs" />
     <Compile Include="Model\ShowTime.cs">
       <DependentUpon>CinemaManagementDatabase.tt</DependentUpon>
     </Compile>
@@ -203,6 +218,7 @@
     </Compile>
     <Compile Include="Until.cs" />
     <Compile Include="Utilities\RelyCommand.cs" />
+	<Compile Include="Utils\CloudinaryService.cs" />
     <Compile Include="Utils\Constant.cs" />
     <Compile Include="Utils\Helper.cs" />
     <Compile Include="Utils\RegexUtilities.cs" />
@@ -222,7 +238,12 @@
     <Compile Include="ViewModel\AdminVM\VoucherManagementVM\AddWindowVM\ReleaseWindowViewModel.cs" />
     <Compile Include="ViewModel\AdminVM\VoucherManagementVM\EditWindowVM\EditWindowViewModel.cs" />
     <Compile Include="ViewModel\AdminVM\VoucherManagementVM\VoucherViewModel.cs" />
+	<Compile Include="ViewModel\AdminVM\MovieManagementVM\Add.MovieVM.cs" />
+	<Compile Include="ViewModel\AdminVM\MovieManagementVM\Edit.MovieVM.cs" />
+	<Compile Include="ViewModel\AdminVM\MovieManagementVM\Info.MovieVM.cs" />
+	<Compile Include="ViewModel\AdminVM\MovieManagementVM\MovieManagementVM.cs" />
     <Compile Include="ViewModel\BaseViewModel.cs" />
+    <Compile Include="ViewModel\StaffVM\StaffVM.cs" />
     <Compile Include="View\Admin\AdminWindow.xaml.cs">
       <DependentUpon>AdminWindow.xaml</DependentUpon>
     </Compile>
@@ -307,8 +328,41 @@
     <Compile Include="View\Admin\StaffManagement\StaffManagementPage.xaml.cs">
       <DependentUpon>StaffManagementPage.xaml</DependentUpon>
     </Compile>
+	  <Compile Include="View\Admin\MovieManagement\AddMovieWindow.xaml.cs">
+		  <DependentUpon>AddMovieWindow.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Include="View\Admin\MovieManagement\DetailMovieWindow.xaml.cs">
+		  <DependentUpon>DetailMovieWindow.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Include="View\Admin\MovieManagement\EditMovieWindow.xaml.cs">
+		  <DependentUpon>EditMovieWindow.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Include="View\Admin\MovieManagement\MovieManagementPage.xaml.cs">
+		  <DependentUpon>MovieManagementPage.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Include="View\Admin\StatisticalManagement\IncomeStatistical.xaml.cs">
+		  <DependentUpon>IncomeStatistical.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Include="View\Admin\StatisticalManagement\RankingStatistical.xaml.cs">
+		  <DependentUpon>RankingStatistical.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Include="View\Admin\StatisticalManagement\TotalIncomeStatistical.xaml.cs">
+		  <DependentUpon>TotalIncomeStatistical.xaml</DependentUpon>
+	  </Compile>
     <Compile Include="View\CustomMessageBoxWindow.xaml.cs">
       <DependentUpon>CustomMessageBoxWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Staff\StaffWindow.xaml.cs">
+      <DependentUpon>StaffWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Staff\TicketBill\TicketBillPage.xaml.cs">
+      <DependentUpon>TicketBillPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Staff\TicketBill\TicketBill_Food_Page.xaml.cs">
+      <DependentUpon>TicketBill_Food_Page.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Staff\TicketBill\TicketBill_Phim_Page.xaml.cs">
+      <DependentUpon>TicketBill_Phim_Page.xaml</DependentUpon>
     </Compile>
     <Page Include="Component\Buttons\ButtonStyle.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -377,6 +431,10 @@
     <Page Include="Resource\Styles\MenuButtonUI.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Utilities\AdminDataTemplate.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Utilities\AdminDataTemplate.xaml">
       <SubType>Designer</SubType>
@@ -490,8 +548,33 @@
     <Page Include="View\Admin\StaffManagement\StaffManagementPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
-    <Page Include="View\Admin\VoucherManagement\VoucherManagementWindow.xaml">
+    <Page Include="View\Admin\MovieManagement\AddMovieWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Admin\MovieManagement\DetailMovieWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Admin\MovieManagement\EditMovieWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Admin\MovieManagement\MovieManagementPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Admin\StatisticalManagement\IncomeStatistical.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Admin\StatisticalManagement\RankingStatistical.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Admin\StatisticalManagement\TotalIncomeStatistical.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -499,6 +582,26 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="View\Staff\StaffWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Staff\TicketBill\TicketBillPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Staff\TicketBill\TicketBill_Food_Page.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Staff\TicketBill\TicketBill_Phim_Page.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+	  <Page Include="View\Admin\VoucherManagement\VoucherManagementWindow.xaml">
+		  <SubType>Designer</SubType>
+		  <Generator>MSBuild:Compile</Generator>
+	  </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -522,6 +625,7 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>CinemaManagementDatabase.Designer.cs</LastGenOutput>
     </EntityDeploy>
+    <None Include="App.Config" />
     <None Include="Model\CinemaManagementDatabase.edmx.diagram">
       <DependentUpon>CinemaManagementDatabase.edmx</DependentUpon>
     </None>
@@ -550,9 +654,6 @@
     <Resource Include="Resource\Fonts\Montserrat-ThinItalic.ttf" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Component\New Text Document.txt" />
   </ItemGroup>
   <ItemGroup>
@@ -570,8 +671,9 @@
     <Resource Include="Resource\Images\icon_Warning.png" />
     <Resource Include="Resource\Images\Logo.png" />
     <Resource Include="Resource\Images\New Text Document.txt" />
+    <Resource Include="View\Admin\howtousenavigation.txt" />
     <Resource Include="View\Login\Demo1.txt" />
-    <Resource Include="View\Staff\Demo1.txt" />
+    <Resource Include="View\Staff\howtousenavigation.txt" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="ViewModel\LoginVM\" />
@@ -623,6 +725,23 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
+	<ItemGroup>
+		<Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+	</ItemGroup>
+	<ItemGroup>
+		<Resource Include="Resource\Icons\Button_AddVoucher.png" />
+		<Resource Include="Resource\Icons\icon_Bell.png" />
+		<Resource Include="Resource\Icons\Icon_Bin.png" />
+		<Resource Include="Resource\Icons\Icon_CloseTab.png" />
+		<Resource Include="Resource\Icons\Icon_Download.png" />
+		<Resource Include="Resource\Icons\Icon_Edit.png" />
+		<Resource Include="Resource\Icons\Icon_Them.png" />
+		<Resource Include="Resource\Icons\Icon_X.png" />
+		<Resource Include="Resource\Icons\Icon_X_Black.png" />
+		<Resource Include="Resource\Icons\XoXuong.png" />
+		<Resource Include="Resource\Images\avata.jpg" />
+		<Resource Include="Resource\Images\Image_Start.png" />
+	</ItemGroup>
   <ItemGroup>
     <Content Include="Model\CinemaManagementDatabase.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>

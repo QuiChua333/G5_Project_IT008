@@ -10,7 +10,9 @@
                     xmlns:CustomerView="clr-namespace:CinemaManagementProject.View.Admin.CustomerManagement"
                     xmlns:CustomerVM="clr-namespace:CinemaManagementProject.ViewModel.AdminVM.CustomerManagementVM"
                     xmlns:HistoryView="clr-namespace:CinemaManagementProject.View.Admin.HistoryManagement"
-                    xmlns:HistoryVM="clr-namespace:CinemaManagementProject.ViewModel.AdminVM.Import_ExportManagementVM">
+                    xmlns:HistoryVM="clr-namespace:CinemaManagementProject.ViewModel.AdminVM.Import_ExportManagementVM"
+                    xmlns:MovieManagementVM="clr-namespace:CinemaManagementProject.ViewModel.AdminVM.MovieManagementVM"
+                    xmlns:MovieManagementView="clr-namespace:CinemaManagementProject.View.Admin.MovieManagement">
     <DataTemplate DataType="{x:Type VoucherVM:VoucherViewModel}">
         <VoucherView:VoucherManagementPage></VoucherView:VoucherManagementPage>
     </DataTemplate>
@@ -26,8 +28,11 @@
     <DataTemplate DataType="{x:Type CustomerVM:CustomerManagementViewModel}">
         <CustomerView:CustomerManagementPage></CustomerView:CustomerManagementPage>
     </DataTemplate>
-
+    
     <DataTemplate DataType="{x:Type HistoryVM:Import_ExportManagementViewModel}">
         <HistoryView:HistoryManagementPage></HistoryView:HistoryManagementPage>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type MovieManagementVM:MovieManagementVM}">
+        <MovieManagementView:MovieManagementPage></MovieManagementView:MovieManagementPage>
     </DataTemplate>
 </ResourceDictionary>
