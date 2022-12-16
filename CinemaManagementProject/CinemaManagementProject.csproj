@@ -168,12 +168,10 @@
     <Compile Include="DTOs\CustomerDTO.cs" />
     <Compile Include="DTOs\MovieDTO.cs" />
     <Compile Include="DTOs\ProductBillInfoDTO.cs" />
-    <Compile Include="DTOs\ProductReceiptDTO.cs" />
     <Compile Include="DTOs\RoomDTO.cs" />
     <Compile Include="DTOs\SeatDTO.cs" />
     <Compile Include="DTOs\SeatSettingDTO.cs" />
     <Compile Include="DTOs\ShowtimeDTO.cs" />
-    <Compile Include="DTOs\StaffDTO.cs" />
     <Compile Include="DTOs\TicketBillInfoDTO.cs" />
     <Compile Include="DTOs\TicketDTO.cs" />
     <Compile Include="DTOs\VoucherDTO.cs" />
