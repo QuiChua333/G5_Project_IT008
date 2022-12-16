@@ -23,5 +23,10 @@ namespace CinemaManagementProject.View.Staff.MovieScheduleWindow
         {
             InitializeComponent();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            this.WindowState = WindowState.Minimized;
+        }
     }
 }
