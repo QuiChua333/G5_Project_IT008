@@ -17,16 +17,16 @@ namespace CinemaManagementProject.Model
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Room()
         {
-            this.Seat = new HashSet<Seat>();
-            this.ShowTimeSetting = new HashSet<ShowTimeSetting>();
+            this.Seats = new HashSet<Seat>();
+            this.ShowTimeSettings = new HashSet<ShowTimeSetting>();
         }
     
         public int Id { get; set; }
         public Nullable<int> SeatQuantity { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Seat> Seat { get; set; }
+        public virtual ICollection<Seat> Seats { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ShowTimeSetting> ShowTimeSetting { get; set; }
+        public virtual ICollection<ShowTimeSetting> ShowTimeSettings { get; set; }
     }
 }

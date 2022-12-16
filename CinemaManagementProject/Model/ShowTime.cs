@@ -17,8 +17,8 @@ namespace CinemaManagementProject.Model
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public ShowTime()
         {
-            this.SeatSetting = new HashSet<SeatSetting>();
-            this.Ticket = new HashSet<Ticket>();
+            this.SeatSettings = new HashSet<SeatSetting>();
+            this.Tickets = new HashSet<Ticket>();
         }
     
         public int Id { get; set; }
@@ -29,9 +29,9 @@ namespace CinemaManagementProject.Model
     
         public virtual Film Film { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<SeatSetting> SeatSetting { get; set; }
+        public virtual ICollection<SeatSetting> SeatSettings { get; set; }
         public virtual ShowTimeSetting ShowTimeSetting { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Ticket> Ticket { get; set; }
+        public virtual ICollection<Ticket> Tickets { get; set; }
     }
 }

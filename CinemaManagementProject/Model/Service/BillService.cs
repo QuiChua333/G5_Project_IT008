@@ -146,7 +146,7 @@ namespace CinemaManagementProject.Model.Service
                         DiscountPrice = (float)bill.DiscountPrice,
                         TotalPrice = (float)bill.TotalPrize,
                         CreatedAt = (DateTime)bill.CreateDate,
-                        ProductBillInfoes = (from pi in bill.ProductBillInfo
+                        ProductBillInfoes = (from pi in bill.ProductBillInfoes
                                              select new ProductBillInfoDTO
                                              {
                                                  BillId = pi.BillId,
@@ -163,7 +163,7 @@ namespace CinemaManagementProject.Model.Service
                         billInfo.PhoneNumber = bill.Customer.PhoneNumber;
                     }
 
-                    var tickets = bill.Ticket;
+                    var tickets = bill.Tickets;
                     if (tickets.Count != 0)
                     {
                         var showtime = tickets.FirstOrDefault().ShowTime;

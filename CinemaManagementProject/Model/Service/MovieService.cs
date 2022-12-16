@@ -71,7 +71,7 @@ namespace CinemaManagementProject.Model.Service
                     var MovieIdList = await (from showSet in context.ShowTimeSettings
                                              where DbFunctions.TruncateTime(showSet.ShowDate) == date.Date
                                              select showSet into S
-                                             from show in S.ShowTime
+                                             from show in S.ShowTimes
                                              select new
                                              {
                                                  MovieId = show.FilmId,

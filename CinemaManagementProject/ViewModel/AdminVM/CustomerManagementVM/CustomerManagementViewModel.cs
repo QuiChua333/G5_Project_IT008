@@ -194,7 +194,7 @@ namespace CinemaManagementProject.ViewModel.AdminVM.CustomerManagementVM
             OpenEditCustomerCM = new RelayCommand<object>((p) => { return true; }, (p) =>
             {
                 EditCustomerWindow wd = new EditCustomerWindow();
-                Fullname = SelectedItem.Name;
+                Fullname = SelectedItem.CustomerName;
                 Phone = SelectedItem.PhoneNumber;
                 Mail = SelectedItem.Email;
                 wd.ShowDialog();
@@ -264,7 +264,7 @@ namespace CinemaManagementProject.ViewModel.AdminVM.CustomerManagementVM
             {
                 CustomerDTO cus = new CustomerDTO();
                 cus.Id = SelectedItem.Id;
-                cus.Name = Fullname;
+                cus.CustomerName = Fullname;
                 cus.PhoneNumber = Phone;
                 cus.Email = Mail;
                 cus.Expense = SelectedItem.Expense;

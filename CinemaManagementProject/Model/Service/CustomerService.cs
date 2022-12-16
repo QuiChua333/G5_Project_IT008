@@ -38,7 +38,7 @@ namespace CinemaManagementProject.Model.Service
                                     select new CustomerDTO
                                     {
                                         Id = s.Id,
-                                        Name = s.CustomerName,
+                                        CustomerName = s.CustomerName,
                                         Email = s.Email,
                                         PhoneNumber = s.PhoneNumber,
                                         FirstDate = (DateTime)s.FirstDate
@@ -67,7 +67,7 @@ namespace CinemaManagementProject.Model.Service
                     return new CustomerDTO
                     {
                         Id = customer.Id,
-                        Name = customer.CustomerName,
+                        CustomerName = customer.CustomerName,
                         PhoneNumber = customer.PhoneNumber,
                         Email = customer.Email,
                     };
@@ -87,14 +87,14 @@ namespace CinemaManagementProject.Model.Service
                 {
                     using (var context = new CinemaManagementProjectEntities())
                     {
-                        var customer = await context.Customers.Where(c =>/* !c.IsDeleted &&*/ ((DateTime)c.FirstDate).Year == year).Select(c => new CustomerDTO
+                        var customer = await context.Customers.Where(c => !(bool)c.IsDeleted && ((DateTime)c.FirstDate).Year == year).Select(c => new CustomerDTO
                         {
                             Id = c.Id,
-                            Name = c.CustomerName,
+                            CustomerName = c.CustomerName,
                             PhoneNumber = c.PhoneNumber,
                             Email = c.Email,
                             FirstDate = (DateTime)c.FirstDate,
-                            Expense = (float)c.Bill.Where(b => ((DateTime)c.FirstDate).Year == year).Sum(b => b.TotalPrize)
+                            Expense = (float)c.Bills.Where(b => ((DateTime)c.FirstDate).Year == year).Sum(b => b.TotalPrize)
                         }).ToListAsync();
 
                         return customer;
@@ -108,11 +108,11 @@ namespace CinemaManagementProject.Model.Service
                             .Select(c => new CustomerDTO
                             {
                                 Id = c.Id,
-                                Name = c.CustomerName,
+                                CustomerName = c.CustomerName,
                                 PhoneNumber = c.PhoneNumber,
                                 Email = c.Email,
                                 FirstDate = (DateTime)c.FirstDate,
-                                Expense = c.Bill.Where(b => ((DateTime)c.FirstDate).Year == year && ((DateTime)c.FirstDate).Month == month).Sum(b => (float?)b.TotalPrize) ?? 0
+                                Expense = (float)c.Bills.Where(b => ((DateTime)c.FirstDate).Year == year && ((DateTime)c.FirstDate).Month == month).Sum(b => b.TotalPrize) 
                             }).ToListAsync();
 
                         return customer;
@@ -150,7 +150,7 @@ namespace CinemaManagementProject.Model.Service
                         }
                         else
                         {
-                            cus.CustomerName = newCus.Name;
+                            cus.CustomerName = newCus.CustomerName;
                             cus.Email = newCus.Email;
                             cus.FirstDate = DateTime.Now;
                             cus.IsDeleted = false;
@@ -162,7 +162,7 @@ namespace CinemaManagementProject.Model.Service
                     //string currentMaxId = await context.Customers.MaxAsync(c => c.Id.ToString());
                     Customer newCusomer = new Customer
                     {                        
-                        CustomerName = newCus.Name,
+                        CustomerName = newCus.CustomerName,
                         PhoneNumber = newCus.PhoneNumber,
                         Email = newCus.Email,
                         FirstDate = DateTime.Now,
@@ -202,7 +202,7 @@ namespace CinemaManagementProject.Model.Service
                     }
                     var cus = await context.Customers.FindAsync(updatedCus.Id);
 
-                    cus.CustomerName = updatedCus.Name;
+                    cus.CustomerName = updatedCus.CustomerName;
                     cus.PhoneNumber = updatedCus.PhoneNumber;
                     cus.Email = updatedCus.Email;
 
@@ -237,40 +237,7 @@ namespace CinemaManagementProject.Model.Service
                 return (false, "Lỗi hệ thống");
             }
         }
-
-        public async Task<List<CustomerDTO>> GetTop5CustomerEmail()
-        {
-            try
-            {
-                using (var context = new CinemaManagementProjectEntities())
-                {
-                    var cusStatistic = await context.Bills.Where(b => ((DateTime)b.CreateDate).Year == DateTime.Now.Year && ((DateTime)b.CreateDate).Month == DateTime.Now.Month)
-                        .GroupBy(b => b.CustomerId)
-                        .Select(grC => new
-                        {
-                            CustomerId = grC.Key,
-                            Expense = grC.Sum(c => (float?)(c.TotalPrize + c.DiscountPrice)) ?? 0
-                        })
-                        .OrderByDescending(b => b.Expense).Take(5)
-                        .Join(
-                        context.Customers,
-                        statis => statis.CustomerId,
-                        cus => cus.Id,
-                        (statis, cus) => new CustomerDTO
-                        {
-                            Id = cus.Id,
-                            Name = cus.CustomerName,
-                            PhoneNumber = cus.PhoneNumber,
-                            Email = cus.Email
-                        }).ToListAsync();
-                    return cusStatistic;
-                }
-            }
-            catch (Exception e)
-            {
-                throw e;
-            }
-        }
+      
 
         public async Task<List<CustomerDTO>> GetNewCustomer()
         {
@@ -282,7 +249,7 @@ namespace CinemaManagementProject.Model.Service
                         .Select(c => new CustomerDTO
                         {
                             Id = c.Id,
-                            Name = c.CustomerName,
+                            CustomerName = c.CustomerName,
                             Email = c.Email
                         }).ToListAsync();
                     return customers;

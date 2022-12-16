@@ -35,7 +35,7 @@ namespace CinemaManagementProject.View.Admin.CustomerManagement
                 case "Mã khách hàng":
                     return ((item as CustomerDTO).Id.ToString().IndexOf(FilterBox.Text, StringComparison.OrdinalIgnoreCase) >= 0);
                 case "Tên khách hàng":
-                    return ((item as CustomerDTO).Name.IndexOf(FilterBox.Text, StringComparison.OrdinalIgnoreCase) >= 0);
+                    return ((item as CustomerDTO).CustomerName.IndexOf(FilterBox.Text, StringComparison.OrdinalIgnoreCase) >= 0);
                 case "Số điện thoại":
                     return ((item as CustomerDTO).PhoneNumber.IndexOf(FilterBox.Text, StringComparison.OrdinalIgnoreCase) >= 0);
                 default:

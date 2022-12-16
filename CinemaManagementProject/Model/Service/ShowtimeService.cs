@@ -60,7 +60,7 @@ namespace CinemaManagementProject.Model.Service
                         Film m = await context.Films.FindAsync(newShowtime.FilmId);
                         var newStartTime = newShowtime.StartTime;
                         var newEndTime = newShowtime.StartTime + new TimeSpan(0, (int)m.Duration, 0);
-                        show = showtimeSet.ShowTime.AsEnumerable().Where(s =>
+                        show = showtimeSet.ShowTimes.AsEnumerable().Where(s =>
                         {
                             var endTime = new TimeSpan(0, (int)s.Film.Duration, 0) + s.StartTime;
                             return TimeBetwwenIn((TimeSpan)newStartTime, (TimeSpan)newEndTime, (TimeSpan)s.StartTime, (TimeSpan)(endTime + TIME.BreakTime));
