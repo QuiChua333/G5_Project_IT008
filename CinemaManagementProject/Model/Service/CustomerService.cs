@@ -26,7 +26,34 @@ namespace CinemaManagementProject.Model.Service
         private CustomerService()
         {
         }
+        public async Task<List<CustomerDTO>> GetAllCustomer()
+        {
+            List<CustomerDTO> customerlist;
+            try
+            {
+                using (var context = new CinemaManagementProjectEntities())
+                {
+                    customerlist = (from s in context.Customers
+                                    //where s.IsDeleted == false
+                                    select new CustomerDTO
+                                    {
+                                        Id = s.Id,
+                                        CustomerName = s.CustomerName,
+                                        CustomerCode = s.MaKH,
+                                        Email = s.Email,
+                                        PhoneNumber = s.PhoneNumber,
+                                        FirstDate = (DateTime)s.FirstDate
+                                    }).ToList();
+                }
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
 
+            return customerlist;
+      
+        }
         public async Task<CustomerDTO> FindCustomerInfo(string phoneNumber)
         {
             try
@@ -63,15 +90,15 @@ namespace CinemaManagementProject.Model.Service
                 {
                     using (var context = new CinemaManagementProjectEntities())
                     {
-                        var customer = await context.Customers.Where(c => !(bool)c.IsDeleted && c.FirstDate.Value.Year == year).Select(c => new CustomerDTO
+                        var customer = await context.Customers.Where(c => !(bool)c.IsDeleted && ((DateTime)c.FirstDate).Year == year).Select(c => new CustomerDTO
                         {
                             Id = c.Id,
                             CustomerCode = c.MaKH,
                             CustomerName = c.CustomerName,
                             PhoneNumber = c.PhoneNumber,
                             Email = c.Email,
-                            FirstDate = c.FirstDate.Value,
-                            Expense = c.Bills.Where(b => b.CreateDate.Value.Year == year).Sum(b => (double?)b.TotalPrize) ?? 0
+                            FirstDate = (DateTime)c.FirstDate,
+                            Expense = (float)c.Bills.Where(b => ((DateTime)c.FirstDate).Year == year).Sum(b => b.TotalPrize)
                         }).ToListAsync();
 
                         return customer;
@@ -90,7 +117,7 @@ namespace CinemaManagementProject.Model.Service
                                 PhoneNumber = c.PhoneNumber,
                                 Email = c.Email,
                                 FirstDate = (DateTime)c.FirstDate,
-                                Expense = c.Bills.Where(b => b.CreateDate.Value.Year == year && b.CreateDate.Value.Month == month).Sum(b => (double?)b.TotalPrize) ?? 0
+                                Expense = (float)c.Bills.Where(b => ((DateTime)c.FirstDate).Year == year && ((DateTime)c.FirstDate).Month == month).Sum(b => b.TotalPrize) 
                             }).ToListAsync();
 
                         return customer;
@@ -112,7 +139,7 @@ namespace CinemaManagementProject.Model.Service
             int index = (int.Parse(maxCode.Substring(2)) + 1);
             string CodeID = index.ToString();
             while (CodeID.Length < 4) CodeID = "0" + CodeID;
-
+        
             return "KH" + CodeID;
         }
         public async Task<(bool, string, string CustomerCode)> CreateNewCustomer(CustomerDTO newCus)
@@ -147,13 +174,12 @@ namespace CinemaManagementProject.Model.Service
                         }
 
                         await context.SaveChangesAsync();
-                        return (true, "Đăng ký thành công", cus.MaKH);
                     }
 
 
                     string currentMaxCode = await context.Customers.MaxAsync(c => c.MaKH);
                     Customer newCusomer = new Customer
-                    {
+                    {                        
                         MaKH = CreateNextCustomerCode(currentMaxCode),
                         CustomerName = newCus.CustomerName,
                         PhoneNumber = newCus.PhoneNumber,
@@ -209,7 +235,7 @@ namespace CinemaManagementProject.Model.Service
             }
         }
 
-        public async Task<(bool, string)> DeleteCustomer(string id)
+        public async Task<(bool, string)> DeleteCustomer(int id)
         {
             try
             {
@@ -231,7 +257,7 @@ namespace CinemaManagementProject.Model.Service
                 return (false, "Lỗi hệ thống");
             }
         }
-
+      
 
         public async Task<List<CustomerDTO>> GetTop5CustomerEmail()
         {
@@ -274,7 +300,7 @@ namespace CinemaManagementProject.Model.Service
             {
                 using (var context = new CinemaManagementProjectEntities())
                 {
-                    var customers = await context.Customers.Where(c => c.FirstDate.Value.Year == DateTime.Today.Year && DbFunctions.DiffDays(c.FirstDate, DateTime.Now) <= 30)
+                    var customers = await context.Customers.Where(c => ((DateTime)c.FirstDate).Year == DateTime.Today.Year && DbFunctions.DiffDays(c.FirstDate, DateTime.Now) <= 30)
                         .Select(c => new CustomerDTO
                         {
                             Id = c.Id,

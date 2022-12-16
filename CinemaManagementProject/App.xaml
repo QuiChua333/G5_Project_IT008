@@ -2,7 +2,7 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:CinemaManagementProject"
-             StartupUri="/View/Admin/VoucherManagement/VoucherManagementWindow.xaml">
+             StartupUri="/View/Admin/AdminWindow.xaml">
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -18,6 +18,7 @@
                 <ResourceDictionary  Source="./Component/Buttons/ButtonStyle.xaml"/>
 
                 <ResourceDictionary  Source="./ResourceXAML/MainResource.xaml"/>
+                <ResourceDictionary Source="./Utilities/AdminDataTemplate.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

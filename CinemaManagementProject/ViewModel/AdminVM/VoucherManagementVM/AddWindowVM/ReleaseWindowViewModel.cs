@@ -279,7 +279,7 @@ namespace CinemaManagementProject.ViewModel.AdminVM.VoucherManagementVM
                         ws.Cells[2, 1] = "Ngày phát hành: " + DateTime.Today;
                         ws.Cells[3, 1] = "Hiệu lực đến: " + SelectedItem.EndDate;
                         ws.Cells[4, 1] = "Số lượng: " + ReleaseVoucherList.Count;
-                        ws.Cells[5, 1] = "Mệnh giá: " + Utils.Helper.FormatVNMoney(SelectedItem.Price);
+                        ws.Cells[5, 1] = "Mệnh giá: " + Utils.Helper.FormatVNMoney((float)SelectedItem.Price);
                         ws.Cells[6, 1] = "Mặt hàng áp dụng: " + SelectedItem.TypeObject;
                         ws.Cells[8, 5] = "ID voucher";
                         ws.Cells[8, 6] = "Mã voucher";
@@ -387,7 +387,7 @@ namespace CinemaManagementProject.ViewModel.AdminVM.VoucherManagementVM
                 listVoucherHTML += VOUCHER_ITEM_HTML.Replace("{CODE_HERE}", listCode[i]);
             }
             String HTML = File.ReadAllText(templateHTML).Replace("{VOUCHER_LIST}", listVoucherHTML).Replace("{CUSTOMER_NAME}", customerName ?? "Bạn")
-                .Replace("{DISCOUNT_AMOUNT}", Helper.FormatVNMoney(SelectedItem.Price)).Replace("{MINIMUM_ORDER}", Helper.FormatVNMoney(SelectedItem.MinimizeTotal)).Replace("{EXPIRE_DATE}", ConvertToStartToFinishDateString(SelectedItem.StartDate, SelectedItem.EndDate));
+                .Replace("{DISCOUNT_AMOUNT}", Helper.FormatVNMoney((float)SelectedItem.Price)).Replace("{MINIMUM_ORDER}", Helper.FormatVNMoney((float)SelectedItem.MinimizeTotal)).Replace("{EXPIRE_DATE}", ConvertToStartToFinishDateString(SelectedItem.StartDate, SelectedItem.EndDate));
             return HTML;
         }
 
