@@ -28,5 +28,10 @@ namespace CinemaManagementProject.View.Admin.VoucherManagement.AddWindow
         {
             this.Close();
         }
+
+        private void Image_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            Close();
+        }
     }
 }

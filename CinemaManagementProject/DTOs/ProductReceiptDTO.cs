@@ -12,6 +12,13 @@ namespace CinemaManagementProject.DTOs
         public ProductReceiptDTO()
         {
         }
+        public ProductReceiptDTO(int id, float importPrice, int quantity, int staffId)
+        {
+            Id = id;
+            ImportPrice = importPrice;
+            Quantity = quantity;
+            StaffId = staffId;
+        }
         public int Id { get; set; }
         public int ProductId { get; set; }
         public string ProductName { get; set; }
@@ -26,6 +33,6 @@ namespace CinemaManagementProject.DTOs
         public int Quantity { get; set; }
         public int StaffId { get; set; }
         public string StaffName { get; set; }
-        public Nullable<System.DateTime> CreatedAt { get; set; }
+        public DateTime CreatedAt { get; set; }
     }
 }

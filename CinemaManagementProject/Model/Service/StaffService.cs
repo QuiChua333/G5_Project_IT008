@@ -3,9 +3,12 @@ using CinemaManagementProject.Utils;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Entity.Core;
 using System.Linq;
+using System.Runtime.InteropServices.ComTypes;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Media.Media3D;
 
 namespace CinemaManagementProject.Model.Service
 {
@@ -30,7 +33,7 @@ namespace CinemaManagementProject.Model.Service
             using (var context = new CinemaManagementProjectEntities())
             {
                 var staffs = (from s in context.Staffs
-                              //where s.IsDeleted == false
+                              where s.IsDeleted == false
                               select new StaffDTO
                               {
                                   Id = s.Id,
@@ -47,40 +50,36 @@ namespace CinemaManagementProject.Model.Service
                 return await staffs;
             }
         }
-        public async Task<(bool, string, StaffDTO)> Login(string username, string password)
+        public async Task<(bool, string, StaffDTO)> Login(string userNameOrEmail, string password)
         {
-
-            string hassPass = Helper.MD5Hash(password);
-
             try
             {
-                using (var context = new CinemaManagementProjectEntities())
+                using (var db = new CinemaManagementProjectEntities())
                 {
-                    var staff = await (from s in context.Staffs
-                                       where s.UserName == username && s.UserPass == hassPass
-                                       select new StaffDTO
-                                       {
-                                           Id = s.Id,
-                                           DateOfBirth = s.DateOfBirth,
-                                           Gender = s.Gender,
-                                           StaffName = s.StaffName,
-                                           Position = s.Position,
-                                           PhoneNumber = s.PhoneNumber,
-                                           StartDate = s.DateOfBirth,
-                                           Email = s.Email
-                                       }).FirstOrDefaultAsync();
-
-
-
-                    if (staff == null)
+                    var staffChosen = await (from staff in db.Staffs
+                                             where (staff.UserName == userNameOrEmail || staff.Email == userNameOrEmail) && staff.UserPass == password
+                                             select new StaffDTO
+                                             {
+                                                 Id = staff.Id,
+                                                 StaffName = staff.StaffName,
+                                                 Gender = staff.Gender,
+                                                 DateOfBirth = (DateTime)staff.DateOfBirth,
+                                                 Email = staff.Email,
+                                                 PhoneNumber = staff.PhoneNumber,
+                                                 Position = staff.Position,
+                                                 StartDate = staff.StartDate,
+                                                 UserName = staff.UserName,
+                                                 UserPass = staff.UserPass
+                                             }
+                                            ).FirstOrDefaultAsync();
+                    if (staffChosen == null)
                     {
                         return (false, "Sai tài khoản hoặc mật khẩu", null);
                     }
-                    return (true, "", staff);
+                    return (true, "", staffChosen);
                 }
-
             }
-            catch (System.Data.Entity.Core.EntityException)
+            catch (EntityException)
             {
                 return (false, "Mất kết nối cơ sở dữ liệu", null);
             }
@@ -88,8 +87,6 @@ namespace CinemaManagementProject.Model.Service
             {
                 return (false, "Lỗi hệ thống", null);
             }
-
-
         }
         private string CreateNextStaffId(string maxId)
         {
@@ -138,9 +135,9 @@ namespace CinemaManagementProject.Model.Service
             {
                 return (false, "Mất kết nối cơ sở dữ liệu", null);
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                return (false, "Lỗi hệ thống", null);
+                return (false, /*"Lỗi hệ thống"*/ e.Message, null);
             }
             return (true, "Thêm nhân viên mới thành công", newStaff);
         }

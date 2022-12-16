@@ -5,10 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 using CloudinaryDotNet;
 using System.Windows.Media.Imaging;
-using System.Security.AccessControl;
 using System.Security.Principal;
-using ResourceType = System.Security.AccessControl.ResourceType;
+
 using CloudinaryDotNet.Actions;
+using System.Net;
+using System.IO;
 
 namespace CinemaManagementProject.Utils
 {
@@ -31,13 +32,13 @@ namespace CinemaManagementProject.Utils
         private Cloudinary cloudinary;
         private CloudinaryService()
         {
-            account = new Account("squadin-cinema", "546679361571867", "atstnU8cU-ljZ5AXO949EznLXAA");
+            account = new Account("dcdjan0oo", "512949436267937", "JFaFGzZ8BmR4uzsxxrSPQFmRasI");
             cloudinary = new Cloudinary(account);
             cloudinary.Api.Secure = true;
         }
 
 
-
+        
         public async Task<string> UploadImage(string filePath)
         {
             try
@@ -45,7 +46,7 @@ namespace CinemaManagementProject.Utils
                 var uploadParams = new ImageUploadParams()
                 {
                     File = new FileDescription(filePath),
-                    Folder = "squadinImages"
+                    Folder = "FoodManagement"
                 };
                 var uploadResult = await cloudinary.UploadAsync(uploadParams);
 
@@ -63,7 +64,7 @@ namespace CinemaManagementProject.Utils
                 string publicId = GetPublicIdFromURL(imageURL);
                 var deletionParams = new DeletionParams(publicId)
                 {
-                    ResourceType = CloudinaryDotNet.Actions.ResourceType.Image,
+                    ResourceType = ResourceType.Image,
                 };
 
                 var deletionResult = await cloudinary.DestroyAsync(deletionParams);
@@ -80,19 +81,18 @@ namespace CinemaManagementProject.Utils
             {
                 return null;
             }
-            System.Net.WebRequest request =
-                        System.Net.WebRequest.Create(imageURL);
-            System.Net.HttpWebResponse response;
+            WebRequest request = WebRequest.Create(imageURL);
+            HttpWebResponse response;
             try
             {
-                response = (await request.GetResponseAsync()) as System.Net.HttpWebResponse;
+                response = (await request.GetResponseAsync()) as HttpWebResponse;
             }
-            catch (System.Net.WebException)
+            catch (WebException)
             {
                 return null;
             }
 
-            System.IO.Stream responseStream =
+            Stream responseStream =
                 response.GetResponseStream();
 
             var bitmap = new BitmapImage();

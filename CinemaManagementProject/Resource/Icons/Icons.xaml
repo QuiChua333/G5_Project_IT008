@@ -1,6 +1,9 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <ImageSource x:Key="IconSearch">./icon_Search.png</ImageSource>
+    <ImageSource x:Key="Pencil">./draw.png</ImageSource>
+    <ImageSource x:Key="IconFilter">./filter.png</ImageSource>
+    <ImageSource x:Key="Dustbin">./dustbin.png</ImageSource>
     <ImageSource x:Key="IconExit">./Exit_Icon.png</ImageSource>
     <ImageSource x:Key="IconUpload">./upload.png</ImageSource>
     <ImageSource x:Key="Icon_X">./Icon_X.png</ImageSource>
@@ -13,6 +16,8 @@
     <ImageSource x:Key="Button_AddVoucher">./Button_AddVoucher.png</ImageSource>
     <ImageSource x:Key="Icon_Bell">./Icon_Bell.png</ImageSource>
     <ImageSource x:Key="XoXuong">./XoXuong.png</ImageSource>
-    <ImageSource x:Key="Vector_CloseTab">./Vector_CloseTab.png</ImageSource>
-    <ImageSource x:Key="Vector_X">./Vector_X.png</ImageSource>
+    <ImageSource x:Key="Iconminimize-sign">./minimize-sign.png</ImageSource>
+    <ImageSource x:Key="IconFacebook">./facebook.png</ImageSource>
+    <ImageSource x:Key="IconUploadImage">./upload.png</ImageSource>
+    <ImageSource x:Key="IconDollar">./dollar.png</ImageSource>
 </ResourceDictionary>

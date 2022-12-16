@@ -5,11 +5,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using CinemaManagementProject.DTOs;
+using CinemaManagementProject.Model;
 
 namespace CinemaManagementProject.ViewModel.AdminVM
 {
     public class AdminVM : BaseViewModel
     {
+        public static StaffDTO currentStaff;
         private object _currentView;
         public object CurrentView
         {
@@ -22,6 +25,8 @@ namespace CinemaManagementProject.ViewModel.AdminVM
         public ICommand HistoryViewCommand { get; set; }
         public ICommand StaffViewCommand { get; set; }
         public ICommand FilmViewCommand { get; set; }
+        public ICommand FoodCommand { get; set; }
+        private void Food(object obj) => CurrentView = new FoodManagementVM.FoodManagementVM();
         private void Voucher(object obj) => CurrentView = new VoucherManagementVM.VoucherViewModel();
         private void ShowTime(object obj) => CurrentView = new ShowtimeManagementVM.ShowtimeMangementViewModel();
         private void Customer(object obj) => CurrentView = new CustomerManagementVM.CustomerManagementViewModel();
@@ -39,6 +44,7 @@ namespace CinemaManagementProject.ViewModel.AdminVM
             HistoryViewCommand = new RelayCommand(History);
             StaffViewCommand = new RelayCommand(Staff);
             FilmViewCommand = new RelayCommand(Film);
+            FoodCommand = new RelayCommand(Food);
             _currentView = new VoucherManagementVM.VoucherViewModel();
 
         }

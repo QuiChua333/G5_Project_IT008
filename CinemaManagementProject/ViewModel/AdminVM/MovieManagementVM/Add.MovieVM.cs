@@ -23,7 +23,7 @@ namespace CinemaManagementProject.ViewModel.AdminVM.MovieManagementVM
 
                 if (movieImage is null)
                 {
-                    CustomMessageBox.ShowOk("Lỗi phát sinh trong quá trình lưu ảnh. Vui lòng thử lại", "Thông báo", "OK");
+                    CustomMessageBox.ShowOk("Lỗi phát sinh trong quá trình lưu ảnh. Vui lòng thử lại", "Thông báo", "OK", Views.CustomMessageBoxImage.Warning);
                     return;
                 }
 

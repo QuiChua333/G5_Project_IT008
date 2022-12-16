@@ -1,0 +1,138 @@
+﻿<Page x:Class="CinemaManagementProject.View.Login.LoginPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:CinemaManagementProject.View.Login" 
+      xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+      DataContext="{StaticResource LoginVM}"
+      mc:Ignorable="d" 
+      Name="LoginPg"
+      Title="LoginPage"
+>
+    <Page.Triggers>
+        <EventTrigger RoutedEvent="Page.Loaded">
+            <BeginStoryboard>
+                <Storyboard>
+                    <DoubleAnimation Storyboard.TargetName="LoginPg"
+                                     Storyboard.TargetProperty="Opacity"
+                                     From="0"
+                                     To="1"
+                                     Duration="0:0:0.3" />
+                </Storyboard>
+            </BeginStoryboard>
+        </EventTrigger>
+    </Page.Triggers>
+    <Grid>
+        <StackPanel HorizontalAlignment="Center" >
+            <TextBlock
+                        FontFamily="{StaticResource MaterialDesignFont}"
+                        FontSize="33"
+                        Foreground="{StaticResource HeavyBlueZodiac}"
+                        FontWeight="Bold"
+                    >WelCome</TextBlock>
+            <TextBlock
+                        FontFamily="{StaticResource MaterialDesignFont}"
+                        FontSize="12"
+                        Foreground="{StaticResource HeavyBlueZodiac}"
+                        FontWeight="Regular"
+                    >Please login your account</TextBlock>
+            <Grid Margin="0,50,0,0" Height="52" Width="289">
+                <TextBlock
+                            FontFamily="{StaticResource MaterialDesignFont}"
+                            FontSize="12"
+                            Foreground="{StaticResource LightGrayBombay}"
+                            FontWeight="Regular"
+                        >Tên đăng nhập hoặc mật khẩu</TextBlock>
+                <TextBox Height="35" VerticalAlignment="Bottom"
+                            FontFamily="{StaticResource MaterialDesignFont}"
+                            FontSize="20"
+                            Foreground="{StaticResource HeavyBlueZodiac}"
+                            FontWeight="Regular"
+                         Text="{Binding Username}"
+                        ></TextBox>
+            </Grid>
+            <Grid Margin="0,30,0,0" Height="52" Width="289">
+                <TextBlock
+                            FontFamily="{StaticResource MaterialDesignFont}"
+                            FontSize="12"
+                            Foreground="{StaticResource LightGrayBombay}"
+                            FontWeight="Regular"
+                        >Mật khẩu</TextBlock>
+                <PasswordBox 
+                    Height="35" VerticalAlignment="Bottom"
+                    Name="PasswordBoxUser"
+                    FontFamily="{StaticResource MaterialDesignFont}"
+                    FontSize="20"
+                    Foreground="{StaticResource HeavyBlueZodiac}"
+                    FontWeight="Regular"
+                >
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="PasswordChanged">
+                            <i:InvokeCommandAction Command="{Binding PasswordChangedCM}"
+                                               CommandParameter="{Binding ElementName=PasswordBoxUser}" />
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </PasswordBox>
+            </Grid>
+            <Grid>
+                <Label Margin="0,5,0,0"
+                       x:Name="Error"
+                       Height="30"
+                       FontSize="15"
+                       Foreground="Red" 
+                />
+            </Grid>
+            <Grid Margin="0,30,0,0">
+                <StackPanel Orientation="Horizontal" >
+                    <TextBlock
+                        x:Name="ForgetButton"
+                        Text="Quên mật khẩu"
+                                FontSize="14"
+                                FontFamily="{StaticResource MaterialDesignFont}"
+                                FontWeight="Medium"
+                                TextDecorations="Underline"
+                                VerticalAlignment="Center"
+                    >
+                         <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="MouseLeftButtonDown">
+                                <i:InvokeCommandAction Command="{Binding LoadForgotPageCM}"
+                                                       CommandParameter="{Binding ElementName=ForgetButton}" />
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                        <TextBlock.Style>
+                            <Style TargetType="TextBlock">
+                                <Setter Property="Foreground" Value="#545454"/>
+                                <Setter Property="Cursor" Value="Arrow"/>
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Foreground" Value="{StaticResource LightGrayBombay}"></Setter>
+                                        <Setter Property="Cursor" Value="Hand"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </TextBlock.Style>
+                    </TextBlock>
+                    <Button Style="{StaticResource CustomButton}" Name="ButtonLogin" Content="Đăng nhập" Background="{StaticResource HeavyBlueZodiac}" Width="120" Height="40" Margin="65,0,0,0">
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="Click">
+                                <i:InvokeCommandAction Command="{Binding LoginCM}"
+                                                       CommandParameter="{Binding ElementName=Error}" />
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </Button>
+                </StackPanel>
+            </Grid>
+            <Grid/>
+            <Grid>
+                <TextBlock
+                            FontFamily="{StaticResource MaterialDesignFont}"
+                            FontSize="13"
+                            Foreground="#8E8E8E"
+                            HorizontalAlignment="Center"
+                            Margin="0,24,0,0"
+                        >Term and Condition &amp; Private Policy</TextBlock>
+            </Grid>
+        </StackPanel>
+    </Grid>
+</Page>

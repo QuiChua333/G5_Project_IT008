@@ -1,4 +1,5 @@
 ﻿using CinemaManagementProject.DTOs;
+using CinemaManagementProject.Model;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -90,10 +91,7 @@ namespace CinemaManagementProject.Utils
             return Path.Combine(Environment.CurrentDirectory, @"..\..\Resource\Images", $"{imageName}" /*SelectedItem.Image*/);
         }
 
-        public static string GetEmailTemplatePath(string fileName)
-        {
-            return Path.Combine(Environment.CurrentDirectory, @"..\..\Resource\EmailTemplate", $"{fileName}" /*SelectedItem.Image*/);
-        }
+        
 
         public static string FormatVNMoney(float money)
         {
@@ -113,6 +111,21 @@ namespace CinemaManagementProject.Utils
             return String.Format(CultureInfo.InvariantCulture,
                                 "{0:#,#}", n);
         }
+        public static string GetEmailTemplatePath(string fileName)
+        {
+            return Path.Combine(Environment.CurrentDirectory, @"..\..\Resource\EmailTemplate", $"{fileName}" /*SelectedItem.Image*/);
+        }
+        public static bool CheckEmailStaff(string CurrentEmail)
+        {
+            using (CinemaManagementProjectEntities db = new CinemaManagementProjectEntities())
+            {
+                foreach (var staff in db.Staffs)
+                    if (CurrentEmail == staff.Email)
+                        return true;
+                return false;
+            }
+        }
+
     }
 }
 

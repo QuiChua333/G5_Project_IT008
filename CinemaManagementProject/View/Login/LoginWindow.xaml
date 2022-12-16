@@ -1,0 +1,94 @@
+﻿<Window x:Class="CinemaManagementProject.View.Login.LoginWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CinemaManagementProject.View.Login" xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        DataContext="{StaticResource LoginVM}"
+        mc:Ignorable="d"
+        Title="Login"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        Height="600" 
+        Width="1100"
+        Background="Transparent"
+        Name="LoginWd"
+>
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="MouseLeftButtonDown">
+            <i:InvokeCommandAction Command="{Binding MouseLeftButtonDownWindowCM}"
+                                   CommandParameter="{Binding ElementName=LoginWd}" />
+        </i:EventTrigger>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding SaveLoginWindowNameCM}"
+                                   CommandParameter="{Binding ElementName=LoginWd}" />
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="6*"/>
+            <ColumnDefinition Width="4*"/>
+        </Grid.ColumnDefinitions>
+        <Rectangle Grid.Column="0" Grid.ColumnSpan="2" Fill="White" RadiusX="20" RadiusY="20">
+            <Rectangle.Effect>
+                <DropShadowEffect
+                    Opacity="0.25"
+                    BlurRadius="10"
+                    Direction="270"
+                    Color="Black"
+                />
+            </Rectangle.Effect>
+        </Rectangle>
+        <Image Source="{StaticResource LoginImage}" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Left"></Image>
+        <Rectangle Width="100" HorizontalAlignment="Left" Grid.Column="1" Fill="White">
+        </Rectangle>
+        <Rectangle Grid.Column="1" Fill="White" RadiusX="20" RadiusY="20">
+        </Rectangle>
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="10*"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <StackPanel HorizontalAlignment="Right" VerticalAlignment="Center" Orientation="Horizontal">
+                    <Button Click="ButtonMinimize_Click"
+                            Name="ButtonMinimize"
+                            ToolBar.OverflowMode="AsNeeded"
+                            Margin="0,0,5,0"
+                            BorderThickness="0"
+                            Background="Transparent"
+                            Foreground="Black"
+                            BorderBrush="Transparent"
+                            MouseEnter="ButtonMinimize_MouseEnter"
+                            MouseLeave="ButtonMinimize_MouseLeave">
+                        <materialDesign:PackIcon Kind="WindowMinimize" />
+                    </Button>
+                    <Button Click="ButtonClose_Click"
+                            x:Name="ButtonClose"
+                            ToolBar.OverflowMode="AsNeeded"
+                            Background="Transparent"
+                            Foreground="Black"
+                            BorderBrush="Transparent"
+                            MouseEnter="ButtonClose_MouseEnter"
+                            MouseLeave="ButtonClose_MouseLeave"
+                            materialDesign:ButtonAssist.CornerRadius="0,10,0,0">
+                        <materialDesign:PackIcon Kind="WindowClose"
+                                                 Padding="0" />
+                    </Button>
+                </StackPanel>
+            </Grid>
+            <Grid Grid.Row="1">
+                <Frame x:Name="MainFrame" NavigationUIVisibility="Hidden">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="Loaded">
+                            <i:InvokeCommandAction Command="{Binding LoadLoginPageCM}"
+                                                   CommandParameter="{Binding ElementName=MainFrame}" />
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </Frame>
+            </Grid>
+            
+        </Grid>
+        
+    </Grid>
+</Window>

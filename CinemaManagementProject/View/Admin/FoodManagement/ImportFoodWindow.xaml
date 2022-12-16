@@ -1,0 +1,211 @@
+﻿<Window x:Class="CinemaManagementProject.View.Admin.FoodManagement.ImportFoodWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CinemaManagementProject.View.Admin.FoodManagement"
+        xmlns:ViewModel="clr-namespace:CinemaManagementProject.ViewModel.AdminVM.FoodManagementVM" xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        mc:Ignorable="d"
+        WindowStyle="None"
+        DataContext="{StaticResource FoodVM}"
+        AllowsTransparency="True"
+        Title="AddFoodWindow" Height="330" Width="630"
+        Name="ImportFoodWd"
+        Background="Transparent"
+>
+    <Window.Triggers>
+        <EventTrigger RoutedEvent="Window.Loaded">
+            <BeginStoryboard>
+                <Storyboard>
+                    <DoubleAnimation Storyboard.TargetName="ImportFoodWd"
+                                     Storyboard.TargetProperty="Opacity"
+                                     From="0"
+                                     To="1"
+                                     Duration="0:0:0.3"
+                    />
+                </Storyboard>
+            </BeginStoryboard>
+        </EventTrigger>
+    </Window.Triggers>
+    <Grid 
+        Height="320" 
+        Width="620"
+    >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50" />
+            <RowDefinition />
+            <RowDefinition Height="60" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="1.2*"/>
+        </Grid.ColumnDefinitions>
+        <Rectangle RadiusX="20" RadiusY="20" Grid.ColumnSpan="2" Grid.RowSpan="3" Fill="White" Margin="0,0,3,0">
+            <Rectangle.Effect>
+                <DropShadowEffect 
+                    BlurRadius="10"
+                    Color="Black"
+                    ShadowDepth="4"
+                    Opacity=".25"
+                    Direction="270"
+                />
+            </Rectangle.Effect>
+        </Rectangle>
+        <Grid x:Name="Header" Grid.Row="0" Grid.ColumnSpan="2" Margin="0,10,0,198" Grid.RowSpan="2">
+            <Label
+                FontSize="33"
+                FontFamily="{StaticResource MaterialDesignFont}"
+                FontWeight="Bold"
+                VerticalAlignment="Center" 
+                HorizontalAlignment="Left"
+                Margin="20,0,0,0"
+            >
+                Nhập sản phẩm
+            </Label>
+            <Image 
+                Source="{StaticResource IconExit}"
+                HorizontalAlignment="Right"
+                Width="20"
+                Height="20" 
+                Margin="0,0,20,0"
+                Cursor="Hand"
+            >
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="MouseLeftButtonDown">
+                        <i:InvokeCommandAction Command="{Binding CloseImportFoodCM}" CommandParameter="{Binding ElementName=ImportFoodWd}"/>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </Image>
+        </Grid>
+        <Grid x:Name="ImageProduct" Grid.Row="1" Grid.RowSpan="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0" >
+                <Ellipse
+                    Width="220"
+                    Height="220"
+                    Fill="#D9D9D9" 
+                >
+                    <Ellipse.Effect>
+                        <DropShadowEffect 
+                                BlurRadius="10"
+                                Color="Black"
+                                ShadowDepth="4"
+                                Opacity=".25"
+                                Direction="270"
+                        />
+                    </Ellipse.Effect>
+                </Ellipse>
+                <Image
+                    Source="{Binding ImageSource}"
+                    Height="220"
+                    Width="220"
+                    
+                />
+            </Grid>
+        </Grid>
+        <Grid x:Name="Infomation" Grid.Column="2" Margin="0,80,0,0" Grid.Row="1">
+            <StackPanel Height="140">
+                <Grid Width="310" Margin="0,5,0,0" >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="2.4*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock 
+                           FontSize="22" 
+                           Foreground="{StaticResource LightGrayTundora}"
+                           FontFamily="{StaticResource MaterialDesignFont}"
+                           FontWeight="Regular"
+                           Height="24" HorizontalAlignment="Right" VerticalAlignment="Center" Width="138"
+                    >
+                        Tên sản phẩm
+                    </TextBlock>
+                    <Grid Height="28" Grid.Column="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="19*"/>
+                            <RowDefinition Height="9*"/>
+                        </Grid.RowDefinitions>
+                        <ComboBox Width="130" ItemsSource="{Binding Path=FoodList}" DisplayMemberPath="ProductName" SelectedItem="{Binding SelectedProduct}" FontFamily="{StaticResource MaterialDesignFont}" FontSize="18" FontWeight="Regular" HorizontalAlignment="Left" Margin="10,0,0,0" Grid.RowSpan="2" VerticalAlignment="Top">
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="SelectionChanged">
+                                    <i:InvokeCommandAction Command="{Binding ImportFoodChangeCommand}" />
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </ComboBox>
+                    </Grid>
+                </Grid>
+                <Grid Width="310" Margin="0,10,0,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="2.4*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock 
+                           FontSize="22" 
+                           Foreground="{StaticResource LightGrayTundora}"
+                           FontFamily="{StaticResource MaterialDesignFont}"
+                           FontWeight="Regular"
+                           Grid.Column="0"
+                           Height="24" HorizontalAlignment="Right" VerticalAlignment="Center" 
+                    >
+                       Giá nhập
+                    </TextBlock>
+                    <Grid Height="28" Grid.Column="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="19*"/>
+                            <RowDefinition Height="1*"/>
+                        </Grid.RowDefinitions>
+                        <TextBox 
+                           FontSize="18" 
+                           Width="130"
+                           Name="PriceTextBox"
+                           Text="{Binding Price, Mode=TwoWay}"
+                           FontFamily="{StaticResource Regular}"
+                           Margin="10,0,0,0"
+                           Foreground="{StaticResource LightGrayTundora}" BorderThickness="0,0,0,0" BorderBrush="{x:Null}" SelectionTextBrush="{x:Null}" SelectionBrush="{x:Null}" VerticalAlignment="Center" HorizontalAlignment="Left" Grid.Column="1" GotFocus="PriceTextBox_GotFocus"
+                        />
+                        <Rectangle Grid.Row="1" Margin="10,0,0,0" Height="1" Width="130" Fill="{StaticResource LightGrayTundora}" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                    </Grid>
+                </Grid>
+                <Grid Width="310" Margin="0,10,0,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="2.4*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock 
+                           FontSize="22" 
+                           Foreground="{StaticResource LightGrayTundora}"
+                           FontFamily="{StaticResource MaterialDesignFont}"
+                           FontWeight="Regular"
+                           Grid.Column="0"
+                           Height="25" HorizontalAlignment="Right" VerticalAlignment="Center"
+                    >
+                       Số lượng
+                    </TextBlock>
+                    <Grid Height="28" Grid.Column="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="19*"/>
+                            <RowDefinition Height="1*"/>
+                        </Grid.RowDefinitions>
+                        <TextBox 
+                           FontSize="18" 
+                           Width="130"
+                            Name="TextQuantity"
+                           Text="{Binding Quantity, Mode=TwoWay}"
+                           FontFamily="{StaticResource Regular}"
+                           Margin="10,0,0,0"
+                           Foreground="{StaticResource LightGrayTundora}" BorderThickness="0,0,0,0" BorderBrush="{x:Null}" SelectionTextBrush="{x:Null}" SelectionBrush="{x:Null}" VerticalAlignment="Center" HorizontalAlignment="Left" Grid.Column="1" GotFocus="TextQuantity_GotFocus"
+                        />
+                        <Rectangle Grid.Row="1" Margin="10,0,0,0" Height="1" Width="130" Fill="{StaticResource LightGrayTundora}" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                    </Grid>
+                </Grid>
+            </StackPanel>
+        </Grid>
+        <Grid x:Name="Footer" Grid.Row="2" Grid.Column="1" Margin="0,0,0,0">
+            <StackPanel HorizontalAlignment="Right"  Orientation="Horizontal" Margin="0,-10,0,0">
+                <Button Width="90" Margin="10,0,5,0" Height="35" Background="Red" Style="{StaticResource CustomButton}" Command="{Binding CloseImportFoodCM}" CommandParameter="{Binding ElementName=ImportFoodWd}">Hủy</Button>
+                <Button Width="90" Margin="5,0,40,0" Height="35" Background="Green" Style="{StaticResource CustomButton}" Command="{Binding ImportFoodCM}" CommandParameter="{Binding ElementName=ImportFoodWd}">Nhập</Button>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Window>

@@ -42,7 +42,6 @@ namespace CinemaManagementProject.Component.Search
         private void SearchType_GotFocus(object sender, RoutedEventArgs e)
         {
             SearchType.Text = "";
-
         }
         protected void SearchType_TextChanged(object sender, TextChangedEventArgs e)
         {
