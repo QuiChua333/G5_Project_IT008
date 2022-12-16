@@ -284,7 +284,7 @@
             <StackPanel Grid.Column="1" Grid.Row="0" Orientation="Horizontal">
                 <Search:Search
                     x:Name="SearchBox"
-                    PlaceHolder="Tìm kiếm"
+                    materialDesign:HintAssist.Hint="Tìm kiếm"
                     Width="300"
                     Height="54"
                     IconSize="30"
