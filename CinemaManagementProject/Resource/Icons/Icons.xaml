@@ -20,4 +20,5 @@
     <ImageSource x:Key="IconFacebook">./facebook.png</ImageSource>
     <ImageSource x:Key="IconUploadImage">./upload.png</ImageSource>
     <ImageSource x:Key="IconDollar">./dollar.png</ImageSource>
+    <ImageSource x:Key="Telephone">./landline.png</ImageSource>
 </ResourceDictionary>

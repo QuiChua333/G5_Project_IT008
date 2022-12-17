@@ -5,16 +5,16 @@
                     xmlns:viewmodel3="clr-namespace:CinemaManagementProject.ViewModel.AdminVM.StaffManagementVM" 
                     xmlns:viewmodel4="clr-namespace:CinemaManagementProject.ViewModel.AdminVM.Import_ExportManagementVM" 
                     xmlns:viewmodel5="clr-namespace:CinemaManagementProject.ViewModel.AdminVM.ShowtimeManagementVM" 
-                    xmlns:viewmodel6="clr-namespace:CinemaManagementProject.ViewModel.AdminVM.MovieManagementVM"
-                    
+                    xmlns:viewmodel6="clr-namespace:CinemaManagementProject.ViewModel.AdminVM.MovieManagementVM"                   
                     xmlns:viewmodel7="clr-namespace:CinemaManagementProject.ViewModel.AdminVM.FoodManagementVM"
                     xmlns:viewmodel8="clr-namespace:CinemaManagementProject.ViewModel.LoginVM"
                     xmlns:viewmodel9="clr-namespace:CinemaManagementProject.ViewModel.StaffVM.OrderFoodManagementVM"
                     xmlns:viewmodel10="clr-namespace:CinemaManagementProject.ViewModel.StaffVM" 
                     xmlns:viewmodel11="clr-namespace:CinemaManagementProject.ViewModel.StaffVM.MovieScheduleWindowVM" 
                     xmlns:viewmodel12="clr-namespace:CinemaManagementProject.ViewModel.StaffVM.TicketVM">
-
-
+                    xmlns:viewmodel13="clr-namespace:CinemaManagementProject.ViewModel.StaffVM.FilmBookingVM"
+                    xmlns:viewmodel14="clr-namespace:CinemaManagementProject.ViewModel.AdminVM.TroubleManagementVM"                  
+                    >
 
     <viewmodel1:VoucherViewModel x:Key="VoucherVM" />
     <viewmodel2:CustomerManagementViewModel x:Key="CustomerManagementVM"></viewmodel2:CustomerManagementViewModel>
@@ -25,10 +25,10 @@
     <viewmodel7:FoodManagementVM x:Key="FoodVM" />
     <viewmodel8:LoginVM x:Key="LoginVM"/>
     <viewmodel8:ForgotPassVM x:Key="ForgotVM"/>
-    <viewmodel9:OrderFoodManagementVM x:Key="OrderFoodManagement"/>
+    <viewmodel9:OrderFoodManagementVM x:Key="OrderFoodManagementVM"/>
     <viewmodel10:StaffVM x:Key="StaffVM"/>
     <viewmodel11:MovieScheduleWindowViewModel x:Key="MovieScheduleWindowVM" />
     <viewmodel12:TicketWindowViewModel x:Key="TicketWindowVM" />
-
-
+    <viewmodel13:TroubleManagementViewModel x:Key="TroubleManagementVM"/>
+    <viewmodel14:FilmBookingVM x:Key="FilmBookingVM"/>
 </ResourceDictionary>

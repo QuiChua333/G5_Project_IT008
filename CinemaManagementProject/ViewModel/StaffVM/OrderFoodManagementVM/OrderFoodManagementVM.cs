@@ -127,8 +127,8 @@ namespace CinemaManagementProject.ViewModel.StaffVM.OrderFoodManagementVM
         public ICommand FirstLoadCM { get; set; } // The first time load Page
         public ICommand FilterComboboxFoodCM { get; set; } // The first time load Page
         public ICommand SelectedProductToBillCM { get; set; } // Chuyển đồ ăn to bill
-        public ICommand DecreaseQuantityOrderItem { get; set; } // Tăng số lượng 1 item
-
+        public ICommand DecreaseQuantityOrderItem { get; set; } // giảm số lượng 1 item order
+        public ICommand IncreaseQuantityOrderItem { get; set; } // Tăng số lượng 1 item order
         //
         //
         //
@@ -188,13 +188,13 @@ namespace CinemaManagementProject.ViewModel.StaffVM.OrderFoodManagementVM
             });
             SelectedProductToBillCM = new RelayCommand<ListBox>((p) => { return true; }, (p) =>
             {
-                if(SelectedItem != null)
+                if (SelectedItem != null)
                 {
-                    if(SelectedItem.Quantity > 0)
+                    if (SelectedItem.Quantity > 0)
                     {
                         try
                         {
-                            for(int i = 0; i < StoreAllFood.Count; i++)
+                            for (int i = 0; i < StoreAllFood.Count; i++)
                             {
                                 if (StoreAllFood[i].Id == SelectedItem.Id)
                                 {
@@ -227,31 +227,32 @@ namespace CinemaManagementProject.ViewModel.StaffVM.OrderFoodManagementVM
                         {
                             throw e;
                         }
-                    }   
+                    }
                     else
                     {
                         CustomMessageBox.ShowOk("Sản phẩm này đã hết hàng", "Cảnh báo", "Ok", Views.CustomMessageBoxImage.Warning);
-                    }    
+                    }
                 }
             });
             DecreaseQuantityOrderItem = new RelayCommand<ListBox>((p) => { return true; }, (p) =>
             {
-                if(SelectedItem != null)
+                if (SelectedItem != null)
                 {
                     ProductDTO ProductSelected = SelectedItem as ProductDTO;
-                    if(SelectedItem.Quantity <= 1)
+                    if (SelectedItem.Quantity <= 1)
                     {
-                        if(CustomMessageBox.ShowOkCancel("Bạn có xóa sản phẩm này không", "Cảnh báo", "Ok", "Hủy", Views.CustomMessageBoxImage.Warning) == Views.CustomMessageBoxResult.OK)
+                        if (CustomMessageBox.ShowOkCancel("Bạn có xóa sản phẩm này không", "Cảnh báo", "Ok", "Hủy", Views.CustomMessageBoxImage.Warning) == Views.CustomMessageBoxResult.OK)
                         {
-                            for(int i = 0; i < OrderList.Count; i++)
+                            for (int i = 0; i < OrderList.Count; i++)
                             {
                                 if (OrderList[i].Id == ProductSelected.Id)
                                 {
-                                    for(int j = 0; j < StoreAllFood.Count; j++)
+                                    for (int j = 0; j < StoreAllFood.Count; j++)
                                     {
                                         if (StoreAllFood[j].Id == OrderList[i].Id)
                                         {
                                             StoreAllFood[j].Quantity += 1;
+                                            ReLoadProduct();
                                             OrderList[i].Quantity -= 1;
                                             OrderList.Remove(ProductSelected);
                                             ReCaculatorSum();
@@ -261,8 +262,54 @@ namespace CinemaManagementProject.ViewModel.StaffVM.OrderFoodManagementVM
                                 }
                             }
                         }
+                    }
+                    else
+                    {
+                        for (int i = 0; i < OrderList.Count; i++)
+                        {
+                            if (OrderList[i].Id == ProductSelected.Id)
+                            {
+                                for (int j = 0; j < StoreAllFood.Count; j++)
+                                {
+                                    if (StoreAllFood[j].Id == OrderList[i].Id)
+                                    {
+                                        StoreAllFood[j].Quantity += 1;
+                                        ReLoadProduct();
+                                        OrderList[i].Quantity -= 1;
+                                        OrderList = new ObservableCollection<ProductDTO>(OrderList);
+                                        ReCaculatorSum();
+                                        return;
+                                    }
+                                }
+                            }
+                        }
+                    }
 
-                    }    
+                }
+            });
+            IncreaseQuantityOrderItem = new RelayCommand<ListBox>((p) => { return true; }, (p) =>
+            {
+                if (SelectedItem != null)
+                {
+                    ProductDTO ProductSelected = SelectedItem as ProductDTO;
+                    for (int j = 0; j < StoreAllFood.Count; j++)
+                    {
+                        if (StoreAllFood[j].Id == ProductSelected.Id)
+                        {
+                            if (StoreAllFood[j].Quantity == 0)
+                            {
+                                CustomMessageBox.ShowOkCancel("Sản phẩm này đã hết", "Cảnh báo", "Ok", "Hủy", Views.CustomMessageBoxImage.Warning);
+                                return;
+                            }
+                            StoreAllFood[j].Quantity -= 1;
+                            ReLoadProduct();
+                            ProductSelected.Quantity += 1;
+                            OrderList = new ObservableCollection<ProductDTO>(OrderList);
+                            ReCaculatorSum();
+                            return;
+                        }
+                    }
+                    
                 }
             });
         }
@@ -288,7 +335,7 @@ namespace CinemaManagementProject.ViewModel.StaffVM.OrderFoodManagementVM
         public void ReCaculatorSum()
         {
             TotalPrice = 0;
-            for(int i = 0; i < OrderList.Count; i++)
+            for (int i = 0; i < OrderList.Count; i++)
             {
                 TotalPrice += OrderList[i].Price * OrderList[i].Quantity;
             }

@@ -87,7 +87,9 @@
     <Reference Include="Microsoft.Xaml.Behaviors, Version=1.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Xaml.Behaviors.Wpf.1.1.39\lib\net45\Microsoft.Xaml.Behaviors.dll</HintPath>
     </Reference>
-    <Reference Include="System" />
+    <Reference Include="System">
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.8\System.dll</HintPath>
+    </Reference>
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Configuration.ConfigurationManager, Version=7.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
@@ -161,8 +163,8 @@
       <DependentUpon>TroubleItem.xaml</DependentUpon>
     </Compile>
     <Compile Include="CustomMessageBox.cs" />
-    <Compile Include="DTOs\ProductReceiptDTO.cs" />
     <Compile Include="DTOs\ProductDTO.cs" />
+    <Compile Include="DTOs\ProductReceiptDTO.cs" />
     <Compile Include="DTOs\StaffDTO.cs" />
     <Compile Include="DTOs\BillDTO.cs" />
     <Compile Include="DTOs\CustomerDTO.cs" />
@@ -173,6 +175,7 @@
     <Compile Include="DTOs\ShowtimeDTO.cs" />
     <Compile Include="DTOs\TicketBillInfoDTO.cs" />
     <Compile Include="DTOs\TicketDTO.cs" />
+    <Compile Include="DTOs\TroubleDTO.cs" />
     <Compile Include="DTOs\VoucherDTO.cs" />
     <Compile Include="DTOs\VoucherReleaseDTO.cs" />
     <Compile Include="DTOs\FilmDTO.cs" />
@@ -229,6 +232,7 @@
     <Compile Include="Model\Service\SeatService.cs" />
     <Compile Include="Model\Service\ShowtimeService.cs" />
     <Compile Include="Model\Service\StaffService.cs" />
+    <Compile Include="Model\Service\TroubleService.cs" />
     <Compile Include="Model\Service\VoucherService.cs" />
     <Compile Include="Model\Service\DataProvider.cs" />
     <Compile Include="Model\Service\FilmService.cs" />
@@ -275,6 +279,9 @@
     <Compile Include="ViewModel\AdminVM\StaffManagementVM\ChangePasswordViewModel.cs" />
     <Compile Include="ViewModel\AdminVM\StaffManagementVM\EditStaffViewModel.cs" />
     <Compile Include="ViewModel\AdminVM\StaffManagementVM\StaffManagementViewModel.cs" />
+    <Compile Include="ViewModel\AdminVM\TroubleManagementVM\HintLevelConverter.cs" />
+    <Compile Include="ViewModel\AdminVM\TroubleManagementVM\StatusBrushConverter.cs" />
+    <Compile Include="ViewModel\AdminVM\TroubleManagementVM\TroubleManagementViewModel.cs" />
     <Compile Include="ViewModel\AdminVM\VoucherManagementVM\AddWindowVM\AddWindowViewModel.cs" />
     <Compile Include="ViewModel\AdminVM\VoucherManagementVM\AddWindowVM\CheckBoxVisibleConverters.cs" />
     <Compile Include="ViewModel\AdminVM\VoucherManagementVM\AddWindowVM\ReleaseWindowViewModel.cs" />
@@ -289,6 +296,7 @@
     <Compile Include="ViewModel\LoginVM\ForgotPassVM.cs" />
     <Compile Include="ViewModel\LoginVM\LoginVM.cs" />
     <Compile Include="ViewModel\StaffVM\MovieScheduleWindowVM\MovieScheduleWindowViewModel.cs" />
+    <Compile Include="ViewModel\StaffVM\FilmBookingVM\FilmBookingVM.cs" />
     <Compile Include="ViewModel\StaffVM\OrderFoodManagementVM\OrderFoodManagementVM.cs" />
     <Compile Include="ViewModel\StaffVM\StaffVM.cs" />
     <Compile Include="ViewModel\StaffVM\TicketVM\TicketBookingPageViewModel.cs" />
@@ -427,6 +435,9 @@
     </Compile>
     <Compile Include="View\Login\PositionPage.xaml.cs">
       <DependentUpon>PositionPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Staff\FilmBookingManagement\FilmBookingPage.xaml.cs">
+      <DependentUpon>FilmBookingPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Staff\OrderFoodManagement\OrderFoodPage.xaml.cs">
       <DependentUpon>OrderFoodPage.xaml</DependentUpon>
@@ -739,6 +750,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\Staff\FilmBookingManagement\FilmBookingPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="View\Staff\OrderFoodManagement\OrderFoodPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -806,11 +821,11 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="App.Config" />
     <EntityDeploy Include="Model\CinemaManagementDatabase.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>CinemaManagementDatabase.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="App.Config" />
     <None Include="Model\CinemaManagementDatabase.edmx.diagram">
       <DependentUpon>CinemaManagementDatabase.edmx</DependentUpon>
     </None>
@@ -950,6 +965,7 @@
     <Resource Include="Resource\Images\currChoose.png" />
     <Resource Include="Resource\Images\isBooked.png" />
     <Resource Include="Resource\Images\isReady.png" />
+    <Resource Include="Resource\Icons\landline.png" />
     <Resource Include="Resource\Icons\dollar.png" />
     <Resource Include="Resource\Icons\upload.png" />
     <Resource Include="Resource\EmailTemplate\images\bee.png" />

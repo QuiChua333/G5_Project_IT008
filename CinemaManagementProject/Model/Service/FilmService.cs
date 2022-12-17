@@ -211,7 +211,6 @@ namespace CinemaManagementProject.Model.Service
                 return (false, "Lỗi hệ thống");
             }
         }
-
         public async Task<List<FilmDTO>> GetShowingMovieByDay(DateTime date)
         {
             List<FilmDTO> FilmList = new List<FilmDTO>();
@@ -244,7 +243,6 @@ namespace CinemaManagementProject.Model.Service
                                 RoomId = (int)m.ShowTime.ShowTimeSetting.RoomId,
                                 ShowDate = (DateTime)m.ShowTime.ShowTimeSetting.ShowDate,
                                 Price = (float)m.ShowTime.Price
-
                             });
                             if (fim is null)
                             {
