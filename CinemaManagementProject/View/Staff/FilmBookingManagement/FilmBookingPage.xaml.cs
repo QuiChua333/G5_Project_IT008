@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CinemaManagementProject.DTOs;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,19 @@ namespace CinemaManagementProject.View.Staff.FilmBooking
         public FilmBookingPage()
         {
             InitializeComponent();
+        }
+        private bool Filter(object item)
+        {
+            if (String.IsNullOrEmpty(SearchBox.Text))
+                return true;
+            else
+                return ((item as FilmDTO).FilmName.IndexOf(SearchBox.Text, StringComparison.OrdinalIgnoreCase) >= 0);
+        }
+        private void SearchBox_SearchTextChange(object sender, EventArgs e)
+        {
+            CollectionView view = (CollectionView)CollectionViewSource.GetDefaultView(ListViewFilm.ItemsSource);
+            view.Filter = Filter;
+            CollectionViewSource.GetDefaultView(ListViewFilm.ItemsSource).Refresh();
         }
     }
 }

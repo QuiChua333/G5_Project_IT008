@@ -6,6 +6,8 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 
@@ -89,6 +91,27 @@ namespace CinemaManagementProject.ViewModel.StaffVM.FilmBookingVM
                 OnPropertyChanged();
             }
         }
+        private ObservableCollection<string> _currentGenreSource;
+        public ObservableCollection<string> CurrentGenreSource
+        {
+            get => _currentGenreSource;
+            set
+            {
+                _currentGenreSource = value;
+                OnPropertyChanged();
+            }
+        }
+        
+        private string _selectedItemFilter;
+        public string SelectedItemFilter
+        {
+            get => _selectedItemFilter;
+            set
+            {
+                _selectedItemFilter = value;
+                OnPropertyChanged();
+            }
+        }
         //
         //
         //
@@ -96,16 +119,20 @@ namespace CinemaManagementProject.ViewModel.StaffVM.FilmBookingVM
         public ICommand FirstLoadCM { get; set; }
         public ICommand CloseCM { get; set; }
         public ICommand LoadDeleteMovieCM { get; set; }
+        public ICommand SelectedDateChangedCM { get; set; }
+        public ICommand SelectedGenreChanged { get; set; }
+        public ICommand OpenBuyTicketWindow { get; set; }
 
         public FilmBookingVM()
         {
-            FirstLoadCM = new RelayCommand<object>((p) => { return true; }, async (p) =>
+            FirstLoadCM = new RelayCommand<ComboBox>((p) => { return true; }, async (p) =>
             {
-
+                SelectedDate = DateTime.Now;
                 FilmShowTimeList = new ObservableCollection<FilmDTO>();
                 try
                 {
-                    FilmShowTimeList = new ObservableCollection<FilmDTO>(await Task.Run(() => FilmService.Ins.GetAllFilm()));
+                    FilmShowTimeList = new ObservableCollection<FilmDTO>(await Task.Run(() => FilmService.Ins.GetShowingMovieByDay(SelectedDate)));
+                    GetAllCurrentGenre(p);
                 }
                 catch (System.Data.Entity.Core.EntityException)
                 {
@@ -116,6 +143,85 @@ namespace CinemaManagementProject.ViewModel.StaffVM.FilmBookingVM
                     CustomMessageBox.ShowOk("Lỗi hệ thống", "Lỗi", "Ok");
                 }
             });
+            SelectedDateChangedCM = new RelayCommand<ComboBox>((p) => { return true; }, async (p) =>
+            {
+                if(SelectedDate != null)
+                {
+                    FilmShowTimeList = new ObservableCollection<FilmDTO>();
+                    try
+                    {
+                        FilmShowTimeList = new ObservableCollection<FilmDTO>(await Task.Run(() => FilmService.Ins.GetShowingMovieByDay(SelectedDate)));
+                        GetAllCurrentGenre(p);
+                    }
+                    catch (System.Data.Entity.Core.EntityException)
+                    {
+                        CustomMessageBox.ShowOk("Mất kết nối cơ sở dữ liệu", "Lỗi", "Ok");
+                    }
+                    catch (Exception)
+                    {
+                        CustomMessageBox.ShowOk("Lỗi hệ thống", "Lỗi", "Ok");
+                    }
+                }    
+            });
+            SelectedGenreChanged = new RelayCommand<ComboBox>((p) => { return true; }, async (p) =>
+            {
+                if (SelectedDate != null)
+                {
+                    if(SelectedItemFilter != null)
+                    {
+                        FilmShowTimeList = new ObservableCollection<FilmDTO>();
+                        try
+                        {
+                            FilmShowTimeList = new ObservableCollection<FilmDTO>(await Task.Run(() => FilmService.Ins.GetShowingMovieByDay(SelectedDate)));
+                            SelectFilmByFilter();
+                        }
+                        catch (System.Data.Entity.Core.EntityException)
+                        {
+                            CustomMessageBox.ShowOk("Mất kết nối cơ sở dữ liệu", "Lỗi", "Ok");
+                        }
+                        catch (Exception)
+                        {
+                            CustomMessageBox.ShowOk("Lỗi hệ thống", "Lỗi", "Ok");
+                        }
+                    }
+                }
+            });
+            OpenBuyTicketWindow = new RelayCommand<object>((p) => { return true; }, (p) =>
+            {
+               
+            });
+        }
+        public void GetAllCurrentGenre(ComboBox filter)
+        {
+            CurrentGenreSource = new ObservableCollection<string>();
+            for (int i = 0; i < FilmShowTimeList.Count; i++)
+            {
+                if (!CurrentGenreSource.Contains(FilmShowTimeList[i].Genre))
+                {
+                    CurrentGenreSource.Add(FilmShowTimeList[i].Genre);
+                }    
+            }
+            CurrentGenreSource.Add("Tất cả");
+        }
+        public void SelectFilmByFilter()
+        {
+            ObservableCollection<FilmDTO> temp = new ObservableCollection<FilmDTO>();
+            string SelectedFilterText = SelectedItemFilter.ToString();
+            if(SelectedFilterText == "Tất cả")
+            {
+                return;
+            }   
+            else
+            {
+                for (int i = 0; i < FilmShowTimeList.Count; i++)
+                {
+                    if (FilmShowTimeList[i].Genre == SelectedFilterText)
+                    {
+                        temp.Add(FilmShowTimeList[i]);
+                    }    
+                }
+                FilmShowTimeList = temp;
+            }    
         }
     }
 }
