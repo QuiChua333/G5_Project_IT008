@@ -256,10 +256,7 @@
     <Compile Include="Resource\Styles\ListboxCustom.xaml.cs" />
     <Compile Include="Until.cs" />
     <Compile Include="Utilities\RelyCommand.cs" />
-    <Compile Include="Utils\CloudinaryService.cs" />
-    <Compile Include="Utils\Constant.cs" />
     <Compile Include="Utils\EmailFormat.cs" />
-    <Compile Include="Utils\Helper.cs" />
     <Compile Include="Utils\CloudinaryService.cs" />
     <Compile Include="Utils\Constant.cs" />
     <Compile Include="Utils\Helper.cs" />
@@ -291,8 +288,11 @@
     <Compile Include="ViewModel\BaseViewModel.cs" />
     <Compile Include="ViewModel\LoginVM\ForgotPassVM.cs" />
     <Compile Include="ViewModel\LoginVM\LoginVM.cs" />
+    <Compile Include="ViewModel\StaffVM\MovieScheduleWindowVM\MovieScheduleWindowViewModel.cs" />
     <Compile Include="ViewModel\StaffVM\OrderFoodManagementVM\OrderFoodManagementVM.cs" />
     <Compile Include="ViewModel\StaffVM\StaffVM.cs" />
+    <Compile Include="ViewModel\StaffVM\TicketVM\TicketBookingPageViewModel.cs" />
+    <Compile Include="ViewModel\StaffVM\TicketVM\TicketWindowViewModel.cs" />
     <Compile Include="View\Admin\AdminWindow.xaml.cs">
       <DependentUpon>AdminWindow.xaml</DependentUpon>
     </Compile>
@@ -458,6 +458,9 @@
     <Compile Include="View\Staff\TicketWindow\TicketBookingPage.xaml.cs">
       <DependentUpon>TicketBookingPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Staff\TicketWindow\TicketWindow.xaml.cs">
+      <DependentUpon>TicketWindow.xaml</DependentUpon>
+    </Compile>
     <Page Include="Component\Buttons\ButtonStyle.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -539,6 +542,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Resource\Styles\ListboxCustom.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resource\Styles\ListboxItem.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -776,6 +783,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\Staff\TicketWindow\TicketWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -936,6 +947,9 @@
     </Content>
     <Content Include="Resource\EmailTemplate\EmailResetPassTemplate.txt" />
     <Content Include="Resource\EmailTemplate\ForgotPassTemplate.txt" />
+    <Resource Include="Resource\Images\currChoose.png" />
+    <Resource Include="Resource\Images\isBooked.png" />
+    <Resource Include="Resource\Images\isReady.png" />
     <Resource Include="Resource\Icons\dollar.png" />
     <Resource Include="Resource\Icons\upload.png" />
     <Resource Include="Resource\EmailTemplate\images\bee.png" />
