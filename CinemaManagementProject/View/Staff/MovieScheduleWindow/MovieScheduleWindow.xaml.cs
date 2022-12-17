@@ -19,6 +19,7 @@ namespace CinemaManagementProject.View.Staff.MovieScheduleWindow
     /// </summary>
     public partial class MovieScheduleWindow : Window
     {
+        Border ShowTimeSelected = null;
         public MovieScheduleWindow()
         {
             InitializeComponent();
@@ -27,6 +28,35 @@ namespace CinemaManagementProject.View.Staff.MovieScheduleWindow
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             this.WindowState = WindowState.Minimized;
+        }
+
+        private void Expander_Collapsed(object sender, RoutedEventArgs e)
+        {
+            _Room.Visibility = Visibility.Collapsed;
+        }
+
+        private void Border_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            if (ShowTimeSelected != null)
+            {
+                ShowTimeSelected.Background = (SolidColorBrush)new BrushConverter().ConvertFromString("#D9D9D9");
+                if (_Room.Visibility == Visibility.Visible)
+                    _Room.Visibility = Visibility.Collapsed;
+                ShowTimeSelected = null;
+                return;
+            }
+                
+            if (ShowTimeSelected == null)
+            {
+                ShowTimeSelected = (Border)sender;
+                ShowTimeSelected.Background = (SolidColorBrush)new BrushConverter().ConvertFromString("#F19D9D");
+                if (_Room.Visibility == Visibility.Collapsed)
+                    _Room.Visibility = Visibility.Visible;
+                return;
+            }
+            
+
+            
         }
     }
 }
