@@ -239,10 +239,10 @@ namespace CinemaManagementProject.Model.Service
                             {
                                 Id = m.ShowTime.Id,
                                 FilmId = m.ShowTime.FilmId,
-                                StartTime = m.ShowTime.StartTime,
+                                StartTime = (TimeSpan)m.ShowTime.StartTime,
                                 RoomId = (int)m.ShowTime.ShowTimeSetting.RoomId,
                                 ShowDate = (DateTime)m.ShowTime.ShowTimeSetting.ShowDate,
-                                Price = m.ShowTime.Price
+                                Price = (float)m.ShowTime.Price
                             });
                             if (fim is null)
                             {

@@ -8,5 +8,9 @@
     <ImageSource x:Key="Avatar">./avata.jpg</ImageSource>
     <ImageSource x:Key="Image_Start">./Image_Start.png</ImageSource>
     <ImageSource x:Key="LoginImage">./LoginImage.png</ImageSource>
+    <ImageSource x:Key="isBooked">./isBooked.png</ImageSource>
+    <ImageSource x:Key="isReady">./isReady.png</ImageSource>
+    <ImageSource x:Key="currChoose">./currChoose.png</ImageSource>
+
 
 </ResourceDictionary>
