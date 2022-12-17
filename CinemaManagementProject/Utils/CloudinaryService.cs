@@ -38,7 +38,7 @@ namespace CinemaManagementProject.Utils
         }
 
 
-        
+
         public async Task<string> UploadImage(string filePath)
         {
             try

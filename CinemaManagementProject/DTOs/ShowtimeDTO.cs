@@ -11,8 +11,8 @@ namespace CinemaManagementProject.DTOs
     {
         public int Id { get; set; }
         public Nullable<int> FilmId { get; set; }
-        public Nullable<System.TimeSpan> StartTime { get; set; }
-        public Nullable<float> Price { get; set; }
+        public TimeSpan StartTime { get; set; }
+        public float Price { get; set; }
 
         public virtual Film Film { get; set; }
         public System.DateTime ShowDate { get; set; }
