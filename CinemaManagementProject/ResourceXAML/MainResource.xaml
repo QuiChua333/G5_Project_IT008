@@ -10,8 +10,8 @@
                     xmlns:viewmodel8="clr-namespace:CinemaManagementProject.ViewModel.LoginVM"
                     xmlns:viewmodel9="clr-namespace:CinemaManagementProject.ViewModel.StaffVM.OrderFoodManagementVM"
                     xmlns:viewmodel10="clr-namespace:CinemaManagementProject.ViewModel.StaffVM"
-                    xmlns:viewmodel11="clr-namespace:CinemaManagementProject.ViewModel.StaffVM.FilmBookingVM"
-                    xmlns:viewmodel12="clr-namespace:CinemaManagementProject.ViewModel.AdminVM.TroubleManagementVM"                  
+                    xmlns:viewmodel12="clr-namespace:CinemaManagementProject.ViewModel.StaffVM.FilmBookingVM"
+                    xmlns:viewmodel11="clr-namespace:CinemaManagementProject.ViewModel.AdminVM.TroubleManagementVM"                  
                     >
 
 
