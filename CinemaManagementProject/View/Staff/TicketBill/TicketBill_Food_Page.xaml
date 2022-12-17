@@ -473,7 +473,7 @@
                                     HorizontalAlignment="Right"
                                     Margin="0 0 10 10"
                                     Content="Thanh toán"
-                                    Command="{Binding PayMovieCM}">
+                                    Command="{Binding PayFoodCM}">
                                 <Button.Style>
                                     <Style TargetType="Button"
                                            BasedOn="{StaticResource MaterialDesignRaisedButton}">

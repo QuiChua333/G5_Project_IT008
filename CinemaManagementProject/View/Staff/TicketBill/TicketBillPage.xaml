@@ -8,6 +8,7 @@
       xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
       d:DesignHeight="760" d:DesignWidth="1140"
+      DataContext="{StaticResource BillTicketVM}"
       Title="TicketBillPage">
 
     <Grid Background="#BCD8F1">
