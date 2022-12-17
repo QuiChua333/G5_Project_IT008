@@ -188,7 +188,10 @@ namespace CinemaManagementProject.ViewModel.StaffVM.FilmBookingVM
             });
             OpenBuyTicketWindow = new RelayCommand<object>((p) => { return true; }, (p) =>
             {
-               
+               //Ngày chiếu phim _ShowDate
+               //Lấy hết giờ chiếu _ShowTimeList
+               //Phòng chiếu _Room
+               // Lấy hết phim _ImgFilm _TxtFilm
             });
         }
         public void GetAllCurrentGenre(ComboBox filter)
