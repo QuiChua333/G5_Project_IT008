@@ -293,6 +293,7 @@
     <Compile Include="ViewModel\BaseViewModel.cs" />
     <Compile Include="ViewModel\LoginVM\ForgotPassVM.cs" />
     <Compile Include="ViewModel\LoginVM\LoginVM.cs" />
+    <Compile Include="ViewModel\StaffVM\FilmBookingVM\FilmBookingVM.cs" />
     <Compile Include="ViewModel\StaffVM\OrderFoodManagementVM\OrderFoodManagementVM.cs" />
     <Compile Include="ViewModel\StaffVM\StaffVM.cs" />
     <Compile Include="View\Admin\AdminWindow.xaml.cs">
@@ -945,6 +946,7 @@
     </Content>
     <Content Include="Resource\EmailTemplate\EmailResetPassTemplate.txt" />
     <Content Include="Resource\EmailTemplate\ForgotPassTemplate.txt" />
+    <Resource Include="Resource\Icons\landline.png" />
     <Resource Include="Resource\Icons\dollar.png" />
     <Resource Include="Resource\Icons\upload.png" />
     <Resource Include="Resource\EmailTemplate\images\bee.png" />

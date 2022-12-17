@@ -64,7 +64,7 @@
                 <TextBlock Foreground="White" Margin="10,15,0,5">Chức năng</TextBlock>
                 <RadioButton    Style="{StaticResource menuButton}"
                                     Tag="white"
-                                    Command="{Binding ShowHomeViewCommand}">
+                                    Command="{Binding FilmBookingCommand}">
                     <StackPanel Orientation="Horizontal">
                         <materialDesign:PackIcon Kind="FilmCogOutline" Height="20" Width="20" Margin="30 0 10 0"></materialDesign:PackIcon>
                         <TextBlock Text="Đặt phim" Style="{StaticResource menuButtonText}" Margin="0,2,0,0" FontSize="14"/>

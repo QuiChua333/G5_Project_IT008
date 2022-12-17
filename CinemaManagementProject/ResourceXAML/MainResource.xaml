@@ -11,6 +11,7 @@
                     xmlns:viewmodel8="clr-namespace:CinemaManagementProject.ViewModel.LoginVM"
                     xmlns:viewmodel9="clr-namespace:CinemaManagementProject.ViewModel.StaffVM.OrderFoodManagementVM"
                     xmlns:viewmodel10="clr-namespace:CinemaManagementProject.ViewModel.StaffVM"
+                    xmlns:viewmodel11="clr-namespace:CinemaManagementProject.ViewModel.StaffVM.FilmBookingVM"
                     >
 
     <!--xmlns:FoodViewModel="clr-namespace:CinemaManagementProject.ViewModel.AdminVM.FoodManagementVM"   
@@ -30,6 +31,6 @@
     <viewmodel8:ForgotPassVM x:Key="ForgotVM"/>
     <viewmodel9:OrderFoodManagementVM x:Key="OrderFoodManagementVM"/>
     <viewmodel10:StaffVM x:Key="StaffVM"/>
-
+    <viewmodel11:FilmBookingVM x:Key="FilmBookingVM"/>
 
 </ResourceDictionary>

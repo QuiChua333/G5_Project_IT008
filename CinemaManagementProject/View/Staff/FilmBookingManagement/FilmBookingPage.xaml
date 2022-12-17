@@ -6,11 +6,31 @@
       xmlns:local="clr-namespace:CinemaManagementProject.View.Staff.FilmBooking"
       xmlns:FilmItem="clr-namespace:CinemaManagementProject.Component" 
       x:Class="CinemaManagementProject.View.Staff.FilmBooking.FilmBookingPage"
-      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
       mc:Ignorable="d" 
       d:DesignHeight="660" d:DesignWidth="1040"
       Title="FilmFoodPage"
+      DataContext="{StaticResource FilmBookingVM}"
+      Name="FilmBookingPg"
 >
+    <Page.Triggers>
+        <EventTrigger RoutedEvent="Page.Loaded">
+            <BeginStoryboard>
+                <Storyboard>
+                    <DoubleAnimation Storyboard.TargetName="FilmBookingPg"
+                                     Storyboard.TargetProperty="Opacity"
+                                     From="0"
+                                     To="1"
+                                     Duration="0:0:0.3" />
+                </Storyboard>
+            </BeginStoryboard>
+        </EventTrigger>
+    </Page.Triggers>
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding FirstLoadCM}" />
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
     <Grid Width="1040" Height="660">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="691*"/>
@@ -79,7 +99,7 @@
                             </Rectangle.Effect>
                         </Rectangle>
                         <Image Source="{StaticResource IconFilter}" Width="20" Height="20"></Image>
-                        <ComboBox x:Name="FilterCombobox" SelectedItem="{Binding SelectedItemFilter}" SelectedIndex="0" Foreground="Black" Grid.Column="1" Background="Transparent" VerticalAlignment="Center" FontSize="16" FontWeight="Medium" Margin="0,0,10,0" SelectionChanged="FilterCombobox_SelectionChanged" >
+                        <ComboBox x:Name="FilterCombobox" SelectedItem="{Binding SelectedItemFilter}" SelectedIndex="0" Foreground="Black" Grid.Column="1" Background="Transparent" VerticalAlignment="Center" FontSize="16" FontWeight="Medium" Margin="0,0,10,0">
                             <ComboBoxItem FontWeight="Regular">Tất cả</ComboBoxItem>
                             <ComboBoxItem FontWeight="Regular">Đồ ăn</ComboBoxItem>
                             <ComboBoxItem FontWeight="Regular">Nước uống</ComboBoxItem>
@@ -89,15 +109,16 @@
             </StackPanel>
         </Grid>
         <Grid Grid.Row="2" Margin="20,0,20,18" Grid.ColumnSpan="2">
-            <ScrollViewer VerticalScrollBarVisibility="Hidden" Margin="0,10,0,20">
-                <ListBox Name="ListViewFilm" ItemsSource="{Binding FoodList, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+            <ScrollViewer VerticalScrollBarVisibility="Visible" CanContentScroll="True" Margin="0,10,0,20">
+                <ListBox Name="ListViewFilm" ItemsSource="{Binding FilmShowTimeList, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
                          SelectedItem="{Binding SelectedItem, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                          materialDesign:ListBoxItemAssist.ShowSelection="False"
-                         materialDesign:ListBoxAssist.IsToggle="False">
+                         materialDesign:ListBoxAssist.IsToggle="False"
+                         ScrollViewer.CanContentScroll="True">
                     <ListBox.ItemContainerStyle>
                         <Style TargetType="{x:Type ListBoxItem}">
                             <Setter Property="Background" Value="Transparent"/>
-                            <Setter Property="Height" Value="267"/>
+                            <Setter Property="Height" Value="420"/>
                             <Setter Property="Margin" Value="0, 2, 0, 0"/>
                             <Setter Property="Template">
                                 <Setter.Value>
@@ -122,16 +143,17 @@
                     <ListBox.ItemTemplate>
                         <DataTemplate>
                             <ListBoxItem HorizontalAlignment="Center" Background="Transparent" Cursor="Hand">
+                                
                                 <Grid Height="400" Width="187">
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="6*"/>
                                         <RowDefinition Height="2*"/>
                                         <RowDefinition Height="0.8*"/>
                                     </Grid.RowDefinitions>
-                                    <Rectangle x:Name="BackGroundFilmItem" Grid.Row="0" Grid.RowSpan="3" RadiusX="6" RadiusY="6">
+                                    <Rectangle x:Name="BackGroundFilmItem" Fill="White" Grid.Row="0" Grid.RowSpan="3" RadiusX="6" RadiusY="6">
                                         <Rectangle.Effect>
                                             <DropShadowEffect
-                                                BlurRadius="10"
+                                                BlurRadius="4"
                                                 Color="Black"
                                                 ShadowDepth="4"
                                                 Opacity=".25"
@@ -139,7 +161,7 @@
                                             />
                                         </Rectangle.Effect>
                                     </Rectangle>
-                                    <Image Source="{StaticResource BlakAdam}"></Image>
+                                    <Image Source="{Binding Image}"></Image>
                                     <Grid Grid.Row="1" Margin="3,0,0,0">
                                         <StackPanel>
                                             <TextBlock
@@ -147,7 +169,8 @@
                                                 FontWeight="Bold"
                                                 FontSize="18"
                                                 Margin="0,3,0,0"
-                                            >Black Adam</TextBlock>
+                                                Text="{Binding FilmName}"
+                                            ></TextBlock>
                                             <StackPanel Margin="0,3,0,0" Orientation="Horizontal">
                                                 <TextBlock
                                                     FontFamily="{StaticResource MaterialDesignFont}"
@@ -160,7 +183,8 @@
                                                     FontWeight="Regular"
                                                     FontSize="15"
                                                     Width="100"
-                                                >Hành động, Phiêu lưu</TextBlock>
+                                                    Text="{Binding Genre}"
+                                                ></TextBlock>
                                             </StackPanel>
                                             <StackPanel  Margin="0,3,0,0" Orientation="Horizontal">
                                                 <TextBlock
@@ -173,7 +197,8 @@
                                                     FontFamily="{StaticResource MaterialDesignFont}"
                                                     FontWeight="Regular"
                                                     FontSize="15"
-                                                >125 phút</TextBlock>
+                                                    Text="{Binding DurationFilm}"
+                                                ></TextBlock>
                                             </StackPanel>
                                             <StackPanel Margin="0,3,0,0" Orientation="Horizontal">
                                                 <TextBlock
@@ -186,7 +211,8 @@
                                                     FontFamily="{StaticResource MaterialDesignFont}"
                                                     FontWeight="Regular"
                                                     FontSize="15"
-                                                >20-11-2022</TextBlock>
+                                                    Text="{Binding ReleaseDate}"
+                                                ></TextBlock>
                                             </StackPanel>
                                         </StackPanel>
                                     </Grid>

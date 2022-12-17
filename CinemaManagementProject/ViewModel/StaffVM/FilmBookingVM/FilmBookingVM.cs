@@ -79,6 +79,19 @@ namespace CinemaManagementProject.ViewModel.StaffVM.FilmBookingVM
         //
         //
         //
+        private DateTime _selectedDate;
+        public DateTime SelectedDate
+        {
+            get => _selectedDate;
+            set
+            {
+                _selectedDate = value;
+                OnPropertyChanged();
+            }
+        }
+        //
+        //
+        //
         //Command
         public ICommand FirstLoadCM { get; set; }
         public ICommand CloseCM { get; set; }
