@@ -3,21 +3,30 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:CinemaManagementProject.View.Admin.TroubleManagement" 
-    xmlns:Component="clr-namespace:CinemaManagementProject.Component.Search"
-      xmlns:TroubleItem="clr-namespace:CinemaManagementProject.Component.TroubleItem"  
-    x:Class="CinemaManagementProject.View.Admin.TroubleManagement.TroubleManagementPage"
+      xmlns:local="clr-namespace:CinemaManagementProject.ViewModel.AdminVM.TroubleManagementVM" 
+      xmlns:Component="clr-namespace:CinemaManagementProject.Component.Search"
+      xmlns:TroubleItem="clr-namespace:CinemaManagementProject.Component.TroubleItem" xmlns:i="http://schemas.microsoft.com/xaml/behaviors" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      x:Class="CinemaManagementProject.View.Admin.TroubleManagement.TroubleManagementPage"
       mc:Ignorable="d" 
-      d:DesignHeight="660" d:DesignWidth="1040"
+      d:DesignHeight="660" 
+      d:DesignWidth="1040"
+      FontSize="15"
+      DataContext="{StaticResource TroubleManagementVM}"
+      FontFamily="{StaticResource MaterialDesignFont}"
       Title="TroubleManagementPage">
+    <Page.Resources>
+        <local:StatusBrushConverter x:Key="StatusBrushConverter" />
+        <local:HintLevelConverter x:Key="HintLevelConverter" />
+        <local:StatusEditConverter x:Key="StatusEditConverter" />
+    </Page.Resources>
     <Grid Width="1040" Height="660">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="691*"/>
             <ColumnDefinition Width="549*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
+            <RowDefinition Height="80"/>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="6*"/>
         </Grid.RowDefinitions>
         <Rectangle 
             x:Name="FoodPageView"
@@ -27,11 +36,9 @@
             Grid.RowSpan="2"
             RadiusX="20"
             RadiusY="20" 
-            Grid.ColumnSpan="2"
-        />
-        <Grid 
-            Grid.Column="0" Grid.ColumnSpan="2" Margin="0,94,0,0" Grid.RowSpan="2" 
-        >
+            Grid.ColumnSpan="2" />
+        <Grid Grid.Column="0" Grid.ColumnSpan="2" 
+              Margin="0,94,0,0" Grid.RowSpan="2" >
             <Rectangle 
                 Fill="White"
                 Margin="20,0,20,20"
@@ -41,8 +48,18 @@
         </Grid>
         <Grid 
             Grid.Row="0" 
-            Grid.Column="0" Grid.ColumnSpan="2"
-        >
+            Grid.Column="0" Grid.ColumnSpan="2">
+            <Grid.Resources>
+                <Style x:Key="styleButton" TargetType="{x:Type ComboBox}" BasedOn="{StaticResource MaterialDesignOutlinedComboBox}">
+                    <Setter Property="Background" Value="Transparent"/>
+                    <Setter Property="Foreground" Value="Black"/>
+                    <Setter Property="BorderBrush" Value="Gray"/>
+                    <Setter Property="BorderThickness" Value="0"/>
+                    <Setter Property="FontFamily" Value="{StaticResource MaterialDesignFont}"/>
+                    <Setter Property="FontSize" Value="15"/>
+                    <Setter Property="FontWeight" Value="Normal"/>
+                </Style>
+            </Grid.Resources>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="12*"/>
@@ -50,29 +67,156 @@
                 <ColumnDefinition Width="170"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <Component:Search 
-                Grid.Column="1" 
-                Grid.Row="0" 
-                HorizontalAlignment="Left"
-                Width="400"
-                FontSize="18"
-                PlaceHolder="Tìm kiếm"
-                Height="54"
-                Corner="20"
-                IconSize="30"
-            />
+          
+            <Border CornerRadius="14"
+                    Grid.Column="1" 
+                    Grid.Row="0" 
+                    HorizontalAlignment="Left"                   
+                    Margin="-20, 17, 0, 17"
+                    Background="White"
+                    Height="46"
+                    Width="200"
+                    BorderBrush="Black">
+                <Border.Effect>
+                    <DropShadowEffect
+                            BlurRadius="10"
+                            Color="Black"
+                            ShadowDepth="4"
+                            Opacity=".25"
+                            Direction="270"/>
+                </Border.Effect>
+                <ComboBox   Width="200"
+                            VerticalAlignment="Bottom"
+                            HorizontalAlignment="Left"
+                            Style="{StaticResource styleButton}"
+                            SelectedIndex="1"                            
+                            x:Name="filtercbb"
+                            SelectedItem="{Binding SelectedCbbItem,Mode=OneWayToSource}">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="SelectionChanged">
+                            <i:InvokeCommandAction Command="{Binding ReloadTroubleListCM}"
+                                                   CommandParameter="{Binding ElementName=filtercbb}" />
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                    <ComboBoxItem Tag="Toàn bộ">Toàn bộ</ComboBoxItem>
+                    <ComboBoxItem Tag="Chờ tiếp nhận">Chờ tiếp nhận</ComboBoxItem>
+                    <ComboBoxItem Tag="Đang giải quyết">Đang giải quyết</ComboBoxItem>
+                    <ComboBoxItem Tag="Đã giải quyết">Đã giải quyết</ComboBoxItem>
+                    <ComboBoxItem Tag="Đã hủy">Đã hủy</ComboBoxItem>
+                </ComboBox>
+            </Border>
         </Grid>
-        <Grid Grid.Row="1" Margin="30,0,20,18" Grid.ColumnSpan="2">
-            <Grid.RowDefinitions>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-            </Grid.RowDefinitions>
-            <!--<TroubleItem:TroubleItem Grid.Row="0" TroubleItemClick="TroubleItem_TroubleItemClick" EditButtonClick="TroubleItem_EditButtonClick"/>
-            <TroubleItem:TroubleItem Grid.Row="1" TroubleItemClick="TroubleItem_TroubleItemClick"/>
-            <TroubleItem:TroubleItem Grid.Row="2" TroubleItemClick="TroubleItem_TroubleItemClick"/>
-            <TroubleItem:TroubleItem Grid.Row="3" />-->
+        <Grid Grid.Row="1" Margin="20,0,20,18" Grid.ColumnSpan="2">
+            <materialDesign:Card UniformCornerRadius="20">
+                <StackPanel>
+                    <ListView ItemsSource="{Binding TroubleList}"
+                              SelectedItem="{Binding SelectedItem,UpdateSourceTrigger=PropertyChanged}"
+                              x:Name="Listview"
+                              Height="562">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="Sự cố"
+                                                Width="400">
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <StackPanel Orientation="Horizontal">
+                                                <materialDesign:PackIcon Kind="AlertCircleOutline"
+                                                                         Width="40"
+                                                                         Height="40"
+                                                                         Foreground="Red"
+                                                                         Margin="0,30,20,0"
+                                                                         Visibility="{Binding Level,Converter={StaticResource HintLevelConverter}}" />
+                                                <Border CornerRadius="8,8,8,8"
+                                                        Width="100"
+                                                        Height="100">
+                                                    <Border.Background>
+                                                        <ImageBrush x:Name="smallimg"
+                                                                    Stretch="Fill"
+                                                                    ImageSource="{Binding Image}" />
+                                                    </Border.Background>
+                                                </Border>
+                                                <StackPanel Margin="20,0,0,0">
+                                                    <Label Content="{Binding Title}"
+                                                       FontSize="25"
+                                                       FontWeight="Bold"
+                                                       Width="350" />
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <Label Content="Chi phí:"
+                                                           FontSize="20" />
+                                                        <Label Content="{Binding RepairCostStr}"
+                                                           FontSize="20" />
+                                                    </StackPanel>
+
+                                                </StackPanel>
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                                <GridViewColumn Header="Ngày nhận"
+                                                Width="340">
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Text="{Binding SubmittedAt}"
+                                                       FontSize="25"
+                                                       Margin="0,30,0,0" />
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                                <GridViewColumn Header="Trạng thái"
+                                            Width="170">
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Border BorderThickness="1"
+                                                Margin="0,25,0,0"
+                                                BorderBrush="{Binding Status, Converter={StaticResource StatusBrushConverter}}"
+                                                CornerRadius="20">
+                                                <TextBlock Text="{Binding Status}"
+                                                       FontSize="20"
+                                                       Margin="7"
+                                                       FontWeight="Medium"
+                                                       Foreground="{Binding Status, Converter={StaticResource StatusBrushConverter}}" />
+                                            </Border>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                                <GridViewColumn>
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Border Cursor="Hand"
+                                                BorderBrush="Black"
+                                                BorderThickness="1"
+                                                Margin="20,30,0,0"
+                                                CornerRadius="5"
+                                                Visibility="{Binding Status,Converter={StaticResource StatusEditConverter}}">
+                                                <Border.Style>
+                                                    <Style TargetType="Border">
+                                                        <Style.Triggers>
+                                                            <Trigger Property="IsMouseOver"
+                                                                 Value="True">
+                                                                <Setter Property="Background"
+                                                                    Value="#00e5ff" />
+                                                            </Trigger>
+                                                        </Style.Triggers>
+                                                    </Style>
+                                                </Border.Style>
+                                                <Image Source="/Resources/Icon/pencil.png"
+                                                   Width="30"
+                                                   Height="30"
+                                                   Cursor="Hand" />
+                                                <i:Interaction.Triggers>
+                                                    <i:EventTrigger EventName="MouseLeftButtonUp">
+                                                        <i:InvokeCommandAction Command="{Binding ElementName=Listview, Path=DataContext.LoadDetailErrorCM}" />
+                                                    </i:EventTrigger>
+                                                </i:Interaction.Triggers>
+                                            </Border>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                </StackPanel>
+            </materialDesign:Card>
         </Grid>
         <Rectangle x:Name="Overlay" RadiusX="20" RadiusY="20" Visibility="Hidden" Grid.Column="0" Grid.Row="0" Grid.RowSpan="2" Grid.ColumnSpan="2" Fill="Black" Opacity="0.25"/>
     </Grid>

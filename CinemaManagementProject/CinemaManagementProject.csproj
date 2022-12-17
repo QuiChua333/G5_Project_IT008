@@ -175,6 +175,7 @@
     <Compile Include="DTOs\ShowtimeDTO.cs" />
     <Compile Include="DTOs\TicketBillInfoDTO.cs" />
     <Compile Include="DTOs\TicketDTO.cs" />
+    <Compile Include="DTOs\TroubleDTO.cs" />
     <Compile Include="DTOs\VoucherDTO.cs" />
     <Compile Include="DTOs\VoucherReleaseDTO.cs" />
     <Compile Include="DTOs\FilmDTO.cs" />
@@ -231,6 +232,7 @@
     <Compile Include="Model\Service\SeatService.cs" />
     <Compile Include="Model\Service\ShowtimeService.cs" />
     <Compile Include="Model\Service\StaffService.cs" />
+    <Compile Include="Model\Service\TroubleService.cs" />
     <Compile Include="Model\Service\VoucherService.cs" />
     <Compile Include="Model\Service\DataProvider.cs" />
     <Compile Include="Model\Service\FilmService.cs" />
@@ -280,6 +282,9 @@
     <Compile Include="ViewModel\AdminVM\StaffManagementVM\ChangePasswordViewModel.cs" />
     <Compile Include="ViewModel\AdminVM\StaffManagementVM\EditStaffViewModel.cs" />
     <Compile Include="ViewModel\AdminVM\StaffManagementVM\StaffManagementViewModel.cs" />
+    <Compile Include="ViewModel\AdminVM\TroubleManagementVM\HintLevelConverter.cs" />
+    <Compile Include="ViewModel\AdminVM\TroubleManagementVM\StatusBrushConverter.cs" />
+    <Compile Include="ViewModel\AdminVM\TroubleManagementVM\TroubleManagementViewModel.cs" />
     <Compile Include="ViewModel\AdminVM\VoucherManagementVM\AddWindowVM\AddWindowViewModel.cs" />
     <Compile Include="ViewModel\AdminVM\VoucherManagementVM\AddWindowVM\CheckBoxVisibleConverters.cs" />
     <Compile Include="ViewModel\AdminVM\VoucherManagementVM\AddWindowVM\ReleaseWindowViewModel.cs" />
