@@ -11,7 +11,7 @@
                     xmlns:viewmodel9="clr-namespace:CinemaManagementProject.ViewModel.StaffVM.OrderFoodManagementVM"
                     xmlns:viewmodel10="clr-namespace:CinemaManagementProject.ViewModel.StaffVM" 
                     xmlns:viewmodel11="clr-namespace:CinemaManagementProject.ViewModel.StaffVM.MovieScheduleWindowVM" 
-                    xmlns:viewmodel12="clr-namespace:CinemaManagementProject.ViewModel.StaffVM.TicketVM">
+                    xmlns:viewmodel12="clr-namespace:CinemaManagementProject.ViewModel.StaffVM.TicketVM"
                     xmlns:viewmodel13="clr-namespace:CinemaManagementProject.ViewModel.StaffVM.FilmBookingVM"
                     xmlns:viewmodel14="clr-namespace:CinemaManagementProject.ViewModel.AdminVM.TroubleManagementVM"                  
                     >
@@ -29,6 +29,6 @@
     <viewmodel10:StaffVM x:Key="StaffVM"/>
     <viewmodel11:MovieScheduleWindowViewModel x:Key="MovieScheduleWindowVM" />
     <viewmodel12:TicketWindowViewModel x:Key="TicketWindowVM" />
-    <viewmodel13:TroubleManagementViewModel x:Key="TroubleManagementVM"/>
-    <viewmodel14:FilmBookingVM x:Key="FilmBookingVM"/>
+    <viewmodel13:FilmBookingVM x:Key="FilmBookingVM"/>
+    <viewmodel14:TroubleManagementViewModel x:Key="TroubleManagementVM"/>
 </ResourceDictionary>
