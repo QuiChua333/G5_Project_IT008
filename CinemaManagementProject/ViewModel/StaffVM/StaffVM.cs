@@ -21,11 +21,13 @@ namespace CinemaManagementProject.ViewModel.StaffVM
             set { _currentView = value; OnPropertyChanged(); }
         }
         public ICommand OrderFoodCommand { get; set; }
+        public ICommand FilmBookingCommand { get; set; }
         private void OrderFood(object obj) => CurrentView = new OrderFoodManagementVM.OrderFoodManagementVM();
+        private void FilmBooking(object obj) => CurrentView = new FilmBookingVM.FilmBookingVM();
         public StaffVM()
         {
             OrderFoodCommand = new RelayCommand(OrderFood);
-
+            FilmBookingCommand = new RelayCommand(FilmBooking);
             //StartPage
             _currentView = new OrderFoodManagementVM.OrderFoodManagementVM();
         }
