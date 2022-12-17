@@ -38,8 +38,11 @@ namespace CinemaManagementProject.View.Staff.OrderFoodManagement
         private void SearchBox_SearchTextChange(object sender, EventArgs e)
         {
             CollectionView view = (CollectionView)CollectionViewSource.GetDefaultView(ListViewProducts.ItemsSource);
-            view.Filter = Filter;
-            CollectionViewSource.GetDefaultView(ListViewProducts.ItemsSource).Refresh();
+            if (view != null)
+            {
+                view.Filter = Filter;
+                CollectionViewSource.GetDefaultView(ListViewProducts.ItemsSource).Refresh();
+            }
         }
 
         private void FilterCombobox_SelectionChanged(object sender, SelectionChangedEventArgs e)

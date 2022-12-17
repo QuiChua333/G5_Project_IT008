@@ -91,7 +91,7 @@ namespace CinemaManagementProject.Utils
             return Path.Combine(Environment.CurrentDirectory, @"..\..\Resource\Images", $"{imageName}" /*SelectedItem.Image*/);
         }
 
-        
+
 
         public static string FormatVNMoney(float money)
         {

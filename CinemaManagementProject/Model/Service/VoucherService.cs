@@ -3,6 +3,7 @@ using CinemaManagementProject.Utils;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -293,7 +294,69 @@ namespace CinemaManagementProject.Model.Service
                 return (false, "Lỗi hệ thống");
             }
         }
+        public async Task<(string error, VoucherDTO)> GetVoucherInfo(string Code)
+        {
+            using (var context = new CinemaManagementProjectEntities())
+            {
+                try
+                {
+                    var voucher = await context.Vouchers.Where(v => v.VoucherCode == Code).Select(v => new VoucherDTO
+                    {
+                        Id = v.Id,
+                        VoucherCode = v.VoucherCode,
+                        VoucherStatus = v.VoucherStatus,
+                        VoucherReleaseId = (int)v.VoucherReleaseId,
+                        UsedAt = (DateTime)v.UsedAt,
+                        CustomerName = v.Customer != null ? v.Customer.CustomerName : null,
+                        ReleaseAt = (DateTime)v.ReleaseAt,
+                        VoucherInfo = new VoucherReleaseDTO
+                        {
+                            Id = v.VoucherRelease.Id,
+                            VoucherReleaseCode = v.VoucherRelease.VoucherReleaseCode,
+                            VoucherReleaseName = v.VoucherRelease.VoucherReleaseName,
+                            StartDate = (DateTime)v.VoucherRelease.StartDate,
+                            EndDate = (DateTime)v.VoucherRelease.EndDate,
+                            MinimizeTotal = (double)v.VoucherRelease.MinimizeTotal,
+                            Price = (double)v.VoucherRelease.Price,
+                            TypeObject = v.VoucherRelease.TypeObject,
+                            VoucherReleaseStatus = (bool)v.VoucherRelease.VoucherReleaseStatus,
+                            EnableMerge = (bool)v.VoucherRelease.EnableMerge,
+                        }
+                    }).FirstOrDefaultAsync();
 
+                    if (voucher is null || !voucher.VoucherInfo.VoucherReleaseStatus || voucher.VoucherStatus == VOUCHER_STATUS.UNRELEASED)
+                    {
+                        return ("Mã giảm giá không tồn tại", null);
+                    }
+
+                    if (voucher.VoucherInfo.EndDate < DateTime.Now)
+                    {
+                        return ("Mã giảm giá đã hết hạn sử dụng", null);
+                    }
+
+                    if (voucher.VoucherStatus == VOUCHER_STATUS.USED)
+                    {
+                        return ("Mã giảm giá đã sử dụng", null);
+                    }
+
+                    voucher.Price = voucher.VoucherInfo.Price;
+                    voucher.TypeObject = voucher.VoucherInfo.TypeObject;
+                    voucher.EnableMerge = voucher.VoucherInfo.EnableMerge;
+
+                    voucher.VoucherInfoStr = $"Giảm {String.Format(CultureInfo.InvariantCulture, "{0:#,#}", voucher.Price)} đ ({voucher.TypeObject})";
+
+                    return (null, voucher);
+                }
+                catch (System.Data.Entity.Core.EntityException)
+                {
+                    return ("Mất kết nối cơ sở dữ liệu", null);
+                }
+                catch (Exception)
+                {
+                    return ("Lỗi hệ thống", null);
+                }
+            }
+        }
 
 
     }

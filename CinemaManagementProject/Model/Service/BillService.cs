@@ -152,8 +152,8 @@ namespace CinemaManagementProject.Model.Service
                                                  BillId = pi.BillId,
                                                  ProductId = pi.ProductId,
                                                  ProductName = pi.Product.ProductName,
-                                                 PrizePerProduct = pi.PrizePerProduct,
-                                                 Quantity = pi.Quantity
+                                                 PrizePerProduct = (float)pi.PrizePerProduct,
+                                                 Quantity = (int)pi.Quantity
                                              }).ToList(),
                     };
                     if (bill.CustomerId != null)
