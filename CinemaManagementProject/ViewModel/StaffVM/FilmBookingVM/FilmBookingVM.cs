@@ -1,5 +1,6 @@
 ﻿using CinemaManagementProject.DTOs;
 using CinemaManagementProject.Model.Service;
+using CinemaManagementProject.View.Staff.MovieScheduleWindow;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -113,6 +114,18 @@ namespace CinemaManagementProject.ViewModel.StaffVM.FilmBookingVM
             }
         }
         //
+        
+        private string _selectedItem;
+        public string SelectedItem
+        {
+            get => _selectedItem;
+            set
+            {
+                _selectedItem = value;
+                OnPropertyChanged();
+            }
+        }
+        //
         //
         //
         //Command
@@ -188,10 +201,15 @@ namespace CinemaManagementProject.ViewModel.StaffVM.FilmBookingVM
             });
             OpenBuyTicketWindow = new RelayCommand<object>((p) => { return true; }, (p) =>
             {
-               //Ngày chiếu phim _ShowDate
-               //Lấy hết giờ chiếu _ShowTimeList
-               //Phòng chiếu _Room
-               // Lấy hết phim _ImgFilm _TxtFilm
+                //Ngày chiếu phim _ShowDate
+                //Lấy hết giờ chiếu _ShowTimeList
+                //Phòng chiếu _Room
+                // Lấy hết phim _ImgFilm _TxtFilm
+                MovieScheduleWindow wd = new MovieScheduleWindow();
+                if(SelectedItem != null)
+                {
+                }    
+                wd.ShowDialog();
             });
         }
         public void GetAllCurrentGenre(ComboBox filter)

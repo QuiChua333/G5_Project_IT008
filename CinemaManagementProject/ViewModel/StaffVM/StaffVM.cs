@@ -29,7 +29,7 @@ namespace CinemaManagementProject.ViewModel.StaffVM
             OrderFoodCommand = new RelayCommand(OrderFood);
             FilmBookingCommand = new RelayCommand(FilmBooking);
             //StartPage
-            _currentView = new OrderFoodManagementVM.OrderFoodManagementVM();
+            _currentView = new FilmBookingVM.FilmBookingVM();
         }
     }
 }
