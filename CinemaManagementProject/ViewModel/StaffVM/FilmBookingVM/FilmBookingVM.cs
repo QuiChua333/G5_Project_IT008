@@ -1,6 +1,8 @@
 ﻿using CinemaManagementProject.DTOs;
 using CinemaManagementProject.Model.Service;
+using CinemaManagementProject.Utils;
 using CinemaManagementProject.View.Staff.MovieScheduleWindow;
+using CinemaManagementProject.ViewModel.StaffVM.MovieScheduleWindowVM;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -115,8 +117,8 @@ namespace CinemaManagementProject.ViewModel.StaffVM.FilmBookingVM
         }
         //
         
-        private string _selectedItem;
-        public string SelectedItem
+        private FilmDTO _selectedItem;
+        public FilmDTO SelectedItem
         {
             get => _selectedItem;
             set
@@ -199,17 +201,41 @@ namespace CinemaManagementProject.ViewModel.StaffVM.FilmBookingVM
                     }
                 }
             });
-            OpenBuyTicketWindow = new RelayCommand<object>((p) => { return true; }, (p) =>
+            OpenBuyTicketWindow = new RelayCommand<object>((p) => { return true; }, async (p) =>
             {
                 //Ngày chiếu phim _ShowDate
                 //Lấy hết giờ chiếu _ShowTimeList
                 //Phòng chiếu _Room
                 // Lấy hết phim _ImgFilm _TxtFilm
-                MovieScheduleWindow wd = new MovieScheduleWindow();
-                if(SelectedItem != null)
+                MovieScheduleWindow wd;
+                if (SelectedItem != null)
                 {
-                }    
-                wd.ShowDialog();
+                    try
+                    {
+                        MovieScheduleWindowViewModel.tempFilmbinding = SelectedItem;
+                        wd = new MovieScheduleWindow();
+
+                        if (wd != null)
+                        {
+                            if (SelectedItem != null)
+                            {
+                                wd._ShowTimeList.ItemsSource = SelectedItem.ShowTimes;
+                                wd._ImgFilm.Source = await CloudinaryService.Ins.LoadImageFromURL(SelectedItem.Image);
+                                wd._ShowDate.Content = SelectedDate.ToString("dd-MM-yyyy");
+                                wd._TxtFilm.Content = SelectedItem?.FilmName ?? "";
+                                wd.ShowDialog();
+                            }
+                        }
+                    }
+                    catch (System.Data.Entity.Core.EntityException e)
+                    {
+                        CustomMessageBox.ShowOk("Mất kết nối cơ sở dữ liệu", "Lỗi", "OK", Views.CustomMessageBoxImage.Error);
+                    }
+                    catch (Exception e)
+                    {
+                        CustomMessageBox.ShowOk("Lỗi hệ thống", "Lỗi", "OK", Views.CustomMessageBoxImage.Error);
+                    }
+                }
             });
         }
         public void GetAllCurrentGenre(ComboBox filter)

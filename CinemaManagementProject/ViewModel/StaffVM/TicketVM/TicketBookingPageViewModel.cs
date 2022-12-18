@@ -22,12 +22,31 @@ namespace CinemaManagementProject.ViewModel.StaffVM.TicketVM
         public static string showTimeRoom;
         public static List<Label> listlabel = new List<Label>();
 
+        
         public ICommand SelectedSeatCM { get; set; }
         public ICommand LoadStatusSeatCM { get; set; }
         public ICommand SetStatusSeatCM { get; set; }
 
         #region Biến binding
 
+        private int _currChoose;
+        public int currChoose
+        {
+            get { return _currChoose; }
+            set { _currChoose = value; OnPropertyChanged(); }
+        }
+        private int _isBooked;
+        public int isBooked
+        {
+            get { return _isBooked; }
+            set { _isBooked = value; OnPropertyChanged(); }
+        }
+        private int _isReady;
+        public int isReady
+        {
+            get { return _isReady; }
+            set { _isReady = value; OnPropertyChanged(); }
+        }
         private string _price;
         public string price
         {

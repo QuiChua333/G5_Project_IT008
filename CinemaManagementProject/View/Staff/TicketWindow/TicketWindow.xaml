@@ -7,7 +7,7 @@
         xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
         xmlns:local="clr-namespace:CinemaManagementProject.View.Staff.TicketWindow"
         mc:Ignorable="d"
-        Title="TicketWindow" Height="680" Width="1100"
+        Title="TicketWindow" Height="720" Width="1300"
         Background="Transparent"
         WindowStyle="None"
         DataContext="{StaticResource TicketWindowVM}"

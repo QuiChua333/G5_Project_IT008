@@ -226,7 +226,7 @@
                   Margin="20">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="75*"/>
-                        <ColumnDefinition Width="25*"/>
+                        <ColumnDefinition Width="30*"/>
                     </Grid.ColumnDefinitions>
                     <Grid Grid.Column="0">
                         <Border BorderThickness="0,0,4,0"
@@ -255,7 +255,7 @@
                                     </Label>
                                 </Grid>
                                 <Grid Grid.Row="1"
-                                      Margin="0,15,20,15">
+                                      Margin="0,15,15,0">
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="15*"/>
                                         <ColumnDefinition Width="50"/>
@@ -266,7 +266,7 @@
                                          x:Name="SeatListBox1"
                                          HorizontalAlignment="Right"
                                          VerticalAlignment="Top"
-                                         Height="360"
+                                         Height="400"
                                          SelectedItem="{Binding SelectedSeat}">
                                         <ListBox.ItemContainerStyle>
                                             <Style TargetType="ListBoxItem"
@@ -281,8 +281,9 @@
                                         <ListBox.ItemTemplate>
                                             <DataTemplate>
                                                 
-                                                    <Grid x:Name="grid1">
-                                                        <Image Source="{StaticResource isReady}"
+                                                    <Grid x:Name="grid1"
+                                                          Cursor="Hand">
+                                                        <Image 
                                                                Width="38"
                                                                Height="38"
                                                                 x:Name="img1">
@@ -317,7 +318,7 @@
                                     </ListBox>
                                     <ListBox ItemsSource="{Binding ListSeat2}"
                                              x:Name="SeatListBox2"
-                                             Height="360"
+                                             Height="400"
                                              HorizontalAlignment="Left"
                                              VerticalAlignment="Top"
                                              Grid.Column="2"
@@ -330,20 +331,21 @@
                                         </ListBox.ItemContainerStyle>
                                         <ListBox.ItemsPanel>
                                             <ItemsPanelTemplate>
-                                                <UniformGrid Columns="14"
+                                                <UniformGrid Columns="15"
                                              FlowDirection="LeftToRight" />
                                             </ItemsPanelTemplate>
                                         </ListBox.ItemsPanel>
                                         <ListBox.ItemTemplate>
                                             <DataTemplate>
-                                                <Grid>
-                                                        <Image Source="{StaticResource isReady}"
+                                                <Grid x:Name="grid2"
+                                                      Cursor="Hand">
+                                                        <Image 
                                                                Width="38"
                                                                Height="38">
                                                             
                                                         </Image>
                                                         <Label Content="{Binding SeatPosition}"
-                                                           x:Name="lbl1"
+                                                           x:Name="lbl2"
                                                            Background="Transparent"
                                                            Foreground="#FFFFFF"
                                                            FontWeight="Bold"
@@ -352,14 +354,25 @@
                                                            HorizontalContentAlignment="Center">
 
                                                         </Label>
-                                                    </Grid>
+                                                    <i:Interaction.Triggers>
+                                                        <i:EventTrigger EventName="MouseLeftButtonUp">
+                                                            <i:InvokeCommandAction Command="{Binding ElementName=SeatListBox2, Path=DataContext.SelectedSeatCM}"
+                                                                       CommandParameter="{Binding ElementName=grid2}" />
+
+                                                        </i:EventTrigger>
+                                                        <i:EventTrigger EventName="Loaded">
+                                                            <i:InvokeCommandAction Command="{Binding ElementName=SeatListBox2, Path=DataContext.LoadStatusSeatCM}"
+                                                                       CommandParameter="{Binding ElementName=grid2}" />
+                                                        </i:EventTrigger>
+                                                    </i:Interaction.Triggers>
+                                                </Grid>
                                             </DataTemplate>
                                         </ListBox.ItemTemplate>
                                         
                                     </ListBox>
 
                                 </Grid>
-                                <Grid Grid.Row="2" Margin="100,0">
+                                <Grid Grid.Row="2" Margin="80,0">
                                     <StackPanel Orientation="Horizontal">
                                         <StackPanel Orientation="Horizontal">
                                             <Image 
@@ -378,7 +391,7 @@
                                            Foreground="#000000"
                                            FontFamily="{DynamicResource MaterialDesignFont}"/>
                                             <Label
-                                          
+                                           Content="{Binding currChoose}"
                                            HorizontalAlignment="Left"
                                            VerticalAlignment="Center"
                                            FontSize="18"
@@ -395,7 +408,7 @@
                                             VerticalAlignment="Center"/>
                                             <Label
                                            Margin="20,0,0,0"
-                                           Content="Đã chọn: "
+                                           Content="Đã đặt: "
                                            HorizontalAlignment="Left"
                                            VerticalAlignment="Center"
                                            FontSize="18"
@@ -403,7 +416,7 @@
                                            Foreground="#000000"
                                            FontFamily="{DynamicResource MaterialDesignFont}"/>
                                             <Label
-                                          
+                                          Content="{Binding isBooked}"
                                            HorizontalAlignment="Left"
                                            VerticalAlignment="Center"
                                            FontSize="18"
@@ -428,7 +441,7 @@
                                            Foreground="#000000"
                                            FontFamily="{DynamicResource MaterialDesignFont}"/>
                                             <Label
-                                          
+                                           Content="{Binding isReady}"
                                            HorizontalAlignment="Left"
                                            VerticalAlignment="Center"
                                            FontSize="18"
@@ -501,12 +514,15 @@
                                            FontWeight="Medium"
                                            Foreground="#000000"
                                            FontFamily="{DynamicResource MaterialDesignFont}"/>
-                                        <Label
-                                           Content="{Binding TotalSeat,UpdateSourceTrigger=PropertyChanged}"
+                                        <TextBlock
+                                           Text="{Binding TotalSeat,UpdateSourceTrigger=PropertyChanged}"
                                            HorizontalAlignment="Right"
+                                           FlowDirection="RightToLeft"
                                            FontSize="18"
                                            FontWeight="Medium"
                                            Foreground="#000000"
+                                           TextWrapping="WrapWithOverflow"
+                                           Width="180"
                                            FontFamily="{DynamicResource MaterialDesignFont}"/>
                                     </Grid>
 
