@@ -2,7 +2,10 @@
 using CinemaManagementProject.Model;
 using CinemaManagementProject.Model.Service;
 using CinemaManagementProject.Utilities;
+using CinemaManagementProject.View.Staff;
 using CinemaManagementProject.View.Staff.OrderFoodManagement;
+using CinemaManagementProject.View.Staff.TicketBill;
+using CinemaManagementProject.View.Staff.TicketWindow;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -43,7 +46,8 @@ namespace CinemaManagementProject.ViewModel.StaffVM.OrderFoodManagementVM
                 OnPropertyChanged();
             }
         }
-        //
+
+        public static ObservableCollection<ProductDTO> ListOrder;
         //_storeAllFood = tất cả đồ ăn trong kho
         //
         private static ObservableCollection<ProductDTO> _storeAllFood;
@@ -129,10 +133,12 @@ namespace CinemaManagementProject.ViewModel.StaffVM.OrderFoodManagementVM
         public ICommand SelectedProductToBillCM { get; set; } // Chuyển đồ ăn to bill
         public ICommand DecreaseQuantityOrderItem { get; set; } // giảm số lượng 1 item order
         public ICommand IncreaseQuantityOrderItem { get; set; } // Tăng số lượng 1 item order
-        //
-        //
-        //
 
+        public ICommand BuyCommand { get; set; }
+        //
+        //
+        //
+        public static bool checkOnlyFoodOfPage = false;
         public OrderFoodManagementVM()
         {
             TotalPrice = 0;
@@ -310,6 +316,37 @@ namespace CinemaManagementProject.ViewModel.StaffVM.OrderFoodManagementVM
                         }
                     }
                     
+                }
+            });
+            BuyCommand = new RelayCommand<object>((p) => { return true; }, (p) =>
+            {
+                if (checkOnlyFoodOfPage)
+                {
+                    if (OrderList.Count == 0)
+                    {
+                        CustomMessageBox.ShowOk("Danh sách thanh toán rỗng", "Lỗi", "OK", Views.CustomMessageBoxImage.Error);
+                    }
+                    else
+                    {
+                        ListOrder = new ObservableCollection<ProductDTO>(OrderList);
+                        StaffWindow ms = Application.Current.Windows.OfType<StaffWindow>().FirstOrDefault();
+                        ms.Content.Content = new TicketBill_Food_Page();
+                    }
+                }
+                else
+                {
+                    if (OrderList.Count == 0)
+                    {
+                        ListOrder = new ObservableCollection<ProductDTO>(OrderList);
+                        TicketWindow tk = Application.Current.Windows.OfType<TicketWindow>().FirstOrDefault();
+                        tk.TicketBookingFrame.Content = new TicketBill_Phim_Page();
+                    }
+                    else if (OrderList.Count > 0)
+                    {
+                        ListOrder = new ObservableCollection<ProductDTO>(OrderList);
+                        TicketWindow tk = Application.Current.Windows.OfType<TicketWindow>().FirstOrDefault();
+                        tk.TicketBookingFrame.Content = new TicketBillPage();
+                    }
                 }
             });
         }

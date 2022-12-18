@@ -16,10 +16,11 @@ namespace CinemaManagementProject.DTOs
         public int CustomerId { get; set; }
         public string CustomerName { get; set; }
 
-        // 
-        public double MenhGia { get; set; }
+        public string VoucherInfoStr;
+        public VoucherReleaseDTO VoucherInfo;
+        public double Price  { get; set; }
         public bool EnableMerge { get; set; }
-        public int TypeObject { get; set; }
+        public string TypeObject { get; set; }
         public DateTime UsedAt { get; set; }
         public DateTime ReleaseAt { get; set;}
 

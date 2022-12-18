@@ -5,9 +5,10 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:CinemaManagementProject.View.Staff.TicketBill"
       mc:Ignorable="d" 
-      xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+      xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
       d:DesignHeight="760" d:DesignWidth="1140"
+      DataContext="{StaticResource BillTicketVM}"
       Title="TicketBillPage">
 
     <Grid Background="#BCD8F1">
@@ -382,16 +383,16 @@
                                     </Style>
                                 </Grid.Style>
                             </Grid>
-                            <!--PreviewMouseWheel="ScrollViewer_PreviewMouseWheel"-->
+                    
                             <Grid VerticalAlignment="Stretch"  Margin="10 240 10 60">
-                                <ScrollViewer VerticalScrollBarVisibility="Auto">
+                                <ScrollViewer VerticalScrollBarVisibility="Auto"
+                                              PreviewMouseWheel="ScrollViewer_PreviewMouseWheel">
                                     <ListBox ItemsSource="{Binding ListVoucher}"
                                              x:Name="listBox"
                                              SelectedItem="{Binding SelectedItem}"> 
                                         <ListBox.ItemTemplate>
                                             <DataTemplate>
                                                 <Grid Width="330">
-                                                    
                                                     <Grid.ColumnDefinitions>
                                                         <ColumnDefinition Width="250" />
                                                         <ColumnDefinition />
@@ -404,7 +405,7 @@
                                                         </Grid.RowDefinitions>
 
                                                         <TextBlock Grid.Row="0"
-                                                                   Text="{Binding Code}"
+                                                                   Text="{Binding VoucherCode}"
                                                                    FontSize="18"
                                                                    FontWeight="DemiBold" /> 
                                                         <TextBlock Grid.Row="1"
@@ -434,14 +435,13 @@
                                                                 <Style TargetType="Border">
                                                                     <Style.Triggers>
                                                                         <Trigger Property="IsMouseOver"
-                                                                                 Value="True">
+                                                                         Value="True">
                                                                             <Setter Property="Background"
-                                                                                    Value="#ff6255" />
+                                                                            Value="#ff6255" />
                                                                         </Trigger>
                                                                     </Style.Triggers>
                                                                 </Style>
                                                             </Border.Style>
-                                                            
                                                             <i:Interaction.Triggers>
                                                                 <i:EventTrigger EventName="MouseLeftButtonUp">
                                                                     <i:InvokeCommandAction Command="{Binding ElementName=listBox, Path=DataContext.DeleteVoucherCM}" />

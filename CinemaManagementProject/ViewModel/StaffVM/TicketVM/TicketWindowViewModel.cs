@@ -5,8 +5,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Imaging;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media.Imaging;
@@ -77,13 +79,13 @@ namespace CinemaManagementProject.ViewModel.StaffVM.TicketVM
                     if (WaitingList.Count + 1 > 7)
                     {
                         CustomMessageBox.ShowOk("Bạn chỉ được đặt tối đa 7 ghế!", "Lỗi", "Ok", Views.CustomMessageBoxImage.Error);
-
+           
                         return;
-                    }
+        }
                     img.Source = new BitmapImage(new Uri("pack://application:,,,/CinemaManagementProject;component/Resource/Images/currChoose.png"));
                     WaitingSeatList(lb);
                     currChoose = WaitingList.Count;
-                }
+    }
 
 
             });
