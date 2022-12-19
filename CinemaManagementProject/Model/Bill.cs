@@ -27,6 +27,7 @@ namespace CinemaManagementProject.Model
         public Nullable<System.DateTime> CreateDate { get; set; }
         public Nullable<float> DiscountPrice { get; set; }
         public Nullable<float> TotalPrize { get; set; }
+        public string BillCode { get; set; }
     
         public virtual Customer Customer { get; set; }
         public virtual Staff Staff { get; set; }

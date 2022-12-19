@@ -3,6 +3,7 @@ using CinemaManagementProject.Model.Service;
 using CinemaManagementProject.Utils;
 using CinemaManagementProject.View.Admin.FoodManagement;
 using CinemaManagementProject.View.Staff;
+using CinemaManagementProject.View.Staff.MovieScheduleWindow;
 using CinemaManagementProject.View.Staff.OrderFoodManagement;
 using CinemaManagementProject.View.Staff.TicketWindow;
 using CinemaManagementProject.ViewModel.StaffVM.TicketVM;
@@ -245,6 +246,8 @@ namespace CinemaManagementProject.ViewModel.StaffVM.TicketBillVM
         public ICommand AddVoucherCM { get; set; }
         public ICommand DeleteVoucherCM { get; set; }
         public ICommand PayFoodCM { get; set; }
+        public ICommand PayFullCM { get; set; }
+        public ICommand PayMovieCM { get; set; }
 
         private static List<SeatSettingDTO> _ListSeat;
         public static List<SeatSettingDTO> ListSeat
@@ -298,7 +301,10 @@ namespace CinemaManagementProject.ViewModel.StaffVM.TicketBillVM
             IsBacking = false;
             customerDTO = new CustomerDTO();
             ListVoucher = new ObservableCollection<VoucherDTO>();
-
+            //
+            //
+            Staff = StaffVM.currentStaff;
+            //
             float TotalFullMoviePrice = 0;
             // Food
             ListFood = new ObservableCollection<ProductDTO>();
@@ -845,13 +851,127 @@ namespace CinemaManagementProject.ViewModel.StaffVM.TicketBillVM
                 }
                 catch (Exception e)
                 {
-                    CustomMessageBox.ShowOk("Lỗi hệ thống", "Lỗi", "OK", Views.CustomMessageBoxImage.Error);
+                    CustomMessageBox.ShowOk(e.Message, "Lỗi", "OK", Views.CustomMessageBoxImage.Error);
                 }
             });
+            PayFullCM = new RelayCommand<object>((p) => { return true; },
+                async (p) =>
+                {
+                    try
+                    {
+                        IsSaving = true;
+                        List<ProductBillInfoDTO> productBills = new List<ProductBillInfoDTO>();
+                        for (int i = 0; i < ListFood.Count; i++)
+                        {
+                            ProductBillInfoDTO temp = new ProductBillInfoDTO();
+                            temp.ProductId = ListFood[i].Id;
+                            temp.Quantity = ListFood[i].Quantity;
+                            temp.ProductName = ListFood[i].ProductName;
+                            temp.PrizePerProduct = ListFood[i].Price;
+                            productBills.Add(temp);
+                        }
+                        List<TicketDTO> tickets = new List<TicketDTO>();
+                        for (int i = 0; i < ListSeat.Count; i++)
+                        {
+                            TicketDTO temp = new TicketDTO();
+                            temp.ShowtimeId = Showtime.Id;
+                            temp.SeatId = (int)ListSeat[i].SeatId;
+                            temp.Price = Showtime.Price;
+                            tickets.Add(temp);
+                        }
+                        BillDTO bill = new BillDTO();
+                        if (!IsWalkinGuest)
+                        {
+                            bill.CustomerId = customerDTO.Id;
+                        }
+                        bill.StaffId = Staff.Id;
+                        bill.TotalPrice = LastPrice;
+                        bill.DiscountPrice = Discount;
+
+                        bill.VoucherIdList = ListVoucher.Select(v => v.Id).ToList();
+                        (bool successBooking, string messageFromBooking) = await BookingService.Ins.CreateFullOptionBooking(bill, tickets, productBills);
+                        if (successBooking)
+                        {
+                            IsSaving = false;
+                            CustomMessageBox.ShowOk(messageFromBooking, "Thông báo", "OK", Views.CustomMessageBoxImage.Success);
+                            TicketWindow ticketWindow = Application.Current.Windows.OfType<TicketWindow>().FirstOrDefault();
+                            MovieScheduleWindow movieScheduleWindow = Application.Current.Windows.OfType<MovieScheduleWindow>().FirstOrDefault();
+                            ticketWindow.Close();
+                            movieScheduleWindow.Close();
+                        }
+                        else
+                        {
+                            IsSaving = false;
+                            CustomMessageBox.ShowOk(messageFromBooking, "Lỗi", "OK", Views.CustomMessageBoxImage.Error);
+                        }
+
+                    }
+                    catch (System.Data.Entity.Core.EntityException e)
+                    {
+                        CustomMessageBox.ShowOk("Mất kết nối cơ sở dữ liệu", "Lỗi", "OK", Views.CustomMessageBoxImage.Error);
+                    }
+                    catch (Exception e)
+                    {
+                        CustomMessageBox.ShowOk(e.Message, "Lỗi", "OK", Views.CustomMessageBoxImage.Error);
+                    }
+                });
+
+            PayMovieCM = new RelayCommand<object>((p) => { return true; },
+                async (p) =>
+                {
+                    try
+                    {
+                        IsSaving = true;
+                        List<TicketDTO> tickets = new List<TicketDTO>();
+                        for (int i = 0; i < ListSeat.Count; i++)
+                        {
+                            TicketDTO temp = new TicketDTO();
+                            temp.ShowtimeId = Showtime.Id;
+                            temp.SeatId = (int)ListSeat[i].SeatId;
+                            temp.Price = Showtime.Price;
+                            tickets.Add(temp);
+                        }
+                        BillDTO bill = new BillDTO();
+                        if (!IsWalkinGuest)
+                        {
+                            bill.CustomerId = customerDTO.Id;
+                        }
+                        bill.StaffId = Staff.Id;
+                        bill.TotalPrice = LastPrice;
+                        bill.DiscountPrice = Discount;
+                        bill.VoucherIdList = ListVoucher.Select(v => v.Id).ToList();
+                        (bool successBooking, string messageFromBooking) = await BookingService.Ins.CreateTicketBooking(bill, tickets);
+                        if (successBooking)
+                        {
+                            IsSaving = false;
+                            CustomMessageBox.ShowOk(messageFromBooking, "Thông báo", "OK", Views.CustomMessageBoxImage.Success);
+                            TicketWindow ticketWindow = Application.Current.Windows.OfType<TicketWindow>().FirstOrDefault();
+                            MovieScheduleWindow movieScheduleWindow = Application.Current.Windows.OfType<MovieScheduleWindow>().FirstOrDefault();
+                            ticketWindow.Close();
+                            movieScheduleWindow.Close();
+                        }
+                        else
+                        {
+                            IsSaving = false;
+                            CustomMessageBox.ShowOk(messageFromBooking, "Lỗi", "OK", Views.CustomMessageBoxImage.Error);
+                        }
+                    }
+                    catch (System.Data.Entity.Core.EntityException e)
+                    {
+                        CustomMessageBox.ShowOk("Mất kết nối cơ sở dữ liệu", "Lỗi", "OK", Views.CustomMessageBoxImage.Error);
+                    }
+                    catch (Exception e)
+                    {
+                        CustomMessageBox.ShowOk("Lỗi hệ thống", "Lỗi", "OK", Views.CustomMessageBoxImage.Error);
+                    }
+
+                });
+
         }
         public async void UpdateAddCustomer()
         {
             CustomerDTO customer = await CustomerService.Ins.FindCustomerInfo(PhoneNumber);
+            
             Name = customer.CustomerName;
             Email = customer.Email;
             ShowPhoneError = false;

@@ -32,5 +32,7 @@ namespace CinemaManagementProject.View.Staff.TicketBill
             scv.ScrollToVerticalOffset(scv.VerticalOffset - e.Delta);
             e.Handled = true;
         }
+
+        
     }
 }

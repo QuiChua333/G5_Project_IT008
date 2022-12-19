@@ -6,6 +6,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace CinemaManagementProject.Model.Service
 {
@@ -61,10 +62,10 @@ namespace CinemaManagementProject.Model.Service
                     }
 
                     //Bill
-                    string billId = await CreateNewBill(context, bill);
+                    string billCode = await CreateNewBill(context, bill);
 
                     //Ticket
-                    AddNewTickets(context, billId, newTicketList);
+                    AddNewTickets(context, billCode, newTicketList);
 
                     await context.SaveChangesAsync();
                 }
@@ -115,13 +116,14 @@ namespace CinemaManagementProject.Model.Service
                     }
 
                     //Bill
-                    string billId = await CreateNewBill(context, bill);
+                    string billCode = await CreateNewBill(context, bill);
 
                     //Ticket
-                    AddNewTickets(context, billId, newTicketList);
+                   
+                    AddNewTickets(context, billCode, newTicketList);
 
                     //Product
-                    bool addSuccess = await AddNewProductBills(context, billId, orderedProductList);
+                    bool addSuccess = await AddNewProductBills(context, billCode, orderedProductList);
                     if (!addSuccess)
                     {
                         return (false, "Số lượng sản phẩm không đủ để đáp ứng!");
@@ -144,7 +146,7 @@ namespace CinemaManagementProject.Model.Service
             catch (Exception e)
             {
                 Console.WriteLine(e);
-                return (false, $"Lỗi hệ thống");
+                return (false, e.Message);
             }
             return (true, "Thực hiện giao dịch thành công");
         }
@@ -214,11 +216,12 @@ namespace CinemaManagementProject.Model.Service
 
         private async Task<string> CreateNewBill(CinemaManagementProjectEntities context, BillDTO bill)
         {
-            int maxId = await context.Bills.MaxAsync(b => b.Id);
-            string billId = CreateNextBillId(maxId.ToString());
+
+            string maxBillCode = await context.Bills.MaxAsync(b => b.BillCode);
+            maxBillCode = CreateNextBillId(maxBillCode);
             Bill newBill = new Bill
             {
-                Id = int.Parse(billId),
+                BillCode = maxBillCode,
                 DiscountPrice = bill.DiscountPrice,
                 TotalPrize = bill.TotalPrice,
                 CustomerId = bill.CustomerId.ToString() == "KH0000" ? 0 : bill.CustomerId,
@@ -234,10 +237,9 @@ namespace CinemaManagementProject.Model.Service
                 var sql = $@"Update [Voucher] SET Status = N'{VOUCHER_STATUS.USED}', CustomerId = '{newBill.CustomerId}' , UsedAt = GETDATE()  WHERE Id IN ({voucherIds})";
                 await context.Database.ExecuteSqlCommandAsync(sql);
             }
-
-            return billId;
+            return maxBillCode;
         }
-        private void AddNewTickets(CinemaManagementProjectEntities context, string billId, List<TicketDTO> newTicketList)
+        private void AddNewTickets(CinemaManagementProjectEntities context, string billCode, List<TicketDTO> newTicketList)
         {
             List<Ticket> ticketList = new List<Ticket>();
 
@@ -245,16 +247,16 @@ namespace CinemaManagementProject.Model.Service
             {
                 ticketList.Add(new Ticket
                 {
-                    BillId = int.Parse(billId),
+                    BillCode = billCode,
                     Price = newTicketList[i].Price,
                     SeatId = newTicketList[i].SeatId,
                     ShowTimeId = newTicketList[i].ShowtimeId,
-                });
+                }); ;
             }
             context.Tickets.AddRange(ticketList);
         }
 
-        private async Task<bool> AddNewProductBills(CinemaManagementProjectEntities context, string billId, List<ProductBillInfoDTO> orderedProductList)
+        private async Task<bool> AddNewProductBills(CinemaManagementProjectEntities context, string billCode, List<ProductBillInfoDTO> orderedProductList)
         {
             List<ProductBillInfo> prodBillList = new List<ProductBillInfo>();
 
@@ -264,7 +266,7 @@ namespace CinemaManagementProject.Model.Service
             {
                 prodBillList.Add(new ProductBillInfo
                 {
-                    BillId = int.Parse(billId),
+                    BillCode = billCode,
                     ProductId = (int)orderedProductList[i].ProductId,
                     PrizePerProduct = (int)orderedProductList[i].PrizePerProduct,
                     Quantity = orderedProductList[i].Quantity

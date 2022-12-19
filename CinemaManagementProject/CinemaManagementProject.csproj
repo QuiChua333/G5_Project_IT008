@@ -275,8 +275,10 @@
     <Compile Include="Resource\Styles\ListboxCustom.xaml.cs" />
     <Compile Include="Until.cs" />
     <Compile Include="Utilities\RelyCommand.cs" />
+    <Compile Include="Utils\Constant.cs" />
     <Compile Include="Utils\EmailFormat.cs" />
     <Compile Include="Utils\CloudinaryService.cs" />
+    <Compile Include="Utils\Helper.cs" />
     <Compile Include="Utils\RegexUtilities.cs" />
     <Compile Include="ViewModel\AdminVM\AdminVM.cs" />
     <Compile Include="ViewModel\AdminVM\CustomerManagementVM\CustomerManagementViewModel.cs" />

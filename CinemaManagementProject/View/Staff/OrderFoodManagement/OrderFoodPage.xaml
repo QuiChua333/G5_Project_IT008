@@ -10,7 +10,7 @@
     mc:Ignorable="d" 
     d:DesignHeight="660" d:DesignWidth="1040"
     Title="OrderFoodPage"
-    DataContext="{StaticResource OrderFoodManagement}"
+    DataContext="{StaticResource OrderFoodManagementVM}"
     Name="mainPage"
 >
     <Page.Triggers>

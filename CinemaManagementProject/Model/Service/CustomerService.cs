@@ -5,6 +5,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace CinemaManagementProject.Model.Service
 {
@@ -64,6 +65,7 @@ namespace CinemaManagementProject.Model.Service
                     if (customer is null)
                     {
                         return null;
+
                     }
                     return new CustomerDTO
                     {
@@ -171,9 +173,10 @@ namespace CinemaManagementProject.Model.Service
                             cus.Email = newCus.Email;
                             cus.FirstDate = DateTime.Now;
                             cus.IsDeleted = false;
+                            await context.SaveChangesAsync();
                         }
 
-                        await context.SaveChangesAsync();
+                        
                     }
 
 
@@ -185,6 +188,7 @@ namespace CinemaManagementProject.Model.Service
                         PhoneNumber = newCus.PhoneNumber,
                         Email = newCus.Email,
                         FirstDate = DateTime.Now,
+                        IsDeleted = false,
                     };
 
                     context.Customers.Add(newCusomer);
@@ -194,7 +198,7 @@ namespace CinemaManagementProject.Model.Service
             }
             catch (Exception e)
             {
-                return (false, "Lỗi hệ thống", null);
+                return (false, e.Message, null);
             }
         }
 

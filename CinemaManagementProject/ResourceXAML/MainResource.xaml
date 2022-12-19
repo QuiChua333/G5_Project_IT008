@@ -12,13 +12,9 @@
                     xmlns:viewmodel10="clr-namespace:CinemaManagementProject.ViewModel.StaffVM" 
                     xmlns:viewmodel11="clr-namespace:CinemaManagementProject.ViewModel.StaffVM.MovieScheduleWindowVM" 
                     xmlns:viewmodel12="clr-namespace:CinemaManagementProject.ViewModel.StaffVM.TicketVM"
-                    xmlns:viewmodel13="clr-namespace:CinemaManagementProject.ViewModel.StaffVM.FilmBookingVM"
+                    xmlns:viewmodel13="clr-namespace:CinemaManagementProject.ViewModel.StaffVM.TicketBillVM"
                     xmlns:viewmodel14="clr-namespace:CinemaManagementProject.ViewModel.AdminVM.TroubleManagementVM"                  
-                    
-
-
-
-                    xmlns:viewmodel15="clr-namespace:CinemaManagementProject.ViewModel.StaffVM.TicketBillVM"
+                    xmlns:viewmodel15="clr-namespace:CinemaManagementProject.ViewModel.StaffVM.FilmBookingVM"          
 >
     <viewmodel1:VoucherViewModel x:Key="VoucherVM" />
     <viewmodel2:CustomerManagementViewModel x:Key="CustomerManagementVM"></viewmodel2:CustomerManagementViewModel>
@@ -35,5 +31,5 @@
     <viewmodel12:TicketWindowViewModel x:Key="TicketWindowVM" />
     <viewmodel14:TroubleManagementViewModel x:Key="TroubleManagementVM"/>
     <viewmodel13:TicketBillVM x:Key="BillTicketVM" />
-        <viewmodel15:FilmBookingVM x:Key="FilmBookingVM"/>
+    <viewmodel15:FilmBookingVM x:Key="FilmBookingVM"/>
 </ResourceDictionary>
