@@ -23,6 +23,7 @@ namespace CinemaManagementProject.DTOs
         public string Genre { get; set; }
         public Nullable<System.DateTime> ReleaseDate { get; set; }
         public string FilmInfo { get; set; }
+        public Nullable<bool> IsDeleted { get; set; }
         public virtual ICollection<ShowtimeDTO> ShowTimes { get; set; }
     }
 }

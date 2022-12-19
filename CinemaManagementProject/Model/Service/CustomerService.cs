@@ -34,7 +34,7 @@ namespace CinemaManagementProject.Model.Service
                 using (var context = new CinemaManagementProjectEntities())
                 {
                     customerlist = (from s in context.Customers
-                                    //where s.IsDeleted == false
+                                    where s.IsDeleted == false
                                     select new CustomerDTO
                                     {
                                         Id = s.Id,
@@ -59,7 +59,7 @@ namespace CinemaManagementProject.Model.Service
             {
                 using (var context = new CinemaManagementProjectEntities())
                 {
-                    var customer = await context.Customers.Where(c => /*!c.IsDeleted && */c.PhoneNumber == phoneNumber).FirstOrDefaultAsync();
+                    var customer = await context.Customers.Where(c => !(bool)c.IsDeleted && c.PhoneNumber == phoneNumber).FirstOrDefaultAsync();
                     if (customer is null)
                     {
                         return null;
