@@ -40,8 +40,8 @@ namespace CinemaManagementProject.ViewModel.StaffVM.TroubleStaffVM
                     Level = Level.Content.ToString(),
                     Description = Description,
                     Image = troubleImage,
-                    //StaffId = MainStaffViewModel.CurrentStaff.Id,
-                    StaffId = 1,
+                    StaffId = StaffVM.currentStaff.Id,
+
                 };
 
                 (bool successAddtrouble, string messageFromAddtrouble, TroubleDTO newtrouble) = await TroubleService.Ins.CreateNewTrouble(trouble);

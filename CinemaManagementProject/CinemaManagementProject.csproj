@@ -194,50 +194,50 @@
     <Compile Include="DTOs\VoucherReleaseDTO.cs" />
     <Compile Include="DTOs\FilmDTO.cs" />
     <Compile Include="Model\Bill.cs">
-      <DependentUpon>CinemaManagementDatabase.tt</DependentUpon>
+      <DependentUpon>CinemaManagmentDatabase.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\CinemaManagementDatabase.Context.cs">
+    <Compile Include="Model\CinemaManagmentDatabase.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>CinemaManagementDatabase.Context.tt</DependentUpon>
+      <DependentUpon>CinemaManagmentDatabase.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\CinemaManagementDatabase.cs">
+    <Compile Include="Model\CinemaManagmentDatabase.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>CinemaManagementDatabase.tt</DependentUpon>
+      <DependentUpon>CinemaManagmentDatabase.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\CinemaManagementDatabase.Designer.cs">
+    <Compile Include="Model\CinemaManagmentDatabase.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>CinemaManagementDatabase.edmx</DependentUpon>
+      <DependentUpon>CinemaManagmentDatabase.edmx</DependentUpon>
     </Compile>
     <Compile Include="Model\Customer.cs">
-      <DependentUpon>CinemaManagementDatabase.tt</DependentUpon>
+      <DependentUpon>CinemaManagmentDatabase.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\DataProvider.cs" />
     <Compile Include="Model\Film.cs">
-      <DependentUpon>CinemaManagementDatabase.tt</DependentUpon>
+      <DependentUpon>CinemaManagmentDatabase.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Product.cs">
-      <DependentUpon>CinemaManagementDatabase.tt</DependentUpon>
+      <DependentUpon>CinemaManagmentDatabase.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\ProductBillInfo.cs">
-      <DependentUpon>CinemaManagementDatabase.tt</DependentUpon>
+      <DependentUpon>CinemaManagmentDatabase.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\ProductReceipt.cs">
-      <DependentUpon>CinemaManagementDatabase.tt</DependentUpon>
+      <DependentUpon>CinemaManagmentDatabase.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\ProductStorage.cs">
-      <DependentUpon>CinemaManagementDatabase.tt</DependentUpon>
+      <DependentUpon>CinemaManagmentDatabase.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Room.cs">
-      <DependentUpon>CinemaManagementDatabase.tt</DependentUpon>
+      <DependentUpon>CinemaManagmentDatabase.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Seat.cs">
-      <DependentUpon>CinemaManagementDatabase.tt</DependentUpon>
+      <DependentUpon>CinemaManagmentDatabase.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\SeatSetting.cs">
-      <DependentUpon>CinemaManagementDatabase.tt</DependentUpon>
+      <DependentUpon>CinemaManagmentDatabase.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Service\BookingService.cs" />
     <Compile Include="Model\Service\ProductReceiptService.cs" />
@@ -252,25 +252,25 @@
     <Compile Include="Model\Service\DataProvider.cs" />
     <Compile Include="Model\Service\FilmService.cs" />
     <Compile Include="Model\ShowTime.cs">
-      <DependentUpon>CinemaManagementDatabase.tt</DependentUpon>
+      <DependentUpon>CinemaManagmentDatabase.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\ShowTimeSetting.cs">
-      <DependentUpon>CinemaManagementDatabase.tt</DependentUpon>
+      <DependentUpon>CinemaManagmentDatabase.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Staff.cs">
-      <DependentUpon>CinemaManagementDatabase.tt</DependentUpon>
+      <DependentUpon>CinemaManagmentDatabase.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Ticket.cs">
-      <DependentUpon>CinemaManagementDatabase.tt</DependentUpon>
+      <DependentUpon>CinemaManagmentDatabase.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Trouble.cs">
-      <DependentUpon>CinemaManagementDatabase.tt</DependentUpon>
+      <DependentUpon>CinemaManagmentDatabase.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Voucher.cs">
-      <DependentUpon>CinemaManagementDatabase.tt</DependentUpon>
+      <DependentUpon>CinemaManagmentDatabase.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\VoucherRelease.cs">
-      <DependentUpon>CinemaManagementDatabase.tt</DependentUpon>
+      <DependentUpon>CinemaManagmentDatabase.tt</DependentUpon>
     </Compile>
     <Compile Include="Resource\Styles\ListboxCustom.xaml.cs" />
     <Compile Include="Until.cs" />
@@ -881,12 +881,12 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="App.Config" />
-    <EntityDeploy Include="Model\CinemaManagementDatabase.edmx">
+    <EntityDeploy Include="Model\CinemaManagmentDatabase.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>CinemaManagementDatabase.Designer.cs</LastGenOutput>
+      <LastGenOutput>CinemaManagmentDatabase.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="Model\CinemaManagementDatabase.edmx.diagram">
-      <DependentUpon>CinemaManagementDatabase.edmx</DependentUpon>
+    <None Include="Model\CinemaManagmentDatabase.edmx.diagram">
+      <DependentUpon>CinemaManagmentDatabase.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -1009,15 +1009,15 @@
     <Resource Include="Resource\Images\Image_Start.png" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Model\CinemaManagementDatabase.Context.tt">
+    <Content Include="Model\CinemaManagmentDatabase.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>CinemaManagementDatabase.edmx</DependentUpon>
-      <LastGenOutput>CinemaManagementDatabase.Context.cs</LastGenOutput>
+      <DependentUpon>CinemaManagmentDatabase.edmx</DependentUpon>
+      <LastGenOutput>CinemaManagmentDatabase.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Model\CinemaManagementDatabase.tt">
+    <Content Include="Model\CinemaManagmentDatabase.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>CinemaManagementDatabase.edmx</DependentUpon>
-      <LastGenOutput>CinemaManagementDatabase.cs</LastGenOutput>
+      <DependentUpon>CinemaManagmentDatabase.edmx</DependentUpon>
+      <LastGenOutput>CinemaManagmentDatabase.cs</LastGenOutput>
     </Content>
     <Content Include="Resource\EmailTemplate\EmailResetPassTemplate.txt" />
     <Content Include="Resource\EmailTemplate\ForgotPassTemplate.txt" />

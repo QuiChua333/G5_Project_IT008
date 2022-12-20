@@ -336,7 +336,7 @@ namespace CinemaManagementProject.ViewModel.StaffVM.TicketBillVM
             if (OrderFoodManagementVM.OrderFoodManagementVM.checkOnlyFoodOfPage == false)
             {
                 FirtShow();
-                }
+                
                
             }
 

@@ -82,5 +82,10 @@ namespace CinemaManagementProject.View.Admin.TroubleManagement
         {
             this.DragMove();
         }
+
+        private void SaveButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

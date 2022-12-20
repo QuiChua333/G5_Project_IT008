@@ -23,6 +23,7 @@ namespace CinemaManagementProject.ViewModel.StaffVM
         }
         public ICommand OrderFoodCommand { get; set; }
         public ICommand FilmBookingCommand { get; set; }
+        public ICommand TroubleCommand { get; set; }
         private void OrderFood(object obj)
         {
             CurrentView = new OrderFoodManagementVM.OrderFoodManagementVM();

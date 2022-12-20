@@ -7,6 +7,7 @@ using System.Linq;
 using System.Runtime.InteropServices.ComTypes;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace CinemaManagementProject.Model.Service
@@ -109,10 +110,9 @@ namespace CinemaManagementProject.Model.Service
             {
                 using (var context = new CinemaManagementProjectEntities())
                 {
-                    var maxId = await context.Troubles.MaxAsync(t => t.Id);
+                    
                     Trouble tr = new Trouble()
                     {
-                        //Id = maxId + 1,
                         RepairCost = 0,
                         TroubleType = newTrouble.TroubleType,
                         Description = newTrouble.Description,
@@ -125,7 +125,6 @@ namespace CinemaManagementProject.Model.Service
                     context.Troubles.Add(tr);
 
                     await context.SaveChangesAsync();
-
                     newTrouble.Id = tr.Id;
                     return (true, null, newTrouble);
                 }
@@ -134,6 +133,7 @@ namespace CinemaManagementProject.Model.Service
             {
                 throw e;
             }
+            
         }
 
 

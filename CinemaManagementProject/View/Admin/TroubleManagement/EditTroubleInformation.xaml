@@ -210,11 +210,8 @@
                                 Background="Red"
                                 HorizontalAlignment="Right" 
                                 Margin="0,0,0,0">Đóng</Button>
-                        <Button x:Name="SaveButton" 
-                            Style="{StaticResource CustomButton}" 
-                            Width="90" Height="36" Background="Red"
-                            HorizontalAlignment="Right" Margin="0,-12,0,0">Đóng</Button>
-                    <Button x:Name="SaveButton" Click="SaveButton_Click"  Style="{StaticResource CustomButton}" 
+                        
+                    <Button x:Name="SaveButton"   Style="{StaticResource CustomButton}" 
                             Width="90" Height="36" 
                             HorizontalAlignment="Right" 
                                 Command="{Binding UpdateTroubleListCM}"
