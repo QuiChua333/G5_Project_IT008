@@ -12,6 +12,11 @@
       DataContext="{StaticResource BillTicketVM}"
       Title="TicketBill_Phim_Page">
 
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding FirstLoadCM}" CommandParameter="{Binding ElementName=FilterCombobox}"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
     <Grid Background="#BCD8F1">
 
         <Grid.RowDefinitions>

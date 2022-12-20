@@ -248,12 +248,12 @@ namespace CinemaManagementProject.ViewModel.StaffVM.TicketBillVM
         public ICommand PayFoodCM { get; set; }
         public ICommand PayFullCM { get; set; }
         public ICommand PayMovieCM { get; set; }
-
-        private static List<SeatSettingDTO> _ListSeat;
-        public static List<SeatSettingDTO> ListSeat
+        public ICommand FirstLoadCM { get; set; }
+        private  List<SeatSettingDTO> _ListSeat;
+        public  List<SeatSettingDTO> ListSeat
         {
             get { return _ListSeat; }
-            set { _ListSeat = value; }
+            set { _ListSeat = value; OnPropertyChanged(); }
         }
 
         private ObservableCollection<Food> _ListFoodDisplay;
@@ -285,6 +285,8 @@ namespace CinemaManagementProject.ViewModel.StaffVM.TicketBillVM
             set { _SelectedItem = value; OnPropertyChanged(); }
         }
 
+        private static bool IsBookMovie = false;
+        private float TotalFullMoviePrice = 0;
         public float LastPrice;
 
         DateTime start, end;
@@ -294,7 +296,9 @@ namespace CinemaManagementProject.ViewModel.StaffVM.TicketBillVM
             start = start.Add(Showtime.StartTime);
             end = start.AddMinutes(Film.DurationFilm);
         }
+       
         // hàm 
+
         public TicketBillVM()
         {
             // Biến khởi tạo
@@ -305,7 +309,6 @@ namespace CinemaManagementProject.ViewModel.StaffVM.TicketBillVM
             //
             Staff = StaffVM.currentStaff;
             //
-            float TotalFullMoviePrice = 0;
             // Food
             ListFood = new ObservableCollection<ProductDTO>();
             ListFood = OrderFoodManagementVM.OrderFoodManagementVM.ListOrder;
@@ -326,28 +329,12 @@ namespace CinemaManagementProject.ViewModel.StaffVM.TicketBillVM
             }
             TotalPriceFood = Helper.FormatVNMoney(TotalFood);
 
-            bool IsBookMovie = false;
+          
 
-            // Film 
+            //Film
             if (OrderFoodManagementVM.OrderFoodManagementVM.checkOnlyFoodOfPage == false)
             {
-                Film = TicketWindowViewModel.tempFilm;
-                Showtime = TicketWindowViewModel.CurrentShowtime;
-                ListSeat = TicketWindowViewModel.WaitingList;
-                MovieName = Film.FilmName;
-                Date = Showtime.ShowDate.ToString("dd/MM/yyyy");
-                CaculateTime();
-                Time = start.ToString("HH:mm") + " - " + end.ToString("HH:mm");
-                Seat = ListSeat[0].SeatPosition;
-                for (int i = 1; i < ListSeat.Count; i++)
-                {
-                    Seat += ", " + ListSeat[i].SeatPosition;
-                }
-                Room = "0" + Showtime.RoomId.ToString();
-                Price = Helper.FormatVNMoney(Showtime.Price);
-                TotalPriceMovie = Helper.FormatVNMoney(Showtime.Price * ListSeat.Count);
-                TotalFullMoviePrice = Showtime.Price * ListSeat.Count;
-                IsBookMovie = true;
+                FirtShow();
             }
 
             //Total price
@@ -483,6 +470,12 @@ namespace CinemaManagementProject.ViewModel.StaffVM.TicketBillVM
             (p) =>
             {
                 ShowSignUp = true;
+
+            });
+            FirstLoadCM = new RelayCommand<object>((p) => { return true; },
+            (p) =>
+            {
+                FirtShow();
 
             });
             SignUpCM = new RelayCommand<object>((p) => { return true; },
@@ -937,7 +930,7 @@ namespace CinemaManagementProject.ViewModel.StaffVM.TicketBillVM
                             bill.CustomerId = customerDTO.Id;
                         }
                         bill.StaffId = Staff.Id;
-                        bill.TotalPrice = LastPrice;
+                        bill.TotalPrice = LastPrice; 
                         bill.DiscountPrice = Discount;
                         bill.VoucherIdList = ListVoucher.Select(v => v.Id).ToList();
                         (bool successBooking, string messageFromBooking) = await BookingService.Ins.CreateTicketBooking(bill, tickets);
@@ -979,6 +972,26 @@ namespace CinemaManagementProject.ViewModel.StaffVM.TicketBillVM
             ShowInfoCustomer = true;
             ShowDoneButton = true;
             customerDTO = customer;
+        }
+        private void FirtShow()
+        {
+            Film = TicketWindowViewModel.tempFilm;
+            Showtime = TicketWindowViewModel.CurrentShowtime;
+            ListSeat = TicketWindowViewModel.WaitingList;
+            MovieName = Film.FilmName;
+            Date = Showtime.ShowDate.ToString("dd/MM/yyyy");
+            CaculateTime();
+            Time = start.ToString("HH:mm") + " - " + end.ToString("HH:mm");
+            Seat = ListSeat[0].SeatPosition;
+            for (int i = 1; i < ListSeat.Count; i++)
+            {
+                Seat += ", " + ListSeat[i].SeatPosition;
+            }
+            Room = "0" + Showtime.RoomId.ToString();
+            Price = Helper.FormatVNMoney(Showtime.Price);
+            TotalPriceMovie = Helper.FormatVNMoney(Showtime.Price * ListSeat.Count);
+            TotalFullMoviePrice = Showtime.Price * ListSeat.Count;
+            IsBookMovie = true;
         }
     }
 }

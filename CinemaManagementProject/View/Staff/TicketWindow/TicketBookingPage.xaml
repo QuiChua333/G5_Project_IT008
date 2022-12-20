@@ -515,7 +515,7 @@
                                            Foreground="#000000"
                                            FontFamily="{DynamicResource MaterialDesignFont}"/>
                                         <TextBlock
-                                           Text="{Binding TotalSeat,UpdateSourceTrigger=PropertyChanged}"
+                                           Text="{Binding TotalSeat, Mode=TwoWay}"
                                            HorizontalAlignment="Right"
                                            FlowDirection="RightToLeft"
                                            FontSize="18"
@@ -535,7 +535,7 @@
                                            Foreground="#000000"
                                            FontFamily="{DynamicResource MaterialDesignFont}"/>
                                         <Label
-                                           Content="{Binding TotalPrice,UpdateSourceTrigger=PropertyChanged}"
+                                           Content="{Binding TotalPrice, Mode=TwoWay}"
                                            HorizontalAlignment="Right"
                                            FontSize="18"
                                            FontWeight="Medium"

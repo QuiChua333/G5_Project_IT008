@@ -219,15 +219,30 @@ namespace CinemaManagementProject.Model.Service
 
             string maxBillCode = await context.Bills.MaxAsync(b => b.BillCode);
             maxBillCode = CreateNextBillId(maxBillCode);
-            Bill newBill = new Bill
+            Bill newBill = null;
+            if (bill.CustomerId != 0)
             {
-                BillCode = maxBillCode,
-                DiscountPrice = bill.DiscountPrice,
-                TotalPrize = bill.TotalPrice,
-                CustomerId = bill.CustomerId.ToString() == "KH0000" ? 0 : bill.CustomerId,
-                CreateDate = DateTime.Now,
-                StaffId = bill.StaffId
-            };
+                newBill = new Bill
+                {
+                    BillCode = maxBillCode,
+                    DiscountPrice = bill.DiscountPrice,
+                    TotalPrize = bill.TotalPrice,
+                    CustomerId= bill.CustomerId,
+                    CreateDate = DateTime.Now,
+                    StaffId = bill.StaffId
+                };
+            }
+            else
+            {
+                newBill = new Bill
+                {
+                    BillCode = maxBillCode,
+                    DiscountPrice = bill.DiscountPrice,
+                    TotalPrize = bill.TotalPrice,
+                    CreateDate = DateTime.Now,
+                    StaffId = bill.StaffId
+                };
+            }
 
             context.Bills.Add(newBill);
 

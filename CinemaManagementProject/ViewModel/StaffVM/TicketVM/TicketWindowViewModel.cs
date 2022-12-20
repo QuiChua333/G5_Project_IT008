@@ -13,6 +13,8 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media.Imaging;
 using CinemaManagementProject.View.Staff.OrderFoodManagement;
+using CinemaManagementProject.DTOs;
+using CinemaManagementProject.ViewModel.StaffVM.TicketBillVM;
 
 namespace CinemaManagementProject.ViewModel.StaffVM.TicketVM
 {
@@ -31,6 +33,8 @@ namespace CinemaManagementProject.ViewModel.StaffVM.TicketVM
                 await GenerateSeat();
                 CaculateTime();
                 Output_ToString();
+                ReCalculate();
+                
                 seatQuantity = ListSeat.Count.ToString();
             });
             CloseTicketWindowCM = new RelayCommand<FrameworkElement>((p) => { return p == null ? false : true; }, (p) =>

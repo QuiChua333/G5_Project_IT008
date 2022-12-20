@@ -156,7 +156,7 @@ namespace CinemaManagementProject.ViewModel.StaffVM.TicketVM
             set { _ListSeat2 = value; OnPropertyChanged(); }
         }
 
-        private static List<SeatSettingDTO> _WaitingList;
+        private  static List<SeatSettingDTO> _WaitingList;
         public static List<SeatSettingDTO> WaitingList
         {
             get { return _WaitingList; }
@@ -210,6 +210,8 @@ namespace CinemaManagementProject.ViewModel.StaffVM.TicketVM
                 if (item.SeatStatus)
                     ListStatusSeat.Add(item);
             }
+            
+            
         }
         public void WaitingSeatList(Label p)
         {
@@ -239,7 +241,6 @@ namespace CinemaManagementProject.ViewModel.StaffVM.TicketVM
             }
 
             TotalPrice = Helper.FormatVNMoney(totalprice);
-
 
             TotalSeat = "";
             for (int i = 0; i < WaitingList.Count; i++)
