@@ -31,7 +31,7 @@ namespace CinemaManagementProject.View.Admin.ShowtimeManagement
             if (String.IsNullOrEmpty(_FilterBox.Text))
                 return true;
             else
-                return ((item as MovieDTO).FilmName.IndexOf(_FilterBox.Text, StringComparison.OrdinalIgnoreCase) >= 0);
+                return ((item as FilmDTO).FilmName.IndexOf(_FilterBox.Text, StringComparison.OrdinalIgnoreCase) >= 0);
         }
         private void FilterBox_TextChanged(object sender, TextChangedEventArgs e)
         {

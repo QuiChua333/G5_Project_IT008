@@ -169,7 +169,7 @@ namespace CinemaManagementProject.ViewModel.StaffVM.TroubleStaffVM
             {
                 RenewWindowData();
                 AddTroubleWindow w1 = new AddTroubleWindow();
-                //w1.StaffName.Text = MainStaffViewModel.CurrentStaff.Name;
+                w1.StaffName.Text = StaffVM.currentStaff.StaffName;
                 w1.ShowDialog();
             });
             SaveTroubleCM = new RelayCommand<AddTroubleWindow>((p) => { return !IsSaving; }, async (p) =>

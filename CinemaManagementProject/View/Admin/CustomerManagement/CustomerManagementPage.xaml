@@ -244,7 +244,7 @@
                                     <GridViewColumn Header="Tên khách hàng" Width="190" >
                                         <GridViewColumn.CellTemplate>
                                             <DataTemplate>
-                                                <TextBlock Text="{Binding Name}" 
+                                                <TextBlock Text="{Binding CustomerName}" 
                                                            Margin="20 0 0 -8"
                                                            FontSize="14" 
                                                            FontFamily="{StaticResource MaterialDesignFont}"/>

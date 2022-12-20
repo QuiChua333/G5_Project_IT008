@@ -144,7 +144,7 @@
                             <ComboBoxItem Content="Đang giải quyết" />
                             <ComboBoxItem Content="Đã giải quyết" />
                             <ComboBoxItem Content="Đã hủy" />
-                        </ComboBox>
+                </ComboBox>
 
 
                     </StackPanel>
@@ -211,17 +211,17 @@
                                 HorizontalAlignment="Right" 
                                 Margin="0,0,0,0">Đóng</Button>
                         <Button x:Name="SaveButton" 
-                                Style="{StaticResource CustomButton}" 
-                                Width="90" Height="36" 
-                                HorizontalAlignment="Right"
+                            Style="{StaticResource CustomButton}" 
+                            Width="90" Height="36" 
+                            HorizontalAlignment="Right" 
                                 Command="{Binding UpdateTroubleListCM}"
                                 CommandParameter="{Binding ElementName=window}"
                                 Margin="10,0,0,0">Lưu</Button>
                     </StackPanel>
-
+                            
                 </StackPanel>
             </Grid>
 
+            </Grid>
         </Grid>
-    </Grid>
 </Window>

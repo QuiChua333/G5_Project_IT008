@@ -2,32 +2,35 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:vm="clr-namespace:CinemaManagementProject.ViewModel.AdminVM"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:CinemaManagementProject.View.Admin" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" xmlns:vm="clr-namespace:CinemaManagementProject.ViewModel.AdminVM"
+        xmlns:local="clr-namespace:CinemaManagementProject.View.Admin"
         mc:Ignorable="d"
-           WindowStyle="None"
-    Height="760" Width="1400"
-    WindowStartupLocation="CenterScreen"
-    AllowsTransparency="True"
-    Background="Transparent"
+        WindowStyle="None"
+        Height="760" Width="1400"
+        WindowStartupLocation="CenterScreen"
+        AllowsTransparency="True"
+        Background="Transparent"
+        ShowActivated="False"
+        
 >
     <Window.DataContext>
         <vm:AdminVM></vm:AdminVM>
     </Window.DataContext>
+    
     <Grid Height="760" Width="1400">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="5*"/>
         </Grid.ColumnDefinitions>
-        <Grid Grid.Column="1">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="60"/>
-                <RowDefinition/>
-            </Grid.RowDefinitions>
-        </Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
 
         <!--Overlay-->
-        <Rectangle Fill="{StaticResource LightBlueSpindle}" Grid.Column="0" Grid.ColumnSpan="2" RadiusX="20" RadiusY="20">
+        <Rectangle Fill="{StaticResource LightBlueSpindle}" Grid.ColumnSpan="2" Grid.RowSpan="2" RadiusX="20" RadiusY="20">
             <Rectangle.Effect>
                 <DropShadowEffect
                     Color="Black"
@@ -39,10 +42,10 @@
         </Rectangle>
 
         <!--Content-->
-        <Frame x:Name="Content" Grid.Column="1" Grid.Row="1" Content="{Binding CurrentView}"></Frame>
+        <Frame NavigationUIVisibility="Hidden" x:Name="Content" Grid.Column="1" Grid.Row="1" Content="{Binding CurrentView}"></Frame>
 
         <!--SideBar-->
-        <Border Grid.Column="0" CornerRadius="10,0,0,10" Background="#0F2851">
+        <Border Grid.Column="0" Grid.RowSpan="2" CornerRadius="10,0,0,10" Background="#0F2851">
             <StackPanel>
                 <StackPanel Orientation="Horizontal" Height="100" >
                     <Border Height="50" Width="50" CornerRadius="100" Background="White"
@@ -60,12 +63,11 @@
                 <!--Phân tích-->
                 <TextBlock Foreground="White" Margin="10,20,0,5" FontSize="11">Phân tích</TextBlock>
                 <RadioButton    
-                x:Name="TongQuanButton"
-                Style="{StaticResource menuButton}"
-                Tag="white"
-                IsChecked="True"
-               
-            >
+                    x:Name="TongQuanButton"
+                    Style="{StaticResource menuButton}"
+                    Tag="white"
+                    IsChecked="True" 
+                >
                     <!--Command="{Binding FoodCommand}"-->
                     <StackPanel Orientation="Horizontal">
                         <materialDesign:PackIcon Kind="ChartBar" Height="20" Width="20" Margin="30,0,10,0" ></materialDesign:PackIcon>
@@ -88,7 +90,7 @@
                 x:Name="QuanLiPhimButton"
                 Style="{StaticResource menuButton}"
                 Tag="white"
-                Command="{Binding ShowHomeViewCommand}" 
+                Command="{Binding FilmViewCommand}" 
             >
                     <StackPanel Orientation="Horizontal">
                         <materialDesign:PackIcon Kind="PlaylistStar" Height="20" Width="20" Margin="30,0,10,0" ></materialDesign:PackIcon>
@@ -99,7 +101,7 @@
                 x:Name="QuanLiSuatChieuButton"
                 Style="{StaticResource menuButton}"
                 Tag="white"
-                Command="{Binding ShowHomeViewCommand}"
+                Command="{Binding ShowTimeViewCommand}"
             >
                     <StackPanel Orientation="Horizontal">
                         <materialDesign:PackIcon Kind="FilmCogOutline" Height="20" Width="20" Margin="30,0,10,0" ></materialDesign:PackIcon>
@@ -121,7 +123,7 @@
                     x:Name="QuanLiNhanSuButton"
                     Style="{StaticResource menuButton}"
                     Tag="white"
-                    Command="{Binding ShowHomeViewCommand}"
+                    Command="{Binding StaffViewCommand}"
                 >
                     <StackPanel Orientation="Horizontal">
                         <materialDesign:PackIcon Kind="Account" Height="20" Width="20" Margin="30,0,10,0" ></materialDesign:PackIcon>
@@ -132,7 +134,7 @@
                 x:Name="QuanLiKhachHangButton"
                 Style="{StaticResource menuButton}"
                 Tag="white"
-                Command="{Binding ShowHomeViewCommand}"
+                Command="{Binding CustomerViewCommand}"
             >
                     <StackPanel Orientation="Horizontal">
                         <materialDesign:PackIcon Kind="CustomerService" Height="20" Width="20" Margin="30,0,10,0" ></materialDesign:PackIcon>
@@ -143,7 +145,7 @@
                 x:Name="LichSuButton"
                 Style="{StaticResource menuButton}"
                 Tag="white"
-                Command="{Binding ShowHomeViewCommand}"    
+                Command="{Binding HistoryViewCommand}"    
             >
                     <StackPanel Orientation="Horizontal">
                         <materialDesign:PackIcon Kind="ClockCheck" Height="20" Width="20" Margin="30,0,10,0" ></materialDesign:PackIcon>
@@ -154,7 +156,7 @@
                 x:Name="VouchersButton"
                 Style="{StaticResource menuButton}"
                 Tag="white"
-                Command="{Binding ShowHomeViewCommand}"
+                Command="{Binding VoucherCommand}"
             >
                     <StackPanel Orientation="Horizontal">
                         <materialDesign:PackIcon Kind="Discount" Height="20" Width="20" Margin="30,0,10,0" ></materialDesign:PackIcon>
@@ -175,31 +177,33 @@
                 <!--Tiện ích-->
                 <TextBlock Foreground="White" Margin="10,15,0,5">Tiện ích</TextBlock>
                 <RadioButton    
-                x:Name="CaiDatButton"
-                Style="{StaticResource menuButton}"
-                                    Tag="white"
-                                    Command="{Binding ShowHomeViewCommand}">
+                    x:Name="CaiDatButton"
+                    Style="{StaticResource menuButton}"
+                    Tag="white"
+                    Command="{Binding ShowHomeViewCommand}"
+                >
                     <StackPanel Orientation="Horizontal">
                         <materialDesign:PackIcon Kind="SettingsApplications" Height="20" Width="20" Margin="30,0,10,0" ></materialDesign:PackIcon>
                         <TextBlock Text="Cài đặt" Style="{StaticResource menuButtonText}" Margin="0,3,0,0" FontSize="14"/>
                     </StackPanel>
                 </RadioButton>
                 <RadioButton    
-                x:Name="GiupDoButton"
-                Style="{StaticResource menuButton}"
-                Tag="white"
-                 Command="{Binding ShowHomeViewCommand}"
-            >
+                    x:Name="GiupDoButton"
+                    Style="{StaticResource menuButton}"
+                    Tag="white"
+                    Command="{Binding ShowHomeViewCommand}"
+                >
                     <StackPanel Orientation="Horizontal">
                         <materialDesign:PackIcon Kind="Phone" Height="20" Width="20" Margin="30,0,10,0" ></materialDesign:PackIcon>
                         <TextBlock Text="Giúp đỡ" Style="{StaticResource menuButtonText}" Margin="0,3,0,0" FontSize="14"/>
                     </StackPanel>
                 </RadioButton>
                 <RadioButton
-                x:Name="DangXuatButton"
-                Style="{StaticResource menuButton}"
-                            Tag="white"
-                            Command="{Binding ShowHomeViewCommand}">
+                    x:Name="DangXuatButton"
+                    Style="{StaticResource menuButton}"
+                    Tag="white"
+                    Command="{Binding ShowHomeViewCommand}"
+                >
                     <StackPanel Orientation="Horizontal">
                         <materialDesign:PackIcon Kind="Logout" Height="20" Width="20" Margin="30,0,10,0" ></materialDesign:PackIcon>
                         <TextBlock Text="Đăng xuất" Style="{StaticResource menuButtonText}" Margin="0,3,0,0" FontSize="14"/>

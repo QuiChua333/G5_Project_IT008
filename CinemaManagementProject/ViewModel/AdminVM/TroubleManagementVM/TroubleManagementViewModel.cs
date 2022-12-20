@@ -23,9 +23,9 @@ namespace CinemaManagementProject.ViewModel.AdminVM.TroubleManagementVM
         }
 
         private ComboBoxItem _selectedCbbItem;
-        public ComboBoxItem SelectedCbbItem
-        {
-            get { return _selectedCbbItem; }
+        public ComboBoxItem SelectedCbbItem 
+        { 
+            get { return _selectedCbbItem; } 
             set { _selectedCbbItem = value; OnPropertyChanged(); }
         }
         private ObservableCollection<TroubleDTO> _troubleList;
@@ -37,7 +37,7 @@ namespace CinemaManagementProject.ViewModel.AdminVM.TroubleManagementVM
         private TroubleDTO _selectedItem;
         public TroubleDTO SelectedItem
         {
-            get { return _selectedItem; }
+            get { return _selectedItem; }   
             set { _selectedItem = value; OnPropertyChanged(); }
         }
         private ComboBoxItem _selectedStatus;
@@ -88,7 +88,7 @@ namespace CinemaManagementProject.ViewModel.AdminVM.TroubleManagementVM
             {
                 TroubleList = new ObservableCollection<TroubleDTO>();
                 IsGettingSource = true;
-
+                
                 await ReloadErrorList();
 
                 IsGettingSource = false;
@@ -96,7 +96,7 @@ namespace CinemaManagementProject.ViewModel.AdminVM.TroubleManagementVM
             UpdateTroubleListCM = new RelayCommand<Window>((p) =>{ if (IsSaving) return false; return true;
         }, async(p) =>
             {
-                
+               
                 if (SelectedStatus is null)
                 {
                     CustomMessageBox.ShowOk("Không hợp lệ!", "Cảnh báo", "OK", Views.CustomMessageBoxImage.Warning);

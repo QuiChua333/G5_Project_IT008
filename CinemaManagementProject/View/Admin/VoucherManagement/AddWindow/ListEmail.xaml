@@ -1,0 +1,175 @@
+﻿<Window x:Class="CinemaManagementProject.View.Admin.VoucherManagement.AddWindow.ListEmail"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"              
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CinemaManagementProject.View.Admin.VoucherManagement.AddWindow"
+        mc:Ignorable="d"
+        xmlns:i="http://schemas.microsoft.com/xaml/behaviors" 
+        Title="ListEmail" Height="270" Width="480" WindowStyle="None"
+        Background="Transparent"
+        WindowStartupLocation="CenterScreen"
+        AllowsTransparency="True" 
+        DataContext="{StaticResource VoucherVM}">
+    <Border CornerRadius="15" Background="#F5F5F5" BorderBrush="Gray" BorderThickness="0.3">
+        <Border.Effect>
+            <DropShadowEffect BlurRadius="10" Direction="270" Color="Black" ShadowDepth="4" Opacity="0.25"/>
+        </Border.Effect>
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="25"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="40"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <Button 
+                    Background="Transparent"
+                    Width="40"
+                    Height="auto"
+                    Padding="0"
+                    BorderThickness="0"
+                    HorizontalAlignment="Right"
+                    Margin="0,2,0,0" Click="Button_Click"
+                    >
+                    <materialDesign:PackIcon Kind="Close" 
+                                     Height="25"
+                                     Width="25"
+                                     VerticalAlignment="Center"
+                                     Foreground="#000000" 
+                                     HorizontalAlignment="Right"
+                                     Margin="5,0"/>
+                </Button>
+            </Grid>
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="20*"/>
+                    <ColumnDefinition Width="60*"/>
+                    <ColumnDefinition Width="20*"/>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="1">
+                    <Border  BorderBrush="#67C6E6" BorderThickness="0,0,0,3">
+                    </Border>
+                    <Label Padding="0" 
+                           Content="DANH SÁCH EMAIL" 
+                           FontSize="16" 
+                           FontWeight="Bold" 
+                           VerticalAlignment="Center" 
+                           HorizontalAlignment="Center" 
+                           Foreground="#8DC1F0" 
+                           FontFamily="{DynamicResource MaterialDesignFont}">
+                        <Label.Effect>
+                            <DropShadowEffect BlurRadius="1" Direction="-45" Color="#000000" ShadowDepth="1.5" Opacity="0.5"/>
+                        </Label.Effect>
+                    </Label>
+                </Grid>
+            </Grid>
+            <Grid Grid.Row="2">
+
+                <ListBox ItemsSource="{Binding ListCustomerEmail}"
+                            Margin="0,10,0,0"
+                             x:Name="listbox"
+                             SelectedIndex="{Binding SelectedWaitingVoucher}">
+                    <ListBox.ItemContainerStyle>
+                        <Style TargetType="ListBoxItem"
+                                   BasedOn="{StaticResource MaterialDesignListBoxItem}">
+                            <Setter Property="materialDesign:ListBoxItemAssist.ShowSelection"
+                                        Value="False" />
+                        </Style>
+                    </ListBox.ItemContainerStyle>
+
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <Grid Width="300" Margin="85,-5,0,-15">
+                                <Label Content="Email:" 
+                                   FontWeight="Bold" 
+                                   FontFamily="{DynamicResource MaterialDesignFont}" 
+                                   VerticalAlignment="Center" 
+                                   FontSize="14" />
+                                <TextBox Width="220" 
+                                         Margin="90,10,0,10"
+                                         Padding="10,0,20,0"
+                                         BorderBrush="#67C6E6" 
+                                         Foreground="{StaticResource Gray1}"
+                                         FontSize="14" 
+                                         FontFamily="{DynamicResource MaterialDesignFont}" 
+                                         Text="{Binding Email,Mode=TwoWay}" />
+                                <Label   
+                                     VerticalAlignment="Center"
+                                     HorizontalAlignment="Right"
+                                     Margin="0,0,0,5">
+                                    <materialDesign:PackIcon Kind="Close" 
+                                         Height="20"
+                                         Width="20"
+                                         Foreground="{StaticResource Gray1}"
+                                        VerticalAlignment="Center"
+                                         HorizontalAlignment="Right"
+                                        />
+                                    <i:Interaction.Triggers>
+                                        <i:EventTrigger EventName="MouseLeftButtonUp">
+                                            <i:InvokeCommandAction Command="{Binding ElementName=listbox, Path=DataContext.LessEmailCM}" />
+                                        </i:EventTrigger>
+                                    </i:Interaction.Triggers>
+
+
+                                </Label>
+                            </Grid>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                   
+
+
+                </ListBox>
+
+
+
+            </Grid>
+            <Grid Grid.Row="3">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="150"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="80"/>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="0">
+                    <Button HorizontalAlignment="Left"
+                        Style="{StaticResource CustomButton}"
+                        HorizontalContentAlignment="Stretch"
+                        FontSize="12"
+                        Background="#67C6E6"
+                        Margin="20,0,0,0"
+                        Width="110"
+                        Command="{Binding MoreEmailCM}"
+                            x:Name="addnewemail">
+                        <Grid>
+                            <Label Content="Thêm mới"
+                                   FontSize="12"
+                                   FontWeight="Medium"
+                                   Foreground="WhiteSmoke"
+                                   HorizontalAlignment="Left"
+                                   VerticalAlignment="Center"
+                                   Margin="-2,-1,0,0">
+
+                            </Label>
+                            <materialDesign:PackIcon Kind="PlusCircleOutline"
+                                                     VerticalAlignment="Center"
+                                                     Margin="60,2,0,0"/>
+                        </Grid>
+                    </Button>
+                </Grid>
+                <Grid Grid.Column="2">
+                    <Button HorizontalAlignment="Right"
+                        VerticalAlignment="Center"
+                        Style="{StaticResource CustomButton}"
+                        Content="Lưu"
+                        FontSize="12"
+                        Background="{StaticResource ColorButtonBlue}"
+                        Margin="0,0,10,0"
+                        Width="70" Click="Button_Click_1" >
+                    </Button>
+                </Grid>
+            </Grid>
+        </Grid>
+    </Border>
+</Window>

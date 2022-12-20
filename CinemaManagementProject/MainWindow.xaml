@@ -4,9 +4,26 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CinemaManagementProject"
+        xmlns:Search="clr-namespace:CinemaManagementProject.Component.Search"      
+        xmlns:Component="clr-namespace:CinemaManagementProject.Component"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:FilterCombobox="clr-namespace:CinemaManagementProject.Component.FilterCombobox"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
+        WindowStyle="None"
+        Title="MainWindow"
+        Width="1400" Height="760"
+        WindowStartupLocation="CenterScreen"
+        AllowsTransparency="True">
+    
+    <Grid Background="#BCD8F1">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="121*"/>
+            <ColumnDefinition Width="529*"/>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Column="0">
+            <Component:sidebarAdmin HorizontalAlignment="Left" VerticalAlignment="Center" Height="760"/>
+        </Grid>
+        <Frame Grid.Column="1" Source="./View/Admin/MovieManagement/MovieManagementPage.xaml"></Frame>
     </Grid>
+    
 </Window>

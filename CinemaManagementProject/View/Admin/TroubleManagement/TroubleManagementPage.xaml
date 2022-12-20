@@ -69,7 +69,7 @@
                 <ColumnDefinition Width="170"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-
+          
             <Border CornerRadius="14"
                     Grid.Column="1" 
                     Grid.Row="0" 
@@ -94,6 +94,7 @@
                             SelectedIndex="0"  
                             Padding="10"
                             x:Name="filtercbb"
+                            
                             SelectedItem="{Binding SelectedCbbItem,Mode=OneWayToSource}">
                     <i:Interaction.Triggers>
                         <i:EventTrigger EventName="SelectionChanged">

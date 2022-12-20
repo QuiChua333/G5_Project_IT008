@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="TroubleInformation" WindowStyle="None"
         Background="Transparent"
-        DataContext="{StaticResource TroubleStaffVM}"
+        DataContext="{StaticResource TroublePageVM}"
         FontFamily="{StaticResource MaterialDesignFont}"
         FontSize="15"
         MouseDown="Window_MouseDown"

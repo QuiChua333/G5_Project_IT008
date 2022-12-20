@@ -12,13 +12,12 @@
         Background="Transparent"
         FontFamily="{DynamicResource MaterialDesignFont}"
         Height="650"
-        DataContext="{StaticResource TroubleStaffVM}"        
+        DataContext="{StaticResource TroublePageVM}"        
         Width="1000"
         WindowStartupLocation="CenterScreen"
         WindowStyle="None"
         MouseDown="Window_MouseDown"        
-        ResizeMode="NoResize"
-        
+        ResizeMode="NoResize"       
         x:Name="Add_Trouble_Page"
         AllowsTransparency="True">
     <i:Interaction.Triggers>

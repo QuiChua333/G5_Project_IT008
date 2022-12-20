@@ -8,7 +8,7 @@
       d:DesignHeight="660" 
       d:DesignWidth="1040"
       FontSize="15"
-      DataContext="{StaticResource TroubleStaffVM}"
+      DataContext="{StaticResource TroublePageVM}"
       FontFamily="{StaticResource MaterialDesignFont}"
       Title="TroublePage">
     <Page.Resources>

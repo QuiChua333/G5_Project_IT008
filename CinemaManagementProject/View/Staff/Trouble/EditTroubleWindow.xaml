@@ -10,7 +10,7 @@
         TextOptions.TextFormattingMode="Ideal"
         TextOptions.TextRenderingMode="Auto"
         Background="Transparent"
-        DataContext="{StaticResource TroubleStaffVM}"        
+        DataContext="{StaticResource TroublePageVM}"        
         FontFamily="{DynamicResource MaterialDesignFont}"
         Height="650"
         Width="1000"

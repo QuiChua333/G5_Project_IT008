@@ -7,6 +7,9 @@ using System.Security.Principal;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Media.Imaging;
+using System.Net;
+using System.IO;
+
 namespace CinemaManagementProject.Utils
 {
     public class CloudinaryService

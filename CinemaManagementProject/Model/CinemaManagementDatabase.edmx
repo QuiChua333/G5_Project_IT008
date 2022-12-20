@@ -15,6 +15,7 @@
           <Property Name="CreateDate" Type="datetime" />
           <Property Name="DiscountPrice" Type="real" />
           <Property Name="TotalPrize" Type="real" />
+          <Property Name="BillCode" Type="varchar(max)" />
         </EntityType>
         <EntityType Name="Customer">
           <Key>
@@ -64,6 +65,7 @@
           <Property Name="BillId" Type="int" Nullable="false" />
           <Property Name="Quantity" Type="int" />
           <Property Name="PrizePerProduct" Type="int" />
+          <Property Name="BillCode" Type="varchar(max)" />
         </EntityType>
         <EntityType Name="ProductReceipt">
           <Key>
@@ -153,6 +155,7 @@
           <Property Name="ShowTimeId" Type="int" />
           <Property Name="SeatId" Type="int" />
           <Property Name="Price" Type="real" />
+          <Property Name="BillCode" Type="varchar(max)" />
         </EntityType>
         <EntityType Name="Trouble">
           <Key>
@@ -540,6 +543,7 @@
           <Property Name="CreateDate" Type="DateTime" Precision="3" />
           <Property Name="DiscountPrice" Type="Single" />
           <Property Name="TotalPrize" Type="Single" />
+          <Property Name="BillCode" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Customer" Relationship="Self.FK_Bill_Customer" FromRole="Bill" ToRole="Customer" />
           <NavigationProperty Name="Staff" Relationship="Self.FK_Bill_Staff" FromRole="Bill" ToRole="Staff" />
           <NavigationProperty Name="ProductBillInfoes" Relationship="Self.FK_BillInfo_Bill" FromRole="Bill" ToRole="ProductBillInfo" />
@@ -599,6 +603,7 @@
           <Property Name="BillId" Type="Int32" Nullable="false" />
           <Property Name="Quantity" Type="Int32" />
           <Property Name="PrizePerProduct" Type="Int32" />
+          <Property Name="BillCode" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Bill" Relationship="Self.FK_BillInfo_Bill" FromRole="ProductBillInfo" ToRole="Bill" />
           <NavigationProperty Name="Product" Relationship="Self.FK_BillInfo_Product" FromRole="ProductBillInfo" ToRole="Product" />
         </EntityType>
@@ -709,6 +714,7 @@
           <Property Name="ShowTimeId" Type="Int32" />
           <Property Name="SeatId" Type="Int32" />
           <Property Name="Price" Type="Single" />
+          <Property Name="BillCode" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Bill" Relationship="Self.FK_Ticket_Bill" FromRole="Ticket" ToRole="Bill" />
           <NavigationProperty Name="Seat" Relationship="Self.FK_Ticket_Seat" FromRole="Ticket" ToRole="Seat" />
           <NavigationProperty Name="ShowTime" Relationship="Self.FK_Ticket_ShowTime" FromRole="Ticket" ToRole="ShowTime" />
@@ -1103,6 +1109,7 @@
                 <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
                 <ScalarProperty Name="DiscountPrice" ColumnName="DiscountPrice" />
                 <ScalarProperty Name="TotalPrize" ColumnName="TotalPrize" />
+                <ScalarProperty Name="BillCode" ColumnName="BillCode" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1155,6 +1162,7 @@
                 <ScalarProperty Name="BillId" ColumnName="BillId" />
                 <ScalarProperty Name="Quantity" ColumnName="Quantity" />
                 <ScalarProperty Name="PrizePerProduct" ColumnName="PrizePerProduct" />
+                <ScalarProperty Name="BillCode" ColumnName="BillCode" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1252,6 +1260,7 @@
                 <ScalarProperty Name="ShowTimeId" ColumnName="ShowTimeId" />
                 <ScalarProperty Name="SeatId" ColumnName="SeatId" />
                 <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="BillCode" ColumnName="BillCode" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

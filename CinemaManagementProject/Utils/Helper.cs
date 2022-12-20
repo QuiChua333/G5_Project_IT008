@@ -1,4 +1,6 @@
-﻿using System;
+﻿using CinemaManagementProject.DTOs;
+using CinemaManagementProject.Model;
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
@@ -9,21 +11,20 @@ using System.Threading.Tasks;
 
 namespace CinemaManagementProject.Utils
 {
-    internal class Helper
+    public class Helper
     {
-        public static (string, List<string>) GetListCode(int quantity, int length, string firstChars, string lastChars)
+
+        public static (string, List<string>) GetListCode(int quantity, int length, string firstChars, string lastChars, VoucherReleaseDTO voucherRelease)
         {
             List<string> ListCode = new List<string>();
             var chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
             var random = new Random();
             int randomLength = length - firstChars.Length - lastChars.Length;
-            if (randomLength <= 0)
+            int minimumLength = (int)Math.Ceiling(Math.Log(quantity, 36));
+            if (randomLength < minimumLength)
             {
-                return ("Độ dài của voucher phải lớn hơn độ dài chuỗi kí tự đầu + độ dài chuỗi kí tự cuối", null);
-            }
-            if (randomLength < 4)
-            {
-                return ($"Độ dài của voucher phải lớn hơn độ dài chuỗi kí tự đầu + độ dài chuỗi kí tự cuối + 4 ", null);
+                return ("Không thể tạo được đúng số lượng voucher với yêu cầu trên!", null);
+
             }
             for (int i = 0; i < quantity; i++)
             {
@@ -36,6 +37,20 @@ namespace CinemaManagementProject.Utils
                 string newCode = new String(stringChars);
                 var isExist = ListCode.Any(code => code == newCode);
                 if (isExist)
+                {
+                    i--;
+                    continue;
+                }
+                var isExist2 = false;
+                foreach (var item in voucherRelease.Vouchers)
+                {
+                    if (ListCode.Any(code => code == item.VoucherCode))
+                    {
+                        isExist2 = true;
+                        break;
+                    }
+                }
+                if (isExist2)
                 {
                     i--;
                     continue;
@@ -73,13 +88,10 @@ namespace CinemaManagementProject.Utils
 
         public static string GetImagePath(string imageName)
         {
-            return Path.Combine(Environment.CurrentDirectory, @"..\..\Resources\Images", $"{imageName}" /*SelectedItem.Image*/);
+            return Path.Combine(Environment.CurrentDirectory, @"..\..\Resource\Images", $"{imageName}" /*SelectedItem.Image*/);
         }
 
-        public static string GetEmailTemplatePath(string fileName)
-        {
-            return Path.Combine(Environment.CurrentDirectory, @"..\..\Resources\EmailTemplate", $"{fileName}" /*SelectedItem.Image*/);
-        }
+
 
         public static string FormatVNMoney(float money)
         {
@@ -99,6 +111,22 @@ namespace CinemaManagementProject.Utils
             return String.Format(CultureInfo.InvariantCulture,
                                 "{0:#,#}", n);
         }
+        public static string GetEmailTemplatePath(string fileName)
+        {
+            return Path.Combine(Environment.CurrentDirectory, @"..\..\Resource\EmailTemplate", $"{fileName}" /*SelectedItem.Image*/);
+        }
+        public static bool CheckEmailStaff(string CurrentEmail)
+        {
+            using (CinemaManagementProjectEntities db = new CinemaManagementProjectEntities())
+            {
+                foreach (var staff in db.Staffs)
+                    if (CurrentEmail == staff.Email)
+                        return true;
+                return false;
+            }
+        }
+
     }
 }
+
 

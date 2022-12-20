@@ -274,7 +274,7 @@
                                                     Width="134">
                                         <GridViewColumn.CellTemplate>
                                             <DataTemplate>
-                                                <TextBlock  Text="{Binding  Duration}"
+                                                <TextBlock  Text="{Binding  DurationFilm}"
                                                         FontSize="14"
                                                         Margin="30,0,0,0" />
                                             </DataTemplate>

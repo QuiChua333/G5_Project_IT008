@@ -6,7 +6,8 @@
     <SolidColorBrush x:Key="HearvyRedCrimson" Color="#E71A0F"/>
     <SolidColorBrush x:Key="LightGrayTundora" Color="#474545"/>
     <SolidColorBrush x:Key="RegularYellowJonquil" Color="#EECE13"/>
-
+    <SolidColorBrush x:Key="LightGreen" Color="#27E25B"/>
+    <SolidColorBrush x:Key="LightGrayBombay" Color="#B2B8BD"/>
     <!-- Button colour -->
     <SolidColorBrush x:Key="ColorButtonBlue" Color="#359AF3"/>
     <SolidColorBrush x:Key="ColorButtonRed" Color="#DD1515"/>

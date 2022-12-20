@@ -24,7 +24,6 @@ namespace CinemaManagementProject.Component.Search
         {
             InitializeComponent();
             this.DataContext = this;
-            PlaceHolder = "Search";
         }
         public string PlaceHolder { get; set; }
         public new double Height { get; set; }
@@ -43,12 +42,6 @@ namespace CinemaManagementProject.Component.Search
         private void SearchType_GotFocus(object sender, RoutedEventArgs e)
         {
             SearchType.Text = "";
-
-        }
-        private void SearchType_LostFocus(object sender, RoutedEventArgs e)
-        {
-            if (string.IsNullOrWhiteSpace(SearchType.Text))
-                SearchType.Text = PlaceHolder;
         }
         protected void SearchType_TextChanged(object sender, TextChangedEventArgs e)
         {

@@ -51,7 +51,7 @@ namespace CinemaManagementProject.View.Admin.TroubleManagement
                 _cost.Visibility = Visibility.Collapsed;
             }
             else if (cbb.SelectedValue.ToString() == "Đã giải quyết")
-            {
+        {
                 _startday.IsEnabled = false;
                 start.SelectedDate = System.DateTime.Today;
                 _Finishday.IsEnabled = true;
