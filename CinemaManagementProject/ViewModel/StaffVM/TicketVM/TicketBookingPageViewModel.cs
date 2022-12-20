@@ -242,6 +242,7 @@ namespace CinemaManagementProject.ViewModel.StaffVM.TicketVM
 
             TotalPrice = Helper.FormatVNMoney(totalprice);
 
+
             TotalSeat = "";
             for (int i = 0; i < WaitingList.Count; i++)
             {

@@ -235,13 +235,14 @@ namespace CinemaManagementProject.Model.Service
             else
             {
                 newBill = new Bill
-                {
-                    BillCode = maxBillCode,
-                    DiscountPrice = bill.DiscountPrice,
-                    TotalPrize = bill.TotalPrice,
-                    CreateDate = DateTime.Now,
-                    StaffId = bill.StaffId
-                };
+            {
+                BillCode = maxBillCode,
+                DiscountPrice = bill.DiscountPrice,
+                TotalPrize = bill.TotalPrice,
+                CustomerId = bill.CustomerId.ToString() == "KH0000" ? 0 : bill.CustomerId,
+                CreateDate = DateTime.Now,
+                StaffId = bill.StaffId
+            };
             }
 
             context.Bills.Add(newBill);

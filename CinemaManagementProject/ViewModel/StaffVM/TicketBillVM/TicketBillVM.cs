@@ -309,6 +309,7 @@ namespace CinemaManagementProject.ViewModel.StaffVM.TicketBillVM
             //
             Staff = StaffVM.currentStaff;
             //
+            float TotalFullMoviePrice = 0;
             // Food
             ListFood = new ObservableCollection<ProductDTO>();
             ListFood = OrderFoodManagementVM.OrderFoodManagementVM.ListOrder;
@@ -329,12 +330,14 @@ namespace CinemaManagementProject.ViewModel.StaffVM.TicketBillVM
             }
             TotalPriceFood = Helper.FormatVNMoney(TotalFood);
 
-          
+
 
             //Film
             if (OrderFoodManagementVM.OrderFoodManagementVM.checkOnlyFoodOfPage == false)
             {
                 FirtShow();
+                }
+               
             }
 
             //Total price
@@ -930,7 +933,7 @@ namespace CinemaManagementProject.ViewModel.StaffVM.TicketBillVM
                             bill.CustomerId = customerDTO.Id;
                         }
                         bill.StaffId = Staff.Id;
-                        bill.TotalPrice = LastPrice; 
+                        bill.TotalPrice = LastPrice;
                         bill.DiscountPrice = Discount;
                         bill.VoucherIdList = ListVoucher.Select(v => v.Id).ToList();
                         (bool successBooking, string messageFromBooking) = await BookingService.Ins.CreateTicketBooking(bill, tickets);

@@ -275,6 +275,7 @@
     <Compile Include="Resource\Styles\ListboxCustom.xaml.cs" />
     <Compile Include="Until.cs" />
     <Compile Include="Utilities\RelyCommand.cs" />
+    <Compile Include="Utils\CloudinaryService.cs" />
     <Compile Include="Utils\Constant.cs" />
     <Compile Include="Utils\EmailFormat.cs" />
     <Compile Include="Utils\CloudinaryService.cs" />
@@ -317,6 +318,10 @@
     <Compile Include="ViewModel\StaffVM\TicketBillVM\TicketBillVM.cs" />
     <Compile Include="ViewModel\StaffVM\TicketVM\TicketBookingPageViewModel.cs" />
     <Compile Include="ViewModel\StaffVM\TicketVM\TicketWindowViewModel.cs" />
+    <Compile Include="ViewModel\StaffVM\TroubleStaffVM\AddTrouble.cs" />
+    <Compile Include="ViewModel\StaffVM\TroubleStaffVM\EditConverter.cs" />
+    <Compile Include="ViewModel\StaffVM\TroubleStaffVM\EditTrouble.cs" />
+    <Compile Include="ViewModel\StaffVM\TroubleStaffVM\TroublePageViewModel.cs" />
     <Compile Include="View\Admin\AdminWindow.xaml.cs">
       <DependentUpon>AdminWindow.xaml</DependentUpon>
     </Compile>
@@ -434,6 +439,15 @@
     <Compile Include="View\Admin\StatisticalManagement\TotalIncomeStatistical.xaml.cs">
       <DependentUpon>TotalIncomeStatistical.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Admin\TroubleManagement\EditTroubleInformation.xaml.cs">
+      <DependentUpon>EditTroubleInformation.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Admin\TroubleManagement\EditTroubleInformation_Inprocess.xaml.cs">
+      <DependentUpon>EditTroubleInformation_Inprocess.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Admin\TroubleManagement\TroubleInformation.xaml.cs">
+      <DependentUpon>TroubleInformation.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\CustomMessageBoxWindow.xaml.cs">
       <DependentUpon>CustomMessageBoxWindow.xaml</DependentUpon>
     </Compile>
@@ -467,9 +481,6 @@
     <Compile Include="View\Admin\TroubleManagement\EditTroubleInformation.xaml.cs">
       <DependentUpon>EditTroubleInformation.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Admin\TroubleManagement\TroubleInfomation.xaml.cs">
-      <DependentUpon>TroubleInfomation.xaml</DependentUpon>
-    </Compile>
     <Compile Include="View\Admin\TroubleManagement\TroubleManagementPage.xaml.cs">
       <DependentUpon>TroubleManagementPage.xaml</DependentUpon>
     </Compile>
@@ -487,6 +498,18 @@
     </Compile>
     <Compile Include="View\Staff\TicketWindow\TicketWindow.xaml.cs">
       <DependentUpon>TicketWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Staff\Trouble\AddTroubleWindow.xaml.cs">
+      <DependentUpon>AddTroubleWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Staff\Trouble\EditTroubleWindow.xaml.cs">
+      <DependentUpon>EditTroubleWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Staff\Trouble\ViewTroubleInformation.xaml.cs">
+      <DependentUpon>ViewTroubleInformation.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Staff\Trouble\TroublePage.xaml.cs">
+      <DependentUpon>TroublePage.xaml</DependentUpon>
     </Compile>
     <Page Include="Component\Buttons\ButtonStyle.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -742,6 +765,18 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\Admin\TroubleManagement\EditTroubleInformation.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Admin\TroubleManagement\EditTroubleInformation_Inprocess.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Admin\TroubleManagement\TroubleInformation.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\CustomMessageBoxWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -782,14 +817,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\Admin\TroubleManagement\EditTroubleInformation.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="View\Admin\TroubleManagement\TroubleInfomation.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="View\Admin\TroubleManagement\TroubleManagementPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -815,6 +842,22 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Staff\TicketWindow\TicketWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Staff\Trouble\AddTroubleWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Staff\Trouble\EditTroubleWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Staff\Trouble\ViewTroubleInformation.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Staff\Trouble\TroublePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -1001,6 +1044,7 @@
     <Content Include="Resource\EmailTemplate\common_template.html" />
     <Content Include="Resource\EmailTemplate\new_customer.html" />
     <Content Include="Resource\EmailTemplate\top5_customer_gratitude.html" />
+    <Content Include="Resource\Images\choliec.jfif" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\MaterialDesignThemes.4.6.1\build\MaterialDesignThemes.targets" Condition="Exists('..\packages\MaterialDesignThemes.4.6.1\build\MaterialDesignThemes.targets')" />

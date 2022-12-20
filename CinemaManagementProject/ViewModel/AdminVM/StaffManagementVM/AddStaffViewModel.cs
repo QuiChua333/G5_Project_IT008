@@ -56,7 +56,6 @@ namespace CinemaManagementProject.ViewModel.AdminVM.StaffManagementVM
                 {
                     CustomMessageBox.ShowOk(messageFromAddStaff, "Lỗi", "OK", Views.CustomMessageBoxImage.Error);
                 }
-
             }
             else
             {

@@ -1,4 +1,5 @@
-﻿using CinemaManagementProject.Utilities;
+﻿using CinemaManagementProject.DTOs;
+using CinemaManagementProject.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -36,6 +37,15 @@ namespace CinemaManagementProject.ViewModel.AdminVM
 
 
 
+        
+        
+        public ICommand TroubleCommand { get; set; }
+        
+
+        private void Trouble(object obj) => CurrentView = new TroubleManagementVM.TroubleManagementViewModel();
+
+
+
         public AdminVM()
         {
             VoucherCommand = new RelayCommand(Voucher);
@@ -46,7 +56,7 @@ namespace CinemaManagementProject.ViewModel.AdminVM
             FilmViewCommand = new RelayCommand(Film);
             FoodCommand = new RelayCommand(Food);
             _currentView = new VoucherManagementVM.VoucherViewModel();
-
+            TroubleCommand = new RelayCommand(Trouble);
         }
     }
 }

@@ -49,7 +49,7 @@ namespace CinemaManagementProject.Model.Service
                         {
                             RoomId = newShowtime.RoomId,
                             ShowDate = newShowtime.ShowDate.Date,
-                        }; ;
+                        };
                         context.ShowTimeSettings.Add(showtimeSet);
                         await context.SaveChangesAsync();
                     }

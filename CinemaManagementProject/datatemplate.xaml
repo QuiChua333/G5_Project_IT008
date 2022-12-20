@@ -1,8 +1,5 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    
-                    xmlns:VoucherVM="clr-namespace:CinemaManagementProject.ViewModel.AdminVM.VoucherManagementVM"
-                    xmlns:VoucherView="clr-namespace:CinemaManagementProject.View.Admin.VoucherManagement"
                     xmlns:StaffView="clr-namespace:CinemaManagementProject.View.Admin.StaffManagement"
                     xmlns:StaffVM="clr-namespace:CinemaManagementProject.ViewModel.AdminVM.StaffManagementVM"
                     xmlns:ShowTimeView="clr-namespace:CinemaManagementProject.View.Admin.ShowtimeManagement"
@@ -11,20 +8,12 @@
                     xmlns:CustomerVM="clr-namespace:CinemaManagementProject.ViewModel.AdminVM.CustomerManagementVM"
                     xmlns:HistoryView="clr-namespace:CinemaManagementProject.View.Admin.HistoryManagement"
                     xmlns:HistoryVM="clr-namespace:CinemaManagementProject.ViewModel.AdminVM.Import_ExportManagementVM"
-                    xmlns:MovieManagementVM="clr-namespace:CinemaManagementProject.ViewModel.AdminVM.MovieManagementVM"
-                    xmlns:MovieManagementView="clr-namespace:CinemaManagementProject.View.Admin.MovieManagement"
-                    xmlns:FoodManagementView="clr-namespace:CinemaManagementProject.View.Admin.FoodManagement"
-                    xmlns:FoodManagementVM="clr-namespace:CinemaManagementProject.ViewModel.AdminVM.FoodManagementVM"
                     xmlns:TroubleView="clr-namespace:CinemaManagementProject.View.Admin.TroubleManagement"
                     xmlns:TroubleVM="clr-namespace:CinemaManagementProject.ViewModel.AdminVM.TroubleManagementVM">
-    <DataTemplate DataType="{x:Type VoucherVM:VoucherViewModel}">
-        <VoucherView:VoucherManagementPage></VoucherView:VoucherManagementPage>
-    </DataTemplate>
-    
     <DataTemplate DataType="{x:Type StaffVM:StaffManagementViewModel}">
         <StaffView:StaffManagementPage></StaffView:StaffManagementPage>
     </DataTemplate>
-    
+
     <DataTemplate DataType="{x:Type ShowTimeVM:ShowtimeMangementViewModel}">
         <ShowTimeView:ShowtimeManagementPage></ShowTimeView:ShowtimeManagementPage>
     </DataTemplate>
@@ -32,20 +21,11 @@
     <DataTemplate DataType="{x:Type CustomerVM:CustomerManagementViewModel}">
         <CustomerView:CustomerManagementPage></CustomerView:CustomerManagementPage>
     </DataTemplate>
-    
+
     <DataTemplate DataType="{x:Type HistoryVM:Import_ExportManagementViewModel}">
         <HistoryView:HistoryManagementPage></HistoryView:HistoryManagementPage>
-    </DataTemplate>
-
-    <DataTemplate DataType="{x:Type MovieManagementVM:MovieManagementVM}">
-        <MovieManagementView:MovieManagementPage></MovieManagementView:MovieManagementPage>
-    </DataTemplate>
-
-    <DataTemplate DataType="{x:Type FoodManagementVM:FoodManagementVM}">
-        <FoodManagementView:FoodPage></FoodManagementView:FoodPage>
     </DataTemplate>
     <DataTemplate DataType="{x:Type TroubleVM:TroubleManagementViewModel}">
         <TroubleView:TroubleManagementPage></TroubleView:TroubleManagementPage>
     </DataTemplate>
-    
 </ResourceDictionary>

@@ -35,7 +35,7 @@ namespace CinemaManagementProject.Model.Service
                 using (var context = new CinemaManagementProjectEntities())
                 {
                     customerlist = (from s in context.Customers
-                                    //where s.IsDeleted == false
+                                    where s.IsDeleted == false
                                     select new CustomerDTO
                                     {
                                         Id = s.Id,

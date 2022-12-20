@@ -10,21 +10,28 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace CinemaManagementProject.View.Admin.TroubleManagement
 {
     /// <summary>
-    /// Interaction logic for TroubleManagementPage.xaml
+    /// Interaction logic for TroubleInformation.xaml
     /// </summary>
-    public partial class TroubleManagementPage : Page
+    public partial class TroubleInformation : Window
     {
-        public TroubleManagementPage()
+        public TroubleInformation()
         {
             InitializeComponent();
         }
 
-       
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void Window_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            this.DragMove();
+        }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using CinemaManagementProject.Model;
+using CinemaManagementProject.Utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,13 +12,24 @@ namespace CinemaManagementProject.DTOs
     {
         public int Id { get; set; }
         public string TroubleType { get; set; }
-        public string TroubleInfo { get; set; }
-        public DateTime StartDate { get; set; }
-        public TimeSpan StartTime { get; set; }
-        public string TroubleStatus { get; set; }
-        public int StaffId { get; set; }
-        public bool IsDeleted { get; set; }
+        public string Description { get; set; }
+        public Nullable<float> RepairCost { get; set; }
 
-        public virtual Staff Staff { get; set; }
+        public string RepairCostStr
+        {
+            get
+            {
+                return Helper.FormatVNMoney((float)RepairCost);
+            }
+        }
+        public Nullable<System.DateTime> SubmittedAt { get; set; }
+        public Nullable<System.DateTime> StartDate { get; set; }
+        public Nullable<System.DateTime> FinishDate { get; set; }
+        public string TroubleStatus { get; set; }
+        public Nullable<int> StaffId { get; set; }
+        public Nullable<bool> IsDeleted { get; set; }
+        public string Level { get; set; }
+        public string Image { get; set; }
+        public string StaffName { get; set; }
     }
 }

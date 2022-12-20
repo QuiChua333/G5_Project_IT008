@@ -1,6 +1,7 @@
 ﻿using CinemaManagementProject.DTOs;
 using CinemaManagementProject.Utilities;
 using CinemaManagementProject.ViewModel.AdminVM.FoodManagementVM;
+using CinemaManagementProject.ViewModel.StaffVM.TroubleStaffVM;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,10 +29,12 @@ namespace CinemaManagementProject.ViewModel.StaffVM
             OrderFoodManagementVM.OrderFoodManagementVM.checkOnlyFoodOfPage = true;
         }
         private void FilmBooking(object obj) => CurrentView = new FilmBookingVM.FilmBookingVM();
+        private void Trouble(object obj) => CurrentView = new TroubleStaffVM.TroublePageViewModel();
         public StaffVM()
         {
             OrderFoodCommand = new RelayCommand(OrderFood);
             FilmBookingCommand = new RelayCommand(FilmBooking);
+            TroubleCommand = new RelayCommand(Trouble);
             //StartPage
             _currentView = new FilmBookingVM.FilmBookingVM();
         }

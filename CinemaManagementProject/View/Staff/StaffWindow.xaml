@@ -80,7 +80,7 @@
                 </RadioButton>
                 <RadioButton    Style="{StaticResource menuButton}"
                                     Tag="white"
-                                    Command="{Binding ShowHomeViewCommand}">
+                                    Command="{Binding TroubleCommand}">
                     <StackPanel Orientation="Horizontal">
                         <materialDesign:PackIcon Kind="Report" Height="20" Width="20" Margin="30,0,10,0" ></materialDesign:PackIcon>
                         <TextBlock Text="Báo cáo sự cố" Style="{StaticResource menuButtonText}" Margin="0,3,0,0" FontSize="14"/>
