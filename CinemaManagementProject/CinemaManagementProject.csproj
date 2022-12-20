@@ -319,6 +319,9 @@
     <Compile Include="View\Admin\FoodManagement\ImportFoodWindow.xaml.cs">
       <DependentUpon>ImportFoodWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Admin\StatisticalManagement\StatisticalManagement.xaml.cs">
+      <DependentUpon>StatisticalManagement.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Admin\VoucherManagement\AddWindow\AddInfoPage.xaml.cs">
       <DependentUpon>AddInfoPage.xaml</DependentUpon>
     </Compile>
@@ -587,6 +590,10 @@
     <Page Include="View\Admin\FoodManagement\ImportFoodWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Admin\StatisticalManagement\StatisticalManagement.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Admin\VoucherManagement\AddWindow\AddInfoPage.xaml">
       <SubType>Designer</SubType>

@@ -5,55 +5,32 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:CinemaManagementProject.Component.FilterCombobox"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-             mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
-    <Grid Height="60" Width="410">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="60"/>
-        </Grid.RowDefinitions>
-
+             mc:Ignorable="d" >
+    <Grid Width="200" Height="50">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="200"/>
-            <ColumnDefinition Width="10"/>
-            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="40"/>
+            <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-
-        <Grid.Resources>
-            <Style x:Key="styleButton" TargetType="ComboBox" BasedOn="{StaticResource MaterialDesignOutlinedComboBox}">
-                <Setter Property="Background" Value="White"/>
-                <Setter Property="Foreground" Value="Black"/>
-                <Setter Property="BorderBrush" Value="Gray"/>
-                <Setter Property="BorderThickness" Value="0"/>
-                <Setter Property="Width" Value="177"/>
-                <Setter Property="Height" Value="49"/>
-                <Setter Property="FontSize" Value="10"/>
-                <Setter Property="FontWeight" Value="Bold"/>
-            </Style>
-        </Grid.Resources>
-        <!--Combobox1-->
-        <ComboBox Grid.Column="0" Grid.Row="0"     
-                  materialDesign:TextFieldAssist.SuffixText="Mới nhất"
-                  Style="{StaticResource styleButton}">
-            <ComboBox.Effect>
-                <DropShadowEffect BlurRadius="10"
-                                Color="Black"
-                                ShadowDepth="4"
-                                Opacity=".25"
-                                Direction="270"/>
-            </ComboBox.Effect>
-            <ComboBoxItem Content="Theo tháng" FontSize="15"/>
-            <ComboBoxItem Content="Theo năm" FontSize="15"/>
-        </ComboBox>
-        <!--Combobox2-->
-        <ComboBox Grid.Row="0" Grid.Column="2" 
-                  Style="{StaticResource styleButton}">
-            <ComboBox.Effect>
-                <DropShadowEffect BlurRadius="10"
-                                    Color="Black"
-                                    ShadowDepth="4"
-                                    Opacity=".25"
-                                    Direction="270"/>
-            </ComboBox.Effect>
+        <Rectangle Grid.Column="0" Grid.ColumnSpan="2" Fill="White" RadiusX="10" RadiusY="10">
+            <Rectangle.Effect>
+                <DropShadowEffect
+                        BlurRadius="10"
+                        Opacity="0.25"
+                        Direction="270"
+                        Color="Black"
+                    />
+            </Rectangle.Effect>
+        </Rectangle>
+        <Image Source="{StaticResource IconFilter}" Width="20" Height="20"></Image>
+        <ComboBox ItemsSource="{Binding ItemSource}" 
+                  Foreground="Black" 
+                  Grid.Column="1" 
+                  Background="Transparent" 
+                  FontFamily="{StaticResource MaterialDesignFont}" 
+                  FontSize="16" FontWeight="Medium" 
+                  Margin="0,0,10,0">
+            <ComboBoxItem IsSelected="True" FontWeight="Regular">Item1</ComboBoxItem>
+            <ComboBoxItem FontWeight="Regular">Item2</ComboBoxItem>
         </ComboBox>
     </Grid>
 </UserControl>
