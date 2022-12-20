@@ -30,7 +30,8 @@
             </BeginStoryboard>
         </EventTrigger>
     </Page.Triggers>
-    <Grid Margin="0,60,0,0">
+
+    <Grid Margin="0,60,0,0" Background="#BCD8F1">
         <Grid.RowDefinitions>
             <RowDefinition Height="60"/>
             <RowDefinition Height="*"/>

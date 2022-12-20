@@ -33,8 +33,12 @@
         <local:IndexConverter x:Key="IndexConverter" />
     </Page.Resources>-->
     
-    <Grid Background="#BCD8F1">
-        <Grid Margin="0,60,0,0">
+    <Grid >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="1" Background="#BCD8F1">
             <Border CornerRadius="20" Background="White" Margin="20">
                 <Border.Effect>
                     <DropShadowEffect BlurRadius="14"
