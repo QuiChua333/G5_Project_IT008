@@ -10,12 +10,12 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BillCode" Type="varchar(max)" />
           <Property Name="CustomerId" Type="int" />
           <Property Name="StaffId" Type="int" />
           <Property Name="CreateDate" Type="datetime" />
           <Property Name="DiscountPrice" Type="real" />
           <Property Name="TotalPrize" Type="real" />
-          <Property Name="BillCode" Type="varchar(max)" />
         </EntityType>
         <EntityType Name="Customer">
           <Key>
@@ -538,12 +538,12 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BillCode" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="CustomerId" Type="Int32" />
           <Property Name="StaffId" Type="Int32" />
           <Property Name="CreateDate" Type="DateTime" Precision="3" />
           <Property Name="DiscountPrice" Type="Single" />
           <Property Name="TotalPrize" Type="Single" />
-          <Property Name="BillCode" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Customer" Relationship="Self.FK_Bill_Customer" FromRole="Bill" ToRole="Customer" />
           <NavigationProperty Name="Staff" Relationship="Self.FK_Bill_Staff" FromRole="Bill" ToRole="Staff" />
           <NavigationProperty Name="ProductBillInfoes" Relationship="Self.FK_BillInfo_Bill" FromRole="Bill" ToRole="ProductBillInfo" />
@@ -1104,12 +1104,12 @@
             <EntityTypeMapping TypeName="CinemaManagementProjectModel.Bill">
               <MappingFragment StoreEntitySet="Bill">
                 <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="BillCode" ColumnName="BillCode" />
                 <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
                 <ScalarProperty Name="StaffId" ColumnName="StaffId" />
                 <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
                 <ScalarProperty Name="DiscountPrice" ColumnName="DiscountPrice" />
                 <ScalarProperty Name="TotalPrize" ColumnName="TotalPrize" />
-                <ScalarProperty Name="BillCode" ColumnName="BillCode" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
