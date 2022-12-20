@@ -830,7 +830,7 @@ namespace CinemaManagementProject.ViewModel.StaffVM.TicketBillVM
                         IsSaving = false;
                         CustomMessageBox.ShowOk(messageFromBooking, "Thông báo", "OK", Views.CustomMessageBoxImage.Success);
                         StaffWindow tk = Application.Current.Windows.OfType<StaffWindow>().FirstOrDefault();
-                        tk.Content.Content = new FoodPage();
+                        tk.Content.Content = new OrderFoodPage();
                     }
                     else
                     {

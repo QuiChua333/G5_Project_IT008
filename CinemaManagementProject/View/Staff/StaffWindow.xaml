@@ -40,7 +40,7 @@
         </Rectangle>
 
         <!--Content-->
-        <Frame x:Name="Content" Grid.Column="1" Grid.Row="1" Content="{Binding CurrentView}" NavigationUIVisibility="Hidden"></Frame>
+        <Frame x:Name="Content" Grid.Column="1" Grid.Row="1" Content="{Binding CurrentView, Mode=TwoWay}" NavigationUIVisibility="Hidden"></Frame>
 
         <!--SideBar-->
         <Border CornerRadius="10,0,0,10" Background="#0F2851">
