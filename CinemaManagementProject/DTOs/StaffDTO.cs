@@ -1,4 +1,5 @@
 ﻿using CinemaManagementProject.Model;
+using CinemaManagementProject.Utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,6 +23,15 @@ namespace CinemaManagementProject.DTOs
         public virtual ICollection<Bill> Bills { get; set; }
         public virtual ICollection<ProductReceipt> ProductReceives { get; set; }
         public virtual ICollection<Trouble> Troubles { get; set; }
+
+        public float BenefitContribution { get; set; }
+        public string BenefitContributionStr
+        {
+            get
+            {
+                return Helper.FormatVNMoney(BenefitContribution);
+            }
+        }
 
     }
 }

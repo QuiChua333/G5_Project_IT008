@@ -3,7 +3,7 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:CinemaManagementProject.View.Admin.StatisticalManagement"
+      xmlns:local="clr-namespace:CinemaManagementProject.ViewModel.AdminVM.StatisticalManagementVM"
       mc:Ignorable="d" 
       xmlns:FilterCombobox="clr-namespace:CinemaManagementProject.Component.FilterCombobox"
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
@@ -11,10 +11,14 @@
       xmlns:Component="clr-namespace:CinemaManagementProject.Component"
       d:DesignHeight="760" d:DesignWidth="1140"
       xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
-      Title="TotalIncomeStatistical">
+      Title="TotalIncomeStatistical"
+      x:Name="mainPage"
+      DataContext="{StaticResource StatisticalManagementVM}"
+      
+>
 
 
-    <!--<Page.Triggers>
+    <Page.Triggers>
         <EventTrigger RoutedEvent="Page.Loaded">
             <BeginStoryboard>
                 <Storyboard>
@@ -23,8 +27,6 @@
                                      From="0"
                                      To="1"
                                      Duration="0:0:0.5" />
-
-
                 </Storyboard>
             </BeginStoryboard>
         </EventTrigger>
@@ -32,7 +34,7 @@
 
     <Page.Resources>
         <local:IndexConverter x:Key="IndexConverter" />
-    </Page.Resources>-->
+    </Page.Resources>
     
     <Grid>
         <Grid.RowDefinitions>

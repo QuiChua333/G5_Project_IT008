@@ -12,7 +12,8 @@
       xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
       d:DesignHeight="760" d:DesignWidth="1140"
       x:Name="mainPage"
-      Title="IncomeStatistical">
+      Title="IncomeStatistical"
+      DataContext="{StaticResource StaffManagementVM}">
 
 
     <Page.Triggers>
@@ -438,6 +439,7 @@
                                             </lvc:Axis>
                                         </lvc:AxesCollection>
                                     </lvc:CartesianChart.AxisX>
+                                    
                                     <lvc:CartesianChart.AxisY>
                                         <lvc:Axis Title="Triệu đồng"
                                               FontFamily="arial"

@@ -183,6 +183,7 @@
     <Compile Include="DTOs\ShowtimeDTO.cs" />
     <Compile Include="DTOs\TicketBillInfoDTO.cs" />
     <Compile Include="DTOs\TicketDTO.cs" />
+    <Compile Include="DTOs\TroubleDTO.cs" />
     <Compile Include="DTOs\VoucherDTO.cs" />
     <Compile Include="DTOs\VoucherReleaseDTO.cs" />
     <Compile Include="DTOs\FilmDTO.cs" />
@@ -233,6 +234,7 @@
       <DependentUpon>CinemaManagementDatabase.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Service\BookingService.cs" />
+    <Compile Include="Model\Service\OverviewStatisticService.cs" />
     <Compile Include="Model\Service\ProductReceiptService.cs" />
     <Compile Include="Model\Service\ProductService.cs" />
     <Compile Include="Model\Service\BillService.cs" />
@@ -240,6 +242,7 @@
     <Compile Include="Model\Service\SeatService.cs" />
     <Compile Include="Model\Service\ShowtimeService.cs" />
     <Compile Include="Model\Service\StaffService.cs" />
+    <Compile Include="Model\Service\StatisticsService.cs" />
     <Compile Include="Model\Service\VoucherService.cs" />
     <Compile Include="Model\Service\DataProvider.cs" />
     <Compile Include="Model\Service\FilmService.cs" />
@@ -286,6 +289,11 @@
     <Compile Include="ViewModel\AdminVM\StaffManagementVM\ChangePasswordViewModel.cs" />
     <Compile Include="ViewModel\AdminVM\StaffManagementVM\EditStaffViewModel.cs" />
     <Compile Include="ViewModel\AdminVM\StaffManagementVM\StaffManagementViewModel.cs" />
+    <Compile Include="ViewModel\AdminVM\StatisticalManagementVM\Income.cs" />
+    <Compile Include="ViewModel\AdminVM\StatisticalManagementVM\IndexConverter.cs" />
+    <Compile Include="ViewModel\AdminVM\StatisticalManagementVM\Ranking.cs" />
+    <Compile Include="ViewModel\AdminVM\StatisticalManagementVM\StatisticalManagementVM.cs" />
+    <Compile Include="ViewModel\AdminVM\StatisticalManagementVM\TotalIncome.cs" />
     <Compile Include="ViewModel\AdminVM\VoucherManagementVM\AddWindowVM\AddWindowViewModel.cs" />
     <Compile Include="ViewModel\AdminVM\VoucherManagementVM\AddWindowVM\CheckBoxVisibleConverters.cs" />
     <Compile Include="ViewModel\AdminVM\VoucherManagementVM\AddWindowVM\ReleaseWindowViewModel.cs" />
@@ -820,11 +828,11 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="App.Config" />
     <EntityDeploy Include="Model\CinemaManagementDatabase.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>CinemaManagementDatabase.Designer.cs</LastGenOutput>
     </EntityDeploy>
+    <None Include="App.Config" />
     <None Include="Model\CinemaManagementDatabase.edmx.diagram">
       <DependentUpon>CinemaManagementDatabase.edmx</DependentUpon>
     </None>

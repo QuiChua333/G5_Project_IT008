@@ -22,6 +22,7 @@ namespace CinemaManagementProject.Model
         }
     
         public int Id { get; set; }
+        public string BillCode { get; set; }
         public Nullable<int> CustomerId { get; set; }
         public Nullable<int> StaffId { get; set; }
         public Nullable<System.DateTime> CreateDate { get; set; }

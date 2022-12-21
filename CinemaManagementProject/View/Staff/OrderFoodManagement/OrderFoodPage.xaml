@@ -49,7 +49,7 @@
             RadiusX="20"
             RadiusY="20" 
             Grid.ColumnSpan="2"
-    />
+        />
         
         <Grid x:Name="Header_ThanhToan" Grid.Row="0" Grid.Column="1">
             <Rectangle Height="63" RadiusX="12" RadiusY="12" Fill="White" Margin="10,0,11.4,0" >

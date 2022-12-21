@@ -3,7 +3,7 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:CinemaManagementProject.View.Admin.StatisticalManagement"
+      xmlns:local="clr-namespace:CinemaManagementProject.ViewModel.AdminVM.StatisticalManagementVM"
       mc:Ignorable="d" 
       xmlns:FilterCombobox="clr-namespace:CinemaManagementProject.Component.FilterCombobox"
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
@@ -11,9 +11,10 @@
       xmlns:Component="clr-namespace:CinemaManagementProject.Component"
       xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
       d:DesignHeight="760" d:DesignWidth="1140"
-      Title="RankingStatistical">
+      Title="RankingStatistical"
+      DataContext="{StaticResource StatisticalManagementVM}">
 
-    <!--<Page.Triggers>
+    <Page.Triggers>
         <EventTrigger RoutedEvent="Page.Loaded">
             <BeginStoryboard>
                 <Storyboard>
@@ -31,7 +32,7 @@
 
     <Page.Resources>
         <local:IndexConverter x:Key="IndexConverter" />
-    </Page.Resources>-->
+    </Page.Resources>
     
     <Grid >
         <Grid.RowDefinitions>
@@ -185,7 +186,7 @@
                                                    HorizontalContentAlignment="Center" 
                                                    VerticalContentAlignment="Center" />
                                             <Label Grid.Row="1"
-                                                   Content="{Binding Top5Customer[0].Name}"
+                                                   Content="{Binding Top5Customer[0].CustomerName}"
                                                    FontWeight="Bold"
                                                    VerticalContentAlignment="Center"
                                                    HorizontalContentAlignment="Center"
@@ -427,7 +428,7 @@
                                                    HorizontalContentAlignment="Center" 
                                                    VerticalContentAlignment="Center" />
                                             <Label Grid.Row="1"
-                                                   Content="{Binding Top5Staff[0].Name}"
+                                                   Content="{Binding Top5Staff[0].StaffName}"
                                                    FontWeight="Bold"
                                                    VerticalContentAlignment="Center"
                                                    HorizontalContentAlignment="Center"

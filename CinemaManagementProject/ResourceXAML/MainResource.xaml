@@ -6,13 +6,13 @@
                     xmlns:viewmodel4="clr-namespace:CinemaManagementProject.ViewModel.AdminVM.Import_ExportManagementVM" 
                     xmlns:viewmodel5="clr-namespace:CinemaManagementProject.ViewModel.AdminVM.ShowtimeManagementVM" 
                     xmlns:viewmodel6="clr-namespace:CinemaManagementProject.ViewModel.AdminVM.MovieManagementVM"
-                    
                     xmlns:viewmodel7="clr-namespace:CinemaManagementProject.ViewModel.AdminVM.FoodManagementVM"
                     xmlns:viewmodel8="clr-namespace:CinemaManagementProject.ViewModel.LoginVM"
                     xmlns:viewmodel9="clr-namespace:CinemaManagementProject.ViewModel.StaffVM.OrderFoodManagementVM"
                     xmlns:viewmodel10="clr-namespace:CinemaManagementProject.ViewModel.StaffVM"
                     xmlns:viewmodel12="clr-namespace:CinemaManagementProject.ViewModel.StaffVM.TicketVM"
                     xmlns:viewmodel13="clr-namespace:CinemaManagementProject.ViewModel.StaffVM.TicketBillVM"
+                    xmlns:viewmodel15="clr-namespace:CinemaManagementProject.ViewModel.AdminVM.StatisticalManagementVM"
 >
     <viewmodel1:VoucherViewModel x:Key="VoucherVM" />
     <viewmodel2:CustomerManagementViewModel x:Key="CustomerManagementVM"></viewmodel2:CustomerManagementViewModel>
@@ -27,4 +27,5 @@
     <viewmodel10:StaffVM x:Key="StaffVM"/>
     <viewmodel12:TicketWindowViewModel x:Key="TicketWindowVM" />
     <viewmodel13:TicketBillVM x:Key="BillTicketVM" />
+    <viewmodel15:StatisticalManagementVM x:Key="StatisticalManagementVM"/>
 </ResourceDictionary>
