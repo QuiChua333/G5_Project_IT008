@@ -27,18 +27,21 @@ namespace CinemaManagementProject.View.Admin.StatisticalManagement
         private void periodbox1_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             ComboBoxItem s = (ComboBoxItem)periodbox1.SelectedItem;
-            switch (s.Content.ToString())
+            if (s != null)
             {
-                case "Theo năm":
-                    {
-                        GetYearSource(Time1);
-                        return;
-                    }
-                case "Theo tháng":
-                    {
-                        GetMonthSource(Time1);
-                        return;
-                    }
+                switch (s.Tag.ToString())
+                {
+                    case "Theo năm":
+                        {
+                            GetYearSource(Time1);
+                            return;
+                        }
+                    case "Theo tháng":
+                        {
+                            GetMonthSource(Time1);
+                            return;
+                        }
+                }
             }
         }
         private void periodbox1_Loaded(object sender, RoutedEventArgs e)
@@ -49,18 +52,21 @@ namespace CinemaManagementProject.View.Admin.StatisticalManagement
         private void periodbox2_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             ComboBoxItem s = (ComboBoxItem)periodbox2.SelectedItem;
-            switch (s.Content.ToString())
+            if (s != null)
             {
-                case "Theo năm":
-                    {
-                        GetYearSource(Time2);
-                        return;
-                    }
-                case "Theo tháng":
-                    {
-                        GetMonthSource(Time2);
-                        return;
-                    }
+                switch (s.Tag.ToString())
+                {
+                    case "Theo năm":
+                        {
+                            GetYearSource(Time2);
+                            return;
+                        }
+                    case "Theo tháng":
+                        {
+                            GetMonthSource(Time2);
+                            return;
+                        }
+                }
             }
         }
         private void periodbox2_Loaded(object sender, RoutedEventArgs e)

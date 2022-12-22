@@ -12,6 +12,7 @@
       xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
       d:DesignHeight="760" d:DesignWidth="1140"
       Title="RankingStatistical"
+      x:Name="mainPage"
       DataContext="{StaticResource StatisticalManagementVM}">
 
     <Page.Triggers>

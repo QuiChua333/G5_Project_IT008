@@ -110,8 +110,8 @@
                                                        CommandParameter="{Binding ElementName=periodbox1}" />
                                         </i:EventTrigger>
                                     </i:Interaction.Triggers>
-                                    <ComboBoxItem IsSelected="True" FontWeight="Regular">Theo năm</ComboBoxItem>
-                                    <ComboBoxItem FontWeight="Regular">Theo tháng</ComboBoxItem>
+                                    <ComboBoxItem Tag="Theo năm" IsSelected="True" FontWeight="Regular">Theo năm</ComboBoxItem>
+                                    <ComboBoxItem Tag="Theo tháng" FontWeight="Regular">Theo tháng</ComboBoxItem>
                                 </ComboBox>
                             </Grid>
 
@@ -296,8 +296,8 @@
                                                        CommandParameter="{Binding ElementName=periodbox2}" />
                                         </i:EventTrigger>
                                     </i:Interaction.Triggers>
-                                    <ComboBoxItem IsSelected="True" FontWeight="Regular">Theo năm</ComboBoxItem>
-                                    <ComboBoxItem FontWeight="Regular">Theo tháng</ComboBoxItem>
+                                    <ComboBoxItem Tag="Theo năm"  IsSelected="True" FontWeight="Regular">Theo năm</ComboBoxItem>
+                                    <ComboBoxItem Tag="Theo tháng" FontWeight="Regular">Theo tháng</ComboBoxItem>
                                 </ComboBox>
                             </Grid>
 

@@ -27,6 +27,8 @@ namespace CinemaManagementProject.ViewModel.AdminVM
         public ICommand StaffViewCommand { get; set; }
         public ICommand FilmViewCommand { get; set; }
         public ICommand FoodCommand { get; set; }
+        public ICommand TroubleCommand { get; set; }
+        public ICommand StatisticalViewCommand { get; set; }
         private void Food(object obj) => CurrentView = new FoodManagementVM.FoodManagementVM();
         private void Voucher(object obj) => CurrentView = new VoucherManagementVM.VoucherViewModel();
         private void ShowTime(object obj) => CurrentView = new ShowtimeManagementVM.ShowtimeMangementViewModel();
@@ -34,14 +36,7 @@ namespace CinemaManagementProject.ViewModel.AdminVM
         private void History(object obj) => CurrentView = new Import_ExportManagementVM.Import_ExportManagementViewModel();
         private void Staff(object obj) => CurrentView = new StaffManagementVM.StaffManagementViewModel();
         private void Film(object obj) => CurrentView = new MovieManagementVM.MovieManagementVM();
-
-
-
-        
-        
-        public ICommand TroubleCommand { get; set; }
-        
-
+        public void Statistical(object obj) => CurrentView = new StatisticalManagementVM.StatisticalManagementVM();
         private void Trouble(object obj) => CurrentView = new TroubleManagementVM.TroubleManagementViewModel();
 
 
@@ -56,6 +51,7 @@ namespace CinemaManagementProject.ViewModel.AdminVM
             FilmViewCommand = new RelayCommand(Film);
             FoodCommand = new RelayCommand(Food);
             _currentView = new VoucherManagementVM.VoucherViewModel();
+            StatisticalViewCommand = new RelayCommand(Statistical);
             TroubleCommand = new RelayCommand(Trouble);
         }
     }

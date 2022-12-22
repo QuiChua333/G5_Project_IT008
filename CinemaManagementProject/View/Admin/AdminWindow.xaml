@@ -67,8 +67,9 @@
                     Style="{StaticResource menuButton}"
                     Tag="white"
                     IsChecked="True" 
+                    Command="{Binding StatisticalViewCommand}"
                 >
-                    <!--Command="{Binding FoodCommand}"-->
+                    
                     <StackPanel Orientation="Horizontal">
                         <materialDesign:PackIcon Kind="ChartBar" Height="20" Width="20" Margin="30,0,10,0" ></materialDesign:PackIcon>
                         <TextBlock Text="Tổng quan" Style="{StaticResource menuButtonText}" Margin="0,4,0,0" FontSize="14"/>

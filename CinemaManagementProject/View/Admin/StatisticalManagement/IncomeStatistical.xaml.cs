@@ -29,18 +29,21 @@ namespace CinemaManagementProject.View.Admin.StatisticalManagement
         private void periodbox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             ComboBoxItem s = (ComboBoxItem)periodbox.SelectedItem;
-            switch (s.Content.ToString())
+           if (s != null)
             {
-                case "Theo năm":
-                    {
-                        GetYearSource(Timebox);
-                        return;
-                    }
-                case "Theo tháng":
-                    {
-                        GetMonthSource(Timebox);
-                        return;
-                    }
+                switch (s.Content.ToString())
+                {
+                    case "Theo năm":
+                        {
+                            GetYearSource(Timebox);
+                            return;
+                        }
+                    case "Theo tháng":
+                        {
+                            GetMonthSource(Timebox);
+                            return;
+                        }
+                }
             }
         }
         private void periodbox_Loaded(object sender, System.Windows.RoutedEventArgs e)
