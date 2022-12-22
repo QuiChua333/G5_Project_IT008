@@ -24,7 +24,7 @@ namespace CinemaManagementProject.DTOs
         }
         public Nullable<System.DateTime> SubmittedAt { get; set; }
         public Nullable<System.DateTime> StartDate { get; set; }
-        public Nullable<System.DateTime> FinishDate { get; set; }
+        public DateTime FinishDate { get; set; }
         public string TroubleStatus { get; set; }
         public Nullable<int> StaffId { get; set; }
         public Nullable<bool> IsDeleted { get; set; }

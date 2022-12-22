@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CinemaManagementProject.Utils;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -25,5 +26,16 @@ namespace CinemaManagementProject.DTOs
         public string Image { get; set; }
         public string Genre { get; set; }
         public virtual ICollection<ShowtimeDTO> ShowTimes { get; set; }
+
+        public float Revenue { get; set; }
+        public string RevenueStr
+        {
+            get
+            {
+                return Helper.FormatVNMoney(Revenue);
+            }
+        }
+
+        public int TicketCount { get; set; }
     }
 }

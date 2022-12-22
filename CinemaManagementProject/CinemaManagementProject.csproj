@@ -240,6 +240,7 @@
       <DependentUpon>CinemaManagementDatabase.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Service\BookingService.cs" />
+    <Compile Include="Model\Service\OverviewStatisticService.cs" />
     <Compile Include="Model\Service\ProductReceiptService.cs" />
     <Compile Include="Model\Service\ProductService.cs" />
     <Compile Include="Model\Service\BillService.cs" />
@@ -248,6 +249,7 @@
     <Compile Include="Model\Service\ShowtimeService.cs" />
     <Compile Include="Model\Service\StaffService.cs" />
     <Compile Include="Model\Service\TroubleService.cs" />
+    <Compile Include="Model\Service\StatisticsService.cs" />
     <Compile Include="Model\Service\VoucherService.cs" />
     <Compile Include="Model\Service\DataProvider.cs" />
     <Compile Include="Model\Service\FilmService.cs" />
@@ -298,6 +300,11 @@
     <Compile Include="ViewModel\AdminVM\TroubleManagementVM\HintLevelConverter.cs" />
     <Compile Include="ViewModel\AdminVM\TroubleManagementVM\StatusBrushConverter.cs" />
     <Compile Include="ViewModel\AdminVM\TroubleManagementVM\TroubleManagementViewModel.cs" />
+    <Compile Include="ViewModel\AdminVM\StatisticalManagementVM\Income.cs" />
+    <Compile Include="ViewModel\AdminVM\StatisticalManagementVM\IndexConverter.cs" />
+    <Compile Include="ViewModel\AdminVM\StatisticalManagementVM\Ranking.cs" />
+    <Compile Include="ViewModel\AdminVM\StatisticalManagementVM\StatisticalManagementVM.cs" />
+    <Compile Include="ViewModel\AdminVM\StatisticalManagementVM\TotalIncome.cs" />
     <Compile Include="ViewModel\AdminVM\VoucherManagementVM\AddWindowVM\AddWindowViewModel.cs" />
     <Compile Include="ViewModel\AdminVM\VoucherManagementVM\AddWindowVM\CheckBoxVisibleConverters.cs" />
     <Compile Include="ViewModel\AdminVM\VoucherManagementVM\AddWindowVM\ReleaseWindowViewModel.cs" />
@@ -336,6 +343,9 @@
     </Compile>
     <Compile Include="View\Admin\FoodManagement\ImportFoodWindow.xaml.cs">
       <DependentUpon>ImportFoodWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Admin\StatisticalManagement\StatisticalManagement.xaml.cs">
+      <DependentUpon>StatisticalManagement.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Admin\VoucherManagement\AddWindow\AddInfoPage.xaml.cs">
       <DependentUpon>AddInfoPage.xaml</DependentUpon>
@@ -631,6 +641,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="View\Admin\StatisticalManagement\StatisticalManagement.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\Admin\VoucherManagement\AddWindow\AddInfoPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -880,11 +894,11 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="App.Config" />
     <EntityDeploy Include="Model\CinemaManagementDatabase.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>CinemaManagementDatabase.Designer.cs</LastGenOutput>
     </EntityDeploy>
+    <None Include="App.Config" />
     <None Include="Model\CinemaManagementDatabase.edmx.diagram">
       <DependentUpon>CinemaManagementDatabase.edmx</DependentUpon>
     </None>

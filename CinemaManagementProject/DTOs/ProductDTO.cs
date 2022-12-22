@@ -38,5 +38,15 @@ namespace CinemaManagementProject.DTOs
             }
         }
         public float Price { get; set; }
+
+        public float Revenue { get; set; }
+        public string RevenueStr
+        {
+            get
+            {
+                return Helper.FormatVNMoney(Revenue);
+            }
+        }
+        public int SalesQuantity { get; set; }
     }
 }
