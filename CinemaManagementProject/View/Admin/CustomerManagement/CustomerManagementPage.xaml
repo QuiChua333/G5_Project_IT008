@@ -11,8 +11,7 @@
       xmlns:i="http://schemas.microsoft.com/xaml/behaviors"   
       Title="CustomerManagementPage"
       DataContext="{StaticResource CustomerManagementVM}"
-      d:DesignHeight="680" 
-      d:DesignWidth="1120"
+    
       Background="Transparent"
       ShowsNavigationUI="False" 
       x:Name="mainPage">
@@ -37,7 +36,10 @@
         </i:EventTrigger>
     </i:Interaction.Triggers>
     <Border  Background="{StaticResource LightGrayAthens}" 
-             CornerRadius="20" >
+             CornerRadius="20"
+             HorizontalAlignment="Stretch"
+             VerticalAlignment="Stretch"
+             Margin="20">
         <Border.Effect>
             <DropShadowEffect
                     BlurRadius="10"

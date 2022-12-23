@@ -8,7 +8,7 @@
       Title="HistoryManagementPage" 
       Background="{StaticResource LightBlueSpindle}"
       DataContext="{StaticResource Import_ExportManagementVM}"
-      d:DesignHeight="680" d:DesignWidth="1120"
+      
       ShowsNavigationUI="False"      
       x:Name="mainPage">
     <Page.Triggers>
@@ -27,7 +27,9 @@
         </EventTrigger>
     </Page.Triggers>
 
-    <Grid>
+    <Grid HorizontalAlignment="Stretch"
+             VerticalAlignment="Stretch"
+             Margin="20">
         <Grid.RowDefinitions>
             <RowDefinition Height="50"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
