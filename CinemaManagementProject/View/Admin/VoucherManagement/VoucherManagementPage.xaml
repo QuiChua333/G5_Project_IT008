@@ -10,7 +10,7 @@
       mc:Ignorable="d" 
       x:Name="mainPage"
       Title="VoucherManagementPage"
-      d:DesignHeight="660" d:DesignWidth="1040"
+      
       DataContext="{StaticResource VoucherVM}"
       ShowsNavigationUI="False">
 
@@ -33,7 +33,7 @@
         </i:EventTrigger>
     </i:Interaction.Triggers>
 
-    <Border CornerRadius="0,20,20,0" Background="#BCD8F1" BorderBrush="Gray" BorderThickness="0.3">
+    <Border CornerRadius="20" Background="{StaticResource LightGrayAthens}"  BorderBrush="Gray" BorderThickness="0.3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="20">
         <Border.Effect>
             <DropShadowEffect BlurRadius="10" Direction="270" Color="Black" ShadowDepth="4" Opacity="0.25"/>
         </Border.Effect>
