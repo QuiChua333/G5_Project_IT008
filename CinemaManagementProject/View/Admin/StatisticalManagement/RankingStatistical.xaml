@@ -10,7 +10,7 @@
       xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
       xmlns:Component="clr-namespace:CinemaManagementProject.Component"
       xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
-      d:DesignHeight="760" d:DesignWidth="1140"
+      d:DesignHeight="600" d:DesignWidth="1140"
       Title="RankingStatistical"
       x:Name="mainPage"
       DataContext="{StaticResource StatisticalManagementVM}">
@@ -36,12 +36,8 @@
     </Page.Resources>
     
     <Grid >
-        <Grid.RowDefinitions>
-            <RowDefinition Height="60"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
-        <Grid Grid.Row="1" Background="#BCD8F1">
-            <Border CornerRadius="20" Background="White" Margin="20">
+        <Grid Background="#BCD8F1">
+            <Border CornerRadius="20" Background="White" Margin="10">
                 <Border.Effect>
                     <DropShadowEffect BlurRadius="14"
                                 Color="Black"
@@ -156,25 +152,25 @@
                             </Grid>
                         </Grid>
 
-                        <Grid Grid.Row="1" Margin="10" Width="534">
+                        <Grid Grid.Row="1">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition/>
                                 <ColumnDefinition/>
                             </Grid.ColumnDefinitions>
-                            <StackPanel Grid.Column="0" Orientation="Horizontal" Margin="0,0,7,0" Width="260">
-                                <Border BorderThickness="2" BorderBrush="Gray" CornerRadius="20" Width="250">
+                            <Grid Grid.Column="0">
+                                <Border BorderThickness="2" BorderBrush="Gray" CornerRadius="20" Margin="10">
                                     <Grid>
                                         <lvc:PieChart LegendLocation="Bottom"
-                                                  InnerRadius="60"
+                                                  InnerRadius="50"
                                                   Background="Transparent"
                                                   Series="{Binding CustomerExpe}" 
-                                                  Width="230" Height="200"/>
+                                                  Width="230" Height="180"/>
                                         <ProgressBar Style="{StaticResource MaterialDesignCircularProgressBar}"
                                                      Value="0"
                                                      IsIndeterminate="True"
-                                                     Height="Auto"
-                                                     Margin="20,-20,20,10"
-                                                     Width="Auto"
+                                                     Margin="20,-20,20,12"
+                                                     Width="100"
+                                                     Height="100"
                                                      Foreground="#FF455345" />
                                         <Grid Margin="60,40,60,90" Background="Transparent">
                                             <Grid.RowDefinitions>
@@ -201,17 +197,17 @@
                                         </Grid>
                                     </Grid>
                                 </Border>
-                            </StackPanel>
+                            </Grid>
 
-                            <StackPanel Grid.Column="1" Orientation="Horizontal" Margin="0,0,7,0" Width="260">
-                                <Border BorderThickness="2" BorderBrush="Gray" CornerRadius="20" Width="250">
+                            <Grid Grid.Column="1">
+                                <Border BorderThickness="2" BorderBrush="Gray" CornerRadius="20" Margin="10">
                                     <Grid>
                                         <lvc:PieChart LegendLocation="Bottom"
                                                   InnerRadius="10"
                                                   Background="Transparent"
                                                   Series="{Binding NewCusPie}" 
-                                                  Width="230" Height="200"/>
-                                        <Grid Height="24" Width="130" HorizontalAlignment="Right" Margin="0,180,10,0">
+                                                  Width="230" Height="180"/>
+                                        <Grid Height="24" Width="130" HorizontalAlignment="Right" Margin="0,156,10,0">
                                             <Grid.ColumnDefinitions>
                                                 <ColumnDefinition Width="65*"/>
                                                 <ColumnDefinition Width="35*"/>
@@ -234,25 +230,23 @@
 
                                     </Grid>
                                 </Border>
-                            </StackPanel>
+                            </Grid>
                         </Grid>
 
-                        <StackPanel Grid.Row="2">
-                            <Label Grid.RowSpan="3"
-                                       Content="Top 5 khách hàng chi tiêu nhiều nhất"
-                                       VerticalAlignment="Center"
-                                       HorizontalAlignment="Left"
-                                       FontWeight="Bold"
-                                       FontSize="25"
-                                       Margin="30,0,0,0" />
-                        </StackPanel>
+                        <Grid Grid.Row="2">
+                            <Label Content="Top 5 khách hàng chi tiêu nhiều nhất"
+                                   VerticalAlignment="Center"
+                                   HorizontalAlignment="Left"
+                                   FontWeight="Bold"
+                                   FontSize="22"
+                                   Margin="26,0,0,0" />
+                        </Grid>
                         
-                        <Grid Margin="5,0,5,0" Height="250" Grid.Row="3">
+                        <Grid Margin="10,0,10,0" Grid.Row="3">
 
                             <Border BorderThickness="2" BorderBrush="Gray" CornerRadius="20">
                                 <ListView ItemsSource="{Binding Top5Customer}">
                                     <ListView.View>
-
                                         <GridView>
                                             
                                             <GridViewColumn Header="STT" Width="90" >
@@ -407,15 +401,15 @@
                             </Grid>
                         </Grid>
 
-                        <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="10" Width="534">
+                        <Grid Grid.Row="1" Margin="10">
                             <Border BorderThickness="2" BorderBrush="Gray" CornerRadius="20">
-                                <Grid Width="516">
+                                <Grid>
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="40*" />
                                         <ColumnDefinition Width="60*" />
                                     </Grid.ColumnDefinitions>
                                     <Grid Grid.Column="0">
-                                        <Image Source="{StaticResource Image_Start}" Width="200" Height="220"/>
+                                        <Image Source="{StaticResource Image_Start}" Width="200" Height="190"/>
 
                                         <Grid Margin="40,50,40,50" Background="Transparent">
                                             <Grid.RowDefinitions>
@@ -446,9 +440,9 @@
                                         <lvc:PieChart LegendLocation="Right"
                                                   InnerRadius="10"
                                                   Background="Transparent"
-                                                  Margin="0,0,0,0"
+                                                  Margin="10,0,10,0"
                                                   Series="{Binding StaffContributePie}" 
-                                                  Width="280" Height="220"/>
+                                                  Height="180"/>
                                     </Grid>
                                     
 
@@ -456,18 +450,18 @@
                                 </Grid>
 
                             </Border>
-                        </StackPanel>
+                        </Grid>
 
-                        <StackPanel Grid.Row="2">
-                            <Label Grid.RowSpan="3"
-                                       Content="Top 5 nhân viên đóng góp nhiều nhất"
-                                       VerticalAlignment="Center"
-                                       HorizontalAlignment="Left"
-                                       FontWeight="Bold"
-                                       FontSize="25"
-                                       Margin="30,0,0,0" />
-                        </StackPanel>
-                        <Grid Margin="5,0,5,0" Height="250" Grid.Row="3">
+                        <Grid Grid.Row="2">
+                            <Label Content="Top 5 nhân viên đóng góp nhiều nhất"
+                                    VerticalAlignment="Center"
+                                    HorizontalAlignment="Left"
+                                    FontWeight="Bold"
+                                    FontSize="22"
+                                    Margin="26,0,0,0" />
+
+                        </Grid>
+                        <Grid Margin="10,0,10,0" Grid.Row="3">
                             <Border BorderThickness="2" BorderBrush="Gray" CornerRadius="20">
                                 <ListView ItemsSource="{Binding Top5Staff}" Margin="0,0,0,-2">
                                     <ListView.View>

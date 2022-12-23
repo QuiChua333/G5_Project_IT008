@@ -894,11 +894,11 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="App.Config" />
     <EntityDeploy Include="Model\CinemaManagementDatabase.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>CinemaManagementDatabase.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="App.Config" />
     <None Include="Model\CinemaManagementDatabase.edmx.diagram">
       <DependentUpon>CinemaManagementDatabase.edmx</DependentUpon>
     </None>
