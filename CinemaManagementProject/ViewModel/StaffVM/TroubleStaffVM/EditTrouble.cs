@@ -40,7 +40,7 @@ namespace CinemaManagementProject.ViewModel.StaffVM.TroubleStaffVM
         }
         public async Task UpdateTroubleFunc(EditTroubleWindow p)
         {
-            if (TroubleID != null && IsValidData())
+            if (TroubleID.ToString() != null && IsValidData())
             {
 
                 TroubleDTO tb = new TroubleDTO

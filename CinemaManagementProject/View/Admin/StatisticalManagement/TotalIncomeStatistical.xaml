@@ -39,7 +39,7 @@
     <Grid>
         
         
-        <Grid Background="#BCD8F1">
+        <Grid>
             <Border CornerRadius="20" Background="White" Margin="10">
                 <Border.Effect>
                     <DropShadowEffect BlurRadius="14"

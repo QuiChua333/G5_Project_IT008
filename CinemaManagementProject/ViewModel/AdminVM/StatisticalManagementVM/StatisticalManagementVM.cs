@@ -55,7 +55,7 @@ namespace CinemaManagementProject.ViewModel.AdminVM.StatisticalManagementVM
             {
                 ButtonView = p;
                 p.Background = (SolidColorBrush)new BrushConverter().ConvertFromString("Transparent");
-                p.SetValue(ShadowAssist.ShadowDepthProperty, ShadowDepth.Depth0);
+                p.SetValue(ElevationAssist.ElevationProperty, Elevation.Dp3);
 
             });
             LoadAllStatisticalCM = new RelayCommand<Card>((p) => { return true; }, (p) =>
@@ -90,11 +90,10 @@ namespace CinemaManagementProject.ViewModel.AdminVM.StatisticalManagementVM
         public void ChangeView(Card p)
         {
             ButtonView.Background = (SolidColorBrush)new BrushConverter().ConvertFromString("Transparent");
-            ButtonView.SetValue(ShadowAssist.ShadowDepthProperty, ShadowDepth.Depth2);
+            ButtonView.SetValue(ElevationAssist.ElevationProperty, Elevation.Dp3);
             ButtonView = p;
             p.Background = (SolidColorBrush)new BrushConverter().ConvertFromString("Transparent");
-            p.SetValue(ShadowAssist.ShadowDepthProperty, ShadowDepth.Depth0);
+            p.SetValue(ElevationAssist.ElevationProperty, Elevation.Dp3);
         }
-
     }
 }

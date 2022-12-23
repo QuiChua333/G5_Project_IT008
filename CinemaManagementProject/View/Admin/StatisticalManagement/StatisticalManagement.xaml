@@ -10,8 +10,9 @@
       xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
       d:DesignHeight="660" d:DesignWidth="1140"
       Title="StatisticalManagement"
-      x:Name="mainPage">
-    
+      x:Name="mainPage"
+      DataContext="{StaticResource StatisticalManagementVM}">
+
     <i:Interaction.Triggers>
         <i:EventTrigger EventName="Loaded">
             <i:InvokeCommandAction Command="{Binding StoreButtonNameCM}"
@@ -40,7 +41,8 @@
                                       materialDesign:ShadowAssist.ShadowDepth="Depth2"
                                       materialDesign:ShadowAssist.ShadowEdges="Bottom"
                                       x:Name="card1">
-                    <RadioButton Style="{StaticResource MaterialDesignTabRadioButtonBottom}"
+                    <StackPanel Orientation="Horizontal">
+                        <RadioButton Style="{StaticResource MaterialDesignTabRadioButtonBottom}"
                             BorderBrush="Blue"
                             VerticalAlignment="Top"
                             Height="40"
@@ -51,14 +53,7 @@
                             Command="{Binding LoadAllStatisticalCM}"
                             CommandParameter="{Binding ElementName=card1}"
                             Margin="20,5,0,0"/>
-                </materialDesign:Card>
-                <materialDesign:Card Height="57"
-                                     Background="Transparent"
-                                     materialDesign:ShadowAssist.ShadowDepth="Depth2"
-                                     materialDesign:ShadowAssist.ShadowEdges="Bottom"
-                                     BorderThickness="0"
-                                     x:Name="card2">
-                    <RadioButton Style="{StaticResource MaterialDesignTabRadioButtonBottom}"
+                        <RadioButton Style="{StaticResource MaterialDesignTabRadioButtonBottom}"
                             BorderBrush="Blue"
                             VerticalAlignment="Top"
                             Height="40"
@@ -67,25 +62,9 @@
                             IsChecked="False"
                             Margin="10,5,0,0"
                             Content="Bảng xếp hạng"
-                            >
-                        <i:Interaction.Triggers>
-                            <i:EventTrigger EventName="Checked">
-                                <i:InvokeCommandAction Command="{Binding LoadRankStatisticalCM}"
-                                               CommandParameter="{Binding ElementName=card1}" />
-                                <i:InvokeCommandAction Command="{Binding LoadRankStatisticalCM}"
-                                               CommandParameter="{Binding ElementName=card3}" />
-                            </i:EventTrigger>
-                        </i:Interaction.Triggers>
-                    </RadioButton>
-                    
-                </materialDesign:Card>
-                <materialDesign:Card Height="57"
-                                     Background="Transparent"
-                                     materialDesign:ShadowAssist.ShadowDepth="Depth2"
-                                     materialDesign:ShadowAssist.ShadowEdges="Bottom"
-                                     BorderThickness="0"
-                                     x:Name="card3">
-                    <RadioButton Style="{StaticResource MaterialDesignTabRadioButtonBottom}"
+                            Command="{Binding LoadRankStatisticalCM}"
+                            CommandParameter="{Binding ElementName=card1}"/>
+                        <RadioButton Style="{StaticResource MaterialDesignTabRadioButtonBottom}"
                             BorderBrush="Blue"
                             VerticalAlignment="Top"
                             Height="40"
@@ -95,12 +74,13 @@
                             Margin="10,5,0,0"
                             Content="Xu hướng"
                             Command="{Binding LoadBestSellingCM}"
-                            CommandParameter="{Binding ElementName=card3}"/>
+                            CommandParameter="{Binding ElementName=card1}"/>
+                        
+                    </StackPanel>
                 </materialDesign:Card>
-
             </StackPanel>
             <materialDesign:Card Background="Transparent"
-                                 Width="1110"
+                                 Width="110"
                                  materialDesign:ShadowAssist.ShadowDepth="Depth2"
                                  materialDesign:ShadowAssist.ShadowEdges="Bottom"
                                  BorderThickness="0"

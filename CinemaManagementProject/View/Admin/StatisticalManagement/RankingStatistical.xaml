@@ -36,7 +36,7 @@
     </Page.Resources>
     
     <Grid >
-        <Grid Background="#BCD8F1">
+        <Grid>
             <Border CornerRadius="20" Background="White" Margin="10">
                 <Border.Effect>
                     <DropShadowEffect BlurRadius="14"
@@ -168,7 +168,7 @@
                                         <ProgressBar Style="{StaticResource MaterialDesignCircularProgressBar}"
                                                      Value="0"
                                                      IsIndeterminate="True"
-                                                     Margin="20,-20,20,12"
+                                                     Margin="20,-28,20,12"
                                                      Width="100"
                                                      Height="100"
                                                      Foreground="#FF455345" />

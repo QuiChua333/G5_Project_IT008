@@ -6,7 +6,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
-using CinemaManagementProject.DTOs;
 using CinemaManagementProject.Model;
 
 namespace CinemaManagementProject.ViewModel.AdminVM
