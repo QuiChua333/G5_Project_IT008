@@ -14,6 +14,7 @@
         Background="Transparent"
         ShowActivated="False"
         DataContext="{StaticResource StaffVM}"
+        Name="StaffWD"
 >
     <Grid Height="760" Width="1400">
         <Grid.ColumnDefinitions>
@@ -110,7 +111,8 @@
                 </RadioButton>
                 <RadioButton    Style="{StaticResource menuButton}"
                             Tag="white"
-                            Command="{Binding ShowHomeViewCommand}">
+                            Command="{Binding LogOutCommand}"
+                                CommandParameter="{Binding ElementName=StaffWD}">
                     <StackPanel Orientation="Horizontal">
                         <materialDesign:PackIcon Kind="Logout" Height="20" Width="20" Margin="30,0,10,0" ></materialDesign:PackIcon>
                         <TextBlock Text="Đăng xuất" Style="{StaticResource menuButtonText}" Margin="0,3,0,0" FontSize="14"/>

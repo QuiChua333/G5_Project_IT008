@@ -13,7 +13,7 @@
         AllowsTransparency="True"
         Background="Transparent"
         ShowActivated="False"
-        
+        Name="AdminWD"
 >
     <Window.DataContext>
         <vm:AdminVM></vm:AdminVM>
@@ -203,7 +203,8 @@
                     x:Name="DangXuatButton"
                     Style="{StaticResource menuButton}"
                     Tag="white"
-                    Command="{Binding ShowHomeViewCommand}"
+                    Command="{Binding LogOutCommand}"
+                    CommandParameter="{Binding ElementName=AdminWD}"
                 >
                     <StackPanel Orientation="Horizontal">
                         <materialDesign:PackIcon Kind="Logout" Height="20" Width="20" Margin="30,0,10,0" ></materialDesign:PackIcon>
