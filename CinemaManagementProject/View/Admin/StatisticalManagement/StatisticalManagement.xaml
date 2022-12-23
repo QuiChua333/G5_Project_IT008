@@ -9,7 +9,8 @@
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
       d:DesignHeight="660" d:DesignWidth="1140"
-      Title="StatisticalManagement">
+      Title="StatisticalManagement"
+      x:Name="mainPage">
     
     <i:Interaction.Triggers>
         <i:EventTrigger EventName="Loaded">
@@ -39,50 +40,62 @@
                                       materialDesign:ShadowAssist.ShadowDepth="Depth2"
                                       materialDesign:ShadowAssist.ShadowEdges="Bottom"
                                       x:Name="card1">
-                    <Button Height="57"
+                    <RadioButton Style="{StaticResource MaterialDesignTabRadioButtonBottom}"
+                            BorderBrush="Blue"
+                            VerticalAlignment="Top"
+                            Height="40"
+                            FontFamily="{StaticResource MaterialDesignFont}"
+                            FontSize="16"
+                            IsChecked="True"
                             Content="Tổng thu chi"
-                            Background="#BCD8F1"
-                            FontWeight="Bold"
-                            Foreground="Black"
-                            BorderBrush="Transparent"
-                            BorderThickness="0"
-                            materialDesign:ButtonAssist.CornerRadius="0"
                             Command="{Binding LoadAllStatisticalCM}"
-                            CommandParameter="{Binding ElementName=card1}" />
+                            CommandParameter="{Binding ElementName=card1}"
+                            Margin="20,5,0,0"/>
                 </materialDesign:Card>
                 <materialDesign:Card Height="57"
-                                     Background="#BCD8F1"
+                                     Background="Transparent"
                                      materialDesign:ShadowAssist.ShadowDepth="Depth2"
                                      materialDesign:ShadowAssist.ShadowEdges="Bottom"
                                      BorderThickness="0"
                                      x:Name="card2">
-                    <Button Height="57"
+                    <RadioButton Style="{StaticResource MaterialDesignTabRadioButtonBottom}"
+                            BorderBrush="Blue"
+                            VerticalAlignment="Top"
+                            Height="40"
+                            FontFamily="{StaticResource MaterialDesignFont}"
+                            FontSize="16"
+                            IsChecked="False"
+                            Margin="10,5,0,0"
                             Content="Bảng xếp hạng"
-                            Background="Transparent"
-                            FontWeight="Bold"
-                            Foreground="Black"
-                            BorderBrush="Transparent"
-                            BorderThickness="0"
-                            materialDesign:ButtonAssist.CornerRadius="0"
-                            Command="{Binding LoadRankStatisticalCM}"
-                            CommandParameter="{Binding ElementName=card2}" />
+                            >
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="Checked">
+                                <i:InvokeCommandAction Command="{Binding LoadRankStatisticalCM}"
+                                               CommandParameter="{Binding ElementName=card1}" />
+                                <i:InvokeCommandAction Command="{Binding LoadRankStatisticalCM}"
+                                               CommandParameter="{Binding ElementName=card3}" />
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </RadioButton>
+                    
                 </materialDesign:Card>
                 <materialDesign:Card Height="57"
-                                     Background="#BCD8F1"
+                                     Background="Transparent"
                                      materialDesign:ShadowAssist.ShadowDepth="Depth2"
                                      materialDesign:ShadowAssist.ShadowEdges="Bottom"
                                      BorderThickness="0"
                                      x:Name="card3">
-                    <Button Height="57"
+                    <RadioButton Style="{StaticResource MaterialDesignTabRadioButtonBottom}"
+                            BorderBrush="Blue"
+                            VerticalAlignment="Top"
+                            Height="40"
+                            FontFamily="{StaticResource MaterialDesignFont}"
+                            FontSize="16"
+                            IsChecked="False"
+                            Margin="10,5,0,0"
                             Content="Xu hướng"
-                            Background="Transparent"
-                            FontWeight="Bold"
-                            Foreground="Black"
-                            BorderBrush="Transparent"
-                            BorderThickness="0"
-                            materialDesign:ButtonAssist.CornerRadius="0"
                             Command="{Binding LoadBestSellingCM}"
-                            CommandParameter="{Binding ElementName=card3}" VerticalAlignment="Top" />
+                            CommandParameter="{Binding ElementName=card3}"/>
                 </materialDesign:Card>
 
             </StackPanel>

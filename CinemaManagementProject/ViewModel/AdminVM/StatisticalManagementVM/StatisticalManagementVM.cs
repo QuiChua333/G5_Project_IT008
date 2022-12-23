@@ -54,7 +54,7 @@ namespace CinemaManagementProject.ViewModel.AdminVM.StatisticalManagementVM
             StoreButtonNameCM = new RelayCommand<Card>((p) => { return true; }, (p) =>
             {
                 ButtonView = p;
-                p.Background = (SolidColorBrush)new BrushConverter().ConvertFromString("#fafafa");
+                p.Background = (SolidColorBrush)new BrushConverter().ConvertFromString("Transparent");
                 p.SetValue(ShadowAssist.ShadowDepthProperty, ShadowDepth.Depth0);
 
             });
@@ -85,32 +85,14 @@ namespace CinemaManagementProject.ViewModel.AdminVM.StatisticalManagementVM
                 await ChangeBestSellPeriod2();
                 IsLoading = false;
             });
-            //ChangeIncomePeriodCM = new RelayCommand<ComboBox>((p) => { return true; }, async (p) =>
-            //{
-            //    IsLoading = true;
-            //    await ChangeIncomePeriod();
-            //    IsLoading = false;
-            //});
-            //ChangeRankingPeriodCM = new RelayCommand<ComboBox>((p) => { return true; }, async (p) =>
-            //{
-            //    IsLoading = true;
-            //    await ChangeRankingPeriod();
-            //    IsLoading = false;
-            //});
-            //ChangeRankingPeriod2CM = new RelayCommand<ComboBox>((p) => { return true; }, async (p) =>
-            //{
-            //    IsLoading = true;
-            //    await ChangeRankingPeriod2();
-            //    IsLoading = false;
-            //});
         }
 
         public void ChangeView(Card p)
         {
-            ButtonView.Background = (SolidColorBrush)new BrushConverter().ConvertFromString("#f0f2f5");
+            ButtonView.Background = (SolidColorBrush)new BrushConverter().ConvertFromString("Transparent");
             ButtonView.SetValue(ShadowAssist.ShadowDepthProperty, ShadowDepth.Depth2);
             ButtonView = p;
-            p.Background = (SolidColorBrush)new BrushConverter().ConvertFromString("#fafafa");
+            p.Background = (SolidColorBrush)new BrushConverter().ConvertFromString("Transparent");
             p.SetValue(ShadowAssist.ShadowDepthProperty, ShadowDepth.Depth0);
         }
 

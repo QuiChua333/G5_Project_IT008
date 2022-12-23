@@ -26,5 +26,7 @@ namespace CinemaManagementProject.View.Admin.StatisticalManagement
             InitializeComponent();
             this.Language = XmlLanguage.GetLanguage("vi-VN");
         }
+
+        
     }
 }
