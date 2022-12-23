@@ -7,7 +7,7 @@
       mc:Ignorable="d" 
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"       
       xmlns:Search="clr-namespace:CinemaManagementProject.Component.Search" xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
-      d:DesignHeight="630" d:DesignWidth="1120"
+      
       Title="ImportHistoryPage"
       DataContext="{StaticResource Import_ExportManagementVM}"
       ShowsNavigationUI="False"
@@ -29,7 +29,10 @@
     </Page.Triggers>
     <Border     Grid.Row="1" 
                 Background="{StaticResource LightGrayAthens}" 
-                CornerRadius="20" >
+                CornerRadius="20"
+                HorizontalAlignment="Stretch"
+             VerticalAlignment="Stretch"
+             >
         <Border.Effect>
             <DropShadowEffect
                         BlurRadius="10"
