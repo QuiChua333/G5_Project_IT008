@@ -1,13 +1,16 @@
 ﻿using CinemaManagementProject.DTOs;
 using CinemaManagementProject.Utilities;
+using CinemaManagementProject.View.Login;
 using CinemaManagementProject.ViewModel.AdminVM.FoodManagementVM;
 using CinemaManagementProject.ViewModel.StaffVM.TroubleStaffVM;
+using CinemaManagementProject.Views;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using System.Windows;
 
 namespace CinemaManagementProject.ViewModel.StaffVM
 {
@@ -24,6 +27,7 @@ namespace CinemaManagementProject.ViewModel.StaffVM
         public ICommand OrderFoodCommand { get; set; }
         public ICommand FilmBookingCommand { get; set; }
         public ICommand TroubleCommand { get; set; }
+        public ICommand LogOutCommand { get; set; }
         private void OrderFood(object obj)
         {
             CurrentView = new OrderFoodManagementVM.OrderFoodManagementVM();
@@ -38,6 +42,18 @@ namespace CinemaManagementProject.ViewModel.StaffVM
             TroubleCommand = new RelayCommand(Trouble);
             //StartPage
             _currentView = new FilmBookingVM.FilmBookingVM();
+            LogOutCommand = new RelayCommand<Window>((p) => { return true; }, (p) =>
+            {
+                if (CustomMessageBox.ShowOkCancel("Bạn thật sự muốn đăng xuất không?", "Cảnh báo", "Đăng xuất", "Không", Views.CustomMessageBoxImage.Information) == CustomMessageBoxResult.OK)
+                {
+                    if (p != null)
+                    {
+                        LoginWindow loginwd = new LoginWindow();
+                        loginwd.Show();
+                        p.Close();
+                    }
+                }
+            });
         }
     }
 }

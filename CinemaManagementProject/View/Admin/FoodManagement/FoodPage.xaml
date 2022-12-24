@@ -9,7 +9,6 @@
       xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
       mc:Ignorable="d" 
       DataContext="{StaticResource FoodVM}"
-      d:DesignHeight="660" d:DesignWidth="1040"
       Name="mainPage"
       Title="FoodPage">
     <Page.Triggers>
@@ -30,7 +29,7 @@
             <i:InvokeCommandAction Command="{Binding FirstLoadCM}" />
         </i:EventTrigger>
     </i:Interaction.Triggers>
-    <Grid Width="1040" Height="660">
+    <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="20">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="691*"/>
             <ColumnDefinition Width="549*"/>

@@ -7,6 +7,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using CinemaManagementProject.Model;
+using CinemaManagementProject.View.Login;
+using CinemaManagementProject.Views;
+using System.Windows;
 
 namespace CinemaManagementProject.ViewModel.AdminVM
 {
@@ -28,6 +31,7 @@ namespace CinemaManagementProject.ViewModel.AdminVM
         public ICommand FoodCommand { get; set; }
         public ICommand TroubleCommand { get; set; }
         public ICommand StatisticalViewCommand { get; set; }
+        public ICommand LogOutCommand { get; set; }
         private void Food(object obj) => CurrentView = new FoodManagementVM.FoodManagementVM();
         private void Voucher(object obj) => CurrentView = new VoucherManagementVM.VoucherViewModel();
         private void ShowTime(object obj) => CurrentView = new ShowtimeManagementVM.ShowtimeMangementViewModel();
@@ -52,6 +56,18 @@ namespace CinemaManagementProject.ViewModel.AdminVM
             _currentView = new VoucherManagementVM.VoucherViewModel();
             StatisticalViewCommand = new RelayCommand(Statistical);
             TroubleCommand = new RelayCommand(Trouble);
+            LogOutCommand = new RelayCommand<Window>((p) => { return true; }, (p) =>
+            {
+                if (CustomMessageBox.ShowOkCancel("Bạn thật sự muốn đăng xuất không?", "Cảnh báo", "Đăng xuất", "Không", Views.CustomMessageBoxImage.Information) == CustomMessageBoxResult.OK)
+                {
+                    if (p != null)
+                    {
+                        LoginWindow loginwd = new LoginWindow();
+                        loginwd.Show();
+                        p.Close();
+                    }
+                }
+            });
         }
     }
 }

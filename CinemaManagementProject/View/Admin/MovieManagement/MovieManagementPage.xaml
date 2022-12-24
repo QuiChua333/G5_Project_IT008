@@ -11,8 +11,7 @@
       xmlns:viewmodel="clr-namespace:CinemaManagementProject.ViewModel.AdminVM.MovieManagementVM"
       xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
       Title="MovieManagementPage"
-      x:Name="mainPage"
-      Width="1140" Height="760"
+      x:Name="mainPage"      
       DataContext="{StaticResource FilmVM}">
     
     
@@ -24,9 +23,9 @@
     </i:Interaction.Triggers>
 
    
-    <Grid Width="1140" Height="760" >
+    <Grid>
         <Grid Grid.Column="1">
-            <Grid Margin="0,0,0,20" Width="1020" Height="660">
+            <Grid>
                 <Grid.Effect>
                     <DropShadowEffect 
          			    BlurRadius="10"
@@ -37,7 +36,7 @@
                     />
                 </Grid.Effect>
 
-                <Border Background="White" BorderBrush="White" BorderThickness="4" CornerRadius="20" >
+                <Border Background="{StaticResource LightGrayAthens}" BorderBrush="White" BorderThickness="0" CornerRadius="20" Margin="20" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
                     <Grid>
 
                         <Grid.RowDefinitions>
@@ -65,8 +64,6 @@
                                                PlaceHolder="Tìm kiếm"
                                                SearchTextChange="Search_SearchTextChange"
                                                x:Name="SearchBox"/>
-                               
-
                                 <Border>
                                     <Border.Effect>
                                         <DropShadowEffect
@@ -142,7 +139,6 @@
                                                   ItemsSource="{Binding FilmList}"
                                                   SelectedItem="{Binding SelectedItem}"
                                                   Focusable="True"
-                                                  Height="578"
                                                   ToolTip="Nháy đúp để xem chi tiết">
                                             <i:Interaction.Triggers>
                                                 <i:EventTrigger EventName="MouseDoubleClick">
