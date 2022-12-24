@@ -23,5 +23,13 @@ namespace CinemaManagementProject.View.Staff
         {
             InitializeComponent();
         }
+
+        private void StaffWD_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.LeftButton == MouseButtonState.Pressed)
+            {
+                DragMove();
+            }
+        }
     }
 }

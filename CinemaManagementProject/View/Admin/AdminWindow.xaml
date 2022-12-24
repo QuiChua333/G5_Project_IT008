@@ -13,7 +13,7 @@
         AllowsTransparency="True"
         Background="Transparent"
         ShowActivated="False"
-        Name="AdminWD"
+        Name="AdminWD" MouseDown="AdminWD_MouseDown"
 >
     <Window.DataContext>
         <vm:AdminVM></vm:AdminVM>

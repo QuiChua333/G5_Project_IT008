@@ -14,7 +14,7 @@
         Background="Transparent"
         ShowActivated="False"
         DataContext="{StaticResource StaffVM}"
-        Name="StaffWD"
+        Name="StaffWD" MouseDown="StaffWD_MouseDown"
 >
     <Grid Height="760" Width="1400">
         <Grid.ColumnDefinitions>
