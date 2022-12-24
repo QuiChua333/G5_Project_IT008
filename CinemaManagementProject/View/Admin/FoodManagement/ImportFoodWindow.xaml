@@ -11,7 +11,7 @@
         AllowsTransparency="True"
         Title="AddFoodWindow" Height="330" Width="630"
         Name="ImportFoodWd"
-        Background="Transparent"
+        Background="Transparent" MouseDown="ImportFoodWd_MouseDown"
 >
     <Window.Triggers>
         <EventTrigger RoutedEvent="Window.Loaded">

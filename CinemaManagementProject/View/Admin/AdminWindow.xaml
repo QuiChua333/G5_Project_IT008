@@ -6,20 +6,19 @@
         xmlns:vm="clr-namespace:CinemaManagementProject.ViewModel.AdminVM"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CinemaManagementProject.View.Admin"
-        mc:Ignorable="d"
         WindowStyle="None"
         Height="760" Width="1400"
         WindowStartupLocation="CenterScreen"
         AllowsTransparency="True"
         Background="Transparent"
         ShowActivated="False"
-        Name="AdminWD"
+        Name="AdminWD" MouseDown="AdminWD_MouseDown"
 >
     <Window.DataContext>
         <vm:AdminVM></vm:AdminVM>
     </Window.DataContext>
-
-    <Grid>
+    
+    <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="103*"/>
             <ColumnDefinition Width="131*"/>
@@ -29,7 +28,6 @@
             <RowDefinition Height="60"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-
         <!--Overlay-->
         <Rectangle Fill="{StaticResource LightBlueSpindle}" Grid.ColumnSpan="3" Grid.RowSpan="2" RadiusX="20" RadiusY="20">
             <Rectangle.Effect>
@@ -43,7 +41,97 @@
         </Rectangle>
 
         <!--Content-->
-        <Frame NavigationUIVisibility="Hidden" x:Name="Content" Grid.Column="1" Grid.Row="1" Content="{Binding CurrentView}" Grid.ColumnSpan="2" Margin="130,0,0,0"></Frame>
+        <StackPanel Grid.Row="0" Grid.Column="1" Width="145" Height="40" HorizontalAlignment="Right" Margin="0,0,10,0" Orientation="Horizontal">
+            <Button Foreground="Black" Cursor="Hand" Click="Button_Click">
+                <Button.Style>
+                    <Style TargetType="{x:Type Button}">
+                        <Setter Property="Background" Value="Transparent"/>
+                        <Setter Property="Width" Value="48"/>
+                        <Setter Property="Margin" Value="0,4,0,4"/>
+                        <Setter Property="BorderThickness" Value="0"/>
+                        <Setter Property="BorderBrush" Value="Transparent"/>
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type Button}">
+                                    <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#F0F7FD"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseCaptured" Value="True">
+                                <Setter Property="Opacity" Value="0.5"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+                <materialDesign:PackIcon Kind="Minimize"></materialDesign:PackIcon>
+            </Button>
+            <Button Foreground="Black" Cursor="Hand" Click="Button_Click_1">
+                <Button.Style>
+                    <Style TargetType="{x:Type Button}">
+                        <Setter Property="Background" Value="Transparent"/>
+                        <Setter Property="Width" Value="48"/>
+                        <Setter Property="Margin" Value="0,4,0,4"/>
+                        <Setter Property="BorderThickness" Value="0"/>
+                        <Setter Property="BorderBrush" Value="Transparent"/>
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type Button}">
+                                    <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#F0F7FD"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseCaptured" Value="True">
+                                <Setter Property="Opacity" Value="0.5"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+                <materialDesign:PackIcon Kind="DockWindow"></materialDesign:PackIcon>
+            </Button>
+            <Button materialDesign:ButtonAssist.CornerRadius="0,10,0,0" Cursor="Hand" Click="Button_Click_2">
+                <Button.Style>
+                    <Style TargetType="{x:Type Button}">
+                        <Setter Property="Background" Value="Transparent"/>
+                        <Setter Property="Width" Value="48"/>
+                        <Setter Property="Margin" Value="0,4,0,4"/>
+                        <Setter Property="BorderThickness" Value="0"/>
+                        <Setter Property="BorderBrush" Value="Transparent"/>
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type Button}">
+                                    <Border Background="{TemplateBinding Background}" CornerRadius="0,10,0,0" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#F54545"/>
+                                <Setter Property="Foreground" Value="#DFDFDF"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseCaptured" Value="True">
+                                <Setter Property="Opacity" Value="0.5"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+                <materialDesign:PackIcon Kind="Close"></materialDesign:PackIcon>
+            </Button>
+        </StackPanel>
+        <Frame NavigationUIVisibility="Hidden" x:Name="Content" Grid.Column="1" Grid.Row="1" Content="{Binding CurrentView}"></Frame>
 
         <!--SideBar-->
         <Border Grid.Column="0" Grid.RowSpan="2" CornerRadius="10,0,0,10" Background="#0F2851" Grid.ColumnSpan="2">

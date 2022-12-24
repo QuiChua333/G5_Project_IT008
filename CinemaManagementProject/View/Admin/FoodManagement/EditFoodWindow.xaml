@@ -13,7 +13,7 @@
         AllowsTransparency="True"
         DataContext="{StaticResource FoodVM}"
         WindowStartupLocation="CenterScreen"
-        Name="EditFoodWD"
+        Name="EditFoodWD" MouseDown="EditFoodWD_MouseDown"
 >
     <Grid 
         Height="500" 
