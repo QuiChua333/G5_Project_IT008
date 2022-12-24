@@ -10,6 +10,8 @@ using CinemaManagementProject.Model;
 using CinemaManagementProject.View.Login;
 using CinemaManagementProject.Views;
 using System.Windows;
+using System.Windows.Navigation;
+using System.Windows.Controls;
 
 namespace CinemaManagementProject.ViewModel.AdminVM
 {
@@ -22,6 +24,45 @@ namespace CinemaManagementProject.ViewModel.AdminVM
             get { return _currentView; }
             set { _currentView = value; OnPropertyChanged(); }
         }
+        private string _staffNameIcon { get; set; }
+        public string StaffNameIcon
+        {
+            get
+            {
+                return _staffNameIcon;
+            }
+            set
+            {
+                _staffNameIcon = value;
+                OnPropertyChanged();
+            }
+        }
+        private string _staffName { get; set; }
+        public string StaffName
+        {
+            get
+            {
+                return _staffName;
+            }
+            set
+            {
+                _staffName = value;
+                OnPropertyChanged();
+            }
+        }
+        private string _staffEmail { get; set; }
+        public string StaffEmail
+        {
+            get
+            {
+                return _staffEmail;
+            }
+            set
+            {
+                _staffEmail = value;
+                OnPropertyChanged();
+            }
+        }
         public ICommand VoucherCommand { get; set; }
         public ICommand ShowTimeViewCommand { get; set; }
         public ICommand CustomerViewCommand { get; set; }
@@ -32,6 +73,9 @@ namespace CinemaManagementProject.ViewModel.AdminVM
         public ICommand TroubleCommand { get; set; }
         public ICommand StatisticalViewCommand { get; set; }
         public ICommand LogOutCommand { get; set; }
+        public ICommand OpenAvatarPopupCommand { get; set; }
+        public ICommand CloseAvatarPopupCommand { get; set; }
+        public ICommand SwitchToSettingTab { get; set; }
         private void Food(object obj) => CurrentView = new FoodManagementVM.FoodManagementVM();
         private void Voucher(object obj) => CurrentView = new VoucherManagementVM.VoucherViewModel();
         private void ShowTime(object obj) => CurrentView = new ShowtimeManagementVM.ShowtimeMangementViewModel();
@@ -46,6 +90,17 @@ namespace CinemaManagementProject.ViewModel.AdminVM
 
         public AdminVM()
         {
+            if(currentStaff != null)
+            {
+                FormatStaffDisplayNameToIcon();
+                SetInfomationToView();
+            } 
+            else
+            {
+                StaffNameIcon = "Ad";
+                StaffName = "Admin";
+                StaffEmail = "admin@gmail.com";
+            }    
             VoucherCommand = new RelayCommand(Voucher);
             ShowTimeViewCommand = new RelayCommand(ShowTime);
             CustomerViewCommand = new RelayCommand(Customer);
@@ -68,6 +123,30 @@ namespace CinemaManagementProject.ViewModel.AdminVM
                     }
                 }
             });
+            OpenAvatarPopupCommand = new RelayCommand<Grid>((p) => { return true; }, (p) =>
+            {
+                p.Visibility = Visibility.Visible;
+            });
+            CloseAvatarPopupCommand = new RelayCommand<Grid>((p) => { return true; }, (p) =>
+            {
+                p.Visibility = Visibility.Hidden;
+            });
+            SwitchToSettingTab = new RelayCommand<object>((p) => { return true; }, (p) =>
+            {
+                CustomMessageBox.ShowOk("Please add view and logic in setting tab!!!", ":)))))", "Ok");
+            });
+        }
+
+        public void FormatStaffDisplayNameToIcon()
+        {
+            string staffName = currentStaff.StaffName;
+            string[] trimNames = staffName.Split(' ');
+            StaffNameIcon = trimNames[trimNames.Length - 1][0].ToString() + trimNames[0][0].ToString();
+        }
+        public void SetInfomationToView()
+        {
+            StaffName = currentStaff.StaffName;
+            StaffEmail = currentStaff.Email;
         }
     }
 }

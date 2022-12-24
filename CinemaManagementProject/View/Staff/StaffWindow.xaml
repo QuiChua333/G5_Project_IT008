@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CinemaManagementProject.View.Staff" 
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
-        xmlns:vm="clr-namespace:CinemaManagementProject.ViewModel.StaffVM"
+        xmlns:vm="clr-namespace:CinemaManagementProject.ViewModel.StaffVM" xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         mc:Ignorable="d"
         WindowStyle="None"
         Height="760" Width="1400"
@@ -39,97 +39,163 @@
         </Rectangle>
 
         <!--Content-->
-        <StackPanel Grid.Row="0" Grid.Column="1" Width="145" Height="40" HorizontalAlignment="Right" Margin="0,0,10,0" Orientation="Horizontal">
-            <Button Foreground="Black" Cursor="Hand" Click="Button_Click">
-                <Button.Style>
-                    <Style TargetType="{x:Type Button}">
-                        <Setter Property="Background" Value="Transparent"/>
-                        <Setter Property="Width" Value="48"/>
-                        <Setter Property="Margin" Value="0,4,0,4"/>
-                        <Setter Property="BorderThickness" Value="0"/>
-                        <Setter Property="BorderBrush" Value="Transparent"/>
-                        <Setter Property="Template">
-                            <Setter.Value>
-                                <ControlTemplate TargetType="{x:Type Button}">
-                                    <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
-                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                    </Border>
-                                </ControlTemplate>
-                            </Setter.Value>
-                        </Setter>
+        <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Right">
+            <Grid x:Name="IconAdmin" Grid.Row="0" Grid.Column="1" Cursor="Hand" HorizontalAlignment="Right" Width="35" Height="35" Margin="0,0,25,0" >
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="MouseLeftButtonDown">
+                        <i:InvokeCommandAction Command="{Binding OpenAvatarPopupCommand}" CommandParameter="{Binding ElementName=PopupCard}"></i:InvokeCommandAction>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+                <Grid.Style>
+                    <Style TargetType="Grid">
                         <Style.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Background" Value="#F0F7FD"/>
-                            </Trigger>
-                            <Trigger Property="IsMouseCaptured" Value="True">
-                                <Setter Property="Opacity" Value="0.5"/>
+                                <Setter Property="Opacity" Value="0.8"></Setter>
                             </Trigger>
                         </Style.Triggers>
                     </Style>
-                </Button.Style>
-                <materialDesign:PackIcon Kind="Minimize"></materialDesign:PackIcon>
-            </Button>
-            <Button Foreground="Black" Cursor="Hand" Click="Button_Click_1">
-                <Button.Style>
-                    <Style TargetType="{x:Type Button}">
-                        <Setter Property="Background" Value="Transparent"/>
-                        <Setter Property="Width" Value="48"/>
-                        <Setter Property="Margin" Value="0,4,0,4"/>
-                        <Setter Property="BorderThickness" Value="0"/>
-                        <Setter Property="BorderBrush" Value="Transparent"/>
-                        <Setter Property="Template">
-                            <Setter.Value>
-                                <ControlTemplate TargetType="{x:Type Button}">
-                                    <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
-                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                    </Border>
-                                </ControlTemplate>
-                            </Setter.Value>
-                        </Setter>
-                        <Style.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Background" Value="#F0F7FD"/>
-                            </Trigger>
-                            <Trigger Property="IsMouseCaptured" Value="True">
-                                <Setter Property="Opacity" Value="0.5"/>
-                            </Trigger>
-                        </Style.Triggers>
-                    </Style>
-                </Button.Style>
-                <materialDesign:PackIcon Kind="DockWindow"></materialDesign:PackIcon>
-            </Button>
-            <Button materialDesign:ButtonAssist.CornerRadius="0,10,0,0" Cursor="Hand" Click="Button_Click_2">
-                <Button.Style>
-                    <Style TargetType="{x:Type Button}">
-                        <Setter Property="Background" Value="Transparent"/>
-                        <Setter Property="Width" Value="48"/>
-                        <Setter Property="Margin" Value="0,4,0,4"/>
-                        <Setter Property="BorderThickness" Value="0"/>
-                        <Setter Property="BorderBrush" Value="Transparent"/>
-                        <Setter Property="Template">
-                            <Setter.Value>
-                                <ControlTemplate TargetType="{x:Type Button}">
-                                    <Border Background="{TemplateBinding Background}" CornerRadius="0,10,0,0" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
-                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                    </Border>
-                                </ControlTemplate>
-                            </Setter.Value>
-                        </Setter>
-                        <Style.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Background" Value="#F54545"/>
-                                <Setter Property="Foreground" Value="#DFDFDF"/>
-                            </Trigger>
-                            <Trigger Property="IsMouseCaptured" Value="True">
-                                <Setter Property="Opacity" Value="0.5"/>
-                            </Trigger>
-                        </Style.Triggers>
-                    </Style>
-                </Button.Style>
-                <materialDesign:PackIcon Kind="Close"></materialDesign:PackIcon>
-            </Button>
+                </Grid.Style>
+                <Ellipse Name="OverlayIcon" Fill="Green" Width="35" Height="35">
+                </Ellipse>
+                <TextBlock Text="{Binding StaffNameIcon}" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White" FontWeight="SemiBold" FontSize="16" Margin="0,-1,0,0" LineHeight="16">
+                </TextBlock>
+            </Grid>
+            <StackPanel Width="145" Height="40" HorizontalAlignment="Right" Margin="0,0,10,0" Orientation="Horizontal">
+                <Button Foreground="Black" Cursor="Hand" Click="Button_Click">
+                    <Button.Style>
+                        <Style TargetType="{x:Type Button}">
+                            <Setter Property="Background" Value="Transparent"/>
+                            <Setter Property="Width" Value="48"/>
+                            <Setter Property="Margin" Value="0,4,0,4"/>
+                            <Setter Property="BorderThickness" Value="0"/>
+                            <Setter Property="BorderBrush" Value="Transparent"/>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="{x:Type Button}">
+                                        <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
+                                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#F0F7FD"/>
+                                </Trigger>
+                                <Trigger Property="IsMouseCaptured" Value="True">
+                                    <Setter Property="Opacity" Value="0.5"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                    <materialDesign:PackIcon Kind="Minimize"></materialDesign:PackIcon>
+                </Button>
+                <Button Foreground="Black" Cursor="Hand" Click="Button_Click_1">
+                    <Button.Style>
+                        <Style TargetType="{x:Type Button}">
+                            <Setter Property="Background" Value="Transparent"/>
+                            <Setter Property="Width" Value="48"/>
+                            <Setter Property="Margin" Value="0,4,0,4"/>
+                            <Setter Property="BorderThickness" Value="0"/>
+                            <Setter Property="BorderBrush" Value="Transparent"/>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="{x:Type Button}">
+                                        <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
+                                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#F0F7FD"/>
+                                </Trigger>
+                                <Trigger Property="IsMouseCaptured" Value="True">
+                                    <Setter Property="Opacity" Value="0.5"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                    <materialDesign:PackIcon Kind="DockWindow"></materialDesign:PackIcon>
+                </Button>
+                <Button materialDesign:ButtonAssist.CornerRadius="0,10,0,0" Cursor="Hand" Click="Button_Click_2">
+                    <Button.Style>
+                        <Style TargetType="{x:Type Button}">
+                            <Setter Property="Background" Value="Transparent"/>
+                            <Setter Property="Width" Value="48"/>
+                            <Setter Property="Margin" Value="0,4,0,4"/>
+                            <Setter Property="BorderThickness" Value="0"/>
+                            <Setter Property="BorderBrush" Value="Transparent"/>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="{x:Type Button}">
+                                        <Border Background="{TemplateBinding Background}" CornerRadius="0,10,0,0" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
+                                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#F54545"/>
+                                    <Setter Property="Foreground" Value="#DFDFDF"/>
+                                </Trigger>
+                                <Trigger Property="IsMouseCaptured" Value="True">
+                                    <Setter Property="Opacity" Value="0.5"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                    <materialDesign:PackIcon Kind="Close"></materialDesign:PackIcon>
+                </Button>
+            </StackPanel>
         </StackPanel>
         <Frame x:Name="Content" Grid.Column="1" Grid.Row="1" Content="{Binding CurrentView, Mode=TwoWay}" NavigationUIVisibility="Hidden"></Frame>
+        <Grid Name="PopupCard" Visibility="Hidden" Margin="0,-15,180,0" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Top" Width="250" Height="100">
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="MouseLeave">
+                    <i:InvokeCommandAction Command="{Binding CloseAvatarPopupCommand}" CommandParameter="{Binding ElementName=PopupCard}"></i:InvokeCommandAction>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="3*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Ellipse Width="40" Height="40" Fill="Transparent" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,-35,-2,0"></Ellipse>
+            <Rectangle Fill="White" RadiusX="3" RadiusY="3" Grid.RowSpan="2" Stroke="Black" StrokeThickness="0.25"></Rectangle>
+            <Rectangle VerticalAlignment="Bottom" Height="0.25" HorizontalAlignment="Stretch" Fill="Black"></Rectangle>
+            <StackPanel Orientation="Horizontal" Grid.Row="0">
+                <Grid HorizontalAlignment="Left" Width="60" Height="60" Margin="10,0,0,0" >
+                    <Ellipse Fill="Green" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                    </Ellipse>
+                    <TextBlock Text="{Binding StaffNameIcon}" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White" FontWeight="SemiBold" FontSize="30" Margin="0,-3,0,0" LineHeight="16">
+                    </TextBlock>
+                </Grid>
+                <StackPanel Margin="10,0,0,0" VerticalAlignment="Center">
+                    <TextBlock Text="{Binding StaffName}" FontSize="20" FontFamily="{StaticResource MaterialDesignFont}" FontWeight="Normal"></TextBlock>
+                    <Grid Height="2"></Grid>
+                    <TextBlock Text="{Binding StaffEmail}" FontSize="14" FontFamily="{StaticResource MaterialDesignFont}" FontWeight="UltraLight"></TextBlock>
+                </StackPanel>
+            </StackPanel>
+            <TextBlock Text="Go to setting..." Grid.Row="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Padding="10,5,0,0" FontSize="13" FontFamily="{StaticResource MaterialDesignFont}" FontWeight="Light">
+                <TextBlock.Style>
+                    <Style TargetType="TextBlock">
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Opacity" Value="0.8"/>
+                                <Setter Property="Background" Value="#FFEEEEF2"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </TextBlock.Style>
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="MouseLeftButtonDown">
+                        <i:InvokeCommandAction Command="{Binding SwitchToSettingTab}"/>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </TextBlock>
+        </Grid>
 
         <!--SideBar-->
         <Border CornerRadius="10,0,0,10" Background="#0F2851" Grid.RowSpan="2">
