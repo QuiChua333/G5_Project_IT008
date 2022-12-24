@@ -7,7 +7,7 @@
         xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
         xmlns:local="clr-namespace:CinemaManagementProject.View.Staff.TicketWindow"
         mc:Ignorable="d"
-        Title="TicketWindow" Height="680" Width="1100"
+        Title="TicketWindow" Height="720" Width="1300"
         Background="Transparent"
         WindowStyle="None"
         DataContext="{StaticResource TicketWindowVM}"
@@ -32,25 +32,25 @@
                                                    CommandParameter="{Binding ElementName=Ticket_Window}" />
                         </i:EventTrigger>
                     </i:Interaction.Triggers>
-                <Button 
-                    Background="Transparent"
-                    Width="35"
-                    Height="auto"
-                    Padding="0"
-                    BorderThickness="0"
-                    HorizontalAlignment="Right"
-                    Margin="0,5,3,0"
-                    Command="{Binding CloseTicketWindowCM}"
-                    CommandParameter="{Binding ElementName=Ticket_Window}">
-                    <materialDesign:PackIcon Kind="Close" 
+                    <Button 
+                        Background="Transparent"
+                        Width="35"
+                        Height="auto"
+                        Padding="0"
+                        BorderThickness="0"
+                        HorizontalAlignment="Right"
+                        Margin="0,5,3,0"
+                        Command="{Binding CloseTicketWindowCM}"
+                        CommandParameter="{Binding ElementName=Ticket_Window}">
+                        <materialDesign:PackIcon Kind="Close" 
                                      Height="25"
                                      Width="25"
                                      VerticalAlignment="Center"
                                      Foreground="#000000" 
                                      HorizontalAlignment="Right"
                                      Margin="5,0"/>
-                </Button>
-                <Button 
+                    </Button>
+                    <Button 
                     Background="Transparent"
                     Width="30"
                     Height="auto"
@@ -72,8 +72,8 @@
                                      Foreground="#000000" 
                                      HorizontalAlignment="Right"
                                      Margin="5,0"/>
-                </Button>
-            </Grid>
+                    </Button>
+                </Grid>
             </Grid>
 
             <Frame x:Name="TicketBookingFrame"
@@ -89,6 +89,6 @@
             </Frame>
 
         </Grid>
-            
+
     </Border>
 </Window>

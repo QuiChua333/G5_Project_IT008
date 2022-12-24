@@ -3,126 +3,41 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:CinemaManagementProject.View.Admin.StatisticalManagement"
+      xmlns:local="clr-namespace:CinemaManagementProject.ViewModel.AdminVM.StatisticalManagementVM"
       mc:Ignorable="d" 
       xmlns:FilterCombobox="clr-namespace:CinemaManagementProject.Component.FilterCombobox"
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
       xmlns:Component="clr-namespace:CinemaManagementProject.Component"
-      d:DesignHeight="760" d:DesignWidth="1140"
-      Title="RankingStatistical">
+      xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+      d:DesignHeight="630" d:DesignWidth="1140"
+      Title="RankingStatistical"
+      x:Name="mainPage"
+      DataContext="{StaticResource StatisticalManagementVM}">
 
-    <Grid Background="#BCD8F1">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="10*"/>
-            <RowDefinition Height="90*"/>
-        </Grid.RowDefinitions>
+    <Page.Triggers>
+        <EventTrigger RoutedEvent="Page.Loaded">
+            <BeginStoryboard>
+                <Storyboard>
+                    <DoubleAnimation Storyboard.TargetName="mainPage"
+                                     Storyboard.TargetProperty="Opacity"
+                                     From="0"
+                                     To="1"
+                                     Duration="0:0:0.5" />
 
-        <StackPanel Orientation="Horizontal" Margin="30,0,0,0" Grid.Row="0">
 
-            <StackPanel HorizontalAlignment="Left"
-                            Orientation="Horizontal"
-                            Height="57"
-                            Background="#BCD8F1">
-                <materialDesign:Card  Height="57"
-                                          Background="Transparent"
-                                          materialDesign:ShadowAssist.ShadowDepth="Depth2"
-                                          materialDesign:ShadowAssist.ShadowEdges="Bottom"
-                                          x:Name="card1">
-                    <Button Height="57"
-                                Content="Tổng thu chi"
-                                Background="Transparent"
-                                Foreground="Black"
-                                FontSize="24"
-                                FontWeight="Bold"
-                                BorderBrush="Transparent"
-                                BorderThickness="0"
-                                materialDesign:ButtonAssist.CornerRadius="0"
-                                Command="{Binding LoadAllStatisticalCM}"
-                                CommandParameter="{Binding ElementName=card1}" />
-                </materialDesign:Card>
-                <materialDesign:Card Height="57"
-                                     Background="Transparent"
-                                     materialDesign:ShadowAssist.ShadowDepth="Depth2"
-                                     materialDesign:ShadowAssist.ShadowEdges="Bottom"
-                                     BorderThickness="0"
-                                     x:Name="card2">
-                    <Button Height="57"
-                                Content="Bảng xếp hạng"
-                                Background="Transparent"
-                                Foreground="Black"
-                                BorderThickness="0,0,0,4"
-                                BorderBrush="Black"
-                                FontSize="24"
-                                FontWeight="Bold"
-                                materialDesign:ButtonAssist.CornerRadius="0"
-                                Command="{Binding LoadRankStatisticalCM}"
-                                CommandParameter="{Binding ElementName=card2}" />
-                </materialDesign:Card>
-                <materialDesign:Card Height="57"
-                                     Background="Transparent"
-                                     materialDesign:ShadowAssist.ShadowDepth="Depth2"
-                                     materialDesign:ShadowAssist.ShadowEdges="Bottom"
-                                     BorderThickness="0"
-                                     x:Name="card3">
-                    <Button Height="57"
-                                Content="Xu hướng"
-                                Background="Transparent"
-                                Foreground="Black"
-                                BorderThickness="0"
-                                FontSize="24"
-                                FontWeight="Bold"
-                                materialDesign:ButtonAssist.CornerRadius="0"
-                                Command="{Binding LoadBestSellingCM}"
-                                CommandParameter="{Binding ElementName=card3}" Width="184" />
-                </materialDesign:Card>
+                </Storyboard>
+            </BeginStoryboard>
+        </EventTrigger>
+    </Page.Triggers>
 
-            </StackPanel>
-            <StackPanel Orientation="Horizontal" Width="380" Margin="40,0,0,0">
-                <Image Source="{StaticResource Icon_Bell}" Width="32" Height="32" Margin="10,0,0,0"/>
-                <Ellipse Width="50" Height="50" Margin="20,0,0,0">
-                    <Ellipse.Fill>
-                        <ImageBrush ImageSource="{StaticResource Avata}" Stretch="Fill"></ImageBrush>
-                    </Ellipse.Fill>
-                </Ellipse>
-                <TextBlock Text="Nguyễn Văn Phát" 
-                               FontSize="26" 
-                               FontWeight="Bold" 
-                               Foreground="Black" 
-                               VerticalAlignment="Center" 
-                               Margin="10,0,0,0"/>
-                <Image Source="{StaticResource XoXuong}" 
-                           Width="32" Height="32" 
-                           VerticalAlignment="Center" 
-                           Margin="10,0,0,0"/>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal" Margin="20,0,0,0">
-                <Button 
-                        Margin="0, 0, 2, 0" 
-                        Height="50" Width="50" 
-                        Background="Transparent" 
-                        BorderThickness="0">
-                    <Image 
-                            Width="20" Height="20"
-                            Source="{StaticResource Icon_CloseTab}" 
-                            VerticalAlignment="Center" 
-                            HorizontalAlignment="Center"/>
-                </Button>
-                <Button 
-                        Height="50" Width="50" 
-                        Background="Transparent" 
-                        BorderThickness="0">
-                    <Image 
-                            Height="40" Width="40"
-                            Source="{StaticResource Icon_X_Black}" 
-                            VerticalAlignment="Center" 
-                            HorizontalAlignment="Center"
-                        />
-                </Button>
-            </StackPanel>
-        </StackPanel>
-        <Grid Grid.Row="1">
-            <Border CornerRadius="20" Background="White" Margin="20">
+    <Page.Resources>
+        <local:IndexConverter x:Key="IndexConverter" />
+    </Page.Resources>
+    
+    <Grid >
+        <Grid>
+            <Border CornerRadius="20" Background="#54B435" Margin="10">
                 <Border.Effect>
                     <DropShadowEffect BlurRadius="14"
                                 Color="Black"
@@ -130,7 +45,7 @@
                                 Opacity=".35"
                                 Direction="270"/>
                 </Border.Effect>
-                <Grid Margin="10" Background="White">
+                <Grid Margin="10" Background="Transparent">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition/>
                         <ColumnDefinition/>
@@ -143,70 +58,247 @@
                             <RowDefinition Height="42*"/>
                         </Grid.RowDefinitions>
 
-                        <StackPanel Grid.Row="0">
-                            <FilterCombobox:FilterCombobox VerticalAlignment="Center" HorizontalAlignment="Left" Margin="30,0,0,0"/>
-                        </StackPanel>
-
-                        <Grid Grid.Row="1" Margin="10" Width="500">
+                        <Grid Grid.Row="0">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition/>
                                 <ColumnDefinition/>
                             </Grid.ColumnDefinitions>
-                            <StackPanel Grid.Column="0" Orientation="Horizontal" Margin="10" Width="240">
-                                <Border BorderThickness="2" BorderBrush="Gray" CornerRadius="20">
+
+                            <Grid Grid.Column="0"
+                                  Width="200" Height="50" 
+                                  HorizontalAlignment="Right" 
+                                  VerticalAlignment="Center" 
+                                  Margin="0,0,10,0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="40"/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+                                <Rectangle Grid.Column="0" Grid.ColumnSpan="2" Fill="White" RadiusX="10" RadiusY="10">
+                                    <Rectangle.Effect>
+                                        <DropShadowEffect
+                                            BlurRadius="10"
+                                            Opacity="0.25"
+                                            Direction="270"
+                                            Color="Black" />
+                                    </Rectangle.Effect>
+                                </Rectangle>
+                                <Image Source="{StaticResource IconFilter}" Width="20" Height="20"></Image>
+                                <ComboBox SelectedItem="{Binding SelectedRankingPeriod}"
+                                        Foreground="Black" 
+                                        Grid.Column="1" 
+                                        materialDesign:HintAssist.Hint="Lọc theo"
+                                        Background="Transparent" 
+                                        FontFamily="{StaticResource MaterialDesignFont}" 
+                                        FontSize="16" FontWeight="Medium" 
+                                        Margin="0,0,10,0"
+                                        SelectedIndex="0"
+                                        x:Name="periodbox1"
+                                        SelectionChanged="periodbox1_SelectionChanged"
+                                        Loaded="periodbox1_Loaded">
+                                    <i:Interaction.Triggers>
+                                        <i:EventTrigger EventName="Loaded">
+                                            <i:InvokeCommandAction Command="{Binding ChangeRankingPeriodCM}"
+                                                       CommandParameter="{Binding ElementName=periodbox1}" />
+                                        </i:EventTrigger>
+                                        <i:EventTrigger EventName="SelectionChanged">
+                                            <i:InvokeCommandAction Command="{Binding ChangeRankingPeriodCM}"
+                                                       CommandParameter="{Binding ElementName=periodbox1}" />
+                                        </i:EventTrigger>
+                                    </i:Interaction.Triggers>
+                                    <ComboBoxItem>Theo năm</ComboBoxItem>
+                                    <ComboBoxItem>Theo tháng</ComboBoxItem>
+                                </ComboBox>
+                            </Grid>
+
+                            <Grid Grid.Column="1" 
+                                  Width="200" Height="50" 
+                                  HorizontalAlignment="Left" 
+                                  VerticalAlignment="Center" 
+                                  Margin="10,0,0,0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="40"/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+                                <Rectangle Grid.Column="0" Grid.ColumnSpan="2" Fill="White" RadiusX="10" RadiusY="10">
+                                    <Rectangle.Effect>
+                                        <DropShadowEffect
+                                            BlurRadius="10"
+                                            Opacity="0.25"
+                                            Direction="270"
+                                            Color="Black" />
+                                    </Rectangle.Effect>
+                                </Rectangle>
+                                <Image Source="{StaticResource IconFilter}" Width="20" Height="20"></Image>
+                                <ComboBox x:Name="Time1"
+                                            Foreground="Black" 
+                                            Grid.Column="1" 
+                                            Background="Transparent" 
+                                            FontFamily="{StaticResource MaterialDesignFont}" 
+                                            FontSize="16" FontWeight="Medium" 
+                                            Margin="0,0,10,0"
+                                            SelectedIndex="2"
+                                            SelectedItem="{Binding SelectedRankingTime,Mode=OneWayToSource}">
+                                    <i:Interaction.Triggers>
+                                        <i:EventTrigger EventName="Loaded">
+                                            <i:InvokeCommandAction Command="{Binding ChangeRankingPeriodCM}"
+                                                       CommandParameter="{Binding ElementName=Time1}" />
+                                        </i:EventTrigger>
+                                        <i:EventTrigger EventName="SelectionChanged">
+                                            <i:InvokeCommandAction Command="{Binding ChangeRankingPeriodCM}"
+                                                       CommandParameter="{Binding ElementName=Time1}" />
+                                        </i:EventTrigger>
+                                    </i:Interaction.Triggers>
+                                </ComboBox>
+                            </Grid>
+                        </Grid>
+
+                        <Grid Grid.Row="1">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <materialDesign:Card Margin="10"
+                                                 UniformCornerRadius="10"
+                                                 Grid.Column="0">
+                                <Grid>
                                     <lvc:PieChart LegendLocation="Bottom"
                                                   InnerRadius="50"
                                                   Background="Transparent"
-                                                  Series="{Binding SeriesCollectionProduct}" 
-                                                  Width="220" Height="200"/>
-                                </Border>
-                            </StackPanel>
+                                                  Series="{Binding CustomerExpe}" 
+                                                  Width="230" Height="180"/>
+                                    <ProgressBar Style="{StaticResource MaterialDesignCircularProgressBar}"
+                                                     Value="0"
+                                                     IsIndeterminate="True"
+                                                     Margin="20,-28,20,12"
+                                                     Width="100"
+                                                     Height="100"
+                                                     Foreground="#FF455345" />
+                                    <Grid Margin="60,40,60,90" Background="Transparent">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition/>
+                                            <RowDefinition/>
+                                            <RowDefinition/>
+                                        </Grid.RowDefinitions>
+                                        <Label Grid.Row="0" 
+                                               Content="Hạng nhất"
+                                               FontWeight="Bold"
+                                               HorizontalContentAlignment="Center" 
+                                               VerticalContentAlignment="Center" />
+                                        <Label Grid.Row="1"
+                                               Content="{Binding Top5Customer[0].CustomerName}"
+                                               FontWeight="Bold"
+                                               VerticalContentAlignment="Center"
+                                               HorizontalContentAlignment="Center"
+                                               FontSize="10" />
+                                        <Label Grid.Row="2"
+                                               Content="{Binding Top5Customer[0].ExpenseStr}"
+                                               HorizontalContentAlignment="Center"
+                                               VerticalContentAlignment="Center"
+                                               FontSize="10" />
 
-                            <StackPanel Grid.Column="1" Orientation="Horizontal" Margin="10" Width="240">
-                                <Border BorderThickness="2" BorderBrush="Gray" CornerRadius="20">
+                                    </Grid>
+                                </Grid>
+                            </materialDesign:Card>
+
+                            <materialDesign:Card Margin="10"
+                                                 UniformCornerRadius="10"
+                                                 Grid.Column="1">
+                                <Grid>
                                     <lvc:PieChart LegendLocation="Bottom"
-                                                  InnerRadius="20"
+                                                  InnerRadius="10"
                                                   Background="Transparent"
-                                                  Series="{Binding SeriesCollectionCustomer}" 
-                                                  Width="220" Height="200"/>
-                                </Border>
-                            </StackPanel>
+                                                  Series="{Binding NewCusPie}" 
+                                                  Width="230" Height="180"/>
+                                    <Grid Height="24" Width="130" HorizontalAlignment="Right" Margin="0,156,10,0">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="65*"/>
+                                            <ColumnDefinition Width="35*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Label Grid.Column="0"
+                                                   Content=" Khách vãng lai: "
+                                                   HorizontalAlignment="Left"
+                                                   VerticalAlignment="Center"
+                                                   FontSize="10"
+                                                   FontWeight="Bold"
+                                                   Foreground="Black" />
+                                        <Label Grid.Column="1"
+                                                   Content="{Binding WalkingGuest}"
+                                                   HorizontalAlignment="Left"
+                                                   VerticalAlignment="Center"
+                                                   FontSize="10"
+                                                   FontWeight="Bold"
+                                                   Foreground="Black" Width="44" />
+                                    </Grid>
+
+                                </Grid>
+                            </materialDesign:Card>
+                            
                         </Grid>
 
-                        <StackPanel Grid.Row="2">
-                            <Label Grid.RowSpan="3"
-                                       Content="Top 5 khách hàng chi tiêu nhiều nhất"
-                                       VerticalAlignment="Center"
-                                       HorizontalAlignment="Center"
-                                       FontWeight="Bold"
-                                       FontSize="25"
-                                       Margin="10,0,0,0" />
-                        </StackPanel>
-                        <Grid Margin="10,0,10,10" Height="250" Grid.Row="3">
-                            <Border BorderThickness="2" BorderBrush="Gray" CornerRadius="20">
-                                <ListView Foreground="Black" FontSize="16" FontWeight="Bold" ItemsSource="{Binding Top5Movie}"
-                                              ScrollViewer.VerticalScrollBarVisibility="Disabled" Height="250" VerticalAlignment="Bottom" Background="#FF286EA4">
-                                    <ListView.View>
-
-                                        <GridView >
-                                            <GridViewColumn Header="STT" Width="90">
-
-                                            </GridViewColumn>
-                                            <GridViewColumn Header="Tên khách hàng" Width="200">
-
-                                            </GridViewColumn>
-                                            <GridViewColumn Header="SDT" Width="110">
-
-                                            </GridViewColumn>
-                                            <GridViewColumn Header="Chi tiêu">
-
-                                            </GridViewColumn>
-                                        </GridView>
-                                    </ListView.View>
-                                </ListView>
-                            </Border>
-
+                        <Grid Grid.Row="2">
+                            <Label Content="Top 5 khách hàng chi tiêu nhiều nhất"
+                                   VerticalAlignment="Center"
+                                   HorizontalAlignment="Left"
+                                   FontWeight="Bold"
+                                   FontSize="22"
+                                   Margin="26,0,0,0" />
                         </Grid>
+
+                        <materialDesign:Card Margin="10,0,10,10" 
+                                             Grid.Row="3"
+                                             UniformCornerRadius="10">
+                            <ListView ItemsSource="{Binding Top5Customer}">
+                                <ListView.View>
+                                    <GridView>
+
+                                        <GridViewColumn Header="STT" Width="90" >
+                                            <GridViewColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <TextBlock  Text="{Binding RelativeSource={RelativeSource FindAncestor, 
+                                                                                                   AncestorType={x:Type ListViewItem}}, 
+                                                                                                   Converter={StaticResource IndexConverter}}"
+                                                        FontSize="18"
+                                                        Margin="0,5,0,0" />
+                                                </DataTemplate>
+
+                                            </GridViewColumn.CellTemplate>
+                                        </GridViewColumn>
+
+                                        <GridViewColumn Header="Tên khách hàng" Width="180">
+                                            <GridViewColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <TextBlock Text="{Binding Name}"
+                                                                FontSize="18"
+                                                                Height="34"
+                                                                Margin="0,5,0,0" />
+                                                </DataTemplate>
+                                            </GridViewColumn.CellTemplate>
+                                        </GridViewColumn>
+
+                                        <GridViewColumn Header="Số điện thoại" Width="144">
+                                            <GridViewColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <TextBlock Text="{Binding PhoneNumber}"
+                                                                   FontSize="18"
+                                                                   Margin="0,5,0,0" />
+                                                </DataTemplate>
+                                            </GridViewColumn.CellTemplate>
+                                        </GridViewColumn>
+
+                                        <GridViewColumn Header="Chi tiêu" Width="112">
+                                            <GridViewColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <TextBlock Text="{Binding ExpenseStr}"
+                                                                   FontSize="18"
+                                                                   Margin="0,5,0,0" />
+                                                </DataTemplate>
+                                            </GridViewColumn.CellTemplate>
+                                        </GridViewColumn>
+                                    </GridView>
+                                </ListView.View>
+                            </ListView>
+                        </materialDesign:Card>
+
                     </Grid>
 
                     <Grid Grid.Column="1">
@@ -217,60 +309,215 @@
                             <RowDefinition Height="42*"/>
                         </Grid.RowDefinitions>
 
-                        <StackPanel Grid.Row="0">
-                            <FilterCombobox:FilterCombobox VerticalAlignment="Center" HorizontalAlignment="Left" Margin="30,0,0,0"/>
-                        </StackPanel>
+                        <Grid Grid.Row="0">
+                            <Grid Grid.Row="0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
 
-                        <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="10" Width="500">
-                            <Border BorderThickness="2" BorderBrush="Gray" CornerRadius="20">
-                                <StackPanel Orientation="Horizontal" Width="473">
-                                    <Image Source="{StaticResource Image_Start}" Width="220" Height="200"/>
+                                <Grid Grid.Column="0"
+                                        Width="200" Height="50" 
+                                        HorizontalAlignment="Right" 
+                                        VerticalAlignment="Center" 
+                                        Margin="0,0,10,0"> 
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="40"/>
+                                        <ColumnDefinition/>
+                                    </Grid.ColumnDefinitions>
+                                    <Rectangle Grid.Column="0" Grid.ColumnSpan="2" Fill="White" RadiusX="10" RadiusY="10">
+                                        <Rectangle.Effect>
+                                            <DropShadowEffect
+                                                BlurRadius="10"
+                                                Opacity="0.25"
+                                                Direction="270"
+                                                Color="Black" />  
+                                        </Rectangle.Effect>
+                                    </Rectangle>
+                                    <Image Source="{StaticResource IconFilter}" Width="20" Height="20"></Image>
+                                    <ComboBox SelectedItem="{Binding SelectedRankingPeriod2}"
+                                              Foreground="Black" 
+                                              Grid.Column="1" 
+                                              materialDesign:HintAssist.Hint="Lọc theo"
+                                              Background="Transparent" 
+                                              FontFamily="{StaticResource MaterialDesignFont}" 
+                                              FontSize="16" FontWeight="Medium" 
+                                              Margin="0,0,10,0"
+                                              x:Name="periodbox2"
+                                              SelectedIndex="0"
+                                              SelectionChanged="periodbox2_SelectionChanged"
+                                              Loaded="periodbox2_Loaded"> 
+                                        <i:Interaction.Triggers>
+                                            <i:EventTrigger EventName="Loaded">
+                                                <i:InvokeCommandAction Command="{Binding ChangeRankingPeriod2CM}" />
+                                            </i:EventTrigger>
+                                            <i:EventTrigger EventName="SelectionChanged">
+                                                <i:InvokeCommandAction Command="{Binding ChangeRankingPeriod2CM}" />
+                                            </i:EventTrigger>
+                                        </i:Interaction.Triggers>
+                                        <ComboBoxItem>Theo năm</ComboBoxItem>
+                                        <ComboBoxItem>Theo tháng</ComboBoxItem>
+                                    </ComboBox>
+                                </Grid>
 
-                                    <lvc:PieChart LegendLocation="Bottom"
+                                <Grid Grid.Column="1" 
+                                      Width="200" Height="50" 
+                                      HorizontalAlignment="Left" 
+                                      VerticalAlignment="Center" 
+                                      Margin="10,0,0,0">
+
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="40"/>
+                                        <ColumnDefinition/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <Rectangle Grid.Column="0" Grid.ColumnSpan="2" Fill="White" RadiusX="10" RadiusY="10">
+                                        <Rectangle.Effect>
+                                            <DropShadowEffect
+                                                BlurRadius="10"
+                                                Opacity="0.25"
+                                                Direction="270"
+                                                Color="Black" />
+                                        </Rectangle.Effect>
+                                    </Rectangle>
+                                    <Image Source="{StaticResource IconFilter}" Width="20" Height="20"></Image>
+                                    <ComboBox SelectedItem="{Binding SelectedRankingTime2,Mode=OneWayToSource}"
+                                              Foreground="Black" 
+                                              Grid.Column="1" 
+                                              Background="Transparent" 
+                                              FontFamily="{StaticResource MaterialDesignFont}" 
+                                              FontSize="16" FontWeight="Medium" 
+                                              Margin="0,0,10,0"
+                                              x:Name="Time2" >
+                                        <i:Interaction.Triggers>
+                                            <i:EventTrigger EventName="Loaded">
+                                                <i:InvokeCommandAction Command="{Binding ChangeRankingPeriod2CM}" />
+                                            </i:EventTrigger>
+                                            <i:EventTrigger EventName="SelectionChanged">
+                                                <i:InvokeCommandAction Command="{Binding ChangeRankingPeriod2CM}" />
+                                            </i:EventTrigger>
+                                        </i:Interaction.Triggers>
+                                    </ComboBox>
+                                </Grid>
+                            </Grid>
+                        </Grid>
+
+                        <materialDesign:Card Margin="10"
+                                             UniformCornerRadius="10"
+                                             Grid.Row="1">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="40*" />
+                                    <ColumnDefinition Width="60*" />
+                                </Grid.ColumnDefinitions>
+                                <Grid Grid.Column="0">
+                                    <Image Source="{StaticResource Image_Start}" Width="200" Height="190"/>
+
+                                    <Grid Margin="40,50,40,50" Background="Transparent">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition/>
+                                            <RowDefinition/>
+                                            <RowDefinition/>
+                                        </Grid.RowDefinitions>
+
+                                        <Label Grid.Row="0" 
+                                               FontWeight="Bold"
+                                               Content="Hạng nhất" 
+                                               HorizontalContentAlignment="Center" 
+                                               VerticalContentAlignment="Center" />
+                                        <Label Grid.Row="1"
+                                               Content="{Binding Top5Staff[0].StaffName}"
+                                               FontWeight="Bold"
+                                               VerticalContentAlignment="Center"
+                                               HorizontalContentAlignment="Center"
+                                               FontSize="10" />
+                                        <Label Grid.Row="2"
+                                               Content="{Binding Top5Staff[0].BenefitContributionStr}"
+                                               HorizontalContentAlignment="Center"
+                                               VerticalContentAlignment="Center"
+                                               FontSize="10" />
+
+                                    </Grid>
+                                </Grid>
+                                <Grid Grid.Column="1">
+                                    <lvc:PieChart LegendLocation="Right"
                                                   InnerRadius="10"
                                                   Background="Transparent"
-                                                  Margin="20,0,0,0"
-                                                  Series="{Binding SeriesCollectionStaff}" 
-                                                  Width="220" Height="200"/>
-                                </StackPanel>
+                                                  Margin="10,0,10,0"
+                                                  Series="{Binding StaffContributePie}" 
+                                                  Height="180"/>
+                                </Grid>
 
-                            </Border>
-                        </StackPanel>
 
-                        <StackPanel Grid.Row="2">
-                            <Label Grid.RowSpan="3"
-                                       Content="Top 5 nhân viên đóng góp nhiều nhất"
-                                       VerticalAlignment="Center"
-                                       HorizontalAlignment="Center"
-                                       FontWeight="Bold"
-                                       FontSize="25"
-                                       Margin="10,0,0,0" />
-                        </StackPanel>
-                        <Grid Margin="10,0,10,10" Height="250" Grid.Row="3">
-                            <Border BorderThickness="2" BorderBrush="Gray" CornerRadius="20">
-                                <ListView Foreground="Black" FontSize="16" FontWeight="Bold" ItemsSource="{Binding Top5Product}"
-                                              ScrollViewer.VerticalScrollBarVisibility="Disabled" Height="250" VerticalAlignment="Bottom" Background="#FF286EA4">
-                                    <ListView.View>
 
-                                        <GridView>
-                                            <GridViewColumn Header="STT" Width="90">
-
-                                            </GridViewColumn>
-                                            <GridViewColumn Header="Tên nhân viên" Width="200">
-
-                                            </GridViewColumn>
-                                            <GridViewColumn Header="Mã nhân viên" Width="110">
-
-                                            </GridViewColumn>
-                                            <GridViewColumn Header="Doanh số">
-
-                                            </GridViewColumn>
-                                        </GridView>
-                                    </ListView.View>
-                                </ListView>
-                            </Border>
+                            </Grid>
+                        </materialDesign:Card>
+                        
+                        <Grid Grid.Row="2">
+                            <Label Content="Top 5 nhân viên đóng góp nhiều nhất"
+                                    VerticalAlignment="Center"
+                                    HorizontalAlignment="Left"
+                                    FontWeight="Bold"
+                                    FontSize="22"
+                                    Margin="26,0,0,0" />
 
                         </Grid>
+                        <materialDesign:Card Margin="10,0,10,10" 
+                                             Grid.Row="3"
+                                             UniformCornerRadius="10">
+                            <ListView ItemsSource="{Binding Top5Staff}" Margin="0,0,0,-2">
+                                <ListView.View>
+
+                                    <GridView>
+
+                                        <GridViewColumn Header="STT" Width="90" >
+                                            <GridViewColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <TextBlock  Text="{Binding RelativeSource={RelativeSource FindAncestor, 
+                                                                    AncestorType={x:Type ListViewItem}}, 
+                                                                    Converter={StaticResource IndexConverter}}" 
+                                                        FontSize="18"
+                                                        Margin="0,5,0,0" />
+                                                </DataTemplate>
+
+                                            </GridViewColumn.CellTemplate>
+                                        </GridViewColumn>
+
+                                        <GridViewColumn Header="Mã nhân viên" Width="150">
+                                            <GridViewColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <TextBlock Text="{Binding Id}"
+                                                                   FontSize="18"
+                                                                   Height="34"
+                                                                   Margin="0,5,0,0" />
+                                                </DataTemplate>
+                                            </GridViewColumn.CellTemplate>
+                                        </GridViewColumn>
+
+                                        <GridViewColumn Header="Tên nhân viên" Width="166">
+                                            <GridViewColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <TextBlock Text="{Binding Name}"
+                                                                   FontSize="18"
+                                                                   Margin="0,5,0,0" />
+                                                </DataTemplate>
+                                            </GridViewColumn.CellTemplate>
+                                        </GridViewColumn>
+
+                                        <GridViewColumn Header="Doanh số" Width="120">
+                                            <GridViewColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <TextBlock Text="{Binding BenefitContributionStr}"
+                                                                   FontSize="18"
+                                                                   Margin="0,5,0,0" />
+                                                </DataTemplate>
+                                            </GridViewColumn.CellTemplate>
+                                        </GridViewColumn>
+                                    </GridView>
+                                </ListView.View>
+                            </ListView>
+                        </materialDesign:Card>
+                        
                     </Grid>
                 </Grid>
             </Border>

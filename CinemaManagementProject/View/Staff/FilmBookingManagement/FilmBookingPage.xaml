@@ -9,7 +9,6 @@
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
       mc:Ignorable="d" 
-      d:DesignHeight="660" d:DesignWidth="1040"
       Title="FilmFoodPage"
       DataContext="{StaticResource FilmBookingVM}"
       Name="FilmBookingPg"
@@ -32,7 +31,7 @@
             <i:InvokeCommandAction Command="{Binding FirstLoadCM}" CommandParameter="{Binding ElementName=FilterCombobox}"/>
         </i:EventTrigger>
     </i:Interaction.Triggers>
-    <Grid Width="1040" Height="660">
+    <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="20">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="691*"/>
             <ColumnDefinition Width="549*"/>

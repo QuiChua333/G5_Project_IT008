@@ -12,10 +12,13 @@
                     xmlns:viewmodel10="clr-namespace:CinemaManagementProject.ViewModel.StaffVM" 
                     xmlns:viewmodel11="clr-namespace:CinemaManagementProject.ViewModel.StaffVM.MovieScheduleWindowVM" 
                     xmlns:viewmodel12="clr-namespace:CinemaManagementProject.ViewModel.StaffVM.TicketVM"
-                    xmlns:viewmodel13="clr-namespace:CinemaManagementProject.ViewModel.StaffVM.FilmBookingVM"
+                    xmlns:viewmodel13="clr-namespace:CinemaManagementProject.ViewModel.StaffVM.TicketBillVM"
                     xmlns:viewmodel14="clr-namespace:CinemaManagementProject.ViewModel.AdminVM.TroubleManagementVM"                  
-                    >
-
+                    xmlns:viewmodel15="clr-namespace:CinemaManagementProject.ViewModel.StaffVM.FilmBookingVM"
+                    xmlns:viewmodel16="clr-namespace:CinemaManagementProject.ViewModel.StaffVM.TroubleStaffVM"          
+                    xmlns:viewmodel17="clr-namespace:CinemaManagementProject.ViewModel.AdminVM.StatisticalManagementVM"
+                    xmlns:viewmodel18="clr-namespace:CinemaManagementProject.ViewModel.AdminVM"
+>
     <viewmodel1:VoucherViewModel x:Key="VoucherVM" />
     <viewmodel2:CustomerManagementViewModel x:Key="CustomerManagementVM"></viewmodel2:CustomerManagementViewModel>
     <viewmodel3:StaffManagementViewModel x:Key="StaffManagementVM"></viewmodel3:StaffManagementViewModel>
@@ -29,6 +32,10 @@
     <viewmodel10:StaffVM x:Key="StaffVM"/>
     <viewmodel11:MovieScheduleWindowViewModel x:Key="MovieScheduleWindowVM" />
     <viewmodel12:TicketWindowViewModel x:Key="TicketWindowVM" />
-    <viewmodel13:FilmBookingVM x:Key="FilmBookingVM"/>
     <viewmodel14:TroubleManagementViewModel x:Key="TroubleManagementVM"/>
+    <viewmodel13:TicketBillVM x:Key="BillTicketVM" />
+    <viewmodel15:FilmBookingVM x:Key="FilmBookingVM"/>
+    <viewmodel16:TroublePageViewModel x:Key="TroublePageVM"/>
+    <viewmodel17:StatisticalManagementVM x:Key="StatisticalManagementVM"/>
+    <viewmodel18:AdminVM x:Key="AdminVM"/>
 </ResourceDictionary>

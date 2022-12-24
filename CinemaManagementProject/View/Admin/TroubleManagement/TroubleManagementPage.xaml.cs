@@ -25,19 +25,6 @@ namespace CinemaManagementProject.View.Admin.TroubleManagement
             InitializeComponent();
         }
 
-        private void TroubleItem_TroubleItemClick(object sender, EventArgs e)
-        {
-            TroubleInfomation troubleInfomation = new TroubleInfomation();
-            troubleInfomation.WindowStartupLocation = WindowStartupLocation.CenterScreen;
-            troubleInfomation.Show();
-            
-        }
-
-        private void TroubleItem_EditButtonClick(object sender, EventArgs e)
-        {
-            EditTroubleInformation troubleInfomation = new EditTroubleInformation();
-            troubleInfomation.WindowStartupLocation = WindowStartupLocation.CenterScreen;
-            troubleInfomation.Show();
-        }
+       
     }
 }

@@ -1,15 +1,10 @@
-﻿<Page
+﻿<Page x:Class="CinemaManagementProject.View.Admin.TroubleManagement.TroubleManagementPage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:CinemaManagementProject.ViewModel.AdminVM.TroubleManagementVM" 
-      xmlns:Component="clr-namespace:CinemaManagementProject.Component.Search"
-      xmlns:TroubleItem="clr-namespace:CinemaManagementProject.Component.TroubleItem" xmlns:i="http://schemas.microsoft.com/xaml/behaviors" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-      x:Class="CinemaManagementProject.View.Admin.TroubleManagement.TroubleManagementPage"
+      xmlns:local="clr-namespace:CinemaManagementProject.ViewModel.AdminVM.TroubleManagementVM" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
       mc:Ignorable="d" 
-      d:DesignHeight="660" 
-      d:DesignWidth="1040"
       FontSize="15"
       DataContext="{StaticResource TroubleManagementVM}"
       FontFamily="{StaticResource MaterialDesignFont}"
@@ -19,7 +14,12 @@
         <local:HintLevelConverter x:Key="HintLevelConverter" />
         <local:StatusEditConverter x:Key="StatusEditConverter" />
     </Page.Resources>
-    <Grid Width="1040" Height="660">
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding ReloadTroubleListCM}" />
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+    <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="20">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="691*"/>
             <ColumnDefinition Width="549*"/>
@@ -89,8 +89,10 @@
                             VerticalAlignment="Bottom"
                             HorizontalAlignment="Left"
                             Style="{StaticResource styleButton}"
-                            SelectedIndex="1"                            
+                            SelectedIndex="0"  
+                            Padding="10"
                             x:Name="filtercbb"
+                            
                             SelectedItem="{Binding SelectedCbbItem,Mode=OneWayToSource}">
                     <i:Interaction.Triggers>
                         <i:EventTrigger EventName="SelectionChanged">
@@ -112,39 +114,48 @@
                     <ListView ItemsSource="{Binding TroubleList}"
                               SelectedItem="{Binding SelectedItem,UpdateSourceTrigger=PropertyChanged}"
                               x:Name="Listview"
-                              Height="562">
+                              Height="562"
+                              >
+                        <ListView.ItemContainerStyle>
+                            <Style  TargetType="{x:Type ListViewItem}"
+                                        BasedOn="{StaticResource MaterialDesignGridViewItem}"
+                                    >
+                                <Setter Property="HorizontalContentAlignment" Value="Center"></Setter>
+
+                            </Style>
+                        </ListView.ItemContainerStyle>
                         <ListView.View>
                             <GridView>
                                 <GridViewColumn Header="Sự cố"
-                                                Width="400">
+                                                Width="500">
                                     <GridViewColumn.CellTemplate>
                                         <DataTemplate>
                                             <StackPanel Orientation="Horizontal">
                                                 <materialDesign:PackIcon Kind="AlertCircleOutline"
-                                                                         Width="40"
-                                                                         Height="40"
+                                                                         Width="30"
+                                                                         Height="30"
                                                                          Foreground="Red"
-                                                                         Margin="0,30,20,0"
+                                                                         Margin="0,30,10,0"
                                                                          Visibility="{Binding Level,Converter={StaticResource HintLevelConverter}}" />
                                                 <Border CornerRadius="8,8,8,8"
-                                                        Width="100"
-                                                        Height="100">
+                                                        Width="80"
+                                                        Height="80">
                                                     <Border.Background>
                                                         <ImageBrush x:Name="smallimg"
                                                                     Stretch="Fill"
                                                                     ImageSource="{Binding Image}" />
                                                     </Border.Background>
                                                 </Border>
-                                                <StackPanel Margin="20,0,0,0">
-                                                    <Label Content="{Binding Title}"
-                                                       FontSize="25"
+                                                <StackPanel Margin="10,20,0,0">
+                                                    <Label Content="{Binding TroubleType}"
+                                                       FontSize="16"
                                                        FontWeight="Bold"
-                                                       Width="350" />
+                                                       Width="300" />
                                                     <StackPanel Orientation="Horizontal">
                                                         <Label Content="Chi phí:"
-                                                           FontSize="20" />
+                                                           FontSize="14" />
                                                         <Label Content="{Binding RepairCostStr}"
-                                                           FontSize="20" />
+                                                           FontSize="14" />
                                                     </StackPanel>
 
                                                 </StackPanel>
@@ -153,11 +164,11 @@
                                     </GridViewColumn.CellTemplate>
                                 </GridViewColumn>
                                 <GridViewColumn Header="Ngày nhận"
-                                                Width="340">
+                                                Width="150">
                                     <GridViewColumn.CellTemplate>
                                         <DataTemplate>
-                                            <TextBlock Text="{Binding SubmittedAt}"
-                                                       FontSize="25"
+                                            <TextBlock Text="{Binding SubmittedAt, StringFormat=dd/MM/yyyy}"
+                                                       FontSize="16"
                                                        Margin="0,30,0,0" />
                                         </DataTemplate>
                                     </GridViewColumn.CellTemplate>
@@ -168,13 +179,13 @@
                                         <DataTemplate>
                                             <Border BorderThickness="1"
                                                 Margin="0,25,0,0"
-                                                BorderBrush="{Binding Status, Converter={StaticResource StatusBrushConverter}}"
-                                                CornerRadius="20">
-                                                <TextBlock Text="{Binding Status}"
-                                                       FontSize="20"
+                                                BorderBrush="{Binding TroubleStatus, Converter={StaticResource StatusBrushConverter}}"
+                                                CornerRadius="18">
+                                                <TextBlock Text="{Binding TroubleStatus}"
+                                                       FontSize="16"
                                                        Margin="7"
                                                        FontWeight="Medium"
-                                                       Foreground="{Binding Status, Converter={StaticResource StatusBrushConverter}}" />
+                                                       Foreground="{Binding TroubleStatus, Converter={StaticResource StatusBrushConverter}}" />
                                             </Border>
                                         </DataTemplate>
                                     </GridViewColumn.CellTemplate>
@@ -187,7 +198,7 @@
                                                 BorderThickness="1"
                                                 Margin="20,30,0,0"
                                                 CornerRadius="5"
-                                                Visibility="{Binding Status,Converter={StaticResource StatusEditConverter}}">
+                                                Visibility="{Binding TroubleStatus,Converter={StaticResource StatusEditConverter}}">
                                                 <Border.Style>
                                                     <Style TargetType="Border">
                                                         <Style.Triggers>
@@ -199,13 +210,10 @@
                                                         </Style.Triggers>
                                                     </Style>
                                                 </Border.Style>
-                                                <Image Source="/Resources/Icon/pencil.png"
-                                                   Width="30"
-                                                   Height="30"
-                                                   Cursor="Hand" />
+                                                <materialDesign:PackIcon Kind="PencilBoxOutline" ></materialDesign:PackIcon>
                                                 <i:Interaction.Triggers>
                                                     <i:EventTrigger EventName="MouseLeftButtonUp">
-                                                        <i:InvokeCommandAction Command="{Binding ElementName=Listview, Path=DataContext.LoadDetailErrorCM}" />
+                                                        <i:InvokeCommandAction Command="{Binding ElementName=Listview, Path=DataContext.LoadDetailTroubleCM}" />
                                                     </i:EventTrigger>
                                                 </i:Interaction.Triggers>
                                             </Border>

@@ -21,10 +21,10 @@ namespace CinemaManagementProject.DTOs
         {
             get
             {
-                //if (_CustomerId is null)
-                //{
-                //    return "KH0000";
-                //}
+                if (_CustomerId == 0 )
+                {
+                    return 0;
+                }
                 return _CustomerId;
             }
             set

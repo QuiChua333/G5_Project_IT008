@@ -10,6 +10,7 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BillCode" Type="varchar(max)" />
           <Property Name="CustomerId" Type="int" />
           <Property Name="StaffId" Type="int" />
           <Property Name="CreateDate" Type="datetime" />
@@ -64,6 +65,7 @@
           <Property Name="BillId" Type="int" Nullable="false" />
           <Property Name="Quantity" Type="int" />
           <Property Name="PrizePerProduct" Type="int" />
+          <Property Name="BillCode" Type="varchar(max)" />
         </EntityType>
         <EntityType Name="ProductReceipt">
           <Key>
@@ -153,6 +155,7 @@
           <Property Name="ShowTimeId" Type="int" />
           <Property Name="SeatId" Type="int" />
           <Property Name="Price" Type="real" />
+          <Property Name="BillCode" Type="varchar(max)" />
         </EntityType>
         <EntityType Name="Trouble">
           <Key>
@@ -160,12 +163,16 @@
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="TroubleType" Type="nvarchar(max)" />
-          <Property Name="TroubleInfo" Type="nvarchar(max)" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="RepairCost" Type="real" />
+          <Property Name="SubmittedAt" Type="datetime" />
           <Property Name="StartDate" Type="datetime" />
-          <Property Name="StartTime" Type="time" Precision="0" />
+          <Property Name="FinishDate" Type="datetime" />
           <Property Name="TroubleStatus" Type="nvarchar(max)" />
           <Property Name="StaffId" Type="int" />
           <Property Name="IsDeleted" Type="bit" />
+          <Property Name="Level" Type="nvarchar(max)" />
+          <Property Name="Image" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="Voucher">
           <Key>
@@ -531,6 +538,7 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BillCode" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="CustomerId" Type="Int32" />
           <Property Name="StaffId" Type="Int32" />
           <Property Name="CreateDate" Type="DateTime" Precision="3" />
@@ -595,6 +603,7 @@
           <Property Name="BillId" Type="Int32" Nullable="false" />
           <Property Name="Quantity" Type="Int32" />
           <Property Name="PrizePerProduct" Type="Int32" />
+          <Property Name="BillCode" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Bill" Relationship="Self.FK_BillInfo_Bill" FromRole="ProductBillInfo" ToRole="Bill" />
           <NavigationProperty Name="Product" Relationship="Self.FK_BillInfo_Product" FromRole="ProductBillInfo" ToRole="Product" />
         </EntityType>
@@ -705,6 +714,7 @@
           <Property Name="ShowTimeId" Type="Int32" />
           <Property Name="SeatId" Type="Int32" />
           <Property Name="Price" Type="Single" />
+          <Property Name="BillCode" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Bill" Relationship="Self.FK_Ticket_Bill" FromRole="Ticket" ToRole="Bill" />
           <NavigationProperty Name="Seat" Relationship="Self.FK_Ticket_Seat" FromRole="Ticket" ToRole="Seat" />
           <NavigationProperty Name="ShowTime" Relationship="Self.FK_Ticket_ShowTime" FromRole="Ticket" ToRole="ShowTime" />
@@ -715,12 +725,16 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="TroubleType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="TroubleInfo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="RepairCost" Type="Single" />
+          <Property Name="SubmittedAt" Type="DateTime" Precision="3" />
           <Property Name="StartDate" Type="DateTime" Precision="3" />
-          <Property Name="StartTime" Type="Time" Precision="0" />
+          <Property Name="FinishDate" Type="DateTime" Precision="3" />
           <Property Name="TroubleStatus" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="StaffId" Type="Int32" />
           <Property Name="IsDeleted" Type="Boolean" />
+          <Property Name="Level" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Image" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Staff" Relationship="Self.FK_Trouble_Staff" FromRole="Trouble" ToRole="Staff" />
         </EntityType>
         <EntityType Name="Voucher">
@@ -1090,6 +1104,7 @@
             <EntityTypeMapping TypeName="CinemaManagementProjectModel.Bill">
               <MappingFragment StoreEntitySet="Bill">
                 <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="BillCode" ColumnName="BillCode" />
                 <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
                 <ScalarProperty Name="StaffId" ColumnName="StaffId" />
                 <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
@@ -1147,6 +1162,7 @@
                 <ScalarProperty Name="BillId" ColumnName="BillId" />
                 <ScalarProperty Name="Quantity" ColumnName="Quantity" />
                 <ScalarProperty Name="PrizePerProduct" ColumnName="PrizePerProduct" />
+                <ScalarProperty Name="BillCode" ColumnName="BillCode" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1244,6 +1260,7 @@
                 <ScalarProperty Name="ShowTimeId" ColumnName="ShowTimeId" />
                 <ScalarProperty Name="SeatId" ColumnName="SeatId" />
                 <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="BillCode" ColumnName="BillCode" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1252,12 +1269,16 @@
               <MappingFragment StoreEntitySet="Trouble">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="TroubleType" ColumnName="TroubleType" />
-                <ScalarProperty Name="TroubleInfo" ColumnName="TroubleInfo" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="RepairCost" ColumnName="RepairCost" />
+                <ScalarProperty Name="SubmittedAt" ColumnName="SubmittedAt" />
                 <ScalarProperty Name="StartDate" ColumnName="StartDate" />
-                <ScalarProperty Name="StartTime" ColumnName="StartTime" />
+                <ScalarProperty Name="FinishDate" ColumnName="FinishDate" />
                 <ScalarProperty Name="TroubleStatus" ColumnName="TroubleStatus" />
                 <ScalarProperty Name="StaffId" ColumnName="StaffId" />
                 <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="Level" ColumnName="Level" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

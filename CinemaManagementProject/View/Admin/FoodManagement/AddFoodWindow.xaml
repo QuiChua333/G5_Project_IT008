@@ -12,7 +12,7 @@
         Background="Transparent"
         DataContext="{StaticResource FoodVM}"
         WindowStartupLocation="CenterScreen"
-        Name="AddFoodWD"
+        Name="AddFoodWD" MouseDown="AddFoodWD_MouseDown"
 >
     <Grid 
         Height="320" 

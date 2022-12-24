@@ -1,16 +1,15 @@
 ﻿<Page
-      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:Search="clr-namespace:CinemaManagementProject.Component.Search"
-      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
-      xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" 
-      x:Class="CinemaManagementProject.View.Staff.OrderFoodManagement.OrderFoodPage"
-      mc:Ignorable="d" 
-      d:DesignHeight="660" d:DesignWidth="1040"
-      Title="OrderFoodPage"
-      DataContext="{StaticResource OrderFoodManagementVM}"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+    xmlns:Search="clr-namespace:CinemaManagementProject.Component.Search"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
+    xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" 
+    x:Class="CinemaManagementProject.View.Staff.OrderFoodManagement.OrderFoodPage"
+    mc:Ignorable="d" 
+    Title="OrderFoodPage"
+    DataContext="{StaticResource OrderFoodManagementVM}"
     Name="mainPage"
 >
     <Page.Triggers>
@@ -31,7 +30,7 @@
             <i:InvokeCommandAction Command="{Binding FirstLoadCM}" />
         </i:EventTrigger>
     </i:Interaction.Triggers>
-    <Grid Width="1040" Height="660">
+    <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="20">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="830*"/>
             <ColumnDefinition Width="410*"/>
@@ -49,7 +48,7 @@
             RadiusX="20"
             RadiusY="20" 
             Grid.ColumnSpan="2"
-    />
+        />
         
         <Grid x:Name="Header_ThanhToan" Grid.Row="0" Grid.Column="1">
             <Rectangle Height="63" RadiusX="12" RadiusY="12" Fill="White" Margin="10,0,11.4,0" >
@@ -259,8 +258,11 @@
                     ></TextBlock>
                     </Grid>
                     <Grid Margin="0,15,0,0">
-                        <Button Width="120" Style="{StaticResource CustomButton}" Background="Red" Height="44" HorizontalAlignment="Left" Margin="35,0,0,0">Hủy đơn</Button>
-                        <Button Width="120"  Style="{StaticResource CustomButton}" Background="Green" Height="44" HorizontalAlignment="Right" Margin="0,0,35,0">Xác nhận</Button>
+                        <Button Width="140" Style="{StaticResource CustomButton}" 
+                                Background="Green" 
+                                Height="44" 
+                                HorizontalAlignment="Center" 
+                                Command="{Binding BuyCommand}">Xác nhận</Button>
                     </Grid>
                 </StackPanel>
             </Grid>
@@ -296,8 +298,7 @@
                     Corner="15"
                     FontSize="16"
                     HorizontalAlignment="Left"
-                    SearchTextChange="SearchBox_SearchTextChange"
-            />
+                    SearchTextChange="SearchBox_SearchTextChange"/>
                 <Grid x:Name="FilterContainer" Margin="10,0,0,0">
                     <Grid Width="180" Height="44">
                         <Grid.ColumnDefinitions>

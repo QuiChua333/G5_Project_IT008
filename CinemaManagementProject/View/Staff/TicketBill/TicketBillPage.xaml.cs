@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CinemaManagementProject.ViewModel.StaffVM.TicketBillVM;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,15 @@ namespace CinemaManagementProject.View.Staff.TicketBill
         public TicketBillPage()
         {
             InitializeComponent();
+            DataContext = new TicketBillVM();
         }
+        private void ScrollViewer_PreviewMouseWheel(object sender, MouseWheelEventArgs e)
+        {
+            ScrollViewer scv = (ScrollViewer)sender;
+            scv.ScrollToVerticalOffset(scv.VerticalOffset - e.Delta);
+            e.Handled = true;
+        }
+
+        
     }
 }

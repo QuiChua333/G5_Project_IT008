@@ -208,7 +208,7 @@ namespace CinemaManagementProject.ViewModel.StaffVM.FilmBookingVM
                 //Phòng chiếu _Room
                 // Lấy hết phim _ImgFilm _TxtFilm
                 MovieScheduleWindow wd;
-                if(SelectedItem != null)
+                if (SelectedItem != null)
                 {
                     try
                     {
@@ -222,7 +222,7 @@ namespace CinemaManagementProject.ViewModel.StaffVM.FilmBookingVM
                                 wd._ShowTimeList.ItemsSource = SelectedItem.ShowTimes;
                                 wd._ImgFilm.Source = await CloudinaryService.Ins.LoadImageFromURL(SelectedItem.Image);
                                 wd._ShowDate.Content = SelectedDate.ToString("dd-MM-yyyy");
-                                wd._TxtFilm.Content= SelectedItem?.FilmName ?? "";
+                                wd._TxtFilm.Content = SelectedItem?.FilmName ?? "";
                                 wd.ShowDialog();
                             }
                         }
@@ -235,7 +235,7 @@ namespace CinemaManagementProject.ViewModel.StaffVM.FilmBookingVM
                     {
                         CustomMessageBox.ShowOk("Lỗi hệ thống", "Lỗi", "OK", Views.CustomMessageBoxImage.Error);
                     }
-                }    
+                }
             });
         }
         public void GetAllCurrentGenre(ComboBox filter)

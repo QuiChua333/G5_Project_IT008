@@ -49,7 +49,7 @@ namespace CinemaManagementProject.Model.Service
                         {
                             RoomId = newShowtime.RoomId,
                             ShowDate = newShowtime.ShowDate.Date,
-                        }; ;
+                        };
                         context.ShowTimeSettings.Add(showtimeSet);
                         await context.SaveChangesAsync();
                     }
@@ -93,8 +93,9 @@ namespace CinemaManagementProject.Model.Service
                         seatSetList.Add(new SeatSetting
                         {
                             SeatId = seatId,
-                            ShowTimeId = showtime.Id
-                        });
+                            ShowTimeId = showtime.Id,
+                            SeatStatus = false,
+                        }) ;
                     }
                     context.SeatSettings.AddRange(seatSetList);
 

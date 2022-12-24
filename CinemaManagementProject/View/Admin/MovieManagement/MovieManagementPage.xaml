@@ -11,8 +11,7 @@
       xmlns:viewmodel="clr-namespace:CinemaManagementProject.ViewModel.AdminVM.MovieManagementVM"
       xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
       Title="MovieManagementPage"
-      x:Name="mainPage"
-      Width="1140" Height="760"
+      x:Name="mainPage"      
       DataContext="{StaticResource FilmVM}">
     
     
@@ -24,9 +23,9 @@
     </i:Interaction.Triggers>
 
    
-    <Grid Width="1140" Height="760" >
+    <Grid>
         <Grid Grid.Column="1">
-            <Grid Margin="0,60,0,0" Width="1020" Height="660">
+            <Grid>
                 <Grid.Effect>
                     <DropShadowEffect 
          			    BlurRadius="10"
@@ -37,7 +36,7 @@
                     />
                 </Grid.Effect>
 
-                <Border Background="White" BorderBrush="White" BorderThickness="4" CornerRadius="20" Margin="-50,-20,-46,0">
+                <Border Background="{StaticResource LightGrayAthens}" BorderBrush="White" BorderThickness="0" CornerRadius="20" Margin="20" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
                     <Grid>
 
                         <Grid.RowDefinitions>
@@ -56,17 +55,15 @@
 
                                 <Search:Search IconSize="20" 
                                                Height="46" 
-                                               Margin="20, 17, 0, 17"  
+                                               Margin="30, 17, 0, 17"  
                                                Width="400"
-                                               Corner="12"
+                                               Corner="18"
                                                FontFamily="{StaticResource MaterialDesignFont}"
                                                FontSize="15"    
                                                FontWeight="Thin" 
                                                PlaceHolder="Tìm kiếm"
                                                SearchTextChange="Search_SearchTextChange"
                                                x:Name="SearchBox"/>
-                               
-
                                 <Border>
                                     <Border.Effect>
                                         <DropShadowEffect
@@ -76,23 +73,20 @@
                                             Opacity=".25"
                                             Direction="270"/>
                                     </Border.Effect>
-
                                     <Button Style="{StaticResource CustomButton}" 
-                                            Width="140" 
-                                            Height="50" 
-                                            Margin="40,0,0,0" Command="{Binding LoadAddMovieCM}">
-                                        <StackPanel Orientation="Horizontal" 
-                                                    Width="143" 
-                                                    HorizontalAlignment="Center" >
-                                            <Image 
-                                                Source="{StaticResource Icon_Them}" 
-                                                Width="34" Height="34" 
-                                                Margin="12,0,0,0"/>
+                                            Width="105" 
+                                            Height="40" 
+                                            Margin="30,5,0,0"
+                                            Command="{Binding LoadAddMovieCM}">
+                                        <StackPanel Orientation="Horizontal" >
+                                            <materialDesign:PackIcon Kind="PlusCircleOutline" 
+                                                                     Width="28" 
+                                                                     Height="28"/> 
                                             <TextBlock FontFamily="{StaticResource MaterialDesignFont}" 
                                                        Text="Thêm" 
-                                                       FontSize="22"
-                                                       FontWeight="Normal"
-                                                       Margin="6,5,0,0"/>
+                                                       FontWeight="Regular"
+                                                       FontSize="16"
+                                                       Margin="5,4,0,0"/> 
                                         </StackPanel>
                                     </Button>
                                 </Border>
@@ -110,21 +104,23 @@
                                             Opacity=".25"
                                             Direction="270"/>
                                     </Border.Effect>
-
+                                    
                                     <Button Style="{StaticResource CustomButton}" 
-                                            Width="180" 
-                                            Height="50" 
-                                            Margin="20,0,0,0"
-                                            Command="{Binding ExportFileCM}">
+                                            Width="150" 
+                                            Height="46" 
+                                            Margin="32,0,0,0"
+                                            Command="{Binding ExportFileCM}"> 
                                         <StackPanel Orientation="Horizontal" 
                                                     Width="143" 
-                                                    HorizontalAlignment="Center" >
-                                            <materialDesign:PackIcon Kind="Download" Width="30" Height="30"/>
-                                            <TextBlock FontFamily="{StaticResource MaterialDesignFont}" 
-                                                       Text="Tải file Excel" 
-                                                       FontSize="15"
-                                                       FontWeight="Normal"
-                                                       Margin="2,5,0,0"/>
+                                                    HorizontalAlignment="Center" > 
+                                            <materialDesign:PackIcon Kind="FileExport" 
+                                                                     Width="30" 
+                                                                     Height="30"/> 
+                                            <TextBlock  FontFamily="{StaticResource MaterialDesignFont}" 
+                                                        Text="Xuất file Excel" 
+                                                        FontSize="16"
+                                                        FontWeight="Normal"
+                                                        Margin="2,5,0,0"/> 
                                         </StackPanel>
                                     </Button>
                                 </Border>
@@ -142,7 +138,6 @@
                                                   ItemsSource="{Binding FilmList}"
                                                   SelectedItem="{Binding SelectedItem}"
                                                   Focusable="True"
-                                                  Height="578"
                                                   ToolTip="Nháy đúp để xem chi tiết">
                                             <i:Interaction.Triggers>
                                                 <i:EventTrigger EventName="MouseDoubleClick">
