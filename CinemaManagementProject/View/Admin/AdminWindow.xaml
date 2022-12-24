@@ -8,7 +8,7 @@
         xmlns:local="clr-namespace:CinemaManagementProject.View.Admin"
         mc:Ignorable="d"
         WindowStyle="None"
-        Height="766" Width="1400"
+        Height="760" Width="1400"
         WindowStartupLocation="CenterScreen"
         AllowsTransparency="True"
         Background="Transparent"
@@ -18,11 +18,12 @@
     <Window.DataContext>
         <vm:AdminVM></vm:AdminVM>
     </Window.DataContext>
-    
-    <Grid Height="760" Width="1400">
+
+    <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="5*"/>
+            <ColumnDefinition Width="103*"/>
+            <ColumnDefinition Width="131*"/>
+            <ColumnDefinition Width="1166.667"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="60"/>
@@ -30,7 +31,7 @@
         </Grid.RowDefinitions>
 
         <!--Overlay-->
-        <Rectangle Fill="{StaticResource LightBlueSpindle}" Grid.ColumnSpan="2" Grid.RowSpan="2" RadiusX="20" RadiusY="20">
+        <Rectangle Fill="{StaticResource LightBlueSpindle}" Grid.ColumnSpan="3" Grid.RowSpan="2" RadiusX="20" RadiusY="20">
             <Rectangle.Effect>
                 <DropShadowEffect
                     Color="Black"
@@ -42,10 +43,10 @@
         </Rectangle>
 
         <!--Content-->
-        <Frame NavigationUIVisibility="Hidden" x:Name="Content" Grid.Column="1" Grid.Row="1" Content="{Binding CurrentView}"></Frame>
+        <Frame NavigationUIVisibility="Hidden" x:Name="Content" Grid.Column="1" Grid.Row="1" Content="{Binding CurrentView}" Grid.ColumnSpan="2" Margin="130,0,0,0"></Frame>
 
         <!--SideBar-->
-        <Border Grid.Column="0" Grid.RowSpan="2" CornerRadius="10,0,0,10" Background="#0F2851">
+        <Border Grid.Column="0" Grid.RowSpan="2" CornerRadius="10,0,0,10" Background="#0F2851" Grid.ColumnSpan="2">
             <StackPanel>
                 <StackPanel Orientation="Horizontal" Height="100" >
                     <Border Height="50" Width="50" CornerRadius="100" Background="White"
@@ -69,7 +70,7 @@
                     IsChecked="True" 
                     Command="{Binding StatisticalViewCommand}"
                 >
-                    
+
                     <StackPanel Orientation="Horizontal">
                         <materialDesign:PackIcon Kind="ChartBar" Height="20" Width="20" Margin="30,0,10,0" ></materialDesign:PackIcon>
                         <TextBlock Text="Tổng quan" Style="{StaticResource menuButtonText}" Margin="0,4,0,0" FontSize="14"/>

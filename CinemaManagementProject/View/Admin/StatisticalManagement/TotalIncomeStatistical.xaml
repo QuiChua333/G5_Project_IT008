@@ -9,7 +9,7 @@
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
       xmlns:Component="clr-namespace:CinemaManagementProject.Component"
-      d:DesignHeight="600" d:DesignWidth="1140"
+      d:DesignHeight="630" d:DesignWidth="1140"
       xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
       Title="TotalIncomeStatistical"
       x:Name="mainPage"
@@ -40,7 +40,7 @@
         
         
         <Grid>
-            <Border CornerRadius="20" Background="White" Margin="10">
+            <Border CornerRadius="20" Background="#54B435" Margin="10">
                 <Border.Effect>
                     <DropShadowEffect BlurRadius="14"
                                 Color="Black"
@@ -48,7 +48,7 @@
                                 Opacity=".35"
                                 Direction="270"/>
                 </Border.Effect>
-                <Grid Margin="10" Background="White">
+                <Grid Margin="10" Background="Transparent">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="540"/>
                         <ColumnDefinition/>
@@ -154,28 +154,28 @@
                             </Grid>
                         </Grid>
 
-                        <Grid Grid.Row="1">
-                            <Border BorderThickness="2" BorderBrush="Gray" CornerRadius="20" Margin="10">
-                                <lvc:CartesianChart Series="{Binding Top5MovieData,UpdateSourceTrigger=PropertyChanged}">
-                                    <lvc:CartesianChart.AxisX>
-                                        <lvc:AxesCollection>
-                                            <lvc:Axis MinValue="1">
-                                                <lvc:Axis.Separator>
-                                                    <lvc:Separator Step="1" />
-                                                </lvc:Axis.Separator>
-                                            </lvc:Axis>
-                                        </lvc:AxesCollection>
-                                    </lvc:CartesianChart.AxisX>
-                                    <lvc:CartesianChart.AxisY>
-                                        <lvc:Axis Title="Triệu đồng"
+                        <materialDesign:Card Margin="10"
+                                             UniformCornerRadius="10"
+                                             Grid.Row="1">
+                            <lvc:CartesianChart Series="{Binding Top5MovieData,UpdateSourceTrigger=PropertyChanged}">
+                                <lvc:CartesianChart.AxisX>
+                                    <lvc:AxesCollection>
+                                        <lvc:Axis MinValue="1">
+                                            <lvc:Axis.Separator>
+                                                <lvc:Separator Step="1" />
+                                            </lvc:Axis.Separator>
+                                        </lvc:Axis>
+                                    </lvc:AxesCollection>
+                                </lvc:CartesianChart.AxisX>
+                                <lvc:CartesianChart.AxisY>
+                                    <lvc:Axis Title="Triệu đồng"
                                           FontFamily="arial"
                                           MinValue="0" />
-                                    </lvc:CartesianChart.AxisY>
-                                </lvc:CartesianChart>
-                            </Border>
+                                </lvc:CartesianChart.AxisY>
+                            </lvc:CartesianChart>
+                        </materialDesign:Card>
 
-                        </Grid>
-
+                        
                         <Grid Grid.Row="2">
                             <Label 
                                        Content="Top 5 phim doanh thu cao nhất"
@@ -185,58 +185,59 @@
                                        FontSize="22"
                                        Margin="26,0,0,0" />
                         </Grid>
-                        <Grid Margin="10,0,10,0" Grid.Row="3">
-                            <Border BorderThickness="2" BorderBrush="Gray" CornerRadius="20">
-                                <ListView ItemsSource="{Binding Top5Movie}" ScrollViewer.VerticalScrollBarVisibility="Disabled">
-                                    <ListView.View>
 
-                                        <GridView>
-                                            <GridViewColumn Header="STT" Width="90">
-                                                <GridViewColumn.CellTemplate>
-                                                    <DataTemplate>
-                                                        <TextBlock  Text="{Binding RelativeSource={RelativeSource FindAncestor, 
+                        <materialDesign:Card Margin="10,0,10,0" 
+                                             Grid.Row="3"
+                                             UniformCornerRadius="10">
+                            <ListView ItemsSource="{Binding Top5Movie}" ScrollViewer.VerticalScrollBarVisibility="Disabled">
+                                <ListView.View>
+
+                                    <GridView>
+                                        <GridViewColumn Header="STT" Width="90">
+                                            <GridViewColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <TextBlock  Text="{Binding RelativeSource={RelativeSource FindAncestor, 
                                                                                                    AncestorType={x:Type ListViewItem}}, 
                                                                                                    Converter={StaticResource IndexConverter}}" 
                                                                     FontSize="18"
-                                                                    Margin="20,0,0,0" /> 
-                                                    </DataTemplate>
-                                                </GridViewColumn.CellTemplate>
-                                            </GridViewColumn>
-                                            <GridViewColumn Header="Tên phim" Width="200">
-                                            
-                                                <GridViewColumn.CellTemplate>
-                                                    <DataTemplate>
-                                                        <TextBlock Text="{Binding DisplayName}"
-                                                                   FontSize="18"
-                                                                   Height="34" /> 
-                                                    </DataTemplate>
-                                                </GridViewColumn.CellTemplate>
-                                            </GridViewColumn>
-                                            
-                                            <GridViewColumn Header="Doanh thu" Width="130">
-                                                <GridViewColumn.CellTemplate>
-                                                    <DataTemplate>
-                                                        <TextBlock Text="{Binding RevenueStr}" FontSize="18" />
-                                                    </DataTemplate>
-                                                </GridViewColumn.CellTemplate>
-                                            </GridViewColumn>
+                                                                    Margin="20,0,0,0" />
+                                                </DataTemplate>
+                                            </GridViewColumn.CellTemplate>
+                                        </GridViewColumn>
+                                        <GridViewColumn Header="Tên phim" Width="200">
 
-                                            <GridViewColumn Header="Số vé" Width="96">
-                                                <GridViewColumn.CellTemplate>
-                                                    <DataTemplate>
-                                                        <TextBlock Text="{Binding TicketCount}"
+                                            <GridViewColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <TextBlock Text="{Binding DisplayName}"
                                                                    FontSize="18"
-                                                                   Margin="20,0,0,0" /> 
-                                                    </DataTemplate>
-                                                </GridViewColumn.CellTemplate>
-                                            </GridViewColumn>
-                                            
-                                        </GridView>
-                                    </ListView.View>
-                                </ListView>
-                            </Border>
+                                                                   Height="34" />
+                                                </DataTemplate>
+                                            </GridViewColumn.CellTemplate>
+                                        </GridViewColumn>
 
-                        </Grid>
+                                        <GridViewColumn Header="Doanh thu" Width="130">
+                                            <GridViewColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <TextBlock Text="{Binding RevenueStr}" FontSize="18" />
+                                                </DataTemplate>
+                                            </GridViewColumn.CellTemplate>
+                                        </GridViewColumn>
+
+                                        <GridViewColumn Header="Số vé" Width="96">
+                                            <GridViewColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <TextBlock Text="{Binding TicketCount}"
+                                                                   FontSize="18"
+                                                                   Margin="20,0,0,0" />
+                                                </DataTemplate>
+                                            </GridViewColumn.CellTemplate>
+                                        </GridViewColumn>
+
+                                    </GridView>
+                                </ListView.View>
+                            </ListView>
+                        </materialDesign:Card>
+                       
                     </Grid>
 
                     <Grid Grid.Column="1">
@@ -282,7 +283,7 @@
                                           x:Name="periodbox2"
                                           SelectedIndex="0"
                                           SelectionChanged="periodbox2_SelectionChanged"
-                                          Loaded="periodbox2_Loaded"> 
+                                          Loaded="periodbox2_Loaded">
                                     <i:Interaction.Triggers>
                                         <i:EventTrigger EventName="Loaded">
                                             <i:InvokeCommandAction Command="{Binding ChangeBestSellPeriod2CM}"
@@ -339,28 +340,28 @@
                             </Grid>
                         </Grid>
 
-                        <Grid Grid.Row="1">
-                            <Border BorderThickness="2" BorderBrush="Gray" CornerRadius="20" Margin="10">
-                                <lvc:CartesianChart Series="{Binding Top5FoodData,UpdateSourceTrigger=PropertyChanged}">
-                                    <lvc:CartesianChart.AxisX>
-                                        <lvc:AxesCollection>
-                                            <lvc:Axis MinValue="1">
-                                                <lvc:Axis.Separator>
-                                                    <lvc:Separator Step="1" />
-                                                </lvc:Axis.Separator>
-                                            </lvc:Axis>
-                                        </lvc:AxesCollection>
-                                    </lvc:CartesianChart.AxisX>
-                                    <lvc:CartesianChart.AxisY>
-                                        <lvc:Axis Title="Triệu đồng"
+                        <materialDesign:Card Margin="10"
+                                             UniformCornerRadius="10"
+                                             Grid.Row="1">
+                            <lvc:CartesianChart Series="{Binding Top5FoodData,UpdateSourceTrigger=PropertyChanged}">
+                                <lvc:CartesianChart.AxisX>
+                                    <lvc:AxesCollection>
+                                        <lvc:Axis MinValue="1">
+                                            <lvc:Axis.Separator>
+                                                <lvc:Separator Step="1" />
+                                            </lvc:Axis.Separator>
+                                        </lvc:Axis>
+                                    </lvc:AxesCollection>
+                                </lvc:CartesianChart.AxisX>
+                                <lvc:CartesianChart.AxisY>
+                                    <lvc:Axis Title="Triệu đồng"
                                                   FontFamily="arial"
                                                   MinValue="0" />
-                                    </lvc:CartesianChart.AxisY>
-                                </lvc:CartesianChart>
-                            </Border>
+                                </lvc:CartesianChart.AxisY>
+                            </lvc:CartesianChart>
+                        </materialDesign:Card>
 
-                        </Grid>
-
+                       
                         <Grid Grid.Row="2">
                             <Label Content="Top 5 sản phẩm có doanh thu cao nhất"
                                        VerticalAlignment="Center"
@@ -369,57 +370,59 @@
                                        FontSize="22"
                                        Margin="26,0,0,0" />
                         </Grid>
-                        <Grid Margin="10,0,10,0" Grid.Row="3">
-                            <Border BorderThickness="2" BorderBrush="Gray" CornerRadius="20">
-                                <ListView ItemsSource="{Binding Top5Product}" ScrollViewer.VerticalScrollBarVisibility="Disabled">
-                                    <ListView.View>
 
-                                        <GridView>
-                                            <GridViewColumn Header="STT" Width="90">
-                                            
-                                                <GridViewColumn.CellTemplate>
-                                                    <DataTemplate>
-                                                        <TextBlock  Text="{Binding RelativeSource={RelativeSource FindAncestor, 
+                        <materialDesign:Card Margin="10,0,10,0" 
+                                             Grid.Row="3"
+                                             UniformCornerRadius="10">
+                            <ListView ItemsSource="{Binding Top5Product}" ScrollViewer.VerticalScrollBarVisibility="Disabled">
+                                <ListView.View>
+
+                                    <GridView>
+                                        <GridViewColumn Header="STT" Width="90">
+
+                                            <GridViewColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <TextBlock  Text="{Binding RelativeSource={RelativeSource FindAncestor, 
                                                                                                    AncestorType={x:Type ListViewItem}}, 
                                                                                                    Converter={StaticResource IndexConverter}}" 
                                                                     FontSize="18"
-                                                                    Margin="20,0,0,0" /> 
-                                                    </DataTemplate>
-                                                </GridViewColumn.CellTemplate>
-                                            </GridViewColumn>
+                                                                    Margin="20,0,0,0" />
+                                                </DataTemplate>
+                                            </GridViewColumn.CellTemplate>
+                                        </GridViewColumn>
 
-                                            <GridViewColumn Header="Tên sản phẩm" Width="200">
-                                                <GridViewColumn.CellTemplate>
-                                                    <DataTemplate>
-                                                        <TextBlock Text="{Binding DisplayName}"
+                                        <GridViewColumn Header="Tên sản phẩm" Width="200">
+                                            <GridViewColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <TextBlock Text="{Binding DisplayName}"
                                                                    FontSize="18"
-                                                                   Height="34" /> 
-                                                    </DataTemplate>
-                                                </GridViewColumn.CellTemplate>
-                                            </GridViewColumn>
+                                                                   Height="34" />
+                                                </DataTemplate>
+                                            </GridViewColumn.CellTemplate>
+                                        </GridViewColumn>
 
-                                            <GridViewColumn Header="Doanh thu" Width="130">
-                                                <GridViewColumn.CellTemplate>
-                                                    <DataTemplate>
-                                                        <TextBlock Text="{Binding RevenueStr}" FontSize="18" />
-                                                    </DataTemplate>
-                                                </GridViewColumn.CellTemplate>
-                                            </GridViewColumn>
+                                        <GridViewColumn Header="Doanh thu" Width="130">
+                                            <GridViewColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <TextBlock Text="{Binding RevenueStr}" FontSize="18" />
+                                                </DataTemplate>
+                                            </GridViewColumn.CellTemplate>
+                                        </GridViewColumn>
 
-                                            <GridViewColumn Header="Số lượng" Width="130">
-                                                <GridViewColumn.CellTemplate>
-                                                    <DataTemplate>
-                                                        <TextBlock Text="{Binding SalesQuantity}"
+                                        <GridViewColumn Header="Số lượng" Width="130">
+                                            <GridViewColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <TextBlock Text="{Binding SalesQuantity}"
                                                                    FontSize="18"
-                                                                   Margin="20,0,0,0" /> 
-                                                    </DataTemplate>
-                                                </GridViewColumn.CellTemplate>
-                                            </GridViewColumn>
-                                        </GridView>
-                                    </ListView.View>
-                                </ListView>
-                            </Border>
-                        </Grid>
+                                                                   Margin="20,0,0,0" />
+                                                </DataTemplate>
+                                            </GridViewColumn.CellTemplate>
+                                        </GridViewColumn>
+                                    </GridView>
+                                </ListView.View>
+                            </ListView>
+                        </materialDesign:Card>
+                        
                     </Grid>
                 </Grid>
             </Border>
