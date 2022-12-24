@@ -19,15 +19,16 @@
    
     <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="5*"/>
+            <ColumnDefinition Width="103*"/>
+            <ColumnDefinition Width="131*"/>
+            <ColumnDefinition Width="1166.667"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="60"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
         <!--Overlay-->
-        <Rectangle Fill="{StaticResource LightBlueSpindle}" Grid.ColumnSpan="2" Grid.RowSpan="2" RadiusX="20" RadiusY="20">
+        <Rectangle Fill="{StaticResource LightBlueSpindle}" Grid.ColumnSpan="3" Grid.RowSpan="2" RadiusX="20" RadiusY="20">
             <Rectangle.Effect>
                 <DropShadowEffect
                     Color="Black"
@@ -199,7 +200,7 @@
         </Grid>
 
         <!--SideBar-->
-        <Border Grid.Column="0" Grid.RowSpan="2" CornerRadius="10,0,0,10" Background="#0F2851">
+        <Border Grid.Column="0" Grid.RowSpan="2" CornerRadius="10,0,0,10" Background="#0F2851" Grid.ColumnSpan="2">
             <StackPanel>
                 <StackPanel Orientation="Horizontal" Height="100" >
                     <Border Height="50" Width="50" CornerRadius="100" Background="White"
@@ -223,7 +224,7 @@
                     IsChecked="True" 
                     Command="{Binding StatisticalViewCommand}"
                 >
-                    
+
                     <StackPanel Orientation="Horizontal">
                         <materialDesign:PackIcon Kind="ChartBar" Height="20" Width="20" Margin="30,0,10,0" ></materialDesign:PackIcon>
                         <TextBlock Text="Tổng quan" Style="{StaticResource menuButtonText}" Margin="0,4,0,0" FontSize="14"/>

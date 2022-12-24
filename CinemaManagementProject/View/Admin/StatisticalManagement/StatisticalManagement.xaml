@@ -8,7 +8,7 @@
       xmlns:Component="clr-namespace:CinemaManagementProject.Component" 
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
-      d:DesignHeight="660" d:DesignWidth="1140"
+      d:DesignHeight="700" d:DesignWidth="1140"
       Title="StatisticalManagement"
       x:Name="mainPage"
       DataContext="{StaticResource StatisticalManagementVM}">
@@ -21,11 +21,11 @@
                                    CommandParameter="{Binding ElementName=mainFrame}" />
         </i:EventTrigger>
     </i:Interaction.Triggers>
-    
+
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="10*" />
-            <RowDefinition Height="90*" />
+            <RowDefinition Height="70" />
+            <RowDefinition />
         </Grid.RowDefinitions>
 
         <!--Filter-->
@@ -47,7 +47,8 @@
                             VerticalAlignment="Top"
                             Height="40"
                             FontFamily="{StaticResource MaterialDesignFont}"
-                            FontSize="16"
+                            FontSize="18"
+                            FontWeight="Bold"
                             IsChecked="True"
                             Content="Tổng thu chi"
                             Command="{Binding LoadAllStatisticalCM}"
@@ -58,7 +59,8 @@
                             VerticalAlignment="Top"
                             Height="40"
                             FontFamily="{StaticResource MaterialDesignFont}"
-                            FontSize="16"
+                            FontSize="18"
+                            FontWeight="Bold"
                             IsChecked="False"
                             Margin="10,5,0,0"
                             Content="Bảng xếp hạng"
@@ -69,13 +71,14 @@
                             VerticalAlignment="Top"
                             Height="40"
                             FontFamily="{StaticResource MaterialDesignFont}"
-                            FontSize="16"
+                            FontSize="18"
+                            FontWeight="Bold"
                             IsChecked="False"
                             Margin="10,5,0,0"
                             Content="Xu hướng"
                             Command="{Binding LoadBestSellingCM}"
                             CommandParameter="{Binding ElementName=card1}"/>
-                        
+
                     </StackPanel>
                 </materialDesign:Card>
             </StackPanel>
