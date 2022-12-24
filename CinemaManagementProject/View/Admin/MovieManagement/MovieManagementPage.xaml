@@ -37,7 +37,7 @@
                     />
                 </Grid.Effect>
 
-                <Border Background="White" BorderBrush="White" BorderThickness="4" CornerRadius="20" Margin="-50,-20,-46,0">
+                <Border Background="White" BorderBrush="White" BorderThickness="4" CornerRadius="20" >
                     <Grid>
 
                         <Grid.RowDefinitions>
