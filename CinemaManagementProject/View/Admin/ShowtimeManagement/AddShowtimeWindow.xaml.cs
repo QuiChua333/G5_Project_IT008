@@ -41,7 +41,7 @@ namespace CinemaManagementProject.View.Admin.ShowtimeManagement
         {
             TextBox tb = sender as TextBox;
             if (tb.Text.Length == 0)
-                tb.Text = "0";
+                tb.Text = 0.ToString();
         }
 
         private void Button_MouseEnter_1(object sender, MouseEventArgs e)
@@ -57,10 +57,7 @@ namespace CinemaManagementProject.View.Admin.ShowtimeManagement
             btn.Background = new SolidColorBrush(Colors.Transparent);
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-            this.Close();
-        }
+    
 
         private void AddSuatChieu_PreviewKeyUp(object sender, KeyEventArgs e)
         {
@@ -77,6 +74,11 @@ namespace CinemaManagementProject.View.Admin.ShowtimeManagement
         private void AddSuatChieu_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             this.DragMove();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }

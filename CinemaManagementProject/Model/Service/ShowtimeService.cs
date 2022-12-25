@@ -93,7 +93,8 @@ namespace CinemaManagementProject.Model.Service
                         seatSetList.Add(new SeatSetting
                         {
                             SeatId = seatId,
-                            ShowTimeId = showtime.Id
+                            ShowTimeId = showtime.Id,
+                            SeatStatus = false
                         });
                     }
                     context.SeatSettings.AddRange(seatSetList);

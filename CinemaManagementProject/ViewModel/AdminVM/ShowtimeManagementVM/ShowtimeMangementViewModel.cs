@@ -10,6 +10,9 @@ using System.Windows.Input;
 using System.Windows;
 using CinemaManagementProject.View.Admin.ShowtimeManagement;
 using CinemaManagementProject.Model.Service;
+using MaterialDesignThemes.Wpf;
+using System.Runtime.CompilerServices;
+using System.Windows.Media.Imaging;
 
 namespace CinemaManagementProject.ViewModel.AdminVM.ShowtimeManagementVM
 {
@@ -100,6 +103,12 @@ namespace CinemaManagementProject.ViewModel.AdminVM.ShowtimeManagementVM
                 set { _ListRoom = value; OnPropertyChanged(); }
             }
 
+        private bool isEdit;
+        public bool IsEdit
+        {
+            get { return isEdit; }
+            set { isEdit = value; OnPropertyChanged(); }
+        } 
 
 
             private DateTime _getCurrentDate;
@@ -150,9 +159,38 @@ namespace CinemaManagementProject.ViewModel.AdminVM.ShowtimeManagementVM
             public ICommand CalculateRunningTimeCM { get; set; }
             public ICommand SelectedDateCM { get; set; }
             public ICommand SaveResultNameCM { get; set; }
+        public ICommand LoadStatusSeatCM { get; set; }
+
+
 
         public ShowtimeMangementViewModel()
         {
+
+            LoadStatusSeatCM = new RelayCommand<Grid>((p) => { return true; }, (p) =>
+            {
+                Label lb = p.Children.OfType<Label>().FirstOrDefault();
+                Image img = p.Children.OfType<Image>().FirstOrDefault();
+                if (lb != null)
+                {
+                    foreach (var item in ListSeat)
+                    {
+                        if (item.SeatPosition == lb.Content.ToString() && item.SeatStatus == true)
+                        {
+                            img.Source = new BitmapImage(new Uri("pack://application:,,,/CinemaManagementProject;component/Resource/Images/isBooked.png"));
+                            lb.Content = "";
+                            p.IsEnabled = false;
+                        }
+                        if (item.SeatPosition == lb.Content.ToString() && item.SeatStatus == false)
+                        {
+                            img.Source = new BitmapImage(new Uri("pack://application:,,,/CinemaManagementProject;component/Resource/Images/isReady.png"));
+                        }
+
+                    }
+                    isBooked = ListSeat.Count(x => x.SeatStatus == true);
+                    isReady = ListSeat.Count(x => x.SeatStatus == false);
+                }
+            });
+
             CalculateRunningTimeCM = new RelayCommand<ComboBox>((p) => { return true; }, (p) =>
             {
                 CalculateRunningTime();
@@ -164,6 +202,7 @@ namespace CinemaManagementProject.ViewModel.AdminVM.ShowtimeManagementVM
                 SelectedDate = GetCurrentDate;
                 showtimeDate = GetCurrentDate;
                 await ReloadShowtimeList();
+                IsEdit = false;
             });
             MaskNameCM = new RelayCommand<Grid>((p) => { return true; }, async (p) =>
             {
@@ -242,6 +281,9 @@ namespace CinemaManagementProject.ViewModel.AdminVM.ShowtimeManagementVM
 
                     await ReloadShowtimeList(-1);
                     GetShowingMovieByRoomInDate(SelectedRoomId);
+                    ListSeat1 = new ObservableCollection<SeatSettingDTO>();
+                    ListSeat2 = new ObservableCollection<SeatSettingDTO>();
+
                 }
                 else
                 {
@@ -297,6 +339,7 @@ namespace CinemaManagementProject.ViewModel.AdminVM.ShowtimeManagementVM
             CloseEditCM = new RelayCommand<Window>((p) => { return true; }, (p) =>
             {
                 //ShadowMask.Visibility = Visibility.Collapsed;
+               
                 p.Close();
                 SelectedShowtime = null;
             });
@@ -312,10 +355,19 @@ namespace CinemaManagementProject.ViewModel.AdminVM.ShowtimeManagementVM
                 }
 
             });
-            EditPriceCM = new RelayCommand<Label>((p) => { return true; }, async (p) =>
+            EditPriceCM = new RelayCommand<MaterialDesignThemes.Wpf.PackIcon>((p) => { return true; }, async (p) =>
             {
                 if (SelectedShowtime is null) return;
-                if (p.Content.ToString() == "Lưu") return;
+                IsEdit = !IsEdit;
+                if (IsEdit)
+                {
+                    p.Kind = MaterialDesignThemes.Wpf.PackIconKind.ContentSaveCheckOutline;
+                }
+                else
+                {
+                    p.Kind = MaterialDesignThemes.Wpf.PackIconKind.Pencil;
+                }
+                if (p.Kind == MaterialDesignThemes.Wpf.PackIconKind.ContentSaveCheckOutline) return;
 
                 (bool IsSuccess, string message) = await ShowtimeService.Ins.UpdateTicketPrice(SelectedShowtime.Id, moviePrice);
 

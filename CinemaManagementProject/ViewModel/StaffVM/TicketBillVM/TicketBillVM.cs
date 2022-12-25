@@ -932,6 +932,7 @@ namespace CinemaManagementProject.ViewModel.StaffVM.TicketBillVM
                         {
                             bill.CustomerId = customerDTO.Id;
                         }
+                        else bill.CustomerId = 0;
                         bill.StaffId = Staff.Id;
                         bill.TotalPrice = LastPrice;
                         bill.DiscountPrice = Discount;

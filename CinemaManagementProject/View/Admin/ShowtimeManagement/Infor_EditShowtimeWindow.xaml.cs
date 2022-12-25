@@ -28,10 +28,7 @@ namespace CinemaManagementProject.View.Admin.ShowtimeManagement
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            this.Close();
-        }
+        
 
         private void Border_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
@@ -44,23 +41,8 @@ namespace CinemaManagementProject.View.Admin.ShowtimeManagement
         }
 
 
-        bool IsEdit = false;
-        private void Label_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            IsEdit = !IsEdit;
-
-            if (IsEdit)
-            {
-                _showtimePrice.IsEnabled = true;
-                _lblEdit.Content = "Lưu";
-            }
-            else
-            {
-                _showtimePrice.IsEnabled = false;
-                _lblEdit.Content = "Thay đổi";
-            }
-
-        }
+        public static bool IsEdit = false;
+       
         private void _showtimePrice_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
             e.Handled = !IsTextAllowed(e.Text);
@@ -89,5 +71,8 @@ namespace CinemaManagementProject.View.Admin.ShowtimeManagement
         {
             this.DragMove();
         }
+
+        
     }
+    
 }
