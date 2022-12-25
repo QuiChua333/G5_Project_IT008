@@ -118,6 +118,7 @@
                     HorizontalAlignment="Left" 
                     Width="75" 
                     Height="75"
+                    Cursor="Hand"
                 >
                     <i:Interaction.Triggers>
                         <i:EventTrigger EventName="MouseLeftButtonDown">
@@ -154,6 +155,7 @@
                     Width="75"
                     Height="75"
                     HorizontalAlignment="Right"
+                    Cursor="Hand"
                 >
                     <i:Interaction.Triggers>
                         <i:EventTrigger EventName="MouseLeftButtonDown">

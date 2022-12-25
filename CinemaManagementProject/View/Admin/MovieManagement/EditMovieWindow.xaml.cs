@@ -31,7 +31,7 @@ namespace CinemaManagementProject.View.Admin.MovieManagement
             this.DragMove();
         }
 
-        private void filmDuration_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        private void Duration_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
             e.Handled = !IsTextAllowed(e.Text);
         }
@@ -40,12 +40,12 @@ namespace CinemaManagementProject.View.Admin.MovieManagement
         {
             return !_regex.IsMatch(text);
         }
-        private void filmYear_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        private void Year_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
             e.Handled = !IsTextAllowed(e.Text);
         }
 
-        private void _filmGenre_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        private void Genre_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
             if (!System.Text.RegularExpressions.Regex.IsMatch(e.Text, "^[a-zA-Z]"))
             {
@@ -53,7 +53,7 @@ namespace CinemaManagementProject.View.Admin.MovieManagement
             }
         }
 
-        private void _filmCountry_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        private void Country_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
             if (!System.Text.RegularExpressions.Regex.IsMatch(e.Text, "^[a-zA-Z]"))
             {
@@ -72,7 +72,12 @@ namespace CinemaManagementProject.View.Admin.MovieManagement
             Button btn = sender as Button;
             btn.Background = new SolidColorBrush(Colors.Transparent);
         }
-    }
-    
+        private void EditMovieWindow_PreviewKeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.Key != System.Windows.Input.Key.Escape) return;
 
+            e.Handled = true;
+            this.Close();
+        }
+    }
 }

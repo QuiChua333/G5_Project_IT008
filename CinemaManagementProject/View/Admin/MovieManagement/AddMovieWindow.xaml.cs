@@ -70,15 +70,10 @@ namespace CinemaManagementProject.View.Admin.MovieManagement
             Button btn = sender as Button;
             btn.Background = new SolidColorBrush(Colors.Transparent);
         }
-
-        private void _filmYear_TextChanged(object sender, TextChangedEventArgs e)
+        private void addmoviewindow_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-
-        }
-
-        private void _Genre_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
+            e.Handled = true;
+            this.DragMove();
         }
     }
 }

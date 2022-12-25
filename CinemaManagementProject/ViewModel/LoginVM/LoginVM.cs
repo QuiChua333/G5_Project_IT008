@@ -114,8 +114,8 @@ namespace CinemaManagementProject.ViewModel.LoginVM
                 if(CurrentStaff.Position == "Quản lý")
                 {
                     LoginWindow.Hide();
-                    AdminWindow stWD = new AdminWindow();
                     AdminVM.AdminVM.currentStaff = CurrentStaff;
+                    AdminWindow stWD = new AdminWindow();
                     stWD.Show();
                     LoginWindow.Close();
                 }
@@ -123,8 +123,8 @@ namespace CinemaManagementProject.ViewModel.LoginVM
                     if (CurrentStaff.Position == "Nhân viên")
                 {
                     LoginWindow.Hide();
-                    StaffWindow stWD = new StaffWindow();
                     StaffVM.StaffVM.currentStaff = CurrentStaff;
+                    StaffWindow stWD = new StaffWindow();
                     stWD.Show();
                     LoginWindow.Close();
                 }

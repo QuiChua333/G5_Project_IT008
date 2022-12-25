@@ -61,5 +61,13 @@ namespace CinemaManagementProject.View.Login
 
             btn.Background = new SolidColorBrush(Colors.Transparent);
         }
+
+        private void LoginWd_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.LeftButton == MouseButtonState.Pressed)
+            {
+                DragMove();
+            }
+        }
     }
 }
