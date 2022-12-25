@@ -252,7 +252,7 @@ namespace CinemaManagementProject.ViewModel.AdminVM.ShowtimeManagementVM
                 {
                     message = $"Suất chiếu này có ghế đã được đặt. Bạn có muốn xoá không?";
                     var kq = CustomMessageBox.ShowOkCancel(message, "Cảnh báo", "Yes","No", Views.CustomMessageBoxImage.Warning);
-                    if (kq== Views.CustomMessageBoxResult.None)
+                    if (kq == Views.CustomMessageBoxResult.None || kq == Views.CustomMessageBoxResult.Cancel)
                     {
                         return;
                     }
@@ -260,7 +260,7 @@ namespace CinemaManagementProject.ViewModel.AdminVM.ShowtimeManagementVM
                 else
                 {
                     var kq = CustomMessageBox.ShowOkCancel(message, "Cảnh báo", "Yes", "No", Views.CustomMessageBoxImage.Warning);
-                    if (kq==Views.CustomMessageBoxResult.None)
+                    if (kq == Views.CustomMessageBoxResult.None || kq == Views.CustomMessageBoxResult.Cancel)
                     {
                         return;
                     }
@@ -283,7 +283,6 @@ namespace CinemaManagementProject.ViewModel.AdminVM.ShowtimeManagementVM
                     GetShowingMovieByRoomInDate(SelectedRoomId);
                     ListSeat1 = new ObservableCollection<SeatSettingDTO>();
                     ListSeat2 = new ObservableCollection<SeatSettingDTO>();
-
                 }
                 else
                 {

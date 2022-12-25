@@ -6,6 +6,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 
 namespace CinemaManagementProject.Model.Service
@@ -123,13 +124,19 @@ namespace CinemaManagementProject.Model.Service
                     {
                         return (false, "Suất chiếu không tồn tại!");
                     }
+                    List<Ticket> listTicket = context.Tickets.ToList();
+                    foreach(Ticket ticket in listTicket)
+                    {
+                        if(ticket.ShowTimeId == showtimeId)
+                        {
+                            ticket.ShowTimeId = null;
+                        }    
+                    }    
                     context.ShowTimes.Remove(show);
                     await context.SaveChangesAsync();
                 }
-
-
             }
-            catch (Exception)
+            catch (Exception e)
             {
                 return (false, "Lỗi hệ thống");
             }
