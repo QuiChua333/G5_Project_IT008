@@ -36,7 +36,6 @@ namespace CinemaManagementProject.View.Admin
         {
             AdminWD.WindowState = WindowState.Minimized;
         }
-
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             if(AdminWD.WindowState == WindowState.Normal)
