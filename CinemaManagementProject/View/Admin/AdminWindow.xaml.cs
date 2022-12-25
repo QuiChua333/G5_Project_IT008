@@ -23,9 +23,7 @@ namespace CinemaManagementProject.View.Admin
         {
             InitializeComponent();
             this.MaxHeight = SystemParameters.MaximizedPrimaryScreenHeight;
-            IsMaximize = false;
         }
-        private bool IsMaximize;
         private void AdminWD_MouseDown(object sender, MouseButtonEventArgs e)
         {
             if (e.LeftButton == MouseButtonState.Pressed)
@@ -41,16 +39,10 @@ namespace CinemaManagementProject.View.Admin
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            if(!IsMaximize)
-            {
+            if(AdminWD.WindowState == WindowState.Normal)
                 AdminWD.WindowState = WindowState.Maximized;
-                IsMaximize = true;
-            }    
             else
-            {
                 AdminWD.WindowState = WindowState.Normal;
-                IsMaximize = false;
-            }    
         }
 
         private void Button_Click_2(object sender, RoutedEventArgs e)

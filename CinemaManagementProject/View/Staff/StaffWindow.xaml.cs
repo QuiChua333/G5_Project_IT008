@@ -24,9 +24,7 @@ namespace CinemaManagementProject.View.Staff
         {
             InitializeComponent();
             this.MaxHeight = SystemParameters.MaximizedPrimaryScreenHeight;
-            IsMaximize = false;
         }
-        private bool IsMaximize;
         private void StaffWD_MouseDown(object sender, MouseButtonEventArgs e)
         {
             if (e.LeftButton == MouseButtonState.Pressed)
@@ -38,21 +36,13 @@ namespace CinemaManagementProject.View.Staff
         {
             StaffWD.WindowState = WindowState.Minimized;
         }
-
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            if (!IsMaximize)
-            {
+            if (StaffWD.WindowState == WindowState.Normal)
                 StaffWD.WindowState = WindowState.Maximized;
-                IsMaximize = true;
-            }
             else
-            {
                 StaffWD.WindowState = WindowState.Normal;
-                IsMaximize = false;
-            }
         }
-
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
             Close();
