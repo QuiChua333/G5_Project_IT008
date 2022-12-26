@@ -256,12 +256,13 @@
                                HorizontalAlignment="Right" 
                                VerticalAlignment="Center"/>
                     <DatePicker Width="358"
-                            Style="{StaticResource MaterialDesignFloatingHintDatePicker}"
-                            HorizontalAlignment="Left"
-                            Margin="20 -20 45 0"                          
-                            Grid.Column="1"
-                            x:Name="StartDate"
-                            SelectedDate="{Binding StartDate, Mode=TwoWay}">
+                                Style="{StaticResource MaterialDesignFloatingHintDatePicker}"
+                                HorizontalAlignment="Left"
+                                Margin="20 -20 45 0"  
+                                FontSize="15"
+                                Grid.Column="1"
+                                x:Name="StartDate"
+                                SelectedDate="{Binding StartDate, Mode=TwoWay}">
                     </DatePicker>
 
                 </Grid>

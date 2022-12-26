@@ -90,6 +90,7 @@
                             Style="{StaticResource styleButton}"
                             SelectedIndex="0"  
                             Padding="10"
+                            BorderBrush="Transparent"
                             x:Name="filtercbb"
                             SelectedItem="{Binding FiltercbbItem,Mode=OneWayToSource}">
                     <i:Interaction.Triggers>
@@ -160,21 +161,24 @@
                         </i:Interaction.Triggers>
                         <ListView.ItemContainerStyle>
                             <Style  TargetType="{x:Type ListViewItem}"
-                                        BasedOn="{StaticResource MaterialDesignGridViewItem}"
-                                    >
+                                        BasedOn="{StaticResource MaterialDesignGridViewItem}">
                                 <Setter Property="HorizontalContentAlignment" Value="Center"></Setter>
-
                             </Style>
                         </ListView.ItemContainerStyle>
                         <ListView.View>
                             <GridView>
-                                <GridViewColumn Header="Sự cố"
+                                <GridViewColumn 
                                                 Width="500">
+                                    <GridViewColumn.Header>
+                                        <TextBlock Text="Sự cố"
+                                                   FontSize="14"
+                                                   FontWeight="SemiBold"></TextBlock>
+                                    </GridViewColumn.Header>
                                     <GridViewColumn.CellTemplate>
                                         <DataTemplate>
                                             <StackPanel Orientation="Horizontal">
                                                 
-                                                <Border CornerRadius="8,8,8,8"
+                                                <Border 
                                                         Width="80"
                                                         Height="80">
                                                     <Border.Background>
@@ -200,25 +204,35 @@
                                         </DataTemplate>
                                     </GridViewColumn.CellTemplate>
                                 </GridViewColumn>
-                                <GridViewColumn Header="Ngày gửi"
+                                <GridViewColumn 
                                                 Width="150">
+                                    <GridViewColumn.Header>
+                                        <TextBlock Text="Ngày gửi"
+                                                   FontSize="14"
+                                                   FontWeight="SemiBold"></TextBlock>
+                                    </GridViewColumn.Header>
                                     <GridViewColumn.CellTemplate>
                                         <DataTemplate>
                                             <TextBlock Text="{Binding SubmittedAt, StringFormat=dd/MM/yyyy}"
-                                                       FontSize="16"
+                                                       FontSize="14"
                                                        Margin="-10,30,0,0" />
                                         </DataTemplate>
                                     </GridViewColumn.CellTemplate>
                                 </GridViewColumn>
-                                <GridViewColumn Header="Trạng thái"
+                                <GridViewColumn 
                                             Width="170">
+                                    <GridViewColumn.Header>
+                                        <TextBlock Text="Trạng thái"
+                                                   FontSize="14"
+                                                   FontWeight="SemiBold"></TextBlock>
+                                    </GridViewColumn.Header>
                                     <GridViewColumn.CellTemplate>
                                         <DataTemplate>
                                             <Border BorderThickness="1"
                                                 Margin="-10,25,0,0"
                                                 CornerRadius="18">
                                                 <TextBlock Text="{Binding TroubleStatus}"
-                                                       FontSize="16"
+                                                       FontSize="14"
                                                        Margin="7"
                                                        FontWeight="Medium"></TextBlock>
                                             </Border>
@@ -229,11 +243,11 @@
                                     <GridViewColumn.CellTemplate>
                                         <DataTemplate>
                                             <Border Cursor="Hand"
-                                                BorderBrush="Black"
-                                                BorderThickness="1"
-                                                Margin="20,30,0,0"
-                                                CornerRadius="5"
-                                                Visibility="{Binding TroubleStatus,Converter={StaticResource EditConverter}}">
+                                                    BorderBrush="Black"
+                                                    BorderThickness="1"
+                                                    Margin="20,30,0,0"
+                                                    CornerRadius="5"
+                                                    Visibility="{Binding TroubleStatus,Converter={StaticResource EditConverter}}">
                                                 <Border.Style>
                                                     <Style TargetType="Border">
                                                         <Style.Triggers>
@@ -245,7 +259,10 @@
                                                         </Style.Triggers>
                                                     </Style>
                                                 </Border.Style>
-                                                <materialDesign:PackIcon Kind="PencilBoxOutline" ></materialDesign:PackIcon>
+                                                <materialDesign:PackIcon Kind="Pencil"
+                                                                         Width="22"
+                                                                        Height="22"
+                                                                        Cursor="Hand"></materialDesign:PackIcon>
                                                 <i:Interaction.Triggers>
                                                     <i:EventTrigger EventName="MouseLeftButtonUp">
                                                         <i:InvokeCommandAction Command="{Binding ElementName=Listview, Path=DataContext.LoadEditTroubleWindowCM}" />
