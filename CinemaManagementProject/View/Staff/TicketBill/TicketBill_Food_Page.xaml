@@ -10,49 +10,63 @@
       xmlns:Component="clr-namespace:CinemaManagementProject.Component"
       d:DesignHeight="760" d:DesignWidth="1140"
       DataContext="{StaticResource BillTicketVM}"
+      FontFamily="{StaticResource MaterialDesignFont}"
       Title="TicketBill_Food_Page">
 
-    <Grid Background="#BCD8F1">
+    <Grid Background="{StaticResource LightGrayAthens}">
         <Grid.RowDefinitions>
             <RowDefinition Height="10*"/>
             <RowDefinition Height="90*"/>
         </Grid.RowDefinitions>
 
-        <StackPanel Orientation="Horizontal" Grid.Row="0">
-            <Border CornerRadius="90"
-                        Height="55"
-                        Width="55"
-                        HorizontalAlignment="Left"
-                        VerticalAlignment="Top"
-                        Margin="15 15 0 0"
-                        Cursor="Hand">
-                <Border.Style>
-                    <Style TargetType="Border">
-                        <Style.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Background" Value="#e0e0e0" />
-                            </Trigger>
-                        </Style.Triggers>
-                    </Style>
-                </Border.Style>
-                <materialDesign:PackIcon Kind="ArrowLeft"
-                                     Height="40"
-                                     Width="40"
-                                     VerticalAlignment="Center"
-                                     HorizontalAlignment="Center" />
-                <i:Interaction.Triggers>
-                    <i:EventTrigger EventName="MouseLeftButtonDown">
-                        <i:InvokeCommandAction Command="{Binding BackToFoodPageCM}" />
-                    </i:EventTrigger>
-                </i:Interaction.Triggers>
-            </Border>
-            <TextBlock Text="THANH TOÁN HÓA ĐƠN" 
-                           FontSize="30" 
-                           FontWeight="Bold"
-                           Foreground="Black" 
-                           VerticalAlignment="Center" 
-                           Margin="10,0,0,0"/>
-        </StackPanel>
+        <Border Grid.Row="0"
+                BorderBrush="#8DC1F0"
+                BorderThickness="0 0 0 4"
+                Margin="50 0 50 0"
+              >
+            <StackPanel Orientation="Horizontal" >
+                <Border CornerRadius="90"
+                            Height="55"
+                            Width="55"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Top"
+                            Margin="-10 15 0 0"
+                            Cursor="Hand">
+                    <Border.Style>
+                        <Style TargetType="Border">
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#e0e0e0" />
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Border.Style>
+                    <materialDesign:PackIcon Kind="ArrowLeft"
+                                         Height="40"
+                                         Width="40"
+                                         VerticalAlignment="Center"
+                                         HorizontalAlignment="Center" />
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="MouseLeftButtonDown">
+                            <i:InvokeCommandAction Command="{Binding BackToFoodPageCM}" />
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </Border>
+
+                <Label  Content="THANH TOÁN HÓA ĐƠN" 
+                            FontSize="38" 
+                            Foreground="#8DC1F0"
+                            FontFamily="{StaticResource MaterialDesignFont}"
+                            FontWeight="Bold"
+                            Margin="280,20,0,0" >
+                    <Label.Effect>
+                        <DropShadowEffect BlurRadius="1" Direction="-45" Color="#000000" ShadowDepth="1.5" Opacity="0.5"/>
+                    </Label.Effect>
+                </Label>
+                
+            </StackPanel>
+
+        </Border>
 
         <Grid Grid.Row="1">
 
@@ -61,8 +75,18 @@
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
 
-            <Grid Grid.Column="0" Margin="30">
-                <materialDesign:Card UniformCornerRadius="10">
+            <Border Grid.Column="0" 
+                    Margin="50 20 20 30"
+                    CornerRadius="20">
+                <Border.Effect>
+                    <DropShadowEffect
+                    BlurRadius="10"
+                    Color="Black"
+                    ShadowDepth="4"
+                    Opacity=".25"
+                    Direction="270"/>
+                </Border.Effect>
+                <materialDesign:Card UniformCornerRadius="20">
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="60"/>
@@ -70,12 +94,14 @@
                         </Grid.RowDefinitions>
 
                         <Grid Grid.Row="0">
-                            <Label Content="               Thông tin khách hàng"
+                            <Label Content="     Thông tin khách hàng"
                                    FontSize="25"
+                                   Width="300"
+                                   FontFamily="{StaticResource MaterialDesignFont}"
                                    FontWeight="Bold"
-                                   BorderThickness="0,0,0,2"
-                                   BorderBrush="Black"
-                                   Margin="10 10 10 0" />
+                                   BorderThickness="0,0,0,3"
+                                   BorderBrush="#8DC1F0"
+                                   Margin="10 10 10 0" HorizontalAlignment="Center" />
                         </Grid>
 
                         <Grid Grid.Row="1">
@@ -115,6 +141,7 @@
                                           Content="Khách vãng lai"
                                           Margin="10 0 0 0"
                                           FontSize="18"
+                                          FontFamily="{StaticResource MaterialDesignFont}"
                                           VerticalAlignment="Bottom"
                                           x:Name="checkBox"
                                           Command="{Binding CboxWalkinGuestCM}"
@@ -132,14 +159,19 @@
                                 </Grid.ColumnDefinitions>
 
                                 <TextBlock Text="Điện thoại:"
-                                           Margin="10 15 15 0" />
+                                           Margin="10 15 15 0"
+                                          FontFamily="{StaticResource MaterialDesignFont}"
+                                           />
                                 <TextBox Grid.Column="1" 
                                          Text="{Binding PhoneNumber, Mode=TwoWay}"/>
                                 <Button Grid.Column="2"
                                         Background="#4887FA"
                                         Content="{materialDesign:PackIcon PhoneCheckOutline}"
                                         VerticalAlignment="Bottom"
-                                        Margin="15 0 10 0"
+                                        Margin="10 0 10 0"
+                                        Height="32"
+                                        Width="50"
+                                        Style="{StaticResource CustomButton}"
                                         Command="{Binding CheckPhoneNumberCM}"/>
 
                                 <Grid.Style>
@@ -263,6 +295,9 @@
                                         VerticalAlignment="Bottom"
                                         HorizontalAlignment="Right"
                                         Margin="0 0 10 10" 
+                                        Height="34"
+                                       
+                                        Style="{StaticResource CustomButton}"
                                         Command="{Binding SignUpCM}"/>
                                 <Grid.Style>
                                     <Style>
@@ -289,7 +324,9 @@
                                     <ColumnDefinition />
                                 </Grid.ColumnDefinitions>
 
-                                <TextBlock Text="Họ và tên:" />
+                                <TextBlock Text="Họ và tên:"
+                                          FontFamily="{StaticResource MaterialDesignFont}"
+                                           />
                                 <TextBox Grid.Column="1"
                                          IsEnabled="False"
                                          Margin="0 0 30 0"
@@ -318,7 +355,9 @@
                                     <ColumnDefinition />
                                 </Grid.ColumnDefinitions>
 
-                                <TextBlock Text="Email:" />
+                                <TextBlock Text="Email:" 
+                                          FontFamily="{StaticResource MaterialDesignFont}"
+                                           />
                                 <TextBox Grid.Column="1"
                                          IsEnabled="False"
                                          Margin="0 0 30 0"
@@ -349,14 +388,19 @@
                                 </Grid.ColumnDefinitions>
 
                                 <TextBlock Text="Voucher:"
-                                           Margin="10 15 5 0" />
+                                           Margin="10 15 5 0" 
+                                          FontFamily="{StaticResource MaterialDesignFont}"
+                                           />
                                 <TextBox Grid.Column="1"
                                          Margin="10 0 15 4"
                                          Text="{Binding VoucherID, Mode=TwoWay}" />
                                 <Button Grid.Column="2"
                                         VerticalAlignment="Bottom"
                                         Background="#4887FA"
-                                        Margin="10 0 10 0"
+                                        Margin="6 0 10 0"
+                                        Height="32"
+                                        Width="50"
+                                        Style="{StaticResource CustomButton}"
                                         Command="{Binding AddVoucherOnlyFoodCM}">
                                     <Button.ContentTemplate>
                                         <DataTemplate>
@@ -466,9 +510,9 @@
                                 </Grid.Style>
                             </Grid>
 
-                            <Button Width="110"
+                            <Button Width="120"
                                     Background="#4887FA"
-                                    Height="32"
+                                    Height="36"
                                     VerticalAlignment="Bottom"
                                     HorizontalAlignment="Right"
                                     Margin="0 0 10 10"
@@ -476,7 +520,7 @@
                                     Command="{Binding PayFoodCM}">
                                 <Button.Style>
                                     <Style TargetType="Button"
-                                           BasedOn="{StaticResource MaterialDesignRaisedButton}">
+                                           BasedOn="{StaticResource CustomButton}">
                                         <Style.Triggers>
                                             <DataTrigger Binding="{Binding ShowDoneButton}"
                                                          Value="False">
@@ -493,10 +537,20 @@
                         </Grid>
                     </Grid>
                 </materialDesign:Card>
-            </Grid>
+            </Border>
 
-            <Grid Grid.Column="1" Margin="30">
-                <materialDesign:Card UniformCornerRadius="10">
+            <Border Grid.Column="1" 
+                    Margin="20 20 50 30"
+                    CornerRadius="20">
+                <Border.Effect>
+                    <DropShadowEffect
+                    BlurRadius="10"
+                    Color="Black"
+                    ShadowDepth="4"
+                    Opacity=".25"
+                    Direction="270"/>
+                </Border.Effect>
+                <materialDesign:Card UniformCornerRadius="20">
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="61" />
@@ -506,12 +560,14 @@
 
                         <!---HEADER-->
                         <Grid Grid.Row="0">
-                            <Label Content="                               Đồ ăn"
-                                   FontSize="25"
+                            <Label Content="                   Đồ ăn"
+                                   FontSize="25"       
+                                   Width="300"
+                                   FontFamily="{StaticResource MaterialDesignFont}"
                                    FontWeight="Bold"
-                                   BorderThickness="0,0,0,2"
-                                   BorderBrush="Black"
-                                   Margin="10 10 10 0" />
+                                   BorderThickness="0,0,0,3"
+                                   BorderBrush="#8DC1F0"
+                                   Margin="10 10 10 0" HorizontalAlignment="Center" VerticalAlignment="Center" />
                         </Grid>
                         <!--#endregion-->
 
@@ -529,8 +585,8 @@
 
                                 <Border Grid.Row="0"
                                         BorderThickness="0,0,0,2"
-                                        BorderBrush="Black"
-                                        Margin="10,10,10,0">
+                                        BorderBrush="#8DC1F0"
+                                        Margin="20,10,20,0">
                                     <ScrollViewer VerticalScrollBarVisibility="Auto"
                                                   x:Name="scrollview">
                                         <ItemsControl ItemsSource="{Binding ListFoodDisplay}">
@@ -587,8 +643,8 @@
                                 </Border>
                                 <Border Grid.Row="1"
                                         BorderThickness="0,0,0,2"
-                                        BorderBrush="Black"
-                                        Margin="10,0,10,11">
+                                        BorderBrush="#8DC1F0"
+                                        Margin="20,0,20,11">
                                     <StackPanel VerticalAlignment="Center"
                                                 Margin="0 4 0 0">
                                         <StackPanel Orientation="Horizontal">
@@ -615,7 +671,7 @@
                         </Grid>
                         <!--#endregion-->
 
-                        <StackPanel Margin="10 -2 20 0"
+                        <StackPanel Margin="20 -2 20 0"
                                     Grid.Row="2">
                             <Grid>
                                 <Grid.ColumnDefinitions>
@@ -674,7 +730,7 @@
                         </StackPanel>
                     </Grid>
                 </materialDesign:Card>
-            </Grid>
+            </Border>
 
 
         </Grid>

@@ -41,7 +41,7 @@ namespace CinemaManagementProject.ViewModel.StaffVM.TroubleStaffVM
                     Description = Description,
                     Image = troubleImage,
                     StaffId = StaffVM.currentStaff.Id,
-
+                    StaffName= StaffVM.currentStaff.StaffName,
                 };
 
                 (bool successAddtrouble, string messageFromAddtrouble, TroubleDTO newtrouble) = await TroubleService.Ins.CreateNewTrouble(trouble);

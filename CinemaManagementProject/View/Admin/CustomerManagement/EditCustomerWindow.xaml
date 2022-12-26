@@ -14,7 +14,7 @@
         DataContext="{StaticResource CustomerManagementVM}"
         Name="SuaKH"
         ResizeMode="NoResize"
-        Height="305"
+        Height="320"
         Width="500"
         WindowStartupLocation="CenterScreen"
         Title="EditCustomerWindow">
@@ -46,20 +46,27 @@
             </StackPanel.Resources>
             <Grid Margin="0,0,0,10"
                   Background="Transparent">
-                <Border BorderBrush="Black"
-                        BorderThickness="0,0,0,1">
-                    <TextBlock HorizontalAlignment="Left"
-                               Margin="20,10,0,10"
-                               Text="SỬA THÔNG TIN KHÁCH HÀNG"
+
+                <Border BorderBrush="#8DC1F0"
+                        Margin="30 10 30 0"
+                        BorderThickness="0 0 0 3">
+                    <Label HorizontalAlignment="Center"
+                               
+                               Content="SỬA THÔNG TIN KHÁCH HÀNG"
                                FontFamily="{StaticResource MaterialDesignFont}" 
                                FontSize="28" 
                                FontWeight="Bold" 
-                               Foreground="#FF80CDED" />
+                               Foreground="#FF80CDED" >
+                        <Label.Effect>
+                            <DropShadowEffect BlurRadius="1" Direction="-45" Color="#000000" ShadowDepth="1.5" Opacity="0.5"/>
+                        </Label.Effect>
+                    </Label>
                 </Border>
 
             </Grid>
             <!--#region Thông tin-->
-            <Grid Background="Transparent">
+            <Grid
+                 Height="50" Background="Transparent">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="120" />
                     <ColumnDefinition />
@@ -67,14 +74,14 @@
                 <TextBlock Text="Họ và tên" />
                 <TextBox x:Name="_FullName"
                          Grid.Column="1"
-                         Text="{Binding Fullname, Mode=TwoWay}" />
+                         Text="{Binding Fullname, Mode=TwoWay}" Margin="5,2,31,0" VerticalAlignment="Top" />
             </Grid>
 
-            <Grid Background="Transparent">
+            <Grid Height="50" Background="Transparent">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="120" />
-                    <ColumnDefinition Width="110*" />
-                    <ColumnDefinition Width="271*" />
+                    <ColumnDefinition Width="109.134" />
+                    <ColumnDefinition />
                 </Grid.ColumnDefinitions>
                 <Grid.Resources>
                     <Style TargetType="{x:Type Control}"
@@ -102,7 +109,7 @@
                 </Grid.Resources>
                 <TextBlock Text="Ngày đăng ký"
                            Margin="0,20,9,10" />
-                <DatePickerTextBox Width="358"
+                <DatePickerTextBox Width="340"
                          HorizontalAlignment="Left"
                          VerticalAlignment="Bottom"
                          Margin="5,0,0,8"
@@ -117,7 +124,8 @@
                 </DatePickerTextBox>
             </Grid>
 
-            <Grid Background="Transparent">
+            <Grid Background="Transparent"
+                   Height="50">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="120" />
                     <ColumnDefinition />
@@ -125,10 +133,11 @@
                 <TextBlock Text="Số điện thoại" />
                 <TextBox Grid.Column="1"
                          x:Name="_Phone"                        
-                         Text="{Binding Phone,Mode=TwoWay}" />
+                         Text="{Binding Phone,Mode=TwoWay}" Margin="5,2,34,0" VerticalAlignment="Top" />
             </Grid>
 
-            <Grid Background="Transparent">
+            <Grid Background="Transparent"
+                   Height="50">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="120" />
                     <ColumnDefinition />
@@ -136,7 +145,7 @@
                 <TextBlock Text="Email" />
                 <TextBox Grid.Column="1"
                          x:Name="_Mail"
-                         Text="{Binding Mail,Mode=TwoWay}" />
+                         Text="{Binding Mail,Mode=TwoWay}" Margin="5,2,33,0" VerticalAlignment="Top" />
             </Grid>
             <!--#endregion-->
 
