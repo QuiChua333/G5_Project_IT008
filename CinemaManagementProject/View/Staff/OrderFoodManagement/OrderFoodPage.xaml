@@ -37,7 +37,7 @@
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="6*"/>
+            <RowDefinition Height="7*"/>
         </Grid.RowDefinitions>
         <Rectangle 
             x:Name="FoodPageView"
@@ -67,7 +67,7 @@
                 HorizontalAlignment="Center"
                 VerticalAlignment="Center"
                 FontSize="28"
-                FontWeight="SemiBold"
+                FontWeight="Medium"
                 Foreground="Black"
             ><Run Text="Thanh toán"/></TextBlock>
         </Grid>
@@ -243,19 +243,19 @@
                         VerticalAlignment="Top"
                         FontFamily="{StaticResource MaterialDesignFont}"
                         FontSize="28"
-                        FontWeight="Bold"
+                        FontWeight="Medium"
                         Margin="40,0,0,0"
                         Height="32"
-                    >TỔNG</TextBlock>
-                        <TextBlock 
-                        HorizontalAlignment="Right"
-                        VerticalAlignment="Top"
-                        FontFamily="{StaticResource MaterialDesignFont}"
-                        FontSize="28"
-                        FontWeight="Bold"
-                        Margin="0,0,25,0"
-                        Text="{Binding TotalPrice}"
-                    ></TextBlock>
+                    >Tổng:</TextBlock>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Top">
+                            <TextBlock
+                                FontFamily="{StaticResource MaterialDesignFont}"
+                                FontSize="28"
+                                FontWeight="Medium"
+                                Text="{Binding TotalPrice}"
+                            ></TextBlock>
+                            <TextBlock Margin="5,0,25,0" FontSize="20" FontWeight="SemiBold" VerticalAlignment="Center">đ</TextBlock>
+                        </StackPanel>
                     </Grid>
                     <Grid Margin="0,15,0,0">
                         <Button Width="140" Style="{StaticResource CustomButton}" 
@@ -288,15 +288,48 @@
                 <ColumnDefinition Width="170"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <StackPanel Grid.Column="1" Grid.Row="0" Orientation="Horizontal">
+            <StackPanel Grid.Column="1" Grid.Row="0" Orientation="Horizontal" VerticalAlignment="Center">
+                <Border CornerRadius="90"
+                        Name="BackButton"
+                        Height="55"
+                        Width="55"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        Margin="0,0,20,0"
+                        Cursor="Hand">
+                    <Border.Style>
+                        <Style TargetType="Border">
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#e0e0e0" />
+                                </Trigger>
+                                <DataTrigger Binding="{Binding ShowBackIcon}"
+                                             Value="False">
+                                    <Setter Property="Visibility"
+                                            Value="Collapsed" />
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Border.Style>
+                    <materialDesign:PackIcon Kind="ArrowLeft"
+                                     Height="40"
+                                     Width="40"
+                                     VerticalAlignment="Center"
+                                     HorizontalAlignment="Center" />
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="MouseLeftButtonDown">
+                            <i:InvokeCommandAction Command="{Binding BackToTicketBookingPage}" />
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </Border>
                 <Search:Search
                     x:Name="SearchBox"
                     materialDesign:HintAssist.Hint="Tìm kiếm"
                     Width="300"
-                    Height="54"
+                    Height="44"
                     IconSize="30"
-                    Corner="15"
-                    FontSize="16"
+                    Corner="10"
+                    FontSize="15"
                     HorizontalAlignment="Left"
                     SearchTextChange="SearchBox_SearchTextChange"/>
                 <Grid x:Name="FilterContainer" Margin="10,0,0,0">

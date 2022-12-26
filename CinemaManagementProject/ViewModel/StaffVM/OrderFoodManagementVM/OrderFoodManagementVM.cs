@@ -6,6 +6,7 @@ using CinemaManagementProject.View.Staff;
 using CinemaManagementProject.View.Staff.OrderFoodManagement;
 using CinemaManagementProject.View.Staff.TicketBill;
 using CinemaManagementProject.View.Staff.TicketWindow;
+using CinemaManagementProject.Views;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -124,6 +125,17 @@ namespace CinemaManagementProject.ViewModel.StaffVM.OrderFoodManagementVM
             get { return _ImageSource; }
             set { _ImageSource = value; OnPropertyChanged(); }
         }
+        public bool IsBacking;
+        private bool _ShowBackIcon;
+        public bool ShowBackIcon
+        {
+            get => _ShowBackIcon;
+            set
+            {
+                _ShowBackIcon = value;
+                OnPropertyChanged();
+            }
+        }
         //
         //Command
         //
@@ -135,6 +147,7 @@ namespace CinemaManagementProject.ViewModel.StaffVM.OrderFoodManagementVM
         public ICommand IncreaseQuantityOrderItem { get; set; } // Tăng số lượng 1 item order
 
         public ICommand BuyCommand { get; set; }
+        public ICommand BackToTicketBookingPage { get; set; }
         //
         //
         //
@@ -142,6 +155,7 @@ namespace CinemaManagementProject.ViewModel.StaffVM.OrderFoodManagementVM
         public OrderFoodManagementVM()
         {
             TotalPrice = 0;
+            IsBacking = false;
             FirstLoadCM = new RelayCommand<object>((p) => { return true; }, async (p) =>
             {
                 try
@@ -152,6 +166,11 @@ namespace CinemaManagementProject.ViewModel.StaffVM.OrderFoodManagementVM
                     StoreAllFood = new ObservableCollection<ProductDTO>(await Task.Run(() => ProductService.Ins.GetAllProduct()));
                     IsLoadding = false;
                     FoodList = new ObservableCollection<ProductDTO>(StoreAllFood);
+                    if (checkOnlyFoodOfPage)
+                        ShowBackIcon = false;
+                    else
+                        ShowBackIcon = true;
+                    
                 }
                 catch (EntityException e)
                 {
@@ -347,6 +366,23 @@ namespace CinemaManagementProject.ViewModel.StaffVM.OrderFoodManagementVM
                         TicketWindow tk = Application.Current.Windows.OfType<TicketWindow>().FirstOrDefault();
                         tk.TicketBookingFrame.Content = new TicketBillPage();
                     }
+                }
+            });
+            BackToTicketBookingPage = new RelayCommand<object>((p) => { return true; }, (p) =>
+            {
+                try
+                {
+                    IsBacking = true;
+                    TicketWindow tk = Application.Current.Windows.OfType<TicketWindow>().FirstOrDefault();
+                    tk.TicketBookingFrame.Content = new TicketBookingPage();
+                }
+                catch (System.Data.Entity.Core.EntityException e)
+                {
+                    CustomMessageBox.ShowOk("Mất kết nối cơ sở dữ liệu", "Lỗi", "OK", CustomMessageBoxImage.Error);
+                }
+                catch (Exception e)
+                {
+                    CustomMessageBox.ShowOk("Lỗi hệ thống", "Lỗi", "OK", CustomMessageBoxImage.Error);
                 }
             });
         }
