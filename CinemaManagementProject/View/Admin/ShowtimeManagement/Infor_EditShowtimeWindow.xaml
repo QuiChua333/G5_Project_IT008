@@ -15,8 +15,8 @@
         FontFamily="{StaticResource MaterialDesignFont}"
         MouseLeftButtonDown="EditWindow_MouseLeftButtonDown"
         PreviewKeyUp="EditWindow_PreviewKeyUp"
-        Height="680"
-        Width="1100">
+        Height="682"
+        Width="1102">
     <Window.Triggers>
         <EventTrigger RoutedEvent="Window.Loaded">
             <BeginStoryboard>
@@ -34,7 +34,8 @@
     </Window.Triggers>
 
 
-    <Border CornerRadius="15" Background="#F5F5F5" BorderBrush="Gray" BorderThickness="0.35" >
+    <Border CornerRadius="15" Background="#F5F5F5" BorderBrush="Gray" BorderThickness="0.35"  Height="680"
+        Width="1100">
         <Border.Effect>
             <DropShadowEffect BlurRadius="5" Direction="270" Color="Gray" ShadowDepth="4" Opacity="0.25"/>
         </Border.Effect>
@@ -254,7 +255,8 @@
                             <Grid Grid.Column="1">
                                 <ListBox x:Name="_Showtime"
                                              ItemsSource="{Binding ListShowtimeofMovie,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
-                                         SelectedItem="{Binding SelectedShowtime}">
+                                         SelectedItem="{Binding SelectedShowtime}"
+                                         HorizontalAlignment="Left">
                                     <ListBox.ItemsPanel>
                                         <ItemsPanelTemplate>
                                             <UniformGrid Columns="3" />
@@ -266,6 +268,7 @@
                                                            Value="False" />
                                             <Setter Property="OverridesDefaultStyle"
                                                             Value="true" />
+                                            <Setter Property="Width" Value="100"/>
                                             <Setter Property="Template">
                                                 <Setter.Value>
                                                     <ControlTemplate TargetType="ListBoxItem">
@@ -324,7 +327,7 @@
                                             </Border>
                                         </DataTemplate>
                                     </ListBox.ItemTemplate>
-                                   
+                                    
                                 </ListBox>
 
                             </Grid>

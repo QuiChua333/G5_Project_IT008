@@ -6,13 +6,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CinemaManagementProject.View.Admin.VoucherManagement.AddWindow" xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
         mc:Ignorable="d"
-        Title="AddVoucher" Height="270" Width="480" WindowStyle="None"
+        Title="AddVoucher"  WindowStyle="None"
         Background="Transparent"
         WindowStartupLocation="CenterScreen"
         AllowsTransparency="True" 
         x:Name="mainwd"
-        DataContext="{StaticResource VoucherVM}">
-    <Border CornerRadius="15" Background="#F5F5F5" BorderBrush="Gray" BorderThickness="0.3">
+        DataContext="{StaticResource VoucherVM}" MouseLeftButtonDown="mainwd_MouseLeftButtonDown"
+        >
+    <Border CornerRadius="15" Background="#F5F5F5" BorderBrush="Gray" BorderThickness="0.3" Height="270" Width="480">
         <Border.Effect>
             <DropShadowEffect BlurRadius="10" Direction="270" Color="Black" ShadowDepth="4" Opacity="0.25"/>
         </Border.Effect>
@@ -24,23 +25,25 @@
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="40"/>
             </Grid.RowDefinitions>
-            <Grid Grid.Row="0">
+            <Grid Grid.Row="1">
                 <Button 
                     Background="Transparent"
-                    Width="40"
+                    
                     Height="auto"
                     Padding="0"
                     BorderThickness="0"
                     HorizontalAlignment="Right"
-                    Margin="0,2,0,0" Click="Button_Click"
+                    Margin="0,0,15,0" Click="Button_Click"
                     >
                     <materialDesign:PackIcon Kind="Close" 
-                                     Height="25"
-                                     Width="25"
+                                     Height="30"
+                                     Width="30"
                                      VerticalAlignment="Center"
-                                     Foreground="#000000" 
+                                     
                                      HorizontalAlignment="Right"
-                                     Margin="5,0"/>
+                                     
+                                     Foreground="#8DC1F0"
+                                     FontWeight="Bold"/>
                 </Button>
             </Grid>
             <Grid Grid.Row="1">
@@ -82,7 +85,7 @@
                                    FontSize="14" />
                                 <TextBox Width="190" 
                                          Margin="90,10,0,10"
-                                         Padding="10,0,20,0"
+                                         Padding="10,0,50,0"
                                          BorderBrush="#67C6E6" 
                                          Foreground="{StaticResource Gray1}"
                                          FontSize="14" 
@@ -92,11 +95,12 @@
                                 <Label   
                                      VerticalAlignment="Center"
                                      HorizontalAlignment="Right"
-                                     Margin="0,0,7,5">
+                                     Margin="0,0,7,5"
+                                     Cursor="Hand">
                                     <materialDesign:PackIcon Kind="Close" 
                                          Height="20"
                                          Width="20"
-                                         Foreground="{StaticResource Gray1}">
+                                         Foreground="#8DC1F0">
                                         <i:Interaction.Triggers>
                                             <i:EventTrigger EventName="MouseLeftButtonUp">
                                                 <i:InvokeCommandAction Command="{Binding ElementName=listbox, Path=DataContext.LessVoucherCM}" />
@@ -116,7 +120,7 @@
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="150"/>
                     <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="80"/>
+                    <ColumnDefinition Width="90"/>
                 </Grid.ColumnDefinitions>
                 <Grid Grid.Column="0">
                     <Button HorizontalAlignment="Left"
@@ -150,7 +154,7 @@
                         Content="Lưu"
                         FontSize="12"
                         Background="{StaticResource ColorButtonBlue}"
-                        Margin="0,0,10,0"
+                        Margin="0,0,18,0"
                         Width="70" 
                         Command="{Binding SaveMiniVoucherCM}"
                         CommandParameter="{Binding ElementName=mainwd}">

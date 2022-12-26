@@ -6,13 +6,14 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:local="clr-namespace:CinemaManagementProject.View.Staff.MovieScheduleWindow"
         mc:Ignorable="d"
-        Title="MovieScheduleWindow" Height="420" Width="810" 
+        Title="MovieScheduleWindow" 
         WindowStyle="None"
         Background="Transparent"
         WindowStartupLocation="CenterScreen"
         AllowsTransparency="True" 
-        DataContext="{StaticResource MovieScheduleWindowVM}">
-    <Border CornerRadius="10" Background="#ffffff" BorderBrush="Gray" BorderThickness="0.3">
+        DataContext="{StaticResource MovieScheduleWindowVM}" MouseLeftButtonDown="Window_MouseLeftButtonDown"
+        >
+    <Border CornerRadius="10" Background="#ffffff" BorderBrush="Gray" BorderThickness="0.3" Height="450" Width="810">
         <Border.Effect>
             <DropShadowEffect BlurRadius="10" Direction="270" Color="Black" ShadowDepth="4" Opacity="0.25"/>
         </Border.Effect>
@@ -25,21 +26,22 @@
             <Grid Grid.Row="0">
                 <Button 
                     Background="Transparent"
-                    Width="35"
+                    
                     Height="auto"
                     Padding="0"
                     BorderThickness="0"
                     HorizontalAlignment="Right"
-                    Margin="0,10,3,0"
-                    Click="Button_Click">
+                    Margin="0,0,25,0" Click="Button_Click_1"
+                    >
                     <materialDesign:PackIcon Kind="Close" 
-                                     Height="25"
-                                     Width="25"
+                                     Height="35"
+                                     Width="35"
                                      VerticalAlignment="Center"
-                                     Foreground="#000000" 
                                      HorizontalAlignment="Right"
-                                     Margin="5,0"/>
+                                     Foreground="#E6C067"
+                                     FontWeight="Bold"/>
                 </Button>
+               
                 <Button 
                     Background="Transparent"
                     Width="30"
@@ -47,15 +49,16 @@
                     Padding="0"
                     BorderThickness="0"
                     HorizontalAlignment="Right"
-                    Margin="0,10,40,0"
+                    Margin="0,5,70,0"
                     Click="Button_Click">
                     <materialDesign:PackIcon Kind="WindowMinimize" 
-                                     Height="25"
-                                     Width="25"
+                                     Height="30"
+                                     Width="30"
                                      VerticalAlignment="Center"
-                                     Foreground="#000000" 
+                                     Foreground="#E6C067"
+                                     
                                      HorizontalAlignment="Right"
-                                     Margin="5,0"/>
+                                     />
                 </Button>
             </Grid>
             <Grid Grid.Row="1"
@@ -117,9 +120,20 @@
                                 <RowDefinition Height="25*"/>
                             </Grid.RowDefinitions>
 
-                            <Image Grid.Row="0" 
-                                   x:Name="_ImgFilm"
-                                   Margin="0,30,0,0"/>
+                            <Border     BorderBrush="Gray"
+                                            BorderThickness="0.3"
+                                            CornerRadius="10"
+                                            Width="180"
+                                            Height="200"
+                                            VerticalAlignment="Center"
+                                            HorizontalAlignment="Center">
+                                <Border.Effect>
+                                    <DropShadowEffect BlurRadius="10" Direction="270" Color="Gray" ShadowDepth="4" Opacity="0.25"/>
+                                </Border.Effect>
+                                <Border.Background>
+                                    <ImageBrush Stretch="Fill" x:Name="_ImgFilm"/>
+                                </Border.Background>
+                            </Border>
                             <Label Grid.Row="1"
                                    x:Name="_TxtFilm"
                                    VerticalAlignment="Center"
@@ -133,7 +147,7 @@
                 </Grid>
                 <Grid Grid.Column="1"
                       Margin="20">
-                    <StackPanel Margin="40,0,40,0">
+                    <StackPanel Margin="40,0,30,0">
                         <Expander 
                               HorizontalAlignment="Stretch"                         
                               Collapsed="Expander_Collapsed"

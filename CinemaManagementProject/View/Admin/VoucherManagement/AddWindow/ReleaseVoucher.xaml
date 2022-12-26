@@ -11,7 +11,8 @@
         WindowStartupLocation="CenterScreen"
         AllowsTransparency="True" 
         xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
-        DataContext="{StaticResource VoucherVM}">
+        DataContext="{StaticResource VoucherVM}" MouseLeftButtonDown="Window_MouseLeftButtonDown"
+        >
     <Border CornerRadius="15" Background="#F5F5F5" BorderBrush="Gray" BorderThickness="0.3">
         <Border.Effect>
             <DropShadowEffect BlurRadius="10" Direction="270" Color="Black" ShadowDepth="4" Opacity="0.25"/>
@@ -23,23 +24,26 @@
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="50"/>
             </Grid.RowDefinitions>
-            <Grid Grid.Row="0">
+            <Grid Grid.Row="1">
+               
                 <Button 
                     Background="Transparent"
-                    Width="40"
+                    VerticalAlignment="Top"
                     Height="auto"
                     Padding="0"
                     BorderThickness="0"
                     HorizontalAlignment="Right"
-                    Margin="0,10,3,0"
-                    Command="{Binding ResetSelectedNumberCM}" Click="Button_Click">
+                    Margin="0,0,40,0" Click="Button_Click"
+                    Command="{Binding ResetSelectedNumberCM}">
                     <materialDesign:PackIcon Kind="Close" 
-                                     Height="25"
-                                     Width="25"
+                                     Height="35"
+                                     Width="35"
                                      VerticalAlignment="Center"
-                                     Foreground="#000000" 
+                                     
                                      HorizontalAlignment="Right"
-                                     Margin="5,0"/>
+                                     
+                                     Foreground="#8DC1F0"
+                                     FontWeight="Bold"/>
                 </Button>
             </Grid>
             <Grid Grid.Row="1">
@@ -347,7 +351,7 @@
                         Content="Xác nhận"
                         FontSize="12"
                         Background="{StaticResource ColorButtonBlue}"
-                        Margin="0,0,10,0"
+                        Margin="0,0,40,0"
                         Width="80" 
                         Height="30"
                         Command="{Binding ReleaseVoucherCM}">

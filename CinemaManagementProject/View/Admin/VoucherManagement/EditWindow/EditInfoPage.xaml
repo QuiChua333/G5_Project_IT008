@@ -8,7 +8,7 @@
       mc:Ignorable="d" 
       d:DesignHeight="419.4" d:DesignWidth="939.4"
       Title="AddInfoPage"
-      Background="White"
+      Background="Transparent"
       DataContext="{StaticResource VoucherVM}">
     <Grid>
         <Grid.RowDefinitions>

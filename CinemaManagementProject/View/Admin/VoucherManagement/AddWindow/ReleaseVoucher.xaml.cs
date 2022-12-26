@@ -27,7 +27,6 @@ namespace CinemaManagementProject.View.Admin.VoucherManagement.AddWindow
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-       
 
             VoucherViewModel.WaitingMiniVoucher.Clear();
             this.Close();
@@ -37,6 +36,11 @@ namespace CinemaManagementProject.View.Admin.VoucherManagement.AddWindow
         {
             TextBox tb = sender as TextBox;
             tb.Text = DateTime.Today.ToString();
+        }
+
+        private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            this.DragMove();
         }
     }
 }

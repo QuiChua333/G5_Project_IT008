@@ -29,14 +29,13 @@ namespace CinemaManagementProject.View.Admin.VoucherManagement.AddWindow
             this.Close();
         }
 
-        private void listbox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
+       
 
-        }
+        
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            this.Close();
+            this.DragMove();
         }
     }
 }

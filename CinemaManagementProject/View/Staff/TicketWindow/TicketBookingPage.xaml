@@ -24,47 +24,11 @@
         <Grid>
 
             <Grid.RowDefinitions>
-                <RowDefinition Height="50"/>
                 <RowDefinition Height="20*"/>
                 <RowDefinition Height="100*"/>
             </Grid.RowDefinitions>
-            <Grid Grid.Row="0">
-                <Button 
-                    Background="Transparent"
-                    Width="35"
-                    Height="auto"
-                    Padding="0"
-                    BorderThickness="0"
-                    HorizontalAlignment="Right"
-                    Margin="0,5,3,0"
-                    >
-                    <materialDesign:PackIcon Kind="Close" 
-                                     Height="25"
-                                     Width="25"
-                                     VerticalAlignment="Center"
-                                     Foreground="#000000" 
-                                     HorizontalAlignment="Right"
-                                     Margin="5,0"/>
-                </Button>
-                <Button 
-                    Background="Transparent"
-                    Width="30"
-                    Height="auto"
-                    Padding="0"
-                    BorderThickness="0"
-                    HorizontalAlignment="Right"
-                    Margin="0,5,40,0"
-                    >
-                    <materialDesign:PackIcon Kind="WindowMinimize" 
-                                     Height="25"
-                                     Width="25"
-                                     VerticalAlignment="Center"
-                                     Foreground="#000000" 
-                                     HorizontalAlignment="Right"
-                                     Margin="5,0"/>
-                </Button>
-            </Grid>
-            <Grid Grid.Row="1"
+          
+            <Grid Grid.Row="0"
                   Background="#E6C067">
                 <Grid Margin="30,10">
                     <Grid.ColumnDefinitions>
@@ -193,20 +157,7 @@
                                    HorizontalAlignment="Center"
                                    FontSize="18"
                                    FontWeight="Medium"
-                                   Foreground="#000000"
-                                   FontFamily="{DynamicResource MaterialDesignFont}">
-                                </Label>
-                                <TextBlock VerticalAlignment="Center"
-                                           Margin="5,0"
-                                           FontSize="18">
-                                    <Bold>-</Bold>
-                                </TextBlock>
-                                <Label Content="{Binding showDateAfter}"
-                                   VerticalAlignment="Center"
-                                   HorizontalAlignment="Center"
-                                   FontSize="18"
-                                   FontWeight="Medium"
-                                   Foreground="#000000"
+                                   Foreground="#333"
                                    FontFamily="{DynamicResource MaterialDesignFont}">
                                 </Label>
                             </StackPanel>
@@ -214,7 +165,7 @@
                     </Grid>
                 </Grid>
             </Grid>
-            <Grid Grid.Row="2">
+            <Grid Grid.Row="1">
                 <Grid Grid.Row="2"
                   Margin="20">
                     <Grid.ColumnDefinitions>

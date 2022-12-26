@@ -8,7 +8,7 @@
       xmlns:i="http://schemas.microsoft.com/xaml/behaviors" 
       xmlns:local="clr-namespace:CinemaManagementProject.ViewModel.AdminVM.VoucherManagementVM.AddWindowVM"
       mc:Ignorable="d" 
-      d:DesignHeight="419.4" d:DesignWidth="939.4"
+      d:DesignHeight="466" d:DesignWidth="939.4"
       Title="AddVoucherPage"
       DataContext="{StaticResource VoucherVM}">
 
