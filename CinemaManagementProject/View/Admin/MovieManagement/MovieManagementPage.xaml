@@ -54,7 +54,7 @@
                             <StackPanel Orientation="Horizontal" Grid.Column="0">
 
                                 <Search:Search IconSize="20" 
-                                               Height="46" 
+                                               Height="40" 
                                                Margin="30, 17, 0, 17"  
                                                Width="400"
                                                Corner="18"
@@ -78,16 +78,17 @@
                                             Height="40" 
                                             Margin="30,5,0,0"
                                             Command="{Binding LoadAddMovieCM}">
-                                        <StackPanel Orientation="Horizontal" >
-                                            <materialDesign:PackIcon Kind="PlusCircleOutline" 
-                                                                     Width="28" 
-                                                                     Height="28"/> 
-                                            <TextBlock FontFamily="{StaticResource MaterialDesignFont}" 
-                                                       Text="Thêm" 
-                                                       FontWeight="Regular"
-                                                       FontSize="16"
-                                                       Margin="5,4,0,0"/> 
-                                        </StackPanel>
+                                        <Grid>
+                                            <TextBlock Text="Thêm"
+                                                       FontFamily="{DynamicResource MaterialDesignFont}"
+                                                       FontWeight="Medium"
+                                                       FontSize="16"/> 
+                                            <materialDesign:PackIcon Kind="PlusCircleOutline"
+                                                     VerticalAlignment="Center"
+                                                     Margin="45,0,0,0"
+                                                     Width="20"
+                                                     Height="20"/>
+                                        </Grid>
                                     </Button>
                                 </Border>
 
@@ -138,6 +139,8 @@
                                                   ItemsSource="{Binding FilmList}"
                                                   SelectedItem="{Binding SelectedItem}"
                                                   Focusable="True"
+                                                  Foreground="Black"
+                                                  FontSize="14"
                                                   ToolTip="Nháy đúp để xem chi tiết">
                                             <i:Interaction.Triggers>
                                                 <i:EventTrigger EventName="MouseDoubleClick">
@@ -146,50 +149,71 @@
                                             </i:Interaction.Triggers>
                                             <ListView.View>
                                                 <GridView>
-                                                    <GridViewColumn Header="Tên phim" Width="300">
+                                                    <GridViewColumn Width="300">
+                                                        <GridViewColumn.Header>
+                                                            <TextBlock Text="Tên phim" FontSize="14" FontWeight="SemiBold" Foreground="Black"/>
+                                                        </GridViewColumn.Header>
                                                         <GridViewColumn.CellTemplate>
                                                             <DataTemplate>
-                                                                <TextBlock Text="{Binding FilmName}" Margin="18,0,0,0" FontSize="18" />
+                                                                <TextBlock Text="{Binding FilmName}" 
+                                                                           FontSize="14" 
+                                                                           VerticalAlignment="Center"/>
                                                             </DataTemplate>
                                                         </GridViewColumn.CellTemplate>
                                                     </GridViewColumn>
 
-                                                    <GridViewColumn Header="Loại phim" Width="130">
+                                                    <GridViewColumn Width="130">
+                                                        <GridViewColumn.Header>
+                                                            <TextBlock Text="Loại phim" FontSize="14" FontWeight="SemiBold" Foreground="Black"/>
+                                                        </GridViewColumn.Header>
                                                         <GridViewColumn.CellTemplate>
                                                             <DataTemplate>
                                                                 <TextBlock Text="{Binding FilmType}"
-                                                                           FontSize="18"
-                                                                           Margin="30,0,0,0"/>
+                                                                           FontSize="14"
+                                                                           Margin="40,0,0,0"
+                                                                           VerticalAlignment="Center"/>
                                                             </DataTemplate>
                                                         </GridViewColumn.CellTemplate>
                                                     </GridViewColumn>
 
-                                                    <GridViewColumn Header="Quốc gia" Width="120">
+                                                    <GridViewColumn Width="130">
+                                                        <GridViewColumn.Header>
+                                                            <TextBlock Text="Quốc gia" FontSize="14" FontWeight="SemiBold" Foreground="Black"/>
+                                                        </GridViewColumn.Header>
                                                         <GridViewColumn.CellTemplate>
                                                             <DataTemplate>
                                                                 <TextBlock Text="{Binding Country}"
-                                                                           Margin="10,0,0,0"
-                                                                           FontSize="18" />
+                                                                           FontSize="14" 
+                                                                           Margin="18,0,0,0"
+                                                                           VerticalAlignment="Center"/>
                                                             </DataTemplate>
                                                         </GridViewColumn.CellTemplate>
                                                     </GridViewColumn>
 
-                                                    <GridViewColumn Header="Thể loại" Width="200" >
+                                                    <GridViewColumn Width="200" >
+                                                        <GridViewColumn.Header>
+                                                            <TextBlock Text="Thể loại" FontSize="14" FontWeight="SemiBold" Foreground="Black"/>
+                                                        </GridViewColumn.Header>
                                                         <GridViewColumn.CellTemplate>
                                                             <DataTemplate>
                                                                 <TextBlock Text="{Binding Genre}"
-                                                                           Margin="16,0,0,0"
-                                                                           FontSize="18" />
+                                                                           FontSize="14" 
+                                                                           Margin="18,0,0,0"
+                                                                           VerticalAlignment="Center"/>
                                                             </DataTemplate>
                                                         </GridViewColumn.CellTemplate>
                                                     </GridViewColumn>
 
-                                                    <GridViewColumn Header="Thời lượng(phút)" Width="176">
+                                                    <GridViewColumn Width="182">
+                                                        <GridViewColumn.Header>
+                                                            <TextBlock Text="Thời lượng (phút)" FontSize="14" FontWeight="SemiBold" Foreground="Black"/>
+                                                        </GridViewColumn.Header>
                                                         <GridViewColumn.CellTemplate>
                                                             <DataTemplate>
                                                                 <TextBlock Text="{Binding DurationFilm}"
-                                                                           Margin="44,0,0,0"
-                                                                           FontSize="18" />
+                                                                           FontSize="14"
+                                                                           Margin="60,0,0,0"
+                                                                           VerticalAlignment="Center"/>
                                                             </DataTemplate>
                                                         </GridViewColumn.CellTemplate>
                                                     </GridViewColumn>
@@ -213,10 +237,12 @@
                                                                         </Border.Style>
 
                                                                         <StackPanel>
-                                                                            <Image Source="{StaticResource Icon_Edit}" 
-                                                                                           VerticalAlignment="Center" 
-                                                                                           HorizontalAlignment="Center" 
-                                                                                           Width="30" Height="30"/>
+                                                                            <materialDesign:PackIcon Kind="Pencil"
+                                                                                                     Width="22"
+                                                                                                     Height="22" 
+                                                                                                     VerticalAlignment="Center" 
+                                                                                                     HorizontalAlignment="Center"
+                                                                                                     Cursor="Hand" />
                                                                         </StackPanel>
                                                                         <i:Interaction.Triggers>
                                                                             <i:EventTrigger EventName="MouseLeftButtonUp">
@@ -242,7 +268,12 @@
                                                                         </Border.Style>
 
                                                                         <StackPanel>
-                                                                            <materialDesign:PackIcon Kind="GarbageCanEmpty" Width="30" Height="30"/>
+                                                                            <materialDesign:PackIcon Kind="GarbageCanEmpty"
+                                                                                                     Width="22"
+                                                                                                     Height="22"
+                                                                                                     VerticalAlignment="Center" 
+                                                                                                     HorizontalAlignment="Center"
+                                                                                                     Cursor="Hand" /> 
                                                                         </StackPanel>
                                                                         <i:Interaction.Triggers>
                                                                             <i:EventTrigger EventName="MouseLeftButtonUp">

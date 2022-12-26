@@ -257,8 +257,10 @@
                             </ListView.ItemContainerStyle>
                             <ListView.View >
                                 <GridView  >
-                                    <GridViewColumn Header="Mã đơn"
-                                                    Width="120">
+                                    <GridViewColumn Width="120">
+                                        <GridViewColumn.Header>
+                                            <TextBlock Text="Mã đơn" FontSize="14" FontWeight="SemiBold" Foreground="Black"/>
+                                        </GridViewColumn.Header>
                                         <GridViewColumn.CellTemplate >
                                             <DataTemplate>
                                                 <TextBlock      Text="{Binding Id}"
@@ -268,8 +270,10 @@
                                             </DataTemplate>
                                         </GridViewColumn.CellTemplate>
                                     </GridViewColumn>
-                                    <GridViewColumn Header="Tên sản phẩm" 
-                                                    Width="220" >
+                                    <GridViewColumn Width="220" >
+                                        <GridViewColumn.Header>
+                                            <TextBlock Text="Tên sản phẩm" FontSize="14" FontWeight="SemiBold" Foreground="Black"/>
+                                        </GridViewColumn.Header>
                                         <GridViewColumn.CellTemplate>
                                             <DataTemplate>
                                                 <TextBlock  Text="{Binding ProductName}" 
@@ -279,8 +283,10 @@
                                             </DataTemplate>
                                         </GridViewColumn.CellTemplate>
                                     </GridViewColumn>
-                                    <GridViewColumn Header="Số lượng" 
-                                                    Width="150"  >
+                                    <GridViewColumn Width="150"  >
+                                        <GridViewColumn.Header>
+                                            <TextBlock Text="Số lượng" FontSize="14" FontWeight="SemiBold" Foreground="Black"/>
+                                        </GridViewColumn.Header>
                                         <GridViewColumn.CellTemplate>
                                             <DataTemplate>
                                                 <TextBlock Text="{Binding Quantity}" 
@@ -290,8 +296,10 @@
                                             </DataTemplate>
                                         </GridViewColumn.CellTemplate>
                                     </GridViewColumn>
-                                    <GridViewColumn Header="Giá nhập" 
-                                                    Width="200">
+                                    <GridViewColumn Width="200">
+                                        <GridViewColumn.Header>
+                                            <TextBlock Text="Giá nhập" FontSize="14" FontWeight="SemiBold" Foreground="Black"/>
+                                        </GridViewColumn.Header>
                                         <GridViewColumn.CellTemplate>
                                             <DataTemplate>
                                                 <TextBlock Text="{Binding ImportPriceStr}"
@@ -301,8 +309,10 @@
                                             </DataTemplate>
                                         </GridViewColumn.CellTemplate>
                                     </GridViewColumn>
-                                    <GridViewColumn Header="Nhân viên" 
-                                                    Width="170" >
+                                    <GridViewColumn Width="170" >
+                                        <GridViewColumn.Header>
+                                            <TextBlock Text="Nhân viên" FontSize="14" FontWeight="SemiBold" Foreground="Black"/>
+                                        </GridViewColumn.Header>
                                         <GridViewColumn.CellTemplate>
                                             <DataTemplate>
                                                 <TextBlock Text="{Binding StaffName}" 
@@ -312,8 +322,10 @@
                                             </DataTemplate>
                                         </GridViewColumn.CellTemplate>
                                     </GridViewColumn>
-                                    <GridViewColumn Header="Ngày nhập" 
-                                                    Width="200">
+                                    <GridViewColumn Width="200"> 
+                                        <GridViewColumn.Header>
+                                            <TextBlock Text="Ngày nhập" FontSize="14" FontWeight="SemiBold" Foreground="Black"/>
+                                        </GridViewColumn.Header>
                                         <GridViewColumn.CellTemplate>
                                             <DataTemplate>
                                                 <TextBlock Text="{Binding CreatedAt, StringFormat=dd/MM/yyyy}" 

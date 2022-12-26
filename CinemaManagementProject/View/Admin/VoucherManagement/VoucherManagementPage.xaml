@@ -68,10 +68,10 @@
                                    FontSize="16"
                                    />
                         <materialDesign:PackIcon Kind="PlusCircleOutline"
-                                                     VerticalAlignment="Center"
-                                                     Margin="45,0,0,0"
-                                                     Width="20"
-                                                     Height="20"/>
+                                                 VerticalAlignment="Center"
+                                                 Margin="45,0,0,0"
+                                                 Width="20"
+                                                 Height="20"/>
                     </Grid>
                 </Button>
             </Grid>
@@ -105,7 +105,10 @@
                                 </ListView.ItemContainerStyle>
                                 <ListView.View>
                                     <GridView >
-                                        <GridViewColumn Header="Mã phát hành" Width="160">
+                                        <GridViewColumn Width="160">
+                                            <GridViewColumn.Header>
+                                                <TextBlock Text="Mã phát hành" FontSize="14" FontWeight="SemiBold" Foreground="Black"/>
+                                            </GridViewColumn.Header>
                                             <GridViewColumn.CellTemplate >
                                                 <DataTemplate>
                                                     <TextBlock Text="{Binding VoucherReleaseCode}"
@@ -115,7 +118,10 @@
                                                 </DataTemplate>
                                             </GridViewColumn.CellTemplate>
                                         </GridViewColumn>
-                                        <GridViewColumn Header="Tên đợt phát hành" Width="220" >
+                                        <GridViewColumn Width="220" >
+                                            <GridViewColumn.Header>
+                                                <TextBlock Text="Tên đợt phát hành" FontSize="14" FontWeight="SemiBold" Foreground="Black"/>
+                                            </GridViewColumn.Header>
                                             <GridViewColumn.CellTemplate>
                                                 <DataTemplate>
                                                     <TextBlock Text="{Binding VoucherReleaseName}" 
@@ -125,7 +131,10 @@
                                                 </DataTemplate>
                                             </GridViewColumn.CellTemplate>
                                         </GridViewColumn>
-                                        <GridViewColumn Header="Từ ngày" Width="130"  >
+                                        <GridViewColumn Width="130">
+                                            <GridViewColumn.Header>
+                                                <TextBlock Text="Từ ngày" FontSize="14" FontWeight="SemiBold" Foreground="Black"/>
+                                            </GridViewColumn.Header>
                                             <GridViewColumn.CellTemplate>
                                                 <DataTemplate>
                                                     <TextBlock Text="{Binding StartDate, StringFormat=dd/MM/yyyy}" 
@@ -135,7 +144,10 @@
                                                 </DataTemplate>
                                             </GridViewColumn.CellTemplate>
                                         </GridViewColumn>
-                                        <GridViewColumn Header="Đến ngày" Width="130">
+                                        <GridViewColumn Width="130">
+                                            <GridViewColumn.Header>
+                                                <TextBlock Text="Đến ngày" FontSize="14" FontWeight="SemiBold" Foreground="Black"/>
+                                            </GridViewColumn.Header>
                                             <GridViewColumn.CellTemplate>
                                                 <DataTemplate>
                                                     <TextBlock Text="{Binding EndDate, StringFormat=dd/MM/yyyy}" 
@@ -145,7 +157,10 @@
                                                 </DataTemplate>
                                             </GridViewColumn.CellTemplate>
                                         </GridViewColumn>
-                                        <GridViewColumn Header="Số lượng" Width="120" >
+                                        <GridViewColumn Width="120" >
+                                            <GridViewColumn.Header>
+                                                <TextBlock Text="Số lượng" FontSize="14" FontWeight="SemiBold" Foreground="Black"/>
+                                            </GridViewColumn.Header>
                                             <GridViewColumn.CellTemplate>
                                                 <DataTemplate>
                                                     <TextBlock Text="{Binding VCount}" 
@@ -155,7 +170,10 @@
                                                 </DataTemplate>
                                             </GridViewColumn.CellTemplate>
                                         </GridViewColumn>
-                                        <GridViewColumn Header="Mệnh giá" Width="150">
+                                        <GridViewColumn Width="150">
+                                            <GridViewColumn.Header>
+                                                <TextBlock Text="Mệnh giá" FontSize="14" FontWeight="SemiBold" Foreground="Black"/>
+                                            </GridViewColumn.Header>
                                             <GridViewColumn.CellTemplate>
                                                 <DataTemplate>
                                                     <TextBlock Text="{Binding Price}" 
