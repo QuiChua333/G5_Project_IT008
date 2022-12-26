@@ -70,7 +70,7 @@ namespace CinemaManagementProject.Model.Service
                     await context.SaveChangesAsync();
                 }
             }
-            catch (System.Data.Entity.Infrastructure.DbUpdateException)
+            catch (System.Data.Entity.Infrastructure.DbUpdateException e)
             {
                 using (var context = new CinemaManagementProjectEntities())
                 {
@@ -80,7 +80,7 @@ namespace CinemaManagementProject.Model.Service
                         return (false, error);
                     }
                 }
-                return (false, "Danh sách ghế vừa đặt có chứa ghế đã được đặt. Vui lòng quay lại!");
+                return (false, /*"Danh sách ghế vừa đặt có chứa ghế đã được đặt. Vui lòng quay lại!"*/ e.Message);
             }
             catch (Exception e)
             {
@@ -229,17 +229,17 @@ namespace CinemaManagementProject.Model.Service
                     TotalPrize = bill.TotalPrice,
                     CustomerId= bill.CustomerId,
                     CreateDate = DateTime.Now,
-                    StaffId = bill.StaffId
+                    StaffId = bill.StaffId,
                 };
             }
             else
             {
                 newBill = new Bill
-            {
-                BillCode = maxBillCode,
-                DiscountPrice = bill.DiscountPrice,
-                TotalPrize = bill.TotalPrice,
-                CustomerId = bill.CustomerId.ToString() == "KH0000" ? 0 : bill.CustomerId,
+                {
+                    BillCode = maxBillCode,
+                    DiscountPrice = bill.DiscountPrice,
+                    TotalPrize = bill.TotalPrice,
+                    CustomerId = null,
                 CreateDate = DateTime.Now,
                 StaffId = bill.StaffId
             };

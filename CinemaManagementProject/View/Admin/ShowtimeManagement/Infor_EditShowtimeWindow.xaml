@@ -11,12 +11,12 @@
         WindowStartupLocation="CenterScreen"
         Background="Transparent"
         DataContext="{StaticResource ShowtimeManagementVM}"
-        Height="600"
-        Width="1200"
         x:Name="EditWindow"
         FontFamily="{StaticResource MaterialDesignFont}"
         MouseLeftButtonDown="EditWindow_MouseLeftButtonDown"
-        PreviewKeyUp="EditWindow_PreviewKeyUp">
+        PreviewKeyUp="EditWindow_PreviewKeyUp"
+        Height="680"
+        Width="1100">
     <Window.Triggers>
         <EventTrigger RoutedEvent="Window.Loaded">
             <BeginStoryboard>
@@ -32,351 +32,559 @@
             </BeginStoryboard>
         </EventTrigger>
     </Window.Triggers>
-    <Window.Resources>
-        <local:SeatStatusConverter x:Key="seatconverter"></local:SeatStatusConverter>
-        <local:ForeGroundConverter x:Key="foreground" />
-    </Window.Resources>
 
-    <Border Background="White"
-            CornerRadius="20"
-            BorderBrush="Gray"
-            BorderThickness="1">
+
+    <Border CornerRadius="15" Background="#F5F5F5" BorderBrush="Gray" BorderThickness="0.35" >
+        <Border.Effect>
+            <DropShadowEffect BlurRadius="5" Direction="270" Color="Gray" ShadowDepth="4" Opacity="0.25"/>
+        </Border.Effect>
         <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="38*" />
-                <ColumnDefinition Width="0.2*" />
-                <ColumnDefinition Width="62*" />
-            </Grid.ColumnDefinitions>
-
-
-            <ProgressBar Orientation="Vertical"
-                         Height="10"
-                         IsIndeterminate="True"
-                         Grid.Column="1"
-                         Background="#FF0DB3F1"
-                         BorderBrush="#FF00A2FF"
-                         Foreground="#FFDE2121" />
-
-
-            <StackPanel Grid.Column="0">
-                <Grid Height="600">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="10*" />
-                        <RowDefinition Height="75*" />
-                        <RowDefinition Height="15*" />
-                    </Grid.RowDefinitions>
-                    <StackPanel>
-                        <Border BorderThickness="0,0,0,1"
-                                BorderBrush="Black"
-                                Height="49">
-                            <Label Content="CHI TIẾT SUẤT CHIẾU"
-                                   FontFamily="{StaticResource MaterialDesignFont}" 
-                                   FontSize="28" 
-                                   Foreground="#FF80CDED"
+            <Grid.RowDefinitions>
+                <RowDefinition Height="28*" />
+                <RowDefinition Height="72*" />
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="15*" />
+                    <ColumnDefinition Width="85*" />
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="0">
+                    <Border CornerRadius="15,0,0,0" Background="#E6C067" BorderBrush="#EAE7E7" BorderThickness="0,0,0,4">
+                    </Border>
+                    <Grid>
+                        <StackPanel VerticalAlignment="Center">
+                            <Label FontSize="20" 
                                    FontWeight="Bold" 
-                                   Margin="20,0,0,0" />
-                        </Border>
-                    </StackPanel>
-                    <StackPanel Grid.Row="1">
-                        <StackPanel.Resources>
-                            <Style TargetType="Label">
-                                <Setter Property="FontSize"
-                                        Value="20" />
-                                <Setter Property="FontWeight"
-                                        Value="Bold" />
-                                <Setter Property="Margin"
-                                        Value="10,20,0,0" />
-                            </Style>
-                        </StackPanel.Resources>
+                                   VerticalAlignment="Center" 
+                                   HorizontalAlignment="Center" 
+                                   Foreground="#FFFFFF" 
+                                   FontFamily="{DynamicResource MaterialDesignFont}"
+                                   Content="CHI TIẾT">
+                            </Label>
+                            <Label FontSize="20" 
+                                   FontWeight="Bold" 
+                                   VerticalAlignment="Center" 
+                                   HorizontalAlignment="Center" 
+                                   Foreground="#FFFFFF" 
+                                   FontFamily="{DynamicResource MaterialDesignFont}"
+                                   Content="SUẤT CHIẾU">
+                            </Label>
+                        </StackPanel>
+                    </Grid>
+                </Grid>
+                <Grid Grid.Column="1" Margin="20,0">
+                    <Border CornerRadius="15,0,0,0"  BorderBrush="#EAE7E7" BorderThickness="0,0,0,4">
+                    </Border>
+                    <Grid Margin="0,20">
+                        
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <Grid Grid.Row="0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Grid Grid.Column="0">
+                                <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                                    <Label         FontSize="16"
+                                                   VerticalAlignment="Center"
+                                                   Content="Tên phim:"
+                                                   FontWeight="Bold"
+                                                   Foreground="#000000"
+                                                   FontFamily="{DynamicResource MaterialDesignFont}"/>
+                                    <TextBlock     
+                                                    x:Name="_movieName"
+                                                VerticalAlignment="Center"
+                                                    FontSize="16"
+                                                    FontWeight="Regular"
+                                                   Foreground="#000000"
+                                                   FontFamily="{DynamicResource MaterialDesignFont}"
+                                                     />
+                                </StackPanel>
 
-                        <StackPanel>
-                            <Label Content="Tên phim" />
-                            <TextBlock x:Name="_movieName"
-                                       FontSize="20"
-                                       Margin="10,0,0,0" />
-                        </StackPanel>
-                        <StackPanel>
-                            <Label Content="Ngày chiếu"
-                                   Margin="10,10,0,0" />
-                            <TextBlock x:Name="_ShowtimeDate"
-                                       FontSize="20"
-                                       Margin="10,0,0,0" />
-                        </StackPanel>
-                        <StackPanel>
-                            <Label Content="Phòng chiếu"
-                                   Margin="10,10,0,0" />
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock FontSize="20"
-                                           Margin="20,0,0,0"
-                                           Text="Phòng: "
-                                           FontFamily="{StaticResource MaterialDesignFont}"/>
-                                <TextBlock x:Name="_ShowtimeRoom"
-                                           FontSize="20"
-                                           Text="{Binding  SelectedShowtime.RoomId}" />
-                            </StackPanel>
-                        </StackPanel>
-                        <StackPanel>
-                            <Label Content="Giá vé"
-                                   Margin="10,10,0,0" />
-                            <StackPanel Orientation="Horizontal">
-                                <TextBox x:Name="_showtimePrice"
-                                         FontSize="20"
-                                         Margin="10,0,0,0"
-                                         Text="{Binding moviePrice,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
-                                         IsEnabled="False"
-                                         TextChanged="TextBox_TextChanged"
-                                         PreviewTextInput="_showtimePrice_PreviewTextInput">
-                                    <TextBox.Style>
-                                        <Style TargetType="TextBox">
-                                            <Setter Property="BorderThickness"
-                                                    Value="0" />
-                                            <Setter Property="Background"
-                                                    Value="#FFF0F3F7" />
+                            </Grid>
+                            <Grid Grid.Column="1">
+                                <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                                    <Label FontSize="16"
+                                                   Content="Phòng chiếu:"
+                                                   FontWeight="Bold"
+                                                   Foreground="#000000"
+                                                   FontFamily="{DynamicResource MaterialDesignFont}"/>
+                                    <TextBlock 
+                                                    x:Name="_ShowtimeRoom"
+                                                    VerticalAlignment="Center"
+                                                    FontSize="16"
+                                                    FontWeight="Regular"
+                                                   Foreground="#000000"
+                                                   FontFamily="{DynamicResource MaterialDesignFont}"
+                                        Text="{Binding RoomIdViaShowTimeCheck}"
+                                                     />
+                                </StackPanel>
+
+                            </Grid>
+                        </Grid>
+                        <Grid Grid.Row="1">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Grid Grid.Column="0">
+                                <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                                    <Label FontSize="16"
+                                                   Content="Ngày chiếu:"
+                                                   FontWeight="Bold"
+                                                   Foreground="#000000"
+                                                   FontFamily="{DynamicResource MaterialDesignFont}"/>
+                                    <TextBlock 
+                                                    x:Name="_ShowtimeDate"
+                                            VerticalAlignment="Center"
+                                                    FontSize="16"
+                                                    FontWeight="Regular"
+                                                   Foreground="#000000"
+                                                   FontFamily="{DynamicResource MaterialDesignFont}"
+                                                       />
+                                </StackPanel>
+                            </Grid>
+                            <Grid Grid.Column="1">
+                                <Label             VerticalAlignment="Center"
+                                                FontSize="16"
+                                                   Content="Các suất chiếu:"
+                                                   FontWeight="Bold"
+                                                   Foreground="#000000"
+                                                   FontFamily="{DynamicResource MaterialDesignFont}"/>
+                                
+
+                            </Grid>
+                            <Grid Grid.Column="2">
+                                <Grid Grid.Column="2">
+                                    <Button HorizontalAlignment="Right"
+                                VerticalAlignment="Center"
+                                Style="{StaticResource CustomButton}"
+                                Content="Xóa"
+                                FontSize="14"
+                                Background="{StaticResource ColorButtonRed}"
+                                FontFamily="{DynamicResource MaterialDesignFont}"
+                                Margin="0,0,10,0"
+                                Width="80" 
+                                Command="{Binding LoadDeleteShowtimeCM}"
+                                            CommandParameter="{Binding ElementName=EditWindow}">
+                                    </Button>
+                                </Grid>
+                            </Grid>
+                        </Grid>
+                        <Grid Grid.Row="2">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="2*" />
+                                <ColumnDefinition Width="3*" />
+                                <ColumnDefinition Width="1*" />
+                            </Grid.ColumnDefinitions>
+                            <Grid Grid.Column="0">
+                                <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                                    <Label FontSize="16"
+                                                   Content="Giá vé:"
+                                           
+                                                   FontWeight="Bold"
+                                                   Foreground="#000000"
+                                                   FontFamily="{DynamicResource MaterialDesignFont}"/>
+                                    <TextBox 
+                                                    x:Name="_showtimePrice"
+                                                    Text="{Binding moviePrice,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                                                    FontSize="16"
+                                                    FontWeight="Medium"
+                                                    Foreground="#000000"
+                                                    FontFamily="{DynamicResource MaterialDesignFont}"
+                                                    IsEnabled="{Binding IsEdit, Mode=OneWay}"
+                                                    VerticalAlignment="Center"
+                                                    TextChanged="TextBox_TextChanged"
+                                                    PreviewTextInput="_showtimePrice_PreviewTextInput"
+                                                    >
+                                        <TextBox.Style>
+                                            <Style TargetType="TextBox">
+                                                <Setter Property="BorderThickness"
+                                                        Value="0" />
+                                                <Setter Property="Background"
+                                                        Value="#FFF0F3F7" />
+                                            </Style>
+                                        </TextBox.Style>
+                                    </TextBox>
+                                    <Label VerticalAlignment="Center"
+                                                Content="VNĐ"
+                                                FontSize="16"
+                                                FontWeight="Regular"
+                                                Foreground="#000000"
+                                                FontFamily="{DynamicResource MaterialDesignFont}"/>
+                                    <Border Cursor="Hand" Margin="10,0,0,0" >
+                                        <Border.Style>
+                                            <Style TargetType="{x:Type Border}">
+                                                <Style.Triggers>
+                                                    <Trigger Property="IsMouseOver"
+                                                                                    Value="True">
+                                                        <Setter Property="Background"
+                                                                                        Value="#00e5ff" />
+                                                    </Trigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </Border.Style>
+                                        <materialDesign:PackIcon                    Kind="Pencil"
+                                                                                     Width="22"
+                                                                                     Height="22"
+                                                                                     Cursor="Hand"
+                                                                                    x:Name="iconEdit"
+                                                                                    
+                                                                                    Margin="0,2,0,0">
+                                           
+                                        </materialDesign:PackIcon>
+                                        <i:Interaction.Triggers>
+                                            <i:EventTrigger EventName="MouseLeftButtonDown">
+                                                <i:InvokeCommandAction Command="{Binding EditPriceCM}"
+                                                                       CommandParameter="{Binding ElementName=iconEdit}" />
+                                            </i:EventTrigger>
+                                        </i:Interaction.Triggers>
+
+                                    </Border>
+
+
+                                </StackPanel>
+
+
+                            </Grid>
+                            <Grid Grid.Column="1">
+                                <ListBox x:Name="_Showtime"
+                                             ItemsSource="{Binding ListShowtimeofMovie,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                                         SelectedItem="{Binding SelectedShowtime}">
+                                    <ListBox.ItemsPanel>
+                                        <ItemsPanelTemplate>
+                                            <UniformGrid Columns="3" />
+                                        </ItemsPanelTemplate>
+                                    </ListBox.ItemsPanel>
+                                    <ListBox.ItemContainerStyle>
+                                        <Style TargetType="ListBoxItem">
+                                            <Setter Property="SnapsToDevicePixels"
+                                                           Value="False" />
+                                            <Setter Property="OverridesDefaultStyle"
+                                                            Value="true" />
+                                            <Setter Property="Template">
+                                                <Setter.Value>
+                                                    <ControlTemplate TargetType="ListBoxItem">
+                                                        <Border Name="Border"
+                                                                        Padding="0"
+                                                                        SnapsToDevicePixels="True">
+                                                            <ContentPresenter />
+                                                        </Border>
+                                                        <ControlTemplate.Triggers>
+                                                            <Trigger Property="IsEnabled"
+                                                                                    Value="False">
+                                                                <Setter Property="Opacity"
+                                                                                    Value=".56" />
+                                                            </Trigger>
+                                                            <Trigger Property="IsSelected"
+                                                                                    Value="true">
+                                                            </Trigger>
+                                                        </ControlTemplate.Triggers>
+                                                    </ControlTemplate>
+                                                </Setter.Value>
+                                            </Setter>
+                                            <Style.Triggers>
+                                                <Trigger Property="ItemsControl.AlternationIndex"
+                                                                        Value="0">
+                                                    <Setter Property="Background"
+                                                                     Value="#FFFFFF"></Setter>
+                                                </Trigger>
+                                                <Trigger Property="ItemsControl.AlternationIndex"
+                                                                            Value="1">
+                                                    <Setter Property="Background"
+                                                                    Value="#F7F7F7"></Setter>
+                                                </Trigger>
+                                            </Style.Triggers>
                                         </Style>
-                                    </TextBox.Style>
-                                </TextBox>
-                                <Label x:Name="_lblEdit"
-                                       Content="Thay đổi"
-                                       FontWeight="Light"
-                                       Foreground="Blue"
-                                       Margin="0,0,0,10"
-                                       Cursor="Hand"
-                                       MouseLeftButtonDown="Label_MouseLeftButtonDown">
-                                    <i:Interaction.Triggers>
-                                        <i:EventTrigger EventName="MouseLeftButtonDown">
-                                            <i:InvokeCommandAction Command="{Binding EditPriceCM}"
-                                                                   CommandParameter="{Binding ElementName=_lblEdit}" />
-                                        </i:EventTrigger>
-                                    </i:Interaction.Triggers>
-                                </Label>
-                            </StackPanel>
+                                    </ListBox.ItemContainerStyle>
+                                    <ListBox.ItemTemplate>
+                                        <DataTemplate>
+                                            <Border     Background="#D9D9D9"                            
+                                                        CornerRadius="5"
+                                                        Height="30"
+                                                        Width="90"
+                                                        HorizontalAlignment="Stretch"
+                                                        x:Name="_borderShowtime"
+                                                        MouseLeftButtonUp="Border_MouseLeftButtonUp"
+                                                        Cursor="Hand">
+                                                <Label Content="{Binding StartTime}"
+                                                           FontSize="18" 
+                                                           FontFamily="{DynamicResource MaterialDesignFont}"
+                                                           HorizontalAlignment="Center"
+                                                           VerticalAlignment="Center"/>
+                                                <i:Interaction.Triggers>
+                                                    <i:EventTrigger EventName="MouseLeftButtonUp">
+                                                        <i:InvokeCommandAction Command="{Binding ElementName=_Showtime, Path=DataContext.LoadSeatCM}" />
+                                                    </i:EventTrigger>
+                                                </i:Interaction.Triggers>
+                                            </Border>
+                                        </DataTemplate>
+                                    </ListBox.ItemTemplate>
+                                   
+                                </ListBox>
 
-
-                        </StackPanel>
-                        <StackPanel>
-                            <Label Content="Các suất chiếu"
-                                   Margin="10,10,0,0" />
-                            <ListBox x:Name="_Showtime"
-                                     FontSize="20"
-                                     ItemsSource="{Binding ListShowtimeofMovie,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
-                                     SelectedItem="{Binding SelectedShowtime}"
-                                     Height="100">
-
-                                <ListBox.ItemsPanel>
-                                    <ItemsPanelTemplate>
-                                        <UniformGrid Columns="3" />
-                                    </ItemsPanelTemplate>
-                                </ListBox.ItemsPanel>
-                                <ListBox.ItemContainerStyle>
-                                    <Style TargetType="ListBoxItem"
-                                           BasedOn="{StaticResource MaterialDesignListBoxItem}">
-                                        <Setter Property="Margin"
-                                                Value="8,8,0,0" />
-                                        <Setter Property="VerticalAlignment"
-                                                Value="Top" />
-                                        <Setter Property="materialDesign:ListBoxItemAssist.ShowSelection"
-                                                Value="False" />
-                                    </Style>
-                                </ListBox.ItemContainerStyle>
-
-                                <ListBox.ItemTemplate>
-                                    <DataTemplate>
-                                        <Border BorderBrush="Black"
-                                                BorderThickness="1"
-                                                CornerRadius="8"
-                                                Width="110"
-                                                Cursor="Hand"
-                                                MouseLeftButtonUp="Border_MouseLeftButtonUp">
-                                            <Label Content="{Binding StartTime}"
-                                                   Width="120"
-                                                   Height="25"
-                                                   Background="Transparent"
-                                                   Foreground="Black"
-                                                   Margin="20,0,0,5"
-                                                   Padding="5,5,0,0">
-                                            </Label>
-                                            <i:Interaction.Triggers>
-                                                <i:EventTrigger EventName="MouseLeftButtonUp">
-                                                    <i:InvokeCommandAction Command="{Binding ElementName=_Showtime, Path=DataContext.LoadSeatCM}" />
-                                                </i:EventTrigger>
-                                            </i:Interaction.Triggers>
-                                        </Border>
-                                    </DataTemplate>
-                                </ListBox.ItemTemplate>
-                            </ListBox>
-                        </StackPanel>
-                    </StackPanel>
-
-                    <StackPanel Grid.Row="2"
-                                Orientation="Horizontal">
-
-                        <Button Width="100"
-                                Content="Xoá"
-                                Margin="30,0,0,0"
-                                Height="36"
+                            </Grid>
+                            <Grid Grid.Column="2">
+                                <Button HorizontalAlignment="Right"
+                                VerticalAlignment="Center"
                                 Style="{StaticResource CustomButton}"
-                                materialDesign:ButtonAssist.CornerRadius="8"
-                                Background="Red"
-                                BorderBrush="Red"
-                                Command="{Binding LoadDeleteShowtimeCM}">
-                        </Button>
-
-                        <Button Width="100"
                                 Content="Thoát"
-                                Margin="200,0,0,0"
-                                Height="36"
-                                Style="{StaticResource CustomButton}"
-                                materialDesign:ButtonAssist.CornerRadius="8"
+                                FontSize="14"
+                                Background="{StaticResource ColorButtonBlue}"
+                                FontFamily="{DynamicResource MaterialDesignFont}"
+                                Margin="0,0,10,0"
+                                Width="80" 
                                 Command="{Binding CloseEditCM}"
-                                CommandParameter="{Binding ElementName=EditWindow}" />
+                                CommandParameter="{Binding ElementName=EditWindow}">
+                                </Button>
+                            </Grid>
+                        </Grid>
+                    </Grid>
 
-
-                    </StackPanel>
                 </Grid>
-            </StackPanel>
+            </Grid>
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="15*" />
+                    <ColumnDefinition Width="85*" />
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="0">
+                    <Border CornerRadius="0,0,0,15" Background="#E6C067" BorderBrush="Gray" BorderThickness="0.35">
+                    </Border>
+                    <Grid>
+                        <StackPanel VerticalAlignment="Center">
+                            <Label FontSize="20" 
+                                   FontWeight="Bold" 
+                                   VerticalAlignment="Center" 
+                                   HorizontalAlignment="Center" 
+                                   Foreground="#FFFFFF" 
+                                   FontFamily="{DynamicResource MaterialDesignFont}"
+                                   Content="DANH"
+                                       Margin="10">
+                            </Label>
+                            <Label FontSize="20" 
+                                   FontWeight="Bold" 
+                                   VerticalAlignment="Center" 
+                                   HorizontalAlignment="Center" 
+                                   Foreground="#FFFFFF" 
+                                   FontFamily="{DynamicResource MaterialDesignFont}"
+                                   Content="SÁCH"
+                                       Margin="10">
+                            </Label>
+                            <Label FontSize="22" 
+                                   FontWeight="Bold" 
+                                   VerticalAlignment="Center" 
+                                   HorizontalAlignment="Center" 
+                                   Foreground="#FFFFFF" 
+                                   FontFamily="{DynamicResource MaterialDesignFont}"
+                                   Content="GHẾ"
+                                       Margin="10">
+                            </Label>
+                        </StackPanel>
 
-
-            <Grid Grid.Column="2">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="20*" />
-                    <RowDefinition Height="80*" />
-                </Grid.RowDefinitions>
-                <Border BorderBrush="Black"
-                        BorderThickness="0,0,0,1"
-                        Height="49"
-                        VerticalAlignment="Top">
-                    <Label Grid.Row="0"
-                           Content="DANH SÁCH GHẾ"
-                           FontFamily="{StaticResource MaterialDesignFont}" 
-                            FontSize="28" 
-                            Foreground="#FF80CDED"
-                            FontWeight="Bold" 
-                           Margin="20,0,0,0" />
-                </Border>
-                <StackPanel Grid.Row="0"
-                            Margin="100,80,0,0"
-                            Orientation="Horizontal">
-                    <StackPanel Orientation="Horizontal">
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition />
-                                <ColumnDefinition />
-                            </Grid.ColumnDefinitions>
-                            <Label Content="Tổng số ghế: "
-                                   FontSize="20"
-                                    FontWeight="Bold"                                    
-                                   Grid.Column="0" />
-                            <Label Content="{Binding ListSeat.Count}"
-                                   FontSize="20"
-                                   Grid.Column="1" />
-                        </Grid>
-
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal"
-                                Margin="50,0,0,0">
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition />
-                                <ColumnDefinition />
-                            </Grid.ColumnDefinitions>
-                            <Label Content="Đã đặt: "
-                                    FontWeight="Bold" 
-                                   FontSize="20"
-                                   Grid.Column="0" />
-                            <Label Content="{Binding IsBought}"
-                                   FontSize="20"
-                                   Grid.Column="1" />
-                        </Grid>
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal"
-                                Margin="50,0,0,0">
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition />
-                                <ColumnDefinition />
-                            </Grid.ColumnDefinitions>
-                            <Label Content="Còn trống: "
-                                     FontWeight="Bold" 
-                                   FontSize="20"
-                                   Grid.Column="0" />
-                            <Label Content="{Binding IsFree}"
-                                   FontSize="20"
-                                   Grid.Column="1" />
-                        </Grid>
-                    </StackPanel>
-                </StackPanel >
-                <Grid Grid.Row="1"
-                      Width="680"
-                      Height="400">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="87*" />
-                        <ColumnDefinition Width="13*" />
-                    </Grid.ColumnDefinitions>
-                    <ListBox ItemsSource="{Binding ListSeat1}"
-                             x:Name="SeatListBox1"
-                             Grid.Column="0">
-                        <ListBox.ItemContainerStyle>
-                            <Style TargetType="ListBoxItem"
-                                   BasedOn="{StaticResource styleListBoxItems1}" />
-                        </ListBox.ItemContainerStyle>
-                        <ListBox.ItemsPanel>
-                            <ItemsPanelTemplate>
-                                <UniformGrid Columns="14"
-                                             FlowDirection="RightToLeft" />
-                            </ItemsPanelTemplate>
-                        </ListBox.ItemsPanel>
-                        <ListBox.ItemTemplate>
-                            <DataTemplate>
-                                <Border   BorderBrush="Green"
-                                          BorderThickness="2"
-                                          CornerRadius="3"
-                                          Width="30"
-                                          Height="30">
-                                    <Label Content="{Binding SeatPosition}"
-                                           Background="{Binding Status,Converter={StaticResource seatconverter}}"
-                                           Foreground="{Binding Status,Converter={StaticResource foreground}}"
-                                           FontSize="11"
-                                           Padding="0"
-                                           FontWeight="Bold"
-                                           VerticalContentAlignment="Center"
-                                           HorizontalContentAlignment="Center">
-                                    </Label>
-                                </Border>
-                            </DataTemplate>
-                        </ListBox.ItemTemplate>
-                    </ListBox>
-                    <ListBox ItemsSource="{Binding ListSeat2}"
-                             x:Name="SeatListBox2"
-                             Grid.Column="2">
-                        <ListBox.ItemContainerStyle>
-                            <Style TargetType="ListBoxItem"
-                                   BasedOn="{StaticResource styleListBoxItems1}" />
-                        </ListBox.ItemContainerStyle>
-                        <ListBox.ItemsPanel>
-                            <ItemsPanelTemplate>
-                                <UniformGrid Columns="2"
-                                             FlowDirection="RightToLeft" />
-                            </ItemsPanelTemplate>
-                        </ListBox.ItemsPanel>
-                        <ListBox.ItemTemplate>
-                            <DataTemplate>
-                                <Border   BorderBrush="Green"
-                                          BorderThickness="2"
-                                          CornerRadius="3"
-                                          Width="30"
-                                          Height="30">
-                                    <Label Content="{Binding SeatPosition}"
-                                           Background="{Binding Status,Converter={StaticResource seatconverter} }"
-                                           Foreground="{Binding Status,Converter={StaticResource foreground}}"
-                                           FontWeight="Bold"
-                                           FontSize="11">
-                                    </Label>
-                                </Border>
-                            </DataTemplate>
-                        </ListBox.ItemTemplate>
-                    </ListBox>
+                    </Grid>
                 </Grid>
+                <Grid Grid.Column="1" Margin="20,10,20,0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="60" />
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0" Margin="0,0,0,10">
+                        <Border BorderBrush="#EAE7E7" BorderThickness="0,0,0,4">
+                        </Border>
+                        <Grid>
+                            
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="15*"/>
+                            <ColumnDefinition Width="50"/>
+                            <ColumnDefinition Width="80*"/>
+                        </Grid.ColumnDefinitions>
+                        <ListBox Grid.Column="0" 
+                                        ItemsSource="{Binding ListSeat1}"
+                                         x:Name="SeatListBox1"
+                                         HorizontalAlignment="Right"
+                                         VerticalAlignment="Top"
+                                         Height="400"
+                                        >
+                            <ListBox.ItemContainerStyle>
+                                <Style TargetType="ListBoxItem"
+                                             BasedOn="{StaticResource styleListBoxItems1}" />
+                            </ListBox.ItemContainerStyle>
+                            <ListBox.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <UniformGrid Columns="3"
+                                                 FlowDirection="LeftToRight" />
+                                </ItemsPanelTemplate>
+                            </ListBox.ItemsPanel>
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
 
+                                    <Grid x:Name="grid1"
+                                                          Cursor="Hand">
+                                        <Image 
+                                                               Width="38"
+                                                               Height="38"
+                                                                x:Name="img1">
+
+                                        </Image>
+                                        <Label Content="{Binding SeatPosition}"
+                                                           x:Name="lbl1"
+                                                           Background="Transparent"
+                                                           Foreground="#FFFFFF"
+                                                           FontWeight="Bold"
+                                                           FontSize="11"
+                                                           VerticalContentAlignment="Center"
+                                                           HorizontalContentAlignment="Center">
+
+                                        </Label>
+                                        <i:Interaction.Triggers>
+
+                                            <i:EventTrigger EventName="Loaded">
+                                                <i:InvokeCommandAction Command="{Binding ElementName=SeatListBox1, Path=DataContext.LoadStatusSeatCM}"
+                                                                       CommandParameter="{Binding ElementName=grid1}" />
+                                            </i:EventTrigger>
+                                        </i:Interaction.Triggers>
+                                    </Grid>
+
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+
+                        </ListBox>
+                        <ListBox ItemsSource="{Binding ListSeat2}"
+                                             x:Name="SeatListBox2"
+                                             Height="400"
+                                             HorizontalAlignment="Left"
+                                             VerticalAlignment="Top"
+                                             Grid.Column="2">
+                            <ListBox.ItemContainerStyle>
+                                <Style TargetType="ListBoxItem"
+                                             BasedOn="{StaticResource styleListBoxItems1}" />
+
+                            </ListBox.ItemContainerStyle>
+                            <ListBox.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <UniformGrid Columns="15"
+                                             FlowDirection="LeftToRight" />
+                                </ItemsPanelTemplate>
+                            </ListBox.ItemsPanel>
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid x:Name="grid2"
+                                                      Cursor="Hand">
+                                        <Image 
+                                                               Width="38"
+                                                               Height="38">
+
+                                        </Image>
+                                        <Label Content="{Binding SeatPosition}"
+                                                           x:Name="lbl2"
+                                                           Background="Transparent"
+                                                           Foreground="#FFFFFF"
+                                                           FontWeight="Bold"
+                                                           FontSize="11"
+                                                           VerticalContentAlignment="Center"
+                                                           HorizontalContentAlignment="Center">
+
+                                        </Label>
+                                        <i:Interaction.Triggers>
+
+                                            <i:EventTrigger EventName="Loaded">
+                                                <i:InvokeCommandAction Command="{Binding ElementName=SeatListBox2, Path=DataContext.LoadStatusSeatCM}"
+                                                                       CommandParameter="{Binding ElementName=grid2}" />
+                                            </i:EventTrigger>
+                                        </i:Interaction.Triggers>
+                                    </Grid>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+
+                        </ListBox>
+                        </Grid>
+                    </Grid>
+                    <Grid Grid.Row="1">
+                       
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                <StackPanel Orientation="Horizontal">
+
+                                    <Label
+                                           Margin="20,0,0,0"
+                                           Content="Tổng số: "
+                                           HorizontalAlignment="Left"
+                                           VerticalAlignment="Center"
+                                           FontSize="18"
+                                           FontWeight="Medium"
+                                           Foreground="#000000"
+                                           FontFamily="{DynamicResource MaterialDesignFont}"/>
+                                    <Label
+                                           Content="{Binding ListSeat.Count}"
+                                           HorizontalAlignment="Left"
+                                           VerticalAlignment="Center"
+                                           FontSize="18"
+                                           FontWeight="Medium"
+                                           Foreground="#000000"
+                                           FontFamily="{DynamicResource MaterialDesignFont}"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" Margin="100,0,0,0">
+                                    <Image 
+                                            Source="{StaticResource isBooked}"
+                                            x:Name="isBooked"
+                                            Width="40"
+                                            Height="40"
+                                            VerticalAlignment="Center"/>
+                                    <Label
+                                           Margin="20,0,0,0"
+                                           Content="Đã đặt: "
+                                           HorizontalAlignment="Left"
+                                           VerticalAlignment="Center"
+                                           FontSize="18"
+                                           FontWeight="Medium"
+                                           Foreground="#000000"
+                                           FontFamily="{DynamicResource MaterialDesignFont}"/>
+                                    <Label
+                                          Content="{Binding isBooked}"
+                                           HorizontalAlignment="Left"
+                                           VerticalAlignment="Center"
+                                           FontSize="18"
+                                           FontWeight="Medium"
+                                           Foreground="#000000"
+                                           FontFamily="{DynamicResource MaterialDesignFont}"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" Margin="100,0,0,0">
+                                    <Image 
+                                            Source="{StaticResource isReady}"
+                                            x:Name="isReady"
+                                            Width="40"
+                                            Height="40"
+                                            VerticalAlignment="Center"/>
+                                    <Label
+                                           Margin="20,0,0,0"
+                                           Content="Còn trống: "
+                                           HorizontalAlignment="Left"
+                                           VerticalAlignment="Center"
+                                           FontSize="18"
+                                           FontWeight="Medium"
+                                           Foreground="#000000"
+                                           FontFamily="{DynamicResource MaterialDesignFont}"/>
+                                    <Label
+                                           Content="{Binding isReady}"
+                                           HorizontalAlignment="Left"
+                                           VerticalAlignment="Center"
+                                           FontSize="18"
+                                           FontWeight="Medium"
+                                           Foreground="#000000"
+                                           FontFamily="{DynamicResource MaterialDesignFont}"/>
+                                </StackPanel>
+                            </StackPanel>
+                            
+                    </Grid>
+                 </Grid>
+
+          
             </Grid>
         </Grid>
     </Border>

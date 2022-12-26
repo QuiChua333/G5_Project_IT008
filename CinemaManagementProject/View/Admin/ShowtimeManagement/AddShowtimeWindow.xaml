@@ -6,8 +6,7 @@
         xmlns:local="clr-namespace:CinemaManagementProject.View.Admin.ShowtimeManagement" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
         mc:Ignorable="d"
         Title="AddShowtimeWindow" 
-        Height="550"
-        Width="800"
+       
         WindowStartupLocation="CenterScreen"
         WindowStyle="None"
         AllowsTransparency="True"
@@ -33,311 +32,406 @@
         </EventTrigger>
     </Window.Triggers>
 
-    <Border Background="White"
-            CornerRadius="10"
-            BorderBrush="Gray"
-            BorderThickness="1">
+
+    <Border CornerRadius="15" Background="#F5F5F5" BorderBrush="Gray" BorderThickness="0.35" Height="580"
+        Width="750">
+        <Border.Effect>
+            <DropShadowEffect BlurRadius="5" Direction="270" Color="Gray" ShadowDepth="4" Opacity="0.25"/>
+        </Border.Effect>
 
         <Grid>
-
             <Grid.RowDefinitions>
-                <RowDefinition Height="10*" />
-                <RowDefinition Height="35*" />
-                <RowDefinition Height="55*" />
+                <RowDefinition Height="25"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="50"/>
             </Grid.RowDefinitions>
-            <Grid Grid.Row="0">
-                <Border BorderThickness="0,0,0,1"
-                        BorderBrush="Black">
-                    <Grid>
-                        <TextBlock Text="THÊM SUẤT CHIẾU"
-                                   FontFamily="{StaticResource MaterialDesignFont}" 
-                                   FontSize="28" 
-                                   Foreground="#FF80CDED"
-                                   FontWeight="Bold" 
-                                   Margin="20,10,0,0"/>
-                        <StackPanel Orientation="Horizontal"
-                                    VerticalAlignment="Top"
-                                    HorizontalAlignment="Right"
-                                    Grid.Row="0">
-
-                            <Button Click="Button_Click_1"
-                                    ToolBar.OverflowMode="AsNeeded"
-                                    Background="Transparent"
-                                    Foreground="Black"
-                                    BorderBrush="Transparent"
-                                    MouseEnter="Button_MouseEnter_1"
-                                    MouseLeave="Button_MouseLeave_1"
-                                    materialDesign:ButtonAssist.CornerRadius="0,10,0,0" Height="44">
-                                <materialDesign:PackIcon Kind="WindowClose"
-                                                         Padding="10"
-                                                         Height="30"
-                                                         Width="30"
-                                                         Margin="0 5 0 0"/>
-                            </Button>
-                        </StackPanel>
-                    </Grid>
-
-                </Border>
+            <Grid Grid.Row="1">
+                <Button 
+                    Background="Transparent"
+                    
+                    Height="auto"
+                    Padding="0"
+                    BorderThickness="0"
+                    HorizontalAlignment="Right"
+                    Margin="0,0,25,0" Click="Button_Click"
+                    >
+                    <materialDesign:PackIcon Kind="Close" 
+                                     Height="35"
+                                     Width="35"
+                                     VerticalAlignment="Center"
+                                     
+                                     HorizontalAlignment="Right"
+                                     Margin="5,0"
+                                     Foreground="#E6C067"
+                                     FontWeight="Bold"/>
+                </Button>
             </Grid>
-            <Grid  Grid.Row="1"
-                   Margin="0,15,0,0">
-                <Grid.RowDefinitions>
-                    <RowDefinition />
-                    <RowDefinition />
-                </Grid.RowDefinitions>
-
-                <Grid Grid.Row="0">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="70*" />
-                        <ColumnDefinition Width="30*" />
-                    </Grid.ColumnDefinitions>
-
-                    <!--NAME-->
-                    <StackPanel Grid.Column="0"
-                                Margin="25,0,25,10"
-                                Orientation="Horizontal">
-                        <StackPanel>
-                            <Label Content="Tên phim"
-                                   FontSize="20" />
-                            <ComboBox SelectedItem="{Binding movieSelected}"
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="5*"/>
+                    <ColumnDefinition Width="90*"/>
+                    <ColumnDefinition Width="5*"/>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="1">
+                    <Border  BorderBrush="#E6C067" BorderThickness="0,0,0,4">
+                    </Border>
+                    <Label Padding="0" 
+                           Content="THÊM SUẤT CHIẾU" 
+                           FontSize="25" 
+                           FontWeight="Bold" 
+                           VerticalAlignment="Center" 
+                           HorizontalAlignment="Center" 
+                           Foreground="#E6C067" 
+                           FontFamily="{DynamicResource MaterialDesignFont}">
+                        <Label.Effect>
+                            <DropShadowEffect BlurRadius="1" Direction="-45" Color="#000000" ShadowDepth="1.5" Opacity="0.5"/>
+                        </Label.Effect>
+                    </Label>
+                </Grid>
+            </Grid>
+            <Grid Grid.Row="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="5*" />
+                    <ColumnDefinition Width="90*" />
+                    <ColumnDefinition Width="5*" />
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="15*" />
+                        <RowDefinition Height="15*" />
+                        <RowDefinition Height="15*" />
+                        <RowDefinition Height="55*" />
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="25*"/>
+                            <ColumnDefinition Width="75*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Grid.Column="0"
+                                   Content="Tên phim:"
+                                   FontSize="16"
+                                   FontWeight="Bold"
+                                   Foreground="#000000"
+                                   FontFamily="{DynamicResource MaterialDesignFont}"
+                                   VerticalContentAlignment="Center">
+                        </Label>
+                    
+                            <ComboBox Grid.Column="1"
+                                      x:Name="_movieName"
                                       ItemsSource="{Binding MovieList}"
                                       DisplayMemberPath="FilmName"
-                                      Margin="0 0 0 0"
-                                      
-                                      Style="{StaticResource MaterialDesignComboBox}"
-                                      VerticalAlignment="Bottom"
-                                      FontSize="20"
-                                      Background="Transparent"
-                                      BorderThickness="0,0,0,1"
-                                      Foreground="Black"
-                                      Height="47"
-                                      Width="479"
-                                      x:Name="_movieName" VerticalContentAlignment="Bottom">
-                                <i:Interaction.Triggers>
-                                    <i:EventTrigger EventName="SelectionChanged">
-                                        <i:InvokeCommandAction Command="{Binding CalculateRunningTimeCM}"
+                                      BorderBrush="#67C6E6"
+                                      SelectedIndex="0"
+                                      FontWeight="Medium"
+                                      FontSize="16"
+                                      FontFamily="{DynamicResource MaterialDesignFont}"
+                                      Foreground="{StaticResource Gray1}"
+                                      HorizontalContentAlignment="Center"
+                                      SelectedItem="{Binding movieSelected}">
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="SelectionChanged">
+                                    <i:InvokeCommandAction Command="{Binding CalculateRunningTimeCM}"
                                                                CommandParameter="{Binding ElementName=_movieName}" />
-                                    </i:EventTrigger>
-                                </i:Interaction.Triggers>
-                            </ComboBox>
-                        </StackPanel>
-                    </StackPanel>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </ComboBox>
+                    </Grid>
+                    <Grid Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="50*"/>
+                            <ColumnDefinition Width="50*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid Grid.Column="0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="50*"/>
+                                <ColumnDefinition Width="50*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label Grid.Column="0"
+                                   Content="Ngày chiếu:"
+                                   FontSize="16"
+                                   FontWeight="Bold"
+                                   Foreground="#000000"
+                                   FontFamily="{DynamicResource MaterialDesignFont}"
+                                   VerticalContentAlignment="Center">
+                            </Label>
 
-                    <!--Ngay chieu-->
-                    <StackPanel Grid.Column="2">
-                        <Label Content="Ngày chiếu"
-                               FontSize="20"
-                               Height="40" />
-                        <StackPanel>
-                            <DatePicker materialDesign:HintAssist.Hint="{Binding SetCurrentDate}"
-                                        FirstDayOfWeek="Monday"
-                                        SelectedDateFormat="Short"
-                                        Foreground="Black"
-                                        FontSize="20"
-                                        Height="39"
-                                        Padding="10,0,0,0"
-                                        Margin="0,0,64,0"
-                                        x:Name="_movieDate"
+                            <DatePicker Grid.Column="1"
+                                        
+                                        Width="130"
+                                        HorizontalAlignment="Left"
+                                        FontSize="16"
+                                        FontWeight="Medium"
+                                        Foreground="{StaticResource Gray1}"
+                                        BorderBrush="#67C6E6"
+                                        Padding="20,0,0,0"
+                                        Focusable="False"
                                         DisplayDateStart="{Binding GetCurrentDate}"
-                                        SelectedDate="{Binding showtimeDate, Mode=TwoWay}"
-                                        materialDesign:HintAssist.IsFloating="False"
-                                        Style="{StaticResource MaterialDesignFloatingHintDatePicker}"
-                                        Focusable="False" />
+                                        SelectedDate="{Binding showtimeDate,Mode=TwoWay}">
+                            </DatePicker>
+                        </Grid>
+                        <Grid Grid.Column="1">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label Grid.Column="0"
+                                   Margin="40,0,0,0"
+                                   Content="Suất chiếu:"
+                                   FontSize="16"
+                                   FontWeight="Bold"
+                                   Foreground="#000000"
+                                   FontFamily="{DynamicResource MaterialDesignFont}"
+                                   VerticalContentAlignment="Center">
+                            </Label>
 
-                        </StackPanel>
-                    </StackPanel>
-                </Grid>
-
-                <StackPanel Grid.Row="1"
-                            Orientation="Horizontal">
-
-                    <!--Suat chieu-->
-                    <StackPanel Margin="25,10,25,0"
-                                Width="200"
-                                VerticalAlignment="Bottom"
-                                HorizontalAlignment="Left">
-                        <Label Content="Suất chiếu"
-                               FontSize="20"
-                               Height="40" />
-                        <StackPanel>
-                            <materialDesign:TimePicker Is24Hours="True"
+                            <materialDesign:TimePicker Grid.Column="1"
+                                                       Is24Hours="True"
                                                        WithSeconds="False"
-                                                       FontSize="20"
+                                                       FontSize="16"
+                                                       FontWeight="Medium"
+                                                       FontFamily="{DynamicResource MaterialDesignFont}"
                                                        VerticalContentAlignment="Bottom"
+                                                       HorizontalContentAlignment="Center"
                                                        Height="35"
                                                        materialDesign:ValidationAssist.FontSize="0.001"
                                                        SelectedTime="{Binding Showtime}"
                                                        x:Name="_movieTime"
-                                                       Focusable="False">
+                                                       Focusable="False"
+                                                       BorderBrush="#67C6E6">
                             </materialDesign:TimePicker>
-                        </StackPanel>
-                    </StackPanel>
+                        </Grid>
 
-                    <!--Room-->
-                    <StackPanel VerticalAlignment="Bottom">
-                        <Label Content="Phòng chiếu"
-                               FontSize="20" />
-                        <ComboBox Width="175"
-                                  Height="43"
-                                  FontSize="20"
-                                  ItemsSource="{Binding ListRoom}"
-                                  SelectedItem="{Binding ShowtimeRoom}"
-                                  DisplayMemberPath="Id"
-                                  x:Name="_movieRoom">
-                        </ComboBox>
-                    </StackPanel>
-
-                    <!--Price-->
-                    <StackPanel VerticalAlignment="Bottom"
-                                Margin="130,0,0,0">
-                        <Label Content="Giá vé"
-                               FontSize="20" />
-                        <TextBox Width="175"
-                                 Height="43"
-                                 FontSize="20"
-                                 Text="{Binding moviePrice}"
-                                 PreviewTextInput="_moviePrice_PreviewTextInput"
-                                 x:Name="_moviePrice"
-                                 TextChanged="_moviePrice_TextChanged">
-                        </TextBox>
-                    </StackPanel>
-                </StackPanel>
-
-            </Grid>
-            <Grid Grid.Row="2">
-                <Grid>
-                    <Grid Grid.Column="0"
-                          Margin="0,50,0,0">
-                        <!--Descripstion-->
-                        <StackPanel HorizontalAlignment="Left"
-                                    Width="290"
-                                    Margin="25,0,0,0">
-
-                            <StackPanel >
-                                <Label Content="Mô tả"
-                                       FontSize="20"
-                                       Foreground="Black"
-                                       Margin="0,10,0,0" />
-                                <Border BorderThickness="1"
-                                        BorderBrush="Black"
-                                        Height="188"
-                                        CornerRadius="8">
-                                    <StackPanel>
-                                        <StackPanel.Resources>
-                                            <Style TargetType="Label">
-                                                <Setter Property="Margin"
-                                                        Value="5,10,0,0" />
-                                                <Setter Property="FontSize"
-                                                        Value="15" />
-                                            </Style>
-                                        </StackPanel.Resources>
-                                        <StackPanel>
-                                            <Label Content="{Binding movieSelected.FilmName}" />
-                                        </StackPanel>
-                                        <StackPanel Orientation="Horizontal">
-                                            <Label Content="Ngày chiếu:" />
-                                            <Label Content="{Binding showtimeDate.Date}"
-                                                   ContentStringFormat="dd/MM/yyyy" />
-                                        </StackPanel>
-                                        <StackPanel Orientation="Horizontal">
-                                            <Label Content="Giờ chiếu:" />
-                                            <Label Content="{Binding Showtime.TimeOfDay}" />
-                                            <Label Content="->" />
-                                            <Label Content="{Binding EndTime.TimeOfDay}" />
-                                        </StackPanel>
-                                        <StackPanel Orientation="Horizontal">
-                                            <Label Content="Phòng chiếu:" />
-                                            <Label Content="{Binding ShowtimeRoom.Id}" />
-                                        </StackPanel>
-                                        <StackPanel Orientation="Horizontal">
-                                            <Label Content="Giá vé:" />
-                                            <Label  x:Name="_desPrice"
-                                                    Content="{Binding Path=Text, ElementName=_moviePrice}" />
-                                            <Label  Content="VND" />
-                                        </StackPanel>
-                                    </StackPanel>
-                                </Border>
-                            </StackPanel>
-                        </StackPanel>
                     </Grid>
+                    <Grid Grid.Row="2">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="50*"/>
+                            <ColumnDefinition Width="50*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid Grid.Column="0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="50*"/>
+                                <ColumnDefinition Width="50*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label Grid.Column="0"
+                                   Content="Phòng chiếu:"
+                                   FontSize="16"
+                                   FontWeight="Bold"
+                                   Foreground="#000000"
+                                   FontFamily="{DynamicResource MaterialDesignFont}"
+                                   VerticalContentAlignment="Center">
+                            </Label>
 
-                    <Grid Margin="-10,0,10,0">
+                            <ComboBox Grid.Column="1"
+                                      Width="130"
+                                      ItemsSource="{Binding ListRoom}"
+                                     SelectedItem="{Binding ShowtimeRoom}"
+                                     DisplayMemberPath="Id"
+                                     x:Name="_movieRoom"
+                                      BorderBrush="#67C6E6"
+                                      SelectedIndex="0"
+                                      FontWeight="Medium"
+                                      FontSize="16"
+                                      FontFamily="{DynamicResource MaterialDesignFont}"
+                                      Foreground="{StaticResource Gray1}"
+                                      HorizontalContentAlignment="Center"
+                                      HorizontalAlignment="Left">
+                                
+                            </ComboBox>
+                        </Grid>
+                        <Grid Grid.Column="1">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label Grid.Column="0"
+                                   Margin="40,0,0,0"
+                                   Content="Giá vé:"
+                                   FontSize="16"
+                                   FontWeight="Bold"
+                                   Foreground="#000000"
+                                   FontFamily="{DynamicResource MaterialDesignFont}"
+                                   VerticalContentAlignment="Center">
+                            </Label>
 
-                        <Grid.RowDefinitions>
-                            <RowDefinition />
-                            <RowDefinition />
-                        </Grid.RowDefinitions>
+                            <TextBox Grid.Column="1"
+                                     Width="auto"
+                                     FontSize="16"
+                                     BorderBrush="#67C6E6"
+                                     VerticalAlignment="Center"
+                                     FontWeight="Medium"
+                                     FontFamily="{DynamicResource MaterialDesignFont}"
+                                     Foreground="{StaticResource Gray1}"
+                                     HorizontalContentAlignment="Center"
+                                     Text="{Binding moviePrice}"
+                                     PreviewTextInput="_moviePrice_PreviewTextInput"
+                                     x:Name="_moviePrice"
+                                     TextChanged="_moviePrice_TextChanged">
+                            </TextBox>
 
-                        <!--Button-->
-                        <Grid Grid.Row="1">
-                            <StackPanel VerticalAlignment="Bottom"
-                                        HorizontalAlignment="Right"
-                                        Orientation="Horizontal"
-                                        Margin="0,0,20,20">
-                                <Button Content="Lưu"
-                                        FontSize="20"
-                                        Height="40"
-                                        Foreground="White"
-                                        VerticalAlignment="Top"
-                                        Style="{StaticResource CustomButton}"
-                                        materialDesign:ButtonAssist.CornerRadius="8"
-                                        Width="100"
-                                        Command="{Binding SaveCM}"
-                                        CommandParameter="{Binding  ElementName=AddSuatChieu}">
-                                </Button>
-                            </StackPanel>
+                        </Grid>
+
+                    </Grid>
+                    <Grid Grid.Row="3">
+                        <Border CornerRadius="15" Background="#E6C067" BorderBrush="Gray" BorderThickness="0.3">
+                            <Border.Effect>
+                                <DropShadowEffect BlurRadius="5" Direction="270" Color="#ccc" ShadowDepth="4" Opacity="0.25"/>
+                            </Border.Effect>
+                        </Border>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="35*" />
+                                <ColumnDefinition Width="50*" />
+                                <ColumnDefinition Width="15*" />
+                            </Grid.ColumnDefinitions>
+                            <Grid Grid.Column="0">
+                                <Border     BorderBrush="Gray"
+                                            BorderThickness="0.3"
+                                            CornerRadius="10"
+                                            Width="160"
+                                            Height="200"
+                                            Margin="20">
+                                    <Border.Effect>
+                                        <DropShadowEffect BlurRadius="10" Direction="270" Color="Gray" ShadowDepth="4" Opacity="0.25"/>
+                                    </Border.Effect>
+                                    <Border.Background>
+                                        <ImageBrush Stretch="Fill" ImageSource="{Binding movieSelected.Image}"/>
+                                    </Border.Background>
+                                </Border>
+                               
+                            </Grid>
+                            <Grid Grid.Column="1">
+                                <StackPanel VerticalAlignment="Center">
+                                    <StackPanel Orientation="Horizontal" Margin="0,5">
+                                        <Label FontSize="16"
+                                               Content="{Binding movieSelected.FilmName}"
+                                               FontWeight="Medium"
+                                               Foreground="#000000"
+                                               FontFamily="{DynamicResource MaterialDesignFont}"/>
+                                        
+                                    </StackPanel>
+
+                                    <StackPanel Orientation="Horizontal" Margin="0,5">
+                                        <Label FontSize="16"
+                                               Content="Ngày chiếu:"
+                                               FontWeight="Medium"
+                                               Foreground="#000000"
+                                               FontFamily="{DynamicResource MaterialDesignFont}"/>
+                                        <Label 
+                                                Content="{Binding showtimeDate.Date}"
+                                                FontSize="16"
+                                            FontWeight="Medium"
+                                               Foreground="#000000"
+                                               FontFamily="{DynamicResource MaterialDesignFont}"
+                                                   ContentStringFormat="dd/MM/yyyy" />
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal" Margin="0,5">
+                                        <Label FontSize="16"
+                                               Content="Giờ chiếu:"
+                                               FontWeight="Medium"
+                                               Foreground="#000000"
+                                               FontFamily="{DynamicResource MaterialDesignFont}"/>
+                                        <Label 
+                                                Content="{Binding Showtime.TimeOfDay}"
+                                                FontSize="16"
+                                                FontWeight="Medium"
+                                               Foreground="#000000"
+                                               FontFamily="{DynamicResource MaterialDesignFont}"
+                                                  />
+                                        <materialDesign:PackIcon Kind="ArrowRightThick" 
+                                                     Grid.Column="1"
+                                                     VerticalAlignment="Center"
+                                                     
+                                                     Width="20"
+                                                     Height="20"
+                                                     Opacity="0.8"/>
+
+                                        <Label 
+                                                Content="{Binding EndTime.TimeOfDay}"
+                                                FontSize="16"
+                                                FontWeight="Medium"
+                                               Foreground="#000000"
+                                               FontFamily="{DynamicResource MaterialDesignFont}"
+                                                   />
+                                        
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal" Margin="0,5">
+                                        <Label FontSize="16"
+                                               Content="Phòng chiếu:"
+                                               FontWeight="Medium"
+                                               Foreground="#000000"
+                                               FontFamily="{DynamicResource MaterialDesignFont}"/>
+                                        <Label 
+                                                Content="{Binding ShowtimeRoom.Id}"
+                                                FontSize="16"
+                                            FontWeight="Medium"
+                                               Foreground="#000000"
+                                               FontFamily="{DynamicResource MaterialDesignFont}"
+                                                   />
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal" Margin="0,5">
+                                        <Label FontSize="16"
+                                               Content="Giá vé:"
+                                               FontWeight="Medium"
+                                               Foreground="#000000"
+                                               FontFamily="{DynamicResource MaterialDesignFont}"/>
+                                        <Label 
+                                                x:Name="_desPrice"
+                                                    Content="{Binding Path=Text, ElementName=_moviePrice}"
+                                                FontSize="16"
+                                            FontWeight="Medium"
+                                               Foreground="#000000"
+                                               FontFamily="{DynamicResource MaterialDesignFont}"
+                                                   />
+                                        <Label 
+                                                Content="VNĐ"
+                                                FontSize="16"
+                                                FontWeight="Medium"
+                                               Foreground="#000000"
+                                               FontFamily="{DynamicResource MaterialDesignFont}"
+                                                   />
+                                    </StackPanel>
+
+                                </StackPanel>
+                            </Grid>
+                            <Grid Grid.Column="2">
+                                <Border CornerRadius="0,15,0,0" Background="#7BBCF6" BorderBrush="Gray" BorderThickness="0.3" VerticalAlignment="Top">
+                                    <Border.Effect>
+                                        <DropShadowEffect BlurRadius="5" Direction="270" Color="#ccc" ShadowDepth="4" Opacity="0.25"/>
+                                    </Border.Effect>
+                                    
+                                        <Label Content="Mô tả"
+                                       Padding="13"
+                                       VerticalAlignment="Center"
+                                       FontSize="20"
+                                       HorizontalContentAlignment="Center"
+                                       FontWeight="Medium"
+                                       Foreground="White"
+                                       FontFamily="{DynamicResource MaterialDesignFont}">
+
+                                        </Label>
+                                    
+                                </Border>
+                                
+                            </Grid>
                         </Grid>
                     </Grid>
+
                 </Grid>
             </Grid>
-            <Grid Grid.RowSpan="3"
-                  Background="LightGray"
-                  Opacity="0.3">
-                <Grid.Style>
-                    <Style TargetType="Grid">
-                        <Setter Property="Visibility"
-                                Value="Collapsed" />
-                        <Style.Triggers>
-                            <DataTrigger Binding="{Binding IsSaving}"
-                                         Value="True">
-                                <Setter Property="Visibility"
-                                        Value="Visible" />
-                            </DataTrigger>
-                        </Style.Triggers>
-                    </Style>
-                </Grid.Style>
+            <Grid Grid.Row="3">
+                <Button HorizontalAlignment="Right"
+                    VerticalAlignment="Center"
+                    Style="{StaticResource CustomButton}"
+                    Content="Lưu"
+                    FontSize="12"
+                    Background="{StaticResource ColorButtonBlue}"
+                    Margin="0,0,40,0"
+                    Width="70" 
+                    Command="{Binding SaveCM}"
+                    CommandParameter="{Binding  ElementName=AddSuatChieu}">
+                </Button>
             </Grid>
-            <materialDesign:Card Height="120"
-                                 Width="140"
-                                 Grid.RowSpan="3"
-                                 UniformCornerRadius="5">
-                <StackPanel>
-                    <ProgressBar Style="{StaticResource MaterialDesignCircularProgressBar}"
-                                 IsIndeterminate="True"
-                                 Margin="0,30,0,0"
-                                 x:Name="prg" />
-                    <Label HorizontalContentAlignment="Center"
-                           FontSize="15"
-                           Margin="0,10,0,0">
-                        <Label.Content>
-                            <TextBlock TextAlignment="Center">Đang thiết lập <LineBreak /> suất chiếu mới...</TextBlock>
-                        </Label.Content>
-                    </Label>
-                </StackPanel>
-                <materialDesign:Card.Style>
-                    <Style TargetType="materialDesign:Card">
-                        <Setter Property="Visibility"
-                                Value="Collapsed" />
-                        <Style.Triggers>
-                            <DataTrigger Binding="{Binding IsSaving}"
-                                         Value="True">
-                                <Setter Property="Visibility"
-                                        Value="Visible" />
-                            </DataTrigger>
-                        </Style.Triggers>
-                    </Style>
-                </materialDesign:Card.Style>
-            </materialDesign:Card>
         </Grid>
     </Border>
 

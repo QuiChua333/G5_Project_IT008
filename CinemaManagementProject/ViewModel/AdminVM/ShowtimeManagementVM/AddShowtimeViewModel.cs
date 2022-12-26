@@ -10,6 +10,9 @@ using CinemaManagementProject.DTOs;
 using CinemaManagementProject.Model.Service;
 using System.Windows.Forms;
 using System.Data;
+using System.Windows.Media.Media3D;
+using CinemaManagementProject.View.Admin.ShowtimeManagement;
+using MaterialDesignThemes.Wpf;
 
 namespace CinemaManagementProject.ViewModel.AdminVM.ShowtimeManagementVM
 {
@@ -34,7 +37,11 @@ namespace CinemaManagementProject.ViewModel.AdminVM.ShowtimeManagementVM
         {
             if (IsValidData())
             {
-
+                if(Showtime.TimeOfDay < DateTime.Now.TimeOfDay)
+                {
+                    CustomMessageBox.ShowOk("Vui lòng chọn thời gian chiếu sau" + DateTime.Now.TimeOfDay, "Cảnh báo", "OK", Views.CustomMessageBoxImage.Warning);
+                    return;
+                }
                 ShowtimeDTO temp = new ShowtimeDTO
                 {               
                     FilmId = movieSelected.Id,

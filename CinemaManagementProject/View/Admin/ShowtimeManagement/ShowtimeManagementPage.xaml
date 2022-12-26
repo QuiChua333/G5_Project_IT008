@@ -115,7 +115,7 @@
                             Margin="300,0,0,0"
                             Background="White"
                             Height="46"
-                            Width="150"
+                            Width="145"
                             BorderBrush="Black">
                         <Border.Effect>
                             <DropShadowEffect
@@ -134,7 +134,8 @@
                                     BorderBrush="{StaticResource LightGrayTundora}"                            
                                     FontSize="15"
                                     Foreground="Black"
-                                    Padding="10,10,20,10"
+                                    Padding="20,10,15,10"
+                                    HorizontalAlignment="Center"
                                     materialDesign:ValidationAssist.Background="#f0f2f5"
                                     materialDesign:ValidationAssist.FontSize="0.01"
                                     SelectedDate="{Binding SelectedDate,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}">
@@ -145,7 +146,6 @@
                                 </i:EventTrigger>
                             </i:Interaction.Triggers>
                         </DatePicker>
-
                     </Border>
                 </StackPanel>
 
@@ -334,7 +334,7 @@
                                                         <StackPanel >
                                                             <i:Interaction.Triggers>
                                                                 <i:EventTrigger EventName="MouseLeftButtonUp">
-                                                                    <i:InvokeCommandAction Command="{Binding ElementName=ShowtimeListview, Path=DataContext.LoadInfor_EditShowtime}" />
+                                                                    <i:InvokeCommandAction Command="{Binding ElementName=ShowtimeListview, Path=DataContext.LoadInfor_EditShowtime}"/>
                                                                 </i:EventTrigger>
                                                             </i:Interaction.Triggers>
                                                             <materialDesign:PackIcon Kind="Pencil"

@@ -6,6 +6,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 
 namespace CinemaManagementProject.Model.Service
@@ -30,8 +31,8 @@ namespace CinemaManagementProject.Model.Service
 
         public async Task<(bool IsSuccess, string message)> AddShowtime(ShowtimeDTO newShowtime)
         {
-            try
-            {
+            //try
+            //{
                 using (var context = new CinemaManagementProjectEntities())
                 {
                     //Uncomment when release
@@ -94,8 +95,8 @@ namespace CinemaManagementProject.Model.Service
                         {
                             SeatId = seatId,
                             ShowTimeId = showtime.Id,
-                            SeatStatus = false,
-                        }) ;
+                            SeatStatus = false
+                        });
                     }
                     context.SeatSettings.AddRange(seatSetList);
 
@@ -104,12 +105,12 @@ namespace CinemaManagementProject.Model.Service
                     newShowtime.Id = showtime.Id;
                     return (true, "Thêm suất chiếu thành công");
                 }
-            }
-            catch (Exception e)
-            {
-                return (false, "Lỗi hệ thống" + e.Message);
+            //}
+            //catch (Exception e)
+            //{
+            //    return (false, "Lỗi hệ thống" + e.Message);
 
-            }
+            //}
         }
         public async Task<(bool IsSuccess, string message)> DeleteShowtime(int showtimeId)
         {
@@ -123,13 +124,19 @@ namespace CinemaManagementProject.Model.Service
                     {
                         return (false, "Suất chiếu không tồn tại!");
                     }
+                    List<Ticket> listTicket = context.Tickets.ToList();
+                    foreach(Ticket ticket in listTicket)
+                    {
+                        if(ticket.ShowTimeId == showtimeId)
+                        {
+                            ticket.ShowTimeId = null;
+                        }    
+                    }    
                     context.ShowTimes.Remove(show);
                     await context.SaveChangesAsync();
                 }
-
-
             }
-            catch (Exception)
+            catch (Exception e)
             {
                 return (false, "Lỗi hệ thống");
             }

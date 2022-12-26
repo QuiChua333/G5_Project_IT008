@@ -58,6 +58,18 @@ namespace CinemaManagementProject.ViewModel.AdminVM.ShowtimeManagementVM
             get { return _IsFree; }
             set { _IsFree = value; OnPropertyChanged(); }
         }
+        private int _isBooked;
+        public int isBooked
+        {
+            get { return _isBooked; }
+            set { _isBooked = value; OnPropertyChanged(); }
+        }
+        private int _isReady;
+        public int isReady
+        {
+            get { return _isReady; }
+            set { _isReady = value; OnPropertyChanged(); }
+        }
         public ICommand LoadInfor_EditShowtime { get; set; }
         public ICommand CloseEditCM { get; set; }
         public ICommand LoadSeatCM { get; set; }
@@ -97,12 +109,11 @@ namespace CinemaManagementProject.ViewModel.AdminVM.ShowtimeManagementVM
         {
             p._movieName.Text = SelectedItem.FilmName;
             p._ShowtimeDate.Text = SelectedDate.ToString("dd-MM-yyyy");
-
             if (SelectedRoomId != -1)
                 p._ShowtimeRoom.Text = SelectedRoomId.ToString();
-
-            ListShowtimeofMovie = new ObservableCollection<ShowtimeDTO>(SelectedItem.ShowTimes);
-
+           
+           ListShowtimeofMovie = new ObservableCollection<ShowtimeDTO>(SelectedItem.ShowTimes);
+  
             moviePrice = 0;
         }
         public async Task GenerateSeat()
@@ -128,20 +139,34 @@ namespace CinemaManagementProject.ViewModel.AdminVM.ShowtimeManagementVM
             ListSeat2 = new ObservableCollection<SeatSettingDTO>();
             IsBought = 0;
             IsFree = 0;
+            
+            //foreach (var item in ListSeat)
+            //{
+            //    if (item.SeatPosition.Length == 2 && item.SeatPosition[1] < '3')
+            //    {
+            //        ListSeat2.Add(item);
+            //    }
+            //    else
+            //    {
+            //        ListSeat1.Add(item);
+            //    }
+            //    if (item.SeatStatus == true)
+            //        IsBought++;
+            //}
+            //IsFree = ListSeat.Count - IsBought;
             foreach (var item in ListSeat)
             {
-                if (item.SeatPosition.Length == 2 && item.SeatPosition[1] < '3')
-                {
-                    ListSeat2.Add(item);
-                }
-                else
+                if (item.SeatPosition.Length == 2 && item.SeatPosition[1] < '4')
                 {
                     ListSeat1.Add(item);
                 }
-                if (item.SeatStatus == true)
-                    IsBought++;
+                else
+                {
+                    ListSeat2.Add(item);
+                }
             }
-            IsFree = ListSeat.Count - IsBought;
+
+
         }
     }
 }
