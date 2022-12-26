@@ -127,9 +127,9 @@
                                 Style="{StaticResource styleButton}" 
                                 Name="cbbFilter"
                                 Margin="0,0,0,-3" >
-                        <ComboBoxItem Content="Mã khách hàng" />
-                        <ComboBoxItem Content="Tên khách hàng" />
-                        <ComboBoxItem Content="Số điện thoại" />
+                        <ComboBoxItem FontWeight="SemiBold" Foreground="Black" Content="Mã khách hàng" />
+                        <ComboBoxItem FontWeight="SemiBold" Foreground="Black" Content="Tên khách hàng" />
+                        <ComboBoxItem FontWeight="SemiBold" Foreground="Black" Content="Số điện thoại" />
                     </ComboBox>
                 </Border>
                 <Border CornerRadius="12"
@@ -164,9 +164,9 @@
                                                    CommandParameter="{Binding ElementName=periodbox1}" />
                             </i:EventTrigger>
                         </i:Interaction.Triggers>
-                        <ComboBoxItem Content="Toàn bộ" FontSize="15"/>
-                        <ComboBoxItem Content="Theo năm" FontSize="15"/>
-                        <ComboBoxItem Content="Theo tháng" FontSize="15"/>
+                        <ComboBoxItem FontWeight="SemiBold" Foreground="Black" Content="Toàn bộ" FontSize="15"/>
+                        <ComboBoxItem FontWeight="SemiBold" Foreground="Black" Content="Theo năm" FontSize="15"/>
+                        <ComboBoxItem FontWeight="SemiBold" Foreground="Black" Content="Theo tháng" FontSize="15"/>
                     </ComboBox>
                 </Border>
                 <Border CornerRadius="12"
@@ -233,7 +233,10 @@
                             </ListView.ItemContainerStyle>
                             <ListView.View>
                                 <GridView >
-                                    <GridViewColumn Header="ID" Width="80">
+                                    <GridViewColumn Width="80">
+                                        <GridViewColumn.Header>
+                                            <TextBlock Text="ID" FontSize="14" FontWeight="SemiBold" Foreground="Black"/>
+                                        </GridViewColumn.Header>
                                         <GridViewColumn.CellTemplate >
                                             <DataTemplate>
                                                 <TextBlock Text="{Binding Id}"
@@ -243,7 +246,10 @@
                                             </DataTemplate>
                                         </GridViewColumn.CellTemplate>
                                     </GridViewColumn>
-                                    <GridViewColumn Header="Tên khách hàng" Width="190" >
+                                    <GridViewColumn Width="190" >
+                                        <GridViewColumn.Header>
+                                            <TextBlock Text="Tên khách hàng" FontSize="14" FontWeight="SemiBold" Foreground="Black"/>
+                                        </GridViewColumn.Header>
                                         <GridViewColumn.CellTemplate>
                                             <DataTemplate>
                                                 <TextBlock Text="{Binding CustomerName}" 
@@ -253,7 +259,10 @@
                                             </DataTemplate>
                                         </GridViewColumn.CellTemplate>
                                     </GridViewColumn>
-                                    <GridViewColumn Header="Số điện thoại" Width="160"  >
+                                    <GridViewColumn Width="160">
+                                        <GridViewColumn.Header>
+                                            <TextBlock Text="Số điện thoại" FontSize="14" FontWeight="SemiBold" Foreground="Black"/>
+                                        </GridViewColumn.Header>
                                         <GridViewColumn.CellTemplate>
                                             <DataTemplate>
                                                 <TextBlock Text="{Binding PhoneNumber}" 
@@ -263,7 +272,10 @@
                                             </DataTemplate>
                                         </GridViewColumn.CellTemplate>
                                     </GridViewColumn>
-                                    <GridViewColumn Header="Email" Width="150">
+                                    <GridViewColumn Width="150">
+                                        <GridViewColumn.Header>
+                                            <TextBlock Text="Email" FontSize="14" FontWeight="SemiBold" Foreground="Black"/>
+                                        </GridViewColumn.Header>
                                         <GridViewColumn.CellTemplate>
                                             <DataTemplate>
                                                 <TextBlock Text="{Binding Email}" 
@@ -273,7 +285,10 @@
                                             </DataTemplate>
                                         </GridViewColumn.CellTemplate>
                                     </GridViewColumn>
-                                    <GridViewColumn Header="Ngày đăng ký" Width="165" >
+                                    <GridViewColumn Width="165" >
+                                        <GridViewColumn.Header>
+                                            <TextBlock Text="Ngày đăng ký" FontSize="14" FontWeight="SemiBold" Foreground="Black"/>
+                                        </GridViewColumn.Header>
                                         <GridViewColumn.CellTemplate>
                                             <DataTemplate>
                                                 <TextBlock Text="{Binding FirstDate, StringFormat=dd/MM/yyyy}" 
@@ -283,7 +298,10 @@
                                             </DataTemplate>
                                         </GridViewColumn.CellTemplate>
                                     </GridViewColumn>
-                                    <GridViewColumn Header="Chi tiêu tháng" Width="170">
+                                    <GridViewColumn Width="170">
+                                        <GridViewColumn.Header>
+                                            <TextBlock Text="Chi tiêu tháng" FontSize="14" FontWeight="SemiBold" Foreground="Black"/>
+                                        </GridViewColumn.Header>
                                         <GridViewColumn.CellTemplate>
                                             <DataTemplate>
                                                 <TextBlock Text="{Binding Expense}" 

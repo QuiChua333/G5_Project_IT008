@@ -135,8 +135,10 @@
                         </ListView.ItemContainerStyle>
                         <ListView.View>
                             <GridView>
-                                <GridViewColumn Header="Sự cố"
-                                                Width="500">
+                                <GridViewColumn Width="500">
+                                    <GridViewColumn.Header>
+                                        <TextBlock Text="Sự cố" FontSize="14" FontWeight="SemiBold" Foreground="Black"/>
+                                    </GridViewColumn.Header>
                                     <GridViewColumn.CellTemplate>
                                         <DataTemplate>
                                             <StackPanel Orientation="Horizontal">
@@ -172,8 +174,10 @@
                                         </DataTemplate>
                                     </GridViewColumn.CellTemplate>
                                 </GridViewColumn>
-                                <GridViewColumn Header="Ngày nhận"
-                                                Width="150">
+                                <GridViewColumn Width="150">
+                                    <GridViewColumn.Header>
+                                        <TextBlock Text="Ngày nhận" FontSize="14" FontWeight="SemiBold" Foreground="Black"/>
+                                    </GridViewColumn.Header>
                                     <GridViewColumn.CellTemplate>
                                         <DataTemplate>
                                             <TextBlock Text="{Binding SubmittedAt, StringFormat=dd/MM/yyyy}"
@@ -182,8 +186,10 @@
                                         </DataTemplate>
                                     </GridViewColumn.CellTemplate>
                                 </GridViewColumn>
-                                <GridViewColumn Header="Trạng thái"
-                                            Width="170">
+                                <GridViewColumn Width="170">
+                                    <GridViewColumn.Header>
+                                        <TextBlock Text="Trạng thái" FontSize="14" FontWeight="SemiBold" Foreground="Black"/>
+                                    </GridViewColumn.Header>
                                     <GridViewColumn.CellTemplate>
                                         <DataTemplate>
                                             <Border BorderThickness="1"
