@@ -52,7 +52,7 @@ namespace CinemaManagementProject.Utils
 
                 return uploadResult.SecureUrl.AbsoluteUri;
             }
-            catch (System.Exception e)
+            catch (Exception)
             {
                 return null;
             }
