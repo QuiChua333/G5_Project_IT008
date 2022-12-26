@@ -37,7 +37,7 @@
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="6*"/>
+            <RowDefinition Height="7*"/>
         </Grid.RowDefinitions>
         <Rectangle 
             x:Name="FoodPageView"
