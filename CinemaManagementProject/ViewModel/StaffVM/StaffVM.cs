@@ -73,10 +73,14 @@ namespace CinemaManagementProject.ViewModel.StaffVM
         public ICommand SwitchToSettingTab { get; set; }
         private void OrderFood(object obj)
         {
-            CurrentView = new OrderFoodManagementVM.OrderFoodManagementVM();
             OrderFoodManagementVM.OrderFoodManagementVM.checkOnlyFoodOfPage = true;
+            CurrentView = new OrderFoodManagementVM.OrderFoodManagementVM();
         }
-        private void FilmBooking(object obj) => CurrentView = new FilmBookingVM.FilmBookingVM();
+        private void FilmBooking(object obj)
+        {
+            OrderFoodManagementVM.OrderFoodManagementVM.checkOnlyFoodOfPage = false;
+            CurrentView = new FilmBookingVM.FilmBookingVM();  
+        } 
         private void Trouble(object obj) => CurrentView = new TroubleStaffVM.TroublePageViewModel();
         public StaffVM()
         {
