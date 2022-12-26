@@ -60,7 +60,7 @@
                 </Border>
 
                 <Label  Content="THANH TOÁN HÓA ĐƠN" 
-                            FontSize="25" 
+                            FontSize="30" 
                             Foreground="#8DC1F0"
                             FontFamily="{StaticResource MaterialDesignFont}"
                             FontWeight="Bold"

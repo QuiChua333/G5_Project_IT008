@@ -401,12 +401,12 @@ namespace CinemaManagementProject.ViewModel.StaffVM.TicketBillVM
                     if (OrderFoodManagementVM.OrderFoodManagementVM.checkOnlyFoodOfPage)
                     {
                         StaffWindow tk = Application.Current.Windows.OfType<StaffWindow>().FirstOrDefault();
-                        tk.Content.Content = new FoodPage();
+                        tk.Content.Content = new OrderFoodPage();
                     }
                     else
                     {
                         TicketWindow tk = Application.Current.Windows.OfType<TicketWindow>().FirstOrDefault();
-                        tk.TicketBookingFrame.Content = new FoodPage();
+                        tk.TicketBookingFrame.Content = new OrderFoodPage();
                     }
                 }
                 catch (System.Data.Entity.Core.EntityException e)
