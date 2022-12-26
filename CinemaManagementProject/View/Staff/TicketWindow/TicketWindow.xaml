@@ -14,7 +14,8 @@
         ResizeMode="NoResize"
         Name="Ticket_Window"
         WindowStartupLocation="CenterScreen"
-        AllowsTransparency="True">
+        AllowsTransparency="True"
+        MouseLeftButtonDown="EditWindow_MouseLeftButtonDown">
     <Border CornerRadius="10" Background="#ffffff" BorderBrush="Gray" BorderThickness="0.3">
         <Border.Effect>
             <DropShadowEffect BlurRadius="10" Direction="270" Color="Black" ShadowDepth="4" Opacity="0.25"/>
@@ -22,7 +23,7 @@
         <Grid>
             <Grid>
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="40"/>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
                 <Grid Grid.Row="0">
@@ -33,23 +34,23 @@
                         </i:EventTrigger>
                     </i:Interaction.Triggers>
                     <Button 
-                        Background="Transparent"
-                        Width="35"
-                        Height="auto"
-                        Padding="0"
-                        BorderThickness="0"
-                        HorizontalAlignment="Right"
-                        Margin="0,5,3,0"
-                        Command="{Binding CloseTicketWindowCM}"
-                        CommandParameter="{Binding ElementName=Ticket_Window}">
+                    Background="Transparent"
+                    
+                    Height="auto"
+                    Padding="0"
+                    BorderThickness="0"
+                    HorizontalAlignment="Right"
+                    Margin="0,0,25,0" Click="Button_Click_1"
+                    >
                         <materialDesign:PackIcon Kind="Close" 
-                                     Height="25"
-                                     Width="25"
+                                     Height="30"
+                                     Width="30"
                                      VerticalAlignment="Center"
-                                     Foreground="#000000" 
                                      HorizontalAlignment="Right"
-                                     Margin="5,0"/>
+                                     Foreground="#E6C067"
+                                     FontWeight="Bold"/>
                     </Button>
+
                     <Button 
                     Background="Transparent"
                     Width="30"
@@ -57,36 +58,31 @@
                     Padding="0"
                     BorderThickness="0"
                     HorizontalAlignment="Right"
-                    Margin="0,5,40,0"
-                    >
-                        <i:Interaction.Triggers>
-                            <i:EventTrigger EventName="MouseLeftButtonDown">
-                                <i:InvokeCommandAction Command="{Binding MinimizeTicketWindowCM}"
-                                                       CommandParameter="{Binding ElementName=Ticket_Window}" />
-                            </i:EventTrigger>
-                        </i:Interaction.Triggers>
+                    Margin="0,5,70,0"
+                    Click="Button_Click">
                         <materialDesign:PackIcon Kind="WindowMinimize" 
-                                     Height="25"
-                                     Width="25"
+                                     Height="30"
+                                     Width="30"
                                      VerticalAlignment="Center"
-                                     Foreground="#000000" 
+                                     Foreground="#E6C067"
+                                     
                                      HorizontalAlignment="Right"
-                                     Margin="5,0"/>
+                                     />
                     </Button>
                 </Grid>
-            </Grid>
-
-            <Frame x:Name="TicketBookingFrame"
-                   Height="720"
+                <Frame x:Name="TicketBookingFrame"
                    Grid.Row="1"
                    NavigationUIVisibility="Hidden"
-                   Margin="0,0,0.4,0">
-                <i:Interaction.Triggers>
-                    <i:EventTrigger EventName="Loaded">
-                        <i:InvokeCommandAction Command="{Binding LoadTicketBookingPageCM}" />
-                    </i:EventTrigger>
-                </i:Interaction.Triggers>
-            </Frame>
+                   >
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="Loaded">
+                            <i:InvokeCommandAction Command="{Binding LoadTicketBookingPageCM}" />
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </Frame>
+            </Grid>
+
+            
 
         </Grid>
 

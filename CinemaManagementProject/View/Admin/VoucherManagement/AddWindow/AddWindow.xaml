@@ -7,13 +7,13 @@
         xmlns:local="clr-namespace:CinemaManagementProject.View.Admin.VoucherManagement.AddWindow"
         xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
         mc:Ignorable="d"
-        Title="AddWindow" Height="540" Width="940" MinWidth="880" MinHeight="500"
+        Title="AddWindow" Height="600" Width="940" MinWidth="880" MinHeight="500"
         WindowStyle="None"
         Background="Transparent"
         WindowStartupLocation="CenterScreen"
         ResizeMode="CanResizeWithGrip"
         AllowsTransparency="True"
-        DataContext="{StaticResource VoucherVM}">
+        DataContext="{StaticResource VoucherVM}" MouseLeftButtonDown="Window_MouseLeftButtonDown">
 
     <Border CornerRadius="15" Background="#F5F5F5" BorderBrush="Gray" BorderThickness="0.3">
         <Border.Effect>
@@ -29,23 +29,25 @@
                 <RowDefinition  Height="10" />
             </Grid.RowDefinitions>
 
-            <Grid Grid.Row="0">
-                <Button
+            <Grid Grid.Row="1">
+                <Button 
                     Background="Transparent"
-                    Width="40"
+                    
                     Height="auto"
                     Padding="0"
                     BorderThickness="0"
                     HorizontalAlignment="Right"
-                    
-                    Margin="0,5,5,0" Click="Button_Click">
+                    Margin="0,0,15,0" Click="Button_Click"
+                    >
                     <materialDesign:PackIcon Kind="Close" 
-                                     Height="30"
-                                     Width="30"
+                                     Height="35"
+                                     Width="35"
                                      VerticalAlignment="Center"
-                                     Foreground="#000000" 
+                                     
                                      HorizontalAlignment="Right"
-                                     Margin="5,0"/>
+                                     
+                                     Foreground="#8DC1F0"
+                                     FontWeight="Bold"/>
                 </Button>
             </Grid>
 

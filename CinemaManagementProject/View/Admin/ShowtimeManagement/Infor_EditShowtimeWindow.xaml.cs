@@ -1,4 +1,5 @@
-﻿using CinemaManagementProject.ViewModel.AdminVM.ShowtimeManagementVM;
+﻿using CinemaManagementProject.Model;
+using CinemaManagementProject.ViewModel.AdminVM.ShowtimeManagementVM;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,7 +22,7 @@ namespace CinemaManagementProject.View.Admin.ShowtimeManagement
     /// </summary>
     public partial class Infor_EditShowtimeWindow : Window
     {
-        Border SelectedShowtime = null;
+        Border ShowTimeSelected = null;
 
         public Infor_EditShowtimeWindow()
         {
@@ -32,12 +33,22 @@ namespace CinemaManagementProject.View.Admin.ShowtimeManagement
 
         private void Border_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
-            if (SelectedShowtime != null)
-                SelectedShowtime.BorderBrush = new SolidColorBrush(Colors.Black);
+            if (ShowTimeSelected != null)
+            {
+                ShowTimeSelected.Background = (SolidColorBrush)new BrushConverter().ConvertFromString("#D9D9D9");
+               
+                ShowTimeSelected = null;
+               
+                return;
+            }
 
-            SelectedShowtime = (Border)sender;
-
-            SelectedShowtime.BorderBrush = new SolidColorBrush(Colors.Red);
+            if (ShowTimeSelected == null)
+            {
+                ShowTimeSelected = (Border)sender;
+                ShowTimeSelected.Background = (SolidColorBrush)new BrushConverter().ConvertFromString("#F19D9D");
+               
+                return;
+            }
         }
 
 

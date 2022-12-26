@@ -29,7 +29,7 @@ namespace CinemaManagementProject.ViewModel.StaffVM.TroubleStaffVM
         {
             IsImageChanged = false;
             TroubleType = SelectedItem.TroubleType;
-            w1.staffname.Text = SelectedItem.StaffName;
+            w1.staffName.Text = SelectedItem.StaffName;
             w1.cbxStatusError.Text = SelectedItem.TroubleStatus;
             w1.submitdate.Text =( (DateTime)SelectedItem.SubmittedAt).ToShortDateString();
             Level.Content = SelectedItem.Level;
@@ -49,7 +49,7 @@ namespace CinemaManagementProject.ViewModel.StaffVM.TroubleStaffVM
                     TroubleType = TroubleType,
                     Level = Level.Content.ToString(),
                     Description = Description,
-                    //StaffId = MainStaffViewModel.CurrentStaff.Id,
+                    StaffId = StaffVM.currentStaff.Id,
                 };
 
                 if (IsImageChanged)

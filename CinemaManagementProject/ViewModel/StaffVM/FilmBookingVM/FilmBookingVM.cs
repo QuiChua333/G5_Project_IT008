@@ -220,7 +220,7 @@ namespace CinemaManagementProject.ViewModel.StaffVM.FilmBookingVM
                             if (SelectedItem != null)
                             {
                                 wd._ShowTimeList.ItemsSource = SelectedItem.ShowTimes;
-                                wd._ImgFilm.Source = await CloudinaryService.Ins.LoadImageFromURL(SelectedItem.Image);
+                                wd._ImgFilm.ImageSource = await CloudinaryService.Ins.LoadImageFromURL(SelectedItem.Image);
                                 wd._ShowDate.Content = SelectedDate.ToString("dd-MM-yyyy");
                                 wd._TxtFilm.Content = SelectedItem?.FilmName ?? "";
                                 wd.ShowDialog();

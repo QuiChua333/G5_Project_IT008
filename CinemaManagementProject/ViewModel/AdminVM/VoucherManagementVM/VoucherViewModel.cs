@@ -16,6 +16,7 @@ using System.Windows.Media;
 using CinemaManagementProject.View.Admin.VoucherManagement.EditWindow;
 using CinemaManagementProject.Utils;
 
+
 namespace CinemaManagementProject.ViewModel.AdminVM.VoucherManagementVM
 {
     public partial class VoucherViewModel : BaseViewModel
@@ -71,10 +72,12 @@ namespace CinemaManagementProject.ViewModel.AdminVM.VoucherManagementVM
         public ICommand ResetSelectedNumberCM { get; set; }
         public ICommand CalculateNumberOfVoucherCM { get; set; }
         public ICommand MoreEmailCM { get; set; }
+        public ICommand AcceptEmailCM { get; set; }
         public ICommand ShowListEmailCM { get; set; }
         public ICommand ReleaseVoucherCM { get; set; }
         public ICommand RefreshEmailListCM { get; set; }
         public ICommand LessEmailCM { get; set; }
+        public ICommand CloseWindowCM { get; set; }
 
         public VoucherViewModel()
         {
@@ -532,33 +535,53 @@ namespace CinemaManagementProject.ViewModel.AdminVM.VoucherManagementVM
                 ListCustomerEmail.RemoveAt(selectedWaitingVoucher);
                 ReleaseVoucherList = new ObservableCollection<VoucherDTO>(GetRandomUnreleasedCode(ListCustomerEmail.Count * int.Parse(PerCus.Content.ToString())));
             });
+            AcceptEmailCM = new RelayCommand<Window>((p) => { return true; }, (p) =>
+            {
+                foreach (var item in ListCustomerEmail)
+                {
+                    if (!RegexUtilities.IsValidEmail(item.Email) || item.Email=="")
+                    {
+                        CustomMessageBox.ShowOk("Email không hợp lệ!", "Cảnh báo", "Ok", CustomMessageBoxImage.Warning);
+                        return;
+                    }
+                }
+                for (int i = ListCustomerEmail.Count - 2; i >= 0; i--)
+                {
+                    if (ListCustomerEmail[ListCustomerEmail.Count - 1].Email == ListCustomerEmail[i].Email)
+                    {
+                        CustomMessageBox.ShowOk("Email đã bị trùng!", "Cảnh báo", "Ok", CustomMessageBoxImage.Warning);
+
+                        return;
+                    }
+                }
+                p.Close();
+
+            });
             ShowListEmailCM = new RelayCommand<object>((p) => { return true; }, (p) =>
             {
                 ListEmail w = new ListEmail();
-                //switch (ReleaseCustomerList.Content.ToString().Trim())
-                //{
-                //    case "Top 5 khách hàng trong tháng":
-                //        {
-                //            VoucherViewModel.NumberCustomer = 5;
-                            
-                            
-                //                w.addnewemail.IsEnabled = false;
-                          
-                //            return;
-                //        }
-                //    case "Khách hàng mới trong tháng":
-                //        {
-                //            VoucherViewModel.NumberCustomer = 0;
-                //            w.addnewemail.IsEnabled = false;
-                //            return;
-                //        }
-                //    case "Khác":
-                //        {
-                //            VoucherViewModel.NumberCustomer = -1;
-                //            w.addnewemail.IsEnabled = true;
-                //            return;
-                //        }
-                //}
+                switch (ReleaseCustomerList.Tag.ToString())
+                {
+                    case "TOP_5_CUSTOMER":
+                        {
+                            VoucherViewModel.NumberCustomer = 5;
+                            w.addnewemail.IsEnabled = false;
+
+                            break;
+                        }
+                    case "NEW_CUSTOMER":
+                        {
+                            VoucherViewModel.NumberCustomer = 0;
+                            w.addnewemail.IsEnabled = false;
+                            break;
+                        }
+                    case "COMMON":
+                        {
+                            VoucherViewModel.NumberCustomer = -1;
+                            w.addnewemail.IsEnabled = true;
+                            break;
+                        }
+                }
                 w.ShowDialog();
             });
             ReleaseVoucherCM = new RelayCommand<ReleaseVoucher>((p) =>
@@ -582,8 +605,23 @@ namespace CinemaManagementProject.ViewModel.AdminVM.VoucherManagementVM
             {
                 await RefreshEmailList();
             });
+            CloseWindowCM = new RelayCommand<Window>((p) => { return true; }, (p) =>
+            {
+                if (ReleaseCustomerList.Tag.ToString() == "COMMON")
+                {
+                    if (ListCustomerEmail.Count > 0)
+                    {
 
-          
+                        ListCustomerEmail.RemoveAt(ListCustomerEmail.Count - 1);
+                        ReleaseVoucherList = new ObservableCollection<VoucherDTO>(GetRandomUnreleasedCode(ListCustomerEmail.Count * int.Parse(PerCus.Content.ToString())));
+                    }
+                }
+                
+                p.Close();
+
+            });
+
+
         }
 
 

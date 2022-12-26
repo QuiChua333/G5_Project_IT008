@@ -37,8 +37,16 @@
     </i:Interaction.Triggers>
     <Border Background="White" 
             CornerRadius="20"
-            BorderBrush="Gray"
+            BorderBrush="DarkGray"
             BorderThickness="1">
+        <Border.Effect>
+            <DropShadowEffect
+                                BlurRadius="10"
+                                Color="Black"
+                                ShadowDepth="4"
+                                Opacity=".25"
+                                Direction="270"/>
+        </Border.Effect>
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="60"></RowDefinition>
@@ -46,19 +54,24 @@
             </Grid.RowDefinitions>
             <Grid Grid.Row="0" 
                   VerticalAlignment="Center"  >
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="356.228"></ColumnDefinition>
-                    <ColumnDefinition Width="143.772"/>
-                    <ColumnDefinition Width="*"></ColumnDefinition>
-                </Grid.ColumnDefinitions>
-                <TextBlock Grid.Column="0" 
-                           Text="THÊM NHÂN VIÊN"  
-                           FontFamily="{StaticResource MaterialDesignFont}" 
-                           FontSize="28" 
-                           FontWeight="Bold" 
-                           Foreground="#FF80CDED" 
-                           HorizontalAlignment="Left"
-                           Margin="134,0,0,0" Grid.ColumnSpan="2"/>
+
+                <Border  Margin="30 0 30 0"              
+                        BorderBrush="#8DC1F0"
+                        BorderThickness="0 0 0 3">
+                    <Label Grid.Column="0" 
+                               Content="THÊM NHÂN VIÊN"  
+                               FontFamily="{StaticResource MaterialDesignFont}" 
+                               FontSize="28" 
+                               FontWeight="Bold" 
+                               Foreground="#FF80CDED" 
+                               HorizontalAlignment="Center"
+                               Margin="20,0,0,0" Grid.ColumnSpan="2" Width="263">
+                        <Label.Effect>
+                            <DropShadowEffect BlurRadius="1" Direction="-45" Color="#000000" ShadowDepth="1.5" Opacity="0.5"/>
+                        </Label.Effect>
+                    </Label>
+
+                </Border>
 
             </Grid>
             <Grid Grid.Row="1">

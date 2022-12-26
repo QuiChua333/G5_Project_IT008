@@ -196,6 +196,7 @@ namespace CinemaManagementProject.ViewModel.StaffVM.TroubleStaffVM
             LoadEditTroubleWindowCM = new RelayCommand<EditTroubleWindow>((p) => { return true; }, (p) =>
             {
                 EditTroubleWindow w1 = new EditTroubleWindow();
+
                 LoadEditTrouble(w1);
                 w1.ShowDialog();
             });

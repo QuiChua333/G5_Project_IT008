@@ -36,7 +36,15 @@
     <Border Background="White"
             BorderThickness="1"
             CornerRadius="10"
-            BorderBrush="Gray">
+            BorderBrush="DarkGray">
+        <Border.Effect>
+            <DropShadowEffect
+                                BlurRadius="10"
+                                Color="Black"
+                                ShadowDepth="4"
+                                Opacity=".25"
+                                Direction="270"/>
+        </Border.Effect>
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="61*" />
@@ -48,12 +56,18 @@
             <Grid Grid.Row="0">
                 <Label  Content=" CHI TIẾT HÓA ĐƠN"
                         FontFamily="{StaticResource MaterialDesignFont}" 
-                        FontSize="28" 
+                        FontSize="32" 
                         FontWeight="Bold" 
-                        Foreground="#FF80CDED"
-                        BorderThickness="0,0,0,0.5"
-                        BorderBrush="Black"
-                        Padding="10,10,0,0" />
+                        Foreground="#8DC1F0"
+                        BorderThickness="0,0,0,3"
+                        BorderBrush="#8DC1F0"
+                        Padding="40,10,40,0" 
+                        HorizontalAlignment="Center" 
+                        VerticalAlignment="Center">
+                    <Label.Effect>
+                        <DropShadowEffect BlurRadius="1" Direction="-45" Color="#000000" ShadowDepth="1.5" Opacity="0.5"/>
+                    </Label.Effect>
+                </Label>
                 <StackPanel Orientation="Horizontal"
                             VerticalAlignment="Top"
                             HorizontalAlignment="Right"
@@ -67,9 +81,12 @@
                             BorderBrush="Transparent"
                             MouseEnter="Button_MouseEnter_1"
                             MouseLeave="Button_MouseLeave_1"
+                            Margin="05 14 0 0"
                             materialDesign:ButtonAssist.CornerRadius="0,10,0,0">
                         <materialDesign:PackIcon Kind="WindowClose"
-                                                 Padding="0" />
+                                                 Padding="0" 
+                                                 Height="30"
+                                                 Width="30"/>
                     </Button>
                 </StackPanel>
             </Grid>
@@ -89,41 +106,62 @@
 
                     <!--image-->
                     <Border Grid.Row="0"
-                            BorderThickness="0,0,0,0.5"
-                            BorderBrush="Gray">
-                        <Border BorderBrush="Gray"
+                            BorderThickness="0,0,0,1"
+                            BorderBrush="#8DC1F0"
+                            Margin="20 0 20 0">
+                        <Border BorderBrush="#8DC1F0"
                                 BorderThickness="0,0,0,0.5">
                             <Label Content="Thông tin sản phẩm"
                                    FontSize="25"
+                                   FontFamily="{StaticResource MaterialDesignFont}"
                                    FontWeight="Bold"
-                                   Margin="20,0,0,0" />
+                                   Margin="20,08,0,0" />
                         </Border>
 
                     </Border>
                     <Border Grid.Row="1"
                             BorderThickness="0,0,0,1"
-                            BorderBrush="Gray"
-                            Margin="10,0,10,0">
+                            BorderBrush="#8DC1F0"
+                            Margin="20,0,20,0">
                         <ScrollViewer VerticalScrollBarVisibility="Auto"
                                       x:Name="scrollview">
                             <ItemsControl ItemsSource="{Binding BillDetail.ProductBillInfoes}">
                                 <ItemsControl.ItemTemplate>
                                     <DataTemplate>
-                                        <Border  Height="80"
-                                                 BorderBrush="LightGray"
+                                        <Border  Height="70"
+                                                 BorderBrush="#8DC1F0"
                                                  BorderThickness="0,0,0,1">
                                             <Grid>
                                                 <Grid.ColumnDefinitions>
                                                     <ColumnDefinition Width="70*" />
                                                     <ColumnDefinition Width="30*" />
                                                 </Grid.ColumnDefinitions>
-                                                
-                                                
+
+                                                <StackPanel Orientation="Horizontal"
+                                                            Grid.Column="0">
+                                                    <StackPanel>
+                                                        <TextBlock Text="{Binding ProductName}"
+                                                                   FontSize="20" />
+                                                        <StackPanel Orientation="Horizontal"
+                                                                    Margin="0,8,0,0">
+                                                            <TextBlock Text="{Binding Quantity}"
+                                                                       FontSize="20" />
+                                                            <TextBlock Text="x"
+                                                                       FontSize="18"
+                                                                       VerticalAlignment="Bottom"
+                                                                       Margin="3,0,0,1" />
+                                                            <TextBlock Text="{Binding PrizePerProductStr}"
+                                                                       VerticalAlignment="Bottom"
+                                                                       FontSize="20"
+                                                                       Margin="5,0,0,1" />
+                                                        </StackPanel>
+                                                    </StackPanel>
+                                                </StackPanel>
                                                 <StackPanel Grid.Column="1"
                                                             Orientation="Horizontal"
                                                             HorizontalAlignment="Right">
                                                     <TextBlock Text="{Binding TotalPriceStr}"
-                                                               FontSize="22" />
+                                                               FontSize="20" />
                                                     <TextBlock Text=""
                                                                FontSize="15" />
                                                 </StackPanel>
@@ -138,8 +176,8 @@
                     </Border>
                     <Border Grid.Row="2"
                             BorderThickness="0,0,0,1"
-                            BorderBrush="Gray"
-                            Margin="10,0,10,0">
+                            BorderBrush="#8DC1F0"
+                            Margin="20,0,20,0">
                         <StackPanel>
                             <StackPanel Orientation="Horizontal">
                                 <Grid Width="428">
@@ -165,7 +203,7 @@
 
             <!---Bill total-->
             <StackPanel Grid.Row="2"
-                        Margin="10">
+                        Margin="20 10 20 10">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition />
