@@ -76,10 +76,10 @@
                     x:Name="SearchBox"
                     materialDesign:HintAssist.Hint="Tìm kiếm"
                     Width="300"
-                    Height="54"
+                    Height="44"
                     IconSize="30"
-                    Corner="15"
-                    FontSize="16"
+                    Corner="10"
+                    FontSize="15"
                     HorizontalAlignment="Left"
                     SearchTextChange="SearchBox_SearchTextChange"
                 />
@@ -199,7 +199,7 @@
                                     </Rectangle>
                                     <Image Source="{Binding Image}"></Image>
                                     <Grid Grid.Row="1" Margin="3,0,0,0">
-                                        <StackPanel>
+                                        <StackPanel Margin="5,2,0,0">
                                             <TextBlock
                                                 FontFamily="{StaticResource MaterialDesignFont}"
                                                 FontWeight="Bold"

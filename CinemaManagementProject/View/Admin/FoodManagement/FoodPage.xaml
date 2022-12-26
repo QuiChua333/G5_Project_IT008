@@ -54,10 +54,10 @@
                 x:Name="SearchBox"
                 PlaceHolder="Tìm kiếm"
                 Width="400"
-                Height="54"
+                Height="44"
                 IconSize="30"
                 Corner="15"
-                FontSize="16"
+                FontSize="15"
                 Margin="40,0,0,0"
                 SearchTextChange="SearchBox_SearchTextChange"
             />

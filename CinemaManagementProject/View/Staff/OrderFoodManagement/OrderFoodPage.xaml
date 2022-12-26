@@ -67,7 +67,7 @@
                 HorizontalAlignment="Center"
                 VerticalAlignment="Center"
                 FontSize="28"
-                FontWeight="SemiBold"
+                FontWeight="Medium"
                 Foreground="Black"
             ><Run Text="Thanh toán"/></TextBlock>
         </Grid>
@@ -243,19 +243,19 @@
                         VerticalAlignment="Top"
                         FontFamily="{StaticResource MaterialDesignFont}"
                         FontSize="28"
-                        FontWeight="Bold"
+                        FontWeight="Medium"
                         Margin="40,0,0,0"
                         Height="32"
-                    >TỔNG</TextBlock>
-                        <TextBlock 
-                        HorizontalAlignment="Right"
-                        VerticalAlignment="Top"
-                        FontFamily="{StaticResource MaterialDesignFont}"
-                        FontSize="28"
-                        FontWeight="Bold"
-                        Margin="0,0,25,0"
-                        Text="{Binding TotalPrice}"
-                    ></TextBlock>
+                    >Tổng:</TextBlock>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Top">
+                            <TextBlock
+                                FontFamily="{StaticResource MaterialDesignFont}"
+                                FontSize="28"
+                                FontWeight="Medium"
+                                Text="{Binding TotalPrice}"
+                            ></TextBlock>
+                            <TextBlock Margin="5,0,25,0" FontSize="20" FontWeight="SemiBold" VerticalAlignment="Center">đ</TextBlock>
+                        </StackPanel>
                     </Grid>
                     <Grid Margin="0,15,0,0">
                         <Button Width="140" Style="{StaticResource CustomButton}" 
