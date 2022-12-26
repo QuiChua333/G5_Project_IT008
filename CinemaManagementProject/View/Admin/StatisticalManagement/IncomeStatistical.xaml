@@ -12,8 +12,9 @@
       xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
       d:DesignHeight="630" d:DesignWidth="1140"
       x:Name="mainPage"
+      FontFamily="{DynamicResource MaterialDesignFont}"
       Title="IncomeStatistical"
-      DataContext="{StaticResource StaffManagementVM}">
+      DataContext="{StaticResource StatisticalManagementVM}">
 
 
     <Page.Triggers>
@@ -34,7 +35,7 @@
 
     <Grid>
         <Grid>
-            <Border CornerRadius="20" Background="#54B435" Margin="20,10,20,10">
+            <Border CornerRadius="20"  Margin="20,10,20,10">
                 <Border.Effect>
                     <DropShadowEffect BlurRadius="14"
                                 Color="Black"
@@ -47,14 +48,14 @@
                         <RowDefinition Height="60"/>
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
-                    <Grid>
+                    <Grid HorizontalAlignment="Left" Margin="20,0,0,0">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition/>
                             <ColumnDefinition/>
                         </Grid.ColumnDefinitions>
 
                         <Grid Grid.Column="0"
-                              Width="200" Height="50" 
+                              Width="195" Height="40" 
                               HorizontalAlignment="Right" 
                               VerticalAlignment="Center" 
                               Margin="0,0,10,0" 
@@ -74,12 +75,13 @@
                             </Rectangle>
                             <Image Source="{StaticResource IconFilter}" Width="20" Height="20"></Image>
                             <ComboBox SelectedItem="{Binding SelectedIncomePeriod}"
-                                        Foreground="Black" 
+                                        Foreground="{StaticResource Gray1}" 
                                         Grid.Column="1" 
                                         Background="Transparent" 
                                         materialDesign:HintAssist.Hint="Lọc theo"
                                         FontFamily="{StaticResource MaterialDesignFont}" 
-                                        FontSize="16" FontWeight="Medium" 
+                                        FontSize="16" 
+                                        FontWeight="Medium" 
                                         Margin="0,0,10,0"
                                         SelectedIndex="0"
                                         x:Name="periodbox"
@@ -101,10 +103,10 @@
                         </Grid>
 
                         <Grid Grid.Column="1" 
-                              Width="200" Height="50" 
+                              Width="195" Height="40" 
                               HorizontalAlignment="Left" 
                               VerticalAlignment="Center" 
-                              Margin="10,0,0,0" 
+                              Margin="5,0,0,0" 
                               x:Name="_time"> 
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="40"/>
@@ -171,7 +173,8 @@
                                             <StackPanel Orientation="Horizontal">
                                                 <Label Content="Thu:"
                                                        FontWeight="Bold"
-                                                       FontSize="15" />
+                                                       Foreground="{StaticResource Gray1}"
+                                                       FontSize="16" />
                                                 <TextBox Text="{Binding ReveRate}"
                                                          BorderThickness="0"
                                                          IsHitTestVisible="False"
@@ -188,16 +191,22 @@
                                             </Grid.ColumnDefinitions>
 
                                             <StackPanel Grid.Column="0" Margin="5,0,0,0">
-                                                <Label Content="Vé" FontSize="18" />
+                                                <Label Content="Vé" FontSize="16" Foreground="{StaticResource Gray1}"/>
                                                 <Label Content="{Binding TicketPc}"
-                                                       FontWeight="Bold" />
+                                                       FontWeight="Bold" 
+                                                       FontSize="16"
+                                                       Foreground="{StaticResource Gray1}"/>
                                                 <Label Content="{Binding TicketReve}" />
                                             </StackPanel>
                                             <StackPanel Grid.Column="1" HorizontalAlignment="Center">
-                                                <Label Content="Sản phẩm" FontSize="18" />
+                                                <Label Content="Sản phẩm" FontSize="16" Foreground="{StaticResource Gray1}"/>
                                                 <Label Content="{Binding ProductPc}"
-                                                       FontWeight="Bold"/>
-                                                <Label Content="{Binding ProductReve}" />
+                                                       FontWeight="Bold"
+                                                       Foreground="{StaticResource Gray1}"
+                                                       FontSize="16"/>
+                                                <Label Content="{Binding ProductReve}"
+                                                       Foreground="{StaticResource Gray1}"
+                                                       FontSize="16"/>
                                             </StackPanel>
                                         </Grid>
                                     </Grid>
@@ -213,9 +222,11 @@
                                         <StackPanel Grid.Row="0">
                                             <Label Content="Chi:"
                                                         FontWeight="Bold"
-                                                        FontSize="18" />
+                                                        FontSize="16" 
+                                                   Foreground="{StaticResource Gray1}"
+                                                   />
                                             <TextBox Text="{Binding ExpeRate}"
-                                                         FontSize="18"
+                                                         FontSize="16"
                                                          IsHitTestVisible="False"
                                                          BorderThickness="0"
                                                          TextChanged="TextBox_TextChanged_1"/>
@@ -227,16 +238,22 @@
                                             </Grid.ColumnDefinitions>
 
                                             <StackPanel Grid.Column="0">
-                                                <Label Content="Sản phẩm" FontSize="18" />
+                                                <Label Content="Sản phẩm"  Foreground="{StaticResource Gray1}"
+                                                       FontSize="16" />
                                                 <Label Content="{Binding ProductExPc}"
-                                                           FontWeight="Bold" />
-                                                <Label Content="{Binding ProductExpe}" />
+                                                           FontWeight="Bold" Foreground="{StaticResource Gray1}"
+                                                       FontSize="16" />
+                                                <Label Content="{Binding ProductExpe}" Foreground="{StaticResource Gray1}"
+                                                       FontSize="16"/>
                                             </StackPanel>
                                             <StackPanel Grid.Column="1" HorizontalAlignment="Center">
-                                                <Label Content="Sửa chữa" FontSize="18" />
+                                                <Label Content="Sửa chữa" Foreground="{StaticResource Gray1}"
+                                                       FontSize="16" />
                                                 <Label Content="{Binding RepairPc}"
-                                                           FontWeight="Bold"/>
-                                                <Label Content="{Binding RepairExpe}" />
+                                                           FontWeight="Bold" Foreground="{StaticResource Gray1}"
+                                                       FontSize="16"/>
+                                                <Label Content="{Binding RepairExpe}" Foreground="{StaticResource Gray1}"
+                                                       FontSize="16" />
                                             </StackPanel>
                                         </Grid>
                                     </Grid>
@@ -255,7 +272,8 @@
 
                                     <StackPanel Grid.Row="0">
                                         <Label Content="Tổng thu chi (VND): "
-                                                   FontSize="15"
+                                                   Foreground="{StaticResource Gray1}"
+                                                       FontSize="16"
                                                    FontWeight="Bold"
                                                    Margin="10,10,0,0"
                                                    Grid.Row="0" />
@@ -269,7 +287,8 @@
                                         <StackPanel Grid.Column="0">
                                             <StackPanel Margin="10,0,0,0">
                                                 <Label Content="Thu"
-                                                       FontWeight="Bold" />
+                                                        Foreground="{StaticResource Gray1}"
+                                                       FontSize="16"/>
                                                 <StackPanel Width="250"
                                                         HorizontalAlignment="Left">
                                                     <ProgressBar BorderBrush="Transparent"
@@ -318,7 +337,8 @@
 
                                             <StackPanel Margin="10,10,0,0">
                                                 <Label Content="Chi"
-                                                   FontWeight="Bold" />
+                                                   Foreground="{StaticResource Gray1}"
+                                                       FontSize="16" />
                                                 <StackPanel Width="250"
                                                         HorizontalAlignment="Left">
                                                     <ProgressBar Minimum="0"
@@ -397,26 +417,34 @@
                                     </StackPanel.Resources>
 
                                     <StackPanel Orientation="Horizontal">
-                                        <TextBlock Text="Chu kỳ:" FontSize="16" FontWeight="Bold" Width="105" />
-                                        <TextBlock Text="{Binding Path=Text,ElementName=periodbox}" FontSize="16" />
+                                        <TextBlock Text="Chu kỳ:" Foreground="{StaticResource Gray1}"
+                                                       FontSize="16" FontWeight="Bold" Width="105" />
+                                        <TextBlock Text="{Binding Path=Text,ElementName=periodbox}" Foreground="{StaticResource Gray1}"
+                                                       FontSize="16" />
                                     </StackPanel>
                                     <StackPanel Orientation="Horizontal">
-                                        <TextBlock Text="Thời gian:" FontSize="16" FontWeight="Bold" Width="105" />
-                                        <TextBlock Text="{Binding Path=Text,ElementName=Timebox}" FontSize="16"/>
+                                        <TextBlock Text="Thời gian:" Foreground="{StaticResource Gray1}"
+                                                       FontSize="16" FontWeight="Bold" Width="105" />
+                                        <TextBlock Text="{Binding Path=Text,ElementName=Timebox}" Foreground="{StaticResource Gray1}"
+                                                       FontSize="16"/>
                                     </StackPanel>
                                     <StackPanel Orientation="Horizontal">
-                                        <TextBlock Text="Số hoá đơn:" FontSize="16" FontWeight="Bold" Width="105" />
-                                        <TextBlock Text="{Binding TotalBill}" FontSize="16"/>
+                                        <TextBlock Text="Số hoá đơn:" Foreground="{StaticResource Gray1}"
+                                                       FontSize="16" FontWeight="Bold" Width="105" />
+                                        <TextBlock Text="{Binding TotalBill}" Foreground="{StaticResource Gray1}"
+                                                       FontSize="16"/>
                                     </StackPanel>
                                     <StackPanel Orientation="Horizontal">
-                                        <TextBlock Text="Lợi nhuận:" FontSize="16" FontWeight="Bold" Width="105" />
-                                        <TextBlock Text="{Binding TrueIncome}" FontSize="16"/>
+                                        <TextBlock Text="Lợi nhuận:" Foreground="{StaticResource Gray1}"
+                                                       FontSize="16" FontWeight="Bold" Width="105" />
+                                        <TextBlock Text="{Binding TrueIncome}" Foreground="{StaticResource Gray1}"
+                                                       FontSize="16"/>
                                     </StackPanel>
                                 </StackPanel>
                             </materialDesign:Card>
                         </Grid>
                         <materialDesign:Card Grid.Column="1" 
-                                             Margin="10,0,0,0" 
+                                             Margin="10,10,0,10" 
                                              x:Name="cardRight"
                                              UniformCornerRadius="10">
                             <Grid>
@@ -437,7 +465,8 @@
                                     <lvc:CartesianChart.AxisY>
                                         <lvc:Axis Title="Triệu đồng"
                                               FontFamily="arial"
-                                              MinValue="0" />
+                                              MinValue="0"
+                                                />
                                     </lvc:CartesianChart.AxisY>
                                 </lvc:CartesianChart>
                             </Grid>

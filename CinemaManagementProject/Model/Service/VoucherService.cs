@@ -133,9 +133,9 @@ namespace CinemaManagementProject.Model.Service
                             VoucherCode = vR.VoucherCode,
                             VoucherStatus = vR.VoucherStatus,
                             VoucherReleaseId = (int)vR.VoucherReleaseId,
-                            UsedAt = (DateTime)vR.UsedAt.GetValueOrDefault(),
+                            UsedAt = vR.UsedAt,
                             CustomerName = vR.Customer?.CustomerName,
-                            ReleaseAt = (DateTime)vR.ReleaseAt.GetValueOrDefault(),
+                            ReleaseAt =vR.ReleaseAt,
                         }).ToList()
                     }, haveAnyUsedVoucher); ;
                 }

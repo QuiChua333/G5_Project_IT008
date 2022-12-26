@@ -37,7 +37,7 @@
     
     <Grid >
         <Grid>
-            <Border CornerRadius="20" Background="#54B435" Margin="10">
+            <Border CornerRadius="20" Margin="10">
                 <Border.Effect>
                     <DropShadowEffect BlurRadius="14"
                                 Color="Black"
@@ -65,10 +65,10 @@
                             </Grid.ColumnDefinitions>
 
                             <Grid Grid.Column="0"
-                                  Width="200" Height="50" 
-                                  HorizontalAlignment="Right" 
+                                  Width="195" Height="40" 
+                                  HorizontalAlignment="Left" 
                                   VerticalAlignment="Center" 
-                                  Margin="0,0,10,0">
+                                  Margin="10,0,0,0">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="40"/>
                                     <ColumnDefinition/>
@@ -84,7 +84,7 @@
                                 </Rectangle>
                                 <Image Source="{StaticResource IconFilter}" Width="20" Height="20"></Image>
                                 <ComboBox SelectedItem="{Binding SelectedRankingPeriod}"
-                                        Foreground="Black" 
+                                         Foreground="{StaticResource Gray1}" 
                                         Grid.Column="1" 
                                         materialDesign:HintAssist.Hint="Lọc theo"
                                         Background="Transparent" 
@@ -111,7 +111,7 @@
                             </Grid>
 
                             <Grid Grid.Column="1" 
-                                  Width="200" Height="50" 
+                                  Width="195" Height="40" 
                                   HorizontalAlignment="Left" 
                                   VerticalAlignment="Center" 
                                   Margin="10,0,0,0">
@@ -130,7 +130,7 @@
                                 </Rectangle>
                                 <Image Source="{StaticResource IconFilter}" Width="20" Height="20"></Image>
                                 <ComboBox x:Name="Time1"
-                                            Foreground="Black" 
+                                            Foreground="{StaticResource Gray1}"
                                             Grid.Column="1" 
                                             Background="Transparent" 
                                             FontFamily="{StaticResource MaterialDesignFont}" 
@@ -238,10 +238,11 @@
                         <Grid Grid.Row="2">
                             <Label Content="Top 5 khách hàng chi tiêu nhiều nhất"
                                    VerticalAlignment="Center"
-                                   HorizontalAlignment="Left"
+                                   HorizontalAlignment="Center"
                                    FontWeight="Bold"
-                                   FontSize="22"
-                                   Margin="26,0,0,0" />
+                                    Foreground="{StaticResource Gray1}"
+                                   FontSize="18"
+                                    />
                         </Grid>
 
                         <materialDesign:Card Margin="10,0,10,10" 
@@ -251,7 +252,10 @@
                                 <ListView.View>
                                     <GridView>
 
-                                        <GridViewColumn Header="STT" Width="90" >
+                                        <GridViewColumn  Width="90" >
+                                            <GridViewColumn.Header>
+                                                <TextBlock Text="STT" FontWeight="SemiBold" Foreground="Black"/>
+                                            </GridViewColumn.Header>
                                             <GridViewColumn.CellTemplate>
                                                 <DataTemplate>
                                                     <TextBlock  Text="{Binding RelativeSource={RelativeSource FindAncestor, 
@@ -264,7 +268,10 @@
                                             </GridViewColumn.CellTemplate>
                                         </GridViewColumn>
 
-                                        <GridViewColumn Header="Tên khách hàng" Width="180">
+                                        <GridViewColumn  Width="180">
+                                            <GridViewColumn.Header>
+                                                <TextBlock Text="Tên khách hàng" FontWeight="SemiBold" Foreground="Black"/>
+                                            </GridViewColumn.Header>
                                             <GridViewColumn.CellTemplate>
                                                 <DataTemplate>
                                                     <TextBlock Text="{Binding Name}"
@@ -275,7 +282,10 @@
                                             </GridViewColumn.CellTemplate>
                                         </GridViewColumn>
 
-                                        <GridViewColumn Header="Số điện thoại" Width="144">
+                                        <GridViewColumn  Width="144">
+                                            <GridViewColumn.Header>
+                                                <TextBlock Text="Số điện thoại" FontWeight="SemiBold" Foreground="Black"/>
+                                            </GridViewColumn.Header>
                                             <GridViewColumn.CellTemplate>
                                                 <DataTemplate>
                                                     <TextBlock Text="{Binding PhoneNumber}"
@@ -285,7 +295,10 @@
                                             </GridViewColumn.CellTemplate>
                                         </GridViewColumn>
 
-                                        <GridViewColumn Header="Chi tiêu" Width="112">
+                                        <GridViewColumn  Width="112">
+                                            <GridViewColumn.Header>
+                                                <TextBlock Text="Chi tiêu" FontWeight="SemiBold" Foreground="Black"/>
+                                            </GridViewColumn.Header>
                                             <GridViewColumn.CellTemplate>
                                                 <DataTemplate>
                                                     <TextBlock Text="{Binding ExpenseStr}"
@@ -317,10 +330,10 @@
                                 </Grid.ColumnDefinitions>
 
                                 <Grid Grid.Column="0"
-                                        Width="200" Height="50" 
-                                        HorizontalAlignment="Right" 
+                                        Width="195" Height="40" 
+                                        HorizontalAlignment="Left" 
                                         VerticalAlignment="Center" 
-                                        Margin="0,0,10,0"> 
+                                        Margin="10,0,0,0"> 
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="40"/>
                                         <ColumnDefinition/>
@@ -336,7 +349,7 @@
                                     </Rectangle>
                                     <Image Source="{StaticResource IconFilter}" Width="20" Height="20"></Image>
                                     <ComboBox SelectedItem="{Binding SelectedRankingPeriod2}"
-                                              Foreground="Black" 
+                                               Foreground="{StaticResource Gray1}"
                                               Grid.Column="1" 
                                               materialDesign:HintAssist.Hint="Lọc theo"
                                               Background="Transparent" 
@@ -361,10 +374,10 @@
                                 </Grid>
 
                                 <Grid Grid.Column="1" 
-                                      Width="200" Height="50" 
+                                      Width="195" Height="40" 
                                       HorizontalAlignment="Left" 
                                       VerticalAlignment="Center" 
-                                      Margin="10,0,0,0">
+                                      Margin="-15,0,0,0">
 
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="40"/>
@@ -423,6 +436,9 @@
                                         <Label Grid.Row="0" 
                                                FontWeight="Bold"
                                                Content="Hạng nhất" 
+                                                Foreground="{StaticResource Gray1}"
+                                               FontSize="14"
+                                               FontFamily="{DynamicResource MaterialDesignFont}"
                                                HorizontalContentAlignment="Center" 
                                                VerticalContentAlignment="Center" />
                                         <Label Grid.Row="1"
@@ -456,10 +472,10 @@
                         <Grid Grid.Row="2">
                             <Label Content="Top 5 nhân viên đóng góp nhiều nhất"
                                     VerticalAlignment="Center"
-                                    HorizontalAlignment="Left"
+                                    HorizontalAlignment="Center"
                                     FontWeight="Bold"
-                                    FontSize="22"
-                                    Margin="26,0,0,0" />
+                                    FontSize="18"
+                                    Foreground="{StaticResource Gray1}"/>
 
                         </Grid>
                         <materialDesign:Card Margin="10,0,10,10" 
@@ -470,7 +486,10 @@
 
                                     <GridView>
 
-                                        <GridViewColumn Header="STT" Width="90" >
+                                        <GridViewColumn Width="90" >
+                                            <GridViewColumn.Header>
+                                                <TextBlock Text="STT" FontWeight="SemiBold" Foreground="Black"/>
+                                            </GridViewColumn.Header>
                                             <GridViewColumn.CellTemplate>
                                                 <DataTemplate>
                                                     <TextBlock  Text="{Binding RelativeSource={RelativeSource FindAncestor, 
@@ -483,7 +502,10 @@
                                             </GridViewColumn.CellTemplate>
                                         </GridViewColumn>
 
-                                        <GridViewColumn Header="Mã nhân viên" Width="150">
+                                        <GridViewColumn Width="150">
+                                            <GridViewColumn.Header>
+                                                <TextBlock Text="Mã nhân viên" FontWeight="SemiBold" Foreground="Black"/>
+                                            </GridViewColumn.Header>
                                             <GridViewColumn.CellTemplate>
                                                 <DataTemplate>
                                                     <TextBlock Text="{Binding Id}"
@@ -494,7 +516,10 @@
                                             </GridViewColumn.CellTemplate>
                                         </GridViewColumn>
 
-                                        <GridViewColumn Header="Tên nhân viên" Width="166">
+                                        <GridViewColumn  Width="166">
+                                            <GridViewColumn.Header>
+                                                <TextBlock Text="Tên nhân viên" FontWeight="SemiBold" Foreground="Black"/>
+                                            </GridViewColumn.Header>
                                             <GridViewColumn.CellTemplate>
                                                 <DataTemplate>
                                                     <TextBlock Text="{Binding Name}"
@@ -504,7 +529,10 @@
                                             </GridViewColumn.CellTemplate>
                                         </GridViewColumn>
 
-                                        <GridViewColumn Header="Doanh số" Width="120">
+                                        <GridViewColumn  Width="120">
+                                            <GridViewColumn.Header>
+                                                <TextBlock Text="Doanh số" FontWeight="SemiBold" Foreground="Black"/>
+                                            </GridViewColumn.Header>
                                             <GridViewColumn.CellTemplate>
                                                 <DataTemplate>
                                                     <TextBlock Text="{Binding BenefitContributionStr}"

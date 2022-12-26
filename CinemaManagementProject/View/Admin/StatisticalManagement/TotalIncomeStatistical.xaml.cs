@@ -111,5 +111,7 @@ namespace CinemaManagementProject.View.Admin.StatisticalManagement
             cbb.ItemsSource = l;
             cbb.SelectedIndex = DateTime.Today.Month - 1;
         }
+
+       
     }
 }

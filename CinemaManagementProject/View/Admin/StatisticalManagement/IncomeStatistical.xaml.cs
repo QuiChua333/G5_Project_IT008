@@ -133,5 +133,7 @@ namespace CinemaManagementProject.View.Admin.StatisticalManagement
                     tb.Foreground = new SolidColorBrush(Colors.Red);
             }
         }
+
+        
     }
 }

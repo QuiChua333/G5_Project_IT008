@@ -40,7 +40,7 @@
         
         
         <Grid>
-            <Border CornerRadius="20" Background="#54B435" Margin="10">
+            <Border CornerRadius="20" Margin="10">
                 <Border.Effect>
                     <DropShadowEffect BlurRadius="14"
                                 Color="Black"
@@ -67,10 +67,10 @@
                                 <ColumnDefinition/>
                             </Grid.ColumnDefinitions>
                             <Grid Grid.Column="0"
-                                  Width="200" Height="50" 
-                                  HorizontalAlignment="Right" 
+                                  Width="195" Height="40" 
+                                  HorizontalAlignment="Left" 
                                   VerticalAlignment="Center" 
-                                  Margin="0,0,10,0" >
+                                  Margin="10,0,0,0" >
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="40"/>
                                     <ColumnDefinition/>
@@ -87,7 +87,7 @@
                                 <Image Source="{StaticResource IconFilter}" Width="20" Height="20"></Image>
                                 <ComboBox SelectedItem="{Binding SelectedBestSellPeriod}"
                                           materialDesign:HintAssist.Hint="Lọc theo"
-                                          Foreground="Black" 
+                                           Foreground="{StaticResource Gray1}"
                                           Grid.Column="1" 
                                           Background="Transparent" 
                                           FontFamily="{StaticResource MaterialDesignFont}" 
@@ -113,10 +113,10 @@
                             </Grid>
 
                             <Grid Grid.Column="1" 
-                                  Width="200" Height="50" 
+                                  Width="195" Height="40" 
                                   HorizontalAlignment="Left" 
                                   VerticalAlignment="Center" 
-                                  Margin="10,0,0,0">
+                                  Margin="20,0,0,0">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="40"/>
                                     <ColumnDefinition/>
@@ -180,20 +180,23 @@
                             <Label 
                                        Content="Top 5 phim doanh thu cao nhất"
                                        VerticalAlignment="Center"
-                                       HorizontalAlignment="Left"
+                                       HorizontalAlignment="Center"
                                        FontWeight="Bold"
-                                       FontSize="22"
-                                       Margin="26,0,0,0" />
+                                       FontSize="18"
+                                       Foreground="{StaticResource Gray1}"/>
                         </Grid>
 
                         <materialDesign:Card Margin="10,0,10,0" 
                                              Grid.Row="3"
                                              UniformCornerRadius="10">
-                            <ListView ItemsSource="{Binding Top5Movie}" ScrollViewer.VerticalScrollBarVisibility="Disabled">
+                            <ListView ItemsSource="{Binding Top5Movie}" ScrollViewer.VerticalScrollBarVisibility="Disabled" >
                                 <ListView.View>
 
                                     <GridView>
-                                        <GridViewColumn Header="STT" Width="90">
+                                        <GridViewColumn Width="90">
+                                            <GridViewColumn.Header>
+                                                <TextBlock Text="STT" FontWeight="SemiBold" Foreground="Black"/>
+                                            </GridViewColumn.Header>
                                             <GridViewColumn.CellTemplate>
                                                 <DataTemplate>
                                                     <TextBlock  Text="{Binding RelativeSource={RelativeSource FindAncestor, 
@@ -204,8 +207,10 @@
                                                 </DataTemplate>
                                             </GridViewColumn.CellTemplate>
                                         </GridViewColumn>
-                                        <GridViewColumn Header="Tên phim" Width="200">
-
+                                        <GridViewColumn  Width="200">
+                                            <GridViewColumn.Header>
+                                                <TextBlock Text="Tên phim" FontWeight="SemiBold" Foreground="Black"/>
+                                            </GridViewColumn.Header>
                                             <GridViewColumn.CellTemplate>
                                                 <DataTemplate>
                                                     <TextBlock Text="{Binding DisplayName}"
@@ -215,7 +220,10 @@
                                             </GridViewColumn.CellTemplate>
                                         </GridViewColumn>
 
-                                        <GridViewColumn Header="Doanh thu" Width="130">
+                                        <GridViewColumn Width="130">
+                                            <GridViewColumn.Header>
+                                                <TextBlock Text="Doanh thu" FontWeight="SemiBold" Foreground="Black"/>
+                                            </GridViewColumn.Header>
                                             <GridViewColumn.CellTemplate>
                                                 <DataTemplate>
                                                     <TextBlock Text="{Binding RevenueStr}" FontSize="18" />
@@ -223,7 +231,10 @@
                                             </GridViewColumn.CellTemplate>
                                         </GridViewColumn>
 
-                                        <GridViewColumn Header="Số vé" Width="96">
+                                        <GridViewColumn Width="96">
+                                            <GridViewColumn.Header>
+                                                <TextBlock Text="Số vé" FontWeight="SemiBold" Foreground="Black"/>
+                                            </GridViewColumn.Header>
                                             <GridViewColumn.CellTemplate>
                                                 <DataTemplate>
                                                     <TextBlock Text="{Binding TicketCount}"
@@ -254,10 +265,10 @@
                                 <ColumnDefinition/>
                             </Grid.ColumnDefinitions>
                             <Grid Grid.Column="0"
-                                  Width="200" Height="50" 
-                                  HorizontalAlignment="Right" 
+                                  Width="195" Height="40" 
+                                  HorizontalAlignment="Left" 
                                   VerticalAlignment="Center" 
-                                  Margin="0,0,10,0" >
+                                  Margin="10,0,0,0" >
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="40"/>
                                     <ColumnDefinition/>
@@ -273,7 +284,7 @@
                                 </Rectangle>
                                 <Image Source="{StaticResource IconFilter}" Width="20" Height="20"></Image>
                                 <ComboBox SelectedItem="{Binding SelectedBestSellPeriod2}"
-                                          Foreground="Black" 
+                                           Foreground="{StaticResource Gray1}"
                                           Grid.Column="1" 
                                           materialDesign:HintAssist.Hint="Lọc theo"
                                           Background="Transparent" 
@@ -300,7 +311,7 @@
                             </Grid>
 
                             <Grid Grid.Column="1" 
-                                  Width="200" Height="50" 
+                                  Width="195" Height="40" 
                                   HorizontalAlignment="Left" 
                                   VerticalAlignment="Center" 
                                   Margin="10,0,0,0">
@@ -365,10 +376,11 @@
                         <Grid Grid.Row="2">
                             <Label Content="Top 5 sản phẩm có doanh thu cao nhất"
                                        VerticalAlignment="Center"
-                                       HorizontalAlignment="Left"
+                                       HorizontalAlignment="Center"
                                        FontWeight="Bold"
-                                       FontSize="22"
-                                       Margin="26,0,0,0" />
+                                       FontSize="18"
+                                 
+                                    Foreground="{StaticResource Gray1}"/>
                         </Grid>
 
                         <materialDesign:Card Margin="10,0,10,0" 
@@ -378,7 +390,10 @@
                                 <ListView.View>
 
                                     <GridView>
-                                        <GridViewColumn Header="STT" Width="90">
+                                        <GridViewColumn  Width="90">
+                                            <GridViewColumn.Header>
+                                                <TextBlock Text="STT" FontWeight="SemiBold" Foreground="Black"/>
+                                            </GridViewColumn.Header>
 
                                             <GridViewColumn.CellTemplate>
                                                 <DataTemplate>
@@ -391,7 +406,10 @@
                                             </GridViewColumn.CellTemplate>
                                         </GridViewColumn>
 
-                                        <GridViewColumn Header="Tên sản phẩm" Width="200">
+                                        <GridViewColumn  Width="200">
+                                            <GridViewColumn.Header>
+                                                <TextBlock Text="Tên sản phẩm" FontWeight="SemiBold" Foreground="Black"/>
+                                            </GridViewColumn.Header>
                                             <GridViewColumn.CellTemplate>
                                                 <DataTemplate>
                                                     <TextBlock Text="{Binding DisplayName}"
@@ -401,7 +419,10 @@
                                             </GridViewColumn.CellTemplate>
                                         </GridViewColumn>
 
-                                        <GridViewColumn Header="Doanh thu" Width="130">
+                                        <GridViewColumn  Width="130">
+                                            <GridViewColumn.Header>
+                                                <TextBlock Text="Doanh thu" FontWeight="SemiBold" Foreground="Black"/>
+                                            </GridViewColumn.Header>
                                             <GridViewColumn.CellTemplate>
                                                 <DataTemplate>
                                                     <TextBlock Text="{Binding RevenueStr}" FontSize="18" />
@@ -409,7 +430,10 @@
                                             </GridViewColumn.CellTemplate>
                                         </GridViewColumn>
 
-                                        <GridViewColumn Header="Số lượng" Width="130">
+                                        <GridViewColumn  Width="130">
+                                            <GridViewColumn.Header>
+                                                <TextBlock Text="Số lượng" FontWeight="SemiBold" Foreground="Black"/>
+                                            </GridViewColumn.Header>
                                             <GridViewColumn.CellTemplate>
                                                 <DataTemplate>
                                                     <TextBlock Text="{Binding SalesQuantity}"

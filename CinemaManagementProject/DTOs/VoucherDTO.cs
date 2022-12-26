@@ -21,8 +21,8 @@ namespace CinemaManagementProject.DTOs
         public double Price  { get; set; }
         public bool EnableMerge { get; set; }
         public string TypeObject { get; set; }
-        public DateTime UsedAt { get; set; }
-        public DateTime ReleaseAt { get; set;}
+        public Nullable<System.DateTime> UsedAt { get; set; }
+        public Nullable<System.DateTime> ReleaseAt { get; set;}
 
         private bool _IsChecked;
 

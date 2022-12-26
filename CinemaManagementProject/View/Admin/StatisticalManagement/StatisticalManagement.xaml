@@ -24,18 +24,20 @@
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="70" />
+            <RowDefinition Height="60" />
             <RowDefinition />
         </Grid.RowDefinitions>
 
         <!--Filter-->
         <StackPanel Grid.Row="0"
-                    Orientation="Horizontal">
+                    Orientation="Horizontal"
+                    >
 
             <StackPanel HorizontalAlignment="Left"
                         Orientation="Horizontal"
                         Height="57"
-                        Background="Transparent">
+                        Background="Transparent"
+                        VerticalAlignment="Top">
                 <materialDesign:Card  Height="57"
                                       Background="Transparent"
                                       materialDesign:ShadowAssist.ShadowDepth="Depth2"
@@ -93,15 +95,21 @@
         </StackPanel>
         <!--Frame-->
         <Grid Grid.Row="1">
-            <Frame x:Name="mainFrame"
-                   Content="">
-                <i:Interaction.Triggers>
-                    <i:EventTrigger EventName="Loaded">
-                        <i:InvokeCommandAction Command="{Binding LoadAllStatisticalCM}"
+            <Border CornerRadius="20" Background="{StaticResource LightGrayAthens}"  BorderBrush="Gray" BorderThickness="0.3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="20,0,20,20">
+                <Border.Effect>
+                    <DropShadowEffect BlurRadius="10" Direction="270" Color="Black" ShadowDepth="4" Opacity="0.25"/>
+                </Border.Effect>
+                <Frame x:Name="mainFrame"
+                   Margin="0,0,0,0">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="Loaded">
+                            <i:InvokeCommandAction Command="{Binding LoadAllStatisticalCM}"
                                                CommandParameter="{Binding ElementName=card1}" />
-                    </i:EventTrigger>
-                </i:Interaction.Triggers>
-            </Frame>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </Frame>
+            </Border>
+            
 
         </Grid>
 
