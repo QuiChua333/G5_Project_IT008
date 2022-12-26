@@ -8,7 +8,7 @@
       xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       xmlns:Component="clr-namespace:CinemaManagementProject.Component" 
-      d:DesignHeight="760" d:DesignWidth="1140"
+      d:DesignHeight="660" d:DesignWidth="1300"
       DataContext="{StaticResource BillTicketVM}"
       FontFamily="{StaticResource MaterialDesignFont}"
       Title="TicketBill_Phim_Page">
@@ -21,7 +21,7 @@
     <Grid Background="{StaticResource LightGrayAthens}">
 
         <Grid.RowDefinitions>
-            <RowDefinition Height="10*"/>
+            <RowDefinition Height="8*"/>
             <RowDefinition Height="90*"/>
         </Grid.RowDefinitions>
 
@@ -36,7 +36,7 @@
                             Width="55"
                             HorizontalAlignment="Left"
                             VerticalAlignment="Top"
-                            Margin="-10 15 0 0"
+                            Margin="-10 0 0 0"
                             Cursor="Hand">
                     <Border.Style>
                         <Style TargetType="Border">
@@ -48,8 +48,8 @@
                         </Style>
                     </Border.Style>
                     <materialDesign:PackIcon Kind="ArrowLeft"
-                                         Height="40"
-                                         Width="40"
+                                         Height="30"
+                                         Width="30"
                                          VerticalAlignment="Center"
                                          HorizontalAlignment="Center" />
                     <i:Interaction.Triggers>
@@ -60,11 +60,11 @@
                 </Border>
 
                 <Label  Content="THANH TOÁN HÓA ĐƠN" 
-                            FontSize="38" 
+                            FontSize="25" 
                             Foreground="#8DC1F0"
                             FontFamily="{StaticResource MaterialDesignFont}"
                             FontWeight="Bold"
-                            Margin="280,20,0,0" >
+                            Margin="410,6,0,0" VerticalAlignment="Center"  >
                     <Label.Effect>
                         <DropShadowEffect BlurRadius="1" Direction="-45" Color="#000000" ShadowDepth="1.5" Opacity="0.5"/>
                     </Label.Effect>
@@ -98,14 +98,14 @@
                         </Grid.RowDefinitions>
 
                         <Grid Grid.Row="0">
-                            <Label Content="    Thông tin khách hàng"
-                                   FontSize="25"
+                            <Label Content="          Thông tin khách hàng"
+                                   FontSize="20"
                                    Width="300"
                                    FontFamily="{StaticResource MaterialDesignFont}"
                                    FontWeight="Bold"
                                    BorderThickness="0,0,0,3"
                                    BorderBrush="#8DC1F0"
-                                   Margin="10 10 10 0" HorizontalAlignment="Center" />
+                                   Margin="10 10 10 0" HorizontalAlignment="Center" VerticalAlignment="Center" />
                         </Grid>
 
                         <Grid Grid.Row="1">
@@ -138,12 +138,12 @@
                                 </Style>
                             </Grid.Resources>
 
-                            <Grid Height="40" VerticalAlignment="Top">
+                            <Grid Height="50" VerticalAlignment="Top">
                                 <CheckBox IsThreeState="False"
                                           FontFamily="{StaticResource MaterialDesignFont}"
                                           IsChecked="{Binding IsWalkinGuest}"
                                           Content="Khách vãng lai"
-                                          Margin="14 0 0 0"
+                                          Margin="30 0 0 0"
                                           FontSize="18"
                                           VerticalAlignment="Bottom"
                                           x:Name="checkBox"
@@ -151,14 +151,14 @@
                                           CommandParameter="{Binding IsChecked, RelativeSource={RelativeSource Self}}" />
                             </Grid>
 
-                            <Grid Height="45"
+                            <Grid Height="50"
                                   Margin="0 40 0 0"
                                   VerticalAlignment="Top">
 
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="115" />
+                                    <ColumnDefinition Width="150" />
                                     <ColumnDefinition />
-                                    <ColumnDefinition Width="70" />
+                                    <ColumnDefinition Width="90" />
                                 </Grid.ColumnDefinitions>
 
                                 <TextBlock Text="Điện thoại:" Margin="10 15 15 0" />
@@ -168,7 +168,7 @@
                                 <Button Grid.Column="2"
                                         Content="{materialDesign:PackIcon PhoneCheckOutline}"
                                         VerticalAlignment="Bottom"
-                                        Margin="10 0 10 0"
+                                        Margin="10 0 30 0"
                                         Height="32"
                                         Width="50"
                                         Style="{StaticResource CustomButton}"
@@ -188,7 +188,7 @@
                             </Grid>
 
                             <!--#region Không hợp lệ-->
-                            <Grid Height="45"
+                            <Grid Height="50"
                                   VerticalAlignment="Top"
                                   Margin="0 85 0 0">
                                 <Label Content="Số điện thoại chưa đăng ký!"
@@ -233,18 +233,18 @@
                                 </Grid.Style>
                             </Grid>
 
-                            <Grid Height="45"
+                            <Grid Height="50"
                                   VerticalAlignment="Top"
                                   Margin="0 173 0 0">
 
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="115" />
+                                    <ColumnDefinition Width="150" />
                                     <ColumnDefinition />
                                 </Grid.ColumnDefinitions>
 
                                 <TextBlock Text="Họ và tên:" />
                                 <TextBox Grid.Column="1" 
-                                         Margin="0 0 30 0"
+                                         Margin="0 0 100 0"
                                          Text="{Binding NameSignUp, Mode=TwoWay}"/>
                                 <Grid.Style>
                                     <Style>
@@ -259,17 +259,17 @@
                                 </Grid.Style>
                             </Grid>
 
-                            <Grid Height="45"
+                            <Grid Height="50"
                                   VerticalAlignment="Top"
                                   Margin="0 218 0 0">
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="115" />
+                                    <ColumnDefinition Width="150" />
                                     <ColumnDefinition />
                                 </Grid.ColumnDefinitions>
 
                                 <TextBlock Text="Email:" />
                                 <TextBox Grid.Column="1" 
-                                         Margin="0 0 30 0"
+                                         Margin="0 0 100 0"
                                          Text="{Binding EmailSignUp, Mode=TwoWay}"/>
                                 <Grid.Style>
                                     <Style>
@@ -292,7 +292,7 @@
                                         Background="#4887FA"
                                         VerticalAlignment="Bottom"
                                         HorizontalAlignment="Right"
-                                        Margin="0 0 10 10"
+                                        Margin="0 0 30 10"
                                         Height="36"
                                         Style="{StaticResource CustomButton}"
                                         Command="{Binding SignUpCM}"/>
@@ -313,17 +313,17 @@
 
                             <!--#region Hợp lệ-->
 
-                            <Grid Height="45"
+                            <Grid Height="50"
                                   VerticalAlignment="Top"
                                   Margin="0 85 0 0">
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="115" />
+                                    <ColumnDefinition Width="150" />
                                     <ColumnDefinition />
                                 </Grid.ColumnDefinitions>
                                 <TextBlock Text="Họ và tên:" />
                                 <TextBox Grid.Column="1"
                                          IsEnabled="False"
-                                         Margin="0 0 30 0"
+                                         Margin="0 0 100 0"
                                          VerticalContentAlignment="Bottom"
                                          VerticalAlignment="Center" 
                                          Text="{Binding Name}"
@@ -341,19 +341,19 @@
                                 </Grid.Style>
                             </Grid>
 
-                            <Grid Height="45"
+                            <Grid Height="50"
                                   VerticalAlignment="Top"
                                   Margin="0 130 0 0">
 
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="115" />
+                                    <ColumnDefinition Width="150" />
                                     <ColumnDefinition />
                                 </Grid.ColumnDefinitions>
 
                                 <TextBlock Text="Email:" />
                                 <TextBox Grid.Column="1"
                                          IsEnabled="False"
-                                         Margin="0 0 30 0"
+                                         Margin="0 0 100 0"
                                          VerticalContentAlignment="Bottom"
                                          VerticalAlignment="Center" 
                                          Text="{Binding Email}"
@@ -373,12 +373,12 @@
 
                             <Grid VerticalAlignment="Top"
                                   Margin="10 175 0 10"
-                                  Height="45">
+                                  Height="50">
 
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="95" />
+                                    <ColumnDefinition Width="120" />
                                     <ColumnDefinition />
-                                    <ColumnDefinition Width="65" />
+                                    <ColumnDefinition Width="90" />
                                 </Grid.ColumnDefinitions>
 
                                 <TextBlock Text="Voucher:" Margin="10 15 5 0" />
@@ -389,7 +389,7 @@
 
                                 <Button Grid.Column="2"
                                         VerticalAlignment="Bottom"
-                                        Margin="6 0 10 0"
+                                        Margin="6 0 30 0"
                                         Height="32"
                                         Width="50"
                                         Style="{StaticResource CustomButton}"
@@ -505,7 +505,7 @@
                                     Height="36"
                                     VerticalAlignment="Bottom"
                                     HorizontalAlignment="Right"
-                                    Margin="0 0 10 10"
+                                    Margin="0 0 30 30"
                                     Content="Thanh toán"
                                     Command="{Binding PayMovieCM}">
                                 <Button.Style>
@@ -540,14 +540,14 @@
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="60" />
-                            <RowDefinition Height="410" />
+                            <RowDefinition Height="350" />
                             <RowDefinition Height="*"/>
                         </Grid.RowDefinitions>
 
                         <!---HEADER-->
                         <Grid Grid.Row="0">
-                            <Label Content="                   Phim"
-                                   FontSize="25"       
+                            <Label Content="                        Phim"
+                                   FontSize="20"       
                                    Width="300"
                                    FontFamily="{StaticResource MaterialDesignFont}"
                                    FontWeight="Bold"
@@ -568,10 +568,10 @@
                             <Border Grid.Row="0"
                                     BorderThickness="0,0,0,2"
                                     BorderBrush="#8DC1F0"
-                                    Margin="20,0,20,0">
+                                    Margin="30,0,30,0">
                                 <StackPanel>
                                     <StackPanel Orientation="Horizontal">
-                                        <Grid Width="450" Margin="0,15,0,0">
+                                        <Grid Width="520" Margin="0,10,0,0">
 
                                             <Grid.ColumnDefinitions>
                                                 <ColumnDefinition Width="15*" />
@@ -580,10 +580,10 @@
 
                                             <Label Content="Phim: "
                                                    Grid.Column="0"
-                                                   FontSize="20" />
+                                                   FontSize="18" />
                                             <Label Grid.Column="1"
                                                    HorizontalAlignment="Right"
-                                                   FontSize="20"
+                                                   FontSize="18"
                                                    x:Name="_moviename"
                                                    Content="{Binding MovieName}" 
                                                    FontWeight="Bold"/>
@@ -591,7 +591,7 @@
                                     </StackPanel>
 
                                     <StackPanel Orientation="Horizontal">
-                                        <Grid Width="450" Margin="0,15,0,0">
+                                        <Grid Width="520" Margin="0,10,0,0">
 
                                             <Grid.ColumnDefinitions>
                                                 <ColumnDefinition />
@@ -600,16 +600,16 @@
 
                                             <Label Content="Ngày chiếu: "
                                                    Grid.Column="0"
-                                                   FontSize="20" />
+                                                   FontSize="18" />
                                             <Label Content="{Binding Date}"
                                                    Grid.Column="1"
                                                    HorizontalAlignment="Right"
-                                                   FontSize="20" />
+                                                   FontSize="18" />
                                         </Grid>
                                     </StackPanel>
 
                                     <StackPanel Orientation="Horizontal">
-                                        <Grid Width="450" Margin="0,15,0,0">
+                                        <Grid Width="520" Margin="0,10,0,0">
 
                                             <Grid.ColumnDefinitions>
                                                 <ColumnDefinition />
@@ -618,18 +618,18 @@
 
                                             <Label Content="Giờ chiếu: "
                                                    Grid.Column="0"
-                                                   FontSize="20" />
+                                                   FontSize="18" />
                                             <Label Content="{Binding Time}"
                                                    Grid.Column="1"
                                                    HorizontalAlignment="Right"
-                                                   FontSize="20"
+                                                   FontSize="18"
                                                    x:Name="_time"
                                                    FontWeight="Bold"/>
                                         </Grid>
                                     </StackPanel>
 
                                     <StackPanel Orientation="Horizontal">
-                                        <Grid Width="450" Margin="0,15,0,0">
+                                        <Grid Width="520" Margin="0,10,0,0">
 
                                             <Grid.ColumnDefinitions>
                                                 <ColumnDefinition />
@@ -638,16 +638,16 @@
 
                                             <Label Content="Rạp: "
                                                    Grid.Column="0"
-                                                   FontSize="20" />
+                                                   FontSize="18" />
                                             <Label Content="QPTN Cinema"
                                                    Grid.Column="1"
                                                    HorizontalAlignment="Right"
-                                                   FontSize="20" />
+                                                   FontSize="18" />
                                         </Grid>
                                     </StackPanel>
 
                                     <StackPanel Orientation="Horizontal">
-                                        <Grid Width="450" Margin="0,15,0,0">
+                                        <Grid Width="520" Margin="0,10,0,0">
 
                                             <Grid.ColumnDefinitions>
                                                 <ColumnDefinition />
@@ -656,17 +656,17 @@
 
                                             <Label Content="Phòng chiếu: "
                                                    Grid.Column="0"
-                                                   FontSize="20" />
+                                                   FontSize="18" />
                                             <Label Content="{Binding Room}"
                                                    Grid.Column="1"
                                                    HorizontalAlignment="Right"
-                                                   FontSize="20"
+                                                   FontSize="18"
                                                    FontWeight="Bold"/>
                                         </Grid>
                                     </StackPanel>
 
                                     <StackPanel Orientation="Horizontal">
-                                        <Grid Width="450" Margin="0,15,0,0">
+                                        <Grid Width="520" Margin="0,10,0,0">
 
                                             <Grid.ColumnDefinitions>
                                                 <ColumnDefinition />
@@ -675,19 +675,19 @@
 
                                             <Label Content="Ghế: "
                                                    Grid.Column="0"
-                                                   FontSize="20" />
+                                                   FontSize="18" />
                                             <TextBlock Text="{Binding Seat}"
                                                        TextWrapping="Wrap"
                                                        Grid.Column="1"
                                                        HorizontalAlignment="Right"
-                                                       FontSize="20"
+                                                       FontSize="18"
                                                        FontWeight="Bold" />
                                         </Grid>
                                     </StackPanel>
 
                                     <StackPanel Orientation="Horizontal">
-                                        <Grid Width="450" 
-                                              Margin="0,15,0,10">
+                                        <Grid Width="520" 
+                                              Margin="0,10,0,10">
 
                                             <Grid.ColumnDefinitions>
                                                 <ColumnDefinition />
@@ -696,11 +696,11 @@
 
                                             <Label Content="Giá vé: "
                                                    Grid.Column="0"
-                                                   FontSize="20" />
+                                                   FontSize="18" />
                                             <Label Content="{Binding Price}"
                                                    Grid.Column="1"
                                                    HorizontalAlignment="Right"
-                                                   FontSize="20"
+                                                   FontSize="18"
                                                    x:Name="_price" />
                                         </Grid>
                                     </StackPanel>
@@ -711,11 +711,11 @@
                             <Border Grid.Row="1"
                                     BorderThickness="0,0,0,2"
                                     BorderBrush="#8DC1F0"
-                                    Margin="20,0,20,0">
+                                    Margin="30,0,30,0">
                                 <StackPanel VerticalAlignment="Center"
                                             Margin="0 2 0 0">
                                     <StackPanel Orientation="Horizontal">
-                                        <Grid Width="450">
+                                        <Grid Width="520">
                                             <Grid.ColumnDefinitions>
                                                 <ColumnDefinition />
                                                 <ColumnDefinition />
@@ -723,11 +723,11 @@
 
                                             <Label Content="Tổng: "
                                                    Grid.Column="0"
-                                                   FontSize="20" />
+                                                   FontSize="18" />
                                             <Label x:Name="_totalticket"
                                                    Grid.Column="1"
                                                    HorizontalAlignment="Right"
-                                                   FontSize="20"
+                                                   FontSize="18"
                                                    Content="{Binding TotalPriceMovie}" />
                                         </Grid>
                                     </StackPanel>
@@ -736,7 +736,7 @@
                         </Grid>
                         <!--#endregion-->
 
-                        <StackPanel Margin="20,0,20,0"
+                        <StackPanel Margin="30,0,30,0"
                                     Grid.Row="2">
                             <Grid>
                                 <Grid.ColumnDefinitions>
@@ -745,10 +745,10 @@
                                 </Grid.ColumnDefinitions>
 
                                 <Label Content="Tổng tiền: "
-                                       FontSize="20"
+                                       FontSize="18"
                                        Grid.Column="0" />
                                 <Label Content="{Binding TotalPriceMovie}"
-                                       FontSize="20"
+                                       FontSize="18"
                                        Grid.Column="1"
                                        HorizontalAlignment="Right" />
                             </Grid>
@@ -760,10 +760,10 @@
                                 </Grid.ColumnDefinitions>
 
                                 <Label Content="Phí giao dịch: "
-                                       FontSize="20"
+                                       FontSize="18"
                                        Grid.Column="0" />
                                 <Label Content="Miễn phí"
-                                       FontSize="20"
+                                       FontSize="18"
                                        Grid.Column="1"
                                        HorizontalAlignment="Right" />
                             </Grid>
@@ -775,10 +775,10 @@
                                 </Grid.ColumnDefinitions>
 
                                 <Label Content="Khuyến mãi: "
-                                       FontSize="20"
+                                       FontSize="18"
                                        Grid.Column="0" />
                                 <Label Content="{Binding DiscountStr}"
-                                       FontSize="20"
+                                       FontSize="18"
                                        Grid.Column="1"
                                        HorizontalAlignment="Right" />
                             </Grid>
@@ -790,10 +790,10 @@
                                 </Grid.ColumnDefinitions>
 
                                 <Label Content="Sau khuyến mãi: "
-                                       FontSize="20"
+                                       FontSize="18"
                                        Grid.Column="0" />
                                 <Label Content="{Binding LastPriceStr}"
-                                       FontSize="20"
+                                       FontSize="18"
                                        Grid.Column="1"
                                        FontWeight="Bold"
                                        HorizontalAlignment="Right" />
