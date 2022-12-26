@@ -1058,6 +1058,7 @@
     <Content Include="Resource\EmailTemplate\common_template.html" />
     <Content Include="Resource\EmailTemplate\new_customer.html" />
     <Content Include="Resource\EmailTemplate\top5_customer_gratitude.html" />
+    <Resource Include="Resource\Icons\hold.png" />
     <Content Include="Resource\Images\choliec.jfif" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

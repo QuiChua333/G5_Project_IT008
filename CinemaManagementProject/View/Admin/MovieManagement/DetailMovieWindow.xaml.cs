@@ -41,5 +41,12 @@ namespace CinemaManagementProject.View.Admin.MovieManagement
             Button btn = sender as Button;
             btn.Background = new SolidColorBrush(Colors.Transparent);
         }
+        private void main_PreviewKeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.Key != System.Windows.Input.Key.Escape) return;
+
+            e.Handled = true;
+            this.Close();
+        }
     }
 }

@@ -24,5 +24,12 @@ namespace CinemaManagementProject.View.Admin.FoodManagement
             InitializeComponent();
         }
 
+        private void EditFoodWD_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.LeftButton == MouseButtonState.Pressed)
+            {
+                DragMove();
+            }
+        }
     }
 }

@@ -10,7 +10,7 @@
       xmlns:Component="clr-namespace:CinemaManagementProject.Component" 
       mc:Ignorable="d" 
       xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
-      d:DesignHeight="600" d:DesignWidth="1140"
+      d:DesignHeight="630" d:DesignWidth="1140"
       x:Name="mainPage"
       Title="IncomeStatistical"
       DataContext="{StaticResource StaffManagementVM}">
@@ -34,7 +34,7 @@
 
     <Grid>
         <Grid>
-            <Border CornerRadius="20" Background="White" Margin="20,10,20,10">
+            <Border CornerRadius="20" Background="#54B435" Margin="20,10,20,10">
                 <Border.Effect>
                     <DropShadowEffect BlurRadius="14"
                                 Color="Black"
@@ -141,7 +141,7 @@
                             </ComboBox>
                         </Grid>
                     </Grid>
-                    <Grid Grid.Row="1" Margin="10" Background="White">
+                    <Grid Grid.Row="1" Margin="10" Background="Transparent">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="40*"/>
                             <ColumnDefinition Width="60*"/>
@@ -158,294 +158,290 @@
                                     <ColumnDefinition/>
                                     <ColumnDefinition/>
                                 </Grid.ColumnDefinitions>
-                                <StackPanel Grid.Column="0" Orientation="Horizontal" Width="200" Height="150">
-                                    <Border BorderThickness="2" BorderBrush="Gray" CornerRadius="20">
-                                        <Grid Width="170" Margin="10">
-                                            <Grid.RowDefinitions>
-                                                <RowDefinition Height="30*"/>
-                                                <RowDefinition Height="70*"/>
-                                            </Grid.RowDefinitions>
+                                <materialDesign:Card Margin="10"
+                                                     UniformCornerRadius="10"
+                                                     Grid.Column="0">
+                                    <Grid Width="170" Margin="10">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="30*"/>
+                                            <RowDefinition Height="70*"/>
+                                        </Grid.RowDefinitions>
 
-                                            <StackPanel Grid.Row="0">
-                                                <StackPanel Orientation="Horizontal">
-                                                    <Label Content="Thu:"
-                                                           FontWeight="Bold"
-                                                           FontSize="15" />
-                                                    <TextBox Text="{Binding ReveRate}"
-                                                             BorderThickness="0"
-                                                             IsHitTestVisible="False"
-                                                             FontStyle="Italic"
-                                                             FontSize="15"
-                                                             TextChanged="TextBox_TextChanged"/>
-                                                    <!--Tăng 🠕-->
-                                                </StackPanel>
+                                        <StackPanel Grid.Row="0">
+                                            <StackPanel Orientation="Horizontal">
+                                                <Label Content="Thu:"
+                                                       FontWeight="Bold"
+                                                       FontSize="15" />
+                                                <TextBox Text="{Binding ReveRate}"
+                                                         BorderThickness="0"
+                                                         IsHitTestVisible="False"
+                                                         FontStyle="Italic"
+                                                         FontSize="15"
+                                                         TextChanged="TextBox_TextChanged"/>
+                                                <!--Tăng 🠕-->
                                             </StackPanel>
-                                            <Grid Grid.Row="1">
-                                                <Grid.ColumnDefinitions>
-                                                    <ColumnDefinition Width="40*"/>
-                                                    <ColumnDefinition Width="60*"/>
-                                                </Grid.ColumnDefinitions>
+                                        </StackPanel>
+                                        <Grid Grid.Row="1">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="40*"/>
+                                                <ColumnDefinition Width="60*"/>
+                                            </Grid.ColumnDefinitions>
 
-                                                <StackPanel Grid.Column="0" Margin="5,0,0,0">
-                                                    <Label Content="Vé" FontSize="18" />
-                                                    <Label Content="{Binding TicketPc}"
-                                                            FontSize="20"
-                                                            FontWeight="Bold" />
-                                                    <Label Content="{Binding TicketReve}" />
-                                                </StackPanel>
-                                                <StackPanel Grid.Column="1" HorizontalAlignment="Center">
-                                                    <Label Content="Sản phẩm" FontSize="18" />
-                                                    <Label Content="{Binding ProductPc}"
-                                                           FontWeight="Bold"
-                                                           FontSize="25" />
-                                                    <Label Content="{Binding ProductReve}" />
-                                                </StackPanel>
-                                            </Grid>
+                                            <StackPanel Grid.Column="0" Margin="5,0,0,0">
+                                                <Label Content="Vé" FontSize="18" />
+                                                <Label Content="{Binding TicketPc}"
+                                                       FontWeight="Bold" />
+                                                <Label Content="{Binding TicketReve}" />
+                                            </StackPanel>
+                                            <StackPanel Grid.Column="1" HorizontalAlignment="Center">
+                                                <Label Content="Sản phẩm" FontSize="18" />
+                                                <Label Content="{Binding ProductPc}"
+                                                       FontWeight="Bold"/>
+                                                <Label Content="{Binding ProductReve}" />
+                                            </StackPanel>
                                         </Grid>
-                                    </Border>
-                                </StackPanel>
-
-                                <StackPanel Grid.Column="1" Orientation="Horizontal" Width="200" Height="150">
-                                    <Border BorderThickness="2" BorderBrush="Gray" CornerRadius="20">
-                                        <Grid Width="170" Margin="10">
-                                            <Grid.RowDefinitions>
-                                                <RowDefinition Height="30*"/>
-                                                <RowDefinition Height="70*"/>
-                                            </Grid.RowDefinitions>
-                                            <StackPanel Grid.Row="0">
-                                                <Label Content="Chi:"
+                                    </Grid>
+                                </materialDesign:Card>
+                                <materialDesign:Card Margin="10"
+                                                     UniformCornerRadius="10"
+                                                     Grid.Column="1">
+                                    <Grid Width="170" Margin="10">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="30*"/>
+                                            <RowDefinition Height="70*"/>
+                                        </Grid.RowDefinitions>
+                                        <StackPanel Grid.Row="0">
+                                            <Label Content="Chi:"
                                                         FontWeight="Bold"
                                                         FontSize="18" />
-                                                <TextBox Text="{Binding ExpeRate}"
+                                            <TextBox Text="{Binding ExpeRate}"
                                                          FontSize="18"
                                                          IsHitTestVisible="False"
                                                          BorderThickness="0"
                                                          TextChanged="TextBox_TextChanged_1"/>
-                                            </StackPanel>
-                                            <Grid Grid.Row="1">
-                                                <Grid.ColumnDefinitions>
-                                                    <ColumnDefinition Width="52*"/>
-                                                    <ColumnDefinition Width="48*"/>
-                                                </Grid.ColumnDefinitions>
+                                        </StackPanel>
+                                        <Grid Grid.Row="1">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="52*"/>
+                                                <ColumnDefinition Width="48*"/>
+                                            </Grid.ColumnDefinitions>
 
-                                                <StackPanel Grid.Column="0">
-                                                    <Label Content="Sản phẩm" FontSize="18" />
-                                                    <Label Content="{Binding ProductExPc}"
-                                                           FontSize="25"
+                                            <StackPanel Grid.Column="0">
+                                                <Label Content="Sản phẩm" FontSize="18" />
+                                                <Label Content="{Binding ProductExPc}"
                                                            FontWeight="Bold" />
-                                                    <Label Content="{Binding ProductExpe}" />
-                                                </StackPanel>
-                                                <StackPanel Grid.Column="1" HorizontalAlignment="Center">
-                                                    <Label Content="Sửa chữa" FontSize="18" />
-                                                    <Label Content="{Binding RepairPc}"
-                                                           FontWeight="Bold"
-                                                           FontSize="25" />
-                                                    <Label Content="{Binding RepairExpe}" />
-                                                </StackPanel>
-                                            </Grid>
+                                                <Label Content="{Binding ProductExpe}" />
+                                            </StackPanel>
+                                            <StackPanel Grid.Column="1" HorizontalAlignment="Center">
+                                                <Label Content="Sửa chữa" FontSize="18" />
+                                                <Label Content="{Binding RepairPc}"
+                                                           FontWeight="Bold"/>
+                                                <Label Content="{Binding RepairExpe}" />
+                                            </StackPanel>
                                         </Grid>
-                                    </Border>
-                                </StackPanel>
-                            </Grid>
-                            <Grid Grid.Row="1">
-                                <Border BorderThickness="2" BorderBrush="Gray" CornerRadius="20" Margin="10,10,10,0" >
-                                    <Grid >
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition Height="25*" />
-                                            <RowDefinition Height="75*" />
-                                        </Grid.RowDefinitions>
+                                    </Grid>
 
-                                        <StackPanel Grid.Row="0">
-                                            <Label Content="Tổng thu chi (VND)"
+                                </materialDesign:Card>
+                                
+                            </Grid>
+                            <materialDesign:Card Margin="10"
+                                                 UniformCornerRadius="10"
+                                                 Grid.Row="1">
+                                <Grid >
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="25*" />
+                                        <RowDefinition Height="75*" />
+                                    </Grid.RowDefinitions>
+
+                                    <StackPanel Grid.Row="0">
+                                        <Label Content="Tổng thu chi (VND): "
                                                    FontSize="15"
                                                    FontWeight="Bold"
                                                    Margin="10,10,0,0"
                                                    Grid.Row="0" />
-                                        </StackPanel>
-                                        <Grid Grid.Row="1">
-                                            <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="70*" />
-                                                <ColumnDefinition Width="30*" />
-                                            </Grid.ColumnDefinitions>
+                                    </StackPanel>
+                                    <Grid Grid.Row="1">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="70*" />
+                                            <ColumnDefinition Width="30*" />
+                                        </Grid.ColumnDefinitions>
 
-                                            <StackPanel Grid.Column="0">
-                                                <StackPanel Margin="10,0,0,0">
-                                                    <Label Content="Thu"
-                                                            FontWeight="Bold" />
-                                                    <StackPanel Width="250"
+                                        <StackPanel Grid.Column="0">
+                                            <StackPanel Margin="10,0,0,0">
+                                                <Label Content="Thu"
+                                                       FontWeight="Bold" />
+                                                <StackPanel Width="250"
                                                         HorizontalAlignment="Left">
-                                                        <ProgressBar BorderBrush="Transparent"
+                                                    <ProgressBar BorderBrush="Transparent"
                                                              Height="15"
                                                              x:Name="pb1"
                                                              Value="{Binding TotalInPc}">
-                                                            <ProgressBar.Style>
-                                                                <Style TargetType="{x:Type ProgressBar}">
-                                                                    <Setter Property="Template">
-                                                                        <Setter.Value>
-                                                                            <ControlTemplate TargetType="{x:Type ProgressBar}">
-                                                                                <Grid MinHeight="14"
+                                                        <ProgressBar.Style>
+                                                            <Style TargetType="{x:Type ProgressBar}">
+                                                                <Setter Property="Template">
+                                                                    <Setter.Value>
+                                                                        <ControlTemplate TargetType="{x:Type ProgressBar}">
+                                                                            <Grid MinHeight="14"
                                                                                         MinWidth="200">
-                                                                                    <Border Name="PART_Track"
+                                                                                <Border Name="PART_Track"
                                                                                     CornerRadius="8" />
-                                                                                    <Border Name="PART_Indicator"
+                                                                                <Border Name="PART_Indicator"
                                                                                     CornerRadius="8"
                                                                                     BorderThickness="1"
                                                                                     Background="#0c70b6"
                                                                                     HorizontalAlignment="Left" />
-                                                                                </Grid>
-                                                                            </ControlTemplate>
-                                                                        </Setter.Value>
-                                                                    </Setter>
-                                                                </Style>
-                                                            </ProgressBar.Style>
-                                                            <ProgressBar.Triggers>
-                                                                <EventTrigger RoutedEvent="ProgressBar.ValueChanged">
-                                                                    <BeginStoryboard>
-                                                                        <Storyboard>
-                                                                            <ThicknessAnimation Storyboard.TargetName="pb1"
+                                                                            </Grid>
+                                                                        </ControlTemplate>
+                                                                    </Setter.Value>
+                                                                </Setter>
+                                                            </Style>
+                                                        </ProgressBar.Style>
+                                                        <ProgressBar.Triggers>
+                                                            <EventTrigger RoutedEvent="ProgressBar.ValueChanged">
+                                                                <BeginStoryboard>
+                                                                    <Storyboard>
+                                                                        <ThicknessAnimation Storyboard.TargetName="pb1"
                                                                                         Storyboard.TargetProperty="Margin"
                                                                                         From="0 0 250 0"
                                                                                         To="0 0 0 0"
                                                                                         Duration="0:0:0.5" />
 
 
-                                                                        </Storyboard>
-                                                                    </BeginStoryboard>
-                                                                </EventTrigger>
-                                                            </ProgressBar.Triggers>
+                                                                    </Storyboard>
+                                                                </BeginStoryboard>
+                                                            </EventTrigger>
+                                                        </ProgressBar.Triggers>
 
-                                                        </ProgressBar>
-                                                    </StackPanel>
+                                                    </ProgressBar>
                                                 </StackPanel>
+                                            </StackPanel>
 
-                                                <StackPanel Margin="10,20,0,0">
-                                                    <Label Content="Chi"
+                                            <StackPanel Margin="10,10,0,0">
+                                                <Label Content="Chi"
                                                    FontWeight="Bold" />
-                                                    <StackPanel Width="250"
+                                                <StackPanel Width="250"
                                                         HorizontalAlignment="Left">
-                                                        <ProgressBar Minimum="0"
+                                                    <ProgressBar Minimum="0"
                                                              Maximum="100"
                                                              BorderBrush="Transparent"
                                                              Height="15"
                                                              x:Name="pb2"
                                                              Value="{Binding TotalOutPc}">
-                                                            <ProgressBar.Style>
-                                                                <Style TargetType="{x:Type ProgressBar}">
-                                                                    <Setter Property="Template">
-                                                                        <Setter.Value>
-                                                                            <ControlTemplate TargetType="{x:Type ProgressBar}">
-                                                                                <Grid MinHeight="14"
+                                                        <ProgressBar.Style>
+                                                            <Style TargetType="{x:Type ProgressBar}">
+                                                                <Setter Property="Template">
+                                                                    <Setter.Value>
+                                                                        <ControlTemplate TargetType="{x:Type ProgressBar}">
+                                                                            <Grid MinHeight="14"
                                                                               MinWidth="200">
-                                                                                    <Border Name="PART_Track"
+                                                                                <Border Name="PART_Track"
                                                                                     CornerRadius="8" />
-                                                                                    <Border Name="PART_Indicator"
+                                                                                <Border Name="PART_Indicator"
                                                                                     CornerRadius="8"
                                                                                     BorderThickness="1"
                                                                                     Background="OrangeRed"
                                                                                     HorizontalAlignment="Left" />
-                                                                                </Grid>
-                                                                            </ControlTemplate>
-                                                                        </Setter.Value>
-                                                                    </Setter>
-                                                                </Style>
-                                                            </ProgressBar.Style>
-                                                            <ProgressBar.Triggers>
-                                                                <EventTrigger RoutedEvent="ProgressBar.ValueChanged">
-                                                                    <BeginStoryboard>
-                                                                        <Storyboard>
-                                                                            <ThicknessAnimation Storyboard.TargetName="pb2"
+                                                                            </Grid>
+                                                                        </ControlTemplate>
+                                                                    </Setter.Value>
+                                                                </Setter>
+                                                            </Style>
+                                                        </ProgressBar.Style>
+                                                        <ProgressBar.Triggers>
+                                                            <EventTrigger RoutedEvent="ProgressBar.ValueChanged">
+                                                                <BeginStoryboard>
+                                                                    <Storyboard>
+                                                                        <ThicknessAnimation Storyboard.TargetName="pb2"
                                                                                         Storyboard.TargetProperty="Margin"
                                                                                         From="0 0 250 0"
                                                                                         To="0 0 0 0"
                                                                                         Duration="0:0:0.5" />
 
 
-                                                                        </Storyboard>
-                                                                    </BeginStoryboard>
-                                                                </EventTrigger>
+                                                                    </Storyboard>
+                                                                </BeginStoryboard>
+                                                            </EventTrigger>
 
-                                                            </ProgressBar.Triggers>
-                                                        </ProgressBar>
-                                                    </StackPanel>
+                                                        </ProgressBar.Triggers>
+                                                    </ProgressBar>
                                                 </StackPanel>
-
                                             </StackPanel>
 
-                                            <StackPanel Grid.Column="1">
-                                                <TextBlock Text="{Binding TotalIn}"
-                                                   Margin="0,15,0,0"
-                                                   FontSize="20"
+                                        </StackPanel>
+
+                                        <StackPanel Grid.Column="1">
+                                            <TextBlock Text="{Binding TotalIn}"
+                                                   Margin="0,22,0,0"
                                                    FontWeight="Bold"
                                                    Foreground="Black"/>
-                                                <TextBlock Text="{Binding TotalOut}"
-                                                   Margin="0,30,0,0"
-                                                   FontSize="20" 
+                                            <TextBlock Text="{Binding TotalOut}"
+                                                   Margin="0,32,0,0"
                                                    FontWeight="Bold"
                                                    Foreground="Black"/>
-                                            </StackPanel>
-                                        </Grid>
+                                        </StackPanel>
                                     </Grid>
-                                </Border>
-                            </Grid>
-                            <Grid Grid.Row="2" Margin="10,10,10,0">
-                                <Border BorderThickness="2" BorderBrush="Gray" CornerRadius="20">
-                                    <StackPanel>
-                                        <StackPanel.Resources>
-                                            <ResourceDictionary>
-                                                <Style TargetType="TextBlock">
-                                                    <Setter Property="FontSize" Value="20" />
-                                                    <Setter Property="Margin" Value="20,16,0,0" />
-                                                </Style>
-                                            </ResourceDictionary>
-                                        </StackPanel.Resources>
+                                </Grid>
+                            </materialDesign:Card>
 
-                                        <StackPanel Orientation="Horizontal" Margin="0">
-                                            <TextBlock Text="Chu kỳ:" Width="105" />
-                                            <TextBlock Text="{Binding Path=Text,ElementName=periodbox}" />
-                                        </StackPanel>
-                                        <StackPanel Orientation="Horizontal" Margin="0">
-                                            <TextBlock Text="Thời gian:" Width="105" />
-                                            <TextBlock Text="{Binding Path=Text,ElementName=Timebox}" />
-                                        </StackPanel>
-                                        <StackPanel Orientation="Horizontal" Margin="0">
-                                            <TextBlock Text="Số hoá đơn:" Width="105" />
-                                            <TextBlock Text="{Binding TotalBill}" />
-                                        </StackPanel>
-                                        <StackPanel Orientation="Horizontal" Margin="0">
-                                            <TextBlock Text="Lợi nhuận:" Width="105" />
-                                            <TextBlock Text="{Binding TrueIncome}" />
-                                        </StackPanel>
-                                    </StackPanel>
-                                </Border>
-
-                            </Grid>
-                        </Grid>
-                        <Grid Grid.Column="1" Margin="10,0,0,0" x:Name="cardRight">
-                            <Border BorderThickness="2" BorderBrush="Gray" CornerRadius="20">
+                            <materialDesign:Card Margin="10"
+                                                 UniformCornerRadius="10"
+                                                 Grid.Row="2">
                                 <StackPanel>
-                                    <lvc:CartesianChart LegendLocation="Bottom"
+                                    <StackPanel.Resources>
+                                        <ResourceDictionary>
+                                            <Style TargetType="TextBlock">
+                                                <Setter Property="FontSize" Value="20" />
+                                                <Setter Property="Margin" Value="20,16,0,0" />
+                                            </Style>
+                                        </ResourceDictionary>
+                                    </StackPanel.Resources>
+
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="Chu kỳ:" FontSize="16" FontWeight="Bold" Width="105" />
+                                        <TextBlock Text="{Binding Path=Text,ElementName=periodbox}" FontSize="16" />
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="Thời gian:" FontSize="16" FontWeight="Bold" Width="105" />
+                                        <TextBlock Text="{Binding Path=Text,ElementName=Timebox}" FontSize="16"/>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="Số hoá đơn:" FontSize="16" FontWeight="Bold" Width="105" />
+                                        <TextBlock Text="{Binding TotalBill}" FontSize="16"/>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="Lợi nhuận:" FontSize="16" FontWeight="Bold" Width="105" />
+                                        <TextBlock Text="{Binding TrueIncome}" FontSize="16"/>
+                                    </StackPanel>
+                                </StackPanel>
+                            </materialDesign:Card>
+                        </Grid>
+                        <materialDesign:Card Grid.Column="1" 
+                                             Margin="10,0,0,0" 
+                                             x:Name="cardRight"
+                                             UniformCornerRadius="10">
+                            <Grid>
+                                <lvc:CartesianChart LegendLocation="Bottom"
                                                     Series="{Binding InComeData,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
                                                     Width="620" Height="490">
-                                        <lvc:CartesianChart.AxisX>
-                                            <lvc:AxesCollection>
-                                                <lvc:Axis MinValue="1"
+                                    <lvc:CartesianChart.AxisX>
+                                        <lvc:AxesCollection>
+                                            <lvc:Axis MinValue="1"
                                               MaxValue="{Binding LabelMaxValue}">
-                                                    <lvc:Axis.Separator>
-                                                        <lvc:Separator Step="1" />
-                                                    </lvc:Axis.Separator>
-                                                </lvc:Axis>
-                                            </lvc:AxesCollection>
-                                        </lvc:CartesianChart.AxisX>
+                                                <lvc:Axis.Separator>
+                                                    <lvc:Separator Step="1" />
+                                                </lvc:Axis.Separator>
+                                            </lvc:Axis>
+                                        </lvc:AxesCollection>
+                                    </lvc:CartesianChart.AxisX>
 
-                                        <lvc:CartesianChart.AxisY>
-                                            <lvc:Axis Title="Triệu đồng"
+                                    <lvc:CartesianChart.AxisY>
+                                        <lvc:Axis Title="Triệu đồng"
                                               FontFamily="arial"
                                               MinValue="0" />
-                                        </lvc:CartesianChart.AxisY>
-                                    </lvc:CartesianChart>
-                                </StackPanel>
-                            </Border>
-                        </Grid>
+                                    </lvc:CartesianChart.AxisY>
+                                </lvc:CartesianChart>
+                            </Grid>
+                        </materialDesign:Card>
                     </Grid>
                 </Grid>
             </Border>

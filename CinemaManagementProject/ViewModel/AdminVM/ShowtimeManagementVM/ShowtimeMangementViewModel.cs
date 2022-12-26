@@ -150,8 +150,14 @@ namespace CinemaManagementProject.ViewModel.AdminVM.ShowtimeManagementVM
 
             public int SelectedRoomId = -1;
 
+            private string _roomIdViaShowTimeCheck;
+            public string RoomIdViaShowTimeCheck
+        {
+                get { return _roomIdViaShowTimeCheck; }
+                set { _roomIdViaShowTimeCheck = value; OnPropertyChanged(); }
+            }
 
-            public ICommand ChangedRoomCM { get; set; }
+        public ICommand ChangedRoomCM { get; set; }
 
             public ICommand LoadDeleteShowtimeCM { get; set; }
             public ICommand MaskNameCM { get; set; }
@@ -242,7 +248,7 @@ namespace CinemaManagementProject.ViewModel.AdminVM.ShowtimeManagementVM
                 IsSaving = false;
 
             });
-            LoadDeleteShowtimeCM = new RelayCommand<ListBox>((p) => { if (SelectedShowtime is null) return false; return true; }, async (p) =>
+            LoadDeleteShowtimeCM = new RelayCommand<Window>((p) => { if (SelectedShowtime is null) return false; return true; }, async (p) =>
             {
                 string message = "Bạn có chắc muốn xoá suất chiếu này không?";
 
@@ -252,7 +258,7 @@ namespace CinemaManagementProject.ViewModel.AdminVM.ShowtimeManagementVM
                 {
                     message = $"Suất chiếu này có ghế đã được đặt. Bạn có muốn xoá không?";
                     var kq = CustomMessageBox.ShowOkCancel(message, "Cảnh báo", "Yes","No", Views.CustomMessageBoxImage.Warning);
-                    if (kq== Views.CustomMessageBoxResult.None)
+                    if (kq == Views.CustomMessageBoxResult.None || kq == Views.CustomMessageBoxResult.Cancel)
                     {
                         return;
                     }
@@ -260,7 +266,7 @@ namespace CinemaManagementProject.ViewModel.AdminVM.ShowtimeManagementVM
                 else
                 {
                     var kq = CustomMessageBox.ShowOkCancel(message, "Cảnh báo", "Yes", "No", Views.CustomMessageBoxImage.Warning);
-                    if (kq==Views.CustomMessageBoxResult.None)
+                    if (kq == Views.CustomMessageBoxResult.None || kq == Views.CustomMessageBoxResult.Cancel)
                     {
                         return;
                     }
@@ -283,7 +289,11 @@ namespace CinemaManagementProject.ViewModel.AdminVM.ShowtimeManagementVM
                     GetShowingMovieByRoomInDate(SelectedRoomId);
                     ListSeat1 = new ObservableCollection<SeatSettingDTO>();
                     ListSeat2 = new ObservableCollection<SeatSettingDTO>();
-
+                    if (ListShowtimeofMovie.Count == 0)  // Neu het suat chieu thi dong luon sua so
+                    {
+                        p.Close();
+                        RoomIdViaShowTimeCheck = "";
+                    }    
                 }
                 else
                 {
@@ -342,11 +352,13 @@ namespace CinemaManagementProject.ViewModel.AdminVM.ShowtimeManagementVM
                
                 p.Close();
                 SelectedShowtime = null;
+                RoomIdViaShowTimeCheck = "";
             });
             LoadSeatCM = new RelayCommand<ListBox>((p) => { return true; }, async (p) =>
             {
                 if (SelectedShowtime != null)
                 {
+                    RoomIdViaShowTimeCheck = SelectedShowtime.RoomId.ToString();
                     await GenerateSeat();
                     if (SelectedShowtime.Price.ToString().Length > 5)
                         moviePrice = float.Parse(SelectedShowtime.Price.ToString()/*.Remove(5, 5)*/);
