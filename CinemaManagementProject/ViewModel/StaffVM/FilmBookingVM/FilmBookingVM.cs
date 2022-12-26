@@ -241,6 +241,7 @@ namespace CinemaManagementProject.ViewModel.StaffVM.FilmBookingVM
         public void GetAllCurrentGenre(ComboBox filter)
         {
             CurrentGenreSource = new ObservableCollection<string>();
+            CurrentGenreSource.Add("Tất cả");
             for (int i = 0; i < FilmShowTimeList.Count; i++)
             {
                 if (!CurrentGenreSource.Contains(FilmShowTimeList[i].Genre))
@@ -248,7 +249,6 @@ namespace CinemaManagementProject.ViewModel.StaffVM.FilmBookingVM
                     CurrentGenreSource.Add(FilmShowTimeList[i].Genre);
                 }    
             }
-            CurrentGenreSource.Add("Tất cả");
         }
         public void SelectFilmByFilter()
         {

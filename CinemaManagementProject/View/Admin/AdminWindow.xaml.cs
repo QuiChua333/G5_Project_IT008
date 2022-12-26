@@ -22,6 +22,31 @@ namespace CinemaManagementProject.View.Admin
         public AdminWindow()
         {
             InitializeComponent();
+            this.MaxHeight = SystemParameters.MaximizedPrimaryScreenHeight;
+        }
+        private void AdminWD_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.LeftButton == MouseButtonState.Pressed)
+            {
+                DragMove();
+            }
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            AdminWD.WindowState = WindowState.Minimized;
+        }
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            if(AdminWD.WindowState == WindowState.Normal)
+                AdminWD.WindowState = WindowState.Maximized;
+            else
+                AdminWD.WindowState = WindowState.Normal;
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            Close();
         }
     }
 }

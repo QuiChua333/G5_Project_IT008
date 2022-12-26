@@ -55,9 +55,9 @@
 
                                 <Search:Search IconSize="20" 
                                                Height="46" 
-                                               Margin="20, 17, 0, 17"  
+                                               Margin="30, 17, 0, 17"  
                                                Width="400"
-                                               Corner="12"
+                                               Corner="18"
                                                FontFamily="{StaticResource MaterialDesignFont}"
                                                FontSize="15"    
                                                FontWeight="Thin" 
@@ -73,23 +73,20 @@
                                             Opacity=".25"
                                             Direction="270"/>
                                     </Border.Effect>
-
                                     <Button Style="{StaticResource CustomButton}" 
-                                            Width="140" 
-                                            Height="50" 
-                                            Margin="40,0,0,0" Command="{Binding LoadAddMovieCM}">
-                                        <StackPanel Orientation="Horizontal" 
-                                                    Width="143" 
-                                                    HorizontalAlignment="Center" >
-                                            <Image 
-                                                Source="{StaticResource Icon_Them}" 
-                                                Width="34" Height="34" 
-                                                Margin="12,0,0,0"/>
+                                            Width="105" 
+                                            Height="40" 
+                                            Margin="30,5,0,0"
+                                            Command="{Binding LoadAddMovieCM}">
+                                        <StackPanel Orientation="Horizontal" >
+                                            <materialDesign:PackIcon Kind="PlusCircleOutline" 
+                                                                     Width="28" 
+                                                                     Height="28"/> 
                                             <TextBlock FontFamily="{StaticResource MaterialDesignFont}" 
                                                        Text="Thêm" 
-                                                       FontSize="22"
-                                                       FontWeight="Normal"
-                                                       Margin="6,5,0,0"/>
+                                                       FontWeight="Regular"
+                                                       FontSize="16"
+                                                       Margin="5,4,0,0"/> 
                                         </StackPanel>
                                     </Button>
                                 </Border>
@@ -107,21 +104,23 @@
                                             Opacity=".25"
                                             Direction="270"/>
                                     </Border.Effect>
-
+                                    
                                     <Button Style="{StaticResource CustomButton}" 
-                                            Width="180" 
-                                            Height="50" 
-                                            Margin="20,0,0,0"
-                                            Command="{Binding ExportFileCM}">
+                                            Width="150" 
+                                            Height="46" 
+                                            Margin="32,0,0,0"
+                                            Command="{Binding ExportFileCM}"> 
                                         <StackPanel Orientation="Horizontal" 
                                                     Width="143" 
-                                                    HorizontalAlignment="Center" >
-                                            <materialDesign:PackIcon Kind="Download" Width="30" Height="30"/>
-                                            <TextBlock FontFamily="{StaticResource MaterialDesignFont}" 
-                                                       Text="Tải file Excel" 
-                                                       FontSize="15"
-                                                       FontWeight="Normal"
-                                                       Margin="2,5,0,0"/>
+                                                    HorizontalAlignment="Center" > 
+                                            <materialDesign:PackIcon Kind="FileExport" 
+                                                                     Width="30" 
+                                                                     Height="30"/> 
+                                            <TextBlock  FontFamily="{StaticResource MaterialDesignFont}" 
+                                                        Text="Xuất file Excel" 
+                                                        FontSize="16"
+                                                        FontWeight="Normal"
+                                                        Margin="2,5,0,0"/> 
                                         </StackPanel>
                                     </Button>
                                 </Border>

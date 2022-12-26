@@ -10,7 +10,7 @@
       xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
       xmlns:Component="clr-namespace:CinemaManagementProject.Component"
       xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
-      d:DesignHeight="600" d:DesignWidth="1140"
+      d:DesignHeight="630" d:DesignWidth="1140"
       Title="RankingStatistical"
       x:Name="mainPage"
       DataContext="{StaticResource StatisticalManagementVM}">
@@ -37,7 +37,7 @@
     
     <Grid >
         <Grid>
-            <Border CornerRadius="20" Background="White" Margin="10">
+            <Border CornerRadius="20" Background="#54B435" Margin="10">
                 <Border.Effect>
                     <DropShadowEffect BlurRadius="14"
                                 Color="Black"
@@ -45,7 +45,7 @@
                                 Opacity=".35"
                                 Direction="270"/>
                 </Border.Effect>
-                <Grid Margin="10" Background="White">
+                <Grid Margin="10" Background="Transparent">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition/>
                         <ColumnDefinition/>
@@ -157,80 +157,82 @@
                                 <ColumnDefinition/>
                                 <ColumnDefinition/>
                             </Grid.ColumnDefinitions>
-                            <Grid Grid.Column="0">
-                                <Border BorderThickness="2" BorderBrush="Gray" CornerRadius="20" Margin="10">
-                                    <Grid>
-                                        <lvc:PieChart LegendLocation="Bottom"
+                            <materialDesign:Card Margin="10"
+                                                 UniformCornerRadius="10"
+                                                 Grid.Column="0">
+                                <Grid>
+                                    <lvc:PieChart LegendLocation="Bottom"
                                                   InnerRadius="50"
                                                   Background="Transparent"
                                                   Series="{Binding CustomerExpe}" 
                                                   Width="230" Height="180"/>
-                                        <ProgressBar Style="{StaticResource MaterialDesignCircularProgressBar}"
+                                    <ProgressBar Style="{StaticResource MaterialDesignCircularProgressBar}"
                                                      Value="0"
                                                      IsIndeterminate="True"
                                                      Margin="20,-28,20,12"
                                                      Width="100"
                                                      Height="100"
                                                      Foreground="#FF455345" />
-                                        <Grid Margin="60,40,60,90" Background="Transparent">
-                                            <Grid.RowDefinitions>
-                                                <RowDefinition/>
-                                                <RowDefinition/>
-                                                <RowDefinition/>
-                                            </Grid.RowDefinitions>
-                                            <Label Grid.Row="0" 
-                                                   Content="Hạng nhất" 
-                                                   HorizontalContentAlignment="Center" 
-                                                   VerticalContentAlignment="Center" />
-                                            <Label Grid.Row="1"
-                                                   Content="{Binding Top5Customer[0].CustomerName}"
-                                                   FontWeight="Bold"
-                                                   VerticalContentAlignment="Center"
-                                                   HorizontalContentAlignment="Center"
-                                                   FontSize="10" />
-                                            <Label Grid.Row="2"
-                                                   Content="{Binding Top5Customer[0].ExpenseStr}"
-                                                   HorizontalContentAlignment="Center"
-                                                   VerticalContentAlignment="Center"
-                                                   FontSize="10" />
+                                    <Grid Margin="60,40,60,90" Background="Transparent">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition/>
+                                            <RowDefinition/>
+                                            <RowDefinition/>
+                                        </Grid.RowDefinitions>
+                                        <Label Grid.Row="0" 
+                                               Content="Hạng nhất"
+                                               FontWeight="Bold"
+                                               HorizontalContentAlignment="Center" 
+                                               VerticalContentAlignment="Center" />
+                                        <Label Grid.Row="1"
+                                               Content="{Binding Top5Customer[0].CustomerName}"
+                                               FontWeight="Bold"
+                                               VerticalContentAlignment="Center"
+                                               HorizontalContentAlignment="Center"
+                                               FontSize="10" />
+                                        <Label Grid.Row="2"
+                                               Content="{Binding Top5Customer[0].ExpenseStr}"
+                                               HorizontalContentAlignment="Center"
+                                               VerticalContentAlignment="Center"
+                                               FontSize="10" />
 
-                                        </Grid>
                                     </Grid>
-                                </Border>
-                            </Grid>
+                                </Grid>
+                            </materialDesign:Card>
 
-                            <Grid Grid.Column="1">
-                                <Border BorderThickness="2" BorderBrush="Gray" CornerRadius="20" Margin="10">
-                                    <Grid>
-                                        <lvc:PieChart LegendLocation="Bottom"
+                            <materialDesign:Card Margin="10"
+                                                 UniformCornerRadius="10"
+                                                 Grid.Column="1">
+                                <Grid>
+                                    <lvc:PieChart LegendLocation="Bottom"
                                                   InnerRadius="10"
                                                   Background="Transparent"
                                                   Series="{Binding NewCusPie}" 
                                                   Width="230" Height="180"/>
-                                        <Grid Height="24" Width="130" HorizontalAlignment="Right" Margin="0,156,10,0">
-                                            <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="65*"/>
-                                                <ColumnDefinition Width="35*"/>
-                                            </Grid.ColumnDefinitions>
-                                            <Label Grid.Column="0"
+                                    <Grid Height="24" Width="130" HorizontalAlignment="Right" Margin="0,156,10,0">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="65*"/>
+                                            <ColumnDefinition Width="35*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Label Grid.Column="0"
                                                    Content=" Khách vãng lai: "
                                                    HorizontalAlignment="Left"
                                                    VerticalAlignment="Center"
                                                    FontSize="10"
                                                    FontWeight="Bold"
                                                    Foreground="Black" />
-                                            <Label Grid.Column="1"
+                                        <Label Grid.Column="1"
                                                    Content="{Binding WalkingGuest}"
                                                    HorizontalAlignment="Left"
                                                    VerticalAlignment="Center"
                                                    FontSize="10"
                                                    FontWeight="Bold"
                                                    Foreground="Black" Width="44" />
-                                        </Grid>
-
                                     </Grid>
-                                </Border>
-                            </Grid>
+
+                                </Grid>
+                            </materialDesign:Card>
+                            
                         </Grid>
 
                         <Grid Grid.Row="2">
@@ -241,63 +243,62 @@
                                    FontSize="22"
                                    Margin="26,0,0,0" />
                         </Grid>
-                        
-                        <Grid Margin="10,0,10,0" Grid.Row="3">
 
-                            <Border BorderThickness="2" BorderBrush="Gray" CornerRadius="20">
-                                <ListView ItemsSource="{Binding Top5Customer}">
-                                    <ListView.View>
-                                        <GridView>
-                                            
-                                            <GridViewColumn Header="STT" Width="90" >
-                                                <GridViewColumn.CellTemplate>
-                                                    <DataTemplate>
-                                                        <TextBlock  Text="{Binding RelativeSource={RelativeSource FindAncestor, 
+                        <materialDesign:Card Margin="10,0,10,10" 
+                                             Grid.Row="3"
+                                             UniformCornerRadius="10">
+                            <ListView ItemsSource="{Binding Top5Customer}">
+                                <ListView.View>
+                                    <GridView>
+
+                                        <GridViewColumn Header="STT" Width="90" >
+                                            <GridViewColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <TextBlock  Text="{Binding RelativeSource={RelativeSource FindAncestor, 
                                                                                                    AncestorType={x:Type ListViewItem}}, 
                                                                                                    Converter={StaticResource IndexConverter}}"
                                                         FontSize="18"
                                                         Margin="0,5,0,0" />
-                                                    </DataTemplate>
-                                                    
-                                                </GridViewColumn.CellTemplate>
-                                            </GridViewColumn>
-                                            
-                                            <GridViewColumn Header="Tên khách hàng" Width="180">
-                                                <GridViewColumn.CellTemplate>
-                                                    <DataTemplate>
-                                                        <TextBlock Text="{Binding Name}"
-                                                                   FontSize="18"
-                                                                   Height="34"
-                                                                   Margin="0,5,0,0" /> 
-                                                    </DataTemplate>
-                                                </GridViewColumn.CellTemplate>
-                                            </GridViewColumn>
+                                                </DataTemplate>
 
-                                            <GridViewColumn Header="Số điện thoại" Width="144">
-                                                <GridViewColumn.CellTemplate>
-                                                    <DataTemplate>
-                                                        <TextBlock Text="{Binding PhoneNumber}"
-                                                                   FontSize="18"
-                                                                   Margin="0,5,0,0" /> 
-                                                    </DataTemplate>
-                                                </GridViewColumn.CellTemplate>
-                                            </GridViewColumn>
+                                            </GridViewColumn.CellTemplate>
+                                        </GridViewColumn>
 
-                                            <GridViewColumn Header="Chi tiêu" Width="112">
-                                                <GridViewColumn.CellTemplate>
-                                                    <DataTemplate>
-                                                        <TextBlock Text="{Binding ExpenseStr}"
-                                                                   FontSize="18"
-                                                                   Margin="0,5,0,0" /> 
-                                                    </DataTemplate>
-                                                </GridViewColumn.CellTemplate>
-                                            </GridViewColumn>
-                                        </GridView>
-                                    </ListView.View>
-                                </ListView>
-                            </Border>
+                                        <GridViewColumn Header="Tên khách hàng" Width="180">
+                                            <GridViewColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <TextBlock Text="{Binding Name}"
+                                                                FontSize="18"
+                                                                Height="34"
+                                                                Margin="0,5,0,0" />
+                                                </DataTemplate>
+                                            </GridViewColumn.CellTemplate>
+                                        </GridViewColumn>
 
-                        </Grid>
+                                        <GridViewColumn Header="Số điện thoại" Width="144">
+                                            <GridViewColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <TextBlock Text="{Binding PhoneNumber}"
+                                                                   FontSize="18"
+                                                                   Margin="0,5,0,0" />
+                                                </DataTemplate>
+                                            </GridViewColumn.CellTemplate>
+                                        </GridViewColumn>
+
+                                        <GridViewColumn Header="Chi tiêu" Width="112">
+                                            <GridViewColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <TextBlock Text="{Binding ExpenseStr}"
+                                                                   FontSize="18"
+                                                                   Margin="0,5,0,0" />
+                                                </DataTemplate>
+                                            </GridViewColumn.CellTemplate>
+                                        </GridViewColumn>
+                                    </GridView>
+                                </ListView.View>
+                            </ListView>
+                        </materialDesign:Card>
+
                     </Grid>
 
                     <Grid Grid.Column="1">
@@ -401,57 +402,57 @@
                             </Grid>
                         </Grid>
 
-                        <Grid Grid.Row="1" Margin="10">
-                            <Border BorderThickness="2" BorderBrush="Gray" CornerRadius="20">
-                                <Grid>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="40*" />
-                                        <ColumnDefinition Width="60*" />
-                                    </Grid.ColumnDefinitions>
-                                    <Grid Grid.Column="0">
-                                        <Image Source="{StaticResource Image_Start}" Width="200" Height="190"/>
+                        <materialDesign:Card Margin="10"
+                                             UniformCornerRadius="10"
+                                             Grid.Row="1">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="40*" />
+                                    <ColumnDefinition Width="60*" />
+                                </Grid.ColumnDefinitions>
+                                <Grid Grid.Column="0">
+                                    <Image Source="{StaticResource Image_Start}" Width="200" Height="190"/>
 
-                                        <Grid Margin="40,50,40,50" Background="Transparent">
-                                            <Grid.RowDefinitions>
-                                                <RowDefinition/>
-                                                <RowDefinition/>
-                                                <RowDefinition/>
-                                            </Grid.RowDefinitions>
-                                            
-                                            <Label Grid.Row="0" 
-                                                   Content="Hạng nhất" 
-                                                   HorizontalContentAlignment="Center" 
-                                                   VerticalContentAlignment="Center" />
-                                            <Label Grid.Row="1"
-                                                   Content="{Binding Top5Staff[0].StaffName}"
-                                                   FontWeight="Bold"
-                                                   VerticalContentAlignment="Center"
-                                                   HorizontalContentAlignment="Center"
-                                                   FontSize="10" />
-                                            <Label Grid.Row="2"
-                                                   Content="{Binding Top5Staff[0].BenefitContributionStr}"
-                                                   HorizontalContentAlignment="Center"
-                                                   VerticalContentAlignment="Center"
-                                                   FontSize="10" />
+                                    <Grid Margin="40,50,40,50" Background="Transparent">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition/>
+                                            <RowDefinition/>
+                                            <RowDefinition/>
+                                        </Grid.RowDefinitions>
 
-                                        </Grid>
+                                        <Label Grid.Row="0" 
+                                               FontWeight="Bold"
+                                               Content="Hạng nhất" 
+                                               HorizontalContentAlignment="Center" 
+                                               VerticalContentAlignment="Center" />
+                                        <Label Grid.Row="1"
+                                               Content="{Binding Top5Staff[0].StaffName}"
+                                               FontWeight="Bold"
+                                               VerticalContentAlignment="Center"
+                                               HorizontalContentAlignment="Center"
+                                               FontSize="10" />
+                                        <Label Grid.Row="2"
+                                               Content="{Binding Top5Staff[0].BenefitContributionStr}"
+                                               HorizontalContentAlignment="Center"
+                                               VerticalContentAlignment="Center"
+                                               FontSize="10" />
+
                                     </Grid>
-                                    <Grid Grid.Column="1">
-                                        <lvc:PieChart LegendLocation="Right"
+                                </Grid>
+                                <Grid Grid.Column="1">
+                                    <lvc:PieChart LegendLocation="Right"
                                                   InnerRadius="10"
                                                   Background="Transparent"
                                                   Margin="10,0,10,0"
                                                   Series="{Binding StaffContributePie}" 
                                                   Height="180"/>
-                                    </Grid>
-                                    
-
-                                   
                                 </Grid>
 
-                            </Border>
-                        </Grid>
 
+
+                            </Grid>
+                        </materialDesign:Card>
+                        
                         <Grid Grid.Row="2">
                             <Label Content="Top 5 nhân viên đóng góp nhiều nhất"
                                     VerticalAlignment="Center"
@@ -461,62 +462,62 @@
                                     Margin="26,0,0,0" />
 
                         </Grid>
-                        <Grid Margin="10,0,10,0" Grid.Row="3">
-                            <Border BorderThickness="2" BorderBrush="Gray" CornerRadius="20">
-                                <ListView ItemsSource="{Binding Top5Staff}" Margin="0,0,0,-2">
-                                    <ListView.View>
+                        <materialDesign:Card Margin="10,0,10,10" 
+                                             Grid.Row="3"
+                                             UniformCornerRadius="10">
+                            <ListView ItemsSource="{Binding Top5Staff}" Margin="0,0,0,-2">
+                                <ListView.View>
 
-                                        <GridView>
+                                    <GridView>
 
-                                            <GridViewColumn Header="STT" Width="90" >
-                                                <GridViewColumn.CellTemplate>
-                                                    <DataTemplate>
-                                                        <TextBlock  Text="{Binding RelativeSource={RelativeSource FindAncestor, 
+                                        <GridViewColumn Header="STT" Width="90" >
+                                            <GridViewColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <TextBlock  Text="{Binding RelativeSource={RelativeSource FindAncestor, 
                                                                     AncestorType={x:Type ListViewItem}}, 
                                                                     Converter={StaticResource IndexConverter}}" 
                                                         FontSize="18"
                                                         Margin="0,5,0,0" />
-                                                    </DataTemplate>
+                                                </DataTemplate>
 
-                                                </GridViewColumn.CellTemplate>
-                                            </GridViewColumn>
+                                            </GridViewColumn.CellTemplate>
+                                        </GridViewColumn>
 
-                                            <GridViewColumn Header="Mã nhân viên" Width="150">
-                                                <GridViewColumn.CellTemplate>
-                                                    <DataTemplate>
-                                                        <TextBlock Text="{Binding Id}"
+                                        <GridViewColumn Header="Mã nhân viên" Width="150">
+                                            <GridViewColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <TextBlock Text="{Binding Id}"
                                                                    FontSize="18"
                                                                    Height="34"
                                                                    Margin="0,5,0,0" />
-                                                    </DataTemplate>
-                                                </GridViewColumn.CellTemplate>
-                                            </GridViewColumn>
+                                                </DataTemplate>
+                                            </GridViewColumn.CellTemplate>
+                                        </GridViewColumn>
 
-                                            <GridViewColumn Header="Tên nhân viên" Width="166">
-                                                <GridViewColumn.CellTemplate>
-                                                    <DataTemplate>
-                                                        <TextBlock Text="{Binding Name}"
+                                        <GridViewColumn Header="Tên nhân viên" Width="166">
+                                            <GridViewColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <TextBlock Text="{Binding Name}"
                                                                    FontSize="18"
                                                                    Margin="0,5,0,0" />
-                                                    </DataTemplate>
-                                                </GridViewColumn.CellTemplate>
-                                            </GridViewColumn>
+                                                </DataTemplate>
+                                            </GridViewColumn.CellTemplate>
+                                        </GridViewColumn>
 
-                                            <GridViewColumn Header="Doanh số" Width="120">
-                                                <GridViewColumn.CellTemplate>
-                                                    <DataTemplate>
-                                                        <TextBlock Text="{Binding BenefitContributionStr}"
+                                        <GridViewColumn Header="Doanh số" Width="120">
+                                            <GridViewColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <TextBlock Text="{Binding BenefitContributionStr}"
                                                                    FontSize="18"
                                                                    Margin="0,5,0,0" />
-                                                    </DataTemplate>
-                                                </GridViewColumn.CellTemplate>
-                                            </GridViewColumn>
-                                        </GridView>
-                                    </ListView.View>
-                                </ListView>
-                            </Border>
-
-                        </Grid>
+                                                </DataTemplate>
+                                            </GridViewColumn.CellTemplate>
+                                        </GridViewColumn>
+                                    </GridView>
+                                </ListView.View>
+                            </ListView>
+                        </materialDesign:Card>
+                        
                     </Grid>
                 </Grid>
             </Border>
