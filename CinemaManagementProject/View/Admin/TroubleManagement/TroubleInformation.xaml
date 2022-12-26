@@ -21,41 +21,59 @@
             <RowDefinition Height="*" />
             <RowDefinition Height="7*" />
         </Grid.RowDefinitions>
-        <Rectangle Grid.Row="0" Grid.RowSpan="2" Fill="White" RadiusX="20" RadiusY="20">
-            <Rectangle.Effect>
+        <Border Grid.Row="0" 
+                Grid.RowSpan="2" 
+                Background="White"        
+                CornerRadius="20"
+                BorderBrush="DarkGray"
+                BorderThickness="1">
+            <Border.Effect>
                 <DropShadowEffect
-                    BlurRadius="15"
-                    Direction="270"
-                    Opacity="0.3"
-                    Color="Black"
-                />
-            </Rectangle.Effect>
-        </Rectangle>
+                                BlurRadius="10"
+                                Color="Black"
+                                ShadowDepth="4"
+                                Opacity=".25"
+                                Direction="270"/>
+            </Border.Effect>
+        </Border>
 
-        <Grid x:Name="Header" Grid.Row="0">
-            <TextBlock
-                FontFamily="{StaticResource MaterialDesignFont}"
-                FontSize="35"
-                FontWeight="Bold"
-                HorizontalAlignment="Left"
-                VerticalAlignment="Center"
-                Margin="30,0,0,0"
-            >Chi tiết sự cố</TextBlock>
+        <Border x:Name="Header" 
+                Grid.Row="0"
+                Margin="30 0 30 0"
+                BorderBrush="#8DC1F0"
+                BorderThickness="0 0 0 3">
+            <StackPanel Orientation="Horizontal">
+                <Label
+                    FontFamily="{StaticResource MaterialDesignFont}"
+                    FontSize="35"
+                    Foreground="#8DC1F0"
+                    FontWeight="Bold"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    
+                    Margin="240,0,0,0"
+                >CHI TIẾT SỰ CỐ
+                    <Label.Effect>
+                        <DropShadowEffect BlurRadius="1" Direction="-45" Color="#000000" ShadowDepth="1.5" Opacity="0.5"/>
+                    </Label.Effect>
+                </Label>
 
-            <Button Click="Button_Click_1"
-                    Width="70"
-                    ToolBar.OverflowMode="AsNeeded"
-                    Background="Transparent"
-                    Foreground="Black"
-                    BorderBrush="Transparent"
-                    materialDesign:ButtonAssist.CornerRadius="0,10,0,0"
-                    Margin="730,-6,0,0">
-                <materialDesign:PackIcon Kind="WindowClose"
-                                         Height="30"
-                                         Width="30"
-                                                 Padding="0" />
-            </Button>
-        </Grid>
+                <Button Click="Button_Click_1"
+                        Width="70"
+                        ToolBar.OverflowMode="AsNeeded"
+                        Background="Transparent"
+                        Foreground="Black"
+                        BorderBrush="Transparent"
+                        materialDesign:ButtonAssist.CornerRadius="0,10,0,0"
+                        Margin="190,-6,0,0">
+                    <materialDesign:PackIcon Kind="WindowClose"
+                                             Height="30"
+                                             Width="30"
+                                                     Padding="0" />
+                </Button>
+
+            </StackPanel>
+        </Border>
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
@@ -64,7 +82,7 @@
 
             <Border BorderThickness="2"  
                     BorderBrush="Black" 
-                    Margin="10" >
+                    Margin="10 10 10 20" >
                 <Border.Background>
                     <ImageBrush ImageSource="{Binding SelectedItem.Image}" />
                 </Border.Background>
@@ -94,7 +112,9 @@
                         <Setter Property="FontFamily" Value="{StaticResource MaterialDesignFont}"></Setter>
                     </Style>
                 </Grid.Resources>
-                <StackPanel Grid.Row="0" Margin="0,-20,0,3" Grid.RowSpan="2">
+                <StackPanel Grid.Row="0" 
+                            Margin="0,0,0,3" 
+                            Grid.RowSpan="2">
                     <StackPanel Orientation="Horizontal">
                         <TextBlock Text="{Binding SelectedItem.TroubleType}"
                                     FontWeight="Medium"
@@ -111,7 +131,7 @@
                                 BorderBrush="Black">
                         <TextBlock Text="{Binding SelectedItem.Description}"
                                     TextWrapping="Wrap"
-                                    FontSize="15" Height="40" />
+                                    FontSize="15" Height="46" />
                     </Border>
                     <StackPanel Orientation="Horizontal">
                         <StackPanel Margin="0,10,0,0">
@@ -119,17 +139,22 @@
                                        FontSize="18"
                                        FontWeight="Medium"/>
                             <TextBlock Text="{Binding SelectedItem.SubmittedAt,StringFormat=dd/MM/yyyy HH:mm:ss}" 
-                                       FontSize="16"/>
+                                       FontSize="18"
+                                       Margin="0 10 0 0"/>
                         </StackPanel>
-                        <StackPanel Margin="100,10,0,0">
+                        <StackPanel Margin="160,10,0,0">
                             <TextBlock  Text="Nhân viên báo cáo:"
                                         FontSize="18"
                                         FontWeight="Medium"/>
-                            <TextBlock FontSize="16" Text="{Binding SelectedItem.StaffName}" />
+                            <TextBlock FontSize="18"
+                                       Margin="0 10 0 0"
+                                       Text="{Binding SelectedItem.StaffName}" />
                         </StackPanel>
                     </StackPanel>
 
-                    <StackPanel Margin="0,10,0,0">
+                    <StackPanel Margin="0,0,0,0"
+                                Height="50"
+                                Orientation="Horizontal">
                         <TextBlock  Text="Trạng thái:"
                                     FontSize="18"
                                     FontWeight="Medium"/>
@@ -138,9 +163,11 @@
                                     HorizontalAlignment="Left" />
                     </StackPanel>
 
-                    <StackPanel Margin="0,10,0,0"
+                    <StackPanel Margin="0,0,0,0"
                                 x:Name="_startday"
-                                IsEnabled="False">
+                                IsEnabled="False"
+                                Height="50"
+                                Orientation="Horizontal">
                         <TextBlock Text="Ngày sửa:" 
                                    FontSize="18"
                                    FontWeight="Medium"/>
@@ -148,9 +175,11 @@
                                     Text="{Binding SelectedItem.StartDate,StringFormat=dd/MM/yyyy HH:mm:ss}" />
                     </StackPanel>
 
-                    <StackPanel Margin="0,10,0,0"
+                    <StackPanel Margin="0,0,0,0"
                                 x:Name="_Finishday"
-                                IsEnabled="False">
+                                IsEnabled="False"
+                                Height="50"
+                                Orientation="Horizontal">
                         <TextBlock Text="Ngày hoàn thành:"
                                    FontSize="18"
                                     FontWeight="Medium"/>
@@ -178,7 +207,7 @@
                                 Click="Button_Click_1"
                                 Background="Red"
                                 HorizontalAlignment="Right" 
-                                Margin="0,20,10,0">Đóng</Button>
+                                Margin="0,0,10,0">Đóng</Button>
                        
                     </StackPanel>
 

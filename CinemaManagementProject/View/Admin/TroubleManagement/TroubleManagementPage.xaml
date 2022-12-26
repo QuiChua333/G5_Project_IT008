@@ -67,7 +67,7 @@
                 <ColumnDefinition Width="170"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-          
+
             <Border CornerRadius="14"
                     Grid.Column="1" 
                     Grid.Row="0" 
@@ -85,9 +85,8 @@
                             Opacity=".25"
                             Direction="270"/>
                 </Border.Effect>
-                <ComboBox   Width="200"
-                            VerticalAlignment="Bottom"
-                            HorizontalAlignment="Left"
+                <ComboBox   Width="160"
+                            HorizontalAlignment="Center"
                             Style="{StaticResource styleButton}"
                             SelectedIndex="0"  
                             Padding="10"
@@ -108,7 +107,17 @@
                 </ComboBox>
             </Border>
         </Grid>
-        <Grid Grid.Row="1" Margin="20,0,20,18" Grid.ColumnSpan="2">
+        <Border Grid.Row="1" 
+              Margin="20,0,20,18" 
+              Grid.ColumnSpan="2">
+            <Border.Effect>
+                <DropShadowEffect
+                            BlurRadius="10"
+                            Color="Black"
+                            ShadowDepth="4"
+                            Opacity=".25"
+                            Direction="270"/>
+            </Border.Effect>
             <materialDesign:Card UniformCornerRadius="20">
                 <StackPanel>
                     <ListView ItemsSource="{Binding TroubleList}"
@@ -225,7 +234,7 @@
                     </ListView>
                 </StackPanel>
             </materialDesign:Card>
-        </Grid>
+        </Border>
         <Rectangle x:Name="Overlay" RadiusX="20" RadiusY="20" Visibility="Hidden" Grid.Column="0" Grid.Row="0" Grid.RowSpan="2" Grid.ColumnSpan="2" Fill="Black" Opacity="0.25"/>
     </Grid>
 </Page>
