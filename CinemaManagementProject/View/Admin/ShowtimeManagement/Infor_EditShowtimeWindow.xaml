@@ -121,6 +121,7 @@
                                                     FontWeight="Regular"
                                                    Foreground="#000000"
                                                    FontFamily="{DynamicResource MaterialDesignFont}"
+                                        Text="{Binding RoomIdViaShowTimeCheck}"
                                                      />
                                 </StackPanel>
 
@@ -170,7 +171,8 @@
                                 FontFamily="{DynamicResource MaterialDesignFont}"
                                 Margin="0,0,10,0"
                                 Width="80" 
-                                Command="{Binding LoadDeleteShowtimeCM}">
+                                Command="{Binding LoadDeleteShowtimeCM}"
+                                            CommandParameter="{Binding ElementName=EditWindow}">
                                     </Button>
                                 </Grid>
                             </Grid>

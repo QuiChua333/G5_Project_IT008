@@ -31,8 +31,8 @@ namespace CinemaManagementProject.Model.Service
 
         public async Task<(bool IsSuccess, string message)> AddShowtime(ShowtimeDTO newShowtime)
         {
-            try
-            {
+            //try
+            //{
                 using (var context = new CinemaManagementProjectEntities())
                 {
                     //Uncomment when release
@@ -105,12 +105,12 @@ namespace CinemaManagementProject.Model.Service
                     newShowtime.Id = showtime.Id;
                     return (true, "Thêm suất chiếu thành công");
                 }
-            }
-            catch (Exception e)
-            {
-                return (false, "Lỗi hệ thống" + e.Message);
+            //}
+            //catch (Exception e)
+            //{
+            //    return (false, "Lỗi hệ thống" + e.Message);
 
-            }
+            //}
         }
         public async Task<(bool IsSuccess, string message)> DeleteShowtime(int showtimeId)
         {
