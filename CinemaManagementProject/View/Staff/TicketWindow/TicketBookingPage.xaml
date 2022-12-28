@@ -335,7 +335,7 @@
                                            Foreground="#000000"
                                            FontFamily="{DynamicResource MaterialDesignFont}"/>
                                             <Label
-                                           Content="{Binding currChoose}"
+                                           Content="{Binding currChoose, Mode=TwoWay}"
                                            HorizontalAlignment="Left"
                                            VerticalAlignment="Center"
                                            FontSize="18"

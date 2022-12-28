@@ -249,6 +249,7 @@
                     >Tổng:</TextBlock>
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Top">
                             <TextBlock
+                                x:Name="TotalPrice"
                                 FontFamily="{StaticResource MaterialDesignFont}"
                                 FontSize="28"
                                 FontWeight="Medium"

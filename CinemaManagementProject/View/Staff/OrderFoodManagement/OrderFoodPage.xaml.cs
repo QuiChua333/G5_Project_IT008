@@ -1,5 +1,6 @@
 ﻿using CinemaManagementProject.Component.Filter;
 using CinemaManagementProject.DTOs;
+using CinemaManagementProject.View.Staff.TicketWindow;
 using CinemaManagementProject.ViewModel.AdminVM.FoodManagementVM;
 using CinemaManagementProject.ViewModel.StaffVM.OrderFoodManagementVM;
 using System;
@@ -24,10 +25,12 @@ namespace CinemaManagementProject.View.Staff.OrderFoodManagement
     /// </summary>
     public partial class OrderFoodPage : Page
     {
+
         public OrderFoodPage()
         {
             InitializeComponent();
         }
+
         private bool Filter(object item)
         {
             if (String.IsNullOrEmpty(SearchBox.Text))

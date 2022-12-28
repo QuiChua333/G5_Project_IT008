@@ -19,6 +19,9 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Media3D;
+using System.Windows.Navigation;
+using CinemaManagementProject.View.Staff.OrderFoodManagement;
+using CinemaManagementProject.ViewModel.StaffVM.TicketVM;
 
 namespace CinemaManagementProject.ViewModel.StaffVM.OrderFoodManagementVM
 {
@@ -49,6 +52,7 @@ namespace CinemaManagementProject.ViewModel.StaffVM.OrderFoodManagementVM
         }
 
         public static ObservableCollection<ProductDTO> ListOrder;
+
         //_storeAllFood = tất cả đồ ăn trong kho
         //
         private static ObservableCollection<ProductDTO> _storeAllFood;
@@ -154,12 +158,14 @@ namespace CinemaManagementProject.ViewModel.StaffVM.OrderFoodManagementVM
         public static bool checkOnlyFoodOfPage = false;
         public OrderFoodManagementVM()
         {
+            if (ListOrder !=null) OrderList = new ObservableCollection<ProductDTO>(ListOrder);
             TotalPrice = 0;
             IsBacking = false;
             FirstLoadCM = new RelayCommand<object>((p) => { return true; }, async (p) =>
             {
                 try
                 {
+                    if (TicketWindowViewModel.mainListOrder != null) OrderList = new ObservableCollection<ProductDTO>(TicketWindowViewModel.mainListOrder);
                     FoodList = new ObservableCollection<ProductDTO>();
                     OrderList = new ObservableCollection<ProductDTO>();
                     IsLoadding = true;
@@ -348,6 +354,7 @@ namespace CinemaManagementProject.ViewModel.StaffVM.OrderFoodManagementVM
                     else
                     {
                         ListOrder = new ObservableCollection<ProductDTO>(OrderList);
+                        TicketWindowViewModel.mainListOrder = new ObservableCollection<ProductDTO>(ListOrder);
                         StaffWindow ms = Application.Current.Windows.OfType<StaffWindow>().FirstOrDefault();
                         ms.Content.Content = new TicketBill_Food_Page();
                     }
@@ -357,12 +364,14 @@ namespace CinemaManagementProject.ViewModel.StaffVM.OrderFoodManagementVM
                     if (OrderList.Count == 0)
                     {
                         ListOrder = new ObservableCollection<ProductDTO>(OrderList);
+                        TicketWindowViewModel.mainListOrder = new ObservableCollection<ProductDTO>(ListOrder);
                         TicketWindow tk = Application.Current.Windows.OfType<TicketWindow>().FirstOrDefault();
                         tk.TicketBookingFrame.Content = new TicketBill_Phim_Page();
                     }
                     else if (OrderList.Count > 0)
                     {
                         ListOrder = new ObservableCollection<ProductDTO>(OrderList);
+                        TicketWindowViewModel.mainListOrder = new ObservableCollection<ProductDTO>(ListOrder);
                         TicketWindow tk = Application.Current.Windows.OfType<TicketWindow>().FirstOrDefault();
                         tk.TicketBookingFrame.Content = new TicketBillPage();
                     }
