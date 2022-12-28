@@ -23,14 +23,14 @@
                 BorderThickness="1">
             <Grid>
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="80" />
+                    <RowDefinition Height="50" />
                     <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
                 <Grid Grid.Row="0">
-                    <Border BorderBrush="#67C6E6" BorderThickness="0,0,0,6" Margin="35,0,35,0"/>
+                    <Border BorderBrush="#67C6E6" BorderThickness="0,0,0,4" Margin="35,0,35,0"/>
                     <Label Padding="0" 
                            Content="CHI TIẾT PHIM" 
-                           FontSize="36" 
+                           FontSize="25" 
                            FontWeight="Bold" 
                            VerticalAlignment="Center" 
                            HorizontalAlignment="Center" 
@@ -40,7 +40,7 @@
                             <DropShadowEffect BlurRadius="1" Direction="-45" Color="#000000" ShadowDepth="1.5" Opacity="0.5"/>
                         </Label.Effect>
                     </Label>
-                    <Button Width="80" Height="80" 
+                    <Button Width="50" Height="46" 
                             HorizontalAlignment="Right" 
                             VerticalAlignment="Center" 
                             Background="Transparent" 
@@ -51,11 +51,11 @@
                             Command="{Binding CloseCM}"
                             CommandParameter="{Binding ElementName=infoFilm}">
                         <materialDesign:PackIcon Kind="Close" 
-                                                 Height="46"
-                                                 Width="46"
-                                                 VerticalAlignment="Center"
-                                                 Foreground="#000000" 
-                                                 HorizontalAlignment="Center"/>
+                                     Height="34"
+                                     Width="34"
+                                     VerticalAlignment="Center"
+                                     Foreground="#000000" 
+                                     HorizontalAlignment="Center"/>
                     </Button>
                 </Grid>
 
@@ -78,7 +78,7 @@
                             </Grid.RowDefinitions>
 
                             <Grid Grid.Row="0">
-                                <Border CornerRadius="15" Background="#FFFFFF" BorderThickness="1" Margin="20,10,20,5">
+                                <Border CornerRadius="15" Background="#FFFFFF" BorderThickness="1" Margin="40,20,40,30">
                                     <Border.Effect>
                                         <DropShadowEffect
                                             BlurRadius="10"
@@ -89,24 +89,24 @@
                                     </Border.Effect>
                                     <Grid>
                                         <Grid.RowDefinitions>
-                                            <RowDefinition Height="40*"/>
-                                            <RowDefinition Height="60*"/>
+                                            <RowDefinition Height="42*"/>
+                                            <RowDefinition Height="58*"/>
                                         </Grid.RowDefinitions>
                                         <Label Grid.Row="0" 
                                                Content="Tên phim" 
-                                               FontSize="20"
+                                               FontSize="16"
                                                FontWeight="Bold"
                                                Foreground="Black"
-                                               VerticalAlignment="Center"
+                                               VerticalAlignment="Top"
                                                Margin="20,0,0,0"/>
                                         <TextBox Grid.Row="1" 
-                                                 Margin="30,0,20,0"
+                                                 Margin="24,0,30,0"
                                                  VerticalAlignment="Top"
-                                                 VerticalContentAlignment="Center"
+                                                 VerticalContentAlignment="Top"
                                                  HorizontalContentAlignment="Left"
                                                  AcceptsReturn="True"
                                                  TextWrapping="Wrap"
-                                                 FontSize="24"
+                                                 FontSize="16"
                                                  BorderThickness="0,0,0,3"
                                                  Background="Transparent"
                                                  BorderBrush="#67C6E6"
@@ -124,7 +124,7 @@
                                 </Grid.ColumnDefinitions>
 
                                 <Grid Grid.Column="0">
-                                    <Border CornerRadius="15" Background="#FFFFFF" BorderThickness="1" Margin="20,10,10,5">
+                                    <Border CornerRadius="15" Background="#FFFFFF" BorderThickness="1" Margin="40, 10, 40, 40">
                                         <Border.Effect>
                                             <DropShadowEffect
                                             BlurRadius="10"
@@ -135,38 +135,37 @@
                                         </Border.Effect>
                                         <Grid>
                                             <Grid.RowDefinitions>
-                                                <RowDefinition Height="40*"/>
-                                                <RowDefinition Height="60*"/>
+                                                <RowDefinition Height="42*"/>
+                                                <RowDefinition Height="58*"/>
                                             </Grid.RowDefinitions>
                                             <Label Grid.Row="0" 
                                                    Content="Thể loại" 
-                                                   FontSize="20"
+                                                   FontSize="16"
                                                    FontWeight="Bold"
                                                    Foreground="Black"
-                                                   VerticalAlignment="Center"
+                                                   VerticalAlignment="Top"
                                                    Margin="20,0,0,0"/>
                                             <TextBox Grid.Row="1"
                                                      x:Name="_Genre"
-                                                     Margin="30,0,20,0"
+                                                     Margin="24,0,30,0"
                                                      VerticalAlignment="Top"
-                                                     VerticalContentAlignment="Center"
+                                                     VerticalContentAlignment="Top"
                                                      HorizontalContentAlignment="Left"
                                                      AcceptsReturn="True"
                                                      TextWrapping="Wrap"
-                                                     FontSize="24"
+                                                     FontSize="16"
                                                      BorderThickness="0,0,0,3"
                                                      Background="Transparent"
                                                      BorderBrush="#67C6E6"
                                                      Foreground="Black"
                                                      Focusable="False"
                                                      Text="{Binding filmGenre}"/>
-
                                         </Grid>
                                     </Border>
                                 </Grid>
 
                                 <Grid Grid.Column="1">
-                                    <Border CornerRadius="15" Background="#FFFFFF" BorderThickness="1" Margin="10,10,20,5">
+                                    <Border CornerRadius="15" Background="#FFFFFF" BorderThickness="1" Margin="0,10,40,40">
                                         <Border.Effect>
                                             <DropShadowEffect
                                             BlurRadius="10"
@@ -177,26 +176,26 @@
                                         </Border.Effect>
                                         <Grid>
                                             <Grid.RowDefinitions>
-                                                <RowDefinition Height="40*"/>
-                                                <RowDefinition Height="60*"/>
+                                                <RowDefinition Height="42*"/>
+                                                <RowDefinition Height="58*"/>
                                             </Grid.RowDefinitions>
                                             <Label Grid.Row="0" 
                                                    Content="Thời lượng" 
-                                                   FontSize="20"
+                                                   FontSize="16"
                                                    FontWeight="Bold"
                                                    Foreground="Black"
-                                                   VerticalAlignment="Center"
+                                                   VerticalAlignment="Top"
                                                    Margin="20,0,0,0"/>
                                             <TextBox Grid.Row="1"
                                                      x:Name="_filmDuration"
                                                      materialDesign:HintAssist.Hint="Phút"
-                                                     Margin="30,0,20,0"
+                                                     Margin="24,0,30,0"
                                                      VerticalAlignment="Top"
-                                                     VerticalContentAlignment="Center"
+                                                     VerticalContentAlignment="Top"
                                                      HorizontalContentAlignment="Left"
                                                      AcceptsReturn="True"
                                                      TextWrapping="Wrap"
-                                                     FontSize="24"
+                                                     FontSize="16"
                                                      BorderThickness="0,0,0,3"
                                                      Background="Transparent"
                                                      BorderBrush="#67C6E6"
@@ -218,7 +217,7 @@
                             </Grid.RowDefinitions>
 
                             <Grid Grid.Row="0">
-                                <Border CornerRadius="15" Background="#FFFFFF" BorderThickness="1" Margin="20,10,20,5">
+                                <Border CornerRadius="15" Background="#FFFFFF" BorderThickness="1" Margin="40, 20, 40, 30">
                                     <Border.Effect>
                                         <DropShadowEffect
                                             BlurRadius="10"
@@ -229,31 +228,31 @@
                                     </Border.Effect>
                                     <Grid>
                                         <Grid.RowDefinitions>
-                                            <RowDefinition Height="40*"/>
-                                            <RowDefinition Height="60*"/>
+                                            <RowDefinition Height="42*"/>
+                                            <RowDefinition Height="58*"/>
                                         </Grid.RowDefinitions>
                                         <Label Grid.Row="0" 
                                                Content="Tác giả" 
-                                               FontSize="20"
+                                               FontSize="16"
                                                FontWeight="Bold"
                                                Foreground="Black"
-                                               VerticalAlignment="Center"
+                                               VerticalAlignment="Top"
                                                Margin="20,0,0,0"/>
                                         <TextBox Grid.Row="1" 
-                                                 Margin="30,0,20,0"
+                                                 Margin="24,0,30,0"
                                                  VerticalAlignment="Top"
-                                                 VerticalContentAlignment="Center"
+                                                 VerticalContentAlignment="Top"
                                                  HorizontalContentAlignment="Left"
                                                  AcceptsReturn="True"
                                                  TextWrapping="Wrap"
-                                                 FontSize="24"
+                                                 FontSize="16"
                                                  BorderThickness="0,0,0,3"
                                                  Background="Transparent"
                                                  BorderBrush="#67C6E6"
                                                  Foreground="Black"
                                                  x:Name="filmDirector"
-                                                 Focusable="False"
-                                                 Text="{Binding filmDirector}"/>
+                                                 Text="{Binding filmDirector}"
+                                                 Focusable="False"/>
                                     </Grid>
                                 </Border>
                             </Grid>
@@ -264,7 +263,7 @@
                                 </Grid.ColumnDefinitions>
 
                                 <Grid Grid.Column="0">
-                                    <Border CornerRadius="15" Background="#FFFFFF" BorderThickness="1" Margin="20,10,10,5">
+                                    <Border CornerRadius="15" Background="#FFFFFF" BorderThickness="1" Margin="40, 10, 40, 40">
                                         <Border.Effect>
                                             <DropShadowEffect
                                             BlurRadius="10"
@@ -275,37 +274,37 @@
                                         </Border.Effect>
                                         <Grid>
                                             <Grid.RowDefinitions>
-                                                <RowDefinition Height="40*"/>
-                                                <RowDefinition Height="60*"/>
+                                                <RowDefinition Height="42*"/>
+                                                <RowDefinition Height="58*"/>
                                             </Grid.RowDefinitions>
                                             <Label Grid.Row="0" 
                                                    Content="Quốc gia" 
-                                                   FontSize="20"
+                                                   FontSize="16"
                                                    FontWeight="Bold"
                                                    Foreground="Black"
-                                                   VerticalAlignment="Center"
+                                                   VerticalAlignment="Top"
                                                    Margin="20,0,0,0"/>
                                             <TextBox Grid.Row="1"
-                                                     Margin="30,0,20,0"
+                                                     Margin="24,0,30,0"
                                                      VerticalAlignment="Top"
-                                                     VerticalContentAlignment="Center"
+                                                     VerticalContentAlignment="Top"
                                                      HorizontalContentAlignment="Left"
                                                      AcceptsReturn="True"
                                                      TextWrapping="Wrap"
-                                                     FontSize="24"
+                                                     FontSize="16"
                                                      BorderThickness="0,0,0,3"
                                                      Background="Transparent"
                                                      BorderBrush="#67C6E6"
                                                      Foreground="Black"
                                                      x:Name="_filmCountry"
-                                                     Text="{Binding filmCountry}"
-                                                     Focusable="False"/>
+                                                     Focusable="False"
+                                                     Text="{Binding filmCountry}"/>
                                         </Grid>
                                     </Border>
                                 </Grid>
 
                                 <Grid Grid.Column="1">
-                                    <Border CornerRadius="15" Background="#FFFFFF" BorderThickness="1" Margin="10,10,20,5">
+                                    <Border CornerRadius="15" Background="#FFFFFF" BorderThickness="1" Margin="0, 10, 40, 40">
                                         <Border.Effect>
                                             <DropShadowEffect
                                             BlurRadius="10"
@@ -316,31 +315,30 @@
                                         </Border.Effect>
                                         <Grid>
                                             <Grid.RowDefinitions>
-                                                <RowDefinition Height="40*"/>
-                                                <RowDefinition Height="60*"/>
+                                                <RowDefinition Height="42*"/>
+                                                <RowDefinition Height="58*"/>
                                             </Grid.RowDefinitions>
                                             <Label Grid.Row="0" 
                                                    Content="Năm phát hành" 
-                                                   FontSize="20"
+                                                   FontSize="16"
                                                    FontWeight="Bold"
                                                    Foreground="Black"
-                                                   VerticalAlignment="Center"
+                                                   VerticalAlignment="Top"
                                                    Margin="20,0,0,0"/>
-                                            <TextBox Grid.Row="1"
-                                                     Margin="30,0,20,0"
-                                                     VerticalAlignment="Top"
-                                                     VerticalContentAlignment="Center"
+                                            <TextBox
+                                                     Margin="24,29,20,8"
+                                                     VerticalContentAlignment="Top"
                                                      HorizontalContentAlignment="Left"
                                                      AcceptsReturn="True"
                                                      TextWrapping="Wrap"
-                                                     FontSize="24"
+                                                     FontSize="16"
                                                      BorderThickness="0,0,0,3"
                                                      Background="Transparent"
                                                      BorderBrush="#67C6E6"
                                                      Foreground="Black"
                                                      x:Name="_filmYear"
-                                                     Focusable="False"
-                                                     Text="{Binding filmYear}"/>
+                                                     Text="{Binding filmYear}"
+                                                     Focusable="False" Grid.RowSpan="2"/>
                                         </Grid>
                                     </Border>
                                 </Grid>
@@ -357,7 +355,7 @@
                         </Grid.ColumnDefinitions>
 
                         <Grid Grid.Column="0">
-                            <Border CornerRadius="15" Background="#FFFFFF" BorderThickness="1" Margin="20">
+                            <Border CornerRadius="15" Background="#FFFFFF" BorderThickness="1" Margin="40, 0, 40, 60">
                                 <Border.Effect>
                                     <DropShadowEffect
                                             BlurRadius="10"
@@ -373,18 +371,18 @@
                                     </Grid.RowDefinitions>
                                     <Label Grid.Row="0" 
                                                    Content="Mô tả phim" 
-                                                   FontSize="20"
+                                                   FontSize="16"
                                                    FontWeight="Bold"
                                                    Foreground="Black"
                                                    VerticalAlignment="Top"
                                                    Margin="20,0,0,0"/>
                                     <TextBox Grid.Row="1"
-                                             Width="480"
-                                             Height="220"
                                              Text="{Binding filmDescribe}"
+                                             Focusable="False"
                                              VerticalAlignment="Top"
+                                             Margin="20,0,20,0"
                                              AcceptsReturn="True"
-                                             FontSize="18"
+                                             FontSize="16"
                                              BorderThickness="0"
                                              Background="Transparent"
                                              Foreground="Black" 
@@ -393,8 +391,7 @@
                                              Style="{StaticResource MaterialDesignOutlinedTextBox}"
                                              TextWrapping="Wrap"
                                              VerticalScrollBarVisibility="Auto" 
-                                             Focusable="False"
-                                             x:Name="_filmDescribe"/>
+                                             x:Name="_filmDescribe" Height="240"/>
                                 </Grid>
                             </Border>
 
@@ -403,8 +400,8 @@
 
                         <Grid Grid.Column="1">
                             <Grid.RowDefinitions>
-                                <RowDefinition Height="90*"/>
-                                <RowDefinition Height="10*"/>
+                                <RowDefinition Height="85*"/>
+                                <RowDefinition Height="15*"/>
                             </Grid.RowDefinitions>
 
                             <Grid Grid.Row="0">
@@ -412,10 +409,9 @@
                                     BorderThickness="1"
                                     CornerRadius="10"
                                     VerticalAlignment="Top"
-                                    HorizontalAlignment="Center"
-                                    Width="220"
-                                    Height="280"
-                                    Margin="0,20,0,0">
+                                    HorizontalAlignment="Right"
+                                    Width="210"
+                                    Height="300">
                                     <Border.Background>
                                         <ImageBrush x:Name="imgframe" Stretch="Fill" ImageSource="{Binding ImageSource}"/>
                                     </Border.Background>
@@ -423,22 +419,23 @@
                             </Grid>
 
                             <Grid Grid.Row="1">
-                                <Label Content="220 x 270"
-                                       FontSize="18"
+                                <Label Content="210 x 300"
+                                       FontSize="14"
                                        FontWeight="Bold"
                                        Foreground="Gray"
-                                       VerticalAlignment="Center"
+                                       VerticalAlignment="Top"
                                        HorizontalAlignment="Center"
-                                       Width="100"/>
+                                       Margin="30,0,0,0"/>
                             </Grid>
                         </Grid>
+
                         <Grid Grid.Column="3">
                             <Grid.RowDefinitions>
                                 <RowDefinition/>
                                 <RowDefinition/>
                             </Grid.RowDefinitions>
                             <Grid Grid.Row="0">
-                                <Border CornerRadius="15" Background="#FFFFFF" BorderThickness="1" Margin="10,10,20,60">
+                                <Border CornerRadius="15" Background="#FFFFFF" BorderThickness="1" Margin="0, 6, 40, 104">
                                     <Border.Effect>
                                         <DropShadowEffect
                                             BlurRadius="10"
@@ -449,26 +446,26 @@
                                     </Border.Effect>
                                     <Grid>
                                         <Grid.RowDefinitions>
-                                            <RowDefinition Height="40*"/>
-                                            <RowDefinition Height="60*"/>
+                                            <RowDefinition Height="42*"/>
+                                            <RowDefinition Height="58*"/>
                                         </Grid.RowDefinitions>
                                         <Label Grid.Row="0" 
                                                 Content="Loại phim" 
-                                                FontSize="20"
+                                                FontSize="16"
                                                 FontWeight="Bold"
                                                 Foreground="Black"
-                                                VerticalAlignment="Center"
+                                                VerticalAlignment="Top"
                                                 Margin="20,0,0,0"/>
                                         <TextBox Grid.Row="1"
                                                  Text="{Binding filmType}"
                                                  Focusable="False"
-                                                 Margin="30,0,20,0"
+                                                 Margin="24,0,30,0"
                                                  VerticalAlignment="Top"
-                                                 VerticalContentAlignment="Center"
+                                                 VerticalContentAlignment="Top"
                                                  HorizontalContentAlignment="Left"
                                                  AcceptsReturn="True"
                                                  TextWrapping="Wrap"
-                                                 FontSize="24"
+                                                 FontSize="16"
                                                  BorderThickness="0,0,0,3"
                                                  Background="Transparent"
                                                  BorderBrush="#67C6E6"
