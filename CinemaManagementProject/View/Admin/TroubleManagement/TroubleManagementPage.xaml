@@ -91,7 +91,7 @@
                             SelectedIndex="0"  
                             Padding="10"
                             x:Name="filtercbb"
-                            
+                            BorderThickness="0"
                             SelectedItem="{Binding SelectedCbbItem,Mode=OneWayToSource}">
                     <i:Interaction.Triggers>
                         <i:EventTrigger EventName="SelectionChanged">
@@ -137,7 +137,11 @@
                             <GridView>
                                 <GridViewColumn Width="500">
                                     <GridViewColumn.Header>
-                                        <TextBlock Text="Sự cố" FontSize="14" FontWeight="SemiBold" Foreground="Black"/>
+                                        <TextBlock Text="Sự cố" 
+                                                   Margin="20 0 0 0"
+                                                   FontSize="14" 
+                                                   FontWeight="SemiBold" 
+                                                   Foreground="Black"/>
                                     </GridViewColumn.Header>
                                     <GridViewColumn.CellTemplate>
                                         <DataTemplate>
@@ -182,7 +186,7 @@
                                         <DataTemplate>
                                             <TextBlock Text="{Binding SubmittedAt, StringFormat=dd/MM/yyyy}"
                                                        FontSize="16"
-                                                       Margin="0,30,0,0" />
+                                                       Margin="-20,30,0,0" />
                                         </DataTemplate>
                                     </GridViewColumn.CellTemplate>
                                 </GridViewColumn>
@@ -193,7 +197,7 @@
                                     <GridViewColumn.CellTemplate>
                                         <DataTemplate>
                                             <Border BorderThickness="1"
-                                                Margin="0,25,0,0"
+                                                Margin="-20,25,0,0"
                                                 BorderBrush="{Binding TroubleStatus, Converter={StaticResource StatusBrushConverter}}"
                                                 CornerRadius="18">
                                                 <TextBlock Text="{Binding TroubleStatus}"

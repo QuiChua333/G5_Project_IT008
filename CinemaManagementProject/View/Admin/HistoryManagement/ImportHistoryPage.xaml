@@ -120,6 +120,7 @@
                     </Border.Effect>
                     <ComboBox   SelectedValuePath="Content"
                                 SelectedIndex="0"
+                                BorderThickness="0"
                                 Style="{StaticResource styleButton}" 
                                 Margin="0,0,0,-3"                            
                                 x:Name="cbbFilter">
@@ -144,6 +145,7 @@
                     </Border.Effect>
                     <ComboBox   SelectedValuePath="Content"
                                 SelectedIndex="0"
+                                BorderThickness="0"
                                 Style="{StaticResource styleButton}" 
                                 Margin="0,0,0,-3"
                                 x:Name="filtercbb"                            
@@ -214,7 +216,7 @@
                     <Button     Style="{StaticResource CustomButton}" 
                                 Width="150" 
                                 Height="46" 
-                                Margin="332,0,0,0"
+                                Margin="326,0,0,0"
                                 Command="{Binding ExportFileCM}">
                         <StackPanel Orientation="Horizontal" 
                                     Width="143" 

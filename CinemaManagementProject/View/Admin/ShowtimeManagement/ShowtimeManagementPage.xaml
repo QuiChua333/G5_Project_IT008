@@ -6,8 +6,7 @@
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"       
       xmlns:local="clr-namespace:CinemaManagementProject.View.Admin.ShowtimeManagement" xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
       mc:Ignorable="d" 
-      Title="ShowtimeManagementPage"
-     
+      Title="ShowtimeManagementPage" 
       Background="Transparent"
       ShowsNavigationUI="False"      
       FontSize="15"
@@ -102,12 +101,11 @@
                         <StackPanel Orientation="Horizontal" 
                                     Width="143" >
                             <materialDesign:PackIcon Kind="PlusCircleOutline" 
-                                                     Width="28" 
-                                                     Height="28"/>
+                                                     Width="24" 
+                                                     Height="24"/>
                             <TextBlock FontFamily="{StaticResource MaterialDesignFont}" 
                                        Text="Thêm" 
-                                       FontWeight="Regular"
-                                       FontSize="16"
+                                       FontSize="15"
                                        Margin="5,4,0,0"/>
                         </StackPanel>
                     </Button>
@@ -259,14 +257,17 @@
                                         <GridViewColumn 
                                                     Width="300">
                                             <GridViewColumn.Header >
-                                                <TextBlock Text="Tên phim" FontWeight="SemiBold"></TextBlock>
+                                                <TextBlock Text="Tên phim" 
+                                                           FontSize="14" 
+                                                           FontWeight="SemiBold" 
+                                                           Foreground="Black"></TextBlock>
                                             </GridViewColumn.Header>
                                             <GridViewColumn.CellTemplate>
                                                 <DataTemplate>
                                                     <StackPanel Orientation="Horizontal">
                                                         <Border 
-                                                        Width="120"
-                                                        Height="120">
+                                                        Width="60"
+                                                        Height="80">
                                                             <Border.Background>
                                                                 <ImageBrush x:Name="smallimg"
                                                                     Stretch="Fill"
@@ -275,6 +276,7 @@
                                                         </Border>
                                                         <TextBlock  Text="{Binding FilmName}"
                                                                     FontSize="14"
+                                                                    Margin="10 25 0 0"
                                                                     />
                                                     </StackPanel>
                                                 </DataTemplate>
@@ -283,33 +285,35 @@
                                         <GridViewColumn
                                                         Width="130">
                                             <GridViewColumn.Header >
-                                                <TextBlock Text="Loại phim" FontWeight="SemiBold"></TextBlock>
+                                                <TextBlock Text="Loại phim" FontSize="14" FontWeight="SemiBold" Foreground="Black"></TextBlock>
                                             </GridViewColumn.Header>
                                             <GridViewColumn.CellTemplate>
                                                 <DataTemplate>
                                                     <TextBlock  Text="{Binding FilmType}"
                                                             FontSize="14"
-                                                            Margin="30,0,0,0" />
+                                                            Margin="40,25,0,0" />
                                                 </DataTemplate>
                                             </GridViewColumn.CellTemplate>
                                         </GridViewColumn>
                                         <GridViewColumn 
                                                         Width="134">
                                             <GridViewColumn.Header >
-                                                <TextBlock Text="Thời lượng" FontWeight="SemiBold"></TextBlock>
+                                                <TextBlock Text="Thời lượng"
+                                                           FontSize="14" FontWeight="SemiBold" Foreground="Black"></TextBlock>
                                             </GridViewColumn.Header>
                                             <GridViewColumn.CellTemplate>
                                                 <DataTemplate>
                                                     <TextBlock  Text="{Binding  DurationFilm}"
                                                             FontSize="14"
-                                                            Margin="30,0,0,0" />
+                                                            Margin="40,25,0,0" />
                                                 </DataTemplate>
                                             </GridViewColumn.CellTemplate>
                                         </GridViewColumn>
                                         <GridViewColumn
                                                         Width="270">
                                             <GridViewColumn.Header >
-                                                <TextBlock Text="Giờ chiếu" FontWeight="SemiBold"></TextBlock>
+                                                <TextBlock Text="Giờ chiếu"
+                                                           FontSize="14" FontWeight="SemiBold" Foreground="Black"></TextBlock>
                                             </GridViewColumn.Header>
                                             <GridViewColumn.CellTemplate>
                                                 <DataTemplate>
@@ -317,11 +321,8 @@
 
                                                         <ListBox.ItemContainerStyle>
                                                             <Style TargetType="ListBoxItem">
-                                                                <Setter Property="Margin"
-                                                                    Value="10,0,0,0" />
-                                                                <Setter Property="Padding"
-                                                                    Value="0" />
-                                                                <Setter Property="MaxWidth" Value="200"></Setter>
+                                                                <Setter Property="Margin" Value="-4 20 -4 0"></Setter>
+                                                                <Setter Property="MaxWidth" Value="180"></Setter>
                                                             </Style>
                                                         </ListBox.ItemContainerStyle>
 
@@ -332,19 +333,22 @@
                                                         </ListBox.ItemsPanel>
                                                         <ListBox.ItemTemplate>
                                                             <DataTemplate>
-                                                                <Border CornerRadius="10"
-                                                                        Width="120"
-                                                                        Height="40"
+                                                                <Border CornerRadius="4"
+                                                                        Width="110"
+                                                                        Height="30"
                                                                         BorderThickness="1"
                                                                         BorderBrush="Black"
-                                                                        Background="LawnGreen">
-                                                                    <Button Content="{Binding StartTime}"
-                                                                        FontSize="14"
-                                                                        Width="120"
-                                                                        BorderBrush="Transparent"
-                                                                        Background="Transparent"
-                                                                        Foreground="Black">
-                                                                    </Button>
+                                                                        Cursor="Hand"
+                                                                       
+                                                                        Background="{StaticResource LightBlueSpindle}">
+                                                                    <TextBlock Text="{Binding StartTime}"
+                                                                               FontSize="14"
+                                                                               HorizontalAlignment="Center"
+                                                                               VerticalAlignment="Center"
+                                                                               Foreground="Black">
+                                                                        
+                                                                    </TextBlock>
+                                                                    
                                                                 </Border>
 
                                                             </DataTemplate>
@@ -358,12 +362,26 @@
                                                 <DataTemplate>
                                                     <Border BorderThickness="0.5"
                                                             BorderBrush="Black"
-                                                            Margin="0,5,0,0"
+                                                            Margin="0,25,0,0"
                                                             CornerRadius="5"
                                                             Cursor="Hand">
-                                                        <materialDesign:PackIcon    Kind="Pencil"
-                                                                                    Width="24"
-                                                                                    Height="24"/>
+                                                        <Border.Style>
+                                                            <Style TargetType="Border">
+                                                                <Style.Triggers>
+                                                                    <Trigger Property="IsMouseOver" Value="True">
+                                                                        <Setter Property="Background" Value="#00e5ff" />
+                                                                    </Trigger>
+                                                                </Style.Triggers>
+                                                            </Style>
+                                                        </Border.Style>
+                                                        <StackPanel>
+                                                            <materialDesign:PackIcon Kind="Pencil"
+                                                                                    Width="22"
+                                                                                    Height="22" 
+                                                                                    VerticalAlignment="Center" 
+                                                                                    HorizontalAlignment="Center"
+                                                                                    Cursor="Hand" />
+                                                        </StackPanel>
                                                         <i:Interaction.Triggers>
                                                             <i:EventTrigger EventName="MouseLeftButtonUp">
                                                                 <i:InvokeCommandAction Command="{Binding ElementName=ShowtimeListview, Path=DataContext.LoadInfor_EditShowtime}"/>

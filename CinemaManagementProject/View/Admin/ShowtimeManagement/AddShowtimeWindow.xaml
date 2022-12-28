@@ -77,7 +77,7 @@
                     <Border  BorderBrush="#E6C067" BorderThickness="0,0,0,4"/>
                     <Label Padding="0" 
                            Content="THÊM SUẤT CHIẾU" 
-                           FontSize="25" 
+                           FontSize="28" 
                            FontWeight="Bold" 
                            VerticalAlignment="Center" 
                            HorizontalAlignment="Center" 
@@ -402,7 +402,7 @@
                                         <Label Content="Mô tả"
                                        Padding="13"
                                        VerticalAlignment="Center"
-                                       FontSize="20"
+                                       FontSize="16"
                                        HorizontalContentAlignment="Center"
                                        FontWeight="Medium"
                                        Foreground="White"

@@ -250,8 +250,7 @@
                     </Grid.ColumnDefinitions>
                     <TextBlock Text="Ngày bắt đầu:" 
                                FontFamily="{StaticResource MaterialDesignFont}"
-                               FontSize="15" 
-                               
+                               FontSize="15"                                
                                FontWeight="Regular" 
                                HorizontalAlignment="Right" 
                                VerticalAlignment="Center"/>

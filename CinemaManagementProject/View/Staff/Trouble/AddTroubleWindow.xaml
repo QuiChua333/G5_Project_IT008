@@ -55,7 +55,7 @@
                     <Grid>
                         <Label
                                 FontFamily="{StaticResource MaterialDesignFont}"
-                                FontSize="35"
+                                FontSize="28"
                                 Foreground="#8DC1F0"
                                 FontWeight="Bold"
                                 HorizontalAlignment="Center"
@@ -93,11 +93,11 @@
                 </Grid.ColumnDefinitions>
 
                 <StackPanel Grid.Column="0"
-                            Margin="10 50 10 10">
+                            Margin="20 50 20 20">
 
                     <Border BorderBrush="Black"    
                             BorderThickness="2"
-                            Height="420">
+                            Height="400">
                         <Image Source="{Binding ImageSource,Mode=TwoWay}"
                                 x:Name="FrameImage"                              
                                 Stretch="Fill" />
@@ -129,13 +129,13 @@
                                 Margin="0,0,25,0"
                                  Orientation="Horizontal" >
                         <Label Content="Tiêu đề:"
-                               FontSize="20" 
+                               FontSize="16" 
                                Margin="10 20 10 0"
                                FontWeight="Medium"
                                FontFamily="{StaticResource MaterialDesignFont}"/>
                         <TextBox Text="{Binding TroubleType,Mode=TwoWay}"
                                  TextWrapping="Wrap"
-                                 FontSize="20"
+                                 FontSize="16"
                                  Width="532"
                                  VerticalContentAlignment="Bottom"
                                  TextAlignment="Left"
@@ -152,29 +152,29 @@
                         <StackPanel Grid.Column="0" 
                                     Orientation="Horizontal">
                             <Label Content="Tên nhân viên:"
-                                   FontSize="20" 
+                                   FontSize="16" 
                                    Margin="10 20 0 0"
                                    FontWeight="Medium"
                                    FontFamily="{StaticResource MaterialDesignFont}"/>
-                            <TextBlock FontSize="20"
+                            <TextBlock FontSize="16"
                                        FontFamily="{StaticResource MaterialDesignFont}"
                                        Height="40"
                                        Width="211"
                                        Padding="0"
-                                       Margin="5,20,0,0"
-                                       x:Name="StaffName"/>
+                                       Margin="5,10,0,10"
+                                       x:Name="StaffName" VerticalAlignment="Bottom"/>
 
                         </StackPanel>
                         <StackPanel Margin="25,0,0,0"
                                     Width="250" Orientation="Horizontal">
                             <Label Content="Trạng thái:"
-                                   FontSize="20" 
-                                   Margin="-1 20 0 0"
+                                   FontSize="16" 
+                                   Margin="30 20 0 0"
                                    FontWeight="Medium"
                                    FontFamily="{StaticResource MaterialDesignFont}" />
                             <TextBlock Margin="5,15,0,-4"
-                                       FontSize="20" 
-                                       Foreground="Gray"
+                                       FontSize="16" 
+                                       Foreground="Black"
                                        FontWeight="Medium"
                                        FontFamily="{StaticResource MaterialDesignFont}"
                                        Height="40"
@@ -190,13 +190,13 @@
                                      Orientation="Horizontal">
                             <Label Content="Ngày báo cáo:"
                                    Margin="10 20 0 0"
-                                   FontSize="20"
+                                   FontSize="16"
                                    FontWeight="Medium"
                                    FontFamily="{StaticResource MaterialDesignFont}" />
                             <StackPanel>
                                 <TextBlock Foreground="Black"
                                             Margin="5,25,0,-4"
-                                           FontSize="20"
+                                           FontSize="16"
                                            Height="40"
                                            Text="{Binding GetCurrentDate,StringFormat=dd/MM/yyyy}" />
                             </StackPanel>
@@ -204,18 +204,19 @@
                         <StackPanel 
                                     Margin="123,0,0,0" Orientation="Horizontal" Width="242">
                             <Label Content="Mức độ:"
-                                   FontSize="20" 
-                                   Margin="10 20 0 0"
+                                   FontSize="16" 
+                                   Margin="60 20 0 0"
                                    FontWeight="Medium"
                                    FontFamily="{StaticResource MaterialDesignFont}" />
                             <StackPanel>
                                 <ComboBox Foreground="Black"
-                                          FontSize="20"
-                                          Height="40"
-                                          Margin="5 12 0 0"
+                                          FontSize="16"
+                                          Height="28"
+                                          Margin="5 18 0 0"
+                                          BorderThickness="0"
                                           VerticalContentAlignment="Bottom"
                                           SelectedIndex="0"
-                                          SelectedItem="{Binding Level,Mode=OneWayToSource}" Width="139">
+                                          SelectedItem="{Binding Level,Mode=OneWayToSource}" Width="110">
                                     <ComboBoxItem>Bình thường</ComboBoxItem>
                                     <ComboBoxItem>Nghiêm trọng</ComboBoxItem>
                                 </ComboBox>
@@ -225,7 +226,7 @@
                     <Grid Grid.Row="3">
                         <StackPanel>
                             <Label Content="Mô tả"
-                                   FontSize="20" 
+                                   FontSize="16" 
                                    FontWeight="Medium"
                                    FontFamily="{StaticResource MaterialDesignFont}"
                                    Foreground="Black"
@@ -237,11 +238,11 @@
                                      VerticalScrollBarVisibility="Auto"
                                      HorizontalScrollBarVisibility="Disabled"
                                      materialDesign:HintAssist.Hint="Mô tả lỗi"
-                                     FontSize="20"  
+                                     FontSize="16"  
                                      Margin="0,5,0,0"
                                      Foreground="Black"
                                      materialDesign:ValidationAssist.Background="White"
-                                     Text="{Binding Description, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Height="221" Width="598" />
+                                     Text="{Binding Description, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Height="207" Width="598" />
                         </StackPanel>
                         <Button Content="Xác nhận"
                                 Background="#007bff"
@@ -259,7 +260,7 @@
                 </Grid>
             </Grid>
 
-            
+
             <Grid Grid.RowSpan="3"
                   Background="LightGray"
                   Opacity="0.3">

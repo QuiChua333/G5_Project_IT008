@@ -85,14 +85,14 @@
                             Direction="270"/>
                 </Border.Effect>
                 <ComboBox   Width="200"
-                            VerticalAlignment="Bottom"
-                            HorizontalAlignment="Left"
+                            VerticalAlignment="Top"
+                            HorizontalAlignment="Center"
                             Style="{StaticResource styleButton}"
                             SelectedIndex="0"  
                             Padding="10"
-                            BorderBrush="Transparent"
+                            BorderThickness="0"
                             x:Name="filtercbb"
-                            SelectedItem="{Binding FiltercbbItem,Mode=OneWayToSource}">
+                            SelectedItem="{Binding FiltercbbItem,Mode=OneWayToSource}" Margin="0,8,0,0">
                     <i:Interaction.Triggers>
                         <i:EventTrigger EventName="SelectionChanged">
                             <i:InvokeCommandAction Command="{Binding FilterListTroubleCommand}"
@@ -177,7 +177,7 @@
                                     <GridViewColumn.CellTemplate>
                                         <DataTemplate>
                                             <StackPanel Orientation="Horizontal">
-                                                
+
                                                 <Border 
                                                         Width="80"
                                                         Height="80">
