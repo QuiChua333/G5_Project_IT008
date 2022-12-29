@@ -11,7 +11,7 @@
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"             
       Background="Transparent"
       DataContext="{StaticResource StaffManagementVM}"
-      
+      FontSize="14"
       x:Name="mainPage"
       ShowsNavigationUI="False">
 
@@ -35,8 +35,8 @@
             <i:InvokeCommandAction Command="{Binding FirstLoadCM}"></i:InvokeCommandAction>
         </i:EventTrigger>
     </i:Interaction.Triggers>
-    <Border   Background="{StaticResource LightGrayAthens}" CornerRadius="20"
-              HorizontalAlignment="Stretch"
+    <Border     Background="{StaticResource LightGrayAthens}" CornerRadius="20"
+                HorizontalAlignment="Stretch"
              VerticalAlignment="Stretch"
              Margin="20">
         <Border.Effect>
@@ -121,10 +121,9 @@
                         <materialDesign:PackIcon Kind="PlusCircleOutline" 
                                                  Width="24" 
                                                  Height="24"/>
-                        <TextBlock FontFamily="{StaticResource Medium}" 
-                                   Text="Thêm" 
-                                   
-                                   FontSize="15"
+                        <TextBlock FontFamily="{StaticResource MaterialDesignFont}" 
+                                   Text="Thêm"       
+                                   FontSize="14"
                                    Margin="5,4,0,0"/>
                     </StackPanel>
                 </Button>
@@ -150,8 +149,7 @@
                                   Margin="-20 0 0 0" 
                                   FontFamily="{StaticResource MaterialDesignFont}"
                                   ItemsSource="{Binding StaffList}"
-                                  SelectedItem="{Binding SelectedItem}"
-                                   >
+                                  SelectedItem="{Binding SelectedItem}">
                             <ListView.ItemContainerStyle>
                                 <Style   TargetType="{x:Type ListViewItem}"
                                          BasedOn="{StaticResource MaterialDesignGridViewItem}"/>
@@ -160,8 +158,10 @@
                                 <GridView >
                                     <GridViewColumn  >
                                         <GridViewColumn.Header>
-                                            <TextBlock Text="ID" FontSize="14" 
-                                                       FontWeight="SemiBold"  Foreground="Black"></TextBlock>
+                                            <TextBlock Text="ID" 
+                                                       FontSize="14" 
+                                                       FontWeight="SemiBold"  
+                                                       Foreground="Black"></TextBlock>
                                         </GridViewColumn.Header>
                                         <GridViewColumn.CellTemplate >
                                             <DataTemplate>
@@ -175,13 +175,15 @@
                                     <GridViewColumn
                                                     Width="145" >
                                         <GridViewColumn.Header>
-                                            <TextBlock Text="Họ và tên" FontSize="14" 
-                                                       FontWeight="SemiBold"  Foreground="Black"></TextBlock>
+                                            <TextBlock Text="Họ và tên" 
+                                                       FontSize="14" 
+                                                       FontWeight="SemiBold"  
+                                                       Foreground="Black"></TextBlock>
                                         </GridViewColumn.Header>
                                         <GridViewColumn.CellTemplate>
                                             <DataTemplate>
                                                 <TextBlock Text="{Binding StaffName}" 
-                                                           Margin="25 6 0 0"
+                                                           Margin="0 6 0 0"
                                                            FontSize="14" 
                                                            FontFamily="{StaticResource MaterialDesignFont}"/>
                                             </DataTemplate>
@@ -190,8 +192,10 @@
                                     <GridViewColumn
                                                     Width="85"  >
                                         <GridViewColumn.Header>
-                                            <TextBlock Text="GT" FontSize="14" 
-                                                       FontWeight="SemiBold"  Foreground="Black"></TextBlock>
+                                            <TextBlock Text="GT" 
+                                                       FontSize="14" 
+                                                       FontWeight="SemiBold"  
+                                                       Foreground="Black"></TextBlock>
                                         </GridViewColumn.Header>
                                         <GridViewColumn.CellTemplate>
                                             <DataTemplate>
@@ -205,8 +209,10 @@
                                     <GridViewColumn 
                                                     Width="120">
                                         <GridViewColumn.Header>
-                                            <TextBlock Text="NgSinh" FontSize="14" 
-                                                       FontWeight="SemiBold"  Foreground="Black"></TextBlock>
+                                            <TextBlock Text="NgSinh" 
+                                                       FontSize="14" 
+                                                       FontWeight="SemiBold"  
+                                                       Foreground="Black"></TextBlock>
                                         </GridViewColumn.Header>
                                         <GridViewColumn.CellTemplate>
                                             <DataTemplate>
@@ -218,10 +224,12 @@
                                         </GridViewColumn.CellTemplate>
                                     </GridViewColumn>
                                     <GridViewColumn
-                                                    Width="130" >
+                                                    Width="110" >
                                         <GridViewColumn.Header>
-                                            <TextBlock Text="SĐT" FontSize="14" 
-                                                       FontWeight="SemiBold"  Foreground="Black"></TextBlock>
+                                            <TextBlock Text="SĐT" 
+                                                       FontSize="14" 
+                                                       FontWeight="SemiBold"  
+                                                       Foreground="Black"></TextBlock>
                                         </GridViewColumn.Header>
                                         <GridViewColumn.CellTemplate>
                                             <DataTemplate>
@@ -235,8 +243,10 @@
                                     <GridViewColumn
                                                     Width="200">
                                         <GridViewColumn.Header>
-                                            <TextBlock Text="Email" FontSize="14" 
-                                                       FontWeight="SemiBold"  Foreground="Black"></TextBlock>
+                                            <TextBlock Text="Email" 
+                                                       FontSize="14" 
+                                                       FontWeight="SemiBold"  
+                                                       Foreground="Black"></TextBlock>
                                         </GridViewColumn.Header>
                                         <GridViewColumn.CellTemplate>
                                             <DataTemplate>
@@ -250,8 +260,10 @@
                                     <GridViewColumn 
                                                     Width="131">
                                         <GridViewColumn.Header>
-                                            <TextBlock Text="Ngày vào" FontSize="14" 
-                                                       FontWeight="SemiBold"  Foreground="Black"></TextBlock>
+                                            <TextBlock Text="Ngày vào"                                                        
+                                                       FontSize="14" 
+                                                       FontWeight="SemiBold"  
+                                                       Foreground="Black"></TextBlock>
                                         </GridViewColumn.Header>
                                         <GridViewColumn.CellTemplate>
                                             <DataTemplate>
@@ -267,7 +279,8 @@
                                         <GridViewColumn.Header>
                                             <TextBlock Text="Chức vụ"
                                                        FontSize="14"
-                                                       FontWeight="SemiBold"  Foreground="Black"></TextBlock>
+                                                       FontWeight="SemiBold"  
+                                                       Foreground="Black"></TextBlock>
                                         </GridViewColumn.Header>
                                         <GridViewColumn.CellTemplate>
                                             <DataTemplate>

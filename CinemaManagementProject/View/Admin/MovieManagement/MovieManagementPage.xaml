@@ -139,6 +139,7 @@
                                                   ItemsSource="{Binding FilmList}"
                                                   SelectedItem="{Binding SelectedItem}"
                                                   Focusable="True"
+                                                  FontFamily="{StaticResource MaterialDesignFont}"
                                                   Foreground="Black"
                                                   FontSize="14"
                                                   ToolTip="Nháy đúp để xem chi tiết">

@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:CinemaManagementProject.ViewModel.StaffVM.TroubleStaffVM" 
       xmlns:i="http://schemas.microsoft.com/xaml/behaviors" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       mc:Ignorable="d" 
-      FontSize="15"
+      FontSize="14"
       DataContext="{StaticResource TroublePageVM}"
       FontFamily="{StaticResource MaterialDesignFont}"
       Title="TroublePage">
@@ -91,8 +91,10 @@
                             SelectedIndex="0"  
                             Padding="10"
                             BorderThickness="0"
+                            
                             x:Name="filtercbb"
-                            SelectedItem="{Binding FiltercbbItem,Mode=OneWayToSource}" Margin="0,8,0,0">
+                            SelectedItem="{Binding FiltercbbItem,Mode=OneWayToSource}" 
+                            Margin="0,8,0,0">
                     <i:Interaction.Triggers>
                         <i:EventTrigger EventName="SelectionChanged">
                             <i:InvokeCommandAction Command="{Binding FilterListTroubleCommand}"
@@ -116,21 +118,20 @@
                     Opacity=".25"
                     Direction="270"/>
                 </Border.Effect>
-                <Button Style="{StaticResource CustomButton}" 
-                        
-                        Width="130" 
+                <Button Style="{StaticResource CustomButton}"      
+                        Width="110" 
                         Height="40" 
                         Margin="0,0,0,0"
                         Command="{Binding OpenAddTroubleCommand}">
                     <StackPanel Orientation="Horizontal" 
                                     Width="150" >
                         <materialDesign:PackIcon Kind="PlusCircleOutline" 
-                                                Width="25" 
-                                                Height="25"/>
+                                                Width="22" 
+                                                Height="22"/>
                         <TextBlock FontFamily="{StaticResource Medium}" 
                                     Text="Báo cáo" 
-                                    FontWeight="Bold"
-                                    FontSize="16"
+                                    FontWeight="Medium"
+                                    FontSize="14"
                                     Margin="5,4,0,0"/>
                     </StackPanel>
                 </Button>
@@ -153,7 +154,8 @@
                     <ListView ItemsSource="{Binding TroubleList}"
                               SelectedItem="{Binding SelectedItem,UpdateSourceTrigger=PropertyChanged}"
                               x:Name="Listview"
-                              Height="562">
+                              Height="562"
+                              Foreground="Black">
                         <i:Interaction.Triggers>
                             <i:EventTrigger EventName="MouseDoubleClick">
                                 <i:InvokeCommandAction Command="{Binding LoadDetailTroubleWindowCM}" />
@@ -170,24 +172,25 @@
                                 <GridViewColumn 
                                                 Width="500">
                                     <GridViewColumn.Header>
+                                        
                                         <TextBlock Text="Sự cố"
+                                                   Margin="10 0 0 0"
                                                    FontSize="14"
                                                    FontWeight="SemiBold"></TextBlock>
                                     </GridViewColumn.Header>
                                     <GridViewColumn.CellTemplate>
                                         <DataTemplate>
                                             <StackPanel Orientation="Horizontal">
-
-                                                <Border 
+                                                <Border Margin="-50 0 0 0"
                                                         Width="80"
-                                                        Height="80">
+                                                        Height="90">
                                                     <Border.Background>
                                                         <ImageBrush x:Name="smallimg"
                                                                     Stretch="Fill"
                                                                     ImageSource="{Binding Image}" />
                                                     </Border.Background>
                                                 </Border>
-                                                <StackPanel Margin="0,20,0,0">
+                                                <StackPanel Margin="10,20,0,0">
                                                     <Label Content="{Binding TroubleType}"
                                                        FontSize="16"
                                                        FontWeight="Bold"
@@ -215,7 +218,7 @@
                                         <DataTemplate>
                                             <TextBlock Text="{Binding SubmittedAt, StringFormat=dd/MM/yyyy}"
                                                        FontSize="14"
-                                                       Margin="-10,30,0,0" />
+                                                       Margin="-40,34,0,0" />
                                         </DataTemplate>
                                     </GridViewColumn.CellTemplate>
                                 </GridViewColumn>
@@ -229,7 +232,7 @@
                                     <GridViewColumn.CellTemplate>
                                         <DataTemplate>
                                             <Border BorderThickness="1"
-                                                Margin="-10,25,0,0"
+                                                Margin="-46,25,0,0"
                                                 CornerRadius="18">
                                                 <TextBlock Text="{Binding TroubleStatus}"
                                                        FontSize="14"

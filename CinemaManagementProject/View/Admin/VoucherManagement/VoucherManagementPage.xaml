@@ -10,7 +10,7 @@
       mc:Ignorable="d" 
       x:Name="mainPage"
       Title="VoucherManagementPage"
-      
+      FontFamily="{StaticResource MaterialDesignFont}"
       DataContext="{StaticResource VoucherVM}"
       ShowsNavigationUI="False">
 
@@ -92,7 +92,7 @@
                                       HorizontalScrollBarVisibility="Hidden" PreviewMouseWheel="ScrollViewer_PreviewMouseWheel">
                             <ListView FontFamily="{StaticResource MaterialDesignFont}" 
                                   FontSize="14"                                 
-                                  FontWeight="Regular"
+                                  
                                   ItemsSource="{Binding ListBigVoucher}"
                                   SelectedItem="{Binding SelectedItem,UpdateSourceTrigger=PropertyChanged}"
                                   x:Name="VoucherListView">

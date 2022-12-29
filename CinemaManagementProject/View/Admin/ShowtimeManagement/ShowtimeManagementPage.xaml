@@ -9,7 +9,7 @@
       Title="ShowtimeManagementPage" 
       Background="Transparent"
       ShowsNavigationUI="False"      
-      FontSize="15"
+      FontSize="14"
       x:Name="mainPage"
       DataContext="{StaticResource ShowtimeManagementVM}"
       FontFamily="{StaticResource MaterialDesignFont}">
