@@ -124,6 +124,7 @@
                     </Border.Effect>
                     <ComboBox   SelectedValuePath="Content"
                                 SelectedIndex="0"
+                                BorderThickness="0"
                                 Style="{StaticResource styleButton}" 
                                 Name="cbbFilter"
                                 Margin="0,0,0,-3" >
@@ -151,6 +152,7 @@
                                 Style="{StaticResource styleButton}" 
                                 Margin="0,0,0,-3" 
                                 x:Name="periodbox1"
+                                BorderThickness="0"
                                 SelectedItem="{Binding SelectedPeriod}"
                                 SelectionChanged="periodbox1_SelectionChanged"
                                 Loaded="periodbox1_Loaded">
@@ -185,6 +187,7 @@
                     </Border.Effect>
                     <ComboBox   Style="{StaticResource styleButton}" 
                                 Margin="0,0,0,-3" 
+                                BorderThickness="0"
                                 x:Name="Time1"   
                                 Visibility="Collapsed"
                                 SelectedItem="{Binding SelectedTime,Mode=OneWayToSource}">
@@ -272,7 +275,7 @@
                                             </DataTemplate>
                                         </GridViewColumn.CellTemplate>
                                     </GridViewColumn>
-                                    <GridViewColumn Width="150">
+                                    <GridViewColumn Width="200">
                                         <GridViewColumn.Header>
                                             <TextBlock Text="Email" FontSize="14" FontWeight="SemiBold" Foreground="Black"/>
                                         </GridViewColumn.Header>
@@ -304,7 +307,7 @@
                                         </GridViewColumn.Header>
                                         <GridViewColumn.CellTemplate>
                                             <DataTemplate>
-                                                <TextBlock Text="{Binding Expense}" 
+                                                <TextBlock Text="{Binding ExpenseStr}" 
                                                            Margin="20 0 0 -8"
                                                            FontSize="14" 
                                                            FontFamily="{StaticResource MaterialDesignFont}"/>

@@ -43,13 +43,13 @@
             <StackPanel Orientation="Horizontal">
                 <Label
                     FontFamily="{StaticResource MaterialDesignFont}"
-                    FontSize="35"
+                    FontSize="28"
                     Foreground="#8DC1F0"
                     FontWeight="Bold"
                     HorizontalAlignment="Center"
                     VerticalAlignment="Center"
                     
-                    Margin="240,0,0,0"
+                    Margin="270,0,0,0"
                 >CHI TIẾT SỰ CỐ
                     <Label.Effect>
                         <DropShadowEffect BlurRadius="1" Direction="-45" Color="#000000" ShadowDepth="1.5" Opacity="0.5"/>
@@ -63,7 +63,7 @@
                         Foreground="Black"
                         BorderBrush="Transparent"
                         materialDesign:ButtonAssist.CornerRadius="0,10,0,0"
-                        Margin="190,-6,0,0">
+                        Margin="210,-6,0,0">
                     <materialDesign:PackIcon Kind="WindowClose"
                                              Height="30"
                                              Width="30"
@@ -80,7 +80,7 @@
 
             <Border BorderThickness="2"  
                     BorderBrush="Black" 
-                    Margin="10 10 10 20" >
+                    Margin="20 20 20 50" >
                 <Border.Background>
                     <ImageBrush ImageSource="{Binding SelectedItem.Image}" />
                 </Border.Background>
@@ -114,10 +114,10 @@
                     <StackPanel Orientation="Horizontal">
                         <TextBlock Text="{Binding SelectedItem.TroubleType}"
                                     FontWeight="Medium"
-                                    FontSize="18" />
+                                    FontSize="16" />
                         <TextBlock Text="Mức độ: "
                                        Margin="120,3,0,0"
-                                       FontSize="16" />
+                                       FontSize="14" />
                         <TextBlock Text="{Binding SelectedItem.Level}"
                                        TextWrapping="Wrap"
                                        Margin="0,3,0,0"
@@ -132,17 +132,17 @@
                     <StackPanel Orientation="Horizontal">
                         <StackPanel Margin="0,10,0,0">
                             <TextBlock Text="Ngày tiếp nhận:"
-                                       FontSize="18"
+                                       FontSize="16"
                                        FontWeight="Medium"/>
                             <TextBlock Text="{Binding SelectedItem.SubmittedAt,StringFormat=dd/MM/yyyy HH:mm:ss}" 
-                                       FontSize="18"
+                                       FontSize="16"
                                        Margin="0 10 0 0"/>
                         </StackPanel>
                         <StackPanel Margin="160,10,0,0">
                             <TextBlock  Text="Nhân viên báo cáo:"
-                                        FontSize="18"
+                                        FontSize="16"
                                         FontWeight="Medium"/>
-                            <TextBlock FontSize="18"
+                            <TextBlock FontSize="16"
                                        Margin="0 10 0 0" Text="{Binding SelectedItem.StaffName}" />
                         </StackPanel>
                     </StackPanel>
@@ -151,7 +151,7 @@
                                 Height="50"
                                 Orientation="Horizontal">
                         <TextBlock  Text="Trạng thái:"
-                                    FontSize="18"
+                                    FontSize="16"
                                     FontWeight="Medium"/>
                         <TextBlock Width="140"
                                     Text="{Binding SelectedItem.TroubleStatus}"
@@ -164,7 +164,7 @@
                                 Height="50"
                                 Orientation="Horizontal">
                         <TextBlock Text="Ngày sửa:" 
-                                   FontSize="18"
+                                   FontSize="16"
                                    FontWeight="Medium"/>
                         <TextBlock HorizontalAlignment="Left"
                                     Text="{Binding SelectedItem.StartDate,StringFormat=dd/MM/yyyy HH:mm:ss}" />
@@ -176,7 +176,7 @@
                                 Height="50"
                                 Orientation="Horizontal">
                         <TextBlock Text="Ngày hoàn thành:"
-                                   FontSize="18"
+                                   FontSize="16"
                                     FontWeight="Medium"/>
                         <TextBlock HorizontalAlignment="Left"
                                        Text="{Binding SelectedItem.FinishDate,StringFormat=dd/MM/yyyy HH:mm:ss}" />
@@ -190,7 +190,7 @@
                                 Width="200"
                                 HorizontalAlignment="Left" >
                         <TextBlock Text="Chi phí:"
-                                   FontSize="18"
+                                   FontSize="16"
                                    FontWeight="Medium" Height="26"/>
                         <TextBlock HorizontalAlignment="Left"
                                        Text="{Binding SelectedItem.RepairCostStr}" />

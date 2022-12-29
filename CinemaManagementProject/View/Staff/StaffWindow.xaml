@@ -22,7 +22,7 @@
             <ColumnDefinition Width="5*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="60"/>
+            <RowDefinition Height="40"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
 
@@ -55,18 +55,18 @@
                         </Style.Triggers>
                     </Style>
                 </Grid.Style>
-                <Ellipse Name="OverlayIcon" Fill="Green" Width="35" Height="35">
+                <Ellipse Name="OverlayIcon" Fill="Green" Width="30" Height="30">
                 </Ellipse>
                 <TextBlock Text="{Binding StaffNameIcon}" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White" FontWeight="SemiBold" FontSize="16" Margin="0,-1,0,0" LineHeight="16">
                 </TextBlock>
             </Grid>
-            <StackPanel Width="145" Height="40" HorizontalAlignment="Right" Margin="0,0,10,0" Orientation="Horizontal">
+            <StackPanel  HorizontalAlignment="Right" Margin="0,0,00,0" Orientation="Horizontal">
                 <Button Foreground="Black" Cursor="Hand" Click="Button_Click">
                     <Button.Style>
                         <Style TargetType="{x:Type Button}">
                             <Setter Property="Background" Value="Transparent"/>
                             <Setter Property="Width" Value="48"/>
-                            <Setter Property="Margin" Value="0,4,0,4"/>
+                            <Setter Property="Margin" Value="0,0,0,4"/>
                             <Setter Property="BorderThickness" Value="0"/>
                             <Setter Property="BorderBrush" Value="Transparent"/>
                             <Setter Property="Template">
@@ -95,7 +95,7 @@
                         <Style TargetType="{x:Type Button}">
                             <Setter Property="Background" Value="Transparent"/>
                             <Setter Property="Width" Value="48"/>
-                            <Setter Property="Margin" Value="0,4,0,4"/>
+                            <Setter Property="Margin" Value="0,0,0,4"/>
                             <Setter Property="BorderThickness" Value="0"/>
                             <Setter Property="BorderBrush" Value="Transparent"/>
                             <Setter Property="Template">
@@ -124,13 +124,13 @@
                         <Style TargetType="{x:Type Button}">
                             <Setter Property="Background" Value="Transparent"/>
                             <Setter Property="Width" Value="48"/>
-                            <Setter Property="Margin" Value="0,4,0,4"/>
+                            <Setter Property="Margin" Value="0,0,0,4"/>
                             <Setter Property="BorderThickness" Value="0"/>
                             <Setter Property="BorderBrush" Value="Transparent"/>
                             <Setter Property="Template">
                                 <Setter.Value>
                                     <ControlTemplate TargetType="{x:Type Button}">
-                                        <Border Background="{TemplateBinding Background}" CornerRadius="0,10,0,0" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
+                                        <Border Background="{TemplateBinding Background}" CornerRadius="0,20,0,0" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
                                             <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
                                         </Border>
                                     </ControlTemplate>
