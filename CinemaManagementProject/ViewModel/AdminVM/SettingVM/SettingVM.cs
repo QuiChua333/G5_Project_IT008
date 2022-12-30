@@ -31,6 +31,7 @@ using CinemaManagementProject.View.Staff.TicketWindow;
 using CinemaManagementProject.View.Admin;
 using Path = System.IO.Path;
 using CinemaManagementProject.Properties;
+using System.Runtime.Remoting.Metadata.W3cXsd2001;
 
 namespace CinemaManagementProject.ViewModel.AdminVM.SettingVM
 {
@@ -268,7 +269,17 @@ namespace CinemaManagementProject.ViewModel.AdminVM.SettingVM
                     AdminWindow tk = Application.Current.Windows.OfType<AdminWindow>().FirstOrDefault();
                     tk.IconAvatar.Source = ImageSource;
                     tk.IconAvatarPopup.Source = ImageSource;
-                    // using (var context = new AvatarUser())
+                    using (var context = new AvatarUser())
+                    {
+                        //AvatarUser.StaffRow item = context.Staff.FindById(currentStaff.Id);
+                        //if(item == null)
+                        //{
+                        //    item = new AvatarUser.StaffRow(1,null);
+                        //    item.Id = currentStaff.Id;
+                        //    item.Avatar = null;
+                        //}
+                        //context.Staff.AddStaffRow();
+                    }    
                 }
             });
             ChangePassCM = new RelayCommand<object>((p) => { return true; }, (p) =>
