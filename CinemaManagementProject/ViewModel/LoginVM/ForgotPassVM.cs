@@ -19,6 +19,8 @@ using System.Net;
 using CinemaManagementProject.Model;
 using System.Data.SqlClient;
 using System.Data.Entity;
+using System.Windows.Controls.Primitives;
+using Microsoft.Win32;
 
 namespace CinemaManagementProject.ViewModel.LoginVM
 {

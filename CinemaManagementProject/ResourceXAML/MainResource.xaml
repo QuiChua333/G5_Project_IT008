@@ -18,6 +18,7 @@
                     xmlns:viewmodel16="clr-namespace:CinemaManagementProject.ViewModel.StaffVM.TroubleStaffVM"          
                     xmlns:viewmodel17="clr-namespace:CinemaManagementProject.ViewModel.AdminVM.StatisticalManagementVM"
                     xmlns:viewmodel18="clr-namespace:CinemaManagementProject.ViewModel.AdminVM"
+                    xmlns:viewmodel19="clr-namespace:CinemaManagementProject.ViewModel.AdminVM.SettingVM"
 >
     <viewmodel1:VoucherViewModel x:Key="VoucherVM" />
     <viewmodel2:CustomerManagementViewModel x:Key="CustomerManagementVM"></viewmodel2:CustomerManagementViewModel>
@@ -38,4 +39,5 @@
     <viewmodel16:TroublePageViewModel x:Key="TroublePageVM"/>
     <viewmodel17:StatisticalManagementVM x:Key="StatisticalManagementVM"/>
     <viewmodel18:AdminVM x:Key="AdminVM"/>
+    <viewmodel19:SettingVM x:Key="SettingVM"/>
 </ResourceDictionary>

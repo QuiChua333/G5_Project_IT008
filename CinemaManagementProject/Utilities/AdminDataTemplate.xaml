@@ -18,7 +18,9 @@
                     xmlns:TroubleView="clr-namespace:CinemaManagementProject.View.Admin.TroubleManagement"
                     xmlns:TroubleVM="clr-namespace:CinemaManagementProject.ViewModel.AdminVM.TroubleManagementVM"
                     xmlns:StatisticalView="clr-namespace:CinemaManagementProject.View.Admin.StatisticalManagement"
-                    xmlns:StatisticalVM="clr-namespace:CinemaManagementProject.ViewModel.AdminVM.StatisticalManagementVM">
+                    xmlns:StatisticalVM="clr-namespace:CinemaManagementProject.ViewModel.AdminVM.StatisticalManagementVM"
+                    xmlns:SettingView="clr-namespace:CinemaManagementProject.View.Admin.SettingManagement"
+                    xmlns:SettingVM="clr-namespace:CinemaManagementProject.ViewModel.AdminVM.SettingVM">
     <DataTemplate DataType="{x:Type VoucherVM:VoucherViewModel}">
         <VoucherView:VoucherManagementPage></VoucherView:VoucherManagementPage>
     </DataTemplate>
@@ -46,11 +48,17 @@
     <DataTemplate DataType="{x:Type FoodManagementVM:FoodManagementVM}">
         <FoodManagementView:FoodPage></FoodManagementView:FoodPage>
     </DataTemplate>
+    
     <DataTemplate DataType="{x:Type TroubleVM:TroubleManagementViewModel}">
         <TroubleView:TroubleManagementPage></TroubleView:TroubleManagementPage>
     </DataTemplate>
+    
     <DataTemplate DataType="{x:Type StatisticalVM:StatisticalManagementVM}">
         <StatisticalView:StatisticalManagement></StatisticalView:StatisticalManagement>
     </DataTemplate>
-    
+
+    <DataTemplate DataType="{x:Type SettingVM:SettingVM}">
+        <SettingView:SettingPage></SettingView:SettingPage>
+    </DataTemplate>
+
 </ResourceDictionary>

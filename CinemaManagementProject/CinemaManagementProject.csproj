@@ -74,6 +74,7 @@
     <Reference Include="MaterialDesignThemes.Wpf, Version=4.6.1.0, Culture=neutral, PublicKeyToken=df2a72020bd7962a, processorArchitecture=MSIL">
       <HintPath>..\packages\MaterialDesignThemes.4.6.1\lib\net462\MaterialDesignThemes.Wpf.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Build.Utilities.v4.0" />
     <Reference Include="Microsoft.Expression.Interactions, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Windows.Interactivity.WPF.2.0.20525\lib\net40\Microsoft.Expression.Interactions.dll</HintPath>
     </Reference>
@@ -145,6 +146,7 @@
       <HintPath>..\packages\System.Text.Encodings.Web.7.0.0\lib\net462\System.Text.Encodings.Web.dll</HintPath>
     </Reference>
     <Reference Include="System.Transactions" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Windows.Interactivity, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Windows.Interactivity.WPF.2.0.20525\lib\net40\System.Windows.Interactivity.dll</HintPath>
@@ -246,6 +248,7 @@
     <Compile Include="Model\Service\BillService.cs" />
     <Compile Include="Model\Service\CustomerService.cs" />
     <Compile Include="Model\Service\SeatService.cs" />
+    <Compile Include="Model\Service\SettingService.cs" />
     <Compile Include="Model\Service\ShowtimeService.cs" />
     <Compile Include="Model\Service\StaffService.cs" />
     <Compile Include="Model\Service\TroubleService.cs" />
@@ -274,7 +277,13 @@
     <Compile Include="Model\VoucherRelease.cs">
       <DependentUpon>CinemaManagementDatabase.tt</DependentUpon>
     </Compile>
+    <Compile Include="Properties\AvatarUser.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AvatarUser.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Resource\Styles\ListboxCustom.xaml.cs" />
+    <Compile Include="Settings.cs" />
     <Compile Include="Until.cs" />
     <Compile Include="Utilities\RelyCommand.cs" />
     <Compile Include="Utils\CloudinaryService.cs" />
@@ -289,6 +298,8 @@
     <Compile Include="ViewModel\AdminVM\FoodManagementVM\EditFoodVM.cs" />
     <Compile Include="ViewModel\AdminVM\FoodManagementVM\FoodManagementVM.cs" />
     <Compile Include="ViewModel\AdminVM\Import_ExportManagementVM\Import_ExportManagementViewModel.cs" />
+    <Compile Include="ViewModel\AdminVM\SettingVM\ResetPassVM.cs" />
+    <Compile Include="ViewModel\AdminVM\SettingVM\SettingVM.cs" />
     <Compile Include="ViewModel\AdminVM\ShowtimeManagementVM\AddShowtimeViewModel.cs" />
     <Compile Include="ViewModel\AdminVM\ShowtimeManagementVM\Infor_EditShowtimeViewModel.cs" />
     <Compile Include="ViewModel\AdminVM\ShowtimeManagementVM\SeatStatusConverter.cs" />
@@ -343,6 +354,18 @@
     </Compile>
     <Compile Include="View\Admin\FoodManagement\ImportFoodWindow.xaml.cs">
       <DependentUpon>ImportFoodWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Admin\SettingManagement\ChooseColorWindow.xaml.cs">
+      <DependentUpon>ChooseColorWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Admin\SettingManagement\ConfirmWindow.xaml.cs">
+      <DependentUpon>ConfirmWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Admin\SettingManagement\ResetPassWindow.xaml.cs">
+      <DependentUpon>ResetPassWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Admin\SettingManagement\SettingPage.xaml.cs">
+      <DependentUpon>SettingPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Admin\StatisticalManagement\StatisticalManagement.xaml.cs">
       <DependentUpon>StatisticalManagement.xaml</DependentUpon>
@@ -609,10 +632,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Resource\Styles\MenuButtonUI.xaml">
-      <Generator>MSBuild:Compile</Generator>
+    <Content Include="Resource\Styles\MenuButtonUI.xaml">
       <SubType>Designer</SubType>
-    </Page>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Page Include="Utilities\AdminDataTemplate.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -640,6 +663,22 @@
     <Page Include="View\Admin\FoodManagement\ImportFoodWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Admin\SettingManagement\ChooseColorWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Admin\SettingManagement\ConfirmWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Admin\SettingManagement\ResetPassWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Admin\SettingManagement\SettingPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Admin\StatisticalManagement\StatisticalManagement.xaml">
       <SubType>Designer</SubType>
@@ -903,6 +942,17 @@
       <DependentUpon>CinemaManagementDatabase.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
+    <None Include="Properties\AvatarUser.xsc">
+      <DependentUpon>AvatarUser.xsd</DependentUpon>
+    </None>
+    <None Include="Properties\AvatarUser.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>AvatarUser.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Properties\AvatarUser.xss">
+      <DependentUpon>AvatarUser.xsd</DependentUpon>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -1035,6 +1085,7 @@
     </Content>
     <Content Include="Resource\EmailTemplate\EmailResetPassTemplate.txt" />
     <Content Include="Resource\EmailTemplate\ForgotPassTemplate.txt" />
+    <Resource Include="Resource\Images\LogoMain.png" />
     <Resource Include="Resource\Images\currChoose.png" />
     <Resource Include="Resource\Images\isBooked.png" />
     <Resource Include="Resource\Images\isReady.png" />

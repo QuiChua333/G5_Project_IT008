@@ -8,7 +8,7 @@
       DataContext="{StaticResource LoginVM}"
       mc:Ignorable="d" 
       Name="LoginPg"
-      Title="LoginPage"
+      Title="LoginPage" Loaded="LoginPg_Loaded"
 >
     <Page.Triggers>
         <EventTrigger RoutedEvent="Page.Loaded">
@@ -45,20 +45,21 @@
                             FontWeight="Regular"
                         >Tên đăng nhập hoặc mật khẩu</TextBlock>
                 <TextBox Height="35" VerticalAlignment="Bottom"
+                         Name="NameBoxUser"
                             FontFamily="{StaticResource MaterialDesignFont}"
                             FontSize="20"
                             Foreground="{StaticResource HeavyBlueZodiac}"
                             FontWeight="Regular"
-                         Text="{Binding Username}"
+                         Text="{Binding Username, Mode=TwoWay}"
                         ></TextBox>
             </Grid>
             <Grid Margin="0,30,0,0" Height="52" Width="289">
                 <TextBlock
-                            FontFamily="{StaticResource MaterialDesignFont}"
-                            FontSize="12"
-                            Foreground="{StaticResource LightGrayBombay}"
-                            FontWeight="Regular"
-                        >Mật khẩu</TextBlock>
+                        FontFamily="{StaticResource MaterialDesignFont}"
+                        FontSize="12"
+                        Foreground="{StaticResource LightGrayBombay}"
+                        FontWeight="Regular"
+                    >Mật khẩu</TextBlock>
                 <PasswordBox 
                     Height="35" VerticalAlignment="Bottom"
                     Name="PasswordBoxUser"

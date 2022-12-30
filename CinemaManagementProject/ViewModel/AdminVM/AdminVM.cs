@@ -12,6 +12,9 @@ using CinemaManagementProject.Views;
 using System.Windows;
 using System.Windows.Navigation;
 using System.Windows.Controls;
+using System.Windows.Shapes;
+using System.Windows.Media;
+using MaterialDesignThemes.Wpf;
 
 namespace CinemaManagementProject.ViewModel.AdminVM
 {
@@ -63,6 +66,13 @@ namespace CinemaManagementProject.ViewModel.AdminVM
                 OnPropertyChanged();
             }
         }
+        private Brush _mainColor { get; set; }
+        public Brush MainColor 
+        {
+            get { return _mainColor; }
+            set { _mainColor = value; OnPropertyChanged(); }
+        }
+        public ICommand FirstLoadCM { get; set; }
         public ICommand VoucherCommand { get; set; }
         public ICommand ShowTimeViewCommand { get; set; }
         public ICommand CustomerViewCommand { get; set; }
@@ -72,6 +82,7 @@ namespace CinemaManagementProject.ViewModel.AdminVM
         public ICommand FoodCommand { get; set; }
         public ICommand TroubleCommand { get; set; }
         public ICommand StatisticalViewCommand { get; set; }
+        public ICommand SettingCommand { get; set; }
         public ICommand LogOutCommand { get; set; }
         public ICommand OpenAvatarPopupCommand { get; set; }
         public ICommand CloseAvatarPopupCommand { get; set; }
@@ -85,7 +96,7 @@ namespace CinemaManagementProject.ViewModel.AdminVM
         private void Film(object obj) => CurrentView = new MovieManagementVM.MovieManagementVM();
         public void Statistical(object obj) => CurrentView = new StatisticalManagementVM.StatisticalManagementVM();
         private void Trouble(object obj) => CurrentView = new TroubleManagementVM.TroubleManagementViewModel();
-
+        private void Setting(object obj) => CurrentView = new SettingVM.SettingVM();
 
 
         public AdminVM()
@@ -100,7 +111,7 @@ namespace CinemaManagementProject.ViewModel.AdminVM
                 StaffNameIcon = "Ad";
                 StaffName = "Admin";
                 StaffEmail = "admin@gmail.com";
-            }    
+            }
             VoucherCommand = new RelayCommand(Voucher);
             ShowTimeViewCommand = new RelayCommand(ShowTime);
             CustomerViewCommand = new RelayCommand(Customer);
@@ -111,6 +122,7 @@ namespace CinemaManagementProject.ViewModel.AdminVM
             _currentView = new VoucherManagementVM.VoucherViewModel();
             StatisticalViewCommand = new RelayCommand(Statistical);
             TroubleCommand = new RelayCommand(Trouble);
+            SettingCommand = new RelayCommand(Setting);
             LogOutCommand = new RelayCommand<Window>((p) => { return true; }, (p) =>
             {
                 if (CustomMessageBox.ShowOkCancel("Bạn thật sự muốn đăng xuất không?", "Cảnh báo", "Đăng xuất", "Không", Views.CustomMessageBoxImage.Information) == CustomMessageBoxResult.OK)
@@ -131,9 +143,14 @@ namespace CinemaManagementProject.ViewModel.AdminVM
             {
                 p.Visibility = Visibility.Hidden;
             });
-            SwitchToSettingTab = new RelayCommand<object>((p) => { return true; }, (p) =>
+            SwitchToSettingTab = new RelayCommand<RadioButton>((p) => { return true; }, (p) =>
             {
-                CustomMessageBox.ShowOk("Please add view and logic in setting tab!!!", ":)))))", "Ok");
+                p.IsChecked = true;
+                CurrentView = new SettingVM.SettingVM();
+            });
+            FirstLoadCM = new RelayCommand<object>((p) => { return true; }, (p) =>
+            {
+                MainColor = (SolidColorBrush)new BrushConverter().ConvertFrom(Properties.Settings.Default.MainAppColor);
             });
         }
 

@@ -91,6 +91,16 @@ namespace CinemaManagementProject.ViewModel.LoginVM
             LoadLoginPageCM = new RelayCommand<Frame>((p) => { return true; }, (p) =>
             {
                 MainFrame = p;
+                if (Properties.Settings.Default.isRemidUserAndPass)
+                {
+                    Username = Properties.Settings.Default.userNameSetting;
+                    Password = Properties.Settings.Default.userPassSetting;
+                }
+                else
+                {
+                    Username = "";
+                    Password = "";
+                }
                 p.Content = new LoginPage();
             });
             LoadForgotPageCM = new RelayCommand<object>((p) => { return true; }, (p) =>

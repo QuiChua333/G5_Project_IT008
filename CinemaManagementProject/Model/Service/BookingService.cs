@@ -87,6 +87,7 @@ namespace CinemaManagementProject.Model.Service
                 Console.WriteLine(e);
                 return (false, $"Lỗi hệ thống");
             }
+
             return (true, "Đặt vé thành công");
         }
 
