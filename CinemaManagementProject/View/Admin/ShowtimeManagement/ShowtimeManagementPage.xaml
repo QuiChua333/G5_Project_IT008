@@ -221,9 +221,10 @@
 
                 <!---Listview-->
                 <Border Grid.Row="1" 
-                        Margin="110,10,20,20" 
+                        Margin="130,10,20,20" 
                         CornerRadius="20" 
-                        Background="White">
+                        Background="White"
+                        >
                     <Border.Effect>
                         <DropShadowEffect
                                     BlurRadius="10"
@@ -235,7 +236,8 @@
                     <materialDesign:Card Background="White"
                                      FontFamily="{StaticResource MaterialDesignFont}"
                                      FontWeight="Normal"   
-                                     UniformCornerRadius="20">
+                                     UniformCornerRadius="20"
+                                     >
                         <ScrollViewer>
                             <ListView x:Name="ShowtimeListview"
                                       ItemsSource="{Binding ShowtimeList,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
@@ -255,9 +257,9 @@
                                 <ListView.View>
                                     <GridView>
                                         <GridViewColumn 
-                                                    Width="300">
+                                                    Width="30">
                                             <GridViewColumn.Header >
-                                                <TextBlock Text="Tên phim" 
+                                                <TextBlock  
                                                            FontSize="14" 
                                                            FontWeight="SemiBold" 
                                                            Foreground="Black"></TextBlock>
@@ -265,33 +267,76 @@
                                             <GridViewColumn.CellTemplate>
                                                 <DataTemplate>
                                                     <StackPanel Orientation="Horizontal">
-                                                        <Border 
+
+                                                        
+
+                                                    </StackPanel>
+                                                </DataTemplate>
+                                            </GridViewColumn.CellTemplate>
+                                        </GridViewColumn>
+
+                                        <GridViewColumn 
+                                                    Width="75">
+                                            <GridViewColumn.Header >
+                                                <TextBlock  
+                                                           FontSize="14" 
+                                                           FontWeight="SemiBold" 
+                                                           Foreground="Black"></TextBlock>
+                                            </GridViewColumn.Header>
+                                            <GridViewColumn.CellTemplate>
+                                                <DataTemplate>
+
+
+                                                    
+                                                        <Border     BorderBrush="Gray"
+                                                                    Margin="0,2,0,0"
+                                                        BorderThickness="0.3"
+                                                        CornerRadius="10"
                                                         Width="60"
-                                                        Height="80">
+                                                        Height="50"
+                                                        VerticalAlignment="Center"
+                                                        HorizontalAlignment="Left">
+
                                                             <Border.Background>
-                                                                <ImageBrush x:Name="smallimg"
-                                                                    Stretch="Fill"
-                                                                    ImageSource="{Binding Image}" />
+                                                                <ImageBrush Stretch="Fill" x:Name="smallimg" ImageSource="{Binding Image}"/>
                                                             </Border.Background>
                                                         </Border>
+                                                   
+                                                </DataTemplate>
+                                            </GridViewColumn.CellTemplate>
+                                        </GridViewColumn>
+
+                                        <GridViewColumn 
+                                                    Width="250">
+                                            <GridViewColumn.Header >
+                                                <TextBlock Text="Tên phim" 
+                                                           FontSize="14" 
+                                                           FontWeight="SemiBold" 
+                                                           Foreground="Black"
+                                                           Margin="-18,0,0,0"></TextBlock>
+                                            </GridViewColumn.Header>
+                                            <GridViewColumn.CellTemplate>
+                                                <DataTemplate>
+
                                                         <TextBlock  Text="{Binding FilmName}"
                                                                     FontSize="14"
-                                                                    Margin="10 25 0 0"
+                                                                    Margin="0,18,0,0"
                                                                     />
-                                                    </StackPanel>
+                                              
+                                                 
                                                 </DataTemplate>
                                             </GridViewColumn.CellTemplate>
                                         </GridViewColumn>
                                         <GridViewColumn
                                                         Width="130">
                                             <GridViewColumn.Header >
-                                                <TextBlock Text="Loại phim" FontSize="14" FontWeight="SemiBold" Foreground="Black"></TextBlock>
+                                                <TextBlock Text="Loại phim" FontSize="14" FontWeight="SemiBold" Foreground="Black" Margin="-20,0,0,0"></TextBlock>
                                             </GridViewColumn.Header>
                                             <GridViewColumn.CellTemplate>
                                                 <DataTemplate>
                                                     <TextBlock  Text="{Binding FilmType}"
                                                             FontSize="14"
-                                                            Margin="40,25,0,0" />
+                                                            Margin="0,18,0,0" />
                                                 </DataTemplate>
                                             </GridViewColumn.CellTemplate>
                                         </GridViewColumn>
@@ -299,13 +344,13 @@
                                                         Width="134">
                                             <GridViewColumn.Header >
                                                 <TextBlock Text="Thời lượng"
-                                                           FontSize="14" FontWeight="SemiBold" Foreground="Black"></TextBlock>
+                                                           FontSize="14" FontWeight="SemiBold" Foreground="Black" Margin="-20,0,0,0"></TextBlock>
                                             </GridViewColumn.Header>
                                             <GridViewColumn.CellTemplate>
                                                 <DataTemplate>
                                                     <TextBlock  Text="{Binding  DurationFilm}"
                                                             FontSize="14"
-                                                            Margin="40,25,0,0" />
+                                                            Margin="0,18,0,0" />
                                                 </DataTemplate>
                                             </GridViewColumn.CellTemplate>
                                         </GridViewColumn>
@@ -313,15 +358,15 @@
                                                         Width="270">
                                             <GridViewColumn.Header >
                                                 <TextBlock Text="Giờ chiếu"
-                                                           FontSize="14" FontWeight="SemiBold" Foreground="Black"></TextBlock>
+                                                           FontSize="14" FontWeight="SemiBold" Foreground="Black" Margin="-20,0,0,0"></TextBlock>
                                             </GridViewColumn.Header>
                                             <GridViewColumn.CellTemplate>
                                                 <DataTemplate>
-                                                    <ListBox ItemsSource="{Binding ShowTimes}">
+                                                    <ListBox ItemsSource="{Binding ShowTimes}" Margin="-10,10,0,0">
 
                                                         <ListBox.ItemContainerStyle>
                                                             <Style TargetType="ListBoxItem">
-                                                                <Setter Property="Margin" Value="-4 20 -4 0"></Setter>
+                                                                
                                                                 <Setter Property="MaxWidth" Value="180"></Setter>
                                                             </Style>
                                                         </ListBox.ItemContainerStyle>
