@@ -56,7 +56,7 @@
                     </Border>
                     <Label Padding="0" 
                            Content="THÊM DANH SÁCH VOUCHER" 
-                           FontSize="16" FontWeight="Bold" 
+                           FontSize="18" FontWeight="Bold" 
                            VerticalAlignment="Center" 
                            HorizontalAlignment="Center" 
                            Foreground="#8DC1F0" 
@@ -112,7 +112,7 @@
                                      FontWeight="Medium"
                                      FontFamily="{DynamicResource MaterialDesignFont}"
                                      Foreground="{StaticResource Gray1}"
-                                     Padding="20,0,0,0">
+                                     Padding="10,0,0,0">
                                 </TextBox>
                             </Grid>
                         </Grid>
@@ -140,7 +140,7 @@
                                      FontWeight="Medium"
                                      FontFamily="{DynamicResource MaterialDesignFont}"
                                      Foreground="{StaticResource Gray1}"
-                                     Padding="20,0,0,0">
+                                     Padding="10,0,0,0">
                                 </TextBox>
                             </Grid>
                         </Grid>

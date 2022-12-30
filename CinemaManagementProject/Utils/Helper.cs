@@ -115,6 +115,10 @@ namespace CinemaManagementProject.Utils
         {
             return Path.Combine(Environment.CurrentDirectory, @"..\..\Resource\EmailTemplate", $"{fileName}" /*SelectedItem.Image*/);
         }
+        public static string GetSidebarTemplate()
+        {
+            return Path.Combine(Environment.CurrentDirectory, @"..\..\Resource\Styles\MenuButtonUI.xaml");
+        }
         public static bool CheckEmailStaff(string CurrentEmail)
         {
             using (CinemaManagementProjectEntities db = new CinemaManagementProjectEntities())
@@ -125,6 +129,7 @@ namespace CinemaManagementProject.Utils
                 return false;
             }
         }
+        
 
     }
 }

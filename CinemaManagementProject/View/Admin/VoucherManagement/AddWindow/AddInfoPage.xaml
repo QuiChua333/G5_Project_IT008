@@ -78,7 +78,7 @@
                                      FontWeight="Medium"
                                      FontFamily="{DynamicResource MaterialDesignFont}"
                                      Foreground="{StaticResource Gray1}"
-                                     Padding="20,0,0,0"
+                                     Padding="10,0,0,0"
                                      Text="{Binding VoucherReleaseName,Mode=OneWayToSource}"
                                      >
                         </TextBox>
@@ -106,7 +106,7 @@
                                      FontWeight="Medium"
                                      FontFamily="{DynamicResource MaterialDesignFont}"
                                      Foreground="{StaticResource Gray1}"
-                                     Padding="20,0,0,0"
+                                     Padding="10,0,0,0"
                                      Text="{Binding Price,Mode=OneWayToSource}"
                                      PreviewTextInput="TextBox_PreviewTextInput" 
                                      TextChanged="TextBox_TextChanged">
@@ -180,7 +180,7 @@
                                         FontWeight="Medium"
                                         Foreground="{StaticResource Gray1}"
                                         BorderBrush="#67C6E6"
-                                        Padding="20,0,0,0"
+                                        Padding="10,0,0,0"
                                         Focusable="False"
                                         DisplayDateStart="{Binding GetCurrentDate}"
                                         SelectedDate="{Binding StartDate,Mode=Default}">
@@ -201,7 +201,7 @@
                                         FontWeight="Medium"
                                         Foreground="{StaticResource Gray1}"
                                         BorderBrush="#67C6E6"
-                                        Padding="20,0,0,0"
+                                        Padding="10,0,0,0"
                                         Focusable="False"
                                         SelectedDate="{Binding EndDate}"
                                         DisplayDateStart="{Binding StartDate}">
@@ -297,7 +297,7 @@
                                      FontWeight="Medium"
                                      FontFamily="{DynamicResource MaterialDesignFont}"
                                      Foreground="{StaticResource Gray1}"
-                                     Padding="20,0,0,0"
+                                     Padding="10,0,0,0"
                                      Text="{Binding MinimizeTotal,Mode=OneWayToSource}"
                                      PreviewTextInput="TextBox_PreviewTextInput"
                                      TextChanged="TextBox_TextChanged"/>

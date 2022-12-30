@@ -128,7 +128,7 @@ namespace CinemaManagementProject.ViewModel.AdminVM.VoucherManagementVM
                 {
                    AddWindow wd = new AddWindow();
                     Unlock = false;
-                    selectedItem = null;
+                    SelectedItem = null;
                     wd.ShowDialog();
                 }
                 catch (System.Data.Entity.Core.EntityException e)

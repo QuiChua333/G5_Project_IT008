@@ -15,8 +15,8 @@
         FontFamily="{StaticResource MaterialDesignFont}"
         MouseLeftButtonDown="EditWindow_MouseLeftButtonDown"
         PreviewKeyUp="EditWindow_PreviewKeyUp"
-        Height="682"
-        Width="1102">
+        Height="700"
+        Width="1110">
     <Window.Triggers>
         <EventTrigger RoutedEvent="Window.Loaded">
             <BeginStoryboard>

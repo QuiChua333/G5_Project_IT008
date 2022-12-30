@@ -6,14 +6,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CinemaManagementProject.View.Admin.VoucherManagement.AddWindow"
         mc:Ignorable="d"
-        Title="ReleaseVoucher" Height="450" Width="840" WindowStyle="None"
+        Title="ReleaseVoucher"  WindowStyle="None"
         Background="Transparent"
         WindowStartupLocation="CenterScreen"
         AllowsTransparency="True" 
         xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
         DataContext="{StaticResource VoucherVM}" MouseLeftButtonDown="Window_MouseLeftButtonDown"
         >
-    <Border CornerRadius="15" Background="#F5F5F5" BorderBrush="Gray" BorderThickness="0.3">
+    <Border CornerRadius="15" Background="#F5F5F5" BorderBrush="Gray" BorderThickness="0.3" Height="450" Width="840">
         <Border.Effect>
             <DropShadowEffect BlurRadius="10" Direction="270" Color="Black" ShadowDepth="4" Opacity="0.25"/>
         </Border.Effect>
