@@ -11,6 +11,8 @@
     <ImageSource x:Key="isBooked">./isBooked.png</ImageSource>
     <ImageSource x:Key="isReady">./isReady.png</ImageSource>
     <ImageSource x:Key="currChoose">./currChoose.png</ImageSource>
+    <ImageSource x:Key="LogoMain">./LogoMain.png</ImageSource>
+
 
 
 </ResourceDictionary>

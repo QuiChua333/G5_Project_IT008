@@ -10,27 +10,30 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace CinemaManagementProject.View.Login
+namespace CinemaManagementProject.View.Admin.SettingManagement
 {
     /// <summary>
-    /// Interaction logic for LoginPage.xaml
+    /// Interaction logic for ConfirmWindow.xaml
     /// </summary>
-    public partial class LoginPage : Page
+    public partial class ConfirmWindow : Window
     {
-        public LoginPage()
+        public ConfirmWindow()
         {
             InitializeComponent();
         }
-
-        private void LoginPg_Loaded(object sender, RoutedEventArgs e)
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
-            if (Properties.Settings.Default.isRemidUserAndPass)
+            Close();
+        }
+
+        private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            if(e.LeftButton == MouseButtonState.Pressed)
             {
-                PasswordBoxUser.Password = Properties.Settings.Default.userPassSetting;
-            }
+                DragMove();
+            }    
         }
     }
 }
