@@ -59,7 +59,7 @@ namespace CinemaManagementProject.ViewModel.StaffVM.MovieScheduleWindowVM
         }
         public void GetShowtimeRoom()
         {
-            ShowTimeRoom = "Phòng 0" + SelectedShowtime.RoomId.ToString();
+            ShowTimeRoom = "Room 0" + SelectedShowtime.RoomId.ToString();
         }
     }
 

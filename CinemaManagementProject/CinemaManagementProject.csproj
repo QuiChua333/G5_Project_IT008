@@ -403,9 +403,6 @@
     <Compile Include="View\Admin\VoucherManagement\VoucherManagementPage.xaml.cs">
       <DependentUpon>VoucherManagementPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Admin\VoucherManagement\VoucherManagementWindow.xaml.cs">
-      <DependentUpon>VoucherManagementWindow.xaml</DependentUpon>
-    </Compile>
     <Compile Include="View\Admin\CustomerManagement\CustomerManagementPage.xaml.cs">
       <DependentUpon>CustomerManagementPage.xaml</DependentUpon>
     </Compile>
@@ -883,10 +880,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Staff\TicketBill\TicketBill_Phim_Page.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\Admin\VoucherManagement\VoucherManagementWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

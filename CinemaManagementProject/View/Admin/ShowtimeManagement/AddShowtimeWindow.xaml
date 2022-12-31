@@ -76,7 +76,7 @@
                 <Grid Grid.Column="1">
                     <Border  BorderBrush="#E6C067" BorderThickness="0,0,0,4"/>
                     <Label Padding="0" 
-                           Content="THÊM SUẤT CHIẾU" 
+                           Content="{DynamicResource AddShowtimeWindow_Title}" 
                            FontSize="28" 
                            FontWeight="Bold" 
                            VerticalAlignment="Center" 
@@ -108,7 +108,7 @@
                             <ColumnDefinition Width="75*"/>
                         </Grid.ColumnDefinitions>
                         <Label Grid.Column="0"
-                                   Content="Tên phim:"
+                                   Content="{DynamicResource AddShowtimeWindow_Label_FilmName}"
                                    FontSize="16"
                                    FontWeight="Bold"
                                    Foreground="#000000"
@@ -147,7 +147,7 @@
                                 <ColumnDefinition Width="50*"/>
                             </Grid.ColumnDefinitions>
                             <Label Grid.Column="0"
-                                   Content="Ngày chiếu:"
+                                   Content="{DynamicResource AddShowtimeWindow_Label_ShowDate}"
                                    FontSize="16"
                                    FontWeight="Bold"
                                    Foreground="#000000"
@@ -176,7 +176,7 @@
                             </Grid.ColumnDefinitions>
                             <Label Grid.Column="0"
                                    Margin="40,0,0,0"
-                                   Content="Suất chiếu:"
+                                   Content="{DynamicResource AddShowtimeWindow_Label_Showtime}"
                                    FontSize="16"
                                    FontWeight="Bold"
                                    Foreground="#000000"
@@ -213,7 +213,7 @@
                                 <ColumnDefinition Width="50*"/>
                             </Grid.ColumnDefinitions>
                             <Label Grid.Column="0"
-                                   Content="Phòng chiếu:"
+                                   Content="{DynamicResource AddShowtimeWindow_Label_Room}"
                                    FontSize="16"
                                    FontWeight="Bold"
                                    Foreground="#000000"
@@ -245,7 +245,7 @@
                             </Grid.ColumnDefinitions>
                             <Label Grid.Column="0"
                                    Margin="40,0,0,0"
-                                   Content="Giá vé:"
+                                   Content="{DynamicResource AddShowtimeWindow_Label_Price}"
                                    FontSize="16"
                                    FontWeight="Bold"
                                    Foreground="#000000"
@@ -312,7 +312,7 @@
 
                                     <StackPanel Orientation="Horizontal" Margin="0,5">
                                         <Label FontSize="16"
-                                               Content="Ngày chiếu:"
+                                               Content="{DynamicResource AddShowtimeWindow_Label_ShowDate}"
                                                FontWeight="Medium"
                                                Foreground="#000000"
                                                FontFamily="{DynamicResource MaterialDesignFont}"/>
@@ -326,7 +326,7 @@
                                     </StackPanel>
                                     <StackPanel Orientation="Horizontal" Margin="0,5">
                                         <Label FontSize="16"
-                                               Content="Giờ chiếu:"
+                                               Content="{DynamicResource AddShowtimeWindow_Label_Time}"
                                                FontWeight="Medium"
                                                Foreground="#000000"
                                                FontFamily="{DynamicResource MaterialDesignFont}"/>
@@ -356,7 +356,7 @@
                                     </StackPanel>
                                     <StackPanel Orientation="Horizontal" Margin="0,5">
                                         <Label FontSize="16"
-                                               Content="Phòng chiếu:"
+                                               Content="{DynamicResource AddShowtimeWindow_Label_Room}"
                                                FontWeight="Medium"
                                                Foreground="#000000"
                                                FontFamily="{DynamicResource MaterialDesignFont}"/>
@@ -370,7 +370,7 @@
                                     </StackPanel>
                                     <StackPanel Orientation="Horizontal" Margin="0,5">
                                         <Label FontSize="16"
-                                               Content="Giá vé:"
+                                               Content="{DynamicResource AddShowtimeWindow_Label_Price}"
                                                FontWeight="Medium"
                                                Foreground="#000000"
                                                FontFamily="{DynamicResource MaterialDesignFont}"/>
@@ -398,8 +398,8 @@
                                     <Border.Effect>
                                         <DropShadowEffect BlurRadius="5" Direction="270" Color="#ccc" ShadowDepth="4" Opacity="0.25"/>
                                     </Border.Effect>
-                                    
-                                        <Label Content="Mô tả"
+
+                                    <Label Content="{DynamicResource AddShowtimeWindow_Label_Description}"
                                        Padding="13"
                                        VerticalAlignment="Center"
                                        FontSize="16"
@@ -422,7 +422,7 @@
                 <Button HorizontalAlignment="Right"
                     VerticalAlignment="Center"
                     Style="{StaticResource CustomButton}"
-                    Content="Lưu"
+                    Content="{DynamicResource AddShowtimeWindow_Button_Save}"
                     FontSize="12"
                     Background="{StaticResource ColorButtonBlue}"
                     Margin="0,0,40,0"

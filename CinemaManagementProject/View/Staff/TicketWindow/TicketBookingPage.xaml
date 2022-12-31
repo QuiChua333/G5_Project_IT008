@@ -59,7 +59,7 @@
                                             </Ellipse>
                                         </Border>
                                         <Label Grid.Column="0"
-                                               Content="FatFilmFo"
+                                               Content="FatFilmFoo"
                                                FontSize="18"
                                                FontWeight="Medium"
                                                Foreground="#000000"
@@ -91,7 +91,7 @@
                                 <StackPanel Orientation="Horizontal"
                                                 HorizontalAlignment="Center">
                                     <Label Grid.Column="0"
-                                               Content="Tổng số ghế:"
+                                               Content="{DynamicResource TicketBookingPage_Label_NumberOfSeats}"
                                                FontSize="18"
                                                FontWeight="Medium"
                                                Foreground="#000000"
@@ -115,7 +115,7 @@
                                         HorizontalAlignment="Left"
                                         Margin="60,0">
                                 <Label
-                                               Content="Suất chiếu:"
+                                               Content="{DynamicResource TicketBookingPage_Label_Showtime}"
                                                FontSize="18"
                                                FontWeight="Medium"
                                                Foreground="#000000"
@@ -188,7 +188,7 @@
                                             <DropShadowEffect BlurRadius="10" Direction="270" Color="Black" ShadowDepth="4" Opacity="0.25"/>
                                         </Border.Effect>
                                     </Border>
-                                    <Label Content="MÀN HÌNH"
+                                    <Label Content="{DynamicResource TicketBookingPage_Label_Screen}"
                                            HorizontalAlignment="Center"
                                            VerticalAlignment="Center"
                                            FontFamily="{StaticResource MaterialDesignFont}"
@@ -327,7 +327,7 @@
                                             VerticalAlignment="Center"/>
                                             <Label
                                            Margin="20,0,0,0"
-                                           Content="Đang chọn: "
+                                           Content="{DynamicResource TicketBookingPage_Label_Choosing}"
                                            HorizontalAlignment="Left"
                                            VerticalAlignment="Center"
                                            FontSize="18"
@@ -352,7 +352,7 @@
                                             VerticalAlignment="Center"/>
                                             <Label
                                            Margin="20,0,0,0"
-                                           Content="Đã đặt: "
+                                           Content="{DynamicResource TicketBookingPage_Label_Booked}"
                                            HorizontalAlignment="Left"
                                            VerticalAlignment="Center"
                                            FontSize="18"
@@ -377,7 +377,7 @@
                                             VerticalAlignment="Center"/>
                                             <Label
                                            Margin="20,0,0,0"
-                                           Content="Còn trống: "
+                                           Content="{DynamicResource TicketBookingPage_Label_Ready}"
                                            HorizontalAlignment="Left"
                                            VerticalAlignment="Center"
                                            FontSize="18"
@@ -435,7 +435,7 @@
                                 <StackPanel Grid.Row="0">
                                     <Grid Margin="0,20,0,0">
                                         <Label
-                                           Content="Giá vé: "
+                                           Content="{DynamicResource TicketBookingPage_Label_Price}"
                                            HorizontalAlignment="Left"
                                            FontSize="18"
                                            FontWeight="Medium"
@@ -452,7 +452,7 @@
 
                                     <Grid Margin="0,20,0,0">
                                         <Label
-                                           Content="Ghế: "
+                                           Content="{DynamicResource TicketBookingPage_Label_Seats}"
                                            HorizontalAlignment="Left"
                                            FontSize="18"
                                            FontWeight="Medium"
@@ -472,7 +472,7 @@
 
                                     <Grid Margin="0,20,0,0">
                                         <Label
-                                           Content="Tổng tiền vé: "
+                                           Content="{DynamicResource TicketBookingPage_Label_TotalPrice}"
                                            HorizontalAlignment="Left"
                                            FontSize="18"
                                            FontWeight="Medium"
@@ -489,7 +489,7 @@
                                 </StackPanel>
                                 <Button Grid.Row="1"
                                         Style="{StaticResource CustomButton}"
-                                        Content="Tiếp tục"
+                                        Content="{DynamicResource TicketBookingPage_Button_Continue}"
                                         Width="140"
                                         Height="40"
                                         FontSize="18" 

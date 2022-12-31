@@ -68,7 +68,7 @@
                         <Search:Search Width="200"                                         
                                            Height="30"
                                            Corner="10"
-                                           PlaceHolder="Tìm Kiếm"
+                                           PlaceHolder="Tìm kiếm"
                                            IconSize="20"
                                            Margin="0,0,0,5"
                                        x:Name="SearchBox"
@@ -99,7 +99,7 @@
 
                                     <MenuItem.Header>
                                         <StackPanel Orientation="Horizontal">
-                                            <TextBlock Text="Chức năng"
+                                            <TextBlock Text="{DynamicResource AddVoucherPage_TextBlock_Function}"
                                                        FontWeight="Bold"
                                                            >
                                             </TextBlock>
@@ -123,7 +123,7 @@
                                                                          Height="20"
                                                                          VerticalAlignment="Center"
                                                                          Margin="0,0,10,0"/>
-                                                <TextBlock Text="Xóa voucher"
+                                                <TextBlock Text="{DynamicResource AddVoucherPage_TextBlock_DeleteVoucher}"
                                                            FontSize="12"
                                                            FontFamily="{DynamicResource MaterialDesignFont}"
                                                            FontWeight="Black"
@@ -149,7 +149,7 @@
                                                                          Height="20"
                                                                          VerticalAlignment="Center"
                                                                          Margin="0,0,10,0"/>
-                                                <TextBlock Text="Thêm voucher"
+                                                <TextBlock Text="{DynamicResource AddVoucherPage_TextBlock_AddVoucher}"
                                                            FontSize="12"
                                                            FontFamily="{DynamicResource MaterialDesignFont}"
                                                            FontWeight="Black"
@@ -177,7 +177,7 @@
                                                                          Height="20"
                                                                          VerticalAlignment="Center"
                                                                          Margin="0,0,10,0"/>
-                                                <TextBlock Text="Thêm danh sách voucher"
+                                                <TextBlock Text="{DynamicResource AddVoucherPage_TextBlock_AddListVouchers}"
                                                            FontSize="12"
                                                            FontFamily="{DynamicResource MaterialDesignFont}"
                                                            FontWeight="Black"
@@ -202,7 +202,7 @@
                             <ColumnDefinition Width="60*"/>
                         </Grid.ColumnDefinitions>
                         <Label Grid.Column="0"
-                                   Content="Trạng thái:"
+                                   Content="{DynamicResource AddInfoPage_Label_Status}"
                                    FontSize="16"
                                    FontWeight="Bold"
                                    Foreground="#000000"
@@ -221,10 +221,10 @@
                                       HorizontalContentAlignment="Center"
                                       SelectionChanged="ComboBox_SelectionChanged"
                                       SelectedItem="{Binding SelectedCbbFilter,Mode=OneWayToSource}">
-                            <ComboBoxItem Tag="Toàn bộ" Content="Toàn bộ" FontSize="14"/>
-                            <ComboBoxItem Tag="Chưa phát hành" Content="Chưa phát hành" FontSize="14"/>
-                            <ComboBoxItem Tag="Đã phát hành" Content="Đã phát hành" FontSize="14"/>
-                            <ComboBoxItem Tag="Đã sử dụng" Content="Đã sử dụng" FontSize="14"/>
+                            <ComboBoxItem Tag="Toàn bộ" Content="{DynamicResource AddVoucherPage_CBB0}" FontSize="14"/>
+                            <ComboBoxItem Tag="Chưa phát hành" Content="{DynamicResource AddVoucherPage_CBB1}" FontSize="14"/>
+                            <ComboBoxItem Tag="Đã phát hành" Content="{DynamicResource AddVoucherPage_CBB2}" FontSize="14"/>
+                            <ComboBoxItem Tag="Đã sử dụng" Content="{DynamicResource AddVoucherPage_CBB3}" FontSize="14"/>
                         </ComboBox>
                     </Grid>
                 </Grid>
@@ -271,7 +271,7 @@
                                                     </DataTemplate>
                                                 </GridViewColumn.CellTemplate>
                                             </GridViewColumn>
-                                            <GridViewColumn Header="Mã voucher"
+                                            <GridViewColumn Header="{DynamicResource AddVoucherPage_ListViewHeader0}"
                                                 Width="140">
                                                 <GridViewColumn.CellTemplate>
                                                     <DataTemplate>
@@ -281,7 +281,7 @@
                                                     </DataTemplate>
                                                 </GridViewColumn.CellTemplate>
                                             </GridViewColumn>
-                                            <GridViewColumn Header="Người mua"
+                                            <GridViewColumn Header="{DynamicResource AddVoucherPage_ListViewHeader1}"
                                                 Width="200">
                                                 <GridViewColumn.CellTemplate>
                                                     <DataTemplate>
@@ -291,7 +291,7 @@
                                                     </DataTemplate>
                                                 </GridViewColumn.CellTemplate>
                                             </GridViewColumn>
-                                            <GridViewColumn Header="Ngày phát hành"
+                                            <GridViewColumn Header="{DynamicResource AddVoucherPage_ListViewHeader2}"
                                                 Width="160">
                                                 <GridViewColumn.CellTemplate>
                                                     <DataTemplate>
@@ -301,7 +301,7 @@
                                                     </DataTemplate>
                                                 </GridViewColumn.CellTemplate>
                                             </GridViewColumn>
-                                            <GridViewColumn Header="Ngày sử dụng"
+                                            <GridViewColumn Header="{DynamicResource AddVoucherPage_ListViewHeader3}"
                                                 Width="150">
                                                 <GridViewColumn.CellTemplate>
                                                     <DataTemplate>
@@ -311,7 +311,7 @@
                                                     </DataTemplate>
                                                 </GridViewColumn.CellTemplate>
                                             </GridViewColumn>
-                                            <GridViewColumn Header="Trạng thái"
+                                            <GridViewColumn Header="{DynamicResource AddVoucherPage_ListViewHeader4}"
                                                 Width="135">
                                                 <GridViewColumn.CellTemplate>
                                                     <DataTemplate>
@@ -338,7 +338,7 @@
             </Grid>
         </Grid>
         <Grid Grid.Row="1">
-            <Label Content="Đang chọn:"
+            <Label Content="{DynamicResource AddVoucherPage_Label_Choosing}"
                        FontSize="14"
                        FontWeight="Medium"
                        FontFamily="{DynamicResource MaterialDesignFont}"
@@ -367,7 +367,7 @@
                            Margin="0,0,20,0">
 
             </TextBlock>
-            <Label Content="Kết quả:"
+            <Label Content="{DynamicResource VoucherManagementPage_Label_Result}"
                    
                        FontSize="14"   
                        FontFamily="{DynamicResource MaterialDesignFont}"

@@ -54,7 +54,7 @@
             <Grid Grid.Row="1">
                 <Label
                     Padding="0"
-                    Content="THÊM ĐỢT PHÁT HÀNH VOUCHER"
+                    Content="{DynamicResource AddWindow_Title}"
                     FontSize="25"
                     FontWeight="Bold"
                     VerticalAlignment="Center"
@@ -96,7 +96,7 @@
 
                         <Label
                             Padding="0"
-                            Content="Thông tin"
+                            Content="{DynamicResource AddWindow_ButtonLabelInfo}"
                             Foreground="#000000"
                             FontFamily="{DynamicResource MaterialDesignFont}"
                             FontWeight="Black"
@@ -121,7 +121,7 @@
 
                         <Label
                             Padding="0"
-                            Content="Danh sách voucher"
+                            Content="{DynamicResource AddWindow_ButtonLabel_ListVoucher}"
                             Foreground="#000000"
                             FontFamily="{DynamicResource MaterialDesignFont}"
                             FontWeight="Black"

@@ -104,9 +104,9 @@
                                                      Width="24" 
                                                      Height="24"/>
                             <TextBlock FontFamily="{StaticResource MaterialDesignFont}" 
-                                       Text="Thêm" 
+                                       Text="{DynamicResource ShowtimeManagementPage_Button_Add}" 
                                        FontSize="15"
-                                       Margin="5,4,0,0"/>
+                                       Margin="10,4,0,0"/>
                         </StackPanel>
                     </Button>
                     <Border CornerRadius="12"
@@ -156,14 +156,14 @@
                             Margin="5,10,0,0"
                             Width="100"
                             HorizontalAlignment="Left">
-                    <TextBlock Text="Phòng chiếu"
+                    <TextBlock Text="{DynamicResource ShowtimeManagementPage_TextBlock_Room}"
                                FontSize="15"
                                Margin="0 20 4 0"   
                                FontWeight="Bold"
                                Height="40" HorizontalAlignment="Center"/>
                     <RadioButton Style="{StaticResource MaterialDesignTabRadioButtonLeft}"
                                  IsChecked="True"
-                                 Content="Toàn bộ"
+                                 Content="{DynamicResource ShowtimeManagementPage_RadioButton_All}"
                                  x:Name="all"                             
                                  Padding="0,10,0,10"
                                  
@@ -173,7 +173,7 @@
                                  Click="all_Click" />
                     <RadioButton Style="{StaticResource MaterialDesignTabRadioButtonLeft}"
                                  IsChecked="False"
-                                 Content="Phòng 1"
+                                 Content="{DynamicResource ShowtimeManagementPage_RadioButton_Room1}"
                                  x:Name="r1"
                                  Padding="0,10,0,10"
                                  Click="all_Click"
@@ -182,7 +182,7 @@
                                  CommandParameter="{Binding ElementName=r1}" />
                     <RadioButton Style="{StaticResource MaterialDesignTabRadioButtonLeft}"
                                  IsChecked="False"
-                                 Content="Phòng 2"
+                                 Content="{DynamicResource ShowtimeManagementPage_RadioButton_Room2}"
                                  x:Name="r2"
                                  Click="all_Click"
                                  Padding="0,10,0,10"
@@ -192,7 +192,7 @@
                     <RadioButton Style="{StaticResource MaterialDesignTabRadioButtonLeft}"
                                  Padding="0,10,0,10"
                                  IsChecked="False"
-                                 Content="Phòng 3"
+                                 Content="{DynamicResource ShowtimeManagementPage_RadioButton_Room3}"
                                  x:Name="r3"
                                  Click="all_Click"
                                  BorderBrush="#0c70b6"
@@ -201,7 +201,7 @@
                     <RadioButton Style="{StaticResource MaterialDesignTabRadioButtonLeft}"
                                  Padding="0,10,0,10"
                                  IsChecked="False"
-                                 Content="Phòng 4"
+                                 Content="{DynamicResource ShowtimeManagementPage_RadioButton_Room4}"
                                  x:Name="r4"
                                  Click="all_Click"
                                  BorderBrush="#0c70b6"
@@ -211,7 +211,7 @@
                           
                                  Padding="0,10,0,10"
                                  IsChecked="False"
-                                 Content="Phòng 5"
+                                 Content="{DynamicResource ShowtimeManagementPage_RadioButton_Room5}"
                                  x:Name="r5"
                                  Click="all_Click"
                                  BorderBrush="#0c70b6"
@@ -310,7 +310,7 @@
                                         <GridViewColumn 
                                                     Width="250">
                                             <GridViewColumn.Header >
-                                                <TextBlock Text="Tên phim" 
+                                                <TextBlock Text="{DynamicResource ShowtimeManagementPage_ListViewHeader0}" 
                                                            FontSize="14" 
                                                            FontWeight="SemiBold" 
                                                            Foreground="Black"
@@ -331,7 +331,8 @@
                                         <GridViewColumn
                                                         Width="130">
                                             <GridViewColumn.Header >
-                                                <TextBlock Text="Loại phim" FontSize="14" FontWeight="SemiBold" Foreground="Black" Margin="-20,0,0,0"></TextBlock>
+                                                <TextBlock Text="{DynamicResource ShowtimeManagementPage_ListViewHeader1}" 
+                                                           FontSize="14" FontWeight="SemiBold" Foreground="Black" Margin="-20,0,0,0"></TextBlock>
                                             </GridViewColumn.Header>
                                             <GridViewColumn.CellTemplate>
                                                 <DataTemplate>
@@ -344,7 +345,7 @@
                                         <GridViewColumn 
                                                         Width="134">
                                             <GridViewColumn.Header >
-                                                <TextBlock Text="Thời lượng"
+                                                <TextBlock Text="{DynamicResource ShowtimeManagementPage_ListViewHeader2}"
                                                            FontSize="14" FontWeight="SemiBold" Foreground="Black" Margin="-20,0,0,0"></TextBlock>
                                             </GridViewColumn.Header>
                                             <GridViewColumn.CellTemplate>
@@ -358,7 +359,7 @@
                                         <GridViewColumn
                                                         Width="270">
                                             <GridViewColumn.Header >
-                                                <TextBlock Text="Giờ chiếu"
+                                                <TextBlock Text="{DynamicResource ShowtimeManagementPage_ListViewHeader3}"
                                                            FontSize="14" FontWeight="SemiBold" Foreground="Black" Margin="-20,0,0,0"></TextBlock>
                                             </GridViewColumn.Header>
                                             <GridViewColumn.CellTemplate>

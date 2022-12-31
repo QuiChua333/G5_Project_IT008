@@ -56,11 +56,13 @@
                         <StackPanel VerticalAlignment="Center">
                             <Label FontSize="20" 
                                    FontWeight="Bold" 
+                                 
                                    VerticalAlignment="Center" 
                                    HorizontalAlignment="Center" 
                                    Foreground="#FFFFFF" 
                                    FontFamily="{DynamicResource MaterialDesignFont}"
-                                   Content="CHI TIẾT">
+                                   Content="{DynamicResource InforEditShowtimeWindow_Label_CTSC1}"
+                                   >
                             </Label>
                             <Label FontSize="20" 
                                    FontWeight="Bold" 
@@ -68,7 +70,7 @@
                                    HorizontalAlignment="Center" 
                                    Foreground="#FFFFFF" 
                                    FontFamily="{DynamicResource MaterialDesignFont}"
-                                   Content="SUẤT CHIẾU">
+                                   Content="{DynamicResource InforEditShowtimeWindow_Label_CTSC2}">
                             </Label>
                         </StackPanel>
                     </Grid>
@@ -93,7 +95,7 @@
                                 <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
                                     <Label         FontSize="16"
                                                    VerticalAlignment="Center"
-                                                   Content="Tên phim:"
+                                                   Content="{DynamicResource AddShowtimeWindow_Label_FilmName}"
                                                    FontWeight="Bold"
                                                    Foreground="#000000"
                                                    FontFamily="{DynamicResource MaterialDesignFont}"/>
@@ -111,7 +113,7 @@
                             <Grid Grid.Column="1">
                                 <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
                                     <Label FontSize="16"
-                                                   Content="Phòng chiếu:"
+                                                   Content="{DynamicResource AddShowtimeWindow_Label_Room}"
                                                    FontWeight="Bold"
                                                    Foreground="#000000"
                                                    FontFamily="{DynamicResource MaterialDesignFont}"/>
@@ -137,7 +139,7 @@
                             <Grid Grid.Column="0">
                                 <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
                                     <Label FontSize="16"
-                                                   Content="Ngày chiếu:"
+                                                   Content="{DynamicResource AddShowtimeWindow_Label_ShowDate}"
                                                    FontWeight="Bold"
                                                    Foreground="#000000"
                                                    FontFamily="{DynamicResource MaterialDesignFont}"/>
@@ -154,7 +156,7 @@
                             <Grid Grid.Column="1">
                                 <Label             VerticalAlignment="Center"
                                                 FontSize="16"
-                                                   Content="Các suất chiếu:"
+                                                   Content="{DynamicResource InforEditShowtimeWindow_Label_Showtimes}"
                                                    FontWeight="Bold"
                                                    Foreground="#000000"
                                                    FontFamily="{DynamicResource MaterialDesignFont}"/>
@@ -166,7 +168,7 @@
                                     <Button HorizontalAlignment="Right"
                                 VerticalAlignment="Center"
                                 Style="{StaticResource CustomButton}"
-                                Content="Xóa"
+                                Content="{DynamicResource InforEditShowtimeWindow_Button_Delete}"
                                 FontSize="14"
                                 Background="{StaticResource ColorButtonRed}"
                                 FontFamily="{DynamicResource MaterialDesignFont}"
@@ -187,7 +189,7 @@
                             <Grid Grid.Column="0" Margin="0,-25,0,0">
                                 <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
                                     <Label FontSize="16"
-                                                   Content="Giá vé:"
+                                                   Content="{DynamicResource AddShowtimeWindow_Label_Price}"
                                            
                                                    FontWeight="Bold"
                                                    Foreground="#000000"
@@ -337,7 +339,7 @@
                                 <Button HorizontalAlignment="Right"
                                 VerticalAlignment="Center"
                                 Style="{StaticResource CustomButton}"
-                                Content="Thoát"
+                                Content="{DynamicResource InforEditShowtimeWindow_Button_Exit}"
                                 FontSize="14"
                                 Background="{StaticResource ColorButtonBlue}"
                                 FontFamily="{DynamicResource MaterialDesignFont}"
@@ -368,7 +370,7 @@
                                    HorizontalAlignment="Center" 
                                    Foreground="#FFFFFF" 
                                    FontFamily="{DynamicResource MaterialDesignFont}"
-                                   Content="DANH"
+                                   Content="{DynamicResource InforEditShowtimeWindow_Label_DSG1}"
                                        Margin="10">
                             </Label>
                             <Label FontSize="20" 
@@ -377,7 +379,7 @@
                                    HorizontalAlignment="Center" 
                                    Foreground="#FFFFFF" 
                                    FontFamily="{DynamicResource MaterialDesignFont}"
-                                   Content="SÁCH"
+                                   Content="{DynamicResource InforEditShowtimeWindow_Label_DSG2}"
                                        Margin="10">
                             </Label>
                             <Label FontSize="22" 
@@ -386,7 +388,7 @@
                                    HorizontalAlignment="Center" 
                                    Foreground="#FFFFFF" 
                                    FontFamily="{DynamicResource MaterialDesignFont}"
-                                   Content="GHẾ"
+                                   Content="{DynamicResource InforEditShowtimeWindow_Label_DSG3}"
                                        Margin="10">
                             </Label>
                         </StackPanel>
@@ -516,7 +518,7 @@
 
                                     <Label
                                            Margin="20,0,0,0"
-                                           Content="Tổng số: "
+                                           Content="{DynamicResource InforEditShowtimeWindow_Label_Total}"
                                            HorizontalAlignment="Left"
                                            VerticalAlignment="Center"
                                            FontSize="18"
@@ -541,7 +543,7 @@
                                             VerticalAlignment="Center"/>
                                     <Label
                                            Margin="20,0,0,0"
-                                           Content="Đã đặt: "
+                                           Content="{DynamicResource TicketBookingPage_Label_Booked}"
                                            HorizontalAlignment="Left"
                                            VerticalAlignment="Center"
                                            FontSize="18"
@@ -566,7 +568,7 @@
                                             VerticalAlignment="Center"/>
                                     <Label
                                            Margin="20,0,0,0"
-                                           Content="Còn trống: "
+                                           Content="{DynamicResource TicketBookingPage_Label_Ready}"
                                            HorizontalAlignment="Left"
                                            VerticalAlignment="Center"
                                            FontSize="18"
