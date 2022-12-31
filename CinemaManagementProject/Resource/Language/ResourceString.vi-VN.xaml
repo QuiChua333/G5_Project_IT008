@@ -1,0 +1,22 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:system="clr-namespace:System;assembly=mscorlib">
+    <system:String x:Key="admin_sideBar_TongQuan">Tổng quan</system:String>
+    <system:String x:Key="admin_sideBar_DanhGia">Đánh giá</system:String>
+
+    <system:String x:Key="admin_sideBar_QuanLiPhim">Quản lí phim</system:String>
+    <system:String x:Key="admin_sideBar_QuanLiSuatChieu">Quản lý suất chiếu</system:String>
+    <system:String x:Key="admin_sideBar_QuanLiSanPham">Quản lý sản phẩm</system:String>
+    <system:String x:Key="admin_sideBar_QuanLiNhanSu">Quản lý nhân sự</system:String>
+    <system:String x:Key="admin_sideBar_QuanLiKhachHang">Quản lý khách hàng</system:String>
+    <system:String x:Key="admin_sideBar_LichSu">Lịch sử</system:String>
+
+    <system:String x:Key="admin_sideBar_Voucher">Vouchers</system:String>
+    <system:String x:Key="admin_sideBar_SuCo">Sự cố</system:String>
+    <system:String x:Key="admin_sideBar_CaiDat">Cài đặt</system:String>
+
+    <system:String x:Key="admin_sideBar_GiupDo">Giúp đỡ</system:String>
+    <system:String x:Key="admin_sideBar_DangXuat">Đăng xuất</system:String>
+    
+
+</ResourceDictionary>

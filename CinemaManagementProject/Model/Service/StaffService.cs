@@ -69,7 +69,8 @@ namespace CinemaManagementProject.Model.Service
                                                  Position = staff.Position,
                                                  StartDate = staff.StartDate,
                                                  UserName = staff.UserName,
-                                                 UserPass = staff.UserPass
+                                                 UserPass = staff.UserPass,
+                                                 Avatar = staff.Avatar
                                              }
                                             ).FirstOrDefaultAsync();
                     if (staffChosen == null)
@@ -152,7 +153,8 @@ namespace CinemaManagementProject.Model.Service
                 Position = s.Position,
                 PhoneNumber = s.PhoneNumber,
                 StartDate = s.StartDate,
-                Email = s.Email
+                Email = s.Email,
+                Avatar = s.Avatar,
             };
         }
 
@@ -199,6 +201,7 @@ namespace CinemaManagementProject.Model.Service
                     staff.PhoneNumber = updatedStaff.PhoneNumber;
                     staff.DateOfBirth = updatedStaff.DateOfBirth;
                     staff.Email = updatedStaff.Email;
+                    staff.Avatar = updatedStaff.Avatar;
 
                     await context.SaveChangesAsync();
                 }

@@ -16,18 +16,36 @@
         DataContext="{StaticResource StaffVM}"
         Name="StaffWD" MouseDown="StaffWD_MouseDown"
 >
+    <Window.Triggers>
+        <EventTrigger RoutedEvent="Window.Loaded">
+            <BeginStoryboard>
+                <Storyboard>
+                    <DoubleAnimation Storyboard.TargetName="StaffWD"
+                                     Storyboard.TargetProperty="Opacity"
+                                     From="0"
+                                     To="1"
+                                     Duration="0:0:0.3" />
+                </Storyboard>
+            </BeginStoryboard>
+        </EventTrigger>
+    </Window.Triggers>
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding FirstLoadCM}"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
     <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="5*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="40"/>
+            <RowDefinition Height="60"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
 
         <!--Overlay-->
-        <Rectangle Fill="{StaticResource LightBlueSpindle}" Grid.Column="0" Grid.ColumnSpan="2" Grid.RowSpan="2" RadiusX="20" RadiusY="20">
+        <Rectangle x:Name="Overlay" Fill="{Binding MainColor, Mode=TwoWay}" Grid.ColumnSpan="2" Grid.RowSpan="2" RadiusX="20" RadiusY="20">
             <Rectangle.Effect>
                 <DropShadowEffect
                     Color="Black"
@@ -59,14 +77,19 @@
                 </Ellipse>
                 <TextBlock Text="{Binding StaffNameIcon}" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White" FontWeight="SemiBold" FontSize="16" Margin="0,-1,0,0" LineHeight="16">
                 </TextBlock>
+                <Border CornerRadius="20" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                    <Border.Background>
+                        <ImageBrush x:Name="IconAvatar" Stretch="UniformToFill" ImageSource="{Binding AvatarSource, Mode=TwoWay}"/>
+                    </Border.Background>
+                </Border>
             </Grid>
-            <StackPanel  HorizontalAlignment="Right" Margin="0,0,00,0" Orientation="Horizontal">
+            <StackPanel Width="145" Height="40" HorizontalAlignment="Right" Margin="0,0,10,0" Orientation="Horizontal">
                 <Button Foreground="Black" Cursor="Hand" Click="Button_Click">
                     <Button.Style>
                         <Style TargetType="{x:Type Button}">
                             <Setter Property="Background" Value="Transparent"/>
                             <Setter Property="Width" Value="48"/>
-                            <Setter Property="Margin" Value="0,0,0,4"/>
+                            <Setter Property="Margin" Value="0,4,0,4"/>
                             <Setter Property="BorderThickness" Value="0"/>
                             <Setter Property="BorderBrush" Value="Transparent"/>
                             <Setter Property="Template">
@@ -95,7 +118,7 @@
                         <Style TargetType="{x:Type Button}">
                             <Setter Property="Background" Value="Transparent"/>
                             <Setter Property="Width" Value="48"/>
-                            <Setter Property="Margin" Value="0,0,0,4"/>
+                            <Setter Property="Margin" Value="0,4,0,4"/>
                             <Setter Property="BorderThickness" Value="0"/>
                             <Setter Property="BorderBrush" Value="Transparent"/>
                             <Setter Property="Template">
@@ -124,13 +147,13 @@
                         <Style TargetType="{x:Type Button}">
                             <Setter Property="Background" Value="Transparent"/>
                             <Setter Property="Width" Value="48"/>
-                            <Setter Property="Margin" Value="0,0,0,4"/>
+                            <Setter Property="Margin" Value="0,4,0,4"/>
                             <Setter Property="BorderThickness" Value="0"/>
                             <Setter Property="BorderBrush" Value="Transparent"/>
                             <Setter Property="Template">
                                 <Setter.Value>
                                     <ControlTemplate TargetType="{x:Type Button}">
-                                        <Border Background="{TemplateBinding Background}" CornerRadius="0,20,0,0" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
+                                        <Border Background="{TemplateBinding Background}" CornerRadius="0,10,0,0" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
                                             <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
                                         </Border>
                                     </ControlTemplate>
@@ -171,6 +194,11 @@
                     </Ellipse>
                     <TextBlock Text="{Binding StaffNameIcon}" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White" FontWeight="SemiBold" FontSize="30" Margin="0,-3,0,0" LineHeight="16">
                     </TextBlock>
+                    <Border CornerRadius="60" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                        <Border.Background>
+                            <ImageBrush x:Name="IconAvatarPopup" Stretch="UniformToFill" ImageSource="{Binding AvatarSource, Mode=TwoWay}"/>
+                        </Border.Background>
+                    </Border>
                 </Grid>
                 <StackPanel Margin="10,0,0,0" VerticalAlignment="Center">
                     <TextBlock Text="{Binding StaffName}" FontSize="20" FontFamily="{StaticResource MaterialDesignFont}" FontWeight="Normal"></TextBlock>
@@ -191,51 +219,88 @@
                 </TextBlock.Style>
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="MouseLeftButtonDown">
-                        <i:InvokeCommandAction Command="{Binding SwitchToSettingTab}"/>
+                        <i:InvokeCommandAction Command="{Binding SwitchToSettingTab}"  CommandParameter="{Binding ElementName=CaiDatButton}"/>
                     </i:EventTrigger>
                 </i:Interaction.Triggers>
             </TextBlock>
         </Grid>
 
         <!--SideBar-->
-        <Border CornerRadius="10,0,0,10" Background="#0F2851" Grid.RowSpan="2">
+        <Border  Grid.Column="0" Grid.RowSpan="2" CornerRadius="10,0,0,10" Background="White">
             <StackPanel>
                 <StackPanel Orientation="Horizontal" Height="100" >
                     <Border Height="50" Width="50" CornerRadius="100" Background="White"
                            HorizontalAlignment="Left" Margin="28,20,0,0">
-                        <Ellipse>
+                        <Ellipse Stroke="Black" StrokeThickness="0.8">
                             <Ellipse.Fill>
                                 <ImageBrush ImageSource="{StaticResource Logo}"></ImageBrush>
                             </Ellipse.Fill>
                         </Ellipse>
                     </Border>
-                    <TextBlock Text="FILMFATFO" Foreground="White" 
+                    <TextBlock Text="FILMFATFO" Foreground="Black" 
                                    FontSize="22" FontWeight="Bold" VerticalAlignment="Center"
                                    Margin="20,16,20,0" FontFamily="Montserrat"></TextBlock>
                 </StackPanel>
                 <!--Menu Buttons-->
                 <!--phan tich-->
 
-                <TextBlock Foreground="White" Margin="10,15,0,5">Chức năng</TextBlock>
-                <RadioButton    Style="{StaticResource menuButton}"
+                <TextBlock Foreground="Black" Margin="10,15,0,5">Chức năng</TextBlock>
+                <RadioButton   
+                    IsChecked="True" 
                                     Tag="white"
                                     Command="{Binding FilmBookingCommand}">
+                    <RadioButton.Style>
+                        <Style TargetType="RadioButton" BasedOn="{StaticResource menuButton}">
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="{Binding MainColor}"/>
+                                </Trigger>
+                                <Trigger Property="IsChecked" Value="True">
+                                    <Setter Property="Background" Value="{Binding MainColor}"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </RadioButton.Style>
                     <StackPanel Orientation="Horizontal">
                         <materialDesign:PackIcon Kind="FilmCogOutline" Height="20" Width="20" Margin="30 0 10 0"></materialDesign:PackIcon>
                         <TextBlock Text="Đặt phim" Style="{StaticResource menuButtonText}" Margin="0,2,0,0" FontSize="14"/>
                     </StackPanel>
                 </RadioButton>
-                <RadioButton    Style="{StaticResource menuButton}"
+                <RadioButton   
                                     Tag="white"
                                     Command="{Binding OrderFoodCommand}">
+                    <RadioButton.Style>
+                        <Style TargetType="RadioButton" BasedOn="{StaticResource menuButton}">
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="{Binding MainColor}"/>
+                                </Trigger>
+                                <Trigger Property="IsChecked" Value="True">
+                                    <Setter Property="Background" Value="{Binding MainColor}"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </RadioButton.Style>
                     <StackPanel Orientation="Horizontal">
                         <materialDesign:PackIcon Kind="FoodOutline" Height="20" Width="20" Margin="30,0,10,0" ></materialDesign:PackIcon>
                         <TextBlock Text="Đặt đồ ăn" Style="{StaticResource menuButtonText}" Margin="0,4,0,0" FontSize="14"/>
                     </StackPanel>
                 </RadioButton>
-                <RadioButton    Style="{StaticResource menuButton}"
+                <RadioButton   
                                     Tag="white"
                                     Command="{Binding TroubleCommand}">
+                    <RadioButton.Style>
+                        <Style TargetType="RadioButton" BasedOn="{StaticResource menuButton}">
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="{Binding MainColor}"/>
+                                </Trigger>
+                                <Trigger Property="IsChecked" Value="True">
+                                    <Setter Property="Background" Value="{Binding MainColor}"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </RadioButton.Style>
                     <StackPanel Orientation="Horizontal">
                         <materialDesign:PackIcon Kind="Report" Height="20" Width="20" Margin="30,0,10,0" ></materialDesign:PackIcon>
                         <TextBlock Text="Báo cáo sự cố" Style="{StaticResource menuButtonText}" Margin="0,3,0,0" FontSize="14"/>
@@ -246,27 +311,63 @@
 
                 <!--setting-->
                 <TextBlock Foreground="White" Margin="10,15,0,5">Tiện ích</TextBlock>
-                <RadioButton    Style="{StaticResource menuButton}"
+                <RadioButton   Name="CaiDatButton"
                                     Tag="white"
-                                    Command="{Binding ShowHomeViewCommand}">
+                                   Command="{Binding SettingCommand}">
+                    <RadioButton.Style>
+                        <Style TargetType="RadioButton" BasedOn="{StaticResource menuButton}">
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="{Binding MainColor}"/>
+                                </Trigger>
+                                <Trigger Property="IsChecked" Value="True">
+                                    <Setter Property="Background" Value="{Binding MainColor}"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </RadioButton.Style>
                     <StackPanel Orientation="Horizontal">
                         <materialDesign:PackIcon Kind="SettingsApplications" Height="20" Width="20" Margin="30,0,10,0" ></materialDesign:PackIcon>
                         <TextBlock Text="Cài đặt" Style="{StaticResource menuButtonText}" Margin="0,3,0,0" FontSize="14"/>
                     </StackPanel>
                 </RadioButton>
-                <RadioButton    Style="{StaticResource menuButton}"
+                <RadioButton   
                             Tag="white"
                             Command="{Binding ShowHomeViewCommand}">
+                    <RadioButton.Style>
+                        <Style TargetType="RadioButton" BasedOn="{StaticResource menuButton}">
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="{Binding MainColor}"/>
+                                </Trigger>
+                                <Trigger Property="IsChecked" Value="True">
+                                    <Setter Property="Background" Value="{Binding MainColor}"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </RadioButton.Style>
                     <StackPanel Orientation="Horizontal">
                         <materialDesign:PackIcon Kind="Phone" Height="20" Width="20" Margin="30,0,10,0" ></materialDesign:PackIcon>
                         <TextBlock Text="Giúp đỡ" Style="{StaticResource menuButtonText}" Margin="0,3,0,0" FontSize="14"/>
                     </StackPanel>
 
                 </RadioButton>
-                <RadioButton    Style="{StaticResource menuButton}"
+                <RadioButton  
                             Tag="white"
                             Command="{Binding LogOutCommand}"
                                 CommandParameter="{Binding ElementName=StaffWD}">
+                    <RadioButton.Style>
+                        <Style TargetType="RadioButton" BasedOn="{StaticResource menuButton}">
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="{Binding MainColor}"/>
+                                </Trigger>
+                                <Trigger Property="IsChecked" Value="True">
+                                    <Setter Property="Background" Value="{Binding MainColor}"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </RadioButton.Style>
                     <StackPanel Orientation="Horizontal">
                         <materialDesign:PackIcon Kind="Logout" Height="20" Width="20" Margin="30,0,10,0" ></materialDesign:PackIcon>
                         <TextBlock Text="Đăng xuất" Style="{StaticResource menuButtonText}" Margin="0,3,0,0" FontSize="14"/>

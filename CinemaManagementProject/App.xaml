@@ -25,6 +25,9 @@
                 <ResourceDictionary Source="./Utilities/AdminDataTemplate.xaml"/>
                 <ResourceDictionary Source="./Utilities/StaffDataTemplate.xaml"/>
 
+                <!--Language-->
+                <ResourceDictionary Source="./Resource/Language/ResourceString.vi-VN.xaml"/>
+                
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

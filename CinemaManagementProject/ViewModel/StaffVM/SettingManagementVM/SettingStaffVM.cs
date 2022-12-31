@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using System.Windows.Navigation;
 using System.IO;
-using CinemaManagementProject.View.Admin.SettingManagement;
+using CinemaManagementProject.View.Staff.SettingManagement;
 using System.Security.RightsManagement;
 using System.Windows.Controls;
 using CinemaManagementProject.View.Login;
@@ -28,15 +28,15 @@ using System.Windows;
 using System.Windows.Controls.Primitives;
 using System.Windows.Shapes;
 using CinemaManagementProject.View.Staff.TicketWindow;
-using CinemaManagementProject.View.Admin;
+using CinemaManagementProject.View.Staff;
 using Path = System.IO.Path;
 using CinemaManagementProject.Properties;
 using System.Runtime.Remoting.Metadata.W3cXsd2001;
 using CinemaManagementProject.View;
 
-namespace CinemaManagementProject.ViewModel.AdminVM.SettingVM
+namespace CinemaManagementProject.ViewModel.StaffVM.SettingStaffVM
 {
-    public partial class SettingVM : BaseViewModel
+    public partial class SettingStaffVM : BaseViewModel
     {
         public StaffDTO currentStaff;
         public static Window parentWindow;
@@ -84,7 +84,7 @@ namespace CinemaManagementProject.ViewModel.AdminVM.SettingVM
             set { _avatarName = value; OnPropertyChanged(); }
         }
         private bool _isEdit { get; set; }
-        private ConfirmWindow confirmWD { get; set; }
+        private ConfirmStaffWindow confirmWD { get; set; }
         public bool IsEdit
         {
             get { return _isEdit; }
@@ -157,12 +157,12 @@ namespace CinemaManagementProject.ViewModel.AdminVM.SettingVM
         public ICommand CloseResetPassCM { get; set; }
         public ICommand ChooseLanguageCM { get; set; }
 
-        public SettingVM()
+        public SettingStaffVM()
         {
             FirstLoadCM = new RelayCommand<object>((p) => { return true; }, (p) =>
             {
                 reg = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true);
-                currentStaff = AdminVM.currentStaff;
+                currentStaff = StaffVM.currentStaff;
                 StaffName = currentStaff.StaffName;
                 StaffEmail = currentStaff.Email;
                 Position = currentStaff.Position;
@@ -230,7 +230,7 @@ namespace CinemaManagementProject.ViewModel.AdminVM.SettingVM
                         randomCode = randomNumber.Next(111111, 999999);
                         SendMailToStaff(StaffEmail, randomCode);
 
-                        confirmWD = new ConfirmWindow();
+                        confirmWD = new ConfirmStaffWindow();
                         confirmWD.ShowDialog();
                     }
                     
@@ -270,7 +270,7 @@ namespace CinemaManagementProject.ViewModel.AdminVM.SettingVM
                 {
                     filePath = openfile.FileName;
                     LoadImage();
-                    AdminWindow tk = Application.Current.Windows.OfType<AdminWindow>().FirstOrDefault();
+                    StaffWindow tk = Application.Current.Windows.OfType<StaffWindow>().FirstOrDefault();
                     tk.IconAvatar.ImageSource = ImageSource;
                     tk.IconAvatarPopup.ImageSource = ImageSource;
                     
@@ -291,7 +291,7 @@ namespace CinemaManagementProject.ViewModel.AdminVM.SettingVM
             });
             ChangePassCM = new RelayCommand<object>((p) => { return true; }, (p) =>
             {
-                ResetPassWindow resetPassWD = new ResetPassWindow();
+                ResetPassStaffWindow resetPassWD = new ResetPassStaffWindow();
                 resetPassWD.ShowDialog();
             });
             ConfirmNewPassCM = new RelayCommand<PasswordBox>((p) => { return true; }, async (p) =>
@@ -353,7 +353,7 @@ namespace CinemaManagementProject.ViewModel.AdminVM.SettingVM
             });
             ChooseColorCM = new RelayCommand<Rectangle>((p) => { return true; }, (p) =>
             {
-                AdminWindow tk = Application.Current.Windows.OfType<AdminWindow>().FirstOrDefault();
+                StaffWindow tk = Application.Current.Windows.OfType<StaffWindow>().FirstOrDefault();
                 ColorPicked = p.Fill;
                 tk.Overlay.Fill = p.Fill;
                 SolidColorBrush solidColorBrush = (SolidColorBrush)ColorPicked;

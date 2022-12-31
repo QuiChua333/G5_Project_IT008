@@ -14,7 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace CinemaManagementProject.View.Admin.SettingManagement
+namespace CinemaManagementProject.View.Staff.SettingManagement
 {
     /// <summary>
     /// Interaction logic for SettingPage.xaml

@@ -16,9 +16,9 @@ namespace CinemaManagementProject.Model
     {
         public int ProductId { get; set; }
         public int BillId { get; set; }
-        public string BillCode { get; set; }
         public Nullable<int> Quantity { get; set; }
         public Nullable<int> PrizePerProduct { get; set; }
+        public string BillCode { get; set; }
     
         public virtual Bill Bill { get; set; }
         public virtual Product Product { get; set; }

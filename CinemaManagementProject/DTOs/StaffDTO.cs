@@ -20,6 +20,7 @@ namespace CinemaManagementProject.DTOs
         public Nullable<System.DateTime> StartDate { get; set; }
         public string UserName { get; set; }
         public string UserPass { get; set; }
+        public byte[] Avatar { get; set; }
         public virtual ICollection<Bill> Bills { get; set; }
         public virtual ICollection<ProductReceipt> ProductReceives { get; set; }
         public virtual ICollection<Trouble> Troubles { get; set; }
