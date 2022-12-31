@@ -166,6 +166,7 @@
                                  Content="Toàn bộ"
                                  x:Name="all"                             
                                  Padding="0,10,0,10"
+                                 
                                  BorderBrush="#0c70b6"
                                  Command="{Binding ChangedRoomCM}"
                                  CommandParameter="{Binding ElementName=all}"
@@ -238,7 +239,7 @@
                                      FontWeight="Normal"   
                                      UniformCornerRadius="20"
                                      >
-                        <ScrollViewer>
+                        <ScrollViewer VerticalScrollBarVisibility="Hidden">
                             <ListView x:Name="ShowtimeListview"
                                       ItemsSource="{Binding ShowtimeList,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
                                       SelectedItem="{Binding SelectedItem}"
@@ -257,7 +258,7 @@
                                 <ListView.View>
                                     <GridView>
                                         <GridViewColumn 
-                                                    Width="30">
+                                                    Width="50">
                                             <GridViewColumn.Header >
                                                 <TextBlock  
                                                            FontSize="14" 
@@ -291,9 +292,9 @@
                                                         <Border     BorderBrush="Gray"
                                                                     Margin="0,2,0,0"
                                                         BorderThickness="0.3"
-                                                        CornerRadius="10"
-                                                        Width="60"
-                                                        Height="50"
+                                                        CornerRadius="5"
+                                                        Width="50"
+                                                        Height="70"
                                                         VerticalAlignment="Center"
                                                         HorizontalAlignment="Left">
 
@@ -320,7 +321,7 @@
 
                                                         <TextBlock  Text="{Binding FilmName}"
                                                                     FontSize="14"
-                                                                    Margin="0,18,0,0"
+                                                                    Margin="0,28,0,0"
                                                                     />
                                               
                                                  
@@ -336,7 +337,7 @@
                                                 <DataTemplate>
                                                     <TextBlock  Text="{Binding FilmType}"
                                                             FontSize="14"
-                                                            Margin="0,18,0,0" />
+                                                            Margin="0,28,0,0" />
                                                 </DataTemplate>
                                             </GridViewColumn.CellTemplate>
                                         </GridViewColumn>
@@ -350,7 +351,7 @@
                                                 <DataTemplate>
                                                     <TextBlock  Text="{Binding  DurationFilm}"
                                                             FontSize="14"
-                                                            Margin="0,18,0,0" />
+                                                            Margin="0,28,0,0" />
                                                 </DataTemplate>
                                             </GridViewColumn.CellTemplate>
                                         </GridViewColumn>
@@ -362,13 +363,41 @@
                                             </GridViewColumn.Header>
                                             <GridViewColumn.CellTemplate>
                                                 <DataTemplate>
-                                                    <ListBox ItemsSource="{Binding ShowTimes}" Margin="-10,10,0,0">
+                                                    <ListBox ItemsSource="{Binding ShowTimes}" Margin="-10,15,0,0">
 
                                                         <ListBox.ItemContainerStyle>
                                                             <Style TargetType="ListBoxItem">
-                                                                
-                                                                <Setter Property="MaxWidth" Value="180"></Setter>
+
+                                                                <Setter Property="SnapsToDevicePixels"
+                                                           Value="False" />
+                                                                <Setter Property="OverridesDefaultStyle"
+                                                            Value="true" />
+                                                                <Setter Property="Width" Value="100"/>
+                                                                <Setter Property="Margin" Value="5"/>
+                                                                <Setter Property="Template">
+                                                                    <Setter.Value>
+                                                                        <ControlTemplate TargetType="ListBoxItem">
+                                                                            <Border Name="Border"
+                                                                        Padding="0"
+                                                                        SnapsToDevicePixels="True">
+                                                                                <ContentPresenter />
+                                                                            </Border>
+                                                                            <ControlTemplate.Triggers>
+                                                                                <Trigger Property="IsEnabled"
+                                                                                    Value="False">
+                                                                                    <Setter Property="Opacity"
+                                                                                    Value=".56" />
+                                                                                </Trigger>
+                                                                                <Trigger Property="IsSelected"
+                                                                                    Value="true">
+                                                                                </Trigger>
+                                                                            </ControlTemplate.Triggers>
+                                                                        </ControlTemplate>
+                                                                    </Setter.Value>
+                                                                </Setter>
                                                             </Style>
+                                                           
+                                                            
                                                         </ListBox.ItemContainerStyle>
 
                                                         <ListBox.ItemsPanel>
@@ -378,21 +407,24 @@
                                                         </ListBox.ItemsPanel>
                                                         <ListBox.ItemTemplate>
                                                             <DataTemplate>
-                                                                <Border CornerRadius="4"
-                                                                        Width="110"
-                                                                        Height="30"
-                                                                        BorderThickness="1"
-                                                                        BorderBrush="Black"
-                                                                        Cursor="Hand"
-                                                                       
-                                                                        Background="{StaticResource LightBlueSpindle}">
-                                                                    <TextBlock Text="{Binding StartTime}"
-                                                                               FontSize="14"
-                                                                               HorizontalAlignment="Center"
-                                                                               VerticalAlignment="Center"
-                                                                               Foreground="Black">
-                                                                        
-                                                                    </TextBlock>
+
+                                                                <Border   
+                                                                    BorderBrush="Gray"
+                                                                    
+                                                        BorderThickness="0.3"
+                                                                    x:Name="time"
+                                                                     Background="{StaticResource LightBlueSpindle}"                            
+                                                        CornerRadius="5"
+                                                        Height="30"
+                                                        Width="100"
+                                                        HorizontalAlignment="Stretch"
+                                                       
+                                                        >
+                                                                    <Label Content="{Binding StartTime}"
+                                                           FontSize="14" 
+                                                           FontFamily="{DynamicResource MaterialDesignFont}"
+                                                           HorizontalAlignment="Center"
+                                                           VerticalAlignment="Center"/>
                                                                     
                                                                 </Border>
 
@@ -407,7 +439,7 @@
                                                 <DataTemplate>
                                                     <Border BorderThickness="0.5"
                                                             BorderBrush="Black"
-                                                            Margin="0,25,0,0"
+                                                            Margin="-30,25,0,0"
                                                             CornerRadius="5"
                                                             Cursor="Hand">
                                                         <Border.Style>

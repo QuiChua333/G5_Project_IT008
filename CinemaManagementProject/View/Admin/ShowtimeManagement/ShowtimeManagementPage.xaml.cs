@@ -25,6 +25,7 @@ namespace CinemaManagementProject.View.Admin.ShowtimeManagement
         public ShowtimeManagementPage()
         {
             InitializeComponent();
+     
         }
         private bool Filter(object item)
         {
