@@ -43,13 +43,13 @@ namespace CinemaManagementProject.View.Admin.HistoryManagement
             switch (cbbFilter.SelectedValue)
             {
                 case "Mã đơn":
-                    return (((item as BillDTO).Id.ToString()).IndexOf(FilterBox.Text, StringComparison.OrdinalIgnoreCase) >= 0);
+                    return (((item as BillDTO).BillCode).IndexOf(FilterBox.Text, StringComparison.OrdinalIgnoreCase) >= 0);
                 case "Khách hàng":
                     return ((item as BillDTO).CustomerName.IndexOf(FilterBox.Text, StringComparison.OrdinalIgnoreCase) >= 0);
                 case "Điện thoại":
                     return ((item as BillDTO).PhoneNumber.IndexOf(FilterBox.Text, StringComparison.OrdinalIgnoreCase) >= 0);
                 default:
-                    return (((item as BillDTO).Id.ToString()).IndexOf(FilterBox.Text, StringComparison.OrdinalIgnoreCase) >= 0);
+                    return (((item as BillDTO).BillCode).IndexOf(FilterBox.Text, StringComparison.OrdinalIgnoreCase) >= 0);
             }
 
         }

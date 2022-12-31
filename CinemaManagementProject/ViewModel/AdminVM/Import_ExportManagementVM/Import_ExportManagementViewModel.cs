@@ -180,7 +180,7 @@ namespace CinemaManagementProject.ViewModel.AdminVM.Import_ExportManagementVM
                     try
                     {
                         IsGettingSource = true;
-                        BillDetail = await Task.Run(() => BillService.Ins.GetBillDetails(SelectedTicketBill.Id));
+                        BillDetail = await Task.Run(() => BillService.Ins.GetBillDetails(SelectedTicketBill.BillCode));
                         IsGettingSource = false;
                     }
                     catch (System.Data.Entity.Core.EntityException e)
@@ -320,7 +320,7 @@ namespace CinemaManagementProject.ViewModel.AdminVM.Import_ExportManagementVM
                                 foreach (var item in ListBill)
                                 {
 
-                                    ws.Cells[i2, 1] = item.Id;
+                                    ws.Cells[i2, 1] = item.BillCode;
                                     ws.Cells[i2, 2] = item.CreatedAt;
                                     ws.Cells[i2, 3] = item.CustomerName;
                                     ws.Cells[i2, 4] = item.PhoneNumber;

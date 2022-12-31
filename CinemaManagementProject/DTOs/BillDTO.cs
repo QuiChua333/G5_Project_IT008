@@ -12,7 +12,7 @@ namespace CinemaManagementProject.DTOs
 {
     public class BillDTO
     {
-        public int Id { get; set; }
+        public string BillCode { get; set; }
 
         //Customer
         private int _CustomerId;

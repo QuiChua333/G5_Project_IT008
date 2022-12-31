@@ -12,7 +12,7 @@ namespace CinemaManagementProject.DTOs
     {
         public int Id { get; set; }
         public Nullable<int> ProductId { get; set; }
-        public Nullable<int> BillId { get; set; }
+        public string BillCode { get; set; }
         public int Quantity { get; set; }
         public string ProductName { get; set; }
         public float PrizePerProduct { get; set; }
