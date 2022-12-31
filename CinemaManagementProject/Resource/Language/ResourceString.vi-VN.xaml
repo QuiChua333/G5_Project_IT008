@@ -33,11 +33,11 @@
     <system:String x:Key="VoucherManagementPage_ListViewHeader5">Mệnh giá</system:String>
     <system:String x:Key="AddInfoPage_Label_ReleaseCode">Mã phát hành:</system:String>
     <system:String x:Key="AddInfoPage_Label_ReleaseName">Tên đợt phát hành:</system:String>
-    <system:String x:Key="AddInfoPage_Label_Price">Mệnh giá:</system:String>
+    <system:String x:Key="AddInfoPage_Label_Price">Mệnh giá</system:String>
     <system:String x:Key="AddInfoPage_Label_Status">Trạng thái:</system:String>
     <system:String x:Key="AddInfoPage_Label_ApplicableTime">Hiệu lực từ:</system:String>
     <system:String x:Key="AddInfoPage_Label_ObjectType">Nhóm hàng:</system:String>
-    <system:String x:Key="AddInfoPage_MinimumTotalPrice">Tổng tối thiểu:</system:String>
+    <system:String x:Key="AddInfoPage_MinimumTotalPrice">Tổng tối thiểu</system:String>
     <system:String x:Key="AddInfoPage_RadioButton_Active">Kích hoạt</system:String>
     <system:String x:Key="AddInfoPage_RadioButton_NotApply">Chưa áp dụng</system:String>
     <system:String x:Key="AddInfoPage_CBB0">Toàn bộ</system:String>
