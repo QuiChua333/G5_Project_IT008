@@ -277,11 +277,6 @@
     <Compile Include="Model\VoucherRelease.cs">
       <DependentUpon>CinemaManagementDatabase.tt</DependentUpon>
     </Compile>
-    <Compile Include="Properties\AvatarUser.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>AvatarUser.xsd</DependentUpon>
-    </Compile>
     <Compile Include="Resource\Styles\ListboxCustom.xaml.cs" />
     <Compile Include="Settings.cs" />
     <Compile Include="Until.cs" />
@@ -332,6 +327,8 @@
     <Compile Include="ViewModel\StaffVM\MovieScheduleWindowVM\MovieScheduleWindowViewModel.cs" />
     <Compile Include="ViewModel\StaffVM\FilmBookingVM\FilmBookingVM.cs" />
     <Compile Include="ViewModel\StaffVM\OrderFoodManagementVM\OrderFoodManagementVM.cs" />
+    <Compile Include="ViewModel\StaffVM\SettingManagementVM\ResetPassStaffVM.cs" />
+    <Compile Include="ViewModel\StaffVM\SettingManagementVM\SettingStaffVM.cs" />
     <Compile Include="ViewModel\StaffVM\StaffVM.cs" />
     <Compile Include="ViewModel\StaffVM\TicketBillVM\TicketBillVM.cs" />
     <Compile Include="ViewModel\StaffVM\TicketVM\TicketBookingPageViewModel.cs" />
@@ -481,6 +478,7 @@
     <Compile Include="View\CustomMessageBoxWindow.xaml.cs">
       <DependentUpon>CustomMessageBoxWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\LanguageManager.cs" />
     <Compile Include="View\Login\ChangePassPage.xaml.cs">
       <DependentUpon>ChangePassPage.xaml</DependentUpon>
     </Compile>
@@ -504,6 +502,15 @@
     </Compile>
     <Compile Include="View\Staff\MovieScheduleWindow\MovieScheduleWindow.xaml.cs">
       <DependentUpon>MovieScheduleWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Staff\SettingManagement\ConfirmStaffWindow.xaml.cs">
+      <DependentUpon>ConfirmStaffWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Staff\SettingManagement\ResetPassStaffWindow.xaml.cs">
+      <DependentUpon>ResetPassStaffWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Staff\SettingManagement\SettingPage.xaml.cs">
+      <DependentUpon>SettingPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Staff\StaffWindow.xaml.cs">
       <DependentUpon>StaffWindow.xaml</DependentUpon>
@@ -617,6 +624,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Resource\Language\ResourceString.en-US.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resource\Language\ResourceString.vi-VN.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Resource\Styles\FilterCombobox.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -629,6 +644,16 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Content Include="Model\CinemaManagementDatabase.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>CinemaManagementDatabase.edmx</DependentUpon>
+      <LastGenOutput>CinemaManagementDatabase.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Model\CinemaManagementDatabase.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>CinemaManagementDatabase.edmx</DependentUpon>
+      <LastGenOutput>CinemaManagementDatabase.cs</LastGenOutput>
+    </Content>
     <Content Include="Resource\Styles\MenuButtonUI.xaml">
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -863,6 +888,18 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\Staff\SettingManagement\ConfirmStaffWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Staff\SettingManagement\ResetPassStaffWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Staff\SettingManagement\SettingPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="View\Staff\StaffWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -935,17 +972,6 @@
       <DependentUpon>CinemaManagementDatabase.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
-    <None Include="Properties\AvatarUser.xsc">
-      <DependentUpon>AvatarUser.xsd</DependentUpon>
-    </None>
-    <None Include="Properties\AvatarUser.xsd">
-      <SubType>Designer</SubType>
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>AvatarUser.Designer.cs</LastGenOutput>
-    </None>
-    <None Include="Properties\AvatarUser.xss">
-      <DependentUpon>AvatarUser.xsd</DependentUpon>
-    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -1066,16 +1092,6 @@
     <Resource Include="Resource\Images\Image_Start.png" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Model\CinemaManagementDatabase.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>CinemaManagementDatabase.edmx</DependentUpon>
-      <LastGenOutput>CinemaManagementDatabase.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="Model\CinemaManagementDatabase.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>CinemaManagementDatabase.edmx</DependentUpon>
-      <LastGenOutput>CinemaManagementDatabase.cs</LastGenOutput>
-    </Content>
     <Content Include="Resource\EmailTemplate\EmailResetPassTemplate.txt" />
     <Content Include="Resource\EmailTemplate\ForgotPassTemplate.txt" />
     <Resource Include="Resource\Images\LogoMain.png" />

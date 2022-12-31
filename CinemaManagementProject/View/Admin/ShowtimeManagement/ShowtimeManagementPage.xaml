@@ -253,6 +253,7 @@
                                 <ListView.ItemContainerStyle>
                                     <Style  TargetType="{x:Type ListViewItem}"
                                             BasedOn="{StaticResource MaterialDesignGridViewItem}">
+                                        <Setter Property="VerticalAlignment" Value="Center"/>
                                     </Style>
                                 </ListView.ItemContainerStyle>
                                 <ListView.View>
