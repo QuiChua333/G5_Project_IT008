@@ -402,8 +402,8 @@ namespace CinemaManagementProject.ViewModel.AdminVM.StatisticalManagementVM
                 return;
             }
 
-            TicketPc = Math.Round((a1 / (a1 + a2) * 100),2).ToString() + "%";
-            ProductPc = Math.Round((a2 / (a1 + a2) * 100),2).ToString() + "%";
+            TicketPc = Math.Round(a1 / (a1 + a2) * 100,2).ToString() + "%";
+            ProductPc = Math.Round(a2 / (a1 + a2) * 100,2).ToString() + "%";
         }
         public void Calculate_ExpPercentage(float a3, float a4)
         {
@@ -429,8 +429,8 @@ namespace CinemaManagementProject.ViewModel.AdminVM.StatisticalManagementVM
                 }
                 return;
             }
-            ProductExPc = Math.Round((a3 / (a3 + a4) * 100), 2).ToString() + "%";
-            RepairPc = Math.Round((a4 / (a3 + a4) * 100), 2).ToString() + "%";
+            ProductExPc = Math.Round(a3 / (a3 + a4) * 100, 2).ToString() + "%";
+            RepairPc = Math.Round(a4 / (a3 + a4) * 100, 2).ToString() + "%";
         }
     }
 }

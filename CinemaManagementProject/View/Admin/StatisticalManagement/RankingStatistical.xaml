@@ -5,10 +5,8 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:CinemaManagementProject.ViewModel.AdminVM.StatisticalManagementVM"
       mc:Ignorable="d" 
-      xmlns:FilterCombobox="clr-namespace:CinemaManagementProject.Component.FilterCombobox"
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
-      xmlns:Component="clr-namespace:CinemaManagementProject.Component"
       xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
       d:DesignHeight="630" d:DesignWidth="1140"
       Title="RankingStatistical"
@@ -54,8 +52,8 @@
                         <Grid.RowDefinitions>
                             <RowDefinition Height="10*"/>
                             <RowDefinition Height="40*"/>
-                            <RowDefinition Height="8*"/>
-                            <RowDefinition Height="42*"/>
+                            <RowDefinition Height="6*"/>
+                            <RowDefinition Height="44*"/>
                         </Grid.RowDefinitions>
 
                         <Grid Grid.Row="0">
@@ -162,18 +160,18 @@
                                                  Grid.Column="0">
                                 <Grid>
                                     <lvc:PieChart LegendLocation="Bottom"
-                                                  InnerRadius="50"
+                                                  InnerRadius="70"
                                                   Background="Transparent"
                                                   Series="{Binding CustomerExpe}" 
-                                                  Width="230" Height="180"/>
+                                                  Width="200" Height="200"/>
                                     <ProgressBar Style="{StaticResource MaterialDesignCircularProgressBar}"
                                                      Value="0"
                                                      IsIndeterminate="True"
-                                                     Margin="20,-28,20,12"
-                                                     Width="100"
-                                                     Height="100"
+                                                     Width="120"
+                                                     Height="120"
+                                                 Margin="0,0,0,20"
                                                      Foreground="#FF455345" />
-                                    <Grid Margin="60,40,60,90" Background="Transparent">
+                                    <Grid Margin="60,60,60,78" Background="Transparent">
                                         <Grid.RowDefinitions>
                                             <RowDefinition/>
                                             <RowDefinition/>
@@ -208,8 +206,8 @@
                                                   InnerRadius="10"
                                                   Background="Transparent"
                                                   Series="{Binding NewCusPie}" 
-                                                  Width="230" Height="180"/>
-                                    <Grid Height="24" Width="130" HorizontalAlignment="Right" Margin="0,156,10,0">
+                                                  Width="220" Height="180"/>
+                                    <Grid Height="24" Width="130" Margin="140,190,0,0">
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="65*"/>
                                             <ColumnDefinition Width="35*"/>
@@ -240,76 +238,82 @@
                                    VerticalAlignment="Center"
                                    HorizontalAlignment="Center"
                                    FontWeight="Bold"
-                                    Foreground="{StaticResource Gray1}"
-                                   FontSize="18"
-                                    />
+                                   Foreground="{StaticResource Gray1}"
+                                   FontSize="18"/>
                         </Grid>
 
-                        <materialDesign:Card Margin="10,0,10,10" 
+                        <materialDesign:Card Margin="10,0,10,0" 
                                              Grid.Row="3"
                                              UniformCornerRadius="10">
-                            <ListView ItemsSource="{Binding Top5Customer}">
-                                <ListView.View>
-                                    <GridView>
+                            <ScrollViewer VerticalScrollBarVisibility="Hidden" HorizontalScrollBarVisibility="Hidden">
+                                <ListView ItemsSource="{Binding Top5Customer}" d:ItemsSource="{d:SampleData ItemCount=5}" VerticalAlignment="Center">
 
-                                        <GridViewColumn  Width="90" >
-                                            <GridViewColumn.Header>
-                                                <TextBlock Text="STT" FontWeight="SemiBold" Foreground="Black"/>
-                                            </GridViewColumn.Header>
-                                            <GridViewColumn.CellTemplate>
-                                                <DataTemplate>
-                                                    <TextBlock  Text="{Binding RelativeSource={RelativeSource FindAncestor, 
+                                    <ListView.ItemContainerStyle>
+                                        <Style TargetType="ListViewItem" BasedOn="{StaticResource MaterialDesignGridViewItem}">
+                                            <Setter Property="Height" Value="38" />
+                                        </Style>
+                                    </ListView.ItemContainerStyle>
+
+                                    <ListView.View>
+                                        <GridView>
+                                            <GridViewColumn  Width="85">
+                                                <GridViewColumn.Header>
+                                                    <TextBlock Text="STT" FontWeight="SemiBold" Foreground="Black"/>
+                                                </GridViewColumn.Header>
+                                                <GridViewColumn.CellTemplate>
+                                                    <DataTemplate>
+                                                        <TextBlock Text="{Binding RelativeSource={RelativeSource FindAncestor, 
                                                                                                    AncestorType={x:Type ListViewItem}}, 
                                                                                                    Converter={StaticResource IndexConverter}}"
-                                                        FontSize="18"
-                                                        Margin="0,5,0,0" />
-                                                </DataTemplate>
+                                                        FontSize="14"
+                                                        Margin="30,0,0,0" />
+                                                    </DataTemplate>
 
-                                            </GridViewColumn.CellTemplate>
-                                        </GridViewColumn>
+                                                </GridViewColumn.CellTemplate>
+                                            </GridViewColumn>
 
-                                        <GridViewColumn  Width="180">
-                                            <GridViewColumn.Header>
-                                                <TextBlock Text="Tên khách hàng" FontWeight="SemiBold" Foreground="Black"/>
-                                            </GridViewColumn.Header>
-                                            <GridViewColumn.CellTemplate>
-                                                <DataTemplate>
-                                                    <TextBlock Text="{Binding Name}"
-                                                                FontSize="18"
-                                                                Height="34"
-                                                                Margin="0,5,0,0" />
-                                                </DataTemplate>
-                                            </GridViewColumn.CellTemplate>
-                                        </GridViewColumn>
+                                            <GridViewColumn  Width="170">
+                                                <GridViewColumn.Header>
+                                                    <TextBlock Text="Tên khách hàng" FontWeight="SemiBold" Foreground="Black"/>
+                                                </GridViewColumn.Header>
+                                                <GridViewColumn.CellTemplate>
+                                                    <DataTemplate>
+                                                        <TextBlock Text="{Binding CustomerName}"
+                                                                FontSize="14"
+                                                                Margin="16,0,0,0" />
+                                                    </DataTemplate>
+                                                </GridViewColumn.CellTemplate>
+                                            </GridViewColumn>
 
-                                        <GridViewColumn  Width="144">
-                                            <GridViewColumn.Header>
-                                                <TextBlock Text="Số điện thoại" FontWeight="SemiBold" Foreground="Black"/>
-                                            </GridViewColumn.Header>
-                                            <GridViewColumn.CellTemplate>
-                                                <DataTemplate>
-                                                    <TextBlock Text="{Binding PhoneNumber}"
-                                                                   FontSize="18"
-                                                                   Margin="0,5,0,0" />
-                                                </DataTemplate>
-                                            </GridViewColumn.CellTemplate>
-                                        </GridViewColumn>
+                                            <GridViewColumn  Width="145">
+                                                <GridViewColumn.Header>
+                                                    <TextBlock Text="Số điện thoại" FontWeight="SemiBold" Foreground="Black"/>
+                                                </GridViewColumn.Header>
+                                                <GridViewColumn.CellTemplate>
+                                                    <DataTemplate>
+                                                        <TextBlock Text="{Binding PhoneNumber}"
+                                                                   FontSize="14"
+                                                                   Margin="20,0,0,0" />
+                                                    </DataTemplate>
+                                                </GridViewColumn.CellTemplate>
+                                            </GridViewColumn>
 
-                                        <GridViewColumn  Width="112">
-                                            <GridViewColumn.Header>
-                                                <TextBlock Text="Chi tiêu" FontWeight="SemiBold" Foreground="Black"/>
-                                            </GridViewColumn.Header>
-                                            <GridViewColumn.CellTemplate>
-                                                <DataTemplate>
-                                                    <TextBlock Text="{Binding ExpenseStr}"
-                                                                   FontSize="18"
-                                                                   Margin="0,5,0,0" />
-                                                </DataTemplate>
-                                            </GridViewColumn.CellTemplate>
-                                        </GridViewColumn>
-                                    </GridView>
-                                </ListView.View>
-                            </ListView>
+                                            <GridViewColumn  Width="110">
+                                                <GridViewColumn.Header>
+                                                    <TextBlock Text="Chi tiêu" FontWeight="SemiBold" Foreground="Black"/>
+                                                </GridViewColumn.Header>
+                                                <GridViewColumn.CellTemplate>
+                                                    <DataTemplate>
+                                                        <TextBlock Text="{Binding ExpenseStr}"
+                                                                   FontSize="14"
+                                                                   Margin="14,0,0,0" />
+                                                    </DataTemplate>
+                                                </GridViewColumn.CellTemplate>
+                                            </GridViewColumn>
+                                        </GridView>
+                                    </ListView.View>
+                                </ListView>
+                            </ScrollViewer>
                         </materialDesign:Card>
 
                     </Grid>
@@ -318,8 +322,8 @@
                         <Grid.RowDefinitions>
                             <RowDefinition Height="10*"/>
                             <RowDefinition Height="40*"/>
-                            <RowDefinition Height="8*"/>
-                            <RowDefinition Height="42*"/>
+                            <RowDefinition Height="6*"/>
+                            <RowDefinition Height="44*"/>
                         </Grid.RowDefinitions>
 
                         <Grid Grid.Row="0">
@@ -461,7 +465,7 @@
                                                   Background="Transparent"
                                                   Margin="10,0,10,0"
                                                   Series="{Binding StaffContributePie}" 
-                                                  Height="180"/>
+                                                  Height="200"/>
                                 </Grid>
 
 
@@ -478,74 +482,79 @@
                                     Foreground="{StaticResource Gray1}"/>
 
                         </Grid>
-                        <materialDesign:Card Margin="10,0,10,10" 
+                        <materialDesign:Card Margin="10,0,10,0" 
                                              Grid.Row="3"
                                              UniformCornerRadius="10">
-                            <ListView ItemsSource="{Binding Top5Staff}" Margin="0,0,0,-2">
-                                <ListView.View>
+                            <ScrollViewer HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden">
+                                <ListView ItemsSource="{Binding Top5Staff}" Margin="0,0,0,-2" d:ItemsSource="{d:SampleData ItemCount=5}">
 
-                                    <GridView>
+                                    <ListView.ItemContainerStyle>
+                                        <Style TargetType="ListViewItem" BasedOn="{StaticResource MaterialDesignGridViewItem}">
+                                            <Setter Property="Height" Value="38" />
+                                        </Style>
+                                    </ListView.ItemContainerStyle>
 
-                                        <GridViewColumn Width="90" >
-                                            <GridViewColumn.Header>
-                                                <TextBlock Text="STT" FontWeight="SemiBold" Foreground="Black"/>
-                                            </GridViewColumn.Header>
-                                            <GridViewColumn.CellTemplate>
-                                                <DataTemplate>
-                                                    <TextBlock  Text="{Binding RelativeSource={RelativeSource FindAncestor, 
+                                    <ListView.View>
+                                        <GridView>
+                                            <GridViewColumn Width="85" >
+                                                <GridViewColumn.Header>
+                                                    <TextBlock Text="STT" FontWeight="SemiBold" Foreground="Black"/>
+                                                </GridViewColumn.Header>
+                                                <GridViewColumn.CellTemplate>
+                                                    <DataTemplate>
+                                                        <TextBlock  Text="{Binding RelativeSource={RelativeSource FindAncestor, 
                                                                     AncestorType={x:Type ListViewItem}}, 
                                                                     Converter={StaticResource IndexConverter}}" 
-                                                        FontSize="18"
-                                                        Margin="0,5,0,0" />
-                                                </DataTemplate>
+                                                        FontSize="14"
+                                                                Margin="30,0,0,0"/>
+                                                    </DataTemplate>
 
-                                            </GridViewColumn.CellTemplate>
-                                        </GridViewColumn>
+                                                </GridViewColumn.CellTemplate>
+                                            </GridViewColumn>
 
-                                        <GridViewColumn Width="150">
-                                            <GridViewColumn.Header>
-                                                <TextBlock Text="Mã nhân viên" FontWeight="SemiBold" Foreground="Black"/>
-                                            </GridViewColumn.Header>
-                                            <GridViewColumn.CellTemplate>
-                                                <DataTemplate>
-                                                    <TextBlock Text="{Binding Id}"
-                                                                   FontSize="18"
-                                                                   Height="34"
-                                                                   Margin="0,5,0,0" />
-                                                </DataTemplate>
-                                            </GridViewColumn.CellTemplate>
-                                        </GridViewColumn>
+                                            <GridViewColumn Width="144">
+                                                <GridViewColumn.Header>
+                                                    <TextBlock Text="Mã nhân viên" FontWeight="SemiBold" Foreground="Black"/>
+                                                </GridViewColumn.Header>
+                                                <GridViewColumn.CellTemplate>
+                                                    <DataTemplate>
+                                                        <TextBlock Text="{Binding Id}"
+                                                                   FontSize="14"
+                                                                   Margin="54,0,0,0" />
+                                                    </DataTemplate>
+                                                </GridViewColumn.CellTemplate>
+                                            </GridViewColumn>
 
-                                        <GridViewColumn  Width="166">
-                                            <GridViewColumn.Header>
-                                                <TextBlock Text="Tên nhân viên" FontWeight="SemiBold" Foreground="Black"/>
-                                            </GridViewColumn.Header>
-                                            <GridViewColumn.CellTemplate>
-                                                <DataTemplate>
-                                                    <TextBlock Text="{Binding Name}"
-                                                                   FontSize="18"
-                                                                   Margin="0,5,0,0" />
-                                                </DataTemplate>
-                                            </GridViewColumn.CellTemplate>
-                                        </GridViewColumn>
+                                            <GridViewColumn  Width="165">
+                                                <GridViewColumn.Header>
+                                                    <TextBlock Text="Tên nhân viên" FontWeight="SemiBold" Foreground="Black"/>
+                                                </GridViewColumn.Header>
+                                                <GridViewColumn.CellTemplate>
+                                                    <DataTemplate>
+                                                        <TextBlock Text="{Binding StaffName}"
+                                                                   FontSize="14"
+                                                                   Margin="20,0,0,0" />
+                                                    </DataTemplate>
+                                                </GridViewColumn.CellTemplate>
+                                            </GridViewColumn>
 
-                                        <GridViewColumn  Width="120">
-                                            <GridViewColumn.Header>
-                                                <TextBlock Text="Doanh số" FontWeight="SemiBold" Foreground="Black"/>
-                                            </GridViewColumn.Header>
-                                            <GridViewColumn.CellTemplate>
-                                                <DataTemplate>
-                                                    <TextBlock Text="{Binding BenefitContributionStr}"
-                                                                   FontSize="18"
-                                                                   Margin="0,5,0,0" />
-                                                </DataTemplate>
-                                            </GridViewColumn.CellTemplate>
-                                        </GridViewColumn>
-                                    </GridView>
-                                </ListView.View>
-                            </ListView>
+                                            <GridViewColumn  Width="120">
+                                                <GridViewColumn.Header>
+                                                    <TextBlock Text="Doanh số" FontWeight="SemiBold" Foreground="Black"/>
+                                                </GridViewColumn.Header>
+                                                <GridViewColumn.CellTemplate>
+                                                    <DataTemplate>
+                                                        <TextBlock Text="{Binding BenefitContributionStr}"
+                                                                   FontSize="14"
+                                                                   Margin="20,0,0,0" />
+                                                    </DataTemplate>
+                                                </GridViewColumn.CellTemplate>
+                                            </GridViewColumn>
+                                        </GridView>
+                                    </ListView.View>
+                                </ListView>
+                            </ScrollViewer>
                         </materialDesign:Card>
-                        
                     </Grid>
                 </Grid>
             </Border>
