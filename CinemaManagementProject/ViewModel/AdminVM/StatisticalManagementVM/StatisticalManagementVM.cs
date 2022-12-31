@@ -85,6 +85,24 @@ namespace CinemaManagementProject.ViewModel.AdminVM.StatisticalManagementVM
                 await ChangeBestSellPeriod2();
                 IsLoading = false;
             });
+            ChangeIncomePeriodCM = new RelayCommand<ComboBox>((p) => { return true; }, async (p) =>
+            {
+                IsLoading = true;
+                await ChangeIncomePeriod();
+                IsLoading = false;
+            });
+            ChangeRankingPeriodCM = new RelayCommand<ComboBox>((p) => { return true; }, async (p) =>
+            {
+                IsLoading = true;
+                await ChangeRankingPeriod();
+                IsLoading = false;
+            });
+            ChangeRankingPeriod2CM = new RelayCommand<ComboBox>((p) => { return true; }, async (p) =>
+            {
+                IsLoading = true;
+                await ChangeRankingPeriod2();
+                IsLoading = false;
+            });
         }
 
         public void ChangeView(Card p)

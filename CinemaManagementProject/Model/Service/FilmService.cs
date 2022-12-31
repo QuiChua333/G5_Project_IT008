@@ -157,9 +157,9 @@ namespace CinemaManagementProject.Model.Service
                     await context.SaveChangesAsync();
                 }
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                return (false, $"Error Server {e.Message}");
+                return (false, "Phim đã có người đặt. Không thể xóa!");
             }
             return (true, "Xóa phim thành công");
         }
