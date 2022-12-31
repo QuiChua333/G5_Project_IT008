@@ -10,8 +10,7 @@
       mc:Ignorable="d"  
       xmlns:i="http://schemas.microsoft.com/xaml/behaviors"   
       Title="CustomerManagementPage"
-      DataContext="{StaticResource CustomerManagementVM}"
-    
+      DataContext="{StaticResource CustomerManagementVM}"    
       Background="Transparent"
       ShowsNavigationUI="False" 
       x:Name="mainPage">
@@ -88,7 +87,7 @@
                         </Rectangle.Effect>
                     </Rectangle>
                     <TextBox x:Name="FilterBox" 
-                             materialDesign:HintAssist.Hint="Search"
+                             materialDesign:HintAssist.Hint="Tìm kiếm"
                              Grid.Column="1"
                              AllowDrop="True"
                              VerticalAlignment="Center" 
@@ -112,7 +111,7 @@
                         Margin="20, 17, 0, 17"
                         Background="White"
                         Height="46"
-                        Width="160"
+                        Width="140"
                         BorderBrush="Black">
                     <Border.Effect>
                         <DropShadowEffect
@@ -124,86 +123,94 @@
                     </Border.Effect>
                     <ComboBox   SelectedValuePath="Content"
                                 SelectedIndex="0"
+                                UseLayoutRounding="False"
                                 BorderThickness="0"
                                 Style="{StaticResource styleButton}" 
                                 Name="cbbFilter"
-                                Margin="0,0,0,-3" >
-                        <ComboBoxItem FontWeight="SemiBold" Foreground="Black" Content="Mã khách hàng" />
-                        <ComboBoxItem FontWeight="SemiBold" Foreground="Black" Content="Tên khách hàng" />
-                        <ComboBoxItem FontWeight="SemiBold" Foreground="Black" Content="Số điện thoại" />
+                                Padding="10 14 10 14" >
+                        <ComboBoxItem  Foreground="Black" Content="Mã khách hàng" />
+                        <ComboBoxItem  Foreground="Black" Content="Tên khách hàng" />
+                        <ComboBoxItem  Foreground="Black" Content="Số điện thoại" />
                     </ComboBox>
                 </Border>
-                <Border CornerRadius="12"
-                        Margin="220, 17, 10, 17"
-                        Background="White"
-                        Height="46"
-                        Width="140"
-                        BorderBrush="Black">
-                    <Border.Effect>
-                        <DropShadowEffect
-                            BlurRadius="10"
-                            Color="Black"
-                            ShadowDepth="4"
-                            Opacity=".25"
-                            Direction="270"/>
-                    </Border.Effect>
-                    <ComboBox   SelectedValuePath="Content"
-                                SelectedIndex="0"
-                                Style="{StaticResource styleButton}" 
-                                Margin="0,0,0,-3" 
-                                x:Name="periodbox1"
-                                BorderThickness="0"
-                                SelectedItem="{Binding SelectedPeriod}"
-                                SelectionChanged="periodbox1_SelectionChanged"
-                                Loaded="periodbox1_Loaded">
-                        <i:Interaction.Triggers>
-                            <i:EventTrigger EventName="Loaded">
-                                <i:InvokeCommandAction Command="{Binding ChangePeriodCM}"
-                                                   CommandParameter="{Binding ElementName=periodbox1}" />
-                            </i:EventTrigger>
-                            <i:EventTrigger EventName="SelectionChanged">
-                                <i:InvokeCommandAction Command="{Binding ChangePeriodCM}"
-                                                   CommandParameter="{Binding ElementName=periodbox1}" />
-                            </i:EventTrigger>
-                        </i:Interaction.Triggers>
-                        <ComboBoxItem FontWeight="SemiBold" Foreground="Black" Content="Toàn bộ" FontSize="15"/>
-                        <ComboBoxItem FontWeight="SemiBold" Foreground="Black" Content="Theo năm" FontSize="15"/>
-                        <ComboBoxItem FontWeight="SemiBold" Foreground="Black" Content="Theo tháng" FontSize="15"/>
-                    </ComboBox>
-                </Border>
-                <Border CornerRadius="12"
-                        Margin="10, 17, 30, 17"
-                        Background="White"
-                        Height="46"
-                        Width="140"
-                        BorderBrush="Black">
-                    <Border.Effect>
-                        <DropShadowEffect
-                            BlurRadius="10"
-                            Color="Black"
-                            ShadowDepth="4"
-                            Opacity=".25"
-                            Direction="270"/>
-                    </Border.Effect>
-                    <ComboBox   Style="{StaticResource styleButton}" 
-                                Margin="0,0,0,-3" 
-                                BorderThickness="0"
-                                x:Name="Time1"   
-                                Visibility="Collapsed"
-                                SelectedItem="{Binding SelectedTime,Mode=OneWayToSource}">
-                        <i:Interaction.Triggers>
-                            <i:EventTrigger EventName="Loaded">
-                                <i:InvokeCommandAction Command="{Binding ChangePeriodCM}"
-                                                   CommandParameter="{Binding ElementName=Time1}" />
-                            </i:EventTrigger>
-                            <i:EventTrigger EventName="SelectionChanged">
-                                <i:InvokeCommandAction Command="{Binding ChangePeriodCM}"
-                                                   CommandParameter="{Binding ElementName=Time1}" />
-                            </i:EventTrigger>
-                        </i:Interaction.Triggers>
-                        
-                    </ComboBox>
-                </Border>
+                <StackPanel Margin="250 0 0 0"
+                        Orientation="Horizontal" >
+                    
+                    <Border CornerRadius="12"
+                            Margin="20, 17, 10, 17"
+                            Background="White"
+                            Height="46"
+                            Width="120"
+                            BorderBrush="Black">
+                        <Border.Effect>
+                            <DropShadowEffect
+                                BlurRadius="10"
+                                Color="Black"
+                                ShadowDepth="4"
+                                Opacity=".25"
+                                Direction="270"/>
+                        </Border.Effect>
+                        <ComboBox   SelectedValuePath="Content"
+                                    SelectedIndex="0"
+                                    Style="{StaticResource styleButton}" 
+                                    UseLayoutRounding="False" 
+                                    x:Name="periodbox1"
+                                    Padding="10 14 10 14"
+                                    BorderThickness="0"
+                                    SelectedItem="{Binding SelectedPeriod}"
+                                    SelectionChanged="periodbox1_SelectionChanged"
+                                    Loaded="periodbox1_Loaded">
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="Loaded">
+                                    <i:InvokeCommandAction Command="{Binding ChangePeriodCM}"
+                                                       CommandParameter="{Binding ElementName=periodbox1}" />
+                                </i:EventTrigger>
+                                <i:EventTrigger EventName="SelectionChanged">
+                                    <i:InvokeCommandAction Command="{Binding ChangePeriodCM}"
+                                                       CommandParameter="{Binding ElementName=periodbox1}" />
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                            <ComboBoxItem Foreground="Black" Tag="Toàn bộ" Content="Toàn bộ" FontSize="15"/>
+                            <ComboBoxItem Foreground="Black" Tag="Theo năm" Content="Theo năm" FontSize="15"/>
+                            <ComboBoxItem Foreground="Black" Tag="Theo tháng" Content="Theo tháng" FontSize="15"/>
+                        </ComboBox>
+                    </Border>
+                    <Border CornerRadius="12"
+                            Margin="10, 17, 30, 17"
+                            Background="White"
+                            Height="46"
+                            Width="140"
+                            BorderBrush="Black"
+                            x:Name="boder"
+                            Visibility="Collapsed">
+                        <Border.Effect>
+                            <DropShadowEffect
+                                BlurRadius="10"
+                                Color="Black"
+                                ShadowDepth="4"
+                                Opacity=".25"
+                                Direction="270"/>
+                        </Border.Effect>
+                        <ComboBox   Style="{StaticResource styleButton}" 
+                                    Margin="0,0,0,-3" 
+                                    BorderThickness="0"
+                                    x:Name="Time1"   
+                                    Visibility="Collapsed"
+                                    SelectedItem="{Binding SelectedTime,Mode=OneWayToSource}">
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="Loaded">
+                                    <i:InvokeCommandAction Command="{Binding ChangePeriodCM}"
+                                                       CommandParameter="{Binding ElementName=Time1}" />
+                                </i:EventTrigger>
+                                <i:EventTrigger EventName="SelectionChanged">
+                                    <i:InvokeCommandAction Command="{Binding ChangePeriodCM}"
+                                                       CommandParameter="{Binding ElementName=Time1}" />
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+
+                        </ComboBox>
+                    </Border>
+                </StackPanel>
               
                 
             </StackPanel>
@@ -230,85 +237,101 @@
                             <ListView.ItemContainerStyle>
                                 <Style  TargetType="{x:Type ListViewItem}"
                                         BasedOn="{StaticResource MaterialDesignGridViewItem}">
-                                    
-                                    
                                 </Style>
                             </ListView.ItemContainerStyle>
                             <ListView.View>
                                 <GridView >
-                                    <GridViewColumn Width="80">
+                                    <GridViewColumn Width="77">
                                         <GridViewColumn.Header>
-                                            <TextBlock Text="ID" FontSize="14" FontWeight="SemiBold" Foreground="Black"/>
+                                            <TextBlock Text="ID" 
+                                                       FontSize="14" 
+                                                       FontWeight="SemiBold" 
+                                                       Foreground="Black"/>
                                         </GridViewColumn.Header>
                                         <GridViewColumn.CellTemplate >
                                             <DataTemplate>
                                                 <TextBlock Text="{Binding Id}"
                                                            FontSize="14" 
                                                            FontFamily="{StaticResource MaterialDesignFont}"
-                                                           Margin="20 0 0 -8"/>
+                                                           Margin="20 6 0 0"/>
                                             </DataTemplate>
                                         </GridViewColumn.CellTemplate>
                                     </GridViewColumn>
-                                    <GridViewColumn Width="190" >
+                                    <GridViewColumn Width="180" >
                                         <GridViewColumn.Header>
-                                            <TextBlock Text="Tên khách hàng" FontSize="14" FontWeight="SemiBold" Foreground="Black"/>
+                                            <TextBlock Text="Tên khách hàng" 
+                                                       FontSize="14" 
+                                                       FontWeight="SemiBold" 
+                                                       Foreground="Black"/>
                                         </GridViewColumn.Header>
                                         <GridViewColumn.CellTemplate>
                                             <DataTemplate>
                                                 <TextBlock Text="{Binding CustomerName}" 
-                                                           Margin="20 0 0 -8"
+                                                           Margin="20 6 0 0"
                                                            FontSize="14" 
                                                            FontFamily="{StaticResource MaterialDesignFont}"/>
                                             </DataTemplate>
                                         </GridViewColumn.CellTemplate>
                                     </GridViewColumn>
-                                    <GridViewColumn Width="160">
+                                    <GridViewColumn Width="146">
                                         <GridViewColumn.Header>
-                                            <TextBlock Text="Số điện thoại" FontSize="14" FontWeight="SemiBold" Foreground="Black"/>
+                                            <TextBlock Text="Số điện thoại" 
+                                                       FontSize="14" 
+                                                       FontWeight="SemiBold" 
+                                                       Foreground="Black"/>
                                         </GridViewColumn.Header>
                                         <GridViewColumn.CellTemplate>
                                             <DataTemplate>
                                                 <TextBlock Text="{Binding PhoneNumber}" 
-                                                           Margin="20 0 0 -8"
+                                                           Margin="20 6 0 0"
                                                            FontSize="14" 
                                                            FontFamily="{StaticResource MaterialDesignFont}"/>
                                             </DataTemplate>
                                         </GridViewColumn.CellTemplate>
                                     </GridViewColumn>
-                                    <GridViewColumn Width="200">
+                                    <GridViewColumn Width="250">
                                         <GridViewColumn.Header>
-                                            <TextBlock Text="Email" FontSize="14" FontWeight="SemiBold" Foreground="Black"/>
+                                            <TextBlock Text="Email" 
+                                                       FontSize="14" 
+                                                       FontWeight="SemiBold" 
+                                                       Foreground="Black"/>
                                         </GridViewColumn.Header>
                                         <GridViewColumn.CellTemplate>
                                             <DataTemplate>
                                                 <TextBlock Text="{Binding Email}" 
-                                                           Margin="20 0 0 -8"
+                                                           Margin="20 6 0 0"
                                                            FontSize="14" 
                                                            FontFamily="{StaticResource MaterialDesignFont}"/>
                                             </DataTemplate>
                                         </GridViewColumn.CellTemplate>
                                     </GridViewColumn>
-                                    <GridViewColumn Width="165" >
+                                    <GridViewColumn Width="150" >
                                         <GridViewColumn.Header>
-                                            <TextBlock Text="Ngày đăng ký" FontSize="14" FontWeight="SemiBold" Foreground="Black"/>
+                                            <TextBlock Text="Ngày đăng ký" 
+                                                       FontSize="14" 
+                                                       FontWeight="SemiBold" 
+                                                       Foreground="Black"/>
                                         </GridViewColumn.Header>
                                         <GridViewColumn.CellTemplate>
                                             <DataTemplate>
                                                 <TextBlock Text="{Binding FirstDate, StringFormat=dd/MM/yyyy}" 
-                                                           Margin="20 0 0 -8"
+                                                           Margin="20 6 0 0"
                                                            FontSize="14" 
                                                            FontFamily="{StaticResource MaterialDesignFont}"/>
                                             </DataTemplate>
                                         </GridViewColumn.CellTemplate>
                                     </GridViewColumn>
-                                    <GridViewColumn Width="170">
+                                    <GridViewColumn Width="154">
                                         <GridViewColumn.Header>
-                                            <TextBlock Text="Chi tiêu tháng" FontSize="14" FontWeight="SemiBold" Foreground="Black"/>
+                                            <TextBlock Text="Chi tiêu tháng" 
+                                                       FontSize="14" 
+                                                       FontWeight="SemiBold" 
+                                                       Foreground="Black"/>
                                         </GridViewColumn.Header>
                                         <GridViewColumn.CellTemplate>
                                             <DataTemplate>
                                                 <TextBlock Text="{Binding ExpenseStr}" 
-                                                           Margin="20 0 0 -8"
+                                                           Margin="20 6 0 0"
                                                            FontSize="14" 
                                                            FontFamily="{StaticResource MaterialDesignFont}"/>
                                             </DataTemplate>
@@ -319,7 +342,7 @@
                                             <DataTemplate>
                                                 <StackPanel VerticalAlignment="Center"
                                                             Orientation="Horizontal" 
-                                                            Margin="0 0 0 -8">
+                                                            Margin="0 6 0 0">
                                                     <Border BorderBrush="Black"
                                                             BorderThickness="1"
                                                             CornerRadius="6"

@@ -14,14 +14,16 @@
         DataContext="{StaticResource CustomerManagementVM}"
         Name="SuaKH"
         ResizeMode="NoResize"
-        Height="320"
-        Width="500"
+        Height="325"
+        Width="505"
         WindowStartupLocation="CenterScreen"
         Title="EditCustomerWindow">
     <Border BorderBrush="Gray"
             BorderThickness="1"
             CornerRadius="20"
-            Background="White" Margin="0,0,0,0">
+            Background="White" 
+            Margin="0,0,0,0" 
+            Width="500" Height="320">
         <StackPanel
                     Margin="0 0 0 0"
                     Background="Transparent">
@@ -50,13 +52,12 @@
                 <Border BorderBrush="#8DC1F0"
                         Margin="30 10 30 0"
                         BorderThickness="0 0 0 3">
-                    <Label HorizontalAlignment="Center"
-                               
-                               Content="SỬA THÔNG TIN KHÁCH HÀNG"
-                               FontFamily="{StaticResource MaterialDesignFont}" 
-                               FontSize="28" 
-                               FontWeight="Bold" 
-                               Foreground="#FF80CDED" >
+                    <Label HorizontalAlignment="Center"  
+                            Content="SỬA THÔNG TIN KHÁCH HÀNG"
+                            FontFamily="{StaticResource MaterialDesignFont}" 
+                            FontSize="28" 
+                            FontWeight="Bold" 
+                            Foreground="#FF80CDED" >
                         <Label.Effect>
                             <DropShadowEffect BlurRadius="1" Direction="-45" Color="#000000" ShadowDepth="1.5" Opacity="0.5"/>
                         </Label.Effect>

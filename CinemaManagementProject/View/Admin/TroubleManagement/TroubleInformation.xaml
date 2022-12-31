@@ -15,6 +15,7 @@
         AllowsTransparency="True"
         Height="450" Width="800"
         x:Name="Trouble_Information"
+        WindowStartupLocation="CenterScreen"
 >
     <Grid Height="450" Width="800">
         <Grid.RowDefinitions>
@@ -50,9 +51,9 @@
                     FontWeight="Bold"
                     HorizontalAlignment="Center"
                     VerticalAlignment="Center"
-                    
+                    Content="CHI TIẾT SỰ CỐ"
                     Margin="240,0,0,0"
-                >CHI TIẾT SỰ CỐ
+                >
                     <Label.Effect>
                         <DropShadowEffect BlurRadius="1" Direction="-45" Color="#000000" ShadowDepth="1.5" Opacity="0.5"/>
                     </Label.Effect>
@@ -208,7 +209,8 @@
                                 Click="Button_Click_1"
                                 Background="Red"
                                 HorizontalAlignment="Right" 
-                                Margin="0,0,10,0">Đóng</Button>
+                                Margin="0,0,10,0"
+                                Content="Đóng"></Button>
                        
                     </StackPanel>
 

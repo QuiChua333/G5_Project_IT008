@@ -11,8 +11,8 @@
         AllowsTransparency="True"
         Background="Transparent"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-        Height="720"
-        Width="900"
+        Height="725"
+        Width="905"
         x:Name="mainWin"
         FontFamily="{StaticResource MaterialDesignFont}"
         MouseLeftButtonDown="Window_MouseLeftButtonDown"
@@ -36,7 +36,7 @@
     <Border Background="White"
             BorderThickness="1"
             CornerRadius="10"
-            BorderBrush="DarkGray">
+            BorderBrush="DarkGray" Width="900" Height="720">
         <Border.Effect>
             <DropShadowEffect
                                 BlurRadius="10"
@@ -58,10 +58,10 @@
                     BorderThickness="0 0 0 4"
                     Margin="50 0 50 0">
                 <StackPanel Orientation="Horizontal">
-                    <Label  Content="  CHI TIẾT HÓA ĐƠN"
+                    <Label  Content="CHI TIẾT HÓA ĐƠN"
                             FontFamily="{StaticResource MaterialDesignFont}" 
                             FontSize="28" 
-                            Margin="270,0,0,0"
+                            Margin="280,0,0,0"
                             FontWeight="Bold" 
                             Foreground="#8DC1F0"                           
                             Padding="10,10,0,0">

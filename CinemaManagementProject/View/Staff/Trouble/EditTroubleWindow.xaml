@@ -59,8 +59,9 @@
                                 Foreground="#8DC1F0"
                                 FontWeight="Bold"
                                 HorizontalAlignment="Center"
-                                VerticalAlignment="Center"          
-                                Margin="20,0,0,0">CHỈNH SỬA SỰ CỐ THIẾT BỊ
+                                VerticalAlignment="Center"  
+                                Content="CHỈNH SỬA SỰ CỐ THIẾT BỊ"
+                                Margin="20,0,0,0">
                             <Label.Effect>
                                 <DropShadowEffect BlurRadius="1" Direction="-45" Color="#000000" ShadowDepth="1.5" Opacity="0.5"/>
                             </Label.Effect>
@@ -217,13 +218,12 @@
                                           FontSize="16"
                                           Height="28"
                                           Margin="10 19 0 0"
-                                          
                                           BorderThickness="0"
                                           VerticalContentAlignment="Bottom"
                                           SelectedIndex="0"
                                           SelectedItem="{Binding Level,Mode=OneWayToSource}" Width="117">
-                                    <ComboBoxItem>Bình thường</ComboBoxItem>
-                                    <ComboBoxItem>Nghiêm trọng</ComboBoxItem>
+                                    <ComboBoxItem Content="Bình thường"></ComboBoxItem>
+                                    <ComboBoxItem Content="Nghiêm trọng"></ComboBoxItem>
                                 </ComboBox>
                             </StackPanel>
                         </StackPanel>

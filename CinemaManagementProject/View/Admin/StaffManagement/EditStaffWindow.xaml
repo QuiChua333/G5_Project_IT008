@@ -254,14 +254,15 @@
                                FontWeight="Regular" 
                                HorizontalAlignment="Right" 
                                VerticalAlignment="Center"/>
-                    <DatePicker Width="358"
+                    <DatePicker Width="250"
                                 Style="{StaticResource MaterialDesignFloatingHintDatePicker}"
                                 HorizontalAlignment="Left"
-                                Margin="20 -20 45 0"  
+                                Margin="20 0 45 10"  
                                 FontSize="15"
+                                IsEnabled="True"
                                 Grid.Column="1"
                                 x:Name="StartDate"
-                                SelectedDate="{Binding StartDate, Mode=TwoWay}">
+                                SelectedDate="{Binding StartDate, Mode=TwoWay}" VerticalAlignment="Bottom">
                     </DatePicker>
 
                 </Grid>
@@ -288,12 +289,21 @@
                       VerticalAlignment="Bottom">
                     <Label>
                         <TextBlock HorizontalAlignment="Left"
-                               VerticalAlignment="Center"
-                               Margin="50 5 0 10"
+                                   VerticalAlignment="Center"
+                                   Margin="50 5 0 10"
                                    FontSize="15"
                                    FontFamily="{StaticResource MaterialDesignFont}">
                             
-                    <Hyperlink Command="{Binding OpenChangePassCommand}">Đổi mật khẩu</Hyperlink>
+                    <Button Command="{Binding OpenChangePassCommand}"
+                            Background="Transparent"
+                            Foreground="Blue"
+                            BorderBrush="Blue"
+                            Height="21"
+                            FontFamily="{StaticResource MaterialDesignFont}"
+                            FontWeight="Light"
+                            Content="Đổi mật khẩu"
+                            Padding="0 0 0 0"
+                            BorderThickness="0 0 0 1"></Button>
                         </TextBlock>
 
                     </Label>

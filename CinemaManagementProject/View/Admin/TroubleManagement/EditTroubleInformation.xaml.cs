@@ -56,6 +56,7 @@ namespace CinemaManagementProject.View.Admin.TroubleManagement
                 start.SelectedDate = System.DateTime.Today;
                 _Finishday.IsEnabled = true;
                 _cost.IsEnabled = true;
+                Finishdatepicker.Visibility = Visibility.Visible;
                 _Finishday.Visibility = Visibility.Visible;
                 _startday.Visibility = Visibility.Visible;
                 _cost.Visibility = Visibility.Visible;

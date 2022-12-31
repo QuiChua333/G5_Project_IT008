@@ -90,7 +90,7 @@
                         </Rectangle.Effect>
                     </Rectangle>
                     <TextBox x:Name="FilterBox" 
-                             materialDesign:HintAssist.Hint="Search"
+                             materialDesign:HintAssist.Hint="Tìm kiếm"
                              Grid.Column="1"
                              AllowDrop="True"
                              VerticalAlignment="Center" 
@@ -146,7 +146,7 @@
                         <ListView  
                                   FontSize="14" 
                                   x:Name="lvStaff" 
-                                  Margin="-20 0 0 0" 
+                                  Margin="0 0 0 0" 
                                   FontFamily="{StaticResource MaterialDesignFont}"
                                   ItemsSource="{Binding StaffList}"
                                   SelectedItem="{Binding SelectedItem}">
@@ -190,7 +190,7 @@
                                         </GridViewColumn.CellTemplate>
                                     </GridViewColumn>
                                     <GridViewColumn
-                                                    Width="85"  >
+                                                    Width="83"  >
                                         <GridViewColumn.Header>
                                             <TextBlock Text="GT" 
                                                        FontSize="14" 
@@ -207,7 +207,7 @@
                                         </GridViewColumn.CellTemplate>
                                     </GridViewColumn>
                                     <GridViewColumn 
-                                                    Width="120">
+                                                    Width="109">
                                         <GridViewColumn.Header>
                                             <TextBlock Text="NgSinh" 
                                                        FontSize="14" 
@@ -224,7 +224,7 @@
                                         </GridViewColumn.CellTemplate>
                                     </GridViewColumn>
                                     <GridViewColumn
-                                                    Width="110" >
+                                                    Width="100" >
                                         <GridViewColumn.Header>
                                             <TextBlock Text="SĐT" 
                                                        FontSize="14" 
@@ -258,7 +258,7 @@
                                         </GridViewColumn.CellTemplate>
                                     </GridViewColumn>
                                     <GridViewColumn 
-                                                    Width="131">
+                                                    Width="124">
                                         <GridViewColumn.Header>
                                             <TextBlock Text="Ngày vào"                                                        
                                                        FontSize="14" 

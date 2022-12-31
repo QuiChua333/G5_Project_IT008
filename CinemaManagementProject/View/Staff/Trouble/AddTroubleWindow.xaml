@@ -62,7 +62,8 @@
                                 FontWeight="Bold"
                                 HorizontalAlignment="Center"
                                 VerticalAlignment="Center"          
-                                Margin="20,0,0,0">THÊM SỰ CỐ THIẾT BỊ
+                                Margin="20,0,0,0"
+                                Content="THÊM SỰ CỐ THIẾT BỊ">
                             <Label.Effect>
                                 <DropShadowEffect BlurRadius="1"
                                                   Direction="-45" 

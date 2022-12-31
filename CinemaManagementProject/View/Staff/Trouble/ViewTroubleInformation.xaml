@@ -48,9 +48,9 @@
                     FontWeight="Bold"
                     HorizontalAlignment="Center"
                     VerticalAlignment="Center"
-                    
+                    Content="CHI TIẾT SỰ CỐ"
                     Margin="270,0,0,0"
-                >CHI TIẾT SỰ CỐ
+                >
                     <Label.Effect>
                         <DropShadowEffect BlurRadius="1" Direction="-45" Color="#000000" ShadowDepth="1.5" Opacity="0.5"/>
                     </Label.Effect>
@@ -203,8 +203,9 @@
                                 Width="90" Height="36" 
                                 Click="Button_Click_1"
                                 Background="Red"
+                                Content="Đóng"
                                 HorizontalAlignment="Right" 
-                                Margin="0,0,20,0">Đóng</Button>
+                                Margin="0,0,20,0"></Button>
                     </StackPanel>
 
                 </StackPanel>

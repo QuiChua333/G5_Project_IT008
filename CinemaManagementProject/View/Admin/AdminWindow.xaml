@@ -13,10 +13,9 @@
         AllowsTransparency="True"
         Background="Transparent"
         ShowActivated="False"
-        Name="AdminWD" MouseDown="AdminWD_MouseDown"
-        DataContext="{StaticResource AdminVM}"
->
-   
+        Name="AdminWD" 
+        MouseDown="AdminWD_MouseDown"
+        DataContext="{StaticResource AdminVM}">
     <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>

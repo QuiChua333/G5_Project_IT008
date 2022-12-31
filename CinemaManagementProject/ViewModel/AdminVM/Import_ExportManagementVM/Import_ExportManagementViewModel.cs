@@ -203,7 +203,6 @@ namespace CinemaManagementProject.ViewModel.AdminVM.Import_ExportManagementVM
                             sum +=(int)item.Quantity *(int)item.PrizePerProduct;
                         }
                         w._totalproduct.Content = sum;
-                        //MaskName.Visibility = System.Windows.Visibility.Visible;
                         w.ShowDialog();
                     }
                     else if (BillDetail.ProductBillInfoes.Count == 0)
@@ -213,8 +212,6 @@ namespace CinemaManagementProject.ViewModel.AdminVM.Import_ExportManagementVM
                         w._price.Content = BillDetail.TicketInfo.PricePerTicketStr;
                         w._time.Content = BillDetail.CreatedAt.ToString("dd/MM/yyyy HH:mm");
                         w._totalticket.Content = BillDetail.TicketInfo.TotalPriceTicketStr;
-                        //MaskName.Visibility = System.Windows.Visibility.Visible;
-
                         w.ShowDialog();
 
                     }
@@ -225,19 +222,13 @@ namespace CinemaManagementProject.ViewModel.AdminVM.Import_ExportManagementVM
                         w._price.Content = BillDetail.TicketInfo.PricePerTicketStr;
                         w._time.Content = BillDetail.CreatedAt.ToString("dd/MM/yyyy HH:mm");
                         w._totalticket.Content = BillDetail.TicketInfo.TotalPriceTicketStr;
-                        //MaskName.Visibility = System.Windows.Visibility.Visible;
-
                         w.ShowDialog();
                     }
                 }
             });
-            //MaskNameCM = new RelayCommand<Grid>((p) => { return true; }, (p) =>
-            //{
-            //    MaskName = p;
-            //});
+
             CloseCM = new RelayCommand<Window>((p) => { return true; }, (p) =>
             {
-                //MaskName.Visibility = Visibility.Collapsed;
                 SelectedTicketBill = null;
                 p.Close();
             });
@@ -448,7 +439,7 @@ namespace CinemaManagementProject.ViewModel.AdminVM.Import_ExportManagementVM
         }
         public async Task CheckItemFilter()
         {
-            switch (SelectedItemFilter.Content.ToString())
+            switch (SelectedItemFilter.Tag.ToString())
             {
                 case "Toàn bộ":
                     {
@@ -469,7 +460,7 @@ namespace CinemaManagementProject.ViewModel.AdminVM.Import_ExportManagementVM
         }
         public async Task CheckImportItemFilter()
         {
-            switch (SelectedImportItemFilter.Content.ToString())
+            switch (SelectedImportItemFilter.Tag.ToString())
             {
                 case "Toàn bộ":
                     {
