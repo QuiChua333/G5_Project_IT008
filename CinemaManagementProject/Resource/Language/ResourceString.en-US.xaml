@@ -1,6 +1,7 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:system="clr-namespace:System;assembly=mscorlib">
+<!--AdminWindow-->
     <system:String x:Key="admin_sideBar_TongQuan">Statictics</system:String>
     <system:String x:Key="admin_sideBar_DanhGia">Review</system:String>
 
@@ -17,7 +18,116 @@
 
     <system:String x:Key="admin_sideBar_GiupDo">Help</system:String>
     <system:String x:Key="admin_sideBar_DangXuat">Log out</system:String>
+<!--**-->    
     
-    
-    
+<!--Qui-->
+    <system:String x:Key="VoucherManagementPage_Search">Search</system:String>
+    <system:String x:Key="VoucherManagementPage_Button_Add">Add</system:String>
+    <system:String x:Key="VoucherManagementPage_Button_Save">Save</system:String>
+    <system:String x:Key="VoucherManagementPage_Label_Result">Result:</system:String>
+    <system:String x:Key="VoucherManagementPage_ListViewHeader0">Release Code</system:String>
+    <system:String x:Key="VoucherManagementPage_ListViewHeader1">Release Name</system:String>
+    <system:String x:Key="VoucherManagementPage_ListViewHeader2">Start Date</system:String>
+    <system:String x:Key="VoucherManagementPage_ListViewHeader3">Finish Date</system:String>
+    <system:String x:Key="VoucherManagementPage_ListViewHeader4">Quantity</system:String>
+    <system:String x:Key="VoucherManagementPage_ListViewHeader5">Price</system:String>
+    <system:String x:Key="AddInfoPage_Label_ReleaseCode">Release Code:</system:String>
+    <system:String x:Key="AddInfoPage_Label_ReleaseName">Release Name:</system:String>
+    <system:String x:Key="AddInfoPage_Label_Price">Price:</system:String>
+    <system:String x:Key="AddInfoPage_Label_Status">Status:</system:String>
+    <system:String x:Key="AddInfoPage_Label_ApplicableTime">ApplicableTime:</system:String>
+    <system:String x:Key="AddInfoPage_Label_ObjectType">ObjectType:</system:String>
+    <system:String x:Key="AddInfoPage_MinimumTotalPrice">MinimumTotalPrice:</system:String>
+    <system:String x:Key="AddInfoPage_RadioButton_Active">Active</system:String>
+    <system:String x:Key="AddInfoPage_RadioButton_NotApply">No Apply</system:String>
+    <system:String x:Key="AddInfoPage_CBB0">All</system:String>
+    <system:String x:Key="AddInfoPage_CBB1">Film Ticket</system:String>
+    <system:String x:Key="AddInfoPage_CBB2">Corn - Drinks</system:String>
+    <system:String x:Key="AddInfoPage_CheckboxLabel">Apply multiple vouchers to one bill</system:String>
+    <system:String x:Key="EditInfoPage_Label_TheRemainingAmount">TheRemainingAmount:</system:String>
+    <system:String x:Key="AddWindow_Title">ADD VOUCHER RELEASE</system:String>
+    <system:String x:Key="AddWindow_ButtonLabel_Info">INFORMATION</system:String>
+    <system:String x:Key="AddWindow_ButtonLabel_ListVouchers">LIST VOUCHERS</system:String>
+    <system:String x:Key="EditWindow_Title">RELEASE INFORMATION</system:String>
+    <system:String x:Key="AddVoucherPage_TextBlock_Function">Function</system:String>
+    <system:String x:Key="AddVoucherPage_TextBlock_DeleteVoucher">Delete Voucher</system:String>
+    <system:String x:Key="AddVoucherPage_TextBlock_AddVoucher">Add Voucher</system:String>
+    <system:String x:Key="AddVoucherPage_TextBlock_AddListVouchers">Add List Vouchers</system:String>
+    <system:String x:Key="AddVoucherPage_Label_Choosing">Choosing:</system:String>
+    <system:String x:Key="AddVoucherPage_CBB0">All</system:String>
+    <system:String x:Key="AddVoucherPage_CBB1">Not released yet</system:String>
+    <system:String x:Key="AddVoucherPage_CBB2">Published</system:String>
+    <system:String x:Key="AddVoucherPage_CBB3">Used</system:String>
+    <system:String x:Key="AddVoucherPage_ListViewHeader0">Voucher Code</system:String>
+    <system:String x:Key="AddVoucherPage_ListViewHeader1">Customer</system:String>
+    <system:String x:Key="AddVoucherPage_ListViewHeader2">Release Date</system:String>
+    <system:String x:Key="AddVoucherPage_ListViewHeader3">Use Date</system:String>
+    <system:String x:Key="AddVoucherPage_ListViewHeader4">Status</system:String>
+    <system:String x:Key="AddVoucherPageActive_TextBlock_Tools">Tools</system:String>
+    <system:String x:Key="AddVoucherPageActive_TextBlock_ExportExcelFile">Export Excel file</system:String>
+    <system:String x:Key="AddVoucherPageActive_TextBlock_ReleasedViaEmail">Released via Email</system:String>
+    <system:String x:Key="AddListVouchers_Title_AddListVouchers">Add List Vouchers</system:String>
+    <system:String x:Key="AddListVouchers_Label_NumberOfVouchers">Number Of Vouchers:</system:String>
+    <system:String x:Key="AddListVouchers_Label_LengthOfCode">Length Of Code:</system:String>
+    <system:String x:Key="AddListVouchers_Label_StartingCharacter">Starting Character:</system:String>
+    <system:String x:Key="AddListVouchers_Label_EndingCharacter">Ending Character:</system:String>
+    <system:String x:Key="AddVoucher_Title_AddVoucher">ADD VOUCHER</system:String>
+    <system:String x:Key="AddVoucher_Label_AddNew">Add new</system:String>
+    <system:String x:Key="ListEmail_Title">LIST EMAILS</system:String>
+    <system:String x:Key="ReleaseVoucher_Title">RELEASE VOUCHER</system:String>
+    <system:String x:Key="ReleaseVoucher_Label_Object">Object:</system:String>
+    <system:String x:Key="ReleaseVoucher_CBB0">Top 5 customers in the month</system:String>
+    <system:String x:Key="ReleaseVoucher_CBB1">New customer in the month</system:String>
+    <system:String x:Key="ReleaseVoucher_CBB2">Common</system:String>
+    <system:String x:Key="ReleaseVoucher_Label_ReleaseDate">Release Date:</system:String>
+    <system:String x:Key="ReleaseVoucher_Label_VouchersPerCustomer">Number of vouchers per customer:</system:String>
+    <system:String x:Key="ReleaseVoucher_Label_ListEmails">List Emails:</system:String>
+    <system:String x:Key="ReleaseVoucher_Label_NumberOfEmails">Number of Emails:</system:String>
+    <system:String x:Key="ReleaseVoucher_Label_ShowEmail">Show</system:String>
+    <system:String x:Key="ReleaseVoucher_Label_ListOfSelectedVouchers">List of selected vouchers</system:String>
+    <system:String x:Key="ReleaseVoucher_Label_Number">Quantity:</system:String>
+    <system:String x:Key="ReleaseVoucher_Button_Accept">Accept</system:String>
+    <system:String x:Key="TicketBookingPage_Label_NumberOfSeats">Number of seats:</system:String>
+    <system:String x:Key="TicketBookingPage_Label_Showtime">Showtime:</system:String>
+    <system:String x:Key="TicketBookingPage_Label_Screen">SCREEN</system:String>
+    <system:String x:Key="TicketBookingPage_Label_Choosing">Choosing:</system:String>
+    <system:String x:Key="TicketBookingPage_Label_Booked">Booked:</system:String>
+    <system:String x:Key="TicketBookingPage_Label_Ready">Ready:</system:String>
+    <system:String x:Key="TicketBookingPage_Label_Price">Price:</system:String>
+    <system:String x:Key="TicketBookingPage_Label_Seats">Seats:</system:String>
+    <system:String x:Key="TicketBookingPage_Label_TotalPrice">Total price:</system:String>
+    <system:String x:Key="TicketBookingPage_Button_Continue">Continue</system:String>
+    <system:String x:Key="AddShowtimeWindow_Title">ADD SHOWTIME</system:String>
+    <system:String x:Key="AddShowtimeWindow_Label_FilmName">Film name:</system:String>
+    <system:String x:Key="AddShowtimeWindow_Label_ShowDate">Show date:</system:String>
+    <system:String x:Key="AddShowtimeWindow_Label_Showtime">Showtime:</system:String>
+    <system:String x:Key="AddShowtimeWindow_Label_Room">Room:</system:String>
+    <system:String x:Key="AddShowtimeWindow_Label_Price">Price:</system:String>
+    <system:String x:Key="AddShowtimeWindow_Label_Description">Description</system:String>
+    <system:String x:Key="AddShowtimeWindow_Label_Time">Time:</system:String>
+    <system:String x:Key="AddShowtimeWindow_Button_Save">Save</system:String>
+    <system:String x:Key="ShowtimeManagementPage_Button_Add">Add</system:String>
+    <system:String x:Key="ShowtimeManagementPage_TextBlock_Room">Room</system:String>
+    <system:String x:Key="ShowtimeManagementPage_RadioButton_All">All</system:String>
+    <system:String x:Key="ShowtimeManagementPage_RadioButton_Room1">Room 1</system:String>
+    <system:String x:Key="ShowtimeManagementPage_RadioButton_Room2">Room 2</system:String>
+    <system:String x:Key="ShowtimeManagementPage_RadioButton_Room3">Room 3</system:String>
+    <system:String x:Key="ShowtimeManagementPage_RadioButton_Room4">Room 4</system:String>
+    <system:String x:Key="ShowtimeManagementPage_RadioButton_Room5">Room 5</system:String>
+    <system:String x:Key="ShowtimeManagementPage_ListViewHeader0">Film name</system:String>
+    <system:String x:Key="ShowtimeManagementPage_ListViewHeader1">Film type</system:String>
+    <system:String x:Key="ShowtimeManagementPage_ListViewHeader2">Duration</system:String>
+    <system:String x:Key="ShowtimeManagementPage_ListViewHeader3">Time</system:String>
+    <system:String x:Key="InforEditShowtimeWindow_Label_CTSC1">SHOWTIME</system:String>
+    <system:String x:Key="InforEditShowtimeWindow_Label_CTSC2">DETAILS</system:String>
+    <system:String x:Key="InforEditShowtimeWindow_Label_DSG1">LIST</system:String>
+    <system:String x:Key="InforEditShowtimeWindow_Label_DSG2">OF</system:String>
+    <system:String x:Key="InforEditShowtimeWindow_Label_DSG3">SEATS</system:String>
+    <system:String x:Key="InforEditShowtimeWindow_Label_Showtimes">Showtimes:</system:String>
+    <system:String x:Key="InforEditShowtimeWindow_Button_Delete">Delete</system:String>
+    <system:String x:Key="InforEditShowtimeWindow_Button_Exit">Exit</system:String>
+    <system:String x:Key="InforEditShowtimeWindow_Label_Total">Total:</system:String>
+<!--***-->
+
+
 </ResourceDictionary>
