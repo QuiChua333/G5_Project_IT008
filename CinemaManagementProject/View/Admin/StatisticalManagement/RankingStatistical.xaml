@@ -246,7 +246,7 @@
                                              Grid.Row="3"
                                              UniformCornerRadius="10">
                             <ScrollViewer VerticalScrollBarVisibility="Hidden" HorizontalScrollBarVisibility="Hidden">
-                                <ListView ItemsSource="{Binding Top5Customer}" d:ItemsSource="{d:SampleData ItemCount=5}" VerticalAlignment="Center">
+                                <ListView ItemsSource="{Binding Top5Customer}" d:ItemsSource="{d:SampleData ItemCount=5}">
 
                                     <ListView.ItemContainerStyle>
                                         <Style TargetType="ListViewItem" BasedOn="{StaticResource MaterialDesignGridViewItem}">
