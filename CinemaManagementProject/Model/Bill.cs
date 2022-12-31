@@ -21,7 +21,6 @@ namespace CinemaManagementProject.Model
             this.Tickets = new HashSet<Ticket>();
         }
     
-        public int Id { get; set; }
         public string BillCode { get; set; }
         public Nullable<int> CustomerId { get; set; }
         public Nullable<int> StaffId { get; set; }

@@ -12,6 +12,14 @@ using CinemaManagementProject.Views;
 using System.Windows;
 using System.Windows.Navigation;
 using System.Windows.Controls;
+using System.Windows.Shapes;
+using System.Windows.Media;
+using MaterialDesignThemes.Wpf;
+using CinemaManagementProject.View.Admin;
+using System.Windows.Media.Imaging;
+using System.IO;
+using System.Windows.Markup;
+using System.Security.RightsManagement;
 
 namespace CinemaManagementProject.ViewModel.AdminVM
 {
@@ -63,6 +71,19 @@ namespace CinemaManagementProject.ViewModel.AdminVM
                 OnPropertyChanged();
             }
         }
+        private Brush _mainColor { get; set; }
+        public Brush MainColor 
+        {
+            get { return _mainColor; }
+            set { _mainColor = value; OnPropertyChanged(); }
+        }
+        private ImageSource _avatarSource { get; set; }
+        public ImageSource AvatarSource
+        {
+            get { return _avatarSource; }
+            set { _avatarSource = value; OnPropertyChanged(); }
+        }
+        public ICommand FirstLoadCM { get; set; }
         public ICommand VoucherCommand { get; set; }
         public ICommand ShowTimeViewCommand { get; set; }
         public ICommand CustomerViewCommand { get; set; }
@@ -72,6 +93,7 @@ namespace CinemaManagementProject.ViewModel.AdminVM
         public ICommand FoodCommand { get; set; }
         public ICommand TroubleCommand { get; set; }
         public ICommand StatisticalViewCommand { get; set; }
+        public ICommand SettingCommand { get; set; }
         public ICommand LogOutCommand { get; set; }
         public ICommand OpenAvatarPopupCommand { get; set; }
         public ICommand CloseAvatarPopupCommand { get; set; }
@@ -85,22 +107,11 @@ namespace CinemaManagementProject.ViewModel.AdminVM
         private void Film(object obj) => CurrentView = new MovieManagementVM.MovieManagementVM();
         public void Statistical(object obj) => CurrentView = new StatisticalManagementVM.StatisticalManagementVM();
         private void Trouble(object obj) => CurrentView = new TroubleManagementVM.TroubleManagementViewModel();
-
+        private void Setting(object obj) => CurrentView = new SettingVM.SettingVM();
 
 
         public AdminVM()
         {
-            if(currentStaff != null)
-            {
-                FormatStaffDisplayNameToIcon();
-                SetInfomationToView();
-            } 
-            else
-            {
-                StaffNameIcon = "Ad";
-                StaffName = "Admin";
-                StaffEmail = "admin@gmail.com";
-            }    
             VoucherCommand = new RelayCommand(Voucher);
             ShowTimeViewCommand = new RelayCommand(ShowTime);
             CustomerViewCommand = new RelayCommand(Customer);
@@ -111,14 +122,16 @@ namespace CinemaManagementProject.ViewModel.AdminVM
             _currentView = new VoucherManagementVM.VoucherViewModel();
             StatisticalViewCommand = new RelayCommand(Statistical);
             TroubleCommand = new RelayCommand(Trouble);
+            SettingCommand = new RelayCommand(Setting);
             LogOutCommand = new RelayCommand<Window>((p) => { return true; }, (p) =>
             {
-                if (CustomMessageBox.ShowOkCancel("Bạn thật sự muốn đăng xuất không?", "Cảnh báo", "Đăng xuất", "Không", Views.CustomMessageBoxImage.Information) == CustomMessageBoxResult.OK)
+                if (CustomMessageBox.ShowOkCancel("Bạn thật sự muốn đăng xuất không?", "Cảnh báo", "Đăng xuất", "Không", Views.CustomMessageBoxImage.Warning) == CustomMessageBoxResult.OK)
                 {
                     if (p != null)
                     {
                         LoginWindow loginwd = new LoginWindow();
                         loginwd.Show();
+                        RenewData();
                         p.Close();
                     }
                 }
@@ -131,12 +144,55 @@ namespace CinemaManagementProject.ViewModel.AdminVM
             {
                 p.Visibility = Visibility.Hidden;
             });
-            SwitchToSettingTab = new RelayCommand<object>((p) => { return true; }, (p) =>
+            SwitchToSettingTab = new RelayCommand<RadioButton>((p) => { return true; }, (p) =>
             {
-                CustomMessageBox.ShowOk("Please add view and logic in setting tab!!!", ":)))))", "Ok");
+                p.IsChecked = true;
+                CurrentView = new SettingVM.SettingVM();
+            });
+            FirstLoadCM = new RelayCommand<object>((p) => { return true; }, (p) =>
+            {
+                MainColor = (SolidColorBrush)new BrushConverter().ConvertFrom(Properties.Settings.Default.MainAppColor);
+                if (currentStaff.Avatar != null)
+                    AvatarSource = LoadAvatarImage(currentStaff.Avatar);
+                else
+                    AvatarSource = null;
+                StaffName = currentStaff.StaffName;
+                StaffEmail = currentStaff.Email;
+                if (currentStaff != null)
+                {
+                    FormatStaffDisplayNameToIcon();
+                    SetInfomationToView();
+                }
+                else
+                {
+                    StaffNameIcon = "Ad";
+                    StaffName = "Admin";
+                    StaffEmail = "admin@gmail.com";
+                }
+                CurrentView = new StatisticalManagementVM.StatisticalManagementVM();
             });
         }
-
+        public BitmapImage LoadAvatarImage(byte[]data)
+        {
+            MemoryStream strm = new MemoryStream();
+            strm.Write(data, 0, data.Length);
+            strm.Position = 0;
+            System.Drawing.Image img = System.Drawing.Image.FromStream(strm);
+            BitmapImage bi = new BitmapImage();
+            bi.BeginInit();
+            MemoryStream ms = new MemoryStream();
+            img.Save(ms, System.Drawing.Imaging.ImageFormat.Bmp);
+            ms.Seek(0, SeekOrigin.Begin);
+            bi.StreamSource = ms;
+            bi.EndInit();
+            return bi;
+        }
+        public System.Drawing.Image byteArrayToImage(byte[] byteArrayIn)
+        {
+            MemoryStream ms = new MemoryStream(byteArrayIn);
+            System.Drawing.Image returnImage = System.Drawing.Image.FromStream(ms);
+            return returnImage;
+        }
         public void FormatStaffDisplayNameToIcon()
         {
             string staffName = currentStaff.StaffName;
@@ -147,6 +203,13 @@ namespace CinemaManagementProject.ViewModel.AdminVM
         {
             StaffName = currentStaff.StaffName;
             StaffEmail = currentStaff.Email;
+        }
+        public void RenewData()
+        {
+            currentStaff = null;
+            StaffEmail = "";
+            StaffName = "";
+            AvatarSource = null;
         }
     }
 }

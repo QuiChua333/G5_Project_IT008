@@ -12,14 +12,18 @@ using System.Windows.Media.Imaging;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media.Imaging;
-using CinemaManagementProject.View.Staff.OrderFoodManagement;
+using CinemaManagementProject.ViewModel.StaffVM.OrderFoodManagementVM;
 using CinemaManagementProject.DTOs;
 using CinemaManagementProject.ViewModel.StaffVM.TicketBillVM;
+using CinemaManagementProject.View.Staff.OrderFoodManagement;
+using System.Windows.Navigation;
+using System.Collections.ObjectModel;
 
 namespace CinemaManagementProject.ViewModel.StaffVM.TicketVM
 {
     public partial class TicketWindowViewModel : BaseViewModel
     {
+        public static ObservableCollection<ProductDTO> mainListOrder; 
         public ICommand CloseTicketWindowCM { get; set; }
         public ICommand MinimizeTicketWindowCM { get; set; }
         public ICommand MouseMoveWindowCM { get; set; }
@@ -34,7 +38,6 @@ namespace CinemaManagementProject.ViewModel.StaffVM.TicketVM
                 CaculateTime();
                 Output_ToString();
                 ReCalculate();
-                
                 seatQuantity = ListSeat.Count.ToString();
             });
             CloseTicketWindowCM = new RelayCommand<FrameworkElement>((p) => { return p == null ? false : true; }, (p) =>
@@ -131,10 +134,10 @@ namespace CinemaManagementProject.ViewModel.StaffVM.TicketVM
 
                     return;
                 }
-                //if (OrderFoodPageViewModel.ListOrder != null)
-                //{
-                //    OrderFoodPageViewModel.ListOrder.Clear();
-                //}
+                if (OrderFoodManagementVM.OrderFoodManagementVM.ListOrder!= null)
+                {
+                    OrderFoodManagementVM.OrderFoodManagementVM.ListOrder.Clear();
+                }
                 TicketWindow tk = Application.Current.Windows.OfType<TicketWindow>().FirstOrDefault();
                 tk.TicketBookingFrame.Content = new OrderFoodPage();
             });

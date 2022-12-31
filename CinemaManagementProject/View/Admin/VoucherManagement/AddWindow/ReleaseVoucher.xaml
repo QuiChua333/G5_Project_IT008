@@ -6,14 +6,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CinemaManagementProject.View.Admin.VoucherManagement.AddWindow"
         mc:Ignorable="d"
-        Title="ReleaseVoucher" Height="450" Width="840" WindowStyle="None"
+        Title="ReleaseVoucher"  WindowStyle="None"
         Background="Transparent"
         WindowStartupLocation="CenterScreen"
         AllowsTransparency="True" 
         xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
         DataContext="{StaticResource VoucherVM}" MouseLeftButtonDown="Window_MouseLeftButtonDown"
         >
-    <Border CornerRadius="15" Background="#F5F5F5" BorderBrush="Gray" BorderThickness="0.3">
+    <Border CornerRadius="15" Background="#F5F5F5" BorderBrush="Gray" BorderThickness="0.3" Height="450" Width="840">
         <Border.Effect>
             <DropShadowEffect BlurRadius="10" Direction="270" Color="Black" ShadowDepth="4" Opacity="0.25"/>
         </Border.Effect>
@@ -61,7 +61,7 @@
                         <Border  BorderBrush="#67C6E6" BorderThickness="0,0,0,3">
                         </Border>
                         <Label Padding="0" 
-                           Content="PHÁT HÀNH VOUCHER" 
+                           Content="{DynamicResource ReleaseVoucher_Title}" 
                            FontSize="22" 
                            FontWeight="Bold" 
                            VerticalAlignment="Center" 
@@ -104,7 +104,7 @@
                                                 <ColumnDefinition Width="60*"/>
                                             </Grid.ColumnDefinitions>
                                             <Label Grid.Column="0"
-                                                   Content="Đối tượng:" 
+                                                   Content="{DynamicResource ReleaseVoucher_Label_Object}" 
                                                    FontWeight="Bold" 
                                                    FontFamily="{DynamicResource MaterialDesignFont}" 
                                                    VerticalAlignment="Center" 
@@ -128,9 +128,9 @@
                                                         <i:InvokeCommandAction Command="{Binding RefreshEmailListCM}" />
                                                     </i:EventTrigger>
                                                 </i:Interaction.Triggers>
-                                                <ComboBoxItem Tag="TOP_5_CUSTOMER" Content="Top 5 khách hàng trong tháng"/>
-                                                <ComboBoxItem Tag="NEW_CUSTOMER" Content="Khách hàng mới trong tháng"/>
-                                                <ComboBoxItem  Tag="COMMON" Content="Khác"/>
+                                                <ComboBoxItem Tag="TOP_5_CUSTOMER" Content="{DynamicResource ReleaseVoucher_CBB0}"/>
+                                                <ComboBoxItem Tag="NEW_CUSTOMER" Content="{DynamicResource ReleaseVoucher_CBB1}"/>
+                                                <ComboBoxItem  Tag="COMMON" Content="{DynamicResource ReleaseVoucher_CBB2}"/>
                                             </ComboBox>
                                         </Grid>
                                         <Grid Grid.Row="1">
@@ -139,7 +139,7 @@
                                                 <ColumnDefinition Width="60*"/>
                                             </Grid.ColumnDefinitions>
                                             <Label Grid.Column="0"
-                                                   Content="Ngày phát hành:" 
+                                                   Content="{DynamicResource ReleaseVoucher_Label_ReleaseDate}" 
                                                    FontWeight="Bold" 
                                                    FontFamily="{DynamicResource MaterialDesignFont}" 
                                                    VerticalAlignment="Center" 
@@ -163,7 +163,7 @@
                                                 <ColumnDefinition Width="60*"/>
                                             </Grid.ColumnDefinitions>
                                             <Label Grid.Column="0"
-                                                   Content="Số voucher/Khách:" 
+                                                   Content="{DynamicResource ReleaseVoucher_Label_VouchersPerCustomer}" 
                                                    FontWeight="Bold" 
                                                    FontFamily="{DynamicResource MaterialDesignFont}" 
                                                    VerticalAlignment="Center" 
@@ -201,7 +201,7 @@
                                                 <ColumnDefinition Width="60*"/>
                                             </Grid.ColumnDefinitions>
                                             <Label Grid.Column="0"
-                                                   Content="Danh sách Email:" 
+                                                   Content="{DynamicResource ReleaseVoucher_Label_ListEmails}" 
                                                    FontWeight="Bold" 
                                                    FontFamily="{DynamicResource MaterialDesignFont}" 
                                                    VerticalAlignment="Center" 
@@ -216,7 +216,7 @@
                                                     Width="80"
                                                     Command="{Binding ShowListEmailCM}">
                                                 <Grid>
-                                                    <Label Content="Xem"
+                                                    <Label Content="{DynamicResource ReleaseVoucher_Label_ShowEmail}"
                                                            FontSize="13"
                                                            
                                                            Foreground="WhiteSmoke"
@@ -236,7 +236,7 @@
                                                 <ColumnDefinition Width="60*"/>
                                             </Grid.ColumnDefinitions>
                                             <Label Grid.Column="0"
-                                                   Content="Tổng số Email:" 
+                                                   Content="{DynamicResource ReleaseVoucher_Label_NumberOfEmails}" 
                                                    FontWeight="Bold" 
                                                    FontFamily="{DynamicResource MaterialDesignFont}" 
                                                    VerticalAlignment="Center" 
@@ -272,7 +272,7 @@
                                             <RowDefinition Height="35"/>
                                         </Grid.RowDefinitions>
                                         <Label Grid.Row="0"
-                                                   Content="Danh sách voucher đã chọn" 
+                                                   Content="{DynamicResource ReleaseVoucher_Label_ListOfSelectedVouchers}" 
                                                    Foreground="#000000"
                                                    FontWeight="Medium"
                                                    FontFamily="{DynamicResource MaterialDesignFont}" 
@@ -320,7 +320,7 @@
 
                                         </Grid>
                                         <Grid Grid.Row="2">
-                                            <Label Content="Số lượng:"
+                                            <Label Content="{DynamicResource ReleaseVoucher_Label_Number}"
                                                    FontSize="14"
                                                    FontWeight="Regular"
                                                    Foreground="#000000"
@@ -348,7 +348,7 @@
                 <Button HorizontalAlignment="Right"
                         VerticalAlignment="Center"
                         Style="{StaticResource CustomButton}"
-                        Content="Xác nhận"
+                        Content="{DynamicResource ReleaseVoucher_Button_Accept}"
                         FontSize="12"
                         Background="{StaticResource ColorButtonBlue}"
                         Margin="0,0,40,0"

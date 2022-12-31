@@ -25,5 +25,12 @@ namespace CinemaManagementProject.View.Login
             InitializeComponent();
         }
 
+        private void LoginPg_Loaded(object sender, RoutedEventArgs e)
+        {
+            if (Properties.Settings.Default.isRemidUserAndPass)
+            {
+                PasswordBoxUser.Password = Properties.Settings.Default.userPassSetting;
+            }
+        }
     }
 }

@@ -45,9 +45,9 @@
             </Grid.RowDefinitions>
             <Grid Grid.Row="0">
                 <Search:Search  HorizontalAlignment="Left"
-                                Width="220"                                         
-                                Height="40"
-                                Corner="10"
+                                Width="330"                                         
+                                Height="50"
+                                Corner="15"
                                 FontSize="14"
                                 FontWeight="Medium"
                                 FontFamily="{DynamicResource MaterialDesignFont}"
@@ -59,19 +59,21 @@
                         Width="100"
                         Height="40"
                         HorizontalAlignment="Left"
-                        Margin="250,0,0,0"
+                        Margin="360,0,0,0"
                         Command="{Binding LoadAddWindowCM}">
                     <Grid>
-                        <TextBlock Text="Thêm"
+                        <materialDesign:PackIcon Kind="PlusCircleOutline"
+                                                 VerticalAlignment="Center"
+                                                 Width="20"
+                                                 Margin="-1,0,0,0"
+                                                 Height="20"/>
+                        <TextBlock Text="{DynamicResource VoucherManagementPage_Button_Add}"
                                    FontFamily="{DynamicResource MaterialDesignFont}"
                                    FontWeight="Medium"
                                    FontSize="16"
+                                   Margin="25,0,0,0"
                                    />
-                        <materialDesign:PackIcon Kind="PlusCircleOutline"
-                                                 VerticalAlignment="Center"
-                                                 Margin="45,0,0,0"
-                                                 Width="20"
-                                                 Height="20"/>
+                        
                     </Grid>
                 </Button>
             </Grid>
@@ -104,10 +106,10 @@
                                     </Style>
                                 </ListView.ItemContainerStyle>
                                 <ListView.View>
-                                    <GridView >
+                                    <GridView>
                                         <GridViewColumn Width="160">
                                             <GridViewColumn.Header>
-                                                <TextBlock Text="Mã phát hành" FontSize="14" FontWeight="SemiBold" Foreground="Black"/>
+                                                <TextBlock Text="{DynamicResource VoucherManagementPage_ListViewHeader0}" FontSize="14" FontWeight="Medium" Foreground="Black"/>
                                             </GridViewColumn.Header>
                                             <GridViewColumn.CellTemplate >
                                                 <DataTemplate>
@@ -118,9 +120,9 @@
                                                 </DataTemplate>
                                             </GridViewColumn.CellTemplate>
                                         </GridViewColumn>
-                                        <GridViewColumn Width="220" >
+                                        <GridViewColumn Width="280" >
                                             <GridViewColumn.Header>
-                                                <TextBlock Text="Tên đợt phát hành" FontSize="14" FontWeight="SemiBold" Foreground="Black"/>
+                                                <TextBlock Text="{DynamicResource VoucherManagementPage_ListViewHeader1}" FontSize="14" FontWeight="Medium" Foreground="Black"/>
                                             </GridViewColumn.Header>
                                             <GridViewColumn.CellTemplate>
                                                 <DataTemplate>
@@ -131,9 +133,9 @@
                                                 </DataTemplate>
                                             </GridViewColumn.CellTemplate>
                                         </GridViewColumn>
-                                        <GridViewColumn Width="130">
+                                        <GridViewColumn Width="150">
                                             <GridViewColumn.Header>
-                                                <TextBlock Text="Từ ngày" FontSize="14" FontWeight="SemiBold" Foreground="Black"/>
+                                                <TextBlock Text="{DynamicResource VoucherManagementPage_ListViewHeader2}" FontSize="14" FontWeight="Medium" Foreground="Black"/>
                                             </GridViewColumn.Header>
                                             <GridViewColumn.CellTemplate>
                                                 <DataTemplate>
@@ -144,9 +146,9 @@
                                                 </DataTemplate>
                                             </GridViewColumn.CellTemplate>
                                         </GridViewColumn>
-                                        <GridViewColumn Width="130">
+                                        <GridViewColumn Width="150">
                                             <GridViewColumn.Header>
-                                                <TextBlock Text="Đến ngày" FontSize="14" FontWeight="SemiBold" Foreground="Black"/>
+                                                <TextBlock Text="{DynamicResource VoucherManagementPage_ListViewHeader3}" FontSize="14" FontWeight="Medium" Foreground="Black"/>
                                             </GridViewColumn.Header>
                                             <GridViewColumn.CellTemplate>
                                                 <DataTemplate>
@@ -159,7 +161,7 @@
                                         </GridViewColumn>
                                         <GridViewColumn Width="120" >
                                             <GridViewColumn.Header>
-                                                <TextBlock Text="Số lượng" FontSize="14" FontWeight="SemiBold" Foreground="Black"/>
+                                                <TextBlock Text="{DynamicResource VoucherManagementPage_ListViewHeader4}" FontSize="14" FontWeight="Medium" Foreground="Black"/>
                                             </GridViewColumn.Header>
                                             <GridViewColumn.CellTemplate>
                                                 <DataTemplate>
@@ -170,9 +172,9 @@
                                                 </DataTemplate>
                                             </GridViewColumn.CellTemplate>
                                         </GridViewColumn>
-                                        <GridViewColumn Width="150">
+                                        <GridViewColumn Width="160">
                                             <GridViewColumn.Header>
-                                                <TextBlock Text="Mệnh giá" FontSize="14" FontWeight="SemiBold" Foreground="Black"/>
+                                                <TextBlock Text="{DynamicResource VoucherManagementPage_ListViewHeader5}" FontSize="14" FontWeight="Medium" Foreground="Black"/>
                                             </GridViewColumn.Header>
                                             <GridViewColumn.CellTemplate>
                                                 <DataTemplate>
@@ -256,7 +258,7 @@
                     </materialDesign:Card>
 
                 </Border>
-                <Label Content="Kết quả:"
+                <Label Content="{DynamicResource VoucherManagementPage_Label_Result}"
                        FontSize="14"   
                        FontFamily="{DynamicResource MaterialDesignFont}"
                        FontWeight="Medium"

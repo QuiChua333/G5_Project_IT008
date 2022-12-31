@@ -39,7 +39,6 @@ namespace CinemaManagementProject.View.Login
                 Error.Content = "Chưa chính xác";
                 Error.Foreground = new SolidColorBrush(Colors.Red);
             }    
-
         }
     }
 }

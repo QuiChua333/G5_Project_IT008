@@ -7,10 +7,9 @@
       <Schema Namespace="CinemaManagementProjectModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Bill">
           <Key>
-            <PropertyRef Name="Id" />
+            <PropertyRef Name="BillCode" />
           </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="BillCode" Type="varchar(max)" />
+          <Property Name="BillCode" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="CustomerId" Type="int" />
           <Property Name="StaffId" Type="int" />
           <Property Name="CreateDate" Type="datetime" />
@@ -59,13 +58,12 @@
         <EntityType Name="ProductBillInfo">
           <Key>
             <PropertyRef Name="ProductId" />
-            <PropertyRef Name="BillId" />
+            <PropertyRef Name="BillCode" />
           </Key>
           <Property Name="ProductId" Type="int" Nullable="false" />
-          <Property Name="BillId" Type="int" Nullable="false" />
+          <Property Name="BillCode" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="Quantity" Type="int" />
           <Property Name="PrizePerProduct" Type="int" />
-          <Property Name="BillCode" Type="varchar(max)" />
         </EntityType>
         <EntityType Name="ProductReceipt">
           <Key>
@@ -145,17 +143,17 @@
           <Property Name="UserName" Type="varchar(max)" />
           <Property Name="UserPass" Type="varchar(max)" />
           <Property Name="IsDeleted" Type="bit" />
+          <Property Name="Avatar" Type="varbinary(max)" />
         </EntityType>
         <EntityType Name="Ticket">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="BillId" Type="int" />
+          <Property Name="BillCode" Type="varchar" MaxLength="100" />
           <Property Name="ShowTimeId" Type="int" />
           <Property Name="SeatId" Type="int" />
           <Property Name="Price" Type="real" />
-          <Property Name="BillCode" Type="varchar(max)" />
         </EntityType>
         <EntityType Name="Trouble">
           <Key>
@@ -232,10 +230,10 @@
           <End Role="ProductBillInfo" Type="Self.ProductBillInfo" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Bill">
-              <PropertyRef Name="Id" />
+              <PropertyRef Name="BillCode" />
             </Principal>
             <Dependent Role="ProductBillInfo">
-              <PropertyRef Name="BillId" />
+              <PropertyRef Name="BillCode" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -366,10 +364,10 @@
           <End Role="Ticket" Type="Self.Ticket" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Bill">
-              <PropertyRef Name="Id" />
+              <PropertyRef Name="BillCode" />
             </Principal>
             <Dependent Role="Ticket">
-              <PropertyRef Name="BillId" />
+              <PropertyRef Name="BillCode" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -535,10 +533,9 @@
       <Schema Namespace="CinemaManagementProjectModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="Bill">
           <Key>
-            <PropertyRef Name="Id" />
+            <PropertyRef Name="BillCode" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="BillCode" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="BillCode" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="CustomerId" Type="Int32" />
           <Property Name="StaffId" Type="Int32" />
           <Property Name="CreateDate" Type="DateTime" Precision="3" />
@@ -597,13 +594,12 @@
         <EntityType Name="ProductBillInfo">
           <Key>
             <PropertyRef Name="ProductId" />
-            <PropertyRef Name="BillId" />
+            <PropertyRef Name="BillCode" />
           </Key>
           <Property Name="ProductId" Type="Int32" Nullable="false" />
-          <Property Name="BillId" Type="Int32" Nullable="false" />
+          <Property Name="BillCode" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Quantity" Type="Int32" />
           <Property Name="PrizePerProduct" Type="Int32" />
-          <Property Name="BillCode" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Bill" Relationship="Self.FK_BillInfo_Bill" FromRole="ProductBillInfo" ToRole="Bill" />
           <NavigationProperty Name="Product" Relationship="Self.FK_BillInfo_Product" FromRole="ProductBillInfo" ToRole="Product" />
         </EntityType>
@@ -701,6 +697,7 @@
           <Property Name="UserName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="UserPass" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="IsDeleted" Type="Boolean" />
+          <Property Name="Avatar" Type="Binary" MaxLength="Max" FixedLength="false" />
           <NavigationProperty Name="Bills" Relationship="Self.FK_Bill_Staff" FromRole="Staff" ToRole="Bill" />
           <NavigationProperty Name="ProductReceipts" Relationship="Self.FK_ProductReceive_Staff" FromRole="Staff" ToRole="ProductReceipt" />
           <NavigationProperty Name="Troubles" Relationship="Self.FK_Trouble_Staff" FromRole="Staff" ToRole="Trouble" />
@@ -710,11 +707,10 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="BillId" Type="Int32" />
+          <Property Name="BillCode" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="ShowTimeId" Type="Int32" />
           <Property Name="SeatId" Type="Int32" />
           <Property Name="Price" Type="Single" />
-          <Property Name="BillCode" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Bill" Relationship="Self.FK_Ticket_Bill" FromRole="Ticket" ToRole="Bill" />
           <NavigationProperty Name="Seat" Relationship="Self.FK_Ticket_Seat" FromRole="Ticket" ToRole="Seat" />
           <NavigationProperty Name="ShowTime" Relationship="Self.FK_Ticket_ShowTime" FromRole="Ticket" ToRole="ShowTime" />
@@ -798,10 +794,10 @@
           <End Role="ProductBillInfo" Type="Self.ProductBillInfo" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Bill">
-              <PropertyRef Name="Id" />
+              <PropertyRef Name="BillCode" />
             </Principal>
             <Dependent Role="ProductBillInfo">
-              <PropertyRef Name="BillId" />
+              <PropertyRef Name="BillCode" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -810,10 +806,10 @@
           <End Role="Ticket" Type="Self.Ticket" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Bill">
-              <PropertyRef Name="Id" />
+              <PropertyRef Name="BillCode" />
             </Principal>
             <Dependent Role="Ticket">
-              <PropertyRef Name="BillId" />
+              <PropertyRef Name="BillCode" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1103,7 +1099,6 @@
           <EntitySetMapping Name="Bills">
             <EntityTypeMapping TypeName="CinemaManagementProjectModel.Bill">
               <MappingFragment StoreEntitySet="Bill">
-                <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="BillCode" ColumnName="BillCode" />
                 <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
                 <ScalarProperty Name="StaffId" ColumnName="StaffId" />
@@ -1159,10 +1154,9 @@
             <EntityTypeMapping TypeName="CinemaManagementProjectModel.ProductBillInfo">
               <MappingFragment StoreEntitySet="ProductBillInfo">
                 <ScalarProperty Name="ProductId" ColumnName="ProductId" />
-                <ScalarProperty Name="BillId" ColumnName="BillId" />
+                <ScalarProperty Name="BillCode" ColumnName="BillCode" />
                 <ScalarProperty Name="Quantity" ColumnName="Quantity" />
                 <ScalarProperty Name="PrizePerProduct" ColumnName="PrizePerProduct" />
-                <ScalarProperty Name="BillCode" ColumnName="BillCode" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1249,6 +1243,7 @@
                 <ScalarProperty Name="UserName" ColumnName="UserName" />
                 <ScalarProperty Name="UserPass" ColumnName="UserPass" />
                 <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="Avatar" ColumnName="Avatar" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1256,11 +1251,10 @@
             <EntityTypeMapping TypeName="CinemaManagementProjectModel.Ticket">
               <MappingFragment StoreEntitySet="Ticket">
                 <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="BillId" ColumnName="BillId" />
+                <ScalarProperty Name="BillCode" ColumnName="BillCode" />
                 <ScalarProperty Name="ShowTimeId" ColumnName="ShowTimeId" />
                 <ScalarProperty Name="SeatId" ColumnName="SeatId" />
                 <ScalarProperty Name="Price" ColumnName="Price" />
-                <ScalarProperty Name="BillCode" ColumnName="BillCode" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

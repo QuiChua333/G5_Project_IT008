@@ -7,17 +7,17 @@
         xmlns:local="clr-namespace:CinemaManagementProject.View.Admin.VoucherManagement.AddWindow"
         xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
         mc:Ignorable="d"
-        Title="AddWindow" Height="600" Width="940" MinWidth="880" MinHeight="500"
+        Title="AddWindow"    
         WindowStyle="None"
+        Height="616" Width="942"
         Background="Transparent"
         WindowStartupLocation="CenterScreen"
-        ResizeMode="CanResizeWithGrip"
         AllowsTransparency="True"
         DataContext="{StaticResource VoucherVM}" MouseLeftButtonDown="Window_MouseLeftButtonDown">
 
-    <Border CornerRadius="15" Background="#F5F5F5" BorderBrush="Gray" BorderThickness="0.3">
+    <Border CornerRadius="20" Background="#F5F5F5" BorderBrush="Gray" BorderThickness="0.3" Height="600" Width="940">
         <Border.Effect>
-            <DropShadowEffect BlurRadius="10" Direction="270" Color="Black" ShadowDepth="2" Opacity="0.25"/>
+            <DropShadowEffect BlurRadius="10" Direction="270" Color="Black" ShadowDepth="4" Opacity="0.25"/>
         </Border.Effect>
 
         <Grid>
@@ -54,7 +54,7 @@
             <Grid Grid.Row="1">
                 <Label
                     Padding="0"
-                    Content="THÊM ĐỢT PHÁT HÀNH VOUCHER"
+                    Content="{DynamicResource AddWindow_Title}"
                     FontSize="25"
                     FontWeight="Bold"
                     VerticalAlignment="Center"
@@ -96,7 +96,7 @@
 
                         <Label
                             Padding="0"
-                            Content="Thông tin"
+                            Content="{DynamicResource AddWindow_ButtonLabelInfo}"
                             Foreground="#000000"
                             FontFamily="{DynamicResource MaterialDesignFont}"
                             FontWeight="Black"
@@ -121,7 +121,7 @@
 
                         <Label
                             Padding="0"
-                            Content="Danh sách voucher"
+                            Content="{DynamicResource AddWindow_ButtonLabel_ListVoucher}"
                             Foreground="#000000"
                             FontFamily="{DynamicResource MaterialDesignFont}"
                             FontWeight="Black"

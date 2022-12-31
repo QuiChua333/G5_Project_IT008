@@ -1,0 +1,23 @@
+﻿<Window x:Class="CinemaManagementProject.View.Admin.SettingManagement.ChooseColorWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CinemaManagementProject.View.Admin.SettingManagement"
+        mc:Ignorable="d"
+        Background="Transparent"
+        AllowsTransparency="True"
+        Name="ChooseColorWD"
+        WindowStyle="None">
+    <Grid>
+        <Grid HorizontalAlignment="Right">
+            <StackPanel Orientation="Horizontal">
+                <Rectangle Name="GreenRectangle" Cursor="Hand" Width="50" Height="50" Fill="LightGreen" Stroke="LightBlue" StrokeThickness="0.5" RadiusX="10" RadiusY="10" MouseMove="Rectangle_MouseMove" MouseLeave="GreenRectangle_MouseLeave">
+                </Rectangle>
+                <Rectangle Name="YellowRectangle" Cursor="Hand" Width="50" Height="50" Fill="LightYellow" Stroke="LightBlue" StrokeThickness="0.5" RadiusX="10" RadiusY="10" MouseMove="YellowRectangle_MouseMove" MouseLeave="YellowRectangle_MouseLeave"></Rectangle>
+                <Rectangle Name="PinkRectangle" Cursor="Hand" Width="50" Height="50" Fill="LightPink" Stroke="LightBlue" StrokeThickness="0.5" RadiusX="10" RadiusY="10" MouseLeave="PinkRectangle_MouseLeave" MouseMove="PinkRectangle_MouseMove"></Rectangle>
+                <Rectangle Name="BlueRectangle" Cursor="Hand" Width="50" Height="50" Fill="AliceBlue" Stroke="LightBlue" StrokeThickness="0.5" RadiusX="10" RadiusY="10" MouseMove="BlueRectangle_MouseMove" MouseLeave="BlueRectangle_MouseLeave"></Rectangle>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Window>

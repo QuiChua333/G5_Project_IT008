@@ -42,7 +42,7 @@
                             <ColumnDefinition Width="60*"/>
                         </Grid.ColumnDefinitions>
                         <Label Grid.Column="0"
-                                   Content="Mã phát hành:"
+                                   Content="{DynamicResource AddInfoPage_Label_ReleaseCode}"
                                    FontSize="16"
                                    FontWeight="Bold"
                                    Foreground="#000000"
@@ -62,7 +62,7 @@
                             <ColumnDefinition Width="60*"/>
                         </Grid.ColumnDefinitions>
                         <Label Grid.Column="0"
-                                   Content="Tên đợt phát hành:"
+                                   Content="{DynamicResource AddInfoPage_Label_ReleaseName}"
                                    FontSize="16"
                                    FontWeight="Bold"
                                    Foreground="#000000"
@@ -78,7 +78,7 @@
                                      FontWeight="Medium"
                                      FontFamily="{DynamicResource MaterialDesignFont}"
                                      Foreground="{StaticResource Gray1}"
-                                     Padding="20,0,0,0"
+                                     Padding="10,0,0,0"
                                      Text="{Binding VoucherReleaseName,Mode=OneWayToSource}"
                                      >
                         </TextBox>
@@ -90,12 +90,21 @@
                             <ColumnDefinition Width="60*"/>
                         </Grid.ColumnDefinitions>
                         <Label Grid.Column="0"
-                                   Content="Mệnh giá (VND):"
+                                   Content="{DynamicResource AddInfoPage_Label_Price}"
                                    FontSize="16"
                                    FontWeight="Bold"
                                    Foreground="#000000"
                                    FontFamily="{DynamicResource MaterialDesignFont}"
                                    VerticalContentAlignment="Center">
+                        </Label>
+                        <Label Grid.Column="0"
+                                   Content="(VND):"
+                                   FontSize="16"
+                                   FontWeight="Bold"
+                                   Foreground="#000000"
+                                   FontFamily="{DynamicResource MaterialDesignFont}"
+                                   VerticalContentAlignment="Center"
+                               Margin="70,0,0,0">
                         </Label>
                         <TextBox Grid.Column="1"
                                      Width="auto"
@@ -106,7 +115,7 @@
                                      FontWeight="Medium"
                                      FontFamily="{DynamicResource MaterialDesignFont}"
                                      Foreground="{StaticResource Gray1}"
-                                     Padding="20,0,0,0"
+                                     Padding="10,0,0,0"
                                      Text="{Binding Price,Mode=OneWayToSource}"
                                      PreviewTextInput="TextBox_PreviewTextInput" 
                                      TextChanged="TextBox_TextChanged">
@@ -120,7 +129,7 @@
                             <ColumnDefinition Width="60*"/>
                         </Grid.ColumnDefinitions>
                         <Label Grid.Column="0"
-                                   Content="Trạng thái:"
+                                   Content="{DynamicResource AddInfoPage_Label_Status}"
                                    FontSize="16"
                                    FontWeight="Bold"
                                    Foreground="#000000"
@@ -130,7 +139,7 @@
                         <RadioButton    
                                          Grid.Column="1"
                                          IsChecked="True"
-                                         Content="Kích hoạt"
+                                         Content="{DynamicResource AddInfoPage_RadioButton_Active}"
                                          FontSize="16"
                                          FontWeight="Bold"
                                          Foreground="#000000"
@@ -144,7 +153,7 @@
                         </RadioButton>
                         <RadioButton    
                                          Grid.Column="1"
-                                         Content="Chưa áp dụng"
+                                         Content="{DynamicResource AddInfoPage_RadioButton_NotApply}"
                                          FontSize="16"
                                          FontWeight="Bold"
                                          Foreground="#000000"
@@ -165,7 +174,7 @@
                             <ColumnDefinition Width="60*"/>
                         </Grid.ColumnDefinitions>
                         <Label Grid.Column="0"
-                                   Content="Hiệu lực từ:"
+                                   Content="{DynamicResource AddInfoPage_Label_ApplicableTime}"
                                    FontSize="16"
                                    FontWeight="Bold"
                                    Foreground="#000000"
@@ -180,7 +189,7 @@
                                         FontWeight="Medium"
                                         Foreground="{StaticResource Gray1}"
                                         BorderBrush="#67C6E6"
-                                        Padding="20,0,0,0"
+                                        Padding="10,0,0,0"
                                         Focusable="False"
                                         DisplayDateStart="{Binding GetCurrentDate}"
                                         SelectedDate="{Binding StartDate,Mode=Default}">
@@ -201,7 +210,7 @@
                                         FontWeight="Medium"
                                         Foreground="{StaticResource Gray1}"
                                         BorderBrush="#67C6E6"
-                                        Padding="20,0,0,0"
+                                        Padding="10,0,0,0"
                                         Focusable="False"
                                         SelectedDate="{Binding EndDate}"
                                         DisplayDateStart="{Binding StartDate}">
@@ -209,19 +218,12 @@
                     </Grid>
 
                     <Grid Grid.Row="5">
-                        <CheckBox HorizontalAlignment="Left" 
+                        <CheckBox     x:Name="chkBox"
+                                      HorizontalAlignment="Left" 
                                       VerticalAlignment="Center"
-                                      IsChecked="{Binding EnableMerge,Mode=OneWayToSource}">
+                                      IsChecked="{Binding EnableMerge,Mode=TwoWay}" 
+                                      Content="{DynamicResource AddInfoPage_CheckboxLabel}" FontSize="16" FontFamily="Montserrat Medium" FontWeight="Bold">
                         </CheckBox>
-
-                        <Label Content="Áp dụng gộp nhiều voucher cho một hóa đơn"
-                                   FontSize="16"
-                                   FontWeight="Bold"
-                                   Foreground="#000000"
-                                   FontFamily="{DynamicResource MaterialDesignFont}"
-                                   VerticalContentAlignment="Center"
-                                   Margin="30,0,0,0">
-                        </Label>
                     </Grid>
 
 
@@ -253,7 +255,7 @@
                             <ColumnDefinition Width="40*"/>
                         </Grid.ColumnDefinitions>
                         <Label Grid.Column="0"
-                                   Content="Nhóm hàng:"
+                                   Content="{DynamicResource AddInfoPage_Label_ObjectType}"
                                    FontSize="16"
                                    FontWeight="Bold"
                                    Foreground="#000000"
@@ -269,9 +271,9 @@
                                       Foreground="{StaticResource Gray1}"
                                       HorizontalContentAlignment="Center"
                                       SelectedItem="{Binding TypeObject}">
-                            <ComboBoxItem Content="Toàn bộ"/>
-                            <ComboBoxItem Content="Vé phim"/>
-                            <ComboBoxItem Content="Bắp - Nước"/>
+                            <ComboBoxItem Content="{DynamicResource AddInfoPage_CBB0}"/>
+                            <ComboBoxItem Content="{DynamicResource AddInfoPage_CBB1}"/>
+                            <ComboBoxItem Content="{DynamicResource AddInfoPage_CBB2}"/>
                         </ComboBox>
                     </Grid>
 
@@ -281,13 +283,23 @@
                             <ColumnDefinition Width="40*"/>
                         </Grid.ColumnDefinitions>
                         <Label Grid.Column="0"
-                                   Content="Tổng tối thiểu (VND):"
+                                   Content="{DynamicResource AddInfoPage_MinimumTotalPrice}"
                                    FontSize="16"
                                    FontWeight="Bold"
                                    Foreground="#000000"
                                    FontFamily="{DynamicResource MaterialDesignFont}"
                                    VerticalContentAlignment="Center">
                         </Label>
+                        <Label Grid.Column="0"
+                                   Content="(VND):"
+                                   FontSize="16"
+                                   FontWeight="Bold"
+                                   Foreground="#000000"
+                                   FontFamily="{DynamicResource MaterialDesignFont}"
+                                   VerticalContentAlignment="Center"
+                               Margin="110,0,0,0">
+                        </Label>
+                        
                         <TextBox Grid.Column="1"
                                      Width="auto"
                                      Height="25"
@@ -297,7 +309,7 @@
                                      FontWeight="Medium"
                                      FontFamily="{DynamicResource MaterialDesignFont}"
                                      Foreground="{StaticResource Gray1}"
-                                     Padding="20,0,0,0"
+                                     Padding="10,0,0,0"
                                      Text="{Binding MinimizeTotal,Mode=OneWayToSource}"
                                      PreviewTextInput="TextBox_PreviewTextInput"
                                      TextChanged="TextBox_TextChanged"/>
@@ -310,7 +322,7 @@
         <Grid Grid.Row="1">
             <Button HorizontalAlignment="Right"
                         Style="{StaticResource CustomButton}"
-                        Content="Lưu"
+                        Content="{DynamicResource VoucherManagementPage_Button_Save}"
                         Background="{StaticResource ColorButtonBlue}"
                         Margin="0,0,20,10"
                         Width="70" 

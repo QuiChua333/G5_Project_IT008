@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:CinemaManagementProject"
              StartupUri="/View/Login/LoginWindow.xaml">
-    
+
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -25,6 +25,9 @@
                 <ResourceDictionary Source="./Utilities/AdminDataTemplate.xaml"/>
                 <ResourceDictionary Source="./Utilities/StaffDataTemplate.xaml"/>
 
+                <!--Language-->
+                <ResourceDictionary Source="./Resource/Language/ResourceString.vi-VN.xaml"/>
+                
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

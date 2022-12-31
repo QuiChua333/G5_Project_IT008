@@ -20,6 +20,7 @@ namespace CinemaManagementProject.View.Staff.TicketWindow
     /// </summary>
     public partial class TicketBookingPage : Page
     {
+        
         public TicketBookingPage()
         {
             InitializeComponent();

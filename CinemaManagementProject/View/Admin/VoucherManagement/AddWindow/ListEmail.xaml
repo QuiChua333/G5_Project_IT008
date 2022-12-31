@@ -57,8 +57,8 @@
                     <Border  BorderBrush="#67C6E6" BorderThickness="0,0,0,3">
                     </Border>
                     <Label Padding="0" 
-                           Content="DANH SÁCH EMAIL" 
-                           FontSize="16" 
+                           Content="{DynamicResource ListEmail_Title}" 
+                           FontSize="18" 
                            FontWeight="Bold" 
                            VerticalAlignment="Center" 
                            HorizontalAlignment="Center" 
@@ -148,7 +148,7 @@
                         Command="{Binding MoreEmailCM}"
                             x:Name="addnewemail">
                         <Grid>
-                            <Label Content="Thêm mới"
+                            <Label Content="{DynamicResource AddVoucher_Label_AddNew}"
                                    FontSize="12"
                                    FontWeight="Medium"
                                    Foreground="WhiteSmoke"
@@ -167,7 +167,7 @@
                     <Button HorizontalAlignment="Right"
                         VerticalAlignment="Center"
                         Style="{StaticResource CustomButton}"
-                        Content="Lưu"
+                        Content="{DynamicResource VoucherManagementPage_Button_Save}"
                         FontSize="12"
                         Background="{StaticResource ColorButtonBlue}"
                         Margin="0,0,18,0"

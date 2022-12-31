@@ -55,7 +55,7 @@
                 <Grid Grid.Column="1">
                     <Border  BorderBrush="#67C6E6" BorderThickness="0,0,0,3">
                     </Border>
-                    <Label Padding="0" Content="THÊM VOUCHER" FontSize="16" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#8DC1F0" FontFamily="{DynamicResource MaterialDesignFont}">
+                    <Label Padding="0" Content="{DynamicResource AddVoucher_Title_AddVoucher}" FontSize="18" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#8DC1F0" FontFamily="{DynamicResource MaterialDesignFont}">
                         <Label.Effect>
                             <DropShadowEffect BlurRadius="1" Direction="-45" Color="#000000" ShadowDepth="1.5" Opacity="0.5"/>
                         </Label.Effect>
@@ -132,7 +132,7 @@
                         Width="110"
                         Command="{Binding MoreVoucherCM}">
                         <Grid>
-                            <Label Content="Thêm mới"
+                            <Label Content="{DynamicResource AddVoucher_Label_AddNew}"
                                    FontSize="12"
                                    FontWeight="Medium"
                                    Foreground="WhiteSmoke"
@@ -151,7 +151,7 @@
                     <Button HorizontalAlignment="Right"
                         VerticalAlignment="Center"
                         Style="{StaticResource CustomButton}"
-                        Content="Lưu"
+                        Content="{DynamicResource VoucherManagementPage_Button_Save}"
                         FontSize="12"
                         Background="{StaticResource ColorButtonBlue}"
                         Margin="0,0,18,0"

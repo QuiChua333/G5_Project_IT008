@@ -55,8 +55,8 @@
                     <Border  BorderBrush="#67C6E6" BorderThickness="0,0,0,3">
                     </Border>
                     <Label Padding="0" 
-                           Content="THÊM DANH SÁCH VOUCHER" 
-                           FontSize="16" FontWeight="Bold" 
+                           Content="{DynamicResource AddListVouchers_Title_AddListVouchers}" 
+                           FontSize="18" FontWeight="Bold" 
                            VerticalAlignment="Center" 
                            HorizontalAlignment="Center" 
                            Foreground="#8DC1F0" 
@@ -94,7 +94,7 @@
                             </Grid.ColumnDefinitions>
 
                             <Grid Grid.Column="0">
-                                <Label Content="Số lượng voucher:" 
+                                <Label Content="{DynamicResource AddListVouchers_Label_NumberOfVouchers}" 
                                    FontWeight="Bold" 
                                    FontFamily="{DynamicResource MaterialDesignFont}" 
                                    VerticalAlignment="Center" 
@@ -112,7 +112,7 @@
                                      FontWeight="Medium"
                                      FontFamily="{DynamicResource MaterialDesignFont}"
                                      Foreground="{StaticResource Gray1}"
-                                     Padding="20,0,0,0">
+                                     Padding="10,0,0,0">
                                 </TextBox>
                             </Grid>
                         </Grid>
@@ -123,7 +123,7 @@
                             </Grid.ColumnDefinitions>
 
                             <Grid Grid.Column="0">
-                                <Label Content="Độ dài mã:" 
+                                <Label Content="{DynamicResource AddListVouchers_Label_LengthOfCode}" 
                                    FontWeight="Bold" 
                                    FontFamily="{DynamicResource MaterialDesignFont}" 
                                    VerticalAlignment="Center" 
@@ -140,7 +140,7 @@
                                      FontWeight="Medium"
                                      FontFamily="{DynamicResource MaterialDesignFont}"
                                      Foreground="{StaticResource Gray1}"
-                                     Padding="20,0,0,0">
+                                     Padding="10,0,0,0">
                                 </TextBox>
                             </Grid>
                         </Grid>
@@ -151,7 +151,7 @@
                             </Grid.ColumnDefinitions>
 
                             <Grid Grid.Column="0">
-                                <Label Content="Kí tự bắt đầu:" 
+                                <Label Content="{DynamicResource AddListVouchers_Label_StartingCharacter}" 
                                    FontWeight="Bold" 
                                    FontFamily="{DynamicResource MaterialDesignFont}" 
                                    VerticalAlignment="Center" 
@@ -178,7 +178,7 @@
                             </Grid.ColumnDefinitions>
 
                             <Grid Grid.Column="0">
-                                <Label Content="Kí tự kết thúc:" 
+                                <Label Content="{DynamicResource AddListVouchers_Label_EndingCharacter}" 
                                    FontWeight="Bold" 
                                    FontFamily="{DynamicResource MaterialDesignFont}" 
                                    VerticalAlignment="Center" 
@@ -213,7 +213,7 @@
                     <Button HorizontalAlignment="Right"
                         VerticalAlignment="Center"
                         Style="{StaticResource CustomButton}"
-                        Content="Lưu"
+                        Content="{DynamicResource VoucherManagementPage_Button_Save}"
                         FontSize="12"
                         Background="{StaticResource ColorButtonBlue}"
                         Margin="0,0,18,0"

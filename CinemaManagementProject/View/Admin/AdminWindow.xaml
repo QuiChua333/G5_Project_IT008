@@ -13,9 +13,27 @@
         AllowsTransparency="True"
         Background="Transparent"
         ShowActivated="False"
-        Name="AdminWD" 
-        MouseDown="AdminWD_MouseDown"
-        DataContext="{StaticResource AdminVM}">
+        Name="AdminWD" MouseDown="AdminWD_MouseDown"
+        DataContext="{StaticResource AdminVM}"
+>
+    <Window.Triggers>
+        <EventTrigger RoutedEvent="Window.Loaded">
+            <BeginStoryboard>
+                <Storyboard>
+                    <DoubleAnimation Storyboard.TargetName="AdminWD"
+                                     Storyboard.TargetProperty="Opacity"
+                                     From="0"
+                                     To="1"
+                                     Duration="0:0:0.3" />
+                </Storyboard>
+            </BeginStoryboard>
+        </EventTrigger>
+    </Window.Triggers>
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding FirstLoadCM}"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
     <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
@@ -26,7 +44,7 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
         <!--Overlay-->
-        <Rectangle Fill="{StaticResource LightBlueSpindle}" Grid.ColumnSpan="2" Grid.RowSpan="2" RadiusX="20" RadiusY="20">
+        <Rectangle x:Name="Overlay" Fill="{Binding MainColor, Mode=TwoWay}" Grid.ColumnSpan="2" Grid.RowSpan="2" RadiusX="20" RadiusY="20">
             <Rectangle.Effect>
                 <DropShadowEffect
                     Color="Black"
@@ -58,6 +76,11 @@
                 </Ellipse>
                 <TextBlock Text="{Binding StaffNameIcon}" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White" FontWeight="SemiBold" FontSize="16" Margin="0,-1,0,0" LineHeight="16">
                 </TextBlock>
+                <Border CornerRadius="20" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                    <Border.Background>
+                        <ImageBrush x:Name="IconAvatar" Stretch="UniformToFill" ImageSource="{Binding AvatarSource, Mode=TwoWay}"/>
+                    </Border.Background>
+                </Border>
             </Grid>
             <StackPanel Width="145" Height="40" HorizontalAlignment="Right" Margin="0,0,10,0" Orientation="Horizontal">
                 <Button Foreground="Black" Cursor="Hand" Click="Button_Click">
@@ -171,6 +194,11 @@
                     </Ellipse>
                     <TextBlock Text="{Binding StaffNameIcon}" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White" FontWeight="SemiBold" FontSize="30" Margin="0,-3,0,0" LineHeight="16">
                     </TextBlock>
+                    <Border CornerRadius="60" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                        <Border.Background>
+                            <ImageBrush x:Name="IconAvatarPopup" Stretch="UniformToFill" ImageSource="{Binding AvatarSource, Mode=TwoWay}"/>
+                        </Border.Background>
+                    </Border>
                 </Grid>
                 <StackPanel Margin="10,0,0,0" VerticalAlignment="Center">
                     <TextBlock Text="{Binding StaffName}" FontSize="20" FontFamily="{StaticResource MaterialDesignFont}" FontWeight="Normal"></TextBlock>
@@ -191,177 +219,320 @@
                 </TextBlock.Style>
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="MouseLeftButtonDown">
-                        <i:InvokeCommandAction Command="{Binding SwitchToSettingTab}"/>
+                        <i:InvokeCommandAction Command="{Binding SwitchToSettingTab}" CommandParameter="{Binding ElementName=CaiDatButton}"/>
                     </i:EventTrigger>
                 </i:Interaction.Triggers>
             </TextBlock>
         </Grid>
 
         <!--SideBar-->
-        <Border Grid.Column="0" Grid.RowSpan="2" CornerRadius="10,0,0,10" Background="#0F2851">
+        <Border Grid.Column="0" Grid.RowSpan="2" CornerRadius="10,0,0,10" Background="White">
             <StackPanel>
                 <StackPanel Orientation="Horizontal" Height="100" >
                     <Border Height="50" Width="50" CornerRadius="100" Background="White"
                         HorizontalAlignment="Left" Margin="28,20,0,0">
-                        <Ellipse>
+                        <Ellipse Stroke="Black" StrokeThickness="0.8">
                             <Ellipse.Fill>
                                 <ImageBrush ImageSource="{StaticResource Logo}"></ImageBrush>
                             </Ellipse.Fill>
                         </Ellipse>
                     </Border>
-                    <TextBlock Text="FILMFATFO" Foreground="White" 
+                    <TextBlock Text="FILMFATFO" Foreground="Black" 
                                    FontSize="22" FontWeight="Bold" VerticalAlignment="Center"
                                    Margin="20,16,20,0" FontFamily="Montserrat"></TextBlock>
                 </StackPanel>
                 <!--Phân tích-->
-                <TextBlock Foreground="White" Margin="10,20,0,5" FontSize="11">Phân tích</TextBlock>
+                <TextBlock Foreground="Black" Margin="10,20,0,5" FontSize="11">Phân tích</TextBlock>
                 <RadioButton    
                     x:Name="TongQuanButton"
-                    Style="{StaticResource menuButton}"
                     Tag="white"
                     IsChecked="True" 
                     Command="{Binding StatisticalViewCommand}"
                 >
+                    <RadioButton.Style>
+                        <Style TargetType="RadioButton" BasedOn="{StaticResource menuButton}">
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="{Binding MainColor}"/>
+                                </Trigger>
+                                <Trigger Property="IsChecked" Value="True">
+                                    <Setter Property="Background" Value="{Binding MainColor}"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </RadioButton.Style>
 
                     <StackPanel Orientation="Horizontal">
                         <materialDesign:PackIcon Kind="ChartBar" Height="20" Width="20" Margin="30,0,10,0" ></materialDesign:PackIcon>
-                        <TextBlock Text="Tổng quan" Style="{StaticResource menuButtonText}" Margin="0,4,0,0" FontSize="14"/>
+                        <TextBlock Text="{DynamicResource admin_sideBar_TongQuan}" Style="{StaticResource menuButtonText}" Margin="0,4,0,0" FontSize="14"/>
                     </StackPanel>
                 </RadioButton>
                 <RadioButton    
                 x:Name="DanhGiaButton"
-                Style="{StaticResource menuButton}"
                 Tag="white"
             >
+                    <RadioButton.Style>
+                        <Style TargetType="RadioButton" BasedOn="{StaticResource menuButton}">
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="{Binding MainColor}"/>
+                                </Trigger>
+                                <Trigger Property="IsChecked" Value="True">
+                                    <Setter Property="Background" Value="{Binding MainColor}"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </RadioButton.Style>
                     <StackPanel Orientation="Horizontal">
                         <materialDesign:PackIcon Kind="Speedometer" Height="20" Width="20" Margin="30,0,10,0" ></materialDesign:PackIcon>
-                        <TextBlock Text="Đánh giá" Style="{StaticResource menuButtonText}" Margin="0,4,0,0" FontSize="14"/>
+                        <TextBlock Text="{DynamicResource admin_sideBar_DanhGia}" Style="{StaticResource menuButtonText}" Margin="0,4,0,0" FontSize="14"/>
                     </StackPanel>
                 </RadioButton>
                 <!--Chức năng-->
-                <TextBlock Foreground="White" Margin="10,15,0,5">Chức năng</TextBlock>
+                <TextBlock Foreground="Black" Margin="10,15,0,5">Chức năng</TextBlock>
                 <RadioButton  
                 x:Name="QuanLiPhimButton"
-                Style="{StaticResource menuButton}"
                 Tag="white"
                 Command="{Binding FilmViewCommand}" 
             >
+                    <RadioButton.Style>
+                        <Style TargetType="RadioButton" BasedOn="{StaticResource menuButton}">
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="{Binding MainColor}"/>
+                                </Trigger>
+                                <Trigger Property="IsChecked" Value="True">
+                                    <Setter Property="Background" Value="{Binding MainColor}"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </RadioButton.Style>
                     <StackPanel Orientation="Horizontal">
                         <materialDesign:PackIcon Kind="PlaylistStar" Height="20" Width="20" Margin="30,0,10,0" ></materialDesign:PackIcon>
-                        <TextBlock Text="Quản lý phim" Style="{StaticResource menuButtonText}" Margin="0,3,0,0" FontSize="14"/>
+                        <TextBlock Text="{DynamicResource admin_sideBar_QuanLiPhim}"  Style="{StaticResource menuButtonText}" Margin="0,3,0,0" FontSize="14"/>
                     </StackPanel>
                 </RadioButton>
                 <RadioButton    
                 x:Name="QuanLiSuatChieuButton"
-                Style="{StaticResource menuButton}"
                 Tag="white"
                 Command="{Binding ShowTimeViewCommand}"
             >
+                    <RadioButton.Style>
+                        <Style TargetType="RadioButton" BasedOn="{StaticResource menuButton}">
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="{Binding MainColor}"/>
+                                </Trigger>
+                                <Trigger Property="IsChecked" Value="True">
+                                    <Setter Property="Background" Value="{Binding MainColor}"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </RadioButton.Style>
                     <StackPanel Orientation="Horizontal">
                         <materialDesign:PackIcon Kind="FilmCogOutline" Height="20" Width="20" Margin="30,0,10,0" ></materialDesign:PackIcon>
-                        <TextBlock Text="Quản lý suất chiếu" Style="{StaticResource menuButtonText}" Margin="0,4,0,0" FontSize="14"/>
+                        <TextBlock Text="{DynamicResource admin_sideBar_QuanLiSuatChieu}"  Style="{StaticResource menuButtonText}" Margin="0,4,0,0" FontSize="14"/>
                     </StackPanel>
                 </RadioButton>
                 <RadioButton    
                     x:Name="QuanLiSanPhamButton"
-                    Style="{StaticResource menuButton}"
                     Tag="white"
                     Command="{Binding FoodCommand}"
                 >
+                    <RadioButton.Style>
+                        <Style TargetType="RadioButton" BasedOn="{StaticResource menuButton}">
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="{Binding MainColor}"/>
+                                </Trigger>
+                                <Trigger Property="IsChecked" Value="True">
+                                    <Setter Property="Background" Value="{Binding MainColor}"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </RadioButton.Style>
                     <StackPanel Orientation="Horizontal">
                         <materialDesign:PackIcon Kind="Food" Height="20" Width="20" Margin="30,0,10,0" ></materialDesign:PackIcon>
-                        <TextBlock Text="Quản lý sản phẩm" Style="{StaticResource menuButtonText}" Margin="0,4,0,0" FontSize="14"/>
+                        <TextBlock Text="{DynamicResource admin_sideBar_QuanLiSanPham}"  Style="{StaticResource menuButtonText}" Margin="0,4,0,0" FontSize="14"/>
                     </StackPanel>
                 </RadioButton>
                 <RadioButton    
                     x:Name="QuanLiNhanSuButton"
-                    Style="{StaticResource menuButton}"
                     Tag="white"
                     Command="{Binding StaffViewCommand}"
                 >
+                    <RadioButton.Style>
+                        <Style TargetType="RadioButton" BasedOn="{StaticResource menuButton}">
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="{Binding MainColor}"/>
+                                </Trigger>
+                                <Trigger Property="IsChecked" Value="True">
+                                    <Setter Property="Background" Value="{Binding MainColor}"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </RadioButton.Style>
                     <StackPanel Orientation="Horizontal">
                         <materialDesign:PackIcon Kind="Account" Height="20" Width="20" Margin="30,0,10,0" ></materialDesign:PackIcon>
-                        <TextBlock Text="Quản lý nhân sự" Style="{StaticResource menuButtonText}" Margin="0,3,0,0" FontSize="14"/>
+                        <TextBlock Text="{DynamicResource admin_sideBar_QuanLiNhanSu}"  Style="{StaticResource menuButtonText}" Margin="0,3,0,0" FontSize="14"/>
                     </StackPanel>
                 </RadioButton>
                 <RadioButton    
                 x:Name="QuanLiKhachHangButton"
-                Style="{StaticResource menuButton}"
                 Tag="white"
                 Command="{Binding CustomerViewCommand}"
             >
+                    <RadioButton.Style>
+                        <Style TargetType="RadioButton" BasedOn="{StaticResource menuButton}">
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="{Binding MainColor}"/>
+                                </Trigger>
+                                <Trigger Property="IsChecked" Value="True">
+                                    <Setter Property="Background" Value="{Binding MainColor}"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </RadioButton.Style>
                     <StackPanel Orientation="Horizontal">
                         <materialDesign:PackIcon Kind="CustomerService" Height="20" Width="20" Margin="30,0,10,0" ></materialDesign:PackIcon>
-                        <TextBlock Text="Quản lý khách hàng" Style="{StaticResource menuButtonText}" Margin="0,3,0,0" FontSize="14"/>
+                        <TextBlock Text="{DynamicResource admin_sideBar_QuanLiKhachHang}"  Style="{StaticResource menuButtonText}" Margin="0,3,0,0" FontSize="14"/>
                     </StackPanel>
                 </RadioButton>
                 <RadioButton    
                 x:Name="LichSuButton"
-                Style="{StaticResource menuButton}"
                 Tag="white"
                 Command="{Binding HistoryViewCommand}"    
             >
+                    <RadioButton.Style>
+                        <Style TargetType="RadioButton" BasedOn="{StaticResource menuButton}">
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="{Binding MainColor}"/>
+                                </Trigger>
+                                <Trigger Property="IsChecked" Value="True">
+                                    <Setter Property="Background" Value="{Binding MainColor}"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </RadioButton.Style>
                     <StackPanel Orientation="Horizontal">
                         <materialDesign:PackIcon Kind="ClockCheck" Height="20" Width="20" Margin="30,0,10,0" ></materialDesign:PackIcon>
-                        <TextBlock Text="Lịch sử" Style="{StaticResource menuButtonText}" Margin="0,3,0,0" FontSize="14"/>
+                        <TextBlock  Text="{DynamicResource admin_sideBar_LichSu}" Style="{StaticResource menuButtonText}" Margin="0,3,0,0" FontSize="14"/>
                     </StackPanel>
                 </RadioButton>
                 <RadioButton   
                 x:Name="VouchersButton"
-                Style="{StaticResource menuButton}"
                 Tag="white"
                 Command="{Binding VoucherCommand}"
             >
+                    <RadioButton.Style>
+                        <Style TargetType="RadioButton" BasedOn="{StaticResource menuButton}">
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="{Binding MainColor}"/>
+                                </Trigger>
+                                <Trigger Property="IsChecked" Value="True">
+                                    <Setter Property="Background" Value="{Binding MainColor}"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </RadioButton.Style>
                     <StackPanel Orientation="Horizontal">
                         <materialDesign:PackIcon Kind="Discount" Height="20" Width="20" Margin="30,0,10,0" ></materialDesign:PackIcon>
-                        <TextBlock Text="Vouchers" Style="{StaticResource menuButtonText}" Margin="0,3,0,0" FontSize="14"/>
+                        <TextBlock Text="{DynamicResource admin_sideBar_Voucher}" Style="{StaticResource menuButtonText}" Margin="0,3,0,0" FontSize="14"/>
                     </StackPanel>
                 </RadioButton>
                 <RadioButton    
                     x:Name="SuCoButton"
-                    Style="{StaticResource menuButton}"
                     Tag="white"
                     Command="{Binding TroubleCommand}"
                 >
+                    <RadioButton.Style>
+                        <Style TargetType="RadioButton" BasedOn="{StaticResource menuButton}">
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="{Binding MainColor}"/>
+                                </Trigger>
+                                <Trigger Property="IsChecked" Value="True">
+                                    <Setter Property="Background" Value="{Binding MainColor}"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </RadioButton.Style>
                     <StackPanel Orientation="Horizontal">
                         <materialDesign:PackIcon Kind="AutomaticGateOutline" Height="20" Width="20" Margin="30,0,10,0" ></materialDesign:PackIcon>
-                        <TextBlock Text="Sự cố" Style="{StaticResource menuButtonText}" Margin="0,4,0,0" FontSize="14"/>
+                        <TextBlock Text="{DynamicResource admin_sideBar_SuCo}" Style="{StaticResource menuButtonText}" Margin="0,4,0,0" FontSize="14"/>
                     </StackPanel>
                 </RadioButton>
                 <!--Tiện ích-->
-                <TextBlock Foreground="White" Margin="10,15,0,5">Tiện ích</TextBlock>
+                <TextBlock Foreground="Black" Margin="10,15,0,5">Tiện ích</TextBlock>
                 <RadioButton    
                     x:Name="CaiDatButton"
-                    Style="{StaticResource menuButton}"
                     Tag="white"
-                    Command="{Binding ShowHomeViewCommand}"
+                    Command="{Binding SettingCommand}"
                 >
+                    <RadioButton.Style>
+                        <Style TargetType="RadioButton" BasedOn="{StaticResource menuButton}">
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="{Binding MainColor}"/>
+                                </Trigger>
+                                <Trigger Property="IsChecked" Value="True">
+                                    <Setter Property="Background" Value="{Binding MainColor}"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </RadioButton.Style>
                     <StackPanel Orientation="Horizontal">
                         <materialDesign:PackIcon Kind="SettingsApplications" Height="20" Width="20" Margin="30,0,10,0" ></materialDesign:PackIcon>
-                        <TextBlock Text="Cài đặt" Style="{StaticResource menuButtonText}" Margin="0,3,0,0" FontSize="14"/>
+                        <TextBlock Text="{DynamicResource admin_sideBar_CaiDat}" Style="{StaticResource menuButtonText}" Margin="0,3,0,0" FontSize="14"/>
                     </StackPanel>
                 </RadioButton>
                 <RadioButton    
                     x:Name="GiupDoButton"
-                    Style="{StaticResource menuButton}"
                     Tag="white"
                     Command="{Binding ShowHomeViewCommand}"
                 >
+                    <RadioButton.Style>
+                        <Style TargetType="RadioButton" BasedOn="{StaticResource menuButton}">
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="{Binding MainColor}"/>
+                                </Trigger>
+                                <Trigger Property="IsChecked" Value="True">
+                                    <Setter Property="Background" Value="{Binding MainColor}"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </RadioButton.Style>
                     <StackPanel Orientation="Horizontal">
                         <materialDesign:PackIcon Kind="Phone" Height="20" Width="20" Margin="30,0,10,0" ></materialDesign:PackIcon>
-                        <TextBlock Text="Giúp đỡ" Style="{StaticResource menuButtonText}" Margin="0,3,0,0" FontSize="14"/>
+                        <TextBlock Text="{DynamicResource admin_sideBar_GiupDo}" Style="{StaticResource menuButtonText}" Margin="0,3,0,0" FontSize="14"/>
                     </StackPanel>
                 </RadioButton>
                 <RadioButton
                     x:Name="DangXuatButton"
-                    Style="{StaticResource menuButton}"
                     Tag="white"
                     Command="{Binding LogOutCommand}"
                     CommandParameter="{Binding ElementName=AdminWD}"
                 >
+                    <RadioButton.Style>
+                        <Style TargetType="RadioButton" BasedOn="{StaticResource menuButton}">
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="{Binding MainColor}"/>
+                                </Trigger>
+                                <Trigger Property="IsChecked" Value="True">
+                                    <Setter Property="Background" Value="{Binding MainColor}"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </RadioButton.Style>
                     <StackPanel Orientation="Horizontal">
                         <materialDesign:PackIcon Kind="Logout" Height="20" Width="20" Margin="30,0,10,0" ></materialDesign:PackIcon>
-                        <TextBlock Text="Đăng xuất" Style="{StaticResource menuButtonText}" Margin="0,3,0,0" FontSize="14"/>
+                        <TextBlock Text="{DynamicResource admin_sideBar_DangXuat}" Style="{StaticResource menuButtonText}" Margin="0,3,0,0" FontSize="14"/>
                     </StackPanel>
                 </RadioButton>
             </StackPanel>

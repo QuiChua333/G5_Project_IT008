@@ -36,7 +36,7 @@ namespace CinemaManagementProject.Model.Service
                                     orderby b.CreateDate descending
                                     select new BillDTO
                                     {
-                                        Id = b.Id,
+                                        BillCode = b.BillCode,
                                         StaffId =(int)b.StaffId,
                                         StaffName = b.Staff.StaffName,
                                         TotalPrice = (float)b.TotalPrize,
@@ -71,7 +71,7 @@ namespace CinemaManagementProject.Model.Service
                                     orderby b.CreateDate descending
                                     select new BillDTO
                                     {
-                                        Id = b.Id,
+                                        BillCode= b.BillCode,
                                         StaffId = (int)b.StaffId,
                                         StaffName = b.Staff.StaffName,
                                         TotalPrice = (float)b.TotalPrize,
@@ -106,7 +106,7 @@ namespace CinemaManagementProject.Model.Service
                                     orderby b.CreateDate descending
                                     select new BillDTO
                                     {
-                                        Id = b.Id,
+                                        BillCode = b.BillCode,
                                         StaffId = (int)b.StaffId,
                                         StaffName = b.Staff.StaffName,
                                         TotalPrice = (float)b.TotalPrize,
@@ -130,7 +130,7 @@ namespace CinemaManagementProject.Model.Service
         /// </summary>
         /// <param name="billId"></param>
         /// <returns></returns>
-        public async Task<BillDTO> GetBillDetails(int billId)
+        public async Task<BillDTO> GetBillDetails(string billId)
         {
             try
             {
@@ -140,7 +140,7 @@ namespace CinemaManagementProject.Model.Service
 
                     BillDTO billInfo = new BillDTO
                     {
-                        Id = bill.Id,
+                        BillCode = bill.BillCode,
                         StaffId = bill.Staff.Id,
                         StaffName = bill.Staff.StaffName,
                         DiscountPrice = (float)bill.DiscountPrice,
@@ -149,7 +149,7 @@ namespace CinemaManagementProject.Model.Service
                         ProductBillInfoes = (from pi in bill.ProductBillInfoes
                                              select new ProductBillInfoDTO
                                              {
-                                                 BillId = pi.BillId,
+                                                 BillCode = pi.BillCode,
                                                  ProductId = pi.ProductId,
                                                  ProductName = pi.Product.ProductName,
                                                  PrizePerProduct = (float)pi.PrizePerProduct,
