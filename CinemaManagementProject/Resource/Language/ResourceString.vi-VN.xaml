@@ -250,7 +250,7 @@
     <system:String x:Key="MovieManagementPage_TextBlock_QuocGia">Quốc gia</system:String>
     <system:String x:Key="MovieManagementPage_TextBlock_TheLoai">Thể loại</system:String>
     <system:String x:Key="MovieManagementPage_TextBlock_ThoiLuong(Phut)">Thời lượng (phút)</system:String>
-    <system:String x:Key="MovieManagementPage_Label_KetQua">Kết quả</system:String>
+    <system:String x:Key="MovieManagementPage_Label_KetQua">Kết quả:</system:String>
     <system:String x:Key="IncomeStatistical_ComboBox_TheoNam">Theo năm</system:String>
     <system:String x:Key="IncomeStatistical_ComboBox_TheoThang">Theo tháng</system:String>
     <system:String x:Key="IncomeStatistical_ComboBox_Hint_LocTheo">Lọc theo</system:String>
@@ -337,6 +337,7 @@
     <system:String x:Key="TicketBillFoodPage_CheckBox_Content_KhachVangLai">Khách vãng lai</system:String>
     <system:String x:Key="TicketBillFoodPage_TextBlock_DienThoai">Điện thoại:</system:String>
     <system:String x:Key="TicketBillFoodPage_Label_SoDienThoaiChuaDangKy">Số điện thoại chưa đăng ký!</system:String>
+    <system:String x:Key="TicketBillFoodPage_TextBlock_DangKyTaiKhoangMoi">Đăng ký tài khoản mới!</system:String>
     <system:String x:Key="TicketBillFoodPage_Button_DangKy">Đăng ký</system:String>
     <system:String x:Key="TicketBillFoodPage_TextBlock_HoVaTen">Họ và tên:</system:String>
     <system:String x:Key="TicketBillFoodPage_Button_ThanhToan">Thanh toán</system:String>
@@ -352,6 +353,7 @@
     <system:String x:Key="TicketBillPhimPage_CheckBox_Content_KhachVangLai">Khách vãng lai</system:String>
     <system:String x:Key="TicketBillPhimPage_TextBlock_DienThoai">Điện thoại:</system:String>
     <system:String x:Key="TicketBillPhimPage_Label_SoDienThoaiChuaDangKy">Số điện thoại chưa đăng ký!</system:String>
+    <system:String x:Key="TicketBillPhimPage_TextBlock_DangKyTaiKhoangMoi">Đăng ký tài khoản mới!</system:String>
     <system:String x:Key="TicketBillPhimPage_Button_DangKy">Đăng ký</system:String>
     <system:String x:Key="TicketBillPhimPage_TextBlock_HoVaTen">Họ và tên:</system:String>
     <system:String x:Key="TicketBillPhimPage_Button_ThanhToan">Thanh toán</system:String>
@@ -374,6 +376,7 @@
     <system:String x:Key="TicketBillPage_CheckBox_Content_KhachVangLai">Khách vãng lai</system:String>
     <system:String x:Key="TicketBillPage_TextBlock_DienThoai">Điện thoại:</system:String>
     <system:String x:Key="TicketBillPage_Label_SoDienThoaiChuaDangKy">Số điện thoại chưa đăng ký!</system:String>
+    <system:String x:Key="TicketBillPage_TextBlock_DangKyTaiKhoangMoi">Đăng ký tài khoản mới!</system:String>
     <system:String x:Key="TicketBillPage_Button_DangKy">Đăng ký</system:String>
     <system:String x:Key="TicketBillPage_TextBlock_HoVaTen">Họ và tên:</system:String>
     <system:String x:Key="TicketBillPage_Button_ThanhToan">Thanh toán</system:String>

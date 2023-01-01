@@ -250,7 +250,7 @@
     <system:String x:Key="MovieManagementPage_TextBlock_QuocGia">Country</system:String>
     <system:String x:Key="MovieManagementPage_TextBlock_TheLoai">Category</system:String>
     <system:String x:Key="MovieManagementPage_TextBlock_ThoiLuong(Phut)">Duration (minutes)</system:String>
-    <system:String x:Key="MovieManagementPage_Label_KetQua">Results</system:String>
+    <system:String x:Key="MovieManagementPage_Label_KetQua">Results:</system:String>
     <system:String x:Key="IncomeStatistical_ComboBox_TheoNam">By Year</system:String>
     <system:String x:Key="IncomeStatistical_ComboBox_TheoThang">By Month</system:String>
     <system:String x:Key="IncomeStatistical_ComboBox_Hint_LocTheo">Filter by</system:String>
@@ -337,6 +337,7 @@
     <system:String x:Key="TicketBillFoodPage_CheckBox_Content_KhachVangLai">Visitors</system:String>
     <system:String x:Key="TicketBillFoodPage_TextBlock_DienThoai">Phone:</system:String>
     <system:String x:Key="TicketBillFoodPage_Label_SoDienThoaiChuaDangKy">Unregistered phone number!</system:String>
+    <system:String x:Key="TicketBillFoodPage_TextBlock_DangKyTaiKhoangMoi">Register a new account!</system:String>
     <system:String x:Key="TicketBillFoodPage_Button_DangKy">Register</system:String>
     <system:String x:Key="TicketBillFoodPage_TextBlock_HoVaTen">Fullname:</system:String>
     <system:String x:Key="TicketBillFoodPage_Button_ThanhToan">Payment</system:String>
@@ -352,6 +353,7 @@
     <system:String x:Key="TicketBillPhimPage_CheckBox_Content_KhachVangLai">Visitors</system:String>
     <system:String x:Key="TicketBillPhimPage_TextBlock_DienThoai">Phone:</system:String>
     <system:String x:Key="TicketBillPhimPage_Label_SoDienThoaiChuaDangKy">Unregistered phone number!</system:String>
+    <system:String x:Key="TicketBillPhimPage_TextBlock_DangKyTaiKhoangMoi">Register a new account!</system:String>
     <system:String x:Key="TicketBillPhimPage_Button_DangKy">Register</system:String>
     <system:String x:Key="TicketBillPhimPage_TextBlock_HoVaTen">Fullname:</system:String>
     <system:String x:Key="TicketBillPhimPage_Button_ThanhToan">Payment</system:String>
@@ -361,7 +363,7 @@
     <system:String x:Key="TicketBillPhimPage_Label_GioChieu">Showtimes:</system:String>
     <system:String x:Key="TicketBillPhimPage_Label_Rap">Teaters</system:String>
     <system:String x:Key="TicketBillPhimPage_Label_PhongChieu">Showroom:</system:String>
-    <system:String x:Key="TicketBillPhimPage_Label_Ghe">Chairs:</system:String>
+    <system:String x:Key="TicketBillPhimPage_Label_Ghe">Seats:</system:String>
     <system:String x:Key="TicketBillPhimPage_Label_GiaVe">Ticket price:</system:String>
     <system:String x:Key="TicketBillPhimPage_Label_Tong">Total:</system:String>
     <system:String x:Key="TicketBillPhimPage_Label_TongTien">Total amount:</system:String>
@@ -374,6 +376,7 @@
     <system:String x:Key="TicketBillPage_CheckBox_Content_KhachVangLai">Visitors</system:String>
     <system:String x:Key="TicketBillPage_TextBlock_DienThoai">Phone:</system:String>
     <system:String x:Key="TicketBillPage_Label_SoDienThoaiChuaDangKy">Unregistered phone number!</system:String>
+    <system:String x:Key="TicketBillPage_TextBlock_DangKyTaiKhoangMoi">Register a new account!</system:String>
     <system:String x:Key="TicketBillPage_Button_DangKy">Register</system:String>
     <system:String x:Key="TicketBillPage_TextBlock_HoVaTen">Fullname:</system:String>
     <system:String x:Key="TicketBillPage_Button_ThanhToan">Payment</system:String>
@@ -383,7 +386,7 @@
     <system:String x:Key="TicketBillPage_Label_GioChieu">Showtimes:</system:String>
     <system:String x:Key="TicketBillPage_Label_Rap">Theaters:</system:String>
     <system:String x:Key="TicketBillPage_Label_PhongChieu">Showroom:</system:String>
-    <system:String x:Key="TicketBillPage_Label_Ghe">Chair:</system:String>
+    <system:String x:Key="TicketBillPage_Label_Ghe">Seats:</system:String>
     <system:String x:Key="TicketBillPage_Label_GiaVe">Ticket price:</system:String>
     <system:String x:Key="TicketBillPage_Label_Tong">Total:</system:String>
     <system:String x:Key="TicketBillPage_Label_DoAn">Food</system:String>
@@ -485,7 +488,7 @@
     <system:String x:Key="ExportDetail_Label_Suatchieu">Showtime</system:String>
     <system:String x:Key="ExportDetail_Label_Rap">Theater</system:String>
     <system:String x:Key="ExportDetail_Label_Phongchieu">Room</system:String>
-    <system:String x:Key="ExportDetail_Label_Ghe">Seat</system:String>
+    <system:String x:Key="ExportDetail_Label_Ghe">Seats</system:String>
     <system:String x:Key="ExportDetail_Label_Giave">Price ticket</system:String>
     <system:String x:Key="ExportDetail_Label_Nguoidat">Orderer</system:String>
     <system:String x:Key="ExportDetail_Label_Sodienthoai">Phone Number</system:String>

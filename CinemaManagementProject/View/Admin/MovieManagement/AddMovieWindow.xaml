@@ -3,10 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:CinemaManagementProject.View.Admin.MovieManagement"
-        xmlns:Component="clr-namespace:CinemaManagementProject.Component" 
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-        xmlns:viewmodel="clr-namespace:CinemaManagementProject.ViewModel.AdminVM.MovieManagementVM"
         mc:Ignorable="d"
         Title="AddMovieWindow"
         Width="1120" Height="660"
@@ -28,7 +25,7 @@
                 <Grid Grid.Row="0">
                     <Border BorderBrush="#67C6E6" BorderThickness="0,0,0,4" Margin="35,0,35,0"/>
                     <Label Padding="0" 
-                           Content="THÊM PHIM" 
+                           Content="{DynamicResource AddMovieWindow_Label_THEMPHIM}" 
                            FontSize="25" 
                            FontWeight="Bold" 
                            VerticalAlignment="Center" 
@@ -92,7 +89,7 @@
                                             <RowDefinition Height="58*"/>
                                         </Grid.RowDefinitions>
                                         <Label Grid.Row="0" 
-                                               Content="Tên phim" 
+                                               Content="{DynamicResource AddMovieWindow_Label_TenPhim}" 
                                                FontSize="16"
                                                FontWeight="Bold"
                                                Foreground="Black"
@@ -137,7 +134,7 @@
                                                 <RowDefinition Height="58*"/>
                                             </Grid.RowDefinitions>
                                             <Label Grid.Row="0" 
-                                                   Content="Thể loại" 
+                                                   Content="{DynamicResource AddMovieWindow_Label_TheLoai}" 
                                                    FontSize="16"
                                                    FontWeight="Bold"
                                                    Foreground="Black"
@@ -178,7 +175,7 @@
                                                 <RowDefinition Height="58*"/>
                                             </Grid.RowDefinitions>
                                             <Label Grid.Row="0" 
-                                                   Content="Thời lượng" 
+                                                   Content="{DynamicResource AddMovieWindow_Label_ThoiLuong}" 
                                                    FontSize="16"
                                                    FontWeight="Bold"
                                                    Foreground="Black"
@@ -186,7 +183,7 @@
                                                    Margin="20,0,0,0"/>
                                             <TextBox Grid.Row="1"
                                                      x:Name="_filmDuration"
-                                                     materialDesign:HintAssist.Hint="Phút"
+                                                     materialDesign:HintAssist.Hint="{DynamicResource AddMovieWindow_TextBox_Hint_Phut}"
                                                      Margin="24,0,30,0"
                                                      VerticalAlignment="Top"
                                                      VerticalContentAlignment="Top"
@@ -230,7 +227,7 @@
                                             <RowDefinition Height="58*"/>
                                         </Grid.RowDefinitions>
                                         <Label Grid.Row="0" 
-                                               Content="Tác giả" 
+                                               Content="{DynamicResource AddMovieWindow_Label_TacGia}" 
                                                FontSize="16"
                                                FontWeight="Bold"
                                                Foreground="Black"
@@ -275,7 +272,7 @@
                                                 <RowDefinition Height="58*"/>
                                             </Grid.RowDefinitions>
                                             <Label Grid.Row="0" 
-                                                   Content="Quốc gia" 
+                                                   Content="{DynamicResource AddMovieWindow_Label_QuocGia}" 
                                                    FontSize="16"
                                                    FontWeight="Bold"
                                                    Foreground="Black"
@@ -316,7 +313,7 @@
                                                 <RowDefinition Height="58*"/>
                                             </Grid.RowDefinitions>
                                             <Label Grid.Row="0" 
-                                                   Content="Năm phát hành" 
+                                                   Content="{DynamicResource AddMovieWindow_Label_NamPhatHanh}" 
                                                    FontSize="16"
                                                    FontWeight="Bold"
                                                    Foreground="Black"
@@ -368,7 +365,7 @@
                                         <RowDefinition Height="85*"/>
                                     </Grid.RowDefinitions>
                                     <Label Grid.Row="0" 
-                                                   Content="Mô tả phim" 
+                                                   Content="{DynamicResource AddMovieWindow_Label_MoTaPhim}" 
                                                    FontSize="16"
                                                    FontWeight="Bold"
                                                    Foreground="Black"
@@ -466,7 +463,7 @@
                                             <RowDefinition Height="58*"/>
                                         </Grid.RowDefinitions>
                                         <Label Grid.Row="0" 
-                                                Content="Loại phim" 
+                                                Content="{DynamicResource AddMovieWindow_Label_LoaiPhim}" 
                                                 FontSize="16"
                                                 FontWeight="Bold"
                                                 Foreground="Black"
@@ -490,7 +487,7 @@
                             </Grid>
 
                             <Grid Grid.Row="1">
-                                <Button Content="Thêm"
+                                <Button Content="{DynamicResource AddMovieWindow_Button_Them}"
                                         FontSize="20"
                                         Height="50"
                                         Width="120"

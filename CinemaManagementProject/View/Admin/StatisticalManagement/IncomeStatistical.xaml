@@ -73,7 +73,7 @@
                                         Foreground="{StaticResource Gray1}" 
                                         Grid.Column="1" 
                                         Background="Transparent" 
-                                        materialDesign:HintAssist.Hint="Lọc theo"
+                                        materialDesign:HintAssist.Hint="{DynamicResource IncomeStatistical_ComboBox_Hint_LocTheo}"
                                         FontFamily="{StaticResource MaterialDesignFont}" 
                                         FontSize="16" 
                                         FontWeight="Medium" 
@@ -166,7 +166,7 @@
 
                                         <StackPanel Grid.Row="0">
                                             <StackPanel Orientation="Horizontal">
-                                                <Label Content="Thu:"
+                                                <Label Content="{DynamicResource IncomeStatistical_Label_Thu_}"
                                                        FontWeight="Bold"
                                                        Foreground="{StaticResource Gray1}"
                                                        FontSize="16" />
@@ -186,7 +186,7 @@
                                             </Grid.ColumnDefinitions>
 
                                             <StackPanel Grid.Column="0" Margin="5,0,0,0">
-                                                <Label Content="Vé" FontSize="16" Foreground="{StaticResource Gray1}"/>
+                                                <Label Content="{DynamicResource IncomeStatistical_Label_Ve}" FontSize="16" Foreground="{StaticResource Gray1}"/>
                                                 <Label Content="{Binding TicketPc}"
                                                        FontWeight="Bold" 
                                                        FontSize="16"
@@ -194,7 +194,7 @@
                                                 <Label Content="{Binding TicketReve}" />
                                             </StackPanel>
                                             <StackPanel Grid.Column="1" HorizontalAlignment="Center">
-                                                <Label Content="Sản phẩm" FontSize="16" Foreground="{StaticResource Gray1}"/>
+                                                <Label Content="{DynamicResource IncomeStatistical_Label_SanPham}" FontSize="16" Foreground="{StaticResource Gray1}"/>
                                                 <Label Content="{Binding ProductPc}"
                                                        FontWeight="Bold"
                                                        Foreground="{StaticResource Gray1}"
@@ -215,7 +215,7 @@
                                             <RowDefinition Height="70*"/>
                                         </Grid.RowDefinitions>
                                         <StackPanel Grid.Row="0">
-                                            <Label Content="Chi:"
+                                            <Label Content="{DynamicResource IncomeStatistical_Label_Chi_}"
                                                         FontWeight="Bold"
                                                         FontSize="16" 
                                                    Foreground="{StaticResource Gray1}"
@@ -233,7 +233,7 @@
                                             </Grid.ColumnDefinitions>
 
                                             <StackPanel Grid.Column="0">
-                                                <Label Content="Sản phẩm"  Foreground="{StaticResource Gray1}"
+                                                <Label Content="{DynamicResource IncomeStatistical_Label_SanPham}"  Foreground="{StaticResource Gray1}"
                                                        FontSize="16" />
                                                 <Label Content="{Binding ProductExPc}"
                                                            FontWeight="Bold" Foreground="{StaticResource Gray1}"
@@ -242,7 +242,7 @@
                                                        FontSize="16"/>
                                             </StackPanel>
                                             <StackPanel Grid.Column="1" HorizontalAlignment="Center">
-                                                <Label Content="Sửa chữa" Foreground="{StaticResource Gray1}"
+                                                <Label Content="{DynamicResource IncomeStatistical_Label_SuaChua}" Foreground="{StaticResource Gray1}"
                                                        FontSize="16" />
                                                 <Label Content="{Binding RepairPc}"
                                                            FontWeight="Bold" Foreground="{StaticResource Gray1}"
@@ -266,7 +266,7 @@
                                     </Grid.RowDefinitions>
 
                                     <StackPanel Grid.Row="0">
-                                        <Label Content="Tổng thu chi (VND): "
+                                        <Label Content="{DynamicResource IncomeStatistical_Label_TongThuChi(VND)}"
                                                    Foreground="{StaticResource Gray1}"
                                                        FontSize="16"
                                                    FontWeight="Bold"
@@ -281,7 +281,7 @@
 
                                         <StackPanel Grid.Column="0">
                                             <StackPanel Margin="10,0,0,0">
-                                                <Label Content="Thu"
+                                                <Label Content="{DynamicResource IncomeStatistical_Label_Thu}"
                                                         Foreground="{StaticResource Gray1}"
                                                        FontSize="16"/>
                                                 <StackPanel Width="250"
@@ -331,7 +331,7 @@
                                             </StackPanel>
 
                                             <StackPanel Margin="10,10,0,0">
-                                                <Label Content="Chi"
+                                                <Label Content="{DynamicResource IncomeStatistical_Label_Chi}"
                                                    Foreground="{StaticResource Gray1}"
                                                        FontSize="16" />
                                                 <StackPanel Width="250"
@@ -412,25 +412,25 @@
                                     </StackPanel.Resources>
 
                                     <StackPanel Orientation="Horizontal">
-                                        <TextBlock Text="Chu kỳ:" Foreground="{StaticResource Gray1}"
+                                        <TextBlock Text="{DynamicResource IncomeStatistical_TextBlock_ChuKy}" Foreground="{StaticResource Gray1}"
                                                        FontSize="16" FontWeight="Bold" Width="105" />
                                         <TextBlock Text="{Binding Path=Text,ElementName=periodbox}" Foreground="{StaticResource Gray1}"
                                                        FontSize="16" />
                                     </StackPanel>
                                     <StackPanel Orientation="Horizontal">
-                                        <TextBlock Text="Thời gian:" Foreground="{StaticResource Gray1}"
+                                        <TextBlock Text="{DynamicResource IncomeStatistical_TextBlock_ThoiGian}" Foreground="{StaticResource Gray1}"
                                                        FontSize="16" FontWeight="Bold" Width="105" />
                                         <TextBlock Text="{Binding Path=Text,ElementName=Timebox}" Foreground="{StaticResource Gray1}"
                                                        FontSize="16"/>
                                     </StackPanel>
                                     <StackPanel Orientation="Horizontal">
-                                        <TextBlock Text="Số hoá đơn:" Foreground="{StaticResource Gray1}"
+                                        <TextBlock Text="{DynamicResource IncomeStatistical_TextBlock_SoHoaDon}" Foreground="{StaticResource Gray1}"
                                                        FontSize="16" FontWeight="Bold" Width="105" />
                                         <TextBlock Text="{Binding TotalBill}" Foreground="{StaticResource Gray1}"
                                                        FontSize="16"/>
                                     </StackPanel>
                                     <StackPanel Orientation="Horizontal">
-                                        <TextBlock Text="Lợi nhuận:" Foreground="{StaticResource Gray1}"
+                                        <TextBlock Text="{DynamicResource IncomeStatistical_TextBlock_LoiNhuan}" Foreground="{StaticResource Gray1}"
                                                        FontSize="16" FontWeight="Bold" Width="105" />
                                         <TextBlock Text="{Binding TrueIncome}" Foreground="{StaticResource Gray1}"
                                                        FontSize="16"/>
@@ -458,7 +458,7 @@
                                     </lvc:CartesianChart.AxisX>
 
                                     <lvc:CartesianChart.AxisY>
-                                        <lvc:Axis Title="Triệu đồng"
+                                        <lvc:Axis Title="{DynamicResource IncomeStatistical_lvc_Axis_Title_TrieuDong}"
                                               FontFamily="arial"
                                               MinValue="0"/>
                                     </lvc:CartesianChart.AxisY>
