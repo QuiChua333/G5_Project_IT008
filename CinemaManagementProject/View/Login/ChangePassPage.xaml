@@ -33,14 +33,15 @@
                     FontWeight="Bold"
                 Margin="0,10,0,0"
                     HorizontalAlignment="Center"
-                        >Khôi phục mật khẩu</TextBlock>
+                Text="{DynamicResource ChangePassPage_textblock_KhoiPhucMatKhau}"
+                        ></TextBlock>
             <Grid Margin="0,50,0,0" Height="52" Width="289">
                 <TextBlock
                             FontFamily="{StaticResource MaterialDesignFont}"
                             FontSize="12"
                             Foreground="{StaticResource LightGrayBombay}"
                             FontWeight="Regular"
-                        Text="Mật khẩu mới"
+                        Text="{DynamicResource ChangePassPage_textblock_MatKhauMoi}"
                         />
                 <TextBox Height="35" VerticalAlignment="Bottom"
                          Name="NewPassText"
@@ -57,7 +58,7 @@
                             FontSize="12"
                             Foreground="{StaticResource LightGrayBombay}"
                             FontWeight="Regular"
-                        Text="Nhập lại mật khẩu mới"
+                        Text="{DynamicResource ChangePassPage_textblock_NhapLaiMatKhauMoi}"
                         />
                 <PasswordBox Height="35" VerticalAlignment="Bottom"
                          Name="ConfirmText"
@@ -75,7 +76,7 @@
                     Foreground="Red" 
             />
             <Grid Width="290">
-                <Button Style="{StaticResource CustomButton}" Name="ConfirmButton" Background="{StaticResource HeavyBlueZodiac}" Width="120" Height="40" HorizontalAlignment="Right" Margin="0,20,0,0" Content="Xác nhận">
+                <Button Style="{StaticResource CustomButton}" Name="ConfirmButton" Background="{StaticResource HeavyBlueZodiac}" Width="120" Height="40" HorizontalAlignment="Right" Margin="0,20,0,0" Content="{DynamicResource login_button_XacNhan}">
                     <i:Interaction.Triggers>
                         <i:EventTrigger EventName="Click">
                             <i:InvokeCommandAction Command="{Binding ConfirmNewPassCM}"
@@ -92,7 +93,8 @@
                             Foreground="#8E8E8E"
                             HorizontalAlignment="Center"
                             Margin="0,24,0,0"
-                        >Term and Condition &amp; Private Policy</TextBlock>
+                    Text="{DynamicResource login_textblock_DieuKhoan}"
+                        ></TextBlock>
             </Grid>
         </StackPanel> 
     </Grid>
