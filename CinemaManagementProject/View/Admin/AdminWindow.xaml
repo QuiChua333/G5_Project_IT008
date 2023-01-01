@@ -206,7 +206,7 @@
                     <TextBlock Text="{Binding StaffEmail}" FontSize="14" FontFamily="{StaticResource MaterialDesignFont}" FontWeight="UltraLight"></TextBlock>
                 </StackPanel>
             </StackPanel>
-            <TextBlock Text="Go to setting..." Grid.Row="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Padding="10,5,0,0" FontSize="13" FontFamily="{StaticResource MaterialDesignFont}" FontWeight="Light">
+            <TextBlock Text="{DynamicResource admin_textblock_GoToSetting}" Grid.Row="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Padding="10,5,0,0" FontSize="13" FontFamily="{StaticResource MaterialDesignFont}" FontWeight="Light">
                 <TextBlock.Style>
                     <Style TargetType="TextBlock">
                         <Style.Triggers>
@@ -242,7 +242,7 @@
                                    Margin="20,16,20,0" FontFamily="Montserrat"></TextBlock>
                 </StackPanel>
                 <!--Phân tích-->
-                <TextBlock Foreground="Black" Margin="10,20,0,5" FontSize="11">Phân tích</TextBlock>
+                <TextBlock Foreground="Black" Margin="10,20,0,5" FontSize="11" Text="{DynamicResource admin_sideBar_PhanTich}"></TextBlock>
                 <RadioButton    
                     x:Name="TongQuanButton"
                     Tag="white"
@@ -289,7 +289,7 @@
                     </StackPanel>
                 </RadioButton>
                 <!--Chức năng-->
-                <TextBlock Foreground="Black" Margin="10,15,0,5">Chức năng</TextBlock>
+                <TextBlock Foreground="Black" Margin="10,15,0,5" Text="{DynamicResource admin_sideBar_ChucNang}"></TextBlock>
                 <RadioButton  
                 x:Name="QuanLiPhimButton"
                 Tag="white"
@@ -467,7 +467,7 @@
                     </StackPanel>
                 </RadioButton>
                 <!--Tiện ích-->
-                <TextBlock Foreground="Black" Margin="10,15,0,5">Tiện ích</TextBlock>
+                <TextBlock Foreground="Black" Margin="10,15,0,5" Text="{DynamicResource admin_sideBar_TienIch}"></TextBlock>
                 <RadioButton    
                     x:Name="CaiDatButton"
                     Tag="white"

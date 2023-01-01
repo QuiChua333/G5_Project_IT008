@@ -94,8 +94,7 @@
                 </Grid>
                 <StackPanel Margin="35,0,0,0" VerticalAlignment="Center">
                     <StackPanel Orientation="Horizontal" Margin="0,7,0,7">
-                        <TextBlock FontSize="18" FontFamily="{StaticResource MaterialDesignFont}" FontWeight="Regular">
-                            Họ và tên:  
+                        <TextBlock FontSize="18" FontFamily="{StaticResource MaterialDesignFont}" FontWeight="Regular" Text="{DynamicResource setting_textblock_HoVaTen}">
                         </TextBlock>
                             <TextBox 
                                 x:Name="_staffName"
@@ -150,8 +149,7 @@
                         </Border>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" Margin="0,7,0,7">
-                        <TextBlock FontSize="18" FontFamily="{StaticResource MaterialDesignFont}" FontWeight="Regular">
-                            Email:
+                        <TextBlock FontSize="18" FontFamily="{StaticResource MaterialDesignFont}" FontWeight="Regular" Text="{DynamicResource setting_textblock_Email}">
                         </TextBlock>
                         <TextBox 
                             FontSize="18" 
@@ -206,8 +204,7 @@
                         </Border>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" Margin="0,7,0,7">
-                        <TextBlock FontSize="18" FontFamily="{StaticResource MaterialDesignFont}" FontWeight="Regular">
-                            Chức vụ:
+                        <TextBlock FontSize="18" FontFamily="{StaticResource MaterialDesignFont}" FontWeight="Regular" Text="{DynamicResource setting_textblock_ChucVu}">
                         </TextBlock>
                         <TextBlock Text="{Binding Position}" FontSize="18" FontFamily="{StaticResource MaterialDesignFont}" FontWeight="Regular" Margin="5,0,0,0">
                         </TextBlock>
@@ -217,7 +214,7 @@
             <StackPanel Grid.Row="1" Margin="20,0,0,0" >
                 <StackPanel Margin="0,0,0,0">
                     <Grid  Margin="0,0,0,0">
-                        <TextBlock  FontFamily="{StaticResource MaterialDesignFont}" VerticalAlignment="Center" FontSize="18" FontWeight="SemiBold">Thay đổi mật khẩu</TextBlock>
+                            <TextBlock  FontFamily="{StaticResource MaterialDesignFont}" VerticalAlignment="Center" FontSize="18" FontWeight="SemiBold" Text="{DynamicResource setting_textblock_ThayDoiMatKhau}"></TextBlock>
                         <Grid HorizontalAlignment="Right" Margin="0,0,40,0" Cursor="Hand">
                             <Grid.Style>
                                 <Style TargetType="Grid">
@@ -237,7 +234,7 @@
                                     </i:EventTrigger>
                                 </i:Interaction.Triggers>
                             <Rectangle Width="140" Height="40" Fill="{StaticResource LightGrayAthens}"  RadiusX="10" RadiusY="10" Stroke="Gray" StrokeThickness="0.5"></Rectangle>
-                            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="{StaticResource MaterialDesignFont}" FontSize="18" Foreground="{StaticResource LightGrayTundora}" FontWeight="Medium">Đổi mật khẩu</TextBlock>
+                                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="{StaticResource MaterialDesignFont}" FontSize="18" Foreground="{StaticResource LightGrayTundora}" FontWeight="Medium" Text="{DynamicResource setting_textblock_DoiMatKhau}"></TextBlock>
                         </Grid>
                     </Grid>
                 </StackPanel>
@@ -310,9 +307,9 @@
             <Grid Grid.Row="1">
                 <StackPanel Margin="20,0,0,0">
                     <StackPanel>
-                        <TextBlock FontFamily="{StaticResource MaterialDesignFont}" FontSize="18" FontWeight="SemiBold">Ngôn ngữ (Language)</TextBlock>
+                            <TextBlock FontFamily="{StaticResource MaterialDesignFont}" FontSize="18" FontWeight="SemiBold" Text="{DynamicResource setting_textblock_NgonNgu}"></TextBlock>
                         <Grid  Margin="0,10,0,0">
-                            <TextBlock  FontFamily="{StaticResource MaterialDesignFont}" VerticalAlignment="Center" FontSize="18" FontWeight="Regular">Thay đổi ngôn ngữ</TextBlock>
+                                <TextBlock  FontFamily="{StaticResource MaterialDesignFont}" VerticalAlignment="Center" FontSize="18" FontWeight="Regular" Text="{DynamicResource setting_textblock_ThayDoiNgonNgu}"></TextBlock>
                             <ComboBox Style="{StaticResource MaterialDesignOutlinedComboBox}" BorderBrush="{StaticResource LightGrayBombay}" BorderThickness="0.8"
                                       Height="40"
                                       Name="LanguageCombobox"
@@ -327,15 +324,15 @@
                                             <i:InvokeCommandAction Command="{Binding ChooseLanguageCM}" CommandParameter="{Binding ElementName=LanguageCombobox}"/>
                                     </i:EventTrigger>
                                 </i:Interaction.Triggers>
-                                <ComboBoxItem IsSelected="True" FontSize="16" FontFamily="{StaticResource MaterialDesignFont}">Tiếng Việt</ComboBoxItem>
-                                <ComboBoxItem FontSize="16" FontFamily="{StaticResource MaterialDesignFont}">English</ComboBoxItem>
+                                    <ComboBoxItem IsSelected="True" FontSize="16" FontFamily="{StaticResource MaterialDesignFont}" Content="{DynamicResource setting_comboboxItem_TiengViet}"></ComboBoxItem>
+                                    <ComboBoxItem IsSelected="{Binding IsEnglish}" FontSize="16" FontFamily="{StaticResource MaterialDesignFont}" Content="{DynamicResource setting_comboboxItem_TiengAnh}"></ComboBoxItem>
                             </ComboBox>
                         </Grid>
                     </StackPanel>
                     <StackPanel Margin="0,20,0,0">
-                        <TextBlock FontFamily="{StaticResource MaterialDesignFont}" FontSize="18" FontWeight="SemiBold">Khởi động và ghi nhớ tài khoản</TextBlock>
+                            <TextBlock FontFamily="{StaticResource MaterialDesignFont}" FontSize="18" FontWeight="SemiBold" Text="{DynamicResource setting_textblock_KhoiDòngatFilmFoKhiMoMay}"></TextBlock>
                         <Grid  Margin="0,10,0,0">
-                            <TextBlock  FontFamily="{StaticResource MaterialDesignFont}" VerticalAlignment="Center" FontSize="18" FontWeight="Regular">Khởi động FatFilmFo khi mở máy</TextBlock>
+                                <TextBlock  FontFamily="{StaticResource MaterialDesignFont}" VerticalAlignment="Center" FontSize="18" FontWeight="Regular" Text="{DynamicResource setting_textblock_KhoiDòngatFilmFoKhiMoMay}"></TextBlock>
                                 <ToggleButton Name="StartAppToggle" IsChecked="{Binding IsCheckedAutoStart}" HorizontalAlignment="Right" Margin="0,0,40,0" RenderTransformOrigin="5.282,-1.111">
                                     <i:Interaction.Triggers>
                                         <i:EventTrigger EventName="Click">
@@ -345,7 +342,7 @@
                                 </ToggleButton>
                         </Grid>
                         <Grid  Margin="0,10,0,0">
-                            <TextBlock  FontFamily="{StaticResource MaterialDesignFont}" VerticalAlignment="Center" FontSize="18" FontWeight="Regular">Ghi nhớ đăng nhập</TextBlock>
+                                <TextBlock  FontFamily="{StaticResource MaterialDesignFont}" VerticalAlignment="Center" FontSize="18" FontWeight="Regular" Text="{DynamicResource setting_textblock_GhiNhoDangNhap}"></TextBlock>
                                 <ToggleButton Name="RemidLoginToggle" IsChecked="{Binding IsCheckedRemindLogin}" HorizontalAlignment="Right" Margin="0,0,40,0">
                                 <i:Interaction.Triggers>
                                     <i:EventTrigger EventName="Click">
@@ -356,7 +353,7 @@
                         </Grid>
                     </StackPanel >
                     <StackPanel Margin="0,20,0,0">
-                        <TextBlock FontFamily="{StaticResource MaterialDesignFont}" FontSize="18" FontWeight="SemiBold">Màu sắc (Color)</TextBlock>
+                            <TextBlock FontFamily="{StaticResource MaterialDesignFont}" FontSize="18" FontWeight="SemiBold" Text="{DynamicResource setting_textblock_MauSac}"></TextBlock>
                         <Grid  Margin="0,10,0,0" Cursor="Hand">
                             <Grid.Style>
                                 <Style TargetType="Grid">
@@ -375,8 +372,8 @@
                                         <i:InvokeCommandAction Command="{Binding ColorPickerCM}" CommandParameter="{Binding ElementName=colorPicker}"/>
                                     </i:EventTrigger>
                                 </i:Interaction.Triggers>
-                            
-                            <TextBlock  FontFamily="{StaticResource MaterialDesignFont}" VerticalAlignment="Center" FontSize="18" FontWeight="Regular">Thay đổi màu sắc</TextBlock>
+
+                                <TextBlock  FontFamily="{StaticResource MaterialDesignFont}" VerticalAlignment="Center" FontSize="18" FontWeight="Regular" Text="{DynamicResource setting_textblock_ThayDoiMauSac}"></TextBlock>
                             <Rectangle Name="ColorAvatar" Width="100" Height="40" Fill="{Binding ColorPicked}" HorizontalAlignment="Right" Margin="0,0,40,0" RadiusX="10" RadiusY="10" Stroke="Blue" StrokeThickness="0.5"></Rectangle>
                         </Grid>
                     </StackPanel>

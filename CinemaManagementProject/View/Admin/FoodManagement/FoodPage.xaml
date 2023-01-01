@@ -52,7 +52,7 @@
         <StackPanel Orientation="Horizontal" Grid.ColumnSpan="2">
             <Search:Search
                 x:Name="SearchBox"
-                PlaceHolder="Tìm kiếm"
+                materialDesign:HintAssist.Hint="{DynamicResource food_search_TimKiem}"
                 Width="400"
                 Height="44"
                 IconSize="30"
@@ -79,9 +79,9 @@
                     </Rectangle>
                     <Image Source="{StaticResource IconFilter}" Width="20" Height="20"></Image>
                     <ComboBox x:Name="FilterCombobox" SelectedItem="{Binding SelectedItemFilter}" SelectedIndex="0" Foreground="Black" Grid.Column="1" Background="Transparent" VerticalAlignment="Center" FontSize="16" FontWeight="Medium" Margin="0,0,10,0" SelectionChanged="FilterCombobox_SelectionChanged" >
-                        <ComboBoxItem FontWeight="Regular">Tất cả</ComboBoxItem>
-                        <ComboBoxItem FontWeight="Regular">Đồ ăn</ComboBoxItem>
-                        <ComboBoxItem FontWeight="Regular">Nước uống</ComboBoxItem>
+                        <ComboBoxItem FontWeight="Regular" Content="{DynamicResource food_comboboxItem_TatCa}"></ComboBoxItem>
+                        <ComboBoxItem FontWeight="Regular" Content="{DynamicResource food_comboboxItem_DoAn}"></ComboBoxItem>
+                        <ComboBoxItem FontWeight="Regular" Content="{DynamicResource food_comboboxItem_NuocUong}"></ComboBoxItem>
                     </ComboBox>
                 </Grid>
             </Grid>
@@ -148,7 +148,8 @@
                         FontFamily="{StaticResource MaterialDesignFont}"
                         FontWeight="Regular"
                         Foreground="Black" VerticalAlignment="Top" Height="23" Margin="0,55,0,0" HorizontalAlignment="Center"
-                    >Bonus good</Label>
+                        Content="{DynamicResource AddFoodWindow_label_ThemSanPham}"
+                    ></Label>
                 </Grid>
                 <Grid
                     Name="ImportFoodButton"
@@ -185,7 +186,8 @@
                         FontFamily="{StaticResource MaterialDesignFont}"
                         FontWeight="Regular"
                         Foreground="Black" VerticalAlignment="Top" Height="23" Margin="0,55,0,0" HorizontalAlignment="Center"
-                    >Import Good</Label>
+                        Content="{DynamicResource ImportFoodWindow_label_NhapSanPham}"
+                    ></Label>
                 </Grid>
             </Grid>
         </Grid>
@@ -355,11 +357,11 @@
                                                         FontFamily="{StaticResource MaterialDesignFont}"
                                                     />
                                                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                                                        <Label Content="Số lượng:" FontSize="15" FontFamily="{StaticResource MaterialDesignFont}"></Label>
+                                                        <Label Content="{DynamicResource food_textblock_SoLuong}" FontSize="15" FontFamily="{StaticResource MaterialDesignFont}"></Label>
                                                         <Label Content="{Binding Quantity}" FontSize="15" FontFamily="{StaticResource MaterialDesignFont}"></Label>
                                                     </StackPanel>
                                                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                                                        <Label Content="Giá:" FontSize="15" FontFamily="{StaticResource MaterialDesignFont}"></Label>
+                                                        <Label Content="{DynamicResource food_textblock_Gia}" FontSize="15" FontFamily="{StaticResource MaterialDesignFont}"></Label>
                                                         <Label Content="{Binding PriceStr}" FontSize="15" FontFamily="{StaticResource MaterialDesignFont}"></Label>
                                                     </StackPanel>
                                                 </StackPanel>

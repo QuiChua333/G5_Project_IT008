@@ -46,8 +46,8 @@
                 VerticalAlignment="Center" 
                 HorizontalAlignment="Left"
                 Margin="20,0,0,0"
+                Content="{DynamicResource AddFoodWindow_label_ThemSanPham}"
             >
-                Thêm sản phẩm
             </Label>
             <Image 
                 Source="{StaticResource IconExit}" 
@@ -120,8 +120,8 @@
                            Grid.Column="0"
                            Height="25" HorizontalAlignment="Center" VerticalAlignment="Center"
                            Margin="8,0,0,0"
+                        Text="{DynamicResource food_textblock_Ten}"
                     >
-                        Name
                     </TextBlock>
                     <Grid Height="28" Grid.Column="1">
                         <TextBox 
@@ -149,16 +149,16 @@
                            Grid.Column="0"
                            Height="25" HorizontalAlignment="Center" VerticalAlignment="Center" 
                            Margin="15,0,0,0"
+                        Text="{DynamicResource food_textblock_Loai}"
                     >
-                        Type
                     </TextBlock>
                     <Grid Height="28" Grid.Column="1">
                         <ComboBox Width="200" Style="{StaticResource MaterialDesignComboBox}" Text="{Binding Category}" HorizontalAlignment="Left">
                             <ComboBoxItem Width="180">
-                                <TextBlock Width="182" Foreground="{StaticResource LightGrayTundora}" FontFamily="{StaticResource MaterialDesignFont}" FontWeight="Regular" FontSize="18" HorizontalAlignment="Left">Đồ ăn</TextBlock>
+                                <TextBlock Width="182" Foreground="{StaticResource LightGrayTundora}" FontFamily="{StaticResource MaterialDesignFont}" FontWeight="Regular" FontSize="18" HorizontalAlignment="Left" Text="{DynamicResource food_comboboxItem_DoAn}"></TextBlock>
                             </ComboBoxItem>
                             <ComboBoxItem Width="180">
-                                <TextBlock Width="182" Foreground="{StaticResource LightGrayTundora}" FontFamily="{StaticResource MaterialDesignFont}" FontWeight="Regular" FontSize="18" HorizontalAlignment="Left">Nước uống</TextBlock>
+                                <TextBlock Width="182" Foreground="{StaticResource LightGrayTundora}" FontFamily="{StaticResource MaterialDesignFont}" FontWeight="Regular" FontSize="18" HorizontalAlignment="Left" Text="{DynamicResource food_comboboxItem_NuocUong}"></TextBlock>
                             </ComboBoxItem>
                         </ComboBox>
                     </Grid>
@@ -176,8 +176,8 @@
                            Grid.Column="0"
                            Height="25" HorizontalAlignment="Center" VerticalAlignment="Center"
                            Margin="15,0,0,0"
+                           Text="{DynamicResource food_textblock_Gia}"
                     >
-                       Cost
                     </TextBlock>
                     <Grid Height="28" Grid.Column="1">
                         <Grid.ColumnDefinitions>
@@ -199,8 +199,8 @@
         </Grid>
         <Grid x:Name="Footer" Grid.Row="2" Grid.Column="1" Margin="0,0,0,0">
             <StackPanel HorizontalAlignment="Right"  Orientation="Horizontal" Margin="0,-15,0,0">
-                <Button Width="90" Height="35" Margin="10,0,5,0" Background="Red" Style="{StaticResource CustomButton}" Click="Button_Click">Hủy</Button>
-                <Button Width="90" Height="35" Margin="5,0,20,0" Background="Green" Style="{StaticResource CustomButton}" Content="Thêm">
+                <Button Width="90" Height="35" Margin="10,0,5,0" Background="Red" Style="{StaticResource CustomButton}" Click="Button_Click" Content="{DynamicResource food_button_Huy}"></Button>
+                <Button Width="90" Height="35" Margin="5,0,20,0" Background="Green" Style="{StaticResource CustomButton}" Content="{DynamicResource AddFoodWindow_button_Them}">
                     <i:Interaction.Triggers>
                         <i:EventTrigger EventName="Click">
                             <i:InvokeCommandAction Command="{Binding AddFoodCM}"

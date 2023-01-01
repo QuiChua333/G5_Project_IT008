@@ -44,7 +44,8 @@
                 Foreground="{StaticResource HeavyBlueZodiac}"
                 FontWeight="Bold"
                 HorizontalAlignment="Center"
-            >Khôi phục mật khẩu</TextBlock>
+                Text="{DynamicResource ForgotPassPage_textblock_KhoiPhucMatKhau}"
+            ></TextBlock>
             <Grid Margin="0,50,0,0">
                 <Grid x:Name="ContainerTextBoxCodeAndError" VerticalAlignment="Top" Margin="0,0,0,0">
                     <StackPanel>
@@ -56,7 +57,7 @@
                                         Foreground="{StaticResource LightGrayBombay}"
                                         FontWeight="Regular"
                                         Margin="30,0,0,0"
-                                    Text="Tài khoản cần khôi phục"
+                                    Text="{DynamicResource ForgotPassPage_textblock_TaiKhoanCanKhoiPhuc}"
                                     />
                             <Grid>
                                 <Grid.ColumnDefinitions>
@@ -108,12 +109,12 @@
                                 Foreground="{StaticResource Black1}"
                                 FontWeight="Regular"
                                 TextWrapping="Wrap"
-                                Text="Chúng tôi sẽ gửi mã đặt lại mật khẩu thông qua Email liên kết với tài khoản trên"
+                                Text="{DynamicResource ForgotPassPage_textblock_KhoiPhucMKInfo}"
                             ></TextBlock>
                 </Grid>
             </Grid>
             <Grid>
-                <Button Style="{StaticResource CustomButton}" Visibility="Visible" Name="BtnSend" Click="BtnSend_Click" Content="Gửi mã" Background="{StaticResource HeavyBlueZodiac}" Width="114" Height="40" Margin="0,22,38,-2" HorizontalAlignment="Right">
+                <Button Style="{StaticResource CustomButton}" Visibility="Visible" Name="BtnSend" Click="BtnSend_Click" Content="{DynamicResource ForgotPassPage_button_GuiMa}" Background="{StaticResource HeavyBlueZodiac}" Width="114" Height="40" Margin="0,22,38,-2" HorizontalAlignment="Right">
                     <i:Interaction.Triggers>
                         <i:EventTrigger EventName="Click">
                             <i:InvokeCommandAction Command="{Binding SendEmailCM}"
@@ -138,7 +139,9 @@
                             Foreground="#8E8E8E"
                             HorizontalAlignment="Center"
                             Margin="0,24,0,0"
-                        >Term and Condition &amp; Private Policy</TextBlock>
+                    TextAlignment="Center"
+                    Text="{DynamicResource login_textblock_DieuKhoan}"
+                        ></TextBlock>
             </Grid>
         </StackPanel>
     </Grid>

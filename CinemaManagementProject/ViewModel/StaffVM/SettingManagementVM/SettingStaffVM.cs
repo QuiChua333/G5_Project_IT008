@@ -141,7 +141,12 @@ namespace CinemaManagementProject.ViewModel.StaffVM.SettingStaffVM
             get { return _isToResetPage; }
             set { _isToResetPage = value; OnPropertyChanged(); }
         }
-
+        private bool _isEnglish { get; set; }
+        public bool IsEnglish
+        {
+            get { return _isEnglish; }
+            set { _isEnglish = value; OnPropertyChanged(); }
+        }
         public ICommand FirstLoadCM { get; set; }
         public ICommand EditNameCM { get; set; }
         public ICommand EditEmailCM { get; set; }
@@ -161,6 +166,7 @@ namespace CinemaManagementProject.ViewModel.StaffVM.SettingStaffVM
         {
             FirstLoadCM = new RelayCommand<object>((p) => { return true; }, (p) =>
             {
+                IsEnglish = Properties.Settings.Default.isEnglish;
                 reg = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true);
                 currentStaff = StaffVM.currentStaff;
                 StaffName = currentStaff.StaffName;
@@ -291,6 +297,7 @@ namespace CinemaManagementProject.ViewModel.StaffVM.SettingStaffVM
             });
             ChangePassCM = new RelayCommand<object>((p) => { return true; }, (p) =>
             {
+                IsToResetPage = false;
                 ResetPassStaffWindow resetPassWD = new ResetPassStaffWindow();
                 resetPassWD.ShowDialog();
             });
