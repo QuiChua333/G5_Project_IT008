@@ -76,22 +76,26 @@
                             <ImageBrush x:Name="IconAvatar" Stretch="UniformToFill" ImageSource="{Binding ImageSource}"/>
                         </Border.Background>
                     </Border>
-                    <Border CornerRadius="180" Cursor="Hand" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="Black" Opacity="0.2">
-                        <i:Interaction.Triggers>
-                            <i:EventTrigger EventName="MouseLeftButtonDown">
-                                <i:InvokeCommandAction Command="{Binding UploadImageCM}"/>
-                            </i:EventTrigger>
-                        </i:Interaction.Triggers>
-                        <Image
-                            Source="{StaticResource IconUploadImage}" 
-                            Grid.Column="1"
-                            Width="50"
-                            Height="50" 
+                        <Grid MouseMove="OverlayImage_MouseMove" MouseLeave="OverlayImage_MouseLeave" Cursor="Hand">
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="MouseLeftButtonDown">
+                                    <i:InvokeCommandAction Command="{Binding UploadImageCM}"/>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                            <Border x:Name="OverlayImage" CornerRadius="180" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="Black" Opacity="0">
+                            </Border>
+                            <Image
+                            Source="{StaticResource UploadWhite}" 
+                            Name="IconUploadImage"
+                            Width="40"
+                            Height="40" 
                             HorizontalAlignment="Center" VerticalAlignment="Center"
+                            Opacity="0.8"
+                            Visibility="Hidden"
                         >
-                        </Image>
-                    </Border>
-                </Grid>
+                            </Image>
+                        </Grid>
+                    </Grid>
                 <StackPanel Margin="35,0,0,0" VerticalAlignment="Center">
                     <StackPanel Orientation="Horizontal" Margin="0,7,0,7">
                         <TextBlock FontSize="18" FontFamily="{StaticResource MaterialDesignFont}" Text="{DynamicResource setting_textblock_HoVaTen}" FontWeight="Regular">
@@ -233,8 +237,8 @@
                                         <i:InvokeCommandAction Command="{Binding ChangePassCM}"/>
                                     </i:EventTrigger>
                                 </i:Interaction.Triggers>
-                            <Rectangle Width="140" Height="40" Fill="{StaticResource LightGrayAthens}"  RadiusX="10" RadiusY="10" Stroke="Gray" StrokeThickness="0.5"></Rectangle>
-                                <TextBlock Text="{DynamicResource setting_textblock_DoiMatKhau}" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="{StaticResource MaterialDesignFont}" FontSize="18" Foreground="{StaticResource LightGrayTundora}" FontWeight="Medium"></TextBlock>
+                            <Rectangle  HorizontalAlignment="Stretch" Height="40" Fill="{StaticResource LightGrayAthens}"  RadiusX="10" RadiusY="10" Stroke="Gray" StrokeThickness="0.5"></Rectangle>
+                            <TextBlock Margin="10,0,10,0" Text="{DynamicResource setting_textblock_DoiMatKhau}" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="{StaticResource MaterialDesignFont}" FontSize="18" Foreground="{StaticResource LightGrayTundora}" FontWeight="Medium"></TextBlock>
                         </Grid>
                     </Grid>
                 </StackPanel>
