@@ -212,7 +212,7 @@
                         </i:EventTrigger>
                     </i:Interaction.Triggers>
                 </Button>
-                <Button Width="90" Height="35" Margin="5,0,20,0"  Style="{StaticResource CustomButton}" Background="{StaticResource LightGreen}" Content="{DynamicResource food_button_Luu}">
+                <Button Width="90" Height="35" Margin="5,0,20,0"  Style="{StaticResource CustomButton}" Background="Green" Content="{DynamicResource food_button_Luu}">
                     <i:Interaction.Triggers>
                         <i:EventTrigger EventName="Click">
                             <i:InvokeCommandAction Command="{Binding SaveEditFoodCM}"
