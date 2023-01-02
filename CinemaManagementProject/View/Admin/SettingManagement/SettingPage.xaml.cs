@@ -78,5 +78,17 @@ namespace CinemaManagementProject.View.Admin.SettingManagement
             BlueRectangle.Height = 50;
         }
 
+        private void OverlayImage_MouseMove(object sender, MouseEventArgs e)
+        {
+            OverlayImage.Opacity = 0.4;
+            IconUploadImage.Visibility = Visibility.Visible;
+        }
+
+        private void OverlayImage_MouseLeave(object sender, MouseEventArgs e)
+        {
+            OverlayImage.Opacity = 0;
+            IconUploadImage.Visibility = Visibility.Hidden;
+
+        }
     }
 }

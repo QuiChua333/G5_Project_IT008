@@ -194,7 +194,7 @@
     <system:String x:Key="PositionPage_textblock_VaiTro">Vai trò</system:String>
     <system:String x:Key="setting_textblock_HoVaTen">Họ và tên:</system:String>
     <system:String x:Key="setting_textblock_Email">Email:</system:String>
-    <system:String x:Key="setting_textblock_ChucVu">ChucVu:</system:String>
+    <system:String x:Key="setting_textblock_ChucVu">Chức vụ:</system:String>
     <system:String x:Key="setting_textblock_ThayDoiMatKhau">Thay đổi mật khẩu</system:String>
     <system:String x:Key="setting_textblock_DoiMatKhau">Đổi mật khẩu</system:String>
     <system:String x:Key="setting_textblock_NgonNgu">Ngôn ngữ</system:String>
