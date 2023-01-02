@@ -60,7 +60,7 @@
                                 FontWeight="Bold"
                                 HorizontalAlignment="Center"
                                 VerticalAlignment="Center"  
-                                Content="CHỈNH SỬA SỰ CỐ THIẾT BỊ"
+                                Content="{DynamicResource EditTroubleWindow_Label_Chinhsuasucothietbi}"
                                 Margin="20,0,0,0">
                             <Label.Effect>
                                 <DropShadowEffect BlurRadius="1" Direction="-45" Color="#000000" ShadowDepth="1.5" Opacity="0.5"/>
@@ -129,7 +129,7 @@
                     <StackPanel Grid.Row="0"
                                 Margin="0,0,25,0"
                                  Orientation="Horizontal" >
-                        <Label Content="Tiêu đề:"
+                        <Label Content="{DynamicResource AddTroubleWindow_Label_Tieude}"
                                FontSize="16" 
                                Margin="10 20 10 0"
                                FontWeight="Medium"
@@ -153,7 +153,7 @@
                                 Margin="0,0,25,0">
                         <StackPanel Grid.Column="0" 
                                     Orientation="Horizontal">
-                            <Label Content="Tên nhân viên:"
+                            <Label Content="{DynamicResource AddTroubleWindow_Label_Tennhanvien}"
                                    FontSize="16" 
                                    Margin="10 20 0 0"
                                    FontWeight="Medium"
@@ -170,7 +170,7 @@
                         </StackPanel>
                         <StackPanel Margin="25,0,0,0"
                                     Width="250" Orientation="Horizontal">
-                            <Label Content="Trạng thái:"
+                            <Label Content="{DynamicResource AddTroubleWindow_Label_Trangthai}"
                                    FontSize="16" 
                                    Margin="-10 20 0 0"
                                    FontWeight="Medium"
@@ -181,7 +181,7 @@
                                        FontWeight="Medium"
                                        FontFamily="{StaticResource MaterialDesignFont}"
                                        Height="40"
-                                       Text="Chờ tiếp nhận"
+                                       Text="{DynamicResource AddTroubleWindow_Label_Chotiepnhan}"
                                        x:Name="cbxStatusError" 
                                        VerticalAlignment="Bottom" />
                         </StackPanel>
@@ -192,7 +192,7 @@
                                 Margin="0,0,25,0">
                         <StackPanel 
                                      Orientation="Horizontal">
-                            <Label Content="Ngày báo cáo:"
+                            <Label Content="{DynamicResource AddTroubleWindow_Label_Ngaybaocao}"
                                    Margin="10 20 0 0"
                                    FontSize="16"
                                    FontWeight="Medium"
@@ -208,7 +208,7 @@
                         </StackPanel>
                         <StackPanel 
                                     Margin="123,0,0,0" Orientation="Horizontal" Width="2448">
-                            <Label Content="Mức độ:"
+                            <Label Content="{DynamicResource AddTroubleWindow_Label_Mucdo}"
                                    FontSize="16" 
                                    Margin="-10 20 0 0"
                                    FontWeight="Medium"
@@ -230,7 +230,7 @@
                     </StackPanel>
                     <Grid Grid.Row="3">
                         <StackPanel>
-                            <Label Content="Mô tả"
+                            <Label Content="{DynamicResource AddTroubleWindow_Label_Mota}"
                                    FontSize="16" 
                                    FontWeight="Medium"
                                    FontFamily="{StaticResource MaterialDesignFont}"
@@ -242,7 +242,7 @@
                                      TextWrapping="Wrap"
                                      VerticalScrollBarVisibility="Auto"
                                      HorizontalScrollBarVisibility="Disabled"
-                                     materialDesign:HintAssist.Hint="Mô tả lỗi"
+                                     materialDesign:HintAssist.Hint="{DynamicResource AddTroubleWindow_Label_Motaloi}"
                                      FontSize="16"  
                                      Margin="0,5,0,0"
                                      Foreground="Black"
@@ -250,7 +250,7 @@
                                      Text="{Binding Description, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
                                      Height="85" Width="524"/>
                         </StackPanel>
-                        <Button Content="Xác nhận"
+                        <Button Content="{DynamicResource AddTroubleWindow_button_Xacnhan}"
                                 Background="#007bff"
                                 Cursor="Hand"
                                 Padding="0,0,0,3"

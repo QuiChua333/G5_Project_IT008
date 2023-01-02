@@ -94,7 +94,7 @@
                         </Rectangle.Effect>
                     </Rectangle>
                     <TextBox x:Name="FilterBox" 
-                             materialDesign:HintAssist.Hint="Tìm kiếm"
+                             materialDesign:HintAssist.Hint="{DynamicResource CustomerManagementPage_search_TimKiem}"
                              Grid.Column="1"
                              AllowDrop="True"
                              VerticalAlignment="Center" 
@@ -148,11 +148,11 @@
                                                    CommandParameter="{Binding ElementName=filtercbb}" />
                         </i:EventTrigger>
                     </i:Interaction.Triggers>
-                    <ComboBoxItem Tag="Toàn bộ">Toàn bộ</ComboBoxItem>
-                    <ComboBoxItem Tag="Chờ tiếp nhận">Chờ tiếp nhận</ComboBoxItem>
-                    <ComboBoxItem Tag="Đang giải quyết">Đang giải quyết</ComboBoxItem>
-                    <ComboBoxItem Tag="Đã giải quyết">Đã giải quyết</ComboBoxItem>
-                    <ComboBoxItem Tag="Đã hủy">Đã hủy</ComboBoxItem>
+                    <ComboBoxItem Tag="Toàn bộ" Content="{DynamicResource TroubleManagementPage_ComboboxItem_Toanbo}"></ComboBoxItem>
+                    <ComboBoxItem Tag="Chờ tiếp nhận" Content="{DynamicResource TroublePage_ComboboxItem_Chotiepnhan}"></ComboBoxItem>
+                    <ComboBoxItem Tag="Đang giải quyết" Content="{DynamicResource TroubleManagementPage_ComboboxItem_Danggiaiquyet}"></ComboBoxItem>
+                    <ComboBoxItem Tag="Đã giải quyết" Content="{DynamicResource TroubleManagementPage_ComboboxItem_Dagiaiquyet}"></ComboBoxItem>
+                    <ComboBoxItem Tag="Đã hủy" Content="{DynamicResource TroubleManagementPage_ComboboxItem_Dahuy}"></ComboBoxItem>
                 </ComboBox>
             </Border>
             <Border Grid.Row="0"
@@ -176,7 +176,7 @@
                                                 Width="22" 
                                                 Height="22"/>
                         <TextBlock FontWeight="Normal"
-                                    Text="Báo cáo" 
+                                    Text="{DynamicResource TroublePage_Button_Baocao}"
                                     FontFamily="{StaticResource MaterialDesignFont}"
                                     FontSize="14"
                                     Margin="5,2,0,0"/>
@@ -219,8 +219,8 @@
                                 <GridViewColumn 
                                                 Width="500">
                                     <GridViewColumn.Header>
-                                        
-                                        <TextBlock Text="Sự cố"
+
+                                        <TextBlock Text="{DynamicResource admin_sideBar_SuCo}"
                                                    Margin="10 0 0 0"
                                                    FontSize="14"
                                                    FontWeight="SemiBold"
@@ -244,7 +244,7 @@
                                                        FontWeight="Bold"
                                                        Width="300" />
                                                     <StackPanel Orientation="Horizontal">
-                                                        <Label Content="Chi phí:"
+                                                        <Label Content="{DynamicResource EditTroubleInformation_Inprocess_Label_Chiphi}"
                                                            FontSize="14" />
                                                         <Label Content="{Binding RepairCostStr}"
                                                            FontSize="14" />
@@ -258,7 +258,7 @@
                                 <GridViewColumn 
                                                 Width="150">
                                     <GridViewColumn.Header>
-                                        <TextBlock Text="Ngày gửi"
+                                        <TextBlock Text="{DynamicResource TroublePage_ListviewHeader_Ngaygui}"
                                                    FontSize="14"
                                                    FontWeight="SemiBold"
                                                    Foreground="Black"></TextBlock>
@@ -274,7 +274,7 @@
                                 <GridViewColumn 
                                             Width="170">
                                     <GridViewColumn.Header>
-                                        <TextBlock Text="Trạng thái"
+                                        <TextBlock Text="{DynamicResource TroublePage_ListviewHeader_TrangThai}"
                                                    FontSize="14"
                                                    FontWeight="SemiBold"
                                                    Foreground="Black"></TextBlock>

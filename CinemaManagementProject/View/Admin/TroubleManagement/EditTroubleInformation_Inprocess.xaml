@@ -49,7 +49,7 @@
                     FontWeight="Bold"
                     HorizontalAlignment="Center"
                     VerticalAlignment="Center"
-                    Content="CHỈNH SỬA SỰ CỐ"
+                    Content="{DynamicResource EditTroubleInformation_Label_Chinhsuasuco}"
                     Margin="240,0,0,0"
                 >
                     <Label.Effect>
@@ -81,7 +81,7 @@
 
             <Border BorderThickness="2"  
                     BorderBrush="Black" 
-                    Margin="20 20 20 30" >
+                    Margin="20 20 20 60" >
                 <Border.Background>
                     <ImageBrush ImageSource="{Binding SelectedItem.Image}" />
                 </Border.Background>
@@ -119,7 +119,7 @@
                                     FontWeight="Medium"
                                     FontSize="16" />
                         <StackPanel Orientation="Horizontal" >
-                            <TextBlock Text="Mức độ: "
+                            <TextBlock Text="{DynamicResource AddTroubleWindow_Label_Mucdo}"
                                            Margin="120,3,0,0"
                                            FontSize="15" />
                             <TextBlock Text="{Binding SelectedItem.Level}"
@@ -136,7 +136,7 @@
                     </Border>
                     <StackPanel Orientation="Horizontal">
                         <StackPanel Margin="0,10,0,0">
-                            <TextBlock Text="Ngày tiếp nhận:"
+                            <TextBlock Text="{DynamicResource EditTroubleInformation_Inprocess_Label_Ngaytiepnhan}"
                                        FontSize="16"
                                        FontWeight="Medium"/>
                             <TextBlock Text="{Binding SelectedItem.SubmittedAt,StringFormat=dd/MM/yyyy HH:mm:ss}" 
@@ -144,7 +144,7 @@
                                        Margin="0 10 0 0"/>
                         </StackPanel>
                         <StackPanel Margin="160,10,0,0">
-                            <TextBlock  Text="Nhân viên báo cáo:"
+                            <TextBlock  Text="{DynamicResource EditTroubleInformation_Inprocess_Label_Nhanvienbaocao}"
                                         FontSize="16"
                                         FontWeight="Medium"/>
                             <TextBlock FontSize="16"
@@ -156,7 +156,7 @@
                     <StackPanel Margin="0,0,0,0" 
                                 Orientation="Horizontal"
                                 Height="50">
-                        <TextBlock  Text="Trạng thái:"
+                        <TextBlock  Text="{DynamicResource AddTroubleWindow_Label_Trangthai}"
                                     FontSize="16" 
                                     Margin="0 14 0 0"
                                     FontWeight="Medium"/>
@@ -182,7 +182,7 @@
                                 x:Name="_startday"
                                 IsEnabled="False" 
                                 Orientation="Horizontal">
-                        <TextBlock Text="Ngày sửa:" 
+                        <TextBlock Text="{DynamicResource EditTroubleInformation_Inprocess_Label_Ngaysua}"
                                    FontSize="16"
                                    Margin="0 0 0 0"
                                    FontWeight="Medium"/>
@@ -201,7 +201,7 @@
                                 x:Name="_Finishday"
                                 IsEnabled="False" 
                                 Orientation="Horizontal">
-                        <TextBlock Text="Ngày hoàn thành:"
+                        <TextBlock Text="{DynamicResource EditTroubleInformation_Inprocess_Label_Ngayhoanthanh}"
                                    FontSize="16" Margin="0 5 0 0"
                                     FontWeight="Medium"/>
                         <DatePicker Width="125"
@@ -222,7 +222,7 @@
                                 IsEnabled="False" 
                                 Orientation="Horizontal" 
                                 HorizontalAlignment="Left" Width="384">
-                        <TextBlock Text="Chi phí:"
+                        <TextBlock Text="{DynamicResource EditTroubleInformation_Inprocess_Label_Chiphi}"
                                    FontSize="16"
                                    FontWeight="Medium" Height="26"/>
                         <TextBox    Width="80"
@@ -245,12 +245,12 @@
                                 Background="Red"
                                 HorizontalAlignment="Right" 
                                 Margin="0,0,0,0"
-                                Content="Đóng"></Button>
+                                Content="{DynamicResource EditTroubleInformation_Button_Dong}"></Button>
                         <Button x:Name="SaveButton" Style="{StaticResource CustomButton}" 
                                 Width="90" Height="36" 
                                 HorizontalAlignment="Right" 
                                 Margin="10,0,0,0"
-                                Content="Lưu"
+                                Content="{DynamicResource AddStaffWindow_button_Luu}"
                                 Command="{Binding UpdateTroubleListCM}"
                                 CommandParameter="{Binding ElementName=window}"></Button>
                     </StackPanel>

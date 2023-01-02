@@ -87,7 +87,7 @@
                         </Rectangle.Effect>
                     </Rectangle>
                     <TextBox x:Name="FilterBox" 
-                             materialDesign:HintAssist.Hint="Tìm kiếm"
+                             materialDesign:HintAssist.Hint="{DynamicResource CustomerManagementPage_search_TimKiem}"
                              Grid.Column="1"
                              AllowDrop="True"
                              VerticalAlignment="Center" 
@@ -121,16 +121,16 @@
                             Opacity=".25"
                             Direction="270"/>
                     </Border.Effect>
-                    <ComboBox   SelectedValuePath="Content"
+                    <ComboBox   SelectedValuePath="Tag"
                                 SelectedIndex="0"
                                 UseLayoutRounding="False"
                                 BorderThickness="0"
                                 Style="{StaticResource styleButton}" 
                                 Name="cbbFilter"
                                 Padding="10 14 10 14" >
-                        <ComboBoxItem  Foreground="Black" Content="Mã khách hàng" />
-                        <ComboBoxItem  Foreground="Black" Content="Tên khách hàng" />
-                        <ComboBoxItem  Foreground="Black" Content="Số điện thoại" />
+                        <ComboBoxItem  Foreground="Black" Content="{DynamicResource CustomerManagementPage_ComboboxItem_MaKhachHang}" Tag="Mã khách hàng" />
+                        <ComboBoxItem  Foreground="Black" Content="{DynamicResource CustomerManagementPage_ComboboxItem_TenKhachHang}" Tag="Tên khách hàng"/>
+                        <ComboBoxItem  Foreground="Black" Content="{DynamicResource CustomerManagementPage_ComboboxItem_SoDienThoai}" Tag="Số điện thoại"/>
                     </ComboBox>
                 </Border>
                 <StackPanel Margin="250 0 0 0"
@@ -170,9 +170,9 @@
                                                        CommandParameter="{Binding ElementName=periodbox1}" />
                                 </i:EventTrigger>
                             </i:Interaction.Triggers>
-                            <ComboBoxItem Foreground="Black" Tag="Toàn bộ" Content="Toàn bộ" FontSize="15"/>
-                            <ComboBoxItem Foreground="Black" Tag="Theo năm" Content="Theo năm" FontSize="15"/>
-                            <ComboBoxItem Foreground="Black" Tag="Theo tháng" Content="Theo tháng" FontSize="15"/>
+                            <ComboBoxItem Foreground="Black" Tag="Toàn bộ" Content="{DynamicResource CustomerManagementPage_ComboboxItem_Toanbo}" FontSize="15"/>
+                            <ComboBoxItem Foreground="Black" Tag="Theo năm" Content="{DynamicResource CustomerManagementPage_ComboboxItem_Theonam}" FontSize="15"/>
+                            <ComboBoxItem Foreground="Black" Tag="Theo tháng" Content="{DynamicResource CustomerManagementPage_ComboboxItem_Theothang}" FontSize="15"/>
                         </ComboBox>
                     </Border>
                     <Border CornerRadius="12"
@@ -259,7 +259,7 @@
                                     </GridViewColumn>
                                     <GridViewColumn Width="180" >
                                         <GridViewColumn.Header>
-                                            <TextBlock Text="Tên khách hàng" 
+                                            <TextBlock Text="{DynamicResource CustomerManagementPage_ListviewHeader_TenKhachHang}" 
                                                        FontSize="14" 
                                                        FontWeight="SemiBold" 
                                                        Foreground="Black"/>
@@ -275,7 +275,7 @@
                                     </GridViewColumn>
                                     <GridViewColumn Width="146">
                                         <GridViewColumn.Header>
-                                            <TextBlock Text="Số điện thoại" 
+                                            <TextBlock Text="{DynamicResource CustomerManagementPage_ListviewHeader_SoDienThoai}"
                                                        FontSize="14" 
                                                        FontWeight="SemiBold" 
                                                        Foreground="Black"/>
@@ -307,7 +307,7 @@
                                     </GridViewColumn>
                                     <GridViewColumn Width="150" >
                                         <GridViewColumn.Header>
-                                            <TextBlock Text="Ngày đăng ký" 
+                                            <TextBlock Text="{DynamicResource CustomerManagementPage_ListviewHeader_NgayDangKy}"
                                                        FontSize="14" 
                                                        FontWeight="SemiBold" 
                                                        Foreground="Black"/>
@@ -323,7 +323,7 @@
                                     </GridViewColumn>
                                     <GridViewColumn Width="154">
                                         <GridViewColumn.Header>
-                                            <TextBlock Text="Chi tiêu tháng" 
+                                            <TextBlock Text="{DynamicResource CustomerManagementPage_ListviewHeader_Chitieuthang}"
                                                        FontSize="14" 
                                                        FontWeight="SemiBold" 
                                                        Foreground="Black"/>

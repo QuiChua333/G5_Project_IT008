@@ -91,7 +91,7 @@
                                     </Rectangle.Effect>
                                 </Rectangle>
                                 <TextBox x:Name="FilterBox" 
-                                         materialDesign:HintAssist.Hint="Tìm kiếm"
+                                         materialDesign:HintAssist.Hint="{DynamicResource ExportHistoryPage_search_TimKiem}"
                                          Grid.Column="1"
                                          AllowDrop="True"
                                          VerticalAlignment="Center" 
@@ -133,9 +133,9 @@
                                             Margin="0,0,0,0"
                                             Padding="15 14 15 13" >
 
-                                    <ComboBoxItem Content="Mã đơn"  Tag="Mã đơn"/>
-                                    <ComboBoxItem Content="Khách hàng" Tag="Khách hàng" />
-                                    <ComboBoxItem Content="Điện thoại" Tag="Điện thoại"/>
+                                    <ComboBoxItem Content="{DynamicResource ExportHistoryPage_ComboboxItem_Madon}"  Tag="Mã đơn"/>
+                                    <ComboBoxItem Content="{DynamicResource ExportHistoryPage_ComboboxItem_Khachhang}" Tag="Khách hàng" />
+                                    <ComboBoxItem Content="{DynamicResource ExportHistoryPage_ComboboxItem_Dienthoai}" Tag="Điện thoại"/>
                                 </ComboBox>
                             </Border>
                             <Border CornerRadius="12"
@@ -160,16 +160,17 @@
                                             x:Name="Filterbox"
                                             BorderThickness="0"
                                             SelectedItem="{Binding SelectedItemFilter}"
-                                            SelectionChanged="ComboBox_SelectionChanged_1" VerticalAlignment="Top">
+                                            SelectionChanged="ComboBox_SelectionChanged_1" 
+                                            VerticalAlignment="Top">
                                     <i:Interaction.Triggers>
                                         <i:EventTrigger EventName="SelectionChanged">
                                             <i:InvokeCommandAction Command="{Binding CheckItemFilterCM}"
                                                                    CommandParameter="{Binding ElementName=Filterbox}" />
                                         </i:EventTrigger>
                                     </i:Interaction.Triggers>
-                                    <ComboBoxItem Content="Toàn bộ" Tag="Toàn bộ" FontSize="15"/>
-                                    <ComboBoxItem Content="Theo ngày"  Tag="Theo ngày" FontSize="15"/>
-                                    <ComboBoxItem Content="Theo tháng" Tag="Theo tháng" FontSize="15"/>
+                                    <ComboBoxItem Content="{DynamicResource ExportHistoryPage_ComboboxItem_Toanbo}" Tag="Toàn bộ" FontSize="15"/>
+                                    <ComboBoxItem Content="{DynamicResource ExportHistoryPage_ComboboxItem_Theongay}"  Tag="Theo ngày" FontSize="15"/>
+                                    <ComboBoxItem Content="{DynamicResource ExportHistoryPage_ComboboxItem_Theothang}" Tag="Theo tháng" FontSize="15"/>
                                 </ComboBox>
                             </Border>
                             <Border CornerRadius="12"
@@ -201,18 +202,18 @@
                                                                        CommandParameter="{Binding ElementName=cbbmonth}" />
                                             </i:EventTrigger>
                                         </i:Interaction.Triggers>
-                                        <ComboBoxItem Content="Tháng 1" FontSize="15"/>
-                                        <ComboBoxItem Content="Tháng 2" FontSize="15"/>
-                                        <ComboBoxItem Content="Tháng 3" FontSize="15"/>
-                                        <ComboBoxItem Content="Tháng 4" FontSize="15"/>
-                                        <ComboBoxItem Content="Tháng 5" FontSize="15"/>
-                                        <ComboBoxItem Content="Tháng 6" FontSize="15"/>
-                                        <ComboBoxItem Content="Tháng 7" FontSize="15"/>
-                                        <ComboBoxItem Content="Tháng 8" FontSize="15"/>
-                                        <ComboBoxItem Content="Tháng 9" FontSize="15"/>
-                                        <ComboBoxItem Content="Tháng 10" FontSize="15"/>
-                                        <ComboBoxItem Content="Tháng 11" FontSize="15"/>
-                                        <ComboBoxItem Content="Tháng 12" FontSize="15"/>
+                                        <ComboBoxItem Content="{DynamicResource ImportHistoryPage_ComboboxItem_Thang1}" />
+                                        <ComboBoxItem Content="{DynamicResource ImportHistoryPage_ComboboxItem_Thang2}" />
+                                        <ComboBoxItem Content="{DynamicResource ImportHistoryPage_ComboboxItem_Thang3}" />
+                                        <ComboBoxItem Content="{DynamicResource ImportHistoryPage_ComboboxItem_Thang4}" />
+                                        <ComboBoxItem Content="{DynamicResource ImportHistoryPage_ComboboxItem_Thang5}" />
+                                        <ComboBoxItem Content="{DynamicResource ImportHistoryPage_ComboboxItem_Thang6}" />
+                                        <ComboBoxItem Content="{DynamicResource ImportHistoryPage_ComboboxItem_Thang7}" />
+                                        <ComboBoxItem Content="{DynamicResource ImportHistoryPage_ComboboxItem_Thang8}" />
+                                        <ComboBoxItem Content="{DynamicResource ImportHistoryPage_ComboboxItem_Thang9}" />
+                                        <ComboBoxItem Content="{DynamicResource ImportHistoryPage_ComboboxItem_Thang10}" />
+                                        <ComboBoxItem Content="{DynamicResource ImportHistoryPage_ComboboxItem_Thang11}" />
+                                        <ComboBoxItem Content="{DynamicResource ImportHistoryPage_ComboboxItem_Thang12}" />
                                     </ComboBox>
                                     <DatePicker Height="30"
                                                 Width="122"
@@ -258,7 +259,7 @@
                                                          Width="26" 
                                                          Height="26"/>
                                 <TextBlock FontFamily="{StaticResource MaterialDesignFont}" 
-                                           Text="Xuất file excel" 
+                                           Text="{DynamicResource ExportHistoryPage_TextBlock_Xuatfileexcel}"
                                            FontSize="15"
                                            FontWeight="Normal"
                                            Margin="2,5,0,0"/>
@@ -303,7 +304,7 @@
                                 <GridView  >
                                     <GridViewColumn  Width="112">
                                         <GridViewColumn.Header>
-                                            <TextBlock Text="Mã đơn" 
+                                            <TextBlock Text="{DynamicResource ExportHistoryPage_ListviewHeader_Madon}"
                                                        FontSize="14" 
                                                        FontWeight="SemiBold"
                                                        Foreground="Black"></TextBlock>
@@ -320,7 +321,7 @@
                                     <GridViewColumn 
                                                     Width="160" >
                                         <GridViewColumn.Header>
-                                            <TextBlock Text="Ngày xuất" 
+                                            <TextBlock Text="{DynamicResource ExportHistoryPage_ListviewHeader_Ngayxuat}"
                                                        FontSize="14" 
                                                        FontWeight="SemiBold"
                                                        Foreground="Black"></TextBlock>
@@ -337,7 +338,7 @@
                                     <GridViewColumn  
                                                     Width="160"  >
                                         <GridViewColumn.Header>
-                                            <TextBlock Text="Khách hàng" 
+                                            <TextBlock Text="{DynamicResource ExportHistoryPage_ListviewHeader_Khachhang}"
                                                        FontSize="14" 
                                                        FontWeight="SemiBold"
                                                        Foreground="Black"></TextBlock>
@@ -354,7 +355,7 @@
                                     <GridViewColumn 
                                                     Width="170">
                                         <GridViewColumn.Header>
-                                            <TextBlock Text="Số điện thoại" 
+                                            <TextBlock Text="{DynamicResource ExportHistoryPage_ListviewHeader_Sodienthoai}"
                                                        FontSize="14" 
                                                        FontWeight="SemiBold"
                                                        Foreground="Black"></TextBlock>
@@ -371,7 +372,7 @@
                                     <GridViewColumn 
                                                     Width="130" >
                                         <GridViewColumn.Header>
-                                            <TextBlock Text="Tổng giá" 
+                                            <TextBlock Text="{DynamicResource ExportHistoryPage_ListviewHeader_Tonggia}"
                                                        FontSize="14" 
                                                        FontWeight="SemiBold"
                                                        Foreground="Black"></TextBlock>
@@ -405,7 +406,7 @@
                                     <GridViewColumn 
                                                     Width="200">
                                         <GridViewColumn.Header>
-                                            <TextBlock Text="Giá sau giảm" 
+                                            <TextBlock Text="{DynamicResource ExportHistoryPage_ListviewHeader_Giasaugiam}"
                                                        FontSize="14" 
                                                        FontWeight="SemiBold"
                                                        Foreground="Black"></TextBlock>
