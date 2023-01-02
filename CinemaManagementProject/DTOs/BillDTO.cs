@@ -17,21 +17,7 @@ namespace CinemaManagementProject.DTOs
         //Customer
         private int _CustomerId;
 
-        public int CustomerId
-        {
-            get
-            {
-                if (_CustomerId == 0 )
-                {
-                    return 0;
-                }
-                return _CustomerId;
-            }
-            set
-            {
-                _CustomerId = value;
-            }
-        }
+        public Nullable<int> CustomerId;
         private string _CustomerName;
         public string CustomerName
         {

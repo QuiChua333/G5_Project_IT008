@@ -134,6 +134,10 @@
                                             Value="0 0 10 4" />
                                     <Setter Property="Padding"
                                             Value="0 0 0 0" />
+                                    <Setter Property="VerticalAlignment"
+                                            Value="Bottom" />
+                                    <Setter Property="VerticalContentAlignment"
+                                            Value="Bottom" />
                                 </Style>
                             </Grid.Resources>
 

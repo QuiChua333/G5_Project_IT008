@@ -7,8 +7,7 @@
       mc:Ignorable="d" 
       Title="HistoryManagementPage" 
       Background="{StaticResource LightBlueSpindle}"
-      DataContext="{StaticResource Import_ExportManagementVM}"
-      
+      DataContext="{StaticResource Import_ExportManagementVM}"  
       ShowsNavigationUI="False"      
       x:Name="mainPage">
     <Page.Triggers>
@@ -29,7 +28,7 @@
 
     <Grid HorizontalAlignment="Stretch"
              VerticalAlignment="Stretch"
-             Margin="20">
+             Margin="20 -50 20 20">
         <Grid.RowDefinitions>
             <RowDefinition Height="50"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
@@ -44,7 +43,7 @@
                             FontFamily="{StaticResource MaterialDesignFont}"
                             FontSize="16"
                             IsChecked="True"
-                            Content="Nhập kho"
+                            Content="{DynamicResource HistoryManagementPage_RadioButton_Nhapkho}"
                             Cursor="Hand"
                             Command="{Binding LoadImportPageCM}"
                             CommandParameter="{Binding ElementName=MainListViewFrame}"
@@ -58,12 +57,12 @@
                             FontSize="16"
                             IsChecked="False"
                             Margin="10,5,0,0"
-                            Content="Hóa đơn"
+                            Content="{DynamicResource HistoryManagementPage_RadioButton_Hoadon}"
                             Command="{Binding LoadExportPageCM}"
                             CommandParameter="{Binding ElementName=MainListViewFrame}"/>
         </StackPanel>
         <Border Grid.Row="1" 
-                Background="{StaticResource LightGrayAthens}" 
+                Background="Transparent" 
                 CornerRadius="20" >
             <Border.Effect>
                 <DropShadowEffect

@@ -6,8 +6,8 @@
       xmlns:local="clr-namespace:CinemaManagementProject.View.Admin.HistoryManagement"
       mc:Ignorable="d" 
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"       
-      xmlns:Search="clr-namespace:CinemaManagementProject.Component.Search" xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
-      
+      xmlns:Search="clr-namespace:CinemaManagementProject.Component.Search" 
+      xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
       Title="ImportHistoryPage"
       DataContext="{StaticResource Import_ExportManagementVM}"
       ShowsNavigationUI="False"
@@ -59,179 +59,193 @@
                     <Setter Property="FontWeight" Value="Normal"/>
                 </Style>
             </Grid.Resources>
-            <StackPanel     Grid.Row="0" 
-                            HorizontalAlignment="Left" 
-                            Orientation="Horizontal" >
-                <Grid Height="46"
-                      Width="300" 
-                      Margin="20, 17, 0, 17"  >
+            <StackPanel  Grid.Row="0" 
+                         Orientation="Horizontal" >
+                <Grid Width="1166">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="52"/>
-                        <ColumnDefinition />
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="200"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
-                    <Rectangle
-                            Fill="White"
-                            Grid.ColumnSpan="2"
-                            RadiusX="20"
-                            RadiusY="20">
-                        <Rectangle.Effect>
+                    <Grid Grid.Column="0" >
+                        <StackPanel Orientation="Horizontal">
+                            <Grid Height="46"
+                                  Width="300" 
+                                  Margin="20, 17, 0, 17"  >     
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="52"/>
+                                    <ColumnDefinition />
+                                </Grid.ColumnDefinitions>
+                                <Rectangle
+                                        Fill="White"
+                                        Grid.ColumnSpan="2"
+                                        RadiusX="20"
+                                        RadiusY="20">
+                                    <Rectangle.Effect>
+                                        <DropShadowEffect
+                                                BlurRadius="10"
+                                                Color="Black"
+                                                ShadowDepth="4"
+                                                Opacity=".25"
+                                                Direction="270"/>
+                                    </Rectangle.Effect>
+                                </Rectangle>
+                                <TextBox x:Name="FilterBox" 
+                                         materialDesign:HintAssist.Hint="{DynamicResource ImportHistoryPage_search_TimKiem}"
+                                         Grid.Column="1"
+                                         AllowDrop="True"
+                                         VerticalAlignment="Center" 
+                                         Margin="20,0,20,0" 
+                                         FontSize="15" 
+                                         Opacity=".5" 
+                                         FontFamily="{StaticResource MaterialDesignFont}"
+                                         FontWeight="Regular"
+                                         TextChanged="TextBox_TextChanged"
+                                         BorderThickness="0,0,0,0" 
+                                         Padding="0,4,0,4"/>
+                                <Image x:Name="IconSeach" 
+                                       Source="{StaticResource IconSearch}"
+                                       Grid.Column="0"
+                                       Width="20" Height="20"
+                                       Margin="20,0,0,0"
+                                       HorizontalAlignment="Right"
+                                       VerticalAlignment="Center"/>
+                            </Grid>
+                            <Border CornerRadius="12"
+                                    Margin="20, 17, 0, 17"
+                                    Background="White"
+                                    Height="46"
+                                    Width="130"
+                                    BorderBrush="Black">
+                                <Border.Effect>
+                                    <DropShadowEffect
+                                                BlurRadius="10"
+                                                Color="Black"
+                                                ShadowDepth="4"
+                                                Opacity=".25"
+                                                Direction="270"/>
+                                </Border.Effect>
+                                <ComboBox   SelectedValuePath="Tag"
+                                            SelectedIndex="0"
+                                            BorderThickness="0"
+                                            Style="{StaticResource styleButton}" 
+                                            Margin="0,0,0,-3"                            
+                                            x:Name="cbbFilter">
+                                    <ComboBoxItem Content="{DynamicResource ImportHistoryPage_ComboboxItem_Madon}" Tag="Mã đơn"/>
+                                    <ComboBoxItem Content="{DynamicResource ImportHistoryPage_ComboboxItem_Nhanvien}" Tag="Nhân viên"/>
+                                    <ComboBoxItem Content="{DynamicResource ImportHistoryPage_ComboboxItem_Sanpham}" Tag="Sản phẩm"/>
+                                </ComboBox>
+                            </Border>
+                            <Border CornerRadius="12"
+                                    Margin="20, 17, 0, 17"
+                                    Background="White"
+                                    Height="46"
+                                    Width="130"
+                                    BorderBrush="Black">
+                                <Border.Effect>
+                                    <DropShadowEffect
+                                                BlurRadius="10"
+                                                Color="Black"
+                                                ShadowDepth="4"
+                                                Opacity=".25"
+                                                Direction="270"/>
+                                </Border.Effect>
+                                <ComboBox   SelectedValuePath="Content"
+                                            SelectedIndex="0"
+                                            BorderThickness="0"
+                                            Style="{StaticResource styleButton}" 
+                                            Margin="0,0,0,-3"
+                                            x:Name="filtercbb"                            
+                                            SelectedItem="{Binding SelectedImportItemFilter}"
+                                            SelectionChanged="ComboBox_SelectionChanged_1">
+                                    <i:Interaction.Triggers>
+                                        <i:EventTrigger EventName="SelectionChanged">
+                                            <i:InvokeCommandAction Command="{Binding CheckImportItemFilterCM}"
+                                                       CommandParameter="{Binding ElementName=filtercbb}" />
+                                        </i:EventTrigger>
+                                    </i:Interaction.Triggers>
+                                    <ComboBoxItem Content="{DynamicResource ImportHistoryPage_ComboboxItem_Toanbo}" Tag="Toàn bộ"/>
+                                    <ComboBoxItem Content="{DynamicResource ImportHistoryPage_ComboboxItem_Theothang}" Tag="Theo tháng"/>
+                                </ComboBox>
+                            </Border>
+                            <Border CornerRadius="12"
+                                    Margin="20, 17, 0, 17"
+                                    Background="White"
+                                    Height="46"
+                                    x:Name="bodermonth"
+                                    Width="130"
+                                    Visibility="Collapsed"
+                                    BorderBrush="Black">
+                                <Border.Effect>
+                                    <DropShadowEffect
+                                                BlurRadius="10"
+                                                Color="Black"
+                                                ShadowDepth="4"
+                                                Opacity=".25"
+                                                Direction="270"/>
+                                </Border.Effect>
+                                <ComboBox Height="30"
+                                          Width="100"
+                                          Margin="10 0 0 5"
+                                          Padding="0,10,10,0"
+                                          FontSize="15"
+                                          x:Name="cbbmonth"
+                                          SelectedIndex="{Binding SelectedImportMonth,Mode=TwoWay}">
+                                    <i:Interaction.Triggers>
+                                        <i:EventTrigger EventName="SelectionChanged">
+                                            <i:InvokeCommandAction Command="{Binding SelectedImportMonthCM}"
+                                                       CommandParameter="{Binding ElementName=cbbmonth}" />
+                                        </i:EventTrigger>
+                                    </i:Interaction.Triggers>
+                                    <ComboBoxItem Content="{DynamicResource ImportHistoryPage_ComboboxItem_Thang1}" />
+                                    <ComboBoxItem Content="{DynamicResource ImportHistoryPage_ComboboxItem_Thang2}" />
+                                    <ComboBoxItem Content="{DynamicResource ImportHistoryPage_ComboboxItem_Thang3}" />
+                                    <ComboBoxItem Content="{DynamicResource ImportHistoryPage_ComboboxItem_Thang4}" />
+                                    <ComboBoxItem Content="{DynamicResource ImportHistoryPage_ComboboxItem_Thang5}" />
+                                    <ComboBoxItem Content="{DynamicResource ImportHistoryPage_ComboboxItem_Thang6}" />
+                                    <ComboBoxItem Content="{DynamicResource ImportHistoryPage_ComboboxItem_Thang7}" />
+                                    <ComboBoxItem Content="{DynamicResource ImportHistoryPage_ComboboxItem_Thang8}" />
+                                    <ComboBoxItem Content="{DynamicResource ImportHistoryPage_ComboboxItem_Thang9}" />
+                                    <ComboBoxItem Content="{DynamicResource ImportHistoryPage_ComboboxItem_Thang10}" />
+                                    <ComboBoxItem Content="{DynamicResource ImportHistoryPage_ComboboxItem_Thang11}" />
+                                    <ComboBoxItem Content="{DynamicResource ImportHistoryPage_ComboboxItem_Thang12}" />
+                                </ComboBox>
+                            </Border>
+
+                        </StackPanel>
+                     </Grid>
+                    <Border Grid.Column="1">
+                        <Border.Effect>
                             <DropShadowEffect
                                     BlurRadius="10"
                                     Color="Black"
                                     ShadowDepth="4"
                                     Opacity=".25"
                                     Direction="270"/>
-                        </Rectangle.Effect>
-                    </Rectangle>
-                    <TextBox x:Name="FilterBox" 
-                             materialDesign:HintAssist.Hint="Search"
-                             Grid.Column="1"
-                             AllowDrop="True"
-                             VerticalAlignment="Center" 
-                             Margin="20,0,20,0" 
-                             FontSize="15" 
-                             Opacity=".5" 
-                             FontFamily="{StaticResource MaterialDesignFont}"
-                             FontWeight="Regular"
-                             TextChanged="TextBox_TextChanged"
-                             BorderThickness="0,0,0,0" 
-                             Padding="0,4,0,4"/>
-                    <Image x:Name="IconSeach" 
-                           Source="{StaticResource IconSearch}"
-                           Grid.Column="0"
-                           Width="20" Height="20"
-                           Margin="20,0,0,0"
-                           HorizontalAlignment="Right"
-                           VerticalAlignment="Center"/>
-                </Grid>
-                <Border CornerRadius="12"
-                        Margin="20, 17, 0, 17"
-                        Background="White"
-                        Height="46"
-                        Width="130"
-                        BorderBrush="Black">
-                    <Border.Effect>
-                        <DropShadowEffect
-                                BlurRadius="10"
-                                Color="Black"
-                                ShadowDepth="4"
-                                Opacity=".25"
-                                Direction="270"/>
-                    </Border.Effect>
-                    <ComboBox   SelectedValuePath="Content"
-                                SelectedIndex="0"
-                                BorderThickness="0"
-                                Style="{StaticResource styleButton}" 
-                                Margin="0,0,0,-3"                            
-                                x:Name="cbbFilter">
-                        <ComboBoxItem Content="Mã đơn" />
-                        <ComboBoxItem Content="Nhân viên" />
-                        <ComboBoxItem Content="Sản phẩm" />
-                    </ComboBox>
-                </Border>
-                <Border CornerRadius="12"
-                        Margin="20, 17, 0, 17"
-                        Background="White"
-                        Height="46"
-                        Width="130"
-                        BorderBrush="Black">
-                    <Border.Effect>
-                        <DropShadowEffect
-                            BlurRadius="10"
-                            Color="Black"
-                            ShadowDepth="4"
-                            Opacity=".25"
-                            Direction="270"/>
-                    </Border.Effect>
-                    <ComboBox   SelectedValuePath="Content"
-                                SelectedIndex="0"
-                                BorderThickness="0"
-                                Style="{StaticResource styleButton}" 
-                                Margin="0,0,0,-3"
-                                x:Name="filtercbb"                            
-                                SelectedItem="{Binding SelectedImportItemFilter}"
-                                SelectionChanged="ComboBox_SelectionChanged_1">
-                        <i:Interaction.Triggers>
-                            <i:EventTrigger EventName="SelectionChanged">
-                                <i:InvokeCommandAction Command="{Binding CheckImportItemFilterCM}"
-                                                       CommandParameter="{Binding ElementName=filtercbb}" />
-                            </i:EventTrigger>
-                        </i:Interaction.Triggers>
-                        <ComboBoxItem Content="Toàn bộ" />
-                        <ComboBoxItem Content="Theo tháng" />
-                    </ComboBox>
-                </Border>
-                <Border CornerRadius="12"
-                        Margin="20, 17, 0, 17"
-                        Background="White"
-                        Height="46"
-                        x:Name="bodermonth"
-                        Width="130"
-                        Visibility="Collapsed"
-                        BorderBrush="Black">
-                    <Border.Effect>
-                        <DropShadowEffect
-                            BlurRadius="10"
-                            Color="Black"
-                            ShadowDepth="4"
-                            Opacity=".25"
-                            Direction="270"/>
-                    </Border.Effect>
-                    <ComboBox Height="30"
-                              Width="100"
-                              Margin="10 0 0 5"
-                              Padding="0,10,10,0"
-                              FontSize="15"
-                              x:Name="cbbmonth"
-                              SelectedIndex="{Binding SelectedImportMonth,Mode=TwoWay}">
-                        <i:Interaction.Triggers>
-                            <i:EventTrigger EventName="SelectionChanged">
-                                <i:InvokeCommandAction Command="{Binding SelectedImportMonthCM}"
-                                                       CommandParameter="{Binding ElementName=cbbmonth}" />
-                            </i:EventTrigger>
-                        </i:Interaction.Triggers>
-                        <ComboBoxItem Content="Tháng 1" />
-                        <ComboBoxItem Content="Tháng 2" />
-                        <ComboBoxItem Content="Tháng 3" />
-                        <ComboBoxItem Content="Tháng 4" />
-                        <ComboBoxItem Content="Tháng 5" />
-                        <ComboBoxItem Content="Tháng 6" />
-                        <ComboBoxItem Content="Tháng 7" />
-                        <ComboBoxItem Content="Tháng 8" />
-                        <ComboBoxItem Content="Tháng 9" />
-                        <ComboBoxItem Content="Tháng 10" />
-                        <ComboBoxItem Content="Tháng 11" />
-                        <ComboBoxItem Content="Tháng 12" />
-                    </ComboBox>
-                </Border>
-                <Border>
-                    <Border.Effect>
-                        <DropShadowEffect
-                                    BlurRadius="10"
-                                    Color="Black"
-                                    ShadowDepth="4"
-                                    Opacity=".25"
-                                    Direction="270"/>
-                    </Border.Effect>
-                    <Button     Style="{StaticResource CustomButton}" 
+                        </Border.Effect>
+                        <Button Style="{StaticResource CustomButton}" 
                                 Width="150" 
-                                Height="46" 
-                                Margin="326,0,0,0"
+                                Height="46"  
+                                Margin="-80 0 0 0"
                                 Command="{Binding ExportFileCM}">
-                        <StackPanel Orientation="Horizontal" 
-                                    Width="143" 
-                                    HorizontalAlignment="Center" >
-                            <materialDesign:PackIcon Kind="FileExport" 
-                                                     Width="30" 
-                                                     Height="30"/>
-                            <TextBlock  FontFamily="{StaticResource MaterialDesignFont}" 
-                                        Text="Xuất file Excel" 
-                                        FontSize="16"
-                                        FontWeight="Normal"
-                                        Margin="2,5,0,0"/>
-                        </StackPanel>
-                    </Button>
-                </Border>
+                            <StackPanel Orientation="Horizontal" 
+                                        Width="143" 
+                                        HorizontalAlignment="Center" >
+                                <materialDesign:PackIcon Kind="FileExport" 
+                                                     Width="26" 
+                                                     Height="26"/>
+                                <TextBlock  FontFamily="{StaticResource MaterialDesignFont}" 
+                                            Text="{DynamicResource ImportHistoryPage_TextBlock_Xuatfileexcel}"
+                                            FontSize="15"
+                                            FontWeight="Normal"
+                                            Margin="2,5,0,0"/>
+                            </StackPanel>
+                        </Button>
+                    </Border>
+                </Grid>
+
+
+
+                
 
             </StackPanel>
 
@@ -261,25 +275,31 @@
                                 <GridView  >
                                     <GridViewColumn Width="120">
                                         <GridViewColumn.Header>
-                                            <TextBlock Text="Mã đơn" FontSize="14" FontWeight="SemiBold" Foreground="Black"/>
+                                            <TextBlock Text="{DynamicResource ImportHistoryPage_ListviewHeader_Madon}"
+                                                       FontSize="14" 
+                                                       FontWeight="SemiBold" 
+                                                       Foreground="Black"/>
                                         </GridViewColumn.Header>
                                         <GridViewColumn.CellTemplate >
                                             <DataTemplate>
                                                 <TextBlock      Text="{Binding Id}"
                                                                 FontSize="14" 
                                                                 FontFamily="{StaticResource MaterialDesignFont}"
-                                                                Margin="20 30 0 0"/>
+                                                                Margin="20 6 0 0"/>
                                             </DataTemplate>
                                         </GridViewColumn.CellTemplate>
                                     </GridViewColumn>
                                     <GridViewColumn Width="220" >
                                         <GridViewColumn.Header>
-                                            <TextBlock Text="Tên sản phẩm" FontSize="14" FontWeight="SemiBold" Foreground="Black"/>
+                                            <TextBlock Text="{DynamicResource ImportHistoryPage_ListviewHeader_Tensanpham}"
+                                                       FontSize="14" 
+                                                       FontWeight="SemiBold" 
+                                                       Foreground="Black"/>
                                         </GridViewColumn.Header>
                                         <GridViewColumn.CellTemplate>
                                             <DataTemplate>
                                                 <TextBlock  Text="{Binding ProductName}" 
-                                                            Margin="20 30 0 0"
+                                                            Margin="20 6 0 0"
                                                             FontSize="14" 
                                                             FontFamily="{StaticResource MaterialDesignFont}"/>
                                             </DataTemplate>
@@ -287,12 +307,15 @@
                                     </GridViewColumn>
                                     <GridViewColumn Width="150"  >
                                         <GridViewColumn.Header>
-                                            <TextBlock Text="Số lượng" FontSize="14" FontWeight="SemiBold" Foreground="Black"/>
+                                            <TextBlock Text="{DynamicResource ImportHistoryPage_ListviewHeader_Soluong}"
+                                                       FontSize="14" 
+                                                       FontWeight="SemiBold" 
+                                                       Foreground="Black"/>
                                         </GridViewColumn.Header>
                                         <GridViewColumn.CellTemplate>
                                             <DataTemplate>
                                                 <TextBlock Text="{Binding Quantity}" 
-                                                           Margin="20 30 0 0"
+                                                           Margin="20 6 0 0"
                                                            FontSize="14" 
                                                            FontFamily="{StaticResource MaterialDesignFont}"/>
                                             </DataTemplate>
@@ -300,12 +323,15 @@
                                     </GridViewColumn>
                                     <GridViewColumn Width="200">
                                         <GridViewColumn.Header>
-                                            <TextBlock Text="Giá nhập" FontSize="14" FontWeight="SemiBold" Foreground="Black"/>
+                                            <TextBlock Text="{DynamicResource ImportHistoryPage_ListviewHeader_Gianhap}"
+                                                       FontSize="14" 
+                                                       FontWeight="SemiBold" 
+                                                       Foreground="Black"/>
                                         </GridViewColumn.Header>
                                         <GridViewColumn.CellTemplate>
                                             <DataTemplate>
                                                 <TextBlock Text="{Binding ImportPriceStr}"
-                                                           Margin="20 30 0 0"
+                                                           Margin="20 6 0 0"
                                                            FontSize="14" 
                                                            FontFamily="{StaticResource MaterialDesignFont}"/>
                                             </DataTemplate>
@@ -313,12 +339,15 @@
                                     </GridViewColumn>
                                     <GridViewColumn Width="170" >
                                         <GridViewColumn.Header>
-                                            <TextBlock Text="Nhân viên" FontSize="14" FontWeight="SemiBold" Foreground="Black"/>
+                                            <TextBlock Text="{DynamicResource ImportHistoryPage_ListviewHeader_Nhanvien}"
+                                                       FontSize="14" 
+                                                       FontWeight="SemiBold" 
+                                                       Foreground="Black"/>
                                         </GridViewColumn.Header>
                                         <GridViewColumn.CellTemplate>
                                             <DataTemplate>
                                                 <TextBlock Text="{Binding StaffName}" 
-                                                           Margin="20 30 0 0"
+                                                           Margin="20 6 0 0"
                                                            FontSize="14" 
                                                            FontFamily="{StaticResource MaterialDesignFont}"/>
                                             </DataTemplate>
@@ -326,12 +355,15 @@
                                     </GridViewColumn>
                                     <GridViewColumn Width="200"> 
                                         <GridViewColumn.Header>
-                                            <TextBlock Text="Ngày nhập" FontSize="14" FontWeight="SemiBold" Foreground="Black"/>
+                                            <TextBlock Text="{DynamicResource ImportHistoryPage_ListviewHeader_Ngaynhap}"
+                                                       FontSize="14" 
+                                                       FontWeight="SemiBold" 
+                                                       Foreground="Black"/>
                                         </GridViewColumn.Header>
                                         <GridViewColumn.CellTemplate>
                                             <DataTemplate>
                                                 <TextBlock Text="{Binding CreatedAt, StringFormat=dd/MM/yyyy}" 
-                                                           Margin="20 30 0 0"
+                                                           Margin="20 6 0 0"
                                                            FontSize="14" 
                                                            FontFamily="{StaticResource MaterialDesignFont}"/>
                                             </DataTemplate>

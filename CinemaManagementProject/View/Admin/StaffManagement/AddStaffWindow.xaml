@@ -59,7 +59,7 @@
                         BorderBrush="#8DC1F0"
                         BorderThickness="0 0 0 3">
                     <Label Grid.Column="0" 
-                               Content="THÊM NHÂN VIÊN"  
+                               Content="{DynamicResource AddStaffWindow_Label_ThemNhanvien}"
                                FontFamily="{StaticResource MaterialDesignFont}" 
                                FontSize="28" 
                                FontWeight="Bold" 
@@ -118,7 +118,7 @@
                 </Grid.ColumnDefinitions>
                 <Grid  Grid.Row="0" 
                        Grid.ColumnSpan="2">
-                    <TextBlock Text="Thông tin cơ bản" 
+                    <TextBlock Text="{DynamicResource AddStaffWindow_Label_Thongtincoban}"
                                FontFamily="{StaticResource MaterialDesignFont}"
                                FontSize="20" 
                                FontWeight="Bold" 
@@ -131,7 +131,7 @@
                         <ColumnDefinition Width="180" />
                         <ColumnDefinition />
                     </Grid.ColumnDefinitions>
-                    <TextBlock Text="Họ và tên:"  
+                    <TextBlock Text="{DynamicResource AddStaffWindow_Label_Hovaten}"
                                FontFamily="{StaticResource MaterialDesignFont}"
                                FontSize="15" 
                                FontWeight="Regular" 
@@ -147,7 +147,7 @@
                         <ColumnDefinition Width="180" />
                         <ColumnDefinition />
                     </Grid.ColumnDefinitions>
-                    <TextBlock Text="Giới tính:"  
+                    <TextBlock Text="{DynamicResource AddStaffWindow_TextBlock_Gioitinh}"
                                FontFamily="{StaticResource MaterialDesignFont}"
                                FontSize="15" 
                                FontWeight="Regular" 
@@ -172,7 +172,7 @@
                         <ColumnDefinition Width="180" />
                         <ColumnDefinition />
                     </Grid.ColumnDefinitions>
-                    <TextBlock Text="Ngày sinh:"  
+                    <TextBlock Text="{DynamicResource AddStaffWindow_TextBlock_Ngaysinh}"
                                FontFamily="{StaticResource MaterialDesignFont}"
                                FontSize="15" 
                                FontWeight="Regular" 
@@ -208,7 +208,7 @@
                         <ColumnDefinition Width="180" />
                         <ColumnDefinition />
                     </Grid.ColumnDefinitions>
-                    <TextBlock Text="Số điện thoại:"  
+                    <TextBlock Text="{DynamicResource AddStaffWindow_TextBlock_Sodienthoai}"
                                FontFamily="{StaticResource MaterialDesignFont}"
                                FontSize="15" 
                                FontWeight="Regular" 
@@ -224,7 +224,7 @@
                         <ColumnDefinition Width="180" />
                         <ColumnDefinition />
                     </Grid.ColumnDefinitions>
-                    <TextBlock Text="Chức vụ:"  
+                    <TextBlock Text="{DynamicResource AddStaffWindow_TextBlock_Chucvu}"
                                FontFamily="{StaticResource MaterialDesignFont}"
                                FontSize="15" 
                                FontWeight="Regular" 
@@ -249,7 +249,7 @@
                         <ColumnDefinition Width="180" />
                         <ColumnDefinition />
                     </Grid.ColumnDefinitions>
-                    <TextBlock Text="Ngày bắt đầu:"  
+                    <TextBlock Text="{DynamicResource AddStaffWindow_TextBlock_Ngaybatdau}"
                                FontFamily="{StaticResource MaterialDesignFont}"
                                FontSize="15" 
                                FontWeight="Regular" 
@@ -267,7 +267,7 @@
                 </Grid>
                 <Grid  Grid.Row="8" 
                        Grid.ColumnSpan="2">
-                    <TextBlock Text="Tài khoản đăng nhập" 
+                    <TextBlock Text="{DynamicResource AddStaffWindow_TextBlock_Taikhoandangnhap}"
                                FontFamily="{StaticResource MaterialDesignFont}"
                                FontSize="20" 
                                FontWeight="Bold" 
@@ -280,7 +280,7 @@
                         <ColumnDefinition Width="180" />
                         <ColumnDefinition />
                     </Grid.ColumnDefinitions>
-                    <TextBlock Text="Tài khoản:"  
+                    <TextBlock Text="{DynamicResource AddStaffWindow_TextBlock_Taikhoan}"
                                FontFamily="{StaticResource MaterialDesignFont}"
                                FontSize="15" 
                                FontWeight="Regular" 
@@ -296,7 +296,7 @@
                         <ColumnDefinition Width="180" />
                         <ColumnDefinition />
                     </Grid.ColumnDefinitions>
-                    <TextBlock Text="Mật khẩu:"  
+                    <TextBlock Text="{DynamicResource AddStaffWindow_TextBlock_Matkhau}"
                                FontFamily="{StaticResource MaterialDesignFont}"
                                FontSize="15" 
                                FontWeight="Regular" 
@@ -312,7 +312,7 @@
                         <ColumnDefinition Width="180" />
                         <ColumnDefinition />
                     </Grid.ColumnDefinitions>
-                    <TextBlock Text="Nhập lại mật khẩu:"  
+                    <TextBlock Text="{DynamicResource AddStaffWindow_TextBlock_Nhaplaimatkhau}"
                                FontFamily="{StaticResource MaterialDesignFont}"
                                FontSize="15" 
                                FontWeight="Regular" 
@@ -327,7 +327,7 @@
                       VerticalAlignment="Bottom">
                     <Button Style="{StaticResource CustomButton}" 
                             Width="100" Height="36"
-                            Content="Hủy" 
+                            Content="{DynamicResource AddStaffWindow_button_Huy}"
                             Command="{Binding CloseCommand}"  
                             CommandParameter="{Binding ElementName=ThemNV}"
                             Margin="200,0,-20,30" 
@@ -335,7 +335,7 @@
                             Background="Red"/>
                     <Button Style="{StaticResource CustomButton}" 
                             Width="100" Height="36"
-                            Content="Hoàn tất" 
+                            Content="{DynamicResource AddStaffWindow_button_Luu}"
                             Command="{Binding AddStaffCommand}"
                             CommandParameter="{Binding ElementName=ThemNV}"
                             Margin="320,0,-150,27"/>

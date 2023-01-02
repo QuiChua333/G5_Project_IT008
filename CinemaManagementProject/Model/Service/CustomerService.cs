@@ -43,7 +43,8 @@ namespace CinemaManagementProject.Model.Service
                                         CustomerCode = s.MaKH,
                                         Email = s.Email,
                                         PhoneNumber = s.PhoneNumber,
-                                        FirstDate = (DateTime)s.FirstDate
+                                        FirstDate = (DateTime)s.FirstDate,
+                                        Expense = (float)s.Bills.Sum(b => b.TotalPrize)
                                     }).ToList();
                 }
             }

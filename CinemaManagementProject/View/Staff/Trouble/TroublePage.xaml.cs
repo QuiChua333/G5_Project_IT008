@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CinemaManagementProject.DTOs;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,18 @@ namespace CinemaManagementProject.View.Staff.Trouble
         public TroublePage()
         {
             InitializeComponent();
+        }
+        private bool Filter(object item)
+        {
+            if (String.IsNullOrEmpty(FilterBox.Text))
+                return true;   
+            return ((item as TroubleDTO).TroubleType.IndexOf(FilterBox.Text, StringComparison.OrdinalIgnoreCase) >= 0);  
+        }
+        private void FilterBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            CollectionView view = (CollectionView)CollectionViewSource.GetDefaultView(Listview.ItemsSource);
+            view.Filter = Filter;
+            CollectionViewSource.GetDefaultView(Listview.ItemsSource).Refresh();
         }
     }
 }

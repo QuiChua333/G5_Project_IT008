@@ -54,7 +54,7 @@
 
             <!---HEADER-->
             <Grid Grid.Row="0">
-                <Label  Content="  CHI TIẾT HÓA ĐƠN"
+                <Label  Content="{DynamicResource TicketDetailsWindow_Label_Chitiethoadon}"
                         FontFamily="{StaticResource MaterialDesignFont}" 
                         FontSize="28" 
                         FontWeight="Bold" 
@@ -118,7 +118,7 @@
                                 BorderThickness="0,0,0,2"
                                 Margin="20,0,20,0"
                                 BorderBrush="#8DC1F0" Grid.ColumnSpan="2">
-                            <Label Content="Vé xem phim"
+                            <Label Content="{DynamicResource TicketDetailsWindow_Label_Vexemphim}"
                                    FontSize="20"
                                    FontFamily="{StaticResource MaterialDesignFont}"
                                    FontWeight="Bold" 
@@ -136,7 +136,7 @@
                                             <ColumnDefinition Width="85*" />
                                         </Grid.ColumnDefinitions>
 
-                                        <Label Content="Phim"
+                                        <Label Content="{DynamicResource TicketDetailsWindow_Label_Phim}"
                                                Grid.Column="0"
                                                FontSize="16" />
                                         <Label Grid.Column="1"
@@ -153,7 +153,7 @@
                                             <ColumnDefinition />
                                         </Grid.ColumnDefinitions>
 
-                                        <Label Content="Suất chiếu"
+                                        <Label Content="{DynamicResource TicketDetailsWindow_Label_Suatchieu}"
                                                Grid.Column="0"
                                                FontSize="16" />
                                         <Label Content="{Binding BillDetail.TicketInfo.ShowtimeInfo}"
@@ -170,7 +170,7 @@
                                             <ColumnDefinition />
                                         </Grid.ColumnDefinitions>
 
-                                        <Label Content="Rạp"
+                                        <Label Content="{DynamicResource TicketDetailsWindow_Label_Rap}"
                                                Grid.Column="0"
                                                FontSize="16" />
                                         <Label Content="FATFILMFO Cinema"
@@ -186,7 +186,7 @@
                                             <ColumnDefinition />
                                         </Grid.ColumnDefinitions>
 
-                                        <Label Content="Phòng chiếu"
+                                        <Label Content="{DynamicResource TicketDetailsWindow_Label_Phongchieu}"
                                                Grid.Column="0"
                                                FontSize="16" />
                                         <Label Content="{Binding BillDetail.TicketInfo.RoomName}"
@@ -203,7 +203,7 @@
                                             <ColumnDefinition />
                                         </Grid.ColumnDefinitions>
 
-                                        <Label Content="Ghế"
+                                        <Label Content="{DynamicResource TicketDetailsWindow_Label_Ghe}"
                                                Grid.Column="0"
                                                FontSize="16" />
                                         <Label Content="{Binding BillDetail.TicketInfo.SeatInfo}"
@@ -220,7 +220,7 @@
                                             <ColumnDefinition />
                                         </Grid.ColumnDefinitions>
 
-                                        <Label Content="Giá vé"
+                                        <Label Content="{DynamicResource TicketDetailsWindow_Label_Giave}"
                                                Grid.Column="0"
                                                FontSize="16" />
                                         <Label Grid.Column="1"
@@ -244,7 +244,7 @@
                                             <ColumnDefinition Width="75*" />
                                         </Grid.ColumnDefinitions>
 
-                                        <Label Content="Người đặt"
+                                        <Label Content="{DynamicResource ExportDetail_Label_Nguoidat}"
                                                Grid.Column="0"
                                                FontSize="16" />
                                         <Label Content="{Binding BillDetail.CustomerName}"
@@ -261,7 +261,7 @@
                                             <ColumnDefinition />
                                         </Grid.ColumnDefinitions>
 
-                                        <Label Content="Số điện thoại"
+                                        <Label Content="{DynamicResource AddStaffWindow_TextBlock_Sodienthoai}"
                                                Grid.Column="0"
                                                FontSize="16" />
                                         <Label Content="{Binding BillDetail.PhoneNumber}"
@@ -278,7 +278,7 @@
                                             <ColumnDefinition />
                                         </Grid.ColumnDefinitions>
 
-                                        <Label Content="Thời gian"
+                                        <Label Content="{DynamicResource TicketDetailsWindow_Label_Thoigian}"
                                                Grid.Column="0"
                                                FontSize="16" />
                                         <Label Grid.Column="1"
@@ -301,7 +301,7 @@
                                             <ColumnDefinition />
                                         </Grid.ColumnDefinitions>
 
-                                        <Label Content="Tổng"
+                                        <Label Content="{DynamicResource ExportDetail_Label_Tong}"
                                                Grid.Column="0"
                                                FontSize="16" />
                                         <Label x:Name="_totalticket"
@@ -324,7 +324,7 @@
                         <ColumnDefinition />
                         <ColumnDefinition />
                     </Grid.ColumnDefinitions>
-                    <Label Content="Tổng tiền"
+                    <Label Content="{DynamicResource ExportDetail_Label_Tong}"
                            FontSize="16"
                            Grid.Column="0" />
                     <Label Content="{Binding BillDetail.OriginalTotalPriceStr}"
@@ -337,10 +337,10 @@
                         <ColumnDefinition />
                         <ColumnDefinition />
                     </Grid.ColumnDefinitions>
-                    <Label Content="Phí giao dịch"
+                    <Label Content="{DynamicResource ExportDetail_Label_Phigiaodich}"
                            FontSize="16"
                            Grid.Column="0" />
-                    <Label Content="Miễn phí"
+                    <Label Content="{DynamicResource ExportDetail_Label_Mienphi}"
                            FontSize="16"
                            Grid.Column="1"
                            HorizontalAlignment="Right" />
@@ -350,7 +350,7 @@
                         <ColumnDefinition />
                         <ColumnDefinition />
                     </Grid.ColumnDefinitions>
-                    <Label Content="Khuyến mãi"
+                    <Label Content="{DynamicResource ExportDetail_Label_Khuyenmai}"
                            FontSize="16"
                            Grid.Column="0" />
                     <Label Content="{Binding BillDetail.DiscountPriceStr}"
@@ -363,7 +363,7 @@
                         <ColumnDefinition />
                         <ColumnDefinition />
                     </Grid.ColumnDefinitions>
-                    <Label Content="Sau khuyến mãi"
+                    <Label Content="{DynamicResource ExportDetail_Label_Saukhuyenmai}"
                            FontSize="16"
                            Grid.Column="0" />
                     <Label Content="{Binding BillDetail.TotalPriceStr}"
