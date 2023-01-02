@@ -329,7 +329,7 @@
                                     </i:EventTrigger>
                                 </i:Interaction.Triggers>
                                     <ComboBoxItem IsSelected="True" FontSize="16" FontFamily="{StaticResource MaterialDesignFont}" Content="{DynamicResource setting_comboboxItem_TiengViet}"></ComboBoxItem>
-                                    <ComboBoxItem FontSize="16" FontFamily="{StaticResource MaterialDesignFont}" Content="{DynamicResource setting_comboboxItem_TiengAnh}"></ComboBoxItem>
+                                    <ComboBoxItem IsSelected="{Binding IsEnglish}" FontSize="16" FontFamily="{StaticResource MaterialDesignFont}" Content="{DynamicResource setting_comboboxItem_TiengAnh}"></ComboBoxItem>
                             </ComboBox>
                         </Grid>
                     </StackPanel>
