@@ -141,7 +141,13 @@ namespace CinemaManagementProject.ViewModel.AdminVM.SettingVM
             get { return _isToResetPage; }
             set { _isToResetPage = value; OnPropertyChanged(); }
         }
-
+        
+        private bool _isEnglish { get; set; }
+        public bool IsEnglish
+        {
+            get { return _isEnglish; }
+            set { _isEnglish = value; OnPropertyChanged(); }
+        }
         public ICommand FirstLoadCM { get; set; }
         public ICommand EditNameCM { get; set; }
         public ICommand EditEmailCM { get; set; }
@@ -161,6 +167,7 @@ namespace CinemaManagementProject.ViewModel.AdminVM.SettingVM
         {
             FirstLoadCM = new RelayCommand<object>((p) => { return true; }, (p) =>
             {
+                IsEnglish = Properties.Settings.Default.isEnglish;
                 reg = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true);
                 currentStaff = AdminVM.currentStaff;
                 StaffName = currentStaff.StaffName;
@@ -291,6 +298,7 @@ namespace CinemaManagementProject.ViewModel.AdminVM.SettingVM
             });
             ChangePassCM = new RelayCommand<object>((p) => { return true; }, (p) =>
             {
+                IsToResetPage = false;
                 ResetPassWindow resetPassWD = new ResetPassWindow();
                 resetPassWD.ShowDialog();
             });
@@ -307,6 +315,7 @@ namespace CinemaManagementProject.ViewModel.AdminVM.SettingVM
 
                         updateStaff.UserPass = p.Password;
                         await db.SaveChangesAsync();
+                        currentStaff.UserPass = p.Password;
                         CustomMessageBox.ShowOk("Cập nhật thành công", "Thông báo", "OK", Views.CustomMessageBoxImage.Success);
                     }
                 }
@@ -381,6 +390,8 @@ namespace CinemaManagementProject.ViewModel.AdminVM.SettingVM
                 if (p.SelectedItem == null)
                     return;
                 bool isEN = !p.Text.Equals("English") ? true : false;
+                Properties.Settings.Default.isEnglish = isEN;
+                Properties.Settings.Default.Save();
                 LanguageManager.SetLanguageDictionary(isEN ? LanguageManager.ELanguage.English : LanguageManager.ELanguage.VietNamese);
             });
         }

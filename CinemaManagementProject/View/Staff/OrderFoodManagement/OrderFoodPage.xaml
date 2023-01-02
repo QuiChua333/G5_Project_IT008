@@ -69,7 +69,7 @@
                 FontSize="28"
                 FontWeight="Medium"
                 Foreground="Black"
-            ><Run Text="Thanh toán"/></TextBlock>
+            ><Run Text="{DynamicResource orderfood_textblock_ThanhToan}"/></TextBlock>
         </Grid>
         <Grid x:Name="Bill" Grid.Row="1" Grid.Column="1">
             <Grid.RowDefinitions>
@@ -246,7 +246,8 @@
                         FontWeight="Medium"
                         Margin="40,0,0,0"
                         Height="32"
-                    >Tổng:</TextBlock>
+                            Text="{DynamicResource orderfood_textblock_Tong}"
+                    ></TextBlock>
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Top">
                             <TextBlock
                                 x:Name="TotalPrice"
@@ -263,7 +264,7 @@
                                 Background="Green" 
                                 Height="44" 
                                 HorizontalAlignment="Center" 
-                                Command="{Binding BuyCommand}">Xác nhận</Button>
+                                Command="{Binding BuyCommand}" Content="{DynamicResource orderfood_button_XacNhan}"></Button>
                     </Grid>
                 </StackPanel>
             </Grid>
@@ -325,7 +326,7 @@
                 </Border>
                 <Search:Search
                     x:Name="SearchBox"
-                    materialDesign:HintAssist.Hint="Tìm kiếm"
+                    materialDesign:HintAssist.Hint="{DynamicResource orderfood_search_TimKiem}"
                     Width="300"
                     Height="44"
                     IconSize="30"
@@ -351,9 +352,9 @@
                         </Rectangle>
                         <Image Source="{StaticResource IconFilter}" Width="20" Height="20"></Image>
                         <ComboBox x:Name="FilterCombobox" SelectedItem="{Binding SelectedItemFilter}" SelectedIndex="0" Foreground="Black" Grid.Column="1" Background="Transparent" VerticalAlignment="Center" FontSize="16" FontWeight="Medium" Margin="0,0,10,0" SelectionChanged="FilterCombobox_SelectionChanged" >
-                            <ComboBoxItem FontWeight="Regular">Tất cả</ComboBoxItem>
-                            <ComboBoxItem FontWeight="Regular">Đồ ăn</ComboBoxItem>
-                            <ComboBoxItem FontWeight="Regular">Nước uống</ComboBoxItem>
+                            <ComboBoxItem FontWeight="Regular" Content="{DynamicResource orderfood_comboboxItem_TatCa}"></ComboBoxItem>
+                            <ComboBoxItem FontWeight="Regular" Content="{DynamicResource orderfood_comboboxItem_DoAn}"></ComboBoxItem>
+                            <ComboBoxItem FontWeight="Regular" Content="{DynamicResource orderfood_comboboxItem_NuocUong}"></ComboBoxItem>
                         </ComboBox>
                     </Grid>
                 </Grid>
@@ -480,11 +481,11 @@
                                                         FontFamily="{StaticResource MaterialDesignFont}"
                                                     />
                                                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                                                    <Label Content="Số lượng:" FontSize="15" FontFamily="{StaticResource MaterialDesignFont}"></Label>
+                                                    <Label Content="{DynamicResource orderfood_textblock_SoLuong}" FontSize="15" FontFamily="{StaticResource MaterialDesignFont}"></Label>
                                                     <Label Content="{Binding Quantity, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" FontSize="15" FontFamily="{StaticResource MaterialDesignFont}"></Label>
                                                 </StackPanel>
                                                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                                                    <Label Content="Giá:" FontSize="15" FontFamily="{StaticResource MaterialDesignFont}"></Label>
+                                                    <Label Content="{DynamicResource orderfood_textblock_Gia}" FontSize="15" FontFamily="{StaticResource MaterialDesignFont}"></Label>
                                                     <Label Content="{Binding PriceStr}" FontSize="15" FontFamily="{StaticResource MaterialDesignFont}"></Label>
                                                 </StackPanel>
                                             </StackPanel>

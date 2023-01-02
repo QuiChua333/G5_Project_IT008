@@ -2,9 +2,11 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:system="clr-namespace:System;assembly=mscorlib">
 <!--AdminWindow-->
+    <system:String x:Key="admin_sideBar_PhanTich">Analytics</system:String>
     <system:String x:Key="admin_sideBar_TongQuan">Statictics</system:String>
     <system:String x:Key="admin_sideBar_DanhGia">Review</system:String>
 
+    <system:String x:Key="admin_sideBar_ChucNang">Functions</system:String>
     <system:String x:Key="admin_sideBar_QuanLiPhim">Movie Management</system:String>
     <system:String x:Key="admin_sideBar_QuanLiSuatChieu">Showtime Management</system:String>
     <system:String x:Key="admin_sideBar_QuanLiSanPham">Product Management</system:String>
@@ -14,12 +16,30 @@
 
     <system:String x:Key="admin_sideBar_Voucher">Vouchers</system:String>
     <system:String x:Key="admin_sideBar_SuCo">Trouble</system:String>
-    <system:String x:Key="admin_sideBar_CaiDat">Settings</system:String>
 
+    <system:String x:Key="admin_sideBar_TienIch">Utilities</system:String>
+    <system:String x:Key="admin_sideBar_CaiDat">Settings</system:String>
     <system:String x:Key="admin_sideBar_GiupDo">Help</system:String>
     <system:String x:Key="admin_sideBar_DangXuat">Log out</system:String>
-<!--**-->    
+
+    <system:String x:Key="admin_textblock_GoToSetting">Go to setting...</system:String>
+<!--**-->
     
+<!--StaffWindow-->
+    <system:String x:Key="staff_sideBar_ChucNang">Functions</system:String>
+    <system:String x:Key="staff_sideBar_DatPhim">Film booking</system:String>
+    <system:String x:Key="staff_sideBar_DatDoAn">Order food</system:String>
+    <system:String x:Key="staff_sideBar_BaoCaoSuCo">Report trouble</system:String>
+
+
+    <system:String x:Key="staff_sideBar_TienIch">Utilities</system:String>
+    <system:String x:Key="staff_sideBar_CaiDat">Settings</system:String>
+    <system:String x:Key="staff_sideBar_GiupDo">Help</system:String>
+    <system:String x:Key="staff_sideBar_DangXuat">Log out</system:String>
+
+    <system:String x:Key="staff_textblock_GoToSetting">Go to setting...</system:String>
+<!--**-->
+
 <!--Qui-->
     <system:String x:Key="VoucherManagementPage_Search">Search</system:String>
     <system:String x:Key="VoucherManagementPage_Button_Add">Add</system:String>
@@ -140,13 +160,13 @@
     <system:String x:Key="AddFoodWindow_button_Them">Add</system:String>
     <system:String x:Key="EditFoodWindow_label_ThongTinSanPham">Product Info</system:String>
     <system:String x:Key="ImportFoodWindow_label_NhapSanPham">Import Product</system:String>
-    <system:String x:Key="ImportFoodWindow_label_TenSanPham">Product name</system:String>
-    <system:String x:Key="ImportFoodWindow_label_GiaNhap">Import cost</system:String>
-    <system:String x:Key="ImportFoodWindow_label_SoLuong">Quantity</system:String>
-    <system:String x:Key="food_textblock_Ten">Name</system:String>
-    <system:String x:Key="food_textblock_Loai">Type</system:String>
-    <system:String x:Key="food_textblock_Gia">Cost</system:String>
-    <system:String x:Key="food_textblock_SoLuong">Quantity</system:String>
+    <system:String x:Key="ImportFoodWindow_label_TenSanPham">Product name:</system:String>
+    <system:String x:Key="ImportFoodWindow_label_GiaNhap">Import cost:</system:String>
+    <system:String x:Key="ImportFoodWindow_label_SoLuong">Quantity:</system:String>
+    <system:String x:Key="food_textblock_Ten">Name:</system:String>
+    <system:String x:Key="food_textblock_Loai">Type:</system:String>
+    <system:String x:Key="food_textblock_Gia">Cost:</system:String>
+    <system:String x:Key="food_textblock_SoLuong">Quantity:</system:String>
     <system:String x:Key="food_button_Huy">Cancel</system:String>
     <system:String x:Key="food_button_Luu">Save</system:String>
     <system:String x:Key="food_button_Nhap">Import</system:String>
@@ -172,9 +192,9 @@
     <system:String x:Key="PositionPage_textblock_ChaoMungTroLai">Welcome back</system:String>
     <system:String x:Key="PositionPage_textblock_HoTen">Full name</system:String>
     <system:String x:Key="PositionPage_textblock_VaiTro">Position</system:String>
-    <system:String x:Key="setting_textblock_HoVaTen">Full name</system:String>
-    <system:String x:Key="setting_textblock_Email">Email</system:String>
-    <system:String x:Key="setting_textblock_ChucVu">Position</system:String>
+    <system:String x:Key="setting_textblock_HoVaTen">Full name:</system:String>
+    <system:String x:Key="setting_textblock_Email">Email:</system:String>
+    <system:String x:Key="setting_textblock_ChucVu">Position:</system:String>
     <system:String x:Key="setting_textblock_ThayDoiMatKhau">Change password</system:String>
     <system:String x:Key="setting_textblock_DoiMatKhau">Change password</system:String>
     <system:String x:Key="setting_textblock_NgonNgu">Language</system:String>
@@ -196,10 +216,10 @@
     <system:String x:Key="ResetPassWindow_textblock_MatKhauMoi">New password</system:String>
     <system:String x:Key="ResetPassWindow_textblock_NhapLaiMatKhauMoi">Enter a new password</system:String>
     <system:String x:Key="ResetPassWindow_button_XacNhan">Confirm</system:String>
-    <system:String x:Key="orderfood_textblock_Ten">Name</system:String>
-    <system:String x:Key="orderfood_textblock_Loai">Type</system:String>
-    <system:String x:Key="orderfood_textblock_Gia">Price</system:String>
-    <system:String x:Key="orderfood_textblock_SoLuong">Quantity</system:String>
+    <system:String x:Key="orderfood_textblock_Ten">Name:</system:String>
+    <system:String x:Key="orderfood_textblock_Loai">Type:</system:String>
+    <system:String x:Key="orderfood_textblock_Gia">Price:</system:String>
+    <system:String x:Key="orderfood_textblock_SoLuong">Quantity:</system:String>
     <system:String x:Key="orderfood_comboboxItem_TatCa">All</system:String>
     <system:String x:Key="orderfood_comboboxItem_DoAn">Food</system:String>
     <system:String x:Key="orderfood_comboboxItem_NuocUong">Drink</system:String>

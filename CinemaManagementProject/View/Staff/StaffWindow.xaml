@@ -206,7 +206,7 @@
                     <TextBlock Text="{Binding StaffEmail}" FontSize="14" FontFamily="{StaticResource MaterialDesignFont}" FontWeight="UltraLight"></TextBlock>
                 </StackPanel>
             </StackPanel>
-            <TextBlock Text="Go to setting..." Grid.Row="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Padding="10,5,0,0" FontSize="13" FontFamily="{StaticResource MaterialDesignFont}" FontWeight="Light">
+            <TextBlock Text="{DynamicResource staff_textblock_GoToSetting}" Grid.Row="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Padding="10,5,0,0" FontSize="13" FontFamily="{StaticResource MaterialDesignFont}" FontWeight="Light">
                 <TextBlock.Style>
                     <Style TargetType="TextBlock">
                         <Style.Triggers>
@@ -244,7 +244,7 @@
                 <!--Menu Buttons-->
                 <!--phan tich-->
 
-                <TextBlock Foreground="Black" Margin="10,15,0,5">Chức năng</TextBlock>
+                <TextBlock Foreground="Black" Margin="10,15,0,5" Text="{DynamicResource staff_sideBar_ChucNang}"></TextBlock>
                 <RadioButton   
                     IsChecked="True" 
                                     Tag="white"
@@ -263,7 +263,7 @@
                     </RadioButton.Style>
                     <StackPanel Orientation="Horizontal">
                         <materialDesign:PackIcon Kind="FilmCogOutline" Height="20" Width="20" Margin="30 0 10 0"></materialDesign:PackIcon>
-                        <TextBlock Text="Đặt phim" Style="{StaticResource menuButtonText}" Margin="0,2,0,0" FontSize="14"/>
+                        <TextBlock Text="{DynamicResource staff_sideBar_DatPhim}" Style="{StaticResource menuButtonText}" Margin="0,2,0,0" FontSize="14"/>
                     </StackPanel>
                 </RadioButton>
                 <RadioButton   
@@ -283,7 +283,7 @@
                     </RadioButton.Style>
                     <StackPanel Orientation="Horizontal">
                         <materialDesign:PackIcon Kind="FoodOutline" Height="20" Width="20" Margin="30,0,10,0" ></materialDesign:PackIcon>
-                        <TextBlock Text="Đặt đồ ăn" Style="{StaticResource menuButtonText}" Margin="0,4,0,0" FontSize="14"/>
+                        <TextBlock Text="{DynamicResource staff_sideBar_DatDoAn}" Style="{StaticResource menuButtonText}" Margin="0,4,0,0" FontSize="14"/>
                     </StackPanel>
                 </RadioButton>
                 <RadioButton   
@@ -303,14 +303,14 @@
                     </RadioButton.Style>
                     <StackPanel Orientation="Horizontal">
                         <materialDesign:PackIcon Kind="Report" Height="20" Width="20" Margin="30,0,10,0" ></materialDesign:PackIcon>
-                        <TextBlock Text="Báo cáo sự cố" Style="{StaticResource menuButtonText}" Margin="0,3,0,0" FontSize="14"/>
+                        <TextBlock Text="{DynamicResource staff_sideBar_BaoCaoSuCo}" Style="{StaticResource menuButtonText}" Margin="0,3,0,0" FontSize="14"/>
                     </StackPanel>
                 </RadioButton>
 
 
 
                 <!--setting-->
-                <TextBlock Foreground="White" Margin="10,15,0,5">Tiện ích</TextBlock>
+                <TextBlock Foreground="Black" Margin="10,15,0,5" Text="{DynamicResource staff_sideBar_TienIch}"></TextBlock>
                 <RadioButton   Name="CaiDatButton"
                                     Tag="white"
                                    Command="{Binding SettingCommand}">
@@ -328,7 +328,7 @@
                     </RadioButton.Style>
                     <StackPanel Orientation="Horizontal">
                         <materialDesign:PackIcon Kind="SettingsApplications" Height="20" Width="20" Margin="30,0,10,0" ></materialDesign:PackIcon>
-                        <TextBlock Text="Cài đặt" Style="{StaticResource menuButtonText}" Margin="0,3,0,0" FontSize="14"/>
+                        <TextBlock Text="{DynamicResource staff_sideBar_CaiDat}" Style="{StaticResource menuButtonText}" Margin="0,3,0,0" FontSize="14"/>
                     </StackPanel>
                 </RadioButton>
                 <RadioButton   
@@ -348,7 +348,7 @@
                     </RadioButton.Style>
                     <StackPanel Orientation="Horizontal">
                         <materialDesign:PackIcon Kind="Phone" Height="20" Width="20" Margin="30,0,10,0" ></materialDesign:PackIcon>
-                        <TextBlock Text="Giúp đỡ" Style="{StaticResource menuButtonText}" Margin="0,3,0,0" FontSize="14"/>
+                        <TextBlock Text="{DynamicResource staff_sideBar_GiupDo}" Style="{StaticResource menuButtonText}" Margin="0,3,0,0" FontSize="14"/>
                     </StackPanel>
 
                 </RadioButton>
@@ -370,7 +370,7 @@
                     </RadioButton.Style>
                     <StackPanel Orientation="Horizontal">
                         <materialDesign:PackIcon Kind="Logout" Height="20" Width="20" Margin="30,0,10,0" ></materialDesign:PackIcon>
-                        <TextBlock Text="Đăng xuất" Style="{StaticResource menuButtonText}" Margin="0,3,0,0" FontSize="14"/>
+                        <TextBlock Text="{DynamicResource staff_sideBar_DangXuat}" Style="{StaticResource menuButtonText}" Margin="0,3,0,0" FontSize="14"/>
                     </StackPanel>
                 </RadioButton>
             </StackPanel>

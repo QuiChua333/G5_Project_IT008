@@ -17,6 +17,8 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Media.Media3D;
+using CinemaManagementProject.View;
 
 namespace CinemaManagementProject.ViewModel.LoginVM
 {
@@ -117,6 +119,8 @@ namespace CinemaManagementProject.ViewModel.LoginVM
             });
             SaveLoginWindowNameCM = new RelayCommand<Window>((p) => { return true; }, (p) =>
             {
+                if(Properties.Settings.Default.isEnglish == true)
+                    LanguageManager.SetLanguageDictionary(LanguageManager.ELanguage.English);
                 LoginWindow = p;
             });
             ToWorkingWindowCM = new RelayCommand<Button>((p) => { return true; }, (p) =>

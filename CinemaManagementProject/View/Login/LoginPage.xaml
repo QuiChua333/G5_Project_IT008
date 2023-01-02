@@ -30,20 +30,23 @@
                         FontSize="33"
                         Foreground="{StaticResource HeavyBlueZodiac}"
                         FontWeight="Bold"
-                    >WelCome</TextBlock>
+                Text="{DynamicResource login_textblock_XinChao}"
+                    ></TextBlock>
             <TextBlock
                         FontFamily="{StaticResource MaterialDesignFont}"
                         FontSize="12"
                         Foreground="{StaticResource HeavyBlueZodiac}"
                         FontWeight="Regular"
-                    >Please login your account</TextBlock>
+                Text="{DynamicResource login_textblock_PleaseLoginYourAccount}"
+                    ></TextBlock>
             <Grid Margin="0,50,0,0" Height="52" Width="289">
                 <TextBlock
                             FontFamily="{StaticResource MaterialDesignFont}"
                             FontSize="12"
                             Foreground="{StaticResource LightGrayBombay}"
                             FontWeight="Regular"
-                        >Tên đăng nhập hoặc mật khẩu</TextBlock>
+                    Text="{DynamicResource login_textblock_TenDangNhapHoacEmail}"
+                        ></TextBlock>
                 <TextBox Height="35" VerticalAlignment="Bottom"
                          Name="NameBoxUser"
                             FontFamily="{StaticResource MaterialDesignFont}"
@@ -59,7 +62,8 @@
                         FontSize="12"
                         Foreground="{StaticResource LightGrayBombay}"
                         FontWeight="Regular"
-                    >Mật khẩu</TextBlock>
+                    Text="{DynamicResource login_textblock_MatKhau}"
+                    ></TextBlock>
                 <PasswordBox 
                     Height="35" VerticalAlignment="Bottom"
                     Name="PasswordBoxUser"
@@ -88,7 +92,7 @@
                 <StackPanel Orientation="Horizontal" >
                     <TextBlock
                         x:Name="ForgetButton"
-                        Text="Quên mật khẩu"
+                        Text="{DynamicResource login_textblock_QuenMatKhau}"
                                 FontSize="14"
                                 FontFamily="{StaticResource MaterialDesignFont}"
                                 FontWeight="Medium"
@@ -114,7 +118,7 @@
                             </Style>
                         </TextBlock.Style>
                     </TextBlock>
-                    <Button Style="{StaticResource CustomButton}" Name="ButtonLogin" Content="Đăng nhập" Background="{StaticResource HeavyBlueZodiac}" Width="120" Height="40" Margin="65,0,0,0">
+                    <Button Style="{StaticResource CustomButton}" Name="ButtonLogin" Content="{DynamicResource login_textblock_DangNhap}" Background="{StaticResource HeavyBlueZodiac}" Width="120" Height="40" Margin="65,0,0,0">
                         <i:Interaction.Triggers>
                             <i:EventTrigger EventName="Click">
                                 <i:InvokeCommandAction Command="{Binding LoginCM}"
@@ -132,7 +136,8 @@
                             Foreground="#8E8E8E"
                             HorizontalAlignment="Center"
                             Margin="0,24,0,0"
-                        >Term and Condition &amp; Private Policy</TextBlock>
+                    Text="{DynamicResource login_textblock_DieuKhoan}"
+                        ></TextBlock>
             </Grid>
         </StackPanel>
     </Grid>

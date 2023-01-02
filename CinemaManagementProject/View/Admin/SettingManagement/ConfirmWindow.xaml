@@ -28,14 +28,15 @@
         </Rectangle>
         <StackPanel Margin="20" Background="Transparent">
         <Grid>
-            <TextBlock
+                <TextBlock
                 FontFamily="{StaticResource MaterialDesignFont}"
                 FontSize="33"
                 Foreground="{StaticResource HeavyBlueZodiac}"
                 FontWeight="Bold"
                 HorizontalAlignment="Left"
                 Margin="20,0,0,0"
-            >Xác minh tài khoản</TextBlock>
+                    Text="{DynamicResource ConfirmWindow_textblock_XacMinhTaiKhoan}"
+            ></TextBlock>
             <Button materialDesign:ButtonAssist.CornerRadius="0,10,0,0" HorizontalAlignment="Right" Cursor="Hand" Click="Button_Click">
                 <Button.Style>
                     <Style TargetType="{x:Type Button}">
@@ -74,7 +75,7 @@
             Foreground="{StaticResource Black1}"
             FontWeight="Regular"
             TextWrapping="Wrap"
-            Text="Vui lòng nhập mã có 6 chữ số"
+            Text="{DynamicResource ConfirmWindow_textblock_VuiLongNhapMaCo6ChuSo}"
             Margin="20,20,20,0"
         ></TextBlock>
         <Grid Margin="20,0,20,0">
@@ -116,7 +117,7 @@
                         Foreground="Red" 
                         Content="{Binding Error}"
                 />
-        <Button Style="{StaticResource CustomButton}" Name="BtnCheckCode" Content="Xác nhận" Background="{StaticResource HeavyBlueZodiac}" Width="114" Height="40" Margin="0,5,20,-2" HorizontalAlignment="Right">
+        <Button Style="{StaticResource CustomButton}" Name="BtnCheckCode" Content="{DynamicResource ConfirmWindow_button_XacMinh}" Background="{StaticResource HeavyBlueZodiac}" Width="114" Height="40" Margin="0,5,20,-2" HorizontalAlignment="Right">
             <i:Interaction.Triggers>
                 <i:EventTrigger EventName="Click">
                         <i:InvokeCommandAction Command="{Binding ConfirmButtonCM}" CommandParameter="{Binding ElementName=Error}"/>

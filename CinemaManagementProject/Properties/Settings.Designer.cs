@@ -81,5 +81,17 @@ namespace CinemaManagementProject.Properties {
                 return ((string)(this["CinemaManagementProjectConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool isEnglish {
+            get {
+                return ((bool)(this["isEnglish"]));
+            }
+            set {
+                this["isEnglish"] = value;
+            }
+        }
     }
 }

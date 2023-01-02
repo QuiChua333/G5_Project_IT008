@@ -2,9 +2,11 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:system="clr-namespace:System;assembly=mscorlib">
 <!--AdminWindow-->
+    <system:String x:Key="admin_sideBar_PhanTich">Phân tích</system:String>
     <system:String x:Key="admin_sideBar_TongQuan">Tổng quan</system:String>
     <system:String x:Key="admin_sideBar_DanhGia">Đánh giá</system:String>
-
+    
+    <system:String x:Key="admin_sideBar_ChucNang">Chức năng</system:String>
     <system:String x:Key="admin_sideBar_QuanLiPhim">Quản lí phim</system:String>
     <system:String x:Key="admin_sideBar_QuanLiSuatChieu">Quản lý suất chiếu</system:String>
     <system:String x:Key="admin_sideBar_QuanLiSanPham">Quản lý sản phẩm</system:String>
@@ -14,11 +16,29 @@
 
     <system:String x:Key="admin_sideBar_Voucher">Vouchers</system:String>
     <system:String x:Key="admin_sideBar_SuCo">Sự cố</system:String>
+    
+    <system:String x:Key="admin_sideBar_TienIch">Tiện ích</system:String>
     <system:String x:Key="admin_sideBar_CaiDat">Cài đặt</system:String>
-
     <system:String x:Key="admin_sideBar_GiupDo">Giúp đỡ</system:String>
     <system:String x:Key="admin_sideBar_DangXuat">Đăng xuất</system:String>
-<!--**-->    
+
+    <system:String x:Key="admin_textblock_GoToSetting">Đi đến cài đặt...</system:String>
+<!--**-->
+
+<!--StaffWindow-->
+    <system:String x:Key="staff_sideBar_ChucNang">Chức năng</system:String>
+    <system:String x:Key="staff_sideBar_DatPhim">Đặt phim</system:String>
+    <system:String x:Key="staff_sideBar_DatDoAn">Đặt đồ ăn</system:String>
+    <system:String x:Key="staff_sideBar_BaoCaoSuCo">Báo cáo sự cố</system:String>
+
+
+    <system:String x:Key="staff_sideBar_TienIch">Tiện ích</system:String>
+    <system:String x:Key="staff_sideBar_CaiDat">Cài đặt</system:String>
+    <system:String x:Key="staff_sideBar_GiupDo">Giúp đỡ</system:String>
+    <system:String x:Key="staff_sideBar_DangXuat">Đăng xuất</system:String>
+
+    <system:String x:Key="staff_textblock_GoToSetting">Đi đến cài đặt...</system:String>
+<!--**-->
     
 <!--Qui-->
     <system:String x:Key="VoucherManagementPage_Search">Tìm kiếm</system:String>
@@ -140,13 +160,13 @@
     <system:String x:Key="AddFoodWindow_button_Them">Thêm</system:String>
     <system:String x:Key="EditFoodWindow_label_ThongTinSanPham">Thông tin sản phẩm</system:String>
     <system:String x:Key="ImportFoodWindow_label_NhapSanPham">Nhập sản phẩm</system:String>
-    <system:String x:Key="ImportFoodWindow_label_TenSanPham">Tên sản phẩm</system:String>
-    <system:String x:Key="ImportFoodWindow_label_GiaNhap">Giá nhập</system:String>
-    <system:String x:Key="ImportFoodWindow_label_SoLuong">Số lượng</system:String>
-    <system:String x:Key="food_textblock_Ten">Tên</system:String>
-    <system:String x:Key="food_textblock_Loai">Loại</system:String>
-    <system:String x:Key="food_textblock_Gia">Giá</system:String>
-    <system:String x:Key="food_textblock_SoLuong">Số lượng</system:String>
+    <system:String x:Key="ImportFoodWindow_label_TenSanPham">Tên sản phẩm:</system:String>
+    <system:String x:Key="ImportFoodWindow_label_GiaNhap">Giá nhập:</system:String>
+    <system:String x:Key="ImportFoodWindow_label_SoLuong">Số lượng:</system:String>
+    <system:String x:Key="food_textblock_Ten">Tên:</system:String>
+    <system:String x:Key="food_textblock_Loai">Loại:</system:String>
+    <system:String x:Key="food_textblock_Gia">Giá:</system:String>
+    <system:String x:Key="food_textblock_SoLuong">Số lượng:</system:String>
     <system:String x:Key="food_button_Huy">Hủy</system:String>
     <system:String x:Key="food_button_Luu">Lưu</system:String>
     <system:String x:Key="food_button_Nhap">Nhập</system:String>
@@ -172,9 +192,9 @@
     <system:String x:Key="PositionPage_textblock_ChaoMungTroLai">Chào mừng trở lại</system:String>
     <system:String x:Key="PositionPage_textblock_HoTen">Họ tên</system:String>
     <system:String x:Key="PositionPage_textblock_VaiTro">Vai trò</system:String>
-    <system:String x:Key="setting_textblock_HoVaTen">Họ và tên</system:String>
-    <system:String x:Key="setting_textblock_Email">Email</system:String>
-    <system:String x:Key="setting_textblock_ChucVu">ChucVu</system:String>
+    <system:String x:Key="setting_textblock_HoVaTen">Họ và tên:</system:String>
+    <system:String x:Key="setting_textblock_Email">Email:</system:String>
+    <system:String x:Key="setting_textblock_ChucVu">ChucVu:</system:String>
     <system:String x:Key="setting_textblock_ThayDoiMatKhau">Thay đổi mật khẩu</system:String>
     <system:String x:Key="setting_textblock_DoiMatKhau">Đổi mật khẩu</system:String>
     <system:String x:Key="setting_textblock_NgonNgu">Ngôn ngữ</system:String>
@@ -196,10 +216,10 @@
     <system:String x:Key="ResetPassWindow_textblock_MatKhauMoi">Mật khẩu mới</system:String>
     <system:String x:Key="ResetPassWindow_textblock_NhapLaiMatKhauMoi">Nhập lại mật khẩu mới</system:String>
     <system:String x:Key="ResetPassWindow_button_XacNhan">Xác nhận</system:String>
-    <system:String x:Key="orderfood_textblock_Ten">Tên</system:String>
-    <system:String x:Key="orderfood_textblock_Loai">Loại</system:String>
-    <system:String x:Key="orderfood_textblock_Gia">Giá</system:String>
-    <system:String x:Key="orderfood_textblock_SoLuong">Số lượng</system:String>
+    <system:String x:Key="orderfood_textblock_Ten">Tên:</system:String>
+    <system:String x:Key="orderfood_textblock_Loai">Loại:</system:String>
+    <system:String x:Key="orderfood_textblock_Gia">Giá:</system:String>
+    <system:String x:Key="orderfood_textblock_SoLuong">Số lượng:</system:String>
     <system:String x:Key="orderfood_comboboxItem_TatCa">Tất cả</system:String>
     <system:String x:Key="orderfood_comboboxItem_DoAn">Đồ ăn</system:String>
     <system:String x:Key="orderfood_comboboxItem_NuocUong">Nước uống</system:String>
