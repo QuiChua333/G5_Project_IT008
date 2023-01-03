@@ -289,6 +289,19 @@ namespace CinemaManagementProject.ViewModel.AdminVM.StatisticalManagementVM
             LabelMaxValue = 30;
             try
             {
+                if (SelectedIncomeTime == "January") SelectedIncomeTime = "Tháng 1";
+                if (SelectedIncomeTime == "February") SelectedIncomeTime = "Tháng 2";
+                if (SelectedIncomeTime == "March") SelectedIncomeTime = "Tháng 3";
+                if (SelectedIncomeTime == "April") SelectedIncomeTime = "Tháng 4";
+                if (SelectedIncomeTime == "May") SelectedIncomeTime = "Tháng 5";
+                if (SelectedIncomeTime == "June") SelectedIncomeTime = "Tháng 6";
+                if (SelectedIncomeTime == "July") SelectedIncomeTime = "Tháng 7";
+                if (SelectedIncomeTime == "August") SelectedIncomeTime = "Tháng 8";
+                if (SelectedIncomeTime == "September") SelectedIncomeTime = "Tháng 9";
+                if (SelectedIncomeTime == "October") SelectedIncomeTime = "Tháng 10";
+                if (SelectedIncomeTime == "November") SelectedIncomeTime = "Tháng 11";
+                if (SelectedIncomeTime == "December") SelectedIncomeTime = "Tháng 12";
+
                 TotalBill = await OverviewStatisticService.Ins.GetBillQuantity(2021, int.Parse(SelectedIncomeTime.Remove(0, 6)));
                 (List<float> dailyRevenue, float MonthProductReve, float MonthTicketReve, string MonthRateStr) = await Task.Run(() => OverviewStatisticService.Ins.GetRevenueByMonth(SelectedYear, int.Parse(SelectedIncomeTime.Remove(0, 6))));
                 (List<float> dailyExpense, float MonthProductExpense, float MonthRepairCost, string MonthExpenseRateStr) = await Task.Run(() => OverviewStatisticService.Ins.GetExpenseByMonth(SelectedYear, int.Parse(SelectedIncomeTime.Remove(0, 6))));

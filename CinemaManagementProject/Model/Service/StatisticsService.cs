@@ -57,8 +57,8 @@ namespace CinemaManagementProject.Model.Service
                     if (cusStatistic.Count >= 1)
                     {
                         string cusId = cusStatistic.First().Id.ToString();
-                        TicketExpense = context.Tickets.Where(b => b.Bill.BillCode.ToString() == cusId).Sum(t => t.Price) ?? 0;
-                        ProductExpense = context.ProductBillInfoes.Where(b => b.Bill.BillCode.ToString() == cusId).Sum(t => (float?)(t.PrizePerProduct * t.Quantity)) ?? 0;
+                        TicketExpense = context.Tickets.Where(b => b.Bill.CustomerId.ToString() == cusId).Sum(t => t.Price) ?? 0;
+                        ProductExpense = context.ProductBillInfoes.Where(b => b.Bill.CustomerId.ToString() == cusId).Sum(t => (float?)(t.PrizePerProduct * t.Quantity)) ?? 0;
                     }
                     return (cusStatistic, TicketExpense, ProductExpense);
                 }

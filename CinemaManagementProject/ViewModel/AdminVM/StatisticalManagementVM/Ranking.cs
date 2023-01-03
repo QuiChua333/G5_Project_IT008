@@ -183,6 +183,18 @@ namespace CinemaManagementProject.ViewModel.AdminVM.StatisticalManagementVM
             if (SelectedRankingTime.Length == 4) return;
             try
             {
+                if (SelectedRankingTime == "January") SelectedRankingTime = "Tháng 1";
+                if (SelectedRankingTime == "February") SelectedRankingTime = "Tháng 2";
+                if (SelectedRankingTime == "March") SelectedRankingTime = "Tháng 3";
+                if (SelectedRankingTime == "April") SelectedRankingTime = "Tháng 4";
+                if (SelectedRankingTime == "May") SelectedRankingTime = "Tháng 5";
+                if (SelectedRankingTime == "June") SelectedRankingTime = "Tháng 6";
+                if (SelectedRankingTime == "July") SelectedRankingTime = "Tháng 7";
+                if (SelectedRankingTime == "August") SelectedRankingTime = "Tháng 8";
+                if (SelectedRankingTime == "September") SelectedRankingTime = "Tháng 9";
+                if (SelectedRankingTime == "October") SelectedRankingTime = "Tháng 10";
+                if (SelectedRankingTime == "November") SelectedRankingTime = "Tháng 11";
+                if (SelectedRankingTime == "December") SelectedRankingTime = "Tháng 12";
                 (List<CustomerDTO> Top5Cus, float TicketExpenseTop1Cus, float ProductExpenseTop1Cus) = await Task.Run(() => StatisticsService.Ins.GetTop5CustomerExpenseByMonth(int.Parse(SelectedRankingTime.Remove(0, 6))));
                 (int NewCustomerQuanity, int TotalCustomerQuantity, int WalkinGuestQuantity) = await Task.Run(() => StatisticsService.Ins.GetDetailedCustomerStatistics(DateTime.Now.Year, int.Parse(SelectedRankingTime.Remove(0, 6))));
                 Top5Customer = Top5Cus;
@@ -319,6 +331,18 @@ namespace CinemaManagementProject.ViewModel.AdminVM.StatisticalManagementVM
             if (SelectedRankingTime2.Length == 4) return;
             try
             {
+                if (SelectedRankingTime2 == "January") SelectedRankingTime2 = "Tháng 1";
+                if (SelectedRankingTime2 == "February") SelectedRankingTime2 = "Tháng 2";
+                if (SelectedRankingTime2 == "March") SelectedRankingTime2 = "Tháng 3";
+                if (SelectedRankingTime2 == "April") SelectedRankingTime2 = "Tháng 4";
+                if (SelectedRankingTime2 == "May") SelectedRankingTime2 = "Tháng 5";
+                if (SelectedRankingTime2 == "June") SelectedRankingTime2 = "Tháng 6";
+                if (SelectedRankingTime2 == "July") SelectedRankingTime2 = "Tháng 7";
+                if (SelectedRankingTime2 == "August") SelectedRankingTime2 = "Tháng 8";
+                if (SelectedRankingTime2 == "September") SelectedRankingTime2 = "Tháng 9";
+                if (SelectedRankingTime2 == "October") SelectedRankingTime2 = "Tháng 10";
+                if (SelectedRankingTime2 == "November") SelectedRankingTime2 = "Tháng 11";
+                if (SelectedRankingTime2 == "December") SelectedRankingTime2 = "Tháng 12";
                 Top5Staff = await StatisticsService.Ins.GetTop5ContributionStaffByMonth(int.Parse(SelectedRankingTime2.Remove(0, 6)));
                 float TotalBenefitByMonth = await Task.Run(() => StatisticsService.Ins.GetTotalBenefitContributionOfStaffs(DateTime.Now.Year, int.Parse(SelectedRankingTime2.Remove(0, 6))));
                 float totaltop5 = 0;

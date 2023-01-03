@@ -156,6 +156,18 @@ namespace CinemaManagementProject.ViewModel.AdminVM.StatisticalManagementVM
             if (SelectedBestSellTime.Length == 4) return;
             try
             {
+                if (SelectedBestSellTime == "January") SelectedBestSellTime = "Tháng 1";
+                if (SelectedBestSellTime == "February") SelectedBestSellTime = "Tháng 2";
+                if (SelectedBestSellTime == "March") SelectedBestSellTime = "Tháng 3";
+                if (SelectedBestSellTime == "April") SelectedBestSellTime = "Tháng 4";
+                if (SelectedBestSellTime == "May") SelectedBestSellTime = "Tháng 5";
+                if (SelectedBestSellTime == "June") SelectedBestSellTime = "Tháng 6";
+                if (SelectedBestSellTime == "July") SelectedBestSellTime = "Tháng 7";
+                if (SelectedBestSellTime == "August") SelectedBestSellTime = "Tháng 8";
+                if (SelectedBestSellTime == "September") SelectedBestSellTime = "Tháng 9";
+                if (SelectedBestSellTime == "October") SelectedBestSellTime = "Tháng 10";
+                if (SelectedBestSellTime == "November") SelectedBestSellTime = "Tháng 11";
+                if (SelectedBestSellTime == "December") SelectedBestSellTime = "Tháng 12";
                 Top5Movie = await Task.Run(() => StatisticsService.Ins.GetTop5BestMovieByMonth(int.Parse(SelectedBestSellTime.Remove(0, 6))));
             }
             catch (System.Data.Entity.Core.EntityException e)
@@ -276,6 +288,18 @@ namespace CinemaManagementProject.ViewModel.AdminVM.StatisticalManagementVM
             if (SelectedBestSellTime2.Length == 4) return;
             try
             {
+                if (SelectedBestSellTime2 == "January") SelectedBestSellTime2 = "Tháng 1";
+                if (SelectedBestSellTime2 == "February") SelectedBestSellTime2 = "Tháng 2";
+                if (SelectedBestSellTime2 == "March") SelectedBestSellTime2 = "Tháng 3";
+                if (SelectedBestSellTime2 == "April") SelectedBestSellTime2 = "Tháng 4";
+                if (SelectedBestSellTime2 == "May") SelectedBestSellTime2 = "Tháng 5";
+                if (SelectedBestSellTime2 == "June") SelectedBestSellTime2 = "Tháng 6";
+                if (SelectedBestSellTime2 == "July") SelectedBestSellTime2 = "Tháng 7";
+                if (SelectedBestSellTime2 == "August") SelectedBestSellTime2 = "Tháng 8";
+                if (SelectedBestSellTime2 == "September") SelectedBestSellTime2 = "Tháng 9";
+                if (SelectedBestSellTime2 == "October") SelectedBestSellTime2 = "Tháng 10";
+                if (SelectedBestSellTime2 == "November") SelectedBestSellTime2 = "Tháng 11";
+                if (SelectedBestSellTime2 == "December") SelectedBestSellTime2 = "Tháng 12";
                 Top5Product = await Task.Run(() => StatisticsService.Ins.GetTop5BestProductByMonth(int.Parse(SelectedBestSellTime2.Remove(0, 6))));
 
             }
