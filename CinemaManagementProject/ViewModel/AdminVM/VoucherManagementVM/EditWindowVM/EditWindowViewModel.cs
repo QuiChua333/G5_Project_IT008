@@ -236,6 +236,42 @@ namespace CinemaManagementProject.ViewModel.AdminVM.VoucherManagementVM
                 NumberSelected = 0;
             }
         }
+        public string ConvertTypeObjectToEnglish(string typeObject)
+        {
+            switch (typeObject)
+            {
+                case "Toàn bộ":
+                    {
+                        return "All";
+                    }
+                case "Vé phim":
+                    {
+                        return "Film Ticket";
+                    }
+                default:
+                    {
+                        return "Corn - Drinks";
+                    }
+            }
+        }
+        public string ConvertTypeObjectToVN(string typeObject)
+        {
+            switch (typeObject)
+            {
+                case "All":
+                    {
+                        return "Toàn bộ";
+                    }
+                case "Film Ticket":
+                    {
+                        return "Vé phim";
+                    }
+                default:
+                    {
+                        return "Bắp - nước";
+                    }
+            }
+        }
 
 
 

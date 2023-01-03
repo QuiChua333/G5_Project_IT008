@@ -69,6 +69,7 @@
     <system:String x:Key="AddWindow_ButtonLabel_Info">INFORMATION</system:String>
     <system:String x:Key="AddWindow_ButtonLabel_ListVouchers">LIST VOUCHERS</system:String>
     <system:String x:Key="EditWindow_Title">RELEASE INFORMATION</system:String>
+    <system:String x:Key="AddVoucher_Label_VoucherCode">Voucher code:</system:String>
     <system:String x:Key="AddVoucherPage_TextBlock_Function">Function</system:String>
     <system:String x:Key="AddVoucherPage_TextBlock_DeleteVoucher">Delete Voucher</system:String>
     <system:String x:Key="AddVoucherPage_TextBlock_AddVoucher">Add Voucher</system:String>

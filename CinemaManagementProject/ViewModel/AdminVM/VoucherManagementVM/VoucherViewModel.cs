@@ -78,6 +78,7 @@ namespace CinemaManagementProject.ViewModel.AdminVM.VoucherManagementVM
         public ICommand RefreshEmailListCM { get; set; }
         public ICommand LessEmailCM { get; set; }
         public ICommand CloseWindowCM { get; set; }
+        public ICommand CloseWindowVoucherCM { get; set; }
 
         public VoucherViewModel()
         {
@@ -109,6 +110,13 @@ namespace CinemaManagementProject.ViewModel.AdminVM.VoucherManagementVM
                 {
                     //Loading UI Handler Here
                     ListViewVoucher = new ObservableCollection<VoucherDTO>(selectedItem.Vouchers);
+                    if (Properties.Settings.Default.isEnglish == true)
+                    {
+                        foreach (VoucherDTO item in selectedItem.Vouchers)
+                        {
+                            item.VoucherStatus = ConvertVoucherStatusToEnglish(item.VoucherStatus);
+                        }
+                    }
                 }
                 catch (System.Data.Entity.Core.EntityException e)
                 {
@@ -234,6 +242,10 @@ namespace CinemaManagementProject.ViewModel.AdminVM.VoucherManagementVM
                    {
                        (VoucherReleaseDTO voucherRelease, bool haveAny) = await VoucherService.Ins.GetVoucherReleaseDetails(SelectedItem.VoucherReleaseCode);
                        SelectedItem = voucherRelease;
+                       if (Properties.Settings.Default.isEnglish == true)
+                       {
+                           SelectedItem.TypeObject = ConvertTypeObjectToEnglish(SelectedItem.TypeObject);
+                       }
                        ListViewVoucher = new ObservableCollection<VoucherDTO>(voucherRelease.Vouchers); 
                        StoreAllMini = new ObservableCollection<VoucherDTO>(voucherRelease.Vouchers);
 
@@ -446,6 +458,13 @@ namespace CinemaManagementProject.ViewModel.AdminVM.VoucherManagementVM
                             (VoucherReleaseDTO voucherReleaseDetail, bool haveAnyUsedVoucher) = await VoucherService.Ins.GetVoucherReleaseDetails(SelectedItem.VoucherReleaseCode);
 
                             SelectedItem = voucherReleaseDetail;
+                            if (Properties.Settings.Default.isEnglish == true)
+                            {
+                                foreach (VoucherDTO item in selectedItem.Vouchers)
+                                {
+                                    item.VoucherStatus = ConvertVoucherStatusToEnglish(item.VoucherStatus);
+                                }
+                            }
                             ListViewVoucher = new ObservableCollection<VoucherDTO>(SelectedItem.Vouchers);
                             StoreAllMini = new ObservableCollection<VoucherDTO>(ListViewVoucher);
                             if (AddVoucherPage.TopCheck != null && AddVoucherPage.CBB != null)
@@ -617,6 +636,13 @@ namespace CinemaManagementProject.ViewModel.AdminVM.VoucherManagementVM
                     }
                 }
                 
+                p.Close();
+
+            });
+            CloseWindowVoucherCM = new RelayCommand<Window>((p) => { return true; }, (p) =>
+            {
+                
+
                 p.Close();
 
             });
