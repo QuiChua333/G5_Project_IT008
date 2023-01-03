@@ -3,11 +3,9 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:CinemaManagementProject.View.Staff.TicketBill"
       mc:Ignorable="d"
       xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-      xmlns:Component="clr-namespace:CinemaManagementProject.Component" 
       d:DesignHeight="660" d:DesignWidth="1300"
       DataContext="{StaticResource BillTicketVM}"
       FontSize="16"
@@ -60,7 +58,7 @@
                     </i:Interaction.Triggers>
                 </Border>
 
-                <Label  Content="THANH TOÁN HÓA ĐƠN" 
+                <Label  Content="{DynamicResource TicketBillPhimPage_Label_ThanhToanHoaDon}" 
                             FontSize="28" 
                             Foreground="#8DC1F0"
                             FontFamily="{StaticResource MaterialDesignFont}"
@@ -99,14 +97,17 @@
                         </Grid.RowDefinitions>
 
                         <Grid Grid.Row="0">
-                            <Label Content="             Thông tin khách hàng"
+                            <Label Content="{DynamicResource TicketBillPhimPage_Label_ThongTinKhachHang}"
                                    FontSize="18"
                                    Width="300"
                                    FontFamily="{StaticResource MaterialDesignFont}"
                                    FontWeight="Bold"
                                    BorderThickness="0,0,0,3"
                                    BorderBrush="#8DC1F0"
-                                   Margin="10 10 10 0" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                   HorizontalAlignment="Center" 
+                                   HorizontalContentAlignment="Center"
+                                   VerticalContentAlignment="Center"
+                                   VerticalAlignment="Center" />
                         </Grid>
 
                         <Grid Grid.Row="1">
@@ -147,7 +148,7 @@
                                 <CheckBox IsThreeState="False"
                                           FontFamily="{StaticResource MaterialDesignFont}"
                                           IsChecked="{Binding IsWalkinGuest}"
-                                          Content="Khách vãng lai"
+                                          Content="{DynamicResource TicketBillPhimPage_CheckBox_Content_KhachVangLai}"
                                           Margin="30 0 0 0"
                                           FontSize="16"
                                           VerticalAlignment="Bottom"
@@ -166,7 +167,7 @@
                                     <ColumnDefinition Width="90" />
                                 </Grid.ColumnDefinitions>
 
-                                <TextBlock Text="Điện thoại:" Margin="10 15 15 0" />
+                                <TextBlock Text="{DynamicResource TicketBillPage_TextBlock_DienThoai}" Margin="10 15 15 0" />
 
                                 <TextBox Grid.Column="1" Text="{Binding PhoneNumber, Mode=TwoWay}"/>
 
@@ -196,7 +197,7 @@
                             <Grid Height="50"
                                   VerticalAlignment="Top"
                                   Margin="0 85 0 0">
-                                <Label Content="Số điện thoại chưa đăng ký!"
+                                <Label Content="{DynamicResource TicketBillPhimPage_Label_SoDienThoaiChuaDangKy}"
                                        FontSize="16"
                                        VerticalAlignment="Bottom"
                                        HorizontalAlignment="Center"
@@ -222,7 +223,9 @@
                                 <Label FontSize="16"
                                        VerticalAlignment="Top"
                                        HorizontalAlignment="Center">
-                                    <Hyperlink Command="{Binding OpenSignUpCM}">Đăng ký tài khoản mới</Hyperlink>
+                                    <Hyperlink Command="{Binding OpenSignUpCM}">
+                                        <TextBlock Margin="0,0,0,0" FontSize="16" Text="{DynamicResource TicketBillPhimPage_TextBlock_DangKyTaiKhoangMoi}"/>
+                                    </Hyperlink>
 
                                 </Label>
                                 <Grid.Style>
@@ -247,7 +250,7 @@
                                     <ColumnDefinition />
                                 </Grid.ColumnDefinitions>
 
-                                <TextBlock Text="Họ và tên:" />
+                                <TextBlock Text="{DynamicResource TicketBillPage_TextBlock_HoVaTen}" />
                                 <TextBox Grid.Column="1" 
                                          Margin="0 0 100 0"
                                          Text="{Binding NameSignUp, Mode=TwoWay}"/>
@@ -292,7 +295,7 @@
                             <Grid Height="60"
                                   VerticalAlignment="Top"
                                   Margin="0 263 0 0">
-                                <Button Content="Đăng ký"
+                                <Button Content="{DynamicResource TicketBillPhimPage_Button_DangKy}"
                                         Width="110"
                                         Background="#4887FA"
                                         VerticalAlignment="Bottom"
@@ -325,7 +328,7 @@
                                     <ColumnDefinition Width="150" />
                                     <ColumnDefinition />
                                 </Grid.ColumnDefinitions>
-                                <TextBlock Text="Họ và tên:" />
+                                <TextBlock Text="{DynamicResource TicketBillPage_TextBlock_HoVaTen}" />
                                 <TextBox Grid.Column="1"
                                          IsEnabled="False"
                                          Margin="0 0 100 0"
@@ -352,17 +355,18 @@
 
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="150" />
-                                    <ColumnDefinition />
+                                    <ColumnDefinition Width="53*" />
+                                    <ColumnDefinition Width="162*"/>
                                 </Grid.ColumnDefinitions>
 
-                                <TextBlock Text="Email:" />
+                                <TextBlock Text="Email:" Margin="0,23,15,0" VerticalAlignment="Top" />
                                 <TextBox Grid.Column="1"
                                          IsEnabled="False"
-                                         Margin="0 0 100 0"
+                                         Margin="0,0,100,0"
                                          VerticalContentAlignment="Bottom"
                                          VerticalAlignment="Center" 
                                          Text="{Binding Email}"
-                                         TextAlignment="Center"/>
+                                         TextAlignment="Center" Grid.ColumnSpan="2"/>
                                 <Grid.Style>
                                     <Style>
                                         <Style.Triggers>
@@ -422,7 +426,6 @@
                                     </Style>
                                 </Grid.Style>
                             </Grid>
-                            <!--PreviewMouseWheel="ScrollViewer_PreviewMouseWheel"-->
                             <Grid VerticalAlignment="Stretch" Margin="10 240 10 70">
                                 <ScrollViewer VerticalScrollBarVisibility="Auto">
                                     <ListBox ItemsSource="{Binding ListVoucher}"
@@ -511,7 +514,7 @@
                                     VerticalAlignment="Bottom"
                                     HorizontalAlignment="Right"
                                     Margin="0 0 30 30"
-                                    Content="Thanh toán"
+                                    Content="{DynamicResource TicketBillPhimPage_Button_ThanhToan}"
                                     Command="{Binding PayMovieCM}">
                                 <Button.Style>
                                     <Style TargetType="Button"
@@ -551,14 +554,17 @@
 
                         <!---HEADER-->
                         <Grid Grid.Row="0">
-                            <Label Content="                           Phim"
+                            <Label Content="{DynamicResource TicketBillPhimPage_Label_Phim}"
                                    FontSize="18"       
                                    Width="300"
                                    FontFamily="{StaticResource MaterialDesignFont}"
                                    FontWeight="Bold"
                                    BorderThickness="0,0,0,3"
                                    BorderBrush="#8DC1F0"
-                                   Margin="10 10 10 0" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                   HorizontalAlignment="Center"
+                                   HorizontalContentAlignment="Center"
+                                   VerticalContentAlignment="Center"
+                                   VerticalAlignment="Center" />
                         </Grid>
                         <!--#endregion-->
                         <!---BILL DETAIL-->
@@ -583,7 +589,7 @@
                                                 <ColumnDefinition Width="85*" />
                                             </Grid.ColumnDefinitions>
 
-                                            <Label Content="Phim: "
+                                            <Label Content="{DynamicResource TicketBillPhimPage_Label_Phim_}"
                                                    Grid.Column="0"
                                                    FontSize="16" />
                                             <Label Grid.Column="1"
@@ -603,7 +609,7 @@
                                                 <ColumnDefinition />
                                             </Grid.ColumnDefinitions>
 
-                                            <Label Content="Ngày chiếu: "
+                                            <Label Content="{DynamicResource TicketBillPhimPage_Label_NgayChieu}"
                                                    Grid.Column="0"
                                                    FontSize="16" />
                                             <Label Content="{Binding Date}"
@@ -621,7 +627,7 @@
                                                 <ColumnDefinition />
                                             </Grid.ColumnDefinitions>
 
-                                            <Label Content="Giờ chiếu: "
+                                            <Label Content="{DynamicResource TicketBillPhimPage_Label_GioChieu}"
                                                    Grid.Column="0"
                                                    FontSize="16" />
                                             <Label Content="{Binding Time}"
@@ -641,7 +647,7 @@
                                                 <ColumnDefinition />
                                             </Grid.ColumnDefinitions>
 
-                                            <Label Content="Rạp: "
+                                            <Label Content="{DynamicResource TicketBillPhimPage_Label_Rap}"
                                                    Grid.Column="0"
                                                    FontSize="16" />
                                             <Label Content="QPTN Cinema"
@@ -659,7 +665,7 @@
                                                 <ColumnDefinition />
                                             </Grid.ColumnDefinitions>
 
-                                            <Label Content="Phòng chiếu: "
+                                            <Label Content="{DynamicResource TicketBillPhimPage_Label_PhongChieu}"
                                                    Grid.Column="0"
                                                    FontSize="16" />
                                             <Label Content="{Binding Room}"
@@ -678,7 +684,7 @@
                                                 <ColumnDefinition />
                                             </Grid.ColumnDefinitions>
 
-                                            <Label Content="Ghế: "
+                                            <Label Content="{DynamicResource TicketBillPhimPage_Label_Ghe}"
                                                    Grid.Column="0"
                                                    FontSize="16" />
                                             <TextBlock Text="{Binding Seat}"
@@ -699,7 +705,7 @@
                                                 <ColumnDefinition />
                                             </Grid.ColumnDefinitions>
 
-                                            <Label Content="Giá vé: "
+                                            <Label Content="{DynamicResource TicketBillPhimPage_Label_GiaVe}"
                                                    Grid.Column="0"
                                                    FontSize="16" />
                                             <Label Content="{Binding Price}"
@@ -726,7 +732,7 @@
                                                 <ColumnDefinition />
                                             </Grid.ColumnDefinitions>
 
-                                            <Label Content="Tổng: "
+                                            <Label Content="{DynamicResource TicketBillPhimPage_Label_Tong}"
                                                    Grid.Column="0"
                                                    FontSize="16" />
                                             <Label x:Name="_totalticket"
@@ -749,7 +755,7 @@
                                     <ColumnDefinition />
                                 </Grid.ColumnDefinitions>
 
-                                <Label Content="Tổng tiền: "
+                                <Label Content="{DynamicResource TicketBillPhimPage_Label_TongTien}"
                                        FontSize="16"
                                        Grid.Column="0" />
                                 <Label Content="{Binding TotalPriceMovie}"
@@ -764,10 +770,10 @@
                                     <ColumnDefinition />
                                 </Grid.ColumnDefinitions>
 
-                                <Label Content="Phí giao dịch: "
+                                <Label Content="{DynamicResource TicketBillPhimPage_Label_PhiGiaoDich}"
                                        FontSize="16"
                                        Grid.Column="0" />
-                                <Label Content="Miễn phí"
+                                <Label Content="{DynamicResource TicketBillPhimPage_Label_MienPhi}"
                                        FontSize="16"
                                        Grid.Column="1"
                                        HorizontalAlignment="Right" />
@@ -779,7 +785,7 @@
                                     <ColumnDefinition />
                                 </Grid.ColumnDefinitions>
 
-                                <Label Content="Khuyến mãi: "
+                                <Label Content="{DynamicResource TicketBillPhimPage_Label_KhuyenMai}"
                                        FontSize="16"
                                        Grid.Column="0" />
                                 <Label Content="{Binding DiscountStr}"
@@ -794,7 +800,7 @@
                                     <ColumnDefinition />
                                 </Grid.ColumnDefinitions>
 
-                                <Label Content="Sau khuyến mãi: "
+                                <Label Content="{DynamicResource TicketBillPhimPage_Label_SauKhuyenMai}"
                                        FontSize="16"
                                        Grid.Column="0" />
                                 <Label Content="{Binding LastPriceStr}"

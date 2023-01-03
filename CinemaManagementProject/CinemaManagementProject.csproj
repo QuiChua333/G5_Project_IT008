@@ -654,6 +654,7 @@
       <DependentUpon>CinemaManagementDatabase.edmx</DependentUpon>
       <LastGenOutput>CinemaManagementDatabase.cs</LastGenOutput>
     </Content>
+    <Resource Include="Resource\Icons\uploadWhite.png" />
     <Content Include="Resource\Styles\MenuButtonUI.xaml">
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

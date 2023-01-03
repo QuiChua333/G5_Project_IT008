@@ -83,7 +83,7 @@
                                 </Rectangle>
                                 <Image Source="{StaticResource IconFilter}" Width="20" Height="20"></Image>
                                 <ComboBox SelectedItem="{Binding SelectedBestSellPeriod}"
-                                          materialDesign:HintAssist.Hint="Lọc theo"
+                                          materialDesign:HintAssist.Hint="{DynamicResource TotalIncomeStatistical_ComboBox_Hint_LocTheo}"
                                            Foreground="{StaticResource Gray1}"
                                           Grid.Column="1" 
                                           Background="Transparent" 
@@ -165,7 +165,7 @@
                                     </lvc:AxesCollection>
                                 </lvc:CartesianChart.AxisX>
                                 <lvc:CartesianChart.AxisY>
-                                    <lvc:Axis Title="Triệu đồng"
+                                    <lvc:Axis Title="{DynamicResource TotalIncomeStatistical_lvc_Axis_Title_TrieuDong}"
                                           FontFamily="arial"
                                           MinValue="0" />
                                 </lvc:CartesianChart.AxisY>
@@ -175,7 +175,7 @@
                         
                         <Grid Grid.Row="2">
                             <Label 
-                                       Content="Top 5 phim doanh thu cao nhất"
+                                       Content="{DynamicResource TotalIncomeStatistical_Label_Top5PhimDoanhThuCaoNhat}"
                                        VerticalAlignment="Center"
                                        HorizontalAlignment="Center"
                                        FontWeight="Bold"
@@ -198,7 +198,7 @@
                                         <GridView>
                                             <GridViewColumn Width="85">
                                                 <GridViewColumn.Header>
-                                                    <TextBlock Text="STT" FontWeight="SemiBold" Foreground="Black"/>
+                                                    <TextBlock Text="{DynamicResource TotalIncomeStatistical_TextBlock_STT}" FontWeight="SemiBold" Foreground="Black"/>
                                                 </GridViewColumn.Header>
                                                 <GridViewColumn.CellTemplate>
                                                     <DataTemplate>
@@ -212,7 +212,7 @@
                                             </GridViewColumn>
                                             <GridViewColumn  Width="200">
                                                 <GridViewColumn.Header>
-                                                    <TextBlock Text="Tên phim" FontWeight="SemiBold" Foreground="Black"/>
+                                                    <TextBlock Text="{DynamicResource TotalIncomeStatistical_TextBlock_TenPhim}" FontWeight="SemiBold" Foreground="Black"/>
                                                 </GridViewColumn.Header>
                                                 <GridViewColumn.CellTemplate>
                                                     <DataTemplate>
@@ -224,7 +224,7 @@
 
                                             <GridViewColumn Width="130">
                                                 <GridViewColumn.Header>
-                                                    <TextBlock Text="Doanh thu" FontWeight="SemiBold" Foreground="Black"/>
+                                                    <TextBlock Text="{DynamicResource TotalIncomeStatistical_TextBlock_DoanhThu}" FontWeight="SemiBold" Foreground="Black"/>
                                                 </GridViewColumn.Header>
                                                 <GridViewColumn.CellTemplate>
                                                     <DataTemplate>
@@ -235,7 +235,7 @@
 
                                             <GridViewColumn Width="96">
                                                 <GridViewColumn.Header>
-                                                    <TextBlock Text="Số vé" FontWeight="SemiBold" Foreground="Black"/>
+                                                    <TextBlock Text="{DynamicResource TotalIncomeStatistical_TextBlock_SoVe}" FontWeight="SemiBold" Foreground="Black"/>
                                                 </GridViewColumn.Header>
                                                 <GridViewColumn.CellTemplate>
                                                     <DataTemplate>
@@ -289,7 +289,7 @@
                                 <ComboBox SelectedItem="{Binding SelectedBestSellPeriod2}"
                                            Foreground="{StaticResource Gray1}"
                                           Grid.Column="1" 
-                                          materialDesign:HintAssist.Hint="Lọc theo"
+                                          materialDesign:HintAssist.Hint="{DynamicResource TotalIncomeStatistical_ComboBox_Hint_LocTheo}"
                                           Background="Transparent" 
                                           FontFamily="{StaticResource MaterialDesignFont}" 
                                           FontSize="16" FontWeight="Medium" 
@@ -368,7 +368,7 @@
                                     </lvc:AxesCollection>
                                 </lvc:CartesianChart.AxisX>
                                 <lvc:CartesianChart.AxisY>
-                                    <lvc:Axis Title="Triệu đồng"
+                                    <lvc:Axis Title="{DynamicResource TotalIncomeStatistical_lvc_Axis_Title_TrieuDong}"
                                                   FontFamily="arial"
                                                   MinValue="0" />
                                 </lvc:CartesianChart.AxisY>
@@ -377,7 +377,7 @@
 
                        
                         <Grid Grid.Row="2">
-                            <Label Content="Top 5 sản phẩm có doanh thu cao nhất"
+                            <Label Content="{DynamicResource TotalIncomeStatistical_Label_Top5SanPhamCoDoanhThuCaoNhat}"
                                        VerticalAlignment="Center"
                                        HorizontalAlignment="Center"
                                        FontWeight="Bold"
@@ -401,7 +401,7 @@
                                         <GridView>
                                             <GridViewColumn  Width="85">
                                                 <GridViewColumn.Header>
-                                                    <TextBlock Text="STT" FontWeight="SemiBold" Foreground="Black"/>
+                                                    <TextBlock Text="{DynamicResource TotalIncomeStatistical_TextBlock_STT}" FontWeight="SemiBold" Foreground="Black"/>
                                                 </GridViewColumn.Header>
 
                                                 <GridViewColumn.CellTemplate>
@@ -417,7 +417,7 @@
 
                                             <GridViewColumn  Width="180">
                                                 <GridViewColumn.Header>
-                                                    <TextBlock Text="Tên sản phẩm" FontWeight="SemiBold" Foreground="Black"/>
+                                                    <TextBlock Text="{DynamicResource TotalIncomeStatistical_TextBlock_TenSanPham}" FontWeight="SemiBold" Foreground="Black"/>
                                                 </GridViewColumn.Header>
                                                 <GridViewColumn.CellTemplate>
                                                     <DataTemplate>
@@ -430,7 +430,7 @@
 
                                             <GridViewColumn  Width="130">
                                                 <GridViewColumn.Header>
-                                                    <TextBlock Text="Doanh thu" FontWeight="SemiBold" Foreground="Black"/>
+                                                    <TextBlock Text="{DynamicResource TotalIncomeStatistical_TextBlock_DoanhThu}" FontWeight="SemiBold" Foreground="Black"/>
                                                 </GridViewColumn.Header>
                                                 <GridViewColumn.CellTemplate>
                                                     <DataTemplate>
@@ -441,7 +441,7 @@
 
                                             <GridViewColumn  Width="118">
                                                 <GridViewColumn.Header>
-                                                    <TextBlock Text="Số lượng" FontWeight="SemiBold" Foreground="Black"/>
+                                                    <TextBlock Text="{DynamicResource TotalIncomeStatistical_TextBlock_SoLuong}" FontWeight="SemiBold" Foreground="Black"/>
                                                 </GridViewColumn.Header>
                                                 <GridViewColumn.CellTemplate>
                                                     <DataTemplate>

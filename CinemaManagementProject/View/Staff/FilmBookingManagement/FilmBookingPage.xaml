@@ -74,7 +74,7 @@
             <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.ColumnSpan="5">
                 <Search:Search 
                     x:Name="SearchBox"
-                    materialDesign:HintAssist.Hint="Tìm kiếm"
+                    materialDesign:HintAssist.Hint="{DynamicResource filmbooking_search_TimKiem}"
                     Width="300"
                     Height="44"
                     IconSize="30"
@@ -100,7 +100,7 @@
                             </Rectangle.Effect>
                         </Rectangle>
                         <Image Source="{StaticResource IconFilter}" Width="20" Height="20"></Image>
-                        <ComboBox x:Name="FilterCombobox" ItemsSource="{Binding CurrentGenreSource}" materialDesign:HintAssist.Hint="Tất cả" SelectedItem="{Binding SelectedItemFilter, Mode=TwoWay}" SelectedIndex="0" Foreground="Black" Grid.Column="1" Background="Transparent" VerticalAlignment="Center" FontSize="16" FontWeight="Medium" Margin="0,0,10,0">
+                        <ComboBox x:Name="FilterCombobox" ItemsSource="{Binding CurrentGenreSource}" materialDesign:HintAssist.Hint="{DynamicResource filmbooking_ComboboxHint_TatCa}" SelectedItem="{Binding SelectedItemFilter, Mode=TwoWay}" SelectedIndex="0" Foreground="Black" Grid.Column="1" Background="Transparent" VerticalAlignment="Center" FontSize="16" FontWeight="Medium" Margin="0,0,10,0">
                             <i:Interaction.Triggers>
                                 <i:EventTrigger EventName="SelectionChanged" >
                                     <i:InvokeCommandAction Command="{Binding SelectedGenreChanged, Mode=TwoWay}"/>
@@ -213,7 +213,8 @@
                                                     FontWeight="Bold"
                                                     FontSize="15"
                                                     Margin="0,0,5,0"
-                                                >Thể loại:</TextBlock>
+                                                    Text="{DynamicResource filmbooking_textblock_TheLoai}"
+                                                ></TextBlock>
                                                 <TextBlock
                                                     FontFamily="{StaticResource MaterialDesignFont}"
                                                     FontWeight="Regular"
@@ -228,7 +229,8 @@
                                                     FontWeight="Bold"
                                                     FontSize="15"
                                                     Margin="0,0,5,0"
-                                                >Thời lượng:</TextBlock>
+                                                    Text="{DynamicResource filmbooking_textblock_ThoiLuong}"
+                                                ></TextBlock>
                                                 <TextBlock
                                                     FontFamily="{StaticResource MaterialDesignFont}"
                                                     FontWeight="Regular"
@@ -242,7 +244,8 @@
                                                     FontWeight="Bold"
                                                     FontSize="15"
                                                     Margin="0,0,5,0"
-                                                >Khởi chiếu:</TextBlock>
+                                                    Text="{DynamicResource filmbooking_textblock_KhoiChieu}"
+                                                ></TextBlock>
                                                 <TextBlock
                                                     FontFamily="{StaticResource MaterialDesignFont}"
                                                     FontWeight="Regular"
@@ -264,7 +267,8 @@
                                                     FontWeight="Regular"
                                                     Padding="0,3,0,0"
                                                     Margin="5,0,10,0"
-                                                >Mua vé</TextBlock>
+                                                    Text="{DynamicResource filmbooking_button_MuaVe}"
+                                                ></TextBlock>
                                             </StackPanel>
                                             <Grid.InputBindings>
                                                 <MouseBinding Command="{Binding ElementName=ListViewFilm, Path=DataContext.OpenBuyTicketWindow}"

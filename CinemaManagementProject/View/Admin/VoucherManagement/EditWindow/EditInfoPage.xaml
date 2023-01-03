@@ -159,7 +159,7 @@
                         </RadioButton>
                         <RadioButton    x:Name="no"
                                          Grid.Column="1"
-                                          Content="{DynamicResource AddInfoPage_RadioButton_Active}"
+                                          Content="{DynamicResource AddInfoPage_RadioButton_NotApply}"
                                          FontSize="16"
                                          FontWeight="Bold"
                                          Foreground="#000000"

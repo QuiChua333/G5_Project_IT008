@@ -84,7 +84,7 @@
                                 <ComboBox SelectedItem="{Binding SelectedRankingPeriod}"
                                          Foreground="{StaticResource Gray1}" 
                                         Grid.Column="1" 
-                                        materialDesign:HintAssist.Hint="Lọc theo"
+                                        materialDesign:HintAssist.Hint="{DynamicResource RankingStatistical_ComboBox_Hint_LocTheo}"
                                         Background="Transparent" 
                                         FontFamily="{StaticResource MaterialDesignFont}" 
                                         FontSize="16" FontWeight="Medium" 
@@ -178,7 +178,7 @@
                                             <RowDefinition/>
                                         </Grid.RowDefinitions>
                                         <Label Grid.Row="0" 
-                                               Content="Hạng nhất"
+                                               Content="{DynamicResource RankingStatistical_Label_HangNhat}"
                                                FontWeight="Bold"
                                                HorizontalContentAlignment="Center" 
                                                VerticalContentAlignment="Center" />
@@ -213,7 +213,7 @@
                                             <ColumnDefinition Width="35*"/>
                                         </Grid.ColumnDefinitions>
                                         <Label Grid.Column="0"
-                                                   Content=" Khách vãng lai: "
+                                                   Content="{DynamicResource RankingStatistical_Label_KhachVangLai}"
                                                    HorizontalAlignment="Left"
                                                    VerticalAlignment="Center"
                                                    FontSize="10"
@@ -234,7 +234,7 @@
                         </Grid>
 
                         <Grid Grid.Row="2">
-                            <Label Content="Top 5 khách hàng chi tiêu nhiều nhất"
+                            <Label Content="{DynamicResource RankingStatistical_Label_Top5KhachHangChiTieuNhieuNhat}"
                                    VerticalAlignment="Center"
                                    HorizontalAlignment="Center"
                                    FontWeight="Bold"
@@ -258,7 +258,7 @@
                                         <GridView>
                                             <GridViewColumn  Width="85">
                                                 <GridViewColumn.Header>
-                                                    <TextBlock Text="STT" FontWeight="SemiBold" Foreground="Black"/>
+                                                    <TextBlock Text="{DynamicResource RankingStatistical_TextBlock_STT}" FontWeight="SemiBold" Foreground="Black"/>
                                                 </GridViewColumn.Header>
                                                 <GridViewColumn.CellTemplate>
                                                     <DataTemplate>
@@ -274,7 +274,7 @@
 
                                             <GridViewColumn  Width="170">
                                                 <GridViewColumn.Header>
-                                                    <TextBlock Text="Tên khách hàng" FontWeight="SemiBold" Foreground="Black"/>
+                                                    <TextBlock Text="{DynamicResource RankingStatistical_TextBlock_TenKhachHang}" FontWeight="SemiBold" Foreground="Black"/>
                                                 </GridViewColumn.Header>
                                                 <GridViewColumn.CellTemplate>
                                                     <DataTemplate>
@@ -287,7 +287,7 @@
 
                                             <GridViewColumn  Width="145">
                                                 <GridViewColumn.Header>
-                                                    <TextBlock Text="Số điện thoại" FontWeight="SemiBold" Foreground="Black"/>
+                                                    <TextBlock Text="{DynamicResource RankingStatistical_TextBlock_SoDienThoai}" FontWeight="SemiBold" Foreground="Black"/>
                                                 </GridViewColumn.Header>
                                                 <GridViewColumn.CellTemplate>
                                                     <DataTemplate>
@@ -300,7 +300,7 @@
 
                                             <GridViewColumn  Width="110">
                                                 <GridViewColumn.Header>
-                                                    <TextBlock Text="Chi tiêu" FontWeight="SemiBold" Foreground="Black"/>
+                                                    <TextBlock Text="{DynamicResource RankingStatistical_TextBlock_ChiTieu}" FontWeight="SemiBold" Foreground="Black"/>
                                                 </GridViewColumn.Header>
                                                 <GridViewColumn.CellTemplate>
                                                     <DataTemplate>
@@ -355,7 +355,7 @@
                                     <ComboBox SelectedItem="{Binding SelectedRankingPeriod2}"
                                                Foreground="{StaticResource Gray1}"
                                               Grid.Column="1" 
-                                              materialDesign:HintAssist.Hint="Lọc theo"
+                                              materialDesign:HintAssist.Hint="{DynamicResource RankingStatistical_ComboBox_Hint_LocTheo}"
                                               Background="Transparent" 
                                               FontFamily="{StaticResource MaterialDesignFont}" 
                                               FontSize="16" FontWeight="Medium" 
@@ -439,7 +439,7 @@
 
                                         <Label Grid.Row="0" 
                                                FontWeight="Bold"
-                                               Content="Hạng nhất" 
+                                               Content="{DynamicResource RankingStatistical_Label_HangNhat}" 
                                                 Foreground="{StaticResource Gray1}"
                                                FontSize="14"
                                                FontFamily="{DynamicResource MaterialDesignFont}"
@@ -474,7 +474,7 @@
                         </materialDesign:Card>
                         
                         <Grid Grid.Row="2">
-                            <Label Content="Top 5 nhân viên đóng góp nhiều nhất"
+                            <Label Content="{DynamicResource RankingStatistical_Label_Top5NhanVienDongGopNhieuNhat}"
                                     VerticalAlignment="Center"
                                     HorizontalAlignment="Center"
                                     FontWeight="Bold"
@@ -498,7 +498,7 @@
                                         <GridView>
                                             <GridViewColumn Width="85" >
                                                 <GridViewColumn.Header>
-                                                    <TextBlock Text="STT" FontWeight="SemiBold" Foreground="Black"/>
+                                                    <TextBlock Text="{DynamicResource RankingStatistical_TextBlock_STT}" FontWeight="SemiBold" Foreground="Black"/>
                                                 </GridViewColumn.Header>
                                                 <GridViewColumn.CellTemplate>
                                                     <DataTemplate>
@@ -514,7 +514,7 @@
 
                                             <GridViewColumn Width="144">
                                                 <GridViewColumn.Header>
-                                                    <TextBlock Text="Mã nhân viên" FontWeight="SemiBold" Foreground="Black"/>
+                                                    <TextBlock Text="{DynamicResource RankingStatistical_TextBlock_MaNhanVien}" FontWeight="SemiBold" Foreground="Black"/>
                                                 </GridViewColumn.Header>
                                                 <GridViewColumn.CellTemplate>
                                                     <DataTemplate>
@@ -527,7 +527,7 @@
 
                                             <GridViewColumn  Width="165">
                                                 <GridViewColumn.Header>
-                                                    <TextBlock Text="Tên nhân viên" FontWeight="SemiBold" Foreground="Black"/>
+                                                    <TextBlock Text="{DynamicResource RankingStatistical_TextBlock_TenNhanVien}" FontWeight="SemiBold" Foreground="Black"/>
                                                 </GridViewColumn.Header>
                                                 <GridViewColumn.CellTemplate>
                                                     <DataTemplate>
@@ -540,7 +540,7 @@
 
                                             <GridViewColumn  Width="120">
                                                 <GridViewColumn.Header>
-                                                    <TextBlock Text="Doanh số" FontWeight="SemiBold" Foreground="Black"/>
+                                                    <TextBlock Text="{DynamicResource RankingStatistical_TextBlock_DoanhSo}" FontWeight="SemiBold" Foreground="Black"/>
                                                 </GridViewColumn.Header>
                                                 <GridViewColumn.CellTemplate>
                                                     <DataTemplate>

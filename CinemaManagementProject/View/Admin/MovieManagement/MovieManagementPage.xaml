@@ -3,12 +3,9 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:CinemaManagementProject.View.Admin.MovieManagement"
       mc:Ignorable="d"
       xmlns:Search="clr-namespace:CinemaManagementProject.Component.Search"
-      xmlns:Component="clr-namespace:CinemaManagementProject.Component" 
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-      xmlns:viewmodel="clr-namespace:CinemaManagementProject.ViewModel.AdminVM.MovieManagementVM"
       xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
       Title="MovieManagementPage"
       x:Name="mainPage"      
@@ -79,10 +76,10 @@
                                             Margin="30,5,0,0"
                                             Command="{Binding LoadAddMovieCM}">
                                         <Grid>
-                                            <TextBlock Text="Thêm"
+                                            <TextBlock Text="{DynamicResource MovieManagementPage_TextBlock_Them}"
                                                        FontFamily="{DynamicResource MaterialDesignFont}"
                                                        FontWeight="Medium"
-                                                       FontSize="16"/> 
+                                                       FontSize="16"/>
                                             <materialDesign:PackIcon Kind="PlusCircleOutline"
                                                      VerticalAlignment="Center"
                                                      Margin="45,0,0,0"
@@ -105,29 +102,29 @@
                                             Opacity=".25"
                                             Direction="270"/>
                                     </Border.Effect>
-                                    
+
                                     <Button Style="{StaticResource CustomButton}" 
                                             Width="150" 
                                             Height="46" 
                                             Margin="32,0,0,0"
-                                            Command="{Binding ExportFileCM}"> 
+                                            Command="{Binding ExportFileCM}">
                                         <StackPanel Orientation="Horizontal" 
                                                     Width="143" 
-                                                    HorizontalAlignment="Center" > 
+                                                    HorizontalAlignment="Center" >
                                             <materialDesign:PackIcon Kind="FileExport" 
                                                                      Width="30" 
-                                                                     Height="30"/> 
+                                                                     Height="30"/>
                                             <TextBlock  FontFamily="{StaticResource MaterialDesignFont}" 
-                                                        Text="Xuất file Excel" 
+                                                        Text="{DynamicResource MovieManagementPage_TextBlock_XuatFileExcel}" 
                                                         FontSize="16"
                                                         FontWeight="Normal"
-                                                        Margin="2,5,0,0"/> 
+                                                        Margin="2,5,0,0"/>
                                         </StackPanel>
                                     </Button>
                                 </Border>
                             </Grid>
                         </Grid>
-                        
+
                         <Grid Grid.Row="1">
                             <Border Grid.Row="1" 
                                     Margin="20 0 20 20" 
@@ -152,7 +149,7 @@
                                                 <GridView>
                                                     <GridViewColumn Width="300">
                                                         <GridViewColumn.Header>
-                                                            <TextBlock Text="Tên phim" FontSize="14" FontWeight="SemiBold" Foreground="Black"/>
+                                                            <TextBlock Text="{DynamicResource MovieManagementPage_TextBlock_TenPhim}" FontSize="14" FontWeight="SemiBold" Foreground="Black"/>
                                                         </GridViewColumn.Header>
                                                         <GridViewColumn.CellTemplate>
                                                             <DataTemplate>
@@ -165,7 +162,7 @@
 
                                                     <GridViewColumn Width="130">
                                                         <GridViewColumn.Header>
-                                                            <TextBlock Text="Loại phim" FontSize="14" FontWeight="SemiBold" Foreground="Black"/>
+                                                            <TextBlock Text="{DynamicResource MovieManagementPage_TextBlock_LoaiPhim}" FontSize="14" FontWeight="SemiBold" Foreground="Black"/>
                                                         </GridViewColumn.Header>
                                                         <GridViewColumn.CellTemplate>
                                                             <DataTemplate>
@@ -179,7 +176,7 @@
 
                                                     <GridViewColumn Width="130">
                                                         <GridViewColumn.Header>
-                                                            <TextBlock Text="Quốc gia" FontSize="14" FontWeight="SemiBold" Foreground="Black"/>
+                                                            <TextBlock Text="{DynamicResource MovieManagementPage_TextBlock_QuocGia}" FontSize="14" FontWeight="SemiBold" Foreground="Black"/>
                                                         </GridViewColumn.Header>
                                                         <GridViewColumn.CellTemplate>
                                                             <DataTemplate>
@@ -193,7 +190,7 @@
 
                                                     <GridViewColumn Width="200" >
                                                         <GridViewColumn.Header>
-                                                            <TextBlock Text="Thể loại" FontSize="14" FontWeight="SemiBold" Foreground="Black"/>
+                                                            <TextBlock Text="{DynamicResource MovieManagementPage_TextBlock_TheLoai}" FontSize="14" FontWeight="SemiBold" Foreground="Black"/>
                                                         </GridViewColumn.Header>
                                                         <GridViewColumn.CellTemplate>
                                                             <DataTemplate>
@@ -207,7 +204,7 @@
 
                                                     <GridViewColumn Width="182">
                                                         <GridViewColumn.Header>
-                                                            <TextBlock Text="Thời lượng (phút)" FontSize="14" FontWeight="SemiBold" Foreground="Black"/>
+                                                            <TextBlock Text="{DynamicResource MovieManagementPage_TextBlock_ThoiLuong(Phut)}" FontSize="14" FontWeight="SemiBold" Foreground="Black"/>
                                                         </GridViewColumn.Header>
                                                         <GridViewColumn.CellTemplate>
                                                             <DataTemplate>
@@ -250,9 +247,9 @@
                                                                                 <i:InvokeCommandAction Command="{Binding ElementName=MovieListView, Path=DataContext.LoadEditMovieCM}" />
                                                                             </i:EventTrigger>
                                                                         </i:Interaction.Triggers>
-                                                                        
+
                                                                     </Border>
-                                                                    
+
                                                                     <Border BorderThickness="0.5"
                                                                             BorderBrush="Black"
                                                                             CornerRadius="5"
@@ -274,7 +271,7 @@
                                                                                                      Height="22"
                                                                                                      VerticalAlignment="Center" 
                                                                                                      HorizontalAlignment="Center"
-                                                                                                     Cursor="Hand" /> 
+                                                                                                     Cursor="Hand" />
                                                                         </StackPanel>
                                                                         <i:Interaction.Triggers>
                                                                             <i:EventTrigger EventName="MouseLeftButtonUp">
@@ -289,16 +286,14 @@
                                                     </GridViewColumn>
                                                 </GridView>
                                             </ListView.View>
-
                                         </ListView>
                                     </ScrollViewer>
                                 </materialDesign:Card>
-
                             </Border>
                             <StackPanel Orientation="Horizontal"
                                     HorizontalAlignment="Right"
                                     Margin="0,568,50,0">
-                                <Label Content="Kết quả: "
+                                <Label Content="{DynamicResource MovieManagementPage_Label_KetQua}"
                                        FontSize="11" 
                                        FontWeight="Bold"/>
                                 <Label Content="{Binding FilmList.Count}"
@@ -313,10 +308,7 @@
                         </Grid>
                     </Grid>
                 </Border>
-
             </Grid>
-
-
         </Grid>
     </Grid>
 </Page>

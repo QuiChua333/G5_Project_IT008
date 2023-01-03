@@ -22,5 +22,8 @@
 &lt;/SerializableConnectionString&gt;</DesignTimeValue>
       <Value Profile="(Default)">Data Source=DESKTOP-VNQFQ7G\SQLEXPRESS;Initial Catalog=CinemaManagementProject;Integrated Security=True</Value>
     </Setting>
+    <Setting Name="isEnglish" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
   </Settings>
 </SettingsFile>
