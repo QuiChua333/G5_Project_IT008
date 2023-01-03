@@ -192,6 +192,10 @@ namespace CinemaManagementProject.ViewModel.AdminVM.VoucherManagementVM
                 VoucherReleaseName = VoucherReleaseName,
                 VoucherReleaseStatus = Status,
             };
+            if (Properties.Settings.Default.isEnglish == true)
+            {
+                vr.TypeObject = ConvertTypeObjectToVN(vr.TypeObject);
+            }
 
             (bool isSucess, string addSuccess, VoucherReleaseDTO newVoucherRelease) = await VoucherService.Ins.CreateVoucherRelease(vr);
 
@@ -209,6 +213,10 @@ namespace CinemaManagementProject.ViewModel.AdminVM.VoucherManagementVM
                 {
                     (VoucherReleaseDTO voucherReleaseDetail, _) = await VoucherService.Ins.GetVoucherReleaseDetails(newVoucherRelease.VoucherReleaseCode);
                     SelectedItem = voucherReleaseDetail;
+                    if (Properties.Settings.Default.isEnglish == true)
+                    {
+                        SelectedItem.TypeObject = ConvertTypeObjectToEnglish(SelectedItem.TypeObject);
+                    }
                     ListViewVoucher = new ObservableCollection<VoucherDTO>(SelectedItem.Vouchers);
                     StoreAllMini = new ObservableCollection<VoucherDTO>(ListViewVoucher);
                 }
@@ -398,7 +406,12 @@ namespace CinemaManagementProject.ViewModel.AdminVM.VoucherManagementVM
             }
             else
             {
+
                 ListViewVoucher = new ObservableCollection<VoucherDTO>(StoreAllMini.Where(v => v.VoucherStatus == SelectedCbbFilter.Tag.ToString()).ToList());
+                if (Properties.Settings.Default.isEnglish == true)
+                {
+                    ListViewVoucher = new ObservableCollection<VoucherDTO>(StoreAllMini.Where(v => ConvertVoucherStatusToVN(v.VoucherStatus) == SelectedCbbFilter.Tag.ToString()).ToList());
+                }
             }
         }
         public void GetVoucherList()
@@ -451,7 +464,50 @@ namespace CinemaManagementProject.ViewModel.AdminVM.VoucherManagementVM
             EnableMerge=false;
         }
 
-  
+        public string ConvertVoucherStatusToEnglish(string status)
+        {
+            switch (status)
+            {
+                case "Toàn bộ":
+                    {
+                        return "All";
+                    }
+                case "Chưa phát hành":
+                    {
+                        return "Not released yet";
+                    }
+                case "Đã phát hành":
+                    {
+                        return "Published";
+                    }
+                default:
+                    {
+                        return "Used";
+                    }
+            }
+        }
+        public string ConvertVoucherStatusToVN(string status)
+        {
+            switch (status)
+            {
+                case "All":
+                    {
+                        return "Toàn bộ";
+                    }
+                case "Not released yet":
+                    {
+                        return "Chưa phát hành";
+                    }
+                case "Published":
+                    {
+                        return "Đã phát hành";
+                    }
+                default:
+                    {
+                        return "Đã sử dụng";
+                    }
+            }
+        }
 
 
 

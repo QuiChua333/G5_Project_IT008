@@ -162,6 +162,13 @@ namespace CinemaManagementProject.ViewModel.AdminVM.VoucherManagementVM
                     (VoucherReleaseDTO voucherReleaseDetail, bool haveAnyUsedVoucher) = await VoucherService.Ins.GetVoucherReleaseDetails(SelectedItem.VoucherReleaseCode);
 
                     SelectedItem = voucherReleaseDetail;
+                    if (Properties.Settings.Default.isEnglish == true)
+                    {
+                        foreach (VoucherDTO item in selectedItem.Vouchers)
+                        {
+                            item.VoucherStatus = ConvertVoucherStatusToEnglish(item.VoucherStatus);
+                        }
+                    }
                     ListViewVoucher = new ObservableCollection<VoucherDTO>(SelectedItem.Vouchers);
                     StoreAllMini = new ObservableCollection<VoucherDTO>(ListViewVoucher);
                     if (AddVoucherPage.TopCheck != null && AddVoucherPage.CBB != null)
