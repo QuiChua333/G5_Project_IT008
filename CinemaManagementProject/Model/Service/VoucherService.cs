@@ -97,12 +97,12 @@ namespace CinemaManagementProject.Model.Service
                     await context.SaveChangesAsync();
 
                     newVR.VoucherReleaseCode = voucherRelease.VoucherReleaseCode;
-                    return (true, "Thêm đợt phát hành mới thành công", newVR);
+                    return (true, Properties.Settings.Default.isEnglish ? "Successfully added a new release" : "Thêm đợt phát hành mới thành công", newVR);
                 }
             }
             catch (Exception e)
             {
-                return (false, "Lỗi hệ thống", null);
+                return (false, Properties.Settings.Default.isEnglish ? "System error" : "Lỗi hệ thống", null);
             }
         }
         public async Task<(VoucherReleaseDTO, bool haveAnyUsedVoucher)> GetVoucherReleaseDetails(string Code)
@@ -165,12 +165,12 @@ namespace CinemaManagementProject.Model.Service
 
                     await context.SaveChangesAsync();
 
-                    return (true, "Cập nhật đợt phát hành thành công!");
+                    return (true, Properties.Settings.Default.isEnglish ? "Successful release update":"Cập nhật đợt phát hành thành công!");
                 }
             }
             catch (Exception e)
             {
-                return (false, "Lỗi");
+                return (false, Properties.Settings.Default.isEnglish ? "Error" : "Lỗi");
             }
         }
         public async Task<(bool, string)> DeteleVoucherRelease(string VrCode)
@@ -182,12 +182,12 @@ namespace CinemaManagementProject.Model.Service
                     VoucherRelease voucherRelease = (await context.VoucherReleases.FirstOrDefaultAsync(x => x.VoucherReleaseCode == VrCode));
                     voucherRelease.IsDeleted= true;
                     await context.SaveChangesAsync();
-                    return (true, "Xóa đợt phát hành thành công");
+                    return (true, Properties.Settings.Default.isEnglish ? "Deleting the release successfully" : "Xóa đợt phát hành thành công");
                 }
             }
             catch (Exception e)
             {
-                return (false, "Lỗi hệ thống");
+                return (false, Properties.Settings.Default.isEnglish ? "System error" : "Lỗi hệ thống");
             }
         }
         public async Task<(bool, string)> DeteleVouchers(List<int> ListCodeId)
@@ -198,12 +198,12 @@ namespace CinemaManagementProject.Model.Service
                 {
                     context.Vouchers.RemoveRange(context.Vouchers.Where(v => ListCodeId.Contains(v.Id)));
                     await context.SaveChangesAsync();
-                    return (true, "Xóa danh sách voucher thành công");
+                    return (true, Properties.Settings.Default.isEnglish ? "Deleting the list successfully" : "Xóa danh sách voucher thành công");
                 }
             }
             catch (Exception e)
             {
-                return (false, "Lỗi hệ thống");
+                return (false, Properties.Settings.Default.isEnglish ? "System error" : "Lỗi hệ thống");
             }
         }
         public async Task<(bool, string, List<VoucherDTO> voucherList)> CreateVoucher(int voucherReleaseId, List<VoucherDTO> ListVoucher)
@@ -218,7 +218,7 @@ namespace CinemaManagementProject.Model.Service
                     
                     if (IsExist)
                     {
-                        return (false, "Mã voucher đã tồn tại!", null);
+                        return (false, Properties.Settings.Default.isEnglish ? "Voucher code already exists!" : "Mã voucher đã tồn tại!", null);
                     }
                     VoucherRelease vl = await context.VoucherReleases.FindAsync(voucherReleaseId);
                     List<Voucher> vouchers = ListCode.Select(c => new Voucher
@@ -231,7 +231,7 @@ namespace CinemaManagementProject.Model.Service
 
                     context.Vouchers.AddRange(vouchers);
                     await context.SaveChangesAsync();
-                    return (true, "Thêm voucher thành công", vouchers.Select(v => new VoucherDTO
+                    return (true, Properties.Settings.Default.isEnglish ? "Successfully added voucher" : "Thêm voucher thành công", vouchers.Select(v => new VoucherDTO
                     {
                         VoucherReleaseId = (int)v.VoucherReleaseId,
                         Id = v.Id,
@@ -242,7 +242,7 @@ namespace CinemaManagementProject.Model.Service
             }
             catch (Exception e) 
             {
-                return (false, "Lỗi hệ thống", null);
+                return (false, Properties.Settings.Default.isEnglish ? "System error" : "Lỗi hệ thống", null);
             }
         }
         public async Task<(bool, string, List<VoucherDTO> voucherList)> CreateRandomVoucherList(VoucherReleaseDTO voucherRelease, List<string> ListCode)
@@ -262,7 +262,7 @@ namespace CinemaManagementProject.Model.Service
                 {
                     context.Vouchers.AddRange(vouchers);
                     await context.SaveChangesAsync();
-                    return (true, "Thêm danh sách voucher thành công", vouchers.Select(v => new VoucherDTO
+                    return (true, Properties.Settings.Default.isEnglish ? "Successfully added the list of voucher" : "Thêm danh sách voucher thành công", vouchers.Select(v => new VoucherDTO
                     {
                         VoucherReleaseId = (int)v.VoucherReleaseId,
                         Id = v.Id,
@@ -274,7 +274,7 @@ namespace CinemaManagementProject.Model.Service
             }
             catch (Exception)
             {
-                return (false, "Lỗi hệ thống", null);
+                return (false, Properties.Settings.Default.isEnglish ? "System error" : "Lỗi hệ thống", null);
             }
         }
         public async Task<(bool, string)> ReleaseMultiVoucher(List<int> ListCodeId)
@@ -287,11 +287,11 @@ namespace CinemaManagementProject.Model.Service
                     var sql = $@"Update [Voucher] SET VoucherStatus = '{VOUCHER_STATUS.REALEASED}', ReleaseAt = GETDATE()  WHERE Id IN ({idList})";
                     await context.Database.ExecuteSqlCommandAsync(sql);
                 }
-                return (true, "Phát hành thành công");
+                return (true, Properties.Settings.Default.isEnglish ? "Successful release" : "Phát hành thành công");
             }
             catch (Exception e)
             {
-                return (false, "Lỗi hệ thống");
+                return (false, Properties.Settings.Default.isEnglish ? "System error" : "Lỗi hệ thống");
             }
         }
         public async Task<(string error, VoucherDTO)> GetVoucherInfo(string Code)
@@ -326,34 +326,34 @@ namespace CinemaManagementProject.Model.Service
 
                     if (voucher is null || !voucher.VoucherInfo.VoucherReleaseStatus || voucher.VoucherStatus == VOUCHER_STATUS.UNRELEASED)
                     {
-                        return ("Mã giảm giá không tồn tại", null);
+                        return (Properties.Settings.Default.isEnglish? "Discount code does not exist" : "Mã giảm giá không tồn tại", null);
                     }
 
                     if (voucher.VoucherInfo.EndDate < DateTime.Now)
                     {
-                        return ("Mã giảm giá đã hết hạn sử dụng", null);
+                        return (Properties.Settings.Default.isEnglish ? "Discount code expired" : "Mã giảm giá đã hết hạn sử dụng", null);
                     }
 
                     if (voucher.VoucherStatus == VOUCHER_STATUS.USED)
                     {
-                        return ("Mã giảm giá đã sử dụng", null);
+                        return (Properties.Settings.Default.isEnglish ? "Discount code used" : "Mã giảm giá đã sử dụng", null);
                     }
 
                     voucher.Price = voucher.VoucherInfo.Price;
                     voucher.TypeObject = voucher.VoucherInfo.TypeObject;
                     voucher.EnableMerge = voucher.VoucherInfo.EnableMerge;
 
-                    voucher.VoucherInfoStr = $"Giảm {String.Format(CultureInfo.InvariantCulture, "{0:#,#}", voucher.Price)} đ ({voucher.TypeObject})";
+                    voucher.VoucherInfoStr = Properties.Settings.Default.isEnglish ? "Decrease" : "Giảm" + $" {String.Format(CultureInfo.InvariantCulture, "{0:#,#}", voucher.Price)} đ ({voucher.TypeObject})";
 
                     return (null, voucher);
                 }
                 catch (System.Data.Entity.Core.EntityException)
                 {
-                    return ("Mất kết nối cơ sở dữ liệu", null);
+                    return (Properties.Settings.Default.isEnglish ? "Unable to connect to database" : "Mất kết nối cơ sở dữ liệu", null);
                 }
                 catch (Exception)
                 {
-                    return ("Lỗi hệ thống", null);
+                    return (Properties.Settings.Default.isEnglish ? "System error" : "Lỗi hệ thống", null);
                 }
             }
         }

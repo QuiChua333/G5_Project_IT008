@@ -56,7 +56,7 @@ namespace CinemaManagementProject.Model.Service
                     float TicketExpense = 0, ProductExpense = 0;
                     if (cusStatistic.Count >= 1)
                     {
-                        string cusId = cusStatistic.First().CustomerCode;
+                        string cusId = cusStatistic.First().Id.ToString();
                         TicketExpense = context.Tickets.Where(b => b.Bill.BillCode.ToString() == cusId).Sum(t => t.Price) ?? 0;
                         ProductExpense = context.ProductBillInfoes.Where(b => b.Bill.BillCode.ToString() == cusId).Sum(t => (float?)(t.PrizePerProduct * t.Quantity)) ?? 0;
                     }
@@ -115,7 +115,7 @@ namespace CinemaManagementProject.Model.Service
                         .Select(grC => new
                         {
                             CustomerId = grC.Key,
-                            Expense = grC.Sum(c => (Decimal?)(c.TotalPrize + c.DiscountPrice)) ?? 0
+                            Expense = grC.Sum(c => (float?)(c.TotalPrize + c.DiscountPrice)) ?? 0
                         })
                         .OrderByDescending(b => b.Expense).Take(5)
                         .Join(
@@ -135,7 +135,7 @@ namespace CinemaManagementProject.Model.Service
                     if (cusStatistic.Count >= 1)
                     {
                         string cusId = cusStatistic.First().Id.ToString();
-                        TicketExpense = context.Tickets.Where(b => b.Bill.CustomerId.ToString() == cusId).Sum(t => (float?)t.Price) ?? 0;
+                        TicketExpense = context.Tickets.Where(b => b.Bill.CustomerId.ToString() == cusId).Sum(t => t.Price) ?? 0;
                         ProductExpense = context.ProductBillInfoes.Where(b => b.Bill.CustomerId.ToString() == cusId).Sum(t => (float?)(t.PrizePerProduct * t.Quantity)) ?? 0;
                     }
                     return (cusStatistic, TicketExpense, ProductExpense);
@@ -335,7 +335,7 @@ namespace CinemaManagementProject.Model.Service
                     .Select(gr => new
                     {
                         ProductId = gr.Key,
-                        Revenue = gr.Sum(pBill => (Decimal?)(pBill.Quantity * pBill.PrizePerProduct)) ?? 0,
+                        Revenue = gr.Sum(pBill => (float?)(pBill.Quantity * pBill.PrizePerProduct)) ?? 0,
                         SalesQuantity = gr.Sum(pBill => (int?)pBill.Quantity) ?? 0
                     })
                     .OrderByDescending(m => m.Revenue).Take(5)

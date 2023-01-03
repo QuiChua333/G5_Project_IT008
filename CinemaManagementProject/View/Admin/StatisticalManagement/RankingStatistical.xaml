@@ -103,8 +103,12 @@
                                                        CommandParameter="{Binding ElementName=periodbox1}" />
                                         </i:EventTrigger>
                                     </i:Interaction.Triggers>
-                                    <ComboBoxItem>Theo năm</ComboBoxItem>
-                                    <ComboBoxItem>Theo tháng</ComboBoxItem>
+                                    <ComboBoxItem Content="{DynamicResource RankingStatistical_ComboBox_TheoNam}" 
+                                              HorizontalContentAlignment="Center" 
+                                              VerticalContentAlignment="Center"/>
+                                    <ComboBoxItem Content="{DynamicResource RankingStatistical_ComboBox_TheoThang}" 
+                                              HorizontalContentAlignment="Center" 
+                                              VerticalContentAlignment="Center"/>
                                 </ComboBox>
                             </Grid>
 
@@ -266,7 +270,7 @@
                                                                                                    AncestorType={x:Type ListViewItem}}, 
                                                                                                    Converter={StaticResource IndexConverter}}"
                                                         FontSize="14"
-                                                        Margin="30,0,0,0" />
+                                                        Margin="20,0,0,0" />
                                                     </DataTemplate>
 
                                                 </GridViewColumn.CellTemplate>
@@ -287,26 +291,32 @@
 
                                             <GridViewColumn  Width="145">
                                                 <GridViewColumn.Header>
-                                                    <TextBlock Text="{DynamicResource RankingStatistical_TextBlock_SoDienThoai}" FontWeight="SemiBold" Foreground="Black"/>
+                                                    <TextBlock Text="{DynamicResource RankingStatistical_TextBlock_SoDienThoai}" 
+                                                               FontWeight="SemiBold" 
+                                                               Foreground="Black"
+                                                               Margin="-10,0,0,0"/>
                                                 </GridViewColumn.Header>
                                                 <GridViewColumn.CellTemplate>
                                                     <DataTemplate>
                                                         <TextBlock Text="{Binding PhoneNumber}"
                                                                    FontSize="14"
-                                                                   Margin="20,0,0,0" />
+                                                                   Margin="10,0,0,0" />
                                                     </DataTemplate>
                                                 </GridViewColumn.CellTemplate>
                                             </GridViewColumn>
 
                                             <GridViewColumn  Width="110">
                                                 <GridViewColumn.Header>
-                                                    <TextBlock Text="{DynamicResource RankingStatistical_TextBlock_ChiTieu}" FontWeight="SemiBold" Foreground="Black"/>
+                                                    <TextBlock Text="{DynamicResource RankingStatistical_TextBlock_ChiTieu}" 
+                                                               FontWeight="SemiBold" 
+                                                               Foreground="Black"
+                                                               Margin="-10,0,0,0"/>
                                                 </GridViewColumn.Header>
                                                 <GridViewColumn.CellTemplate>
                                                     <DataTemplate>
                                                         <TextBlock Text="{Binding ExpenseStr}"
                                                                    FontSize="14"
-                                                                   Margin="14,0,0,0" />
+                                                                   Margin="4,0,0,0" />
                                                     </DataTemplate>
                                                 </GridViewColumn.CellTemplate>
                                             </GridViewColumn>
@@ -372,8 +382,12 @@
                                                 <i:InvokeCommandAction Command="{Binding ChangeRankingPeriod2CM}" />
                                             </i:EventTrigger>
                                         </i:Interaction.Triggers>
-                                        <ComboBoxItem>Theo năm</ComboBoxItem>
-                                        <ComboBoxItem>Theo tháng</ComboBoxItem>
+                                        <ComboBoxItem Content="{DynamicResource RankingStatistical_ComboBox_TheoNam}" 
+                                              HorizontalContentAlignment="Center" 
+                                              VerticalContentAlignment="Center"/>
+                                        <ComboBoxItem Content="{DynamicResource RankingStatistical_ComboBox_TheoThang}" 
+                                              HorizontalContentAlignment="Center" 
+                                              VerticalContentAlignment="Center"/>
                                     </ComboBox>
                                 </Grid>
 
@@ -506,7 +520,7 @@
                                                                     AncestorType={x:Type ListViewItem}}, 
                                                                     Converter={StaticResource IndexConverter}}" 
                                                         FontSize="14"
-                                                                Margin="30,0,0,0"/>
+                                                                Margin="20,0,0,0"/>
                                                     </DataTemplate>
 
                                                 </GridViewColumn.CellTemplate>

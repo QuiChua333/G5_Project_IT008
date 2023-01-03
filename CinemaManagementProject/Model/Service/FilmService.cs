@@ -70,7 +70,7 @@ namespace CinemaManagementProject.Model.Service
                     {
                         if (m.IsDeleted == false)
                         {
-                            return (false, "Tên phim đã tồn tại", null);
+                            return (false, Properties.Settings.Default.isEnglish? "Movie name already exists" : "Tên phim đã tồn tại", null);
                         }
                         //Khi phim đã bị xóa nhưng được add lại với cùng tên => update lại phim đã xóa đó với thông tin là 
                         // phim mới thêm thay vì add thêm
@@ -131,7 +131,7 @@ namespace CinemaManagementProject.Model.Service
                 Console.WriteLine(e);
                 return (false, $"Error Server {e}", null);
             }
-            return (true, "Thêm phim thành công", newMovie);
+            return (true, Properties.Settings.Default.isEnglish ? "Add successful movies" :"Thêm phim thành công", newMovie);
         }
         public async Task<(bool, string)> DeleteMovie(int Id)
         {
@@ -144,7 +144,7 @@ namespace CinemaManagementProject.Model.Service
                                          select p).FirstOrDefaultAsync();
                     if (film == null)
                     {
-                        return (false, "Phim không tồn tại!");
+                        return (false, Properties.Settings.Default.isEnglish ? "Movie does not exist":"Phim không tồn tại!");
                     }
 
                     if (film.Image != null)
@@ -159,9 +159,9 @@ namespace CinemaManagementProject.Model.Service
             }
             catch (Exception)
             {
-                return (false, "Phim đã có người đặt. Không thể xóa!");
+                return (false, Properties.Settings.Default.isEnglish ? "The movie has been booked. Can not delete!" : "Phim đã có người đặt. Không thể xóa!");
             }
-            return (true, "Xóa phim thành công");
+            return (true, Properties.Settings.Default.isEnglish ? "Delete movie successfully" : "Xóa phim thành công");
         }
         public async Task<(bool, string)> UpdateMovie(FilmDTO updatedMovie)
         {
@@ -173,13 +173,13 @@ namespace CinemaManagementProject.Model.Service
 
                     if (film is null)
                     {
-                        return (false, "Phim không tồn tại");
+                        return (false, Properties.Settings.Default.isEnglish ? "Movie does not exist" : "Phim không tồn tại!");
                     }
 
                     bool IsExistMovieName = context.Films.Any((Film mov) => mov.Id != film.Id && mov.FilmName == updatedMovie.FilmName);
                     if (IsExistMovieName)
                     {
-                        return (false, "Tên phim đã tồn tại!");
+                        return (false, Properties.Settings.Default.isEnglish ? "Movie name already exist" : "Tên phim đã tồn tại!");
                     }
 
 
@@ -195,7 +195,7 @@ namespace CinemaManagementProject.Model.Service
                     film.Id = updatedMovie.Id;
 
                     await context.SaveChangesAsync();
-                    return (true, "Cập nhật thành công");
+                    return (true, Properties.Settings.Default.isEnglish ? "Update successfully" : "Cập nhật thành công");
                 }
             }
             catch (DbEntityValidationException)
@@ -208,7 +208,7 @@ namespace CinemaManagementProject.Model.Service
             }
             catch (Exception)
             {
-                return (false, "Lỗi hệ thống");
+                return (false, Properties.Settings.Default.isEnglish ? "System error" : "Lỗi hệ thống");
             }
         }
         public async Task<List<FilmDTO>> GetShowingMovieByDay(DateTime date)

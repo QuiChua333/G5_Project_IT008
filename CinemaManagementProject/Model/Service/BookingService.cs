@@ -200,7 +200,7 @@ namespace CinemaManagementProject.Model.Service
                     bool addSuccess = await AddNewProductBills(context, billId, orderedProductList);
                     if (!addSuccess)
                     {
-                        return (false, "Số lượng sản phẩm không đủ để đáp ứng!");
+                        return (false, Properties.Settings.Default.isEnglish? "The number of products is not enough to satisfy" : "Số lượng sản phẩm không đủ để đáp ứng!");
                     }
 
                     await context.SaveChangesAsync();
@@ -211,7 +211,7 @@ namespace CinemaManagementProject.Model.Service
                 Console.WriteLine(e);
                 return (false, $"Error Server {e}");
             }
-            return (true, "Mua sản phẩm thành công");
+            return (true, Properties.Settings.Default.isEnglish ? "Successful product purchase" : "Mua sản phẩm thành công");
         }
 
 

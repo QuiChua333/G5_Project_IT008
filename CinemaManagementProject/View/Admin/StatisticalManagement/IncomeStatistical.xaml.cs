@@ -21,6 +21,7 @@ namespace CinemaManagementProject.View.Admin.StatisticalManagement
     /// </summary>
     public partial class IncomeStatistical : Page
     {
+        
         public IncomeStatistical()
         {
             InitializeComponent();
@@ -39,6 +40,16 @@ namespace CinemaManagementProject.View.Admin.StatisticalManagement
                             return;
                         }
                     case "Theo tháng":
+                        {
+                            GetMonthSource(Timebox);
+                            return;
+                        }
+                    case "By Year":
+                        {
+                            GetYearSource(Timebox);
+                            return;
+                        }
+                    case "By Month":
                         {
                             GetMonthSource(Timebox);
                             return;
@@ -70,19 +81,36 @@ namespace CinemaManagementProject.View.Admin.StatisticalManagement
             if (cbb is null) return;
 
             List<string> l = new List<string>();
-
-            l.Add("Tháng 1");
-            l.Add("Tháng 2");
-            l.Add("Tháng 3");
-            l.Add("Tháng 4");
-            l.Add("Tháng 5");
-            l.Add("Tháng 6");
-            l.Add("Tháng 7");
-            l.Add("Tháng 8");
-            l.Add("Tháng 9");
-            l.Add("Tháng 10");
-            l.Add("Tháng 11");
-            l.Add("Tháng 12");
+            if (Properties.Settings.Default.isEnglish)
+            {
+                l.Add("January");
+                l.Add("February");
+                l.Add("March");
+                l.Add("April");
+                l.Add("May");
+                l.Add("June");
+                l.Add("July");
+                l.Add("August");
+                l.Add("September");
+                l.Add("October");
+                l.Add("November");
+                l.Add("December");
+            }
+            else
+            {
+                l.Add("Tháng 1");
+                l.Add("Tháng 2");
+                l.Add("Tháng 3");
+                l.Add("Tháng 4");
+                l.Add("Tháng 5");
+                l.Add("Tháng 6");
+                l.Add("Tháng 7");
+                l.Add("Tháng 8");
+                l.Add("Tháng 9");
+                l.Add("Tháng 10");
+                l.Add("Tháng 11");
+                l.Add("Tháng 12");
+            }
 
             cbb.ItemsSource = l;
             cbb.SelectedIndex = DateTime.Today.Month - 1;
@@ -97,7 +125,8 @@ namespace CinemaManagementProject.View.Admin.StatisticalManagement
                 {
                     if (tb.Text == "-2")
                     {
-                        tb.Text = "Tăng";
+                        if (Properties.Settings.Default.isEnglish) tb.Text = "Increase";
+                        else tb.Text = "Tăng";
                         tb.Foreground = new SolidColorBrush(Colors.Green);
                     }
                     else
@@ -120,7 +149,8 @@ namespace CinemaManagementProject.View.Admin.StatisticalManagement
                 {
                     if (tb.Text == "-2")
                     {
-                        tb.Text = "Tăng";
+                        if (Properties.Settings.Default.isEnglish) tb.Text = "Increase";
+                        else tb.Text = "Tăng";
                         tb.Foreground = new SolidColorBrush(Colors.Red);
                     }
                     else

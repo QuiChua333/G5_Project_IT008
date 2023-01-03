@@ -1,4 +1,5 @@
 ﻿using CinemaManagementProject.DTOs;
+using CinemaManagementProject.Model;
 using CinemaManagementProject.Model.Service;
 using CinemaManagementProject.Utils;
 using CinemaManagementProject.View.Admin.FoodManagement;
@@ -411,11 +412,15 @@ namespace CinemaManagementProject.ViewModel.StaffVM.TicketBillVM
                 }
                 catch (System.Data.Entity.Core.EntityException e)
                 {
-                    CustomMessageBox.ShowOk("Mất kết nối cơ sở dữ liệu", "Lỗi", "OK", Views.CustomMessageBoxImage.Error);
+                    Console.WriteLine(e);
+                    if (Properties.Settings.Default.isEnglish) CustomMessageBox.ShowOk("Unable to connect to database", "Error", "OK", Views.CustomMessageBoxImage.Error);
+                    else CustomMessageBox.ShowOk("Mất kết nối cơ sở dữ liệu", "Lỗi", "OK", Views.CustomMessageBoxImage.Error);
                 }
                 catch (Exception e)
                 {
-                    CustomMessageBox.ShowOk("Lỗi hệ thống", "Lỗi", "OK", Views.CustomMessageBoxImage.Error);
+                    Console.WriteLine(e);
+                    if (Properties.Settings.Default.isEnglish) CustomMessageBox.ShowOk("System error", "Error", "OK", Views.CustomMessageBoxImage.Error);
+                    else CustomMessageBox.ShowOk("Lỗi hệ thống", "Lỗi", "OK", Views.CustomMessageBoxImage.Error);
                 }
             });
             CheckPhoneNumberCM = new RelayCommand<object>((p) => { return true; },
@@ -455,13 +460,15 @@ namespace CinemaManagementProject.ViewModel.StaffVM.TicketBillVM
                         }
                         else
                         {
-                            CustomMessageBox.ShowOk("Số điện thoại không hợp lệ", "Lỗi", "OK", Views.CustomMessageBoxImage.Error);
+                            if(Properties.Settings.Default.isEnglish) CustomMessageBox.ShowOk("Số điện thoại không hợp lệ", "Lỗi", "OK", Views.CustomMessageBoxImage.Error);
+                            else CustomMessageBox.ShowOk("This phone number is not valid", "Error", "OK", Views.CustomMessageBoxImage.Error);
                         }
                     }
                 }
                 else
                 {
-                    CustomMessageBox.ShowOk("Số điện thoại không được để trống", "Cảnh báo", "OK", Views.CustomMessageBoxImage.Error);
+                    if(Properties.Settings.Default.isEnglish) CustomMessageBox.ShowOk("Phone number can not be empty", "Warning", "OK", Views.CustomMessageBoxImage.Error);
+                    else CustomMessageBox.ShowOk("Số điện thoại không được để trống", "Cảnh báo", "OK", Views.CustomMessageBoxImage.Error);
                 }
                 if (ListVoucher != null)
                 {
@@ -503,14 +510,14 @@ namespace CinemaManagementProject.ViewModel.StaffVM.TicketBillVM
 
                                 if (successAddCustomer)
                                 {
-                                    CustomMessageBox.ShowOk(messageFromAddCustomer, "Thông báo", "OK", Views.CustomMessageBoxImage.Success);
+                                    CustomMessageBox.ShowOk(messageFromAddCustomer, Properties.Settings.Default.isEnglish ? "Notification" : "Thông báo", "OK", Views.CustomMessageBoxImage.Success);
                                     NameSignUp = "";
                                     EmailSignUp = "";
                                     UpdateAddCustomer();
                                 }
                                 else
                                 {
-                                    CustomMessageBox.ShowOk(messageFromAddCustomer, "Lỗi", "OK", Views.CustomMessageBoxImage.Error);
+                                    CustomMessageBox.ShowOk(messageFromAddCustomer, Properties.Settings.Default.isEnglish ? "Error" : "Lỗi", "OK", Views.CustomMessageBoxImage.Error);
                                 }
                             }
                             else
@@ -523,35 +530,35 @@ namespace CinemaManagementProject.ViewModel.StaffVM.TicketBillVM
                                     (bool successAddCustomer, string messageFromAddCustomer, string newCustomer) = await CustomerService.Ins.CreateNewCustomer(customer);
                                     if (successAddCustomer)
                                     {
-                                        CustomMessageBox.ShowOk(messageFromAddCustomer, "Thông báo", "OK", Views.CustomMessageBoxImage.Success);
+                                        CustomMessageBox.ShowOk(messageFromAddCustomer, Properties.Settings.Default.isEnglish ? "Notification" : "Thông báo", "OK", Views.CustomMessageBoxImage.Success);
                                         NameSignUp = "";
                                         EmailSignUp = "";
                                         UpdateAddCustomer();
                                     }
                                     else
                                     {
-                                        CustomMessageBox.ShowOk(messageFromAddCustomer, "Lỗi", "OK", Views.CustomMessageBoxImage.Error);
+                                        CustomMessageBox.ShowOk(messageFromAddCustomer, Properties.Settings.Default.isEnglish ? "Error" : "Lỗi", "OK", Views.CustomMessageBoxImage.Error);
                                     }
                                 }
                                 else
                                 {
-                                    CustomMessageBox.ShowOk("Email không hợp lệ", "Lỗi", "OK", Views.CustomMessageBoxImage.Error);
+                                    CustomMessageBox.ShowOk(Properties.Settings.Default.isEnglish ? "This email is not valid!" : "Email không hợp lệ", Properties.Settings.Default.isEnglish ? "Error" : "Lỗi", "OK", Views.CustomMessageBoxImage.Error);
                                 }
                             }
                         }
                         else
                         {
-                            CustomMessageBox.ShowOk("Vui lòng nhập họ và tên", "Cảnh báo", "OK", Views.CustomMessageBoxImage.Warning);
+                            CustomMessageBox.ShowOk(Properties.Settings.Default.isEnglish ? "Please enter your fullname!" : "Vui lòng nhập họ và tên", Properties.Settings.Default.isEnglish ? "Warning" : "Cảnh báo", "OK", Views.CustomMessageBoxImage.Warning);
                         }
                     }
                     else
                     {
-                        CustomMessageBox.ShowOk("Số điện thoại không hợp lệ", "Lỗi", "OK", Views.CustomMessageBoxImage.Error);
+                        CustomMessageBox.ShowOk(Properties.Settings.Default.isEnglish ? "This phone number is not valid!" : "Số điện thoại không hợp lệ", Properties.Settings.Default.isEnglish ? "Error" : "Lỗi", "OK", Views.CustomMessageBoxImage.Error);
                     }
                 }
                 else
                 {
-                    CustomMessageBox.ShowOk("Vui lòng nhập số điện thoại", "Cảnh báo", "OK", Views.CustomMessageBoxImage.Warning);
+                    CustomMessageBox.ShowOk(Properties.Settings.Default.isEnglish ? "Please enter your phone number!" : "Vui lòng nhập số điện thoại", Properties.Settings.Default.isEnglish ? "Warning" : "Cảnh báo", "OK", Views.CustomMessageBoxImage.Warning);
                 }
 
             });
@@ -576,14 +583,20 @@ namespace CinemaManagementProject.ViewModel.StaffVM.TicketBillVM
                             }
                             else
                             {
-                                CustomMessageBox.ShowOk("Voucher chỉ áp dụng cho hóa đơn từ " + Helper.FormatVNMoney((float)voucher.VoucherInfo.MinimizeTotal) + " trở lên", "Cảnh báo","OK",Views.CustomMessageBoxImage.Warning);
+                                if (Properties.Settings.Default.isEnglish)
+                                    CustomMessageBox.ShowOk("Voucher is only applicable for bills from " + Helper.FormatVNMoney((float)voucher.VoucherInfo.MinimizeTotal) + " or more", "Warning", "OK", Views.CustomMessageBoxImage.Warning);
+                                else 
+                                    CustomMessageBox.ShowOk("Voucher chỉ áp dụng cho hóa đơn từ " + Helper.FormatVNMoney((float)voucher.VoucherInfo.MinimizeTotal) + " trở lên", "Cảnh báo","OK",Views.CustomMessageBoxImage.Warning);
                             }
                         }
                         else
                         {
                             if (voucher.EnableMerge && ListVoucher[0].EnableMerge == false)
                             {
-                                CustomMessageBox.ShowOk("Voucher " + ListVoucher[0].VoucherCode + " không được dùng với các voucher khác", "Cảnh báo", "OK", Views.CustomMessageBoxImage.Warning);
+                                if (Properties.Settings.Default.isEnglish)
+                                    CustomMessageBox.ShowOk("Voucher " + ListVoucher[0].VoucherCode + " cannot be used with other vouchers", "Warning", "OK", Views.CustomMessageBoxImage.Warning);
+                                else
+                                    CustomMessageBox.ShowOk("Voucher " + ListVoucher[0].VoucherCode + " không được dùng với các voucher khác", "Cảnh báo", "OK", Views.CustomMessageBoxImage.Warning);
                             }
                             else
                             {
@@ -591,19 +604,29 @@ namespace CinemaManagementProject.ViewModel.StaffVM.TicketBillVM
                                 {
                                     CustomMessageBox.ShowOk("Voucher không áp dụng cho đồ ăn", "Cảnh báo", "OK", Views.CustomMessageBoxImage.Warning);
                                 }
+                                else if (voucher.TypeObject  == "Movie ticket")
+                                {
+                                    CustomMessageBox.ShowOk("Voucher cannot be used with food", "Warning", "OK", Views.CustomMessageBoxImage.Warning);
+                                }
                                 else
                                 {
                                     if (!voucher.EnableMerge)
                                     {
-                                        CustomMessageBox.ShowOk("Voucher này không được dùng với các voucher khác", "Cảnh báo", "OK", Views.CustomMessageBoxImage.Warning);
+                                        if (Properties.Settings.Default.isEnglish)
+                                            CustomMessageBox.ShowOk("Voucher " + ListVoucher[0].VoucherCode + " cannot be used with other vouchers", "Warning", "OK", Views.CustomMessageBoxImage.Warning);
+                                        else
+                                            CustomMessageBox.ShowOk("Voucher " + ListVoucher[0].VoucherCode + " không được dùng với các voucher khác", "Cảnh báo", "OK", Views.CustomMessageBoxImage.Warning);
                                     }
                                     else
                                     {
                                         for (int i = 0; i < ListVoucher.Count; i++)
                                         {
                                             if (ListVoucher[i].VoucherReleaseId == voucher.VoucherReleaseId)
-                                            {
-                                                CustomMessageBox.ShowOk("Voucher cùng đợt phát hành", "Cảnh báo", "OK", Views.CustomMessageBoxImage.Warning);
+                                            {                                               
+                                                if (Properties.Settings.Default.isEnglish)
+                                                    CustomMessageBox.ShowOk("Vouchers are issued in the same period", "Warning", "OK", Views.CustomMessageBoxImage.Warning);
+                                                else
+                                                    CustomMessageBox.ShowOk("Voucher cùng đợt phát hành", "Cảnh báo", "OK", Views.CustomMessageBoxImage.Warning);
                                                 return;
                                             }
                                         }
@@ -618,7 +641,10 @@ namespace CinemaManagementProject.ViewModel.StaffVM.TicketBillVM
                                         }
                                         else
                                         {
-                                            CustomMessageBox.ShowOk("Voucher chỉ áp dụng cho hóa đơn từ \" + Helper.FormatVNMoney((float)voucher.VoucherInfo.MinimizeTotal) + \" trở lên", "Cảnh báo", "OK", Views.CustomMessageBoxImage.Warning);
+                                            if (Properties.Settings.Default.isEnglish)
+                                                CustomMessageBox.ShowOk("Voucher is only applicable for bills from " + Helper.FormatVNMoney((float)voucher.VoucherInfo.MinimizeTotal) + " or more", "Warning", "OK", Views.CustomMessageBoxImage.Warning);
+                                            else
+                                                CustomMessageBox.ShowOk("Voucher chỉ áp dụng cho hóa đơn từ " + Helper.FormatVNMoney((float)voucher.VoucherInfo.MinimizeTotal) + " trở lên", "Cảnh báo", "OK", Views.CustomMessageBoxImage.Warning);
                                         }
                                     }
                                 }
@@ -627,12 +653,12 @@ namespace CinemaManagementProject.ViewModel.StaffVM.TicketBillVM
                     }
                     else
                     {
-                        CustomMessageBox.ShowOk(error, "Lỗi", "OK", Views.CustomMessageBoxImage.Error);
+                        CustomMessageBox.ShowOk(error, Properties.Settings.Default.isEnglish?"Error":"Lỗi", "OK", Views.CustomMessageBoxImage.Error);
                     }
                 }
                 else
                 {
-                    CustomMessageBox.ShowOk("Mã voucher rỗng", "Cảnh báo", "OK", Views.CustomMessageBoxImage.Warning);
+                    CustomMessageBox.ShowOk(Properties.Settings.Default.isEnglish ? "Voucher code is empty" : "Mã voucher rỗng", Properties.Settings.Default.isEnglish ? "Warning" : "Cảnh báo", "OK", Views.CustomMessageBoxImage.Warning);
                 }
             });
             AddVoucherNoFoodCM = new RelayCommand<object>((p) => { return true; },
@@ -656,14 +682,20 @@ namespace CinemaManagementProject.ViewModel.StaffVM.TicketBillVM
                             }
                             else
                             {
-                                CustomMessageBox.ShowOk("Voucher chỉ áp dụng cho hóa đơn từ " + Helper.FormatVNMoney((float)voucher.VoucherInfo.MinimizeTotal) + " trở lên", "Cảnh báo", "OK", Views.CustomMessageBoxImage.Warning);
+                                if (Properties.Settings.Default.isEnglish)
+                                    CustomMessageBox.ShowOk("Voucher is only applicable for bills from " + Helper.FormatVNMoney((float)voucher.VoucherInfo.MinimizeTotal) + " or more", "Warning", "OK", Views.CustomMessageBoxImage.Warning);
+                                else
+                                    CustomMessageBox.ShowOk("Voucher chỉ áp dụng cho hóa đơn từ " + Helper.FormatVNMoney((float)voucher.VoucherInfo.MinimizeTotal) + " trở lên", "Cảnh báo", "OK", Views.CustomMessageBoxImage.Warning);
                             }
                         }
                         else
                         {
                             if (voucher.EnableMerge && ListVoucher[0].EnableMerge == false)
                             {
-                                CustomMessageBox.ShowOk("Voucher " + ListVoucher[0].VoucherCode + " không được dùng với các voucher khác", "Cảnh báo", "OK", Views.CustomMessageBoxImage.Warning);
+                                if (Properties.Settings.Default.isEnglish)
+                                    CustomMessageBox.ShowOk("Voucher " + ListVoucher[0].VoucherCode + " cannot be used with other vouchers", "Warning", "OK", Views.CustomMessageBoxImage.Warning);
+                                else
+                                    CustomMessageBox.ShowOk("Voucher " + ListVoucher[0].VoucherCode + " không được dùng với các voucher khác", "Cảnh báo", "OK", Views.CustomMessageBoxImage.Warning);
                             }
                             else
                             {
@@ -671,11 +703,18 @@ namespace CinemaManagementProject.ViewModel.StaffVM.TicketBillVM
                                 {
                                     CustomMessageBox.ShowOk("Voucher không áp dụng cho phim", "Cảnh báo", "OK", Views.CustomMessageBoxImage.Warning);
                                 }
+                                else if (voucher.TypeObject == "Products")
+                                {
+                                    CustomMessageBox.ShowOk("Voucher cannot be used with movie", "Warning", "OK", Views.CustomMessageBoxImage.Warning);
+                                }
                                 else
                                 {
                                     if (!voucher.EnableMerge)
                                     {
-                                        CustomMessageBox.ShowOk("Voucher này không được dùng với các voucher khác", "Cảnh báo", "OK", Views.CustomMessageBoxImage.Warning);
+                                        if (Properties.Settings.Default.isEnglish)
+                                            CustomMessageBox.ShowOk("Voucher " + ListVoucher[0].VoucherCode + " cannot be used with other vouchers", "Warning", "OK", Views.CustomMessageBoxImage.Warning);
+                                        else
+                                            CustomMessageBox.ShowOk("Voucher " + ListVoucher[0].VoucherCode + " không được dùng với các voucher khác", "Cảnh báo", "OK", Views.CustomMessageBoxImage.Warning);
                                     }
                                     else
                                     {
@@ -683,7 +722,10 @@ namespace CinemaManagementProject.ViewModel.StaffVM.TicketBillVM
                                         {
                                             if (ListVoucher[i].VoucherReleaseId == voucher.VoucherReleaseId)
                                             {
-                                                CustomMessageBox.ShowOk("Voucher cùng đợt phát hành", "Cảnh báo", "OK", Views.CustomMessageBoxImage.Warning);
+                                                if (Properties.Settings.Default.isEnglish)
+                                                    CustomMessageBox.ShowOk("Vouchers are issued in the same period", "Warning", "OK", Views.CustomMessageBoxImage.Warning);
+                                                else
+                                                    CustomMessageBox.ShowOk("Voucher cùng đợt phát hành", "Cảnh báo", "OK", Views.CustomMessageBoxImage.Warning);
                                                 return;
                                             }
                                         }
@@ -698,7 +740,10 @@ namespace CinemaManagementProject.ViewModel.StaffVM.TicketBillVM
                                         }
                                         else
                                         {
-                                            CustomMessageBox.ShowOk("Voucher chỉ áp dụng cho hóa đơn từ " + Helper.FormatVNMoney((float)voucher.VoucherInfo.MinimizeTotal) + " trở lên", "Cảnh báo", "OK", Views.CustomMessageBoxImage.Warning);
+                                            if (Properties.Settings.Default.isEnglish)
+                                                CustomMessageBox.ShowOk("Voucher is only applicable for bills from " + Helper.FormatVNMoney((float)voucher.VoucherInfo.MinimizeTotal) + " or more", "Warning", "OK", Views.CustomMessageBoxImage.Warning);
+                                            else
+                                                CustomMessageBox.ShowOk("Voucher chỉ áp dụng cho hóa đơn từ " + Helper.FormatVNMoney((float)voucher.VoucherInfo.MinimizeTotal) + " trở lên", "Cảnh báo", "OK", Views.CustomMessageBoxImage.Warning);
                                         }
                                     }
                                 }
@@ -707,12 +752,12 @@ namespace CinemaManagementProject.ViewModel.StaffVM.TicketBillVM
                     }
                     else
                     {
-                        CustomMessageBox.ShowOk(error, "Lỗi", "OK", Views.CustomMessageBoxImage.Error);
+                        CustomMessageBox.ShowOk(error, Properties.Settings.Default.isEnglish? "Error" : "Lỗi", "OK", Views.CustomMessageBoxImage.Error);
                     }
                 }
                 else
                 {
-                    CustomMessageBox.ShowOk("Mã voucher rỗng", "Cảnh báo", "OK", Views.CustomMessageBoxImage.Warning);
+                    CustomMessageBox.ShowOk(Properties.Settings.Default.isEnglish ? "Voucher code is empty" : "Mã voucher rỗng", Properties.Settings.Default.isEnglish ? "Warning" : "Cảnh báo", "OK", Views.CustomMessageBoxImage.Warning);
                 }
             });
             AddVoucherCM = new RelayCommand<object>((p) => { return true; },
@@ -736,20 +781,29 @@ namespace CinemaManagementProject.ViewModel.StaffVM.TicketBillVM
                             }
                             else
                             {
-                                CustomMessageBox.ShowOk("Voucher chỉ áp dụng cho hóa đơn từ " + Helper.FormatVNMoney((float)voucher.VoucherInfo.MinimizeTotal) + " trở lên", "Cảnh báo", "OK", Views.CustomMessageBoxImage.Warning);
+                                if (Properties.Settings.Default.isEnglish)
+                                    CustomMessageBox.ShowOk("Voucher is only applicable for bills from " + Helper.FormatVNMoney((float)voucher.VoucherInfo.MinimizeTotal) + " or more", "Warning", "OK", Views.CustomMessageBoxImage.Warning);
+                                else
+                                    CustomMessageBox.ShowOk("Voucher chỉ áp dụng cho hóa đơn từ " + Helper.FormatVNMoney((float)voucher.VoucherInfo.MinimizeTotal) + " trở lên", "Cảnh báo", "OK", Views.CustomMessageBoxImage.Warning);
                             }
                         }
                         else
                         {
                             if (voucher.EnableMerge && ListVoucher[0].EnableMerge == false)
                             {
-                                CustomMessageBox.ShowOk("Voucher " + ListVoucher[0].VoucherCode + " không được dùng với các voucher khác", "Cảnh báo", "OK", Views.CustomMessageBoxImage.Warning);
+                                if (Properties.Settings.Default.isEnglish)
+                                    CustomMessageBox.ShowOk("Voucher " + ListVoucher[0].VoucherCode + " cannot be used with other vouchers", "Warning", "OK", Views.CustomMessageBoxImage.Warning);
+                                else
+                                    CustomMessageBox.ShowOk("Voucher " + ListVoucher[0].VoucherCode + " không được dùng với các voucher khác", "Cảnh báo", "OK", Views.CustomMessageBoxImage.Warning);
                             }
                             else
                             {
                                 if (!voucher.EnableMerge)
                                 {
-                                    CustomMessageBox.ShowOk("Voucher này không được dùng với các voucher khác", "Cảnh báo", "OK", Views.CustomMessageBoxImage.Warning);
+                                    if (Properties.Settings.Default.isEnglish)
+                                        CustomMessageBox.ShowOk("This voucher cannot be used with other vouchers", "Warning", "OK", Views.CustomMessageBoxImage.Warning);
+                                    else 
+                                        CustomMessageBox.ShowOk("Voucher này không được dùng với các voucher khác", "Cảnh báo", "OK", Views.CustomMessageBoxImage.Warning);
                                 }
                                 else
                                 {
@@ -757,7 +811,11 @@ namespace CinemaManagementProject.ViewModel.StaffVM.TicketBillVM
                                     {
                                         if (ListVoucher[i].VoucherReleaseId == voucher.VoucherReleaseId)
                                         {
-                                            CustomMessageBox.ShowOk("Voucher cùng đợt phát hành", "Cảnh báo", "OK", Views.CustomMessageBoxImage.Warning);
+
+                                            if (Properties.Settings.Default.isEnglish)
+                                                CustomMessageBox.ShowOk("Vouchers are issued in the same period", "Warning", "OK", Views.CustomMessageBoxImage.Warning);
+                                            else
+                                                CustomMessageBox.ShowOk("Voucher cùng đợt phát hành", "Cảnh báo", "OK", Views.CustomMessageBoxImage.Warning);
                                             return;
                                         }
                                     }
@@ -772,7 +830,10 @@ namespace CinemaManagementProject.ViewModel.StaffVM.TicketBillVM
                                     }
                                     else
                                     {
-                                        CustomMessageBox.ShowOk("Voucher chỉ áp dụng cho hóa đơn từ " + Helper.FormatVNMoney((float)voucher.VoucherInfo.MinimizeTotal) + " trở lên", "Cảnh báo", "OK", Views.CustomMessageBoxImage.Warning);
+                                        if (Properties.Settings.Default.isEnglish)
+                                            CustomMessageBox.ShowOk("Voucher is only applicable for bills from " + Helper.FormatVNMoney((float)voucher.VoucherInfo.MinimizeTotal) + " or more", "Warning", "OK", Views.CustomMessageBoxImage.Warning);
+                                        else
+                                            CustomMessageBox.ShowOk("Voucher chỉ áp dụng cho hóa đơn từ " + Helper.FormatVNMoney((float)voucher.VoucherInfo.MinimizeTotal) + " trở lên", "Cảnh báo", "OK", Views.CustomMessageBoxImage.Warning);
                                     }
                                 }
                             }
@@ -780,12 +841,12 @@ namespace CinemaManagementProject.ViewModel.StaffVM.TicketBillVM
                     }
                     else
                     {
-                        CustomMessageBox.ShowOk(error, "Lỗi", "OK", Views.CustomMessageBoxImage.Error);
+                        CustomMessageBox.ShowOk(error, Properties.Settings.Default.isEnglish?"Error":"Lỗi", "OK", Views.CustomMessageBoxImage.Error);
                     }
                 }
                 else
                 {
-                    CustomMessageBox.ShowOk("Mã voucher rỗng", "Cảnh báo", "OK", Views.CustomMessageBoxImage.Warning);
+                    CustomMessageBox.ShowOk(Properties.Settings.Default.isEnglish ? "Voucher code is empty" : "Mã voucher rỗng", Properties.Settings.Default.isEnglish ? "Warning" : "Cảnh báo", "OK", Views.CustomMessageBoxImage.Warning);
                 }
             });
             DeleteVoucherCM = new RelayCommand<object>((p) => { return true; },
@@ -831,23 +892,27 @@ namespace CinemaManagementProject.ViewModel.StaffVM.TicketBillVM
                     if (successBooking)
                     {
                         IsSaving = false;
-                        CustomMessageBox.ShowOk(messageFromBooking, "Thông báo", "OK", Views.CustomMessageBoxImage.Success);
+                        CustomMessageBox.ShowOk(messageFromBooking, Properties.Settings.Default.isEnglish ? "Notification" : "Thông báo", "OK", Views.CustomMessageBoxImage.Success);
                         StaffWindow tk = Application.Current.Windows.OfType<StaffWindow>().FirstOrDefault();
                         tk.Content.Content = new OrderFoodPage();
                     }
                     else
                     {
                         IsSaving = false;
-                        CustomMessageBox.ShowOk(messageFromBooking, "Lỗi", "OK", Views.CustomMessageBoxImage.Error);
+                        CustomMessageBox.ShowOk(messageFromBooking, Properties.Settings.Default.isEnglish ? "Error" : "Lỗi", "OK", Views.CustomMessageBoxImage.Error);
                     }
                 }
                 catch (System.Data.Entity.Core.EntityException e)
                 {
-                    CustomMessageBox.ShowOk("Mất kết nối cơ sở dữ liệu", "Lỗi", "OK", Views.CustomMessageBoxImage.Error);
+                    Console.WriteLine(e);
+                    if (Properties.Settings.Default.isEnglish) CustomMessageBox.ShowOk("Unable to connect to database", "Error", "OK", Views.CustomMessageBoxImage.Error);
+                    else CustomMessageBox.ShowOk("Mất kết nối cơ sở dữ liệu", "Lỗi", "OK", Views.CustomMessageBoxImage.Error);
                 }
                 catch (Exception e)
                 {
-                    CustomMessageBox.ShowOk(e.Message, "Lỗi", "OK", Views.CustomMessageBoxImage.Error);
+                    Console.WriteLine(e);
+                    if (Properties.Settings.Default.isEnglish) CustomMessageBox.ShowOk("System error", "Error", "OK", Views.CustomMessageBoxImage.Error);
+                    else CustomMessageBox.ShowOk("Lỗi hệ thống", "Lỗi", "OK", Views.CustomMessageBoxImage.Error);
                 }
             });
             PayFullCM = new RelayCommand<object>((p) => { return true; },
@@ -889,7 +954,7 @@ namespace CinemaManagementProject.ViewModel.StaffVM.TicketBillVM
                         if (successBooking)
                         {
                             IsSaving = false;
-                            CustomMessageBox.ShowOk(messageFromBooking, "Thông báo", "OK", Views.CustomMessageBoxImage.Success);
+                            CustomMessageBox.ShowOk(messageFromBooking, Properties.Settings.Default.isEnglish ? "Notification" : "Thông báo", "OK", Views.CustomMessageBoxImage.Success);
                             TicketWindow ticketWindow = Application.Current.Windows.OfType<TicketWindow>().FirstOrDefault();
                             MovieScheduleWindow movieScheduleWindow = Application.Current.Windows.OfType<MovieScheduleWindow>().FirstOrDefault();
                             ticketWindow.Close();
@@ -898,17 +963,21 @@ namespace CinemaManagementProject.ViewModel.StaffVM.TicketBillVM
                         else
                         {
                             IsSaving = false;
-                            CustomMessageBox.ShowOk(messageFromBooking, "Lỗi", "OK", Views.CustomMessageBoxImage.Error);
+                            CustomMessageBox.ShowOk(messageFromBooking, Properties.Settings.Default.isEnglish ? "Error" : "Lỗi", "OK", Views.CustomMessageBoxImage.Error);
                         }
 
                     }
                     catch (System.Data.Entity.Core.EntityException e)
                     {
-                        CustomMessageBox.ShowOk("Mất kết nối cơ sở dữ liệu", "Lỗi", "OK", Views.CustomMessageBoxImage.Error);
+                        Console.WriteLine(e);
+                        if (Properties.Settings.Default.isEnglish) CustomMessageBox.ShowOk("Unable to connect to database", "Error", "OK", Views.CustomMessageBoxImage.Error);
+                        else CustomMessageBox.ShowOk("Mất kết nối cơ sở dữ liệu", "Lỗi", "OK", Views.CustomMessageBoxImage.Error);
                     }
                     catch (Exception e)
                     {
-                        CustomMessageBox.ShowOk(e.Message, "Lỗi", "OK", Views.CustomMessageBoxImage.Error);
+                        Console.WriteLine(e);
+                        if (Properties.Settings.Default.isEnglish) CustomMessageBox.ShowOk("System error", "Error", "OK", Views.CustomMessageBoxImage.Error);
+                        else CustomMessageBox.ShowOk("Lỗi hệ thống", "Lỗi", "OK", Views.CustomMessageBoxImage.Error);
                     }
                 });
 
@@ -941,7 +1010,7 @@ namespace CinemaManagementProject.ViewModel.StaffVM.TicketBillVM
                         if (successBooking)
                         {
                             IsSaving = false;
-                            CustomMessageBox.ShowOk(messageFromBooking, "Thông báo", "OK", Views.CustomMessageBoxImage.Success);
+                            CustomMessageBox.ShowOk(messageFromBooking, Properties.Settings.Default.isEnglish ? "Notification" : "Thông báo", "OK", Views.CustomMessageBoxImage.Success);
                             TicketWindow ticketWindow = Application.Current.Windows.OfType<TicketWindow>().FirstOrDefault();
                             MovieScheduleWindow movieScheduleWindow = Application.Current.Windows.OfType<MovieScheduleWindow>().FirstOrDefault();
                             ticketWindow.Close();
@@ -950,16 +1019,20 @@ namespace CinemaManagementProject.ViewModel.StaffVM.TicketBillVM
                         else
                         {
                             IsSaving = false;
-                            CustomMessageBox.ShowOk(messageFromBooking, "Lỗi", "OK", Views.CustomMessageBoxImage.Error);
+                            CustomMessageBox.ShowOk(messageFromBooking, Properties.Settings.Default.isEnglish ? "Error" : "Lỗi", "OK", Views.CustomMessageBoxImage.Error);
                         }
                     }
                     catch (System.Data.Entity.Core.EntityException e)
                     {
-                        CustomMessageBox.ShowOk("Mất kết nối cơ sở dữ liệu", "Lỗi", "OK", Views.CustomMessageBoxImage.Error);
+                        Console.WriteLine(e);
+                        if (Properties.Settings.Default.isEnglish) CustomMessageBox.ShowOk("Unable to connect to database", "Error", "OK", Views.CustomMessageBoxImage.Error);
+                        else CustomMessageBox.ShowOk("Mất kết nối cơ sở dữ liệu", "Lỗi", "OK", Views.CustomMessageBoxImage.Error);
                     }
                     catch (Exception e)
                     {
-                        CustomMessageBox.ShowOk("Lỗi hệ thống", "Lỗi", "OK", Views.CustomMessageBoxImage.Error);
+                        Console.WriteLine(e);
+                        if (Properties.Settings.Default.isEnglish) CustomMessageBox.ShowOk("System error", "Error", "OK", Views.CustomMessageBoxImage.Error);
+                        else CustomMessageBox.ShowOk("Lỗi hệ thống", "Lỗi", "OK", Views.CustomMessageBoxImage.Error);
                     }
 
                 });

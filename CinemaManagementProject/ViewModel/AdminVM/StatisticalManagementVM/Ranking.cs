@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
+using CinemaManagementProject.Model;
 
 namespace CinemaManagementProject.ViewModel.AdminVM.StatisticalManagementVM
 {
@@ -98,7 +99,23 @@ namespace CinemaManagementProject.ViewModel.AdminVM.StatisticalManagementVM
                             }
                             return;
                         }
+                    case "By Year":
+                        {
+                            if (SelectedRankingTime != null)
+                            {
+                                await LoadRankingByYear();
+                            }
+                            return;
+                        }
                     case "Theo tháng":
+                        {
+                            if (SelectedRankingTime != null)
+                            {
+                                await LoadRankingByMonth();
+                            }
+                            return;
+                        }
+                    case "By Month":
                         {
                             if (SelectedRankingTime != null)
                             {
@@ -123,12 +140,12 @@ namespace CinemaManagementProject.ViewModel.AdminVM.StatisticalManagementVM
                     new PieSeries
                     {
                         Values = new ChartValues<float>{TicketExpenseOfTop1 },
-                        Title = "Tiền vé",
+                        Title = Properties.Settings.Default.isEnglish ? "Ticket fare" : "Tiền vé",
                     },
                     new PieSeries
                     {
                         Values = new ChartValues<float>{ProductExpenseOfTop1 },
-                        Title = "Sản phẩm",
+                        Title = Properties.Settings.Default.isEnglish ? "Product" : "Sản phẩm",
                     }
                 };
                 NewCusPie = new SeriesCollection
@@ -136,13 +153,13 @@ namespace CinemaManagementProject.ViewModel.AdminVM.StatisticalManagementVM
                     new PieSeries
                     {
                         Values = new ChartValues<int>{NewCustomerQuanityInYear},
-                        Title = "Khách hàng mới",
+                        Title = Properties.Settings.Default.isEnglish ? "New customer" : "Khách hàng mới",
                         DataLabels = true
                     },
                     new PieSeries
                     {
                         Values = new ChartValues<int>{TotalCustomerQuantityInYear-NewCustomerQuanityInYear},
-                        Title = "Khách hàng cũ",
+                        Title = Properties.Settings.Default.isEnglish ? "Old customer" : "Khách hàng cũ",
                         DataLabels = true
                     },
                 };
@@ -151,12 +168,14 @@ namespace CinemaManagementProject.ViewModel.AdminVM.StatisticalManagementVM
             catch (System.Data.Entity.Core.EntityException e)
             {
                 Console.WriteLine(e);
-                CustomMessageBox.ShowOk("Mất kết nối cơ sở dữ liệu", "Lỗi", "OK", Views.CustomMessageBoxImage.Error);
+                if (Properties.Settings.Default.isEnglish) CustomMessageBox.ShowOk("Unable to connect to database", "Error", "OK", Views.CustomMessageBoxImage.Error);
+                else CustomMessageBox.ShowOk("Mất kết nối cơ sở dữ liệu", "Lỗi", "OK", Views.CustomMessageBoxImage.Error);
             }
             catch (Exception e)
             {
                 Console.WriteLine(e);
-                CustomMessageBox.ShowOk("Lỗi hệ thống", "Lỗi", "OK", Views.CustomMessageBoxImage.Error);
+                if (Properties.Settings.Default.isEnglish) CustomMessageBox.ShowOk("System error", "Error", "OK", Views.CustomMessageBoxImage.Error);
+                else CustomMessageBox.ShowOk("Lỗi hệ thống", "Lỗi", "OK", Views.CustomMessageBoxImage.Error);
             }
         }
         public async Task LoadRankingByMonth()
@@ -174,12 +193,12 @@ namespace CinemaManagementProject.ViewModel.AdminVM.StatisticalManagementVM
                     new PieSeries
                     {
                         Values = new ChartValues<float>{TicketExpenseTop1Cus },
-                        Title = "Tiền vé",
+                        Title = Properties.Settings.Default.isEnglish ? "Ticket fare" : "Tiền vé",
                     },
                     new PieSeries
                     {
                         Values = new ChartValues<float>{ProductExpenseTop1Cus },
-                        Title = "Sản phẩm",
+                        Title = Properties.Settings.Default.isEnglish ? "Product" : "Sản phẩm",
                     }
                 };
                 NewCusPie = new SeriesCollection
@@ -187,13 +206,13 @@ namespace CinemaManagementProject.ViewModel.AdminVM.StatisticalManagementVM
                     new PieSeries
                     {
                         Values = new ChartValues<int>{NewCustomerQuanity},
-                        Title = "Khách hàng mới",
+                        Title = Properties.Settings.Default.isEnglish ? "New customer" : "Khách hàng mới",
                         DataLabels = true
                     },
                     new PieSeries
                     {
                         Values = new ChartValues<int>{TotalCustomerQuantity - NewCustomerQuanity},
-                        Title = "Khách hàng cũ",
+                        Title = Properties.Settings.Default.isEnglish ? "Old customer" : "Khách hàng cũ",
                         DataLabels = true
                     },
                 };
@@ -202,12 +221,14 @@ namespace CinemaManagementProject.ViewModel.AdminVM.StatisticalManagementVM
             catch (System.Data.Entity.Core.EntityException e)
             {
                 Console.WriteLine(e);
-                CustomMessageBox.ShowOk("Mất kết nối cơ sở dữ liệu", "Lỗi", "OK", Views.CustomMessageBoxImage.Error);
+                if (Properties.Settings.Default.isEnglish) CustomMessageBox.ShowOk("Unable to connect to database", "Error", "OK", Views.CustomMessageBoxImage.Error);
+                else CustomMessageBox.ShowOk("Mất kết nối cơ sở dữ liệu", "Lỗi", "OK", Views.CustomMessageBoxImage.Error);
             }
             catch (Exception e)
             {
                 Console.WriteLine(e);
-                CustomMessageBox.ShowOk("Lỗi hệ thống", "Lỗi", "OK", Views.CustomMessageBoxImage.Error);
+                if (Properties.Settings.Default.isEnglish) CustomMessageBox.ShowOk("System error", "Error", "OK", Views.CustomMessageBoxImage.Error);
+                else CustomMessageBox.ShowOk("Lỗi hệ thống", "Lỗi", "OK", Views.CustomMessageBoxImage.Error);
             }
         }
 
@@ -225,7 +246,23 @@ namespace CinemaManagementProject.ViewModel.AdminVM.StatisticalManagementVM
                             }
                             return;
                         }
+                    case "By Year":
+                        {
+                            if (SelectedRankingTime2 != null)
+                            {
+                                await LoadRankingByYear2();
+                            }
+                            return;
+                        }
                     case "Theo tháng":
+                        {
+                            if (SelectedRankingTime2 != null)
+                            {
+                                await LoadRankingByMonth2();
+                            }
+                            return;
+                        }
+                    case "By Month":
                         {
                             if (SelectedRankingTime2 != null)
                             {
@@ -261,18 +298,20 @@ namespace CinemaManagementProject.ViewModel.AdminVM.StatisticalManagementVM
                 StaffContributePie.Add(new PieSeries
                 {
                     Values = new ChartValues<float> { TotalBenefitByYear - totaltop5 },
-                    Title = "Các nhân viên còn lại",
+                    Title = Properties.Settings.Default.isEnglish ? "The rest of the staff" : "Các nhân viên còn lại",
                 });
             }
             catch (System.Data.Entity.Core.EntityException e)
             {
                 Console.WriteLine(e);
-                CustomMessageBox.ShowOk("Mất kết nối cơ sở dữ liệu", "Lỗi", "OK", Views.CustomMessageBoxImage.Error);
+                if (Properties.Settings.Default.isEnglish) CustomMessageBox.ShowOk("Unable to connect to database", "Error", "OK", Views.CustomMessageBoxImage.Error);
+                else CustomMessageBox.ShowOk("Mất kết nối cơ sở dữ liệu", "Lỗi", "OK", Views.CustomMessageBoxImage.Error);
             }
             catch (Exception e)
             {
                 Console.WriteLine(e);
-                CustomMessageBox.ShowOk("Lỗi hệ thống", "Lỗi", "OK", Views.CustomMessageBoxImage.Error);
+                if (Properties.Settings.Default.isEnglish) CustomMessageBox.ShowOk("System error", "Error", "OK", Views.CustomMessageBoxImage.Error);
+                else CustomMessageBox.ShowOk("Lỗi hệ thống", "Lỗi", "OK", Views.CustomMessageBoxImage.Error);
             }
         }
         public async Task LoadRankingByMonth2()
@@ -300,18 +339,20 @@ namespace CinemaManagementProject.ViewModel.AdminVM.StatisticalManagementVM
                 StaffContributePie.Add(new PieSeries
                 {
                     Values = new ChartValues<float> { TotalBenefitByMonth - totaltop5 },
-                    Title = "Các nhân viên còn lại",
+                    Title = Properties.Settings.Default.isEnglish ? "The rest of the staff" : "Các nhân viên còn lại",
                 });
             }
             catch (System.Data.Entity.Core.EntityException e)
             {
                 Console.WriteLine(e);
-                CustomMessageBox.ShowOk("Mất kết nối cơ sở dữ liệu", "Lỗi", "OK", Views.CustomMessageBoxImage.Error);
+                if (Properties.Settings.Default.isEnglish) CustomMessageBox.ShowOk("Unable to connect to database", "Error", "OK", Views.CustomMessageBoxImage.Error);
+                else CustomMessageBox.ShowOk("Mất kết nối cơ sở dữ liệu", "Lỗi", "OK", Views.CustomMessageBoxImage.Error);
             }
             catch (Exception e)
             {
                 Console.WriteLine(e);
-                CustomMessageBox.ShowOk("Lỗi hệ thống", "Lỗi", "OK", Views.CustomMessageBoxImage.Error);
+                if (Properties.Settings.Default.isEnglish) CustomMessageBox.ShowOk("System error", "Error", "OK", Views.CustomMessageBoxImage.Error);
+                else CustomMessageBox.ShowOk("Lỗi hệ thống", "Lỗi", "OK", Views.CustomMessageBoxImage.Error);
             }
         }
     }

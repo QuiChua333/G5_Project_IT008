@@ -86,7 +86,23 @@ namespace CinemaManagementProject.ViewModel.AdminVM.StatisticalManagementVM
                             }
                             return;
                         }
+                    case "By Year":
+                        {
+                            if (SelectedBestSellTime != null)
+                            {
+                                await LoadBestSellByYear();
+                            }
+                            return;
+                        }
                     case "Theo tháng":
+                        {
+                            if (SelectedBestSellTime != null)
+                            {
+                                await LoadBestSellByMonth();
+                            }
+                            return;
+                        }
+                    case "By Month":
                         {
                             if (SelectedBestSellTime != null)
                             {
@@ -107,12 +123,14 @@ namespace CinemaManagementProject.ViewModel.AdminVM.StatisticalManagementVM
             catch (System.Data.Entity.Core.EntityException e)
             {
                 Console.WriteLine(e);
-                CustomMessageBox.ShowOk("Mất kết nối cơ sở dữ liệu", "Lỗi", "OK", Views.CustomMessageBoxImage.Error);
+                if (Properties.Settings.Default.isEnglish) CustomMessageBox.ShowOk("Unable to connect to database", "Error", "OK", Views.CustomMessageBoxImage.Error);
+                else CustomMessageBox.ShowOk("Mất kết nối cơ sở dữ liệu", "Lỗi", "OK", Views.CustomMessageBoxImage.Error);
             }
             catch (Exception e)
             {
                 Console.WriteLine(e);
-                CustomMessageBox.ShowOk("Lỗi hệ thống", "Lỗi", "OK", Views.CustomMessageBoxImage.Error);
+                if (Properties.Settings.Default.isEnglish) CustomMessageBox.ShowOk("System error", "Error", "OK", Views.CustomMessageBoxImage.Error);
+                else CustomMessageBox.ShowOk("Lỗi hệ thống", "Lỗi", "OK", Views.CustomMessageBoxImage.Error);
             }
 
 
@@ -129,7 +147,7 @@ namespace CinemaManagementProject.ViewModel.AdminVM.StatisticalManagementVM
                 new ColumnSeries
                 {
                     Values = new ChartValues<float>(chartdata),
-                    Title = "Doanh thu"
+                    Title = Properties.Settings.Default.isEnglish ? "Revenue" : "Doanh thu"
                 },
             };
         }
@@ -143,12 +161,14 @@ namespace CinemaManagementProject.ViewModel.AdminVM.StatisticalManagementVM
             catch (System.Data.Entity.Core.EntityException e)
             {
                 Console.WriteLine(e);
-                CustomMessageBox.ShowOk("Mất kết nối cơ sở dữ liệu", "Lỗi", "OK", Views.CustomMessageBoxImage.Error);
+                if (Properties.Settings.Default.isEnglish) CustomMessageBox.ShowOk("Unable to connect to database", "Error", "OK", Views.CustomMessageBoxImage.Error);
+                else CustomMessageBox.ShowOk("Mất kết nối cơ sở dữ liệu", "Lỗi", "OK", Views.CustomMessageBoxImage.Error);
             }
             catch (Exception e)
             {
                 Console.WriteLine(e);
-                CustomMessageBox.ShowOk("Lỗi hệ thống", "Lỗi", "OK", Views.CustomMessageBoxImage.Error);
+                if (Properties.Settings.Default.isEnglish) CustomMessageBox.ShowOk("System error", "Error", "OK", Views.CustomMessageBoxImage.Error);
+                else CustomMessageBox.ShowOk("Lỗi hệ thống", "Lỗi", "OK", Views.CustomMessageBoxImage.Error);
             }
 
 
@@ -165,7 +185,7 @@ namespace CinemaManagementProject.ViewModel.AdminVM.StatisticalManagementVM
                 new ColumnSeries
                 {
                     Values = new ChartValues<float>(chartdata),
-                     Title = "Doanh thu"
+                    Title = Properties.Settings.Default.isEnglish ? "Revenue" : "Doanh thu"
                 },
 
             };
@@ -187,7 +207,23 @@ namespace CinemaManagementProject.ViewModel.AdminVM.StatisticalManagementVM
                             }
                             return;
                         }
+                    case "By Year":
+                        {
+                            if (SelectedBestSellTime2 != null)
+                            {
+                                await LoadBestSellByYear2();
+                            }
+                            return;
+                        }
                     case "Theo tháng":
+                        {
+                            if (SelectedBestSellTime2 != null)
+                            {
+                                await LoadBestSellByMonth2();
+                            }
+                            return;
+                        }
+                    case "By Month":
                         {
                             if (SelectedBestSellTime2 != null)
                             {
@@ -208,14 +244,15 @@ namespace CinemaManagementProject.ViewModel.AdminVM.StatisticalManagementVM
             catch (System.Data.Entity.Core.EntityException e)
             {
                 Console.WriteLine(e);
-                CustomMessageBox.ShowOk("Mất kết nối cơ sở dữ liệu", "Lỗi", "OK", Views.CustomMessageBoxImage.Error);
+                if (Properties.Settings.Default.isEnglish) CustomMessageBox.ShowOk("Unable to connect to database", "Error", "OK", Views.CustomMessageBoxImage.Error);
+                else CustomMessageBox.ShowOk("Mất kết nối cơ sở dữ liệu", "Lỗi", "OK", Views.CustomMessageBoxImage.Error);
             }
             catch (Exception e)
             {
                 Console.WriteLine(e);
-                CustomMessageBox.ShowOk("Lỗi hệ thống", "Lỗi", "OK", Views.CustomMessageBoxImage.Error);
+                if (Properties.Settings.Default.isEnglish) CustomMessageBox.ShowOk("System error", "Error", "OK", Views.CustomMessageBoxImage.Error);
+                else CustomMessageBox.ShowOk("Lỗi hệ thống", "Lỗi", "OK", Views.CustomMessageBoxImage.Error);
             }
-
 
             List<float> chartdata = new List<float>();
             chartdata.Add(0);
@@ -229,7 +266,7 @@ namespace CinemaManagementProject.ViewModel.AdminVM.StatisticalManagementVM
                 new ColumnSeries
                 {
                     Values = new ChartValues<float>(chartdata),
-                     Title = "Doanh thu"
+                    Title = Properties.Settings.Default.isEnglish ? "Revenue" : "Doanh thu"
                 },
 
             };
@@ -245,12 +282,14 @@ namespace CinemaManagementProject.ViewModel.AdminVM.StatisticalManagementVM
             catch (System.Data.Entity.Core.EntityException e)
             {
                 Console.WriteLine(e);
-                CustomMessageBox.ShowOk("Mất kết nối cơ sở dữ liệu", "Lỗi", "OK", Views.CustomMessageBoxImage.Error);
+                if (Properties.Settings.Default.isEnglish) CustomMessageBox.ShowOk("Unable to connect to database", "Error", "OK", Views.CustomMessageBoxImage.Error);
+                else CustomMessageBox.ShowOk("Mất kết nối cơ sở dữ liệu", "Lỗi", "OK", Views.CustomMessageBoxImage.Error);
             }
             catch (Exception e)
             {
                 Console.WriteLine(e);
-                CustomMessageBox.ShowOk("Lỗi hệ thống", "Lỗi", "OK", Views.CustomMessageBoxImage.Error);
+                if (Properties.Settings.Default.isEnglish) CustomMessageBox.ShowOk("System error", "Error", "OK", Views.CustomMessageBoxImage.Error);
+                else CustomMessageBox.ShowOk("Lỗi hệ thống", "Lỗi", "OK", Views.CustomMessageBoxImage.Error);
             }
 
             List<float> chartdata = new List<float>();
@@ -265,7 +304,7 @@ namespace CinemaManagementProject.ViewModel.AdminVM.StatisticalManagementVM
                 new ColumnSeries
                 {
                     Values = new ChartValues<float>(chartdata),
-                     Title = "Doanh thu"
+                    Title = Properties.Settings.Default.isEnglish ? "Revenue" : "Doanh thu"
                 },
             };
         }

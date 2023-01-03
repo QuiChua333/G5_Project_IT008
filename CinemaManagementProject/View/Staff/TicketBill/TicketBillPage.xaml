@@ -169,14 +169,15 @@
 
                                 <TextBox Grid.Column="1"
                                          x:Name="TboxPhoneNumber"
-                                         Text="{Binding PhoneNumber, Mode=TwoWay}" />
+                                         Text="{Binding PhoneNumber, Mode=TwoWay}" 
+                                         Margin="0,0,0,6"/>
                                 <Button Grid.Column="2"
                                         Style="{StaticResource CustomButton}"
                                         Height="30"
                                         Width="NaN"
                                         Content="{materialDesign:PackIcon PhoneCheckOutline}"
                                         VerticalAlignment="Bottom"
-                                        Margin="15 0 10 0"
+                                        Margin="15 0 10 4"
                                         Background="#4887FA"
                                         Command="{Binding CheckPhoneNumberCM}" />
 
@@ -254,7 +255,7 @@
                                 <TextBlock Text="{DynamicResource TicketBillFoodPage_TextBlock_HoVaTen}" />
 
                                 <TextBox Grid.Column="1"
-                                         Margin="0 0 30 0"
+                                         Margin="0 0 30 6"
                                          Text="{Binding NameSignUp, Mode=TwoWay}" />
                                 <Grid.Style>
                                     <Style>
@@ -280,7 +281,7 @@
 
                                 <TextBlock Text="Email:" />
                                 <TextBox Grid.Column="1"
-                                         Margin="0 0 30 0"
+                                         Margin="0 0 30 6"
                                          Text="{Binding EmailSignUp, Mode=TwoWay}" />
                                 <Grid.Style>
                                     <Style>
@@ -336,7 +337,7 @@
                                 <TextBlock Text="{DynamicResource TicketBillFoodPage_TextBlock_HoVaTen}" />
                                 <TextBox Grid.Column="1"
                                          IsEnabled="False"
-                                         Margin="0 0 30 0"
+                                         Margin="0 0 30 6"
                                          VerticalContentAlignment="Bottom"
                                          VerticalAlignment="Center"
                                          Text="{Binding Name}"
@@ -367,7 +368,7 @@
 
                                 <TextBox Grid.Column="1"
                                          IsEnabled="False"
-                                         Margin="0 0 30 0"
+                                         Margin="0 0 30 6"
                                          VerticalContentAlignment="Bottom"
                                          VerticalAlignment="Center"
                                          Text="{Binding Email}"
@@ -398,14 +399,14 @@
                                 <TextBlock Text="Voucher:" Margin="10 15 5 0" />
 
                                 <TextBox Grid.Column="1"
-                                         Margin="10 0 15 4"
+                                         Margin="10 0 15 8"
                                          Text="{Binding VoucherID, Mode=TwoWay}" />
                                 <Button Grid.Column="2"
                                         Style="{StaticResource CustomButton}"
                                         Height="30"
                                         Width="NaN"
                                         VerticalAlignment="Bottom"
-                                        Margin="10 0 10 0"
+                                        Margin="10 0 10 4"
                                         Background="#4887FA"
                                         Command="{Binding AddVoucherCM}">
                                     <Button.ContentTemplate>

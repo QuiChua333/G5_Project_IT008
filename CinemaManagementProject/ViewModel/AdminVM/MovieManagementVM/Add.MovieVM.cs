@@ -23,7 +23,8 @@ namespace CinemaManagementProject.ViewModel.AdminVM.MovieManagementVM
 
                 if (movieImage is null)
                 {
-                    CustomMessageBox.ShowOk("Lỗi phát sinh trong quá trình lưu ảnh. Vui lòng thử lại", "Thông báo", "OK", Views.CustomMessageBoxImage.Warning);
+                    
+                    CustomMessageBox.ShowOk(Properties.Settings.Default.isEnglish? "An error occurred while saving the image. Please try again" : "Lỗi phát sinh trong quá trình lưu ảnh. Vui lòng thử lại", Properties.Settings.Default.isEnglish ? "Notification":"Thông báo", "OK", Views.CustomMessageBoxImage.Warning);
                     return;
                 }
 
@@ -45,18 +46,18 @@ namespace CinemaManagementProject.ViewModel.AdminVM.MovieManagementVM
                 if (successAddMovie)
                 {
                     isSaving = false;
-                    CustomMessageBox.ShowOk(messageFromAddMovie, "Thông báo", "OK", Views.CustomMessageBoxImage.Success);
+                    CustomMessageBox.ShowOk(messageFromAddMovie, Properties.Settings.Default.isEnglish?"Notification":"Thông báo", "OK", Views.CustomMessageBoxImage.Success);
                     LoadMovieListView(Operation.CREATE, newMovie);
                     p.Close();
                 }
                 else
                 {
-                    CustomMessageBox.ShowOk(messageFromAddMovie, "Lỗi", "OK", Views.CustomMessageBoxImage.Error);
+                    CustomMessageBox.ShowOk(messageFromAddMovie, Properties.Settings.Default.isEnglish ? "Error" : "Lỗi", "OK", Views.CustomMessageBoxImage.Error);
                 }
             }
             else
             {
-                CustomMessageBox.ShowOk("Vui lòng nhập đủ thông tin!", "Cảnh báo", "OK", Views.CustomMessageBoxImage.Warning);
+                CustomMessageBox.ShowOk(Properties.Settings.Default.isEnglish ? "Please enter enough information!" : "Vui lòng nhập đủ thông tin!", Properties.Settings.Default.isEnglish ? "Warning" : "Cảnh báo", "OK", Views.CustomMessageBoxImage.Warning);
             }
         }
     }

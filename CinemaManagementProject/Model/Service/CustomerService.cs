@@ -156,7 +156,7 @@ namespace CinemaManagementProject.Model.Service
                         bool isExistEmail = await context.Customers.AnyAsync(c => c.Email == newCus.Email);
                         if (isExistEmail)
                         {
-                            return (false, "Email này đã tồn tại", null);
+                            return (false, Properties.Settings.Default.isEnglish ? "This email already exists" : "Email này đã tồn tại", null);
                         }
                     }
 
@@ -165,7 +165,7 @@ namespace CinemaManagementProject.Model.Service
                     {
                         if (!(bool)cus.IsDeleted)
                         {
-                            return (false, "Số điện thoại này đã tồn tại", null);
+                            return (false, Properties.Settings.Default.isEnglish ? "This phone number already exists" : "Số điện thoại này đã tồn tại", null);
                         }
                         else
                         {
@@ -194,7 +194,7 @@ namespace CinemaManagementProject.Model.Service
 
                     context.Customers.Add(newCusomer);
                     await context.SaveChangesAsync();
-                    return (true, "Đăng ký thành công", newCusomer.MaKH);
+                    return (true, Properties.Settings.Default.isEnglish ? "Register successfully" : "Đăng ký thành công", newCusomer.MaKH);
                 }
             }
             catch (Exception e)
@@ -213,7 +213,7 @@ namespace CinemaManagementProject.Model.Service
 
                     if (isExistPhone)
                     {
-                        return (false, "Số điện thoại này đã tồn tại");
+                        return (false, Properties.Settings.Default.isEnglish ? "This phone number already exists" : "Số điện thoại này đã tồn tại");
                     }
 
                     if (!string.IsNullOrEmpty(updatedCus.Email))
@@ -221,7 +221,7 @@ namespace CinemaManagementProject.Model.Service
                         bool isExistEmail = await context.Customers.AnyAsync(c => c.Id != updatedCus.Id && c.Email == updatedCus.Email);
                         if (isExistEmail)
                         {
-                            return (false, "Email này đã tồn tại");
+                            return (false, Properties.Settings.Default.isEnglish ? "This email already exists" : "Email này đã tồn tại");
                         }
                     }
                     var cus = await context.Customers.FindAsync(updatedCus.Id);
@@ -231,12 +231,12 @@ namespace CinemaManagementProject.Model.Service
                     cus.Email = updatedCus.Email;
 
                     await context.SaveChangesAsync();
-                    return (true, "Cập nhật thành công");
+                    return (true, Properties.Settings.Default.isEnglish ? "Update successfully" : "Cập nhật thành công");
                 }
             }
             catch (Exception)
             {
-                return (false, "Lỗi hệ thống");
+                return (false, Properties.Settings.Default.isEnglish ? "System error" : "Lỗi hệ thống");
             }
         }
 
@@ -249,17 +249,17 @@ namespace CinemaManagementProject.Model.Service
                     var cus = await context.Customers.FindAsync(id);
                     if (cus is null || (bool)cus.IsDeleted)
                     {
-                        return (false, "Khách hàng không tồn tại!");
+                        return (false, Properties.Settings.Default.isEnglish ? "Customer does not exist!" : "Khách hàng không tồn tại!");
                     }
 
                     cus.IsDeleted = true;
                     await context.SaveChangesAsync();
-                    return (true, "Xóa thành công");
+                    return (true, Properties.Settings.Default.isEnglish ? "Delete successfully" : "Xóa thành công");
                 }
             }
             catch (Exception)
             {
-                return (false, "Lỗi hệ thống");
+                return (false, Properties.Settings.Default.isEnglish ? "System error" : "Lỗi hệ thống");
             }
         }
       

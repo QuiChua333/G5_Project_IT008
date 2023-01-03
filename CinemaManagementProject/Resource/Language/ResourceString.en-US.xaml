@@ -298,7 +298,7 @@
     <system:String x:Key="IncomeStatistical_TextBlock_ThoiGian">Time:</system:String>
     <system:String x:Key="IncomeStatistical_TextBlock_SoHoaDon">Invoice number:</system:String>
     <system:String x:Key="IncomeStatistical_TextBlock_LoiNhuan">Profit:</system:String>
-    <system:String x:Key="IncomeStatistical_lvc_Axis_Title_TrieuDong">Triệu đồng</system:String>
+    <system:String x:Key="IncomeStatistical_lvc_Axis_Title_TrieuDong">Milions VND</system:String>
     <system:String x:Key="RankingStatistical_ComboBox_TheoNam">By Year</system:String>
     <system:String x:Key="RankingStatistical_ComboBox_TheoThang">By Month</system:String>
     <system:String x:Key="RankingStatistical_ComboBox_Hint_LocTheo">Filter by</system:String>
@@ -343,7 +343,7 @@
     <system:String x:Key="TotalIncomeStatistical_ComboBox_Thang10">October</system:String>
     <system:String x:Key="TotalIncomeStatistical_ComboBox_Thang11">November</system:String>
     <system:String x:Key="TotalIncomeStatistical_ComboBox_Thang12">December</system:String>
-    <system:String x:Key="TotalIncomeStatistical_lvc_Axis_Title_TrieuDong">Triệu đồng</system:String>
+    <system:String x:Key="TotalIncomeStatistical_lvc_Axis_Title_TrieuDong">Milions VND</system:String>
     <system:String x:Key="TotalIncomeStatistical_Label_Top5PhimDoanhThuCaoNhat">Top 5 highest grossing movies</system:String>
     <system:String x:Key="TotalIncomeStatistical_TextBlock_STT">Id</system:String>
     <system:String x:Key="TotalIncomeStatistical_TextBlock_TenPhim">Movie name</system:String>

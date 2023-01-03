@@ -10,6 +10,9 @@ using System.Threading.Tasks;
 using System.Windows.Controls;
 using System.Windows.Media;
 using CinemaManagementProject.Model.Service;
+using System.Windows.Forms;
+using System.Runtime.Serialization.Formatters;
+using LiveCharts.Definitions.Series;
 
 namespace CinemaManagementProject.ViewModel.AdminVM.StatisticalManagementVM
 {
@@ -188,7 +191,25 @@ namespace CinemaManagementProject.ViewModel.AdminVM.StatisticalManagementVM
                             }
                             return;
                         }
+                    case "By Year":
+                        {
+                            if (SelectedIncomeTime != null)
+                            {
+                                if (SelectedIncomeTime.Length == 4)
+                                    SelectedYear = int.Parse(SelectedIncomeTime);
+                                await LoadIncomeByYear();
+                            }
+                            return;
+                        }
                     case "Theo tháng":
+                        {
+                            if (SelectedIncomeTime != null)
+                            {
+                                await LoadIncomeByMonth();
+                            }
+                            return;
+                        }
+                    case "By Month":
                         {
                             if (SelectedIncomeTime != null)
                             {
@@ -235,13 +256,13 @@ namespace CinemaManagementProject.ViewModel.AdminVM.StatisticalManagementVM
             {
             new LineSeries
             {
-                Title = "Thu",
+                Title = Properties.Settings.Default.isEnglish ? "Income" : "Thu",
                 Values = new ChartValues<float>(monthlyRevenue),
                 Fill = Brushes.Transparent
             },
             new LineSeries
             {
-                Title = "Chi",
+                Title = Properties.Settings.Default.isEnglish ? "Expenditure" : "Chi",
                 Values = new ChartValues<float>(monthlyExpense),
                 Fill = Brushes.Transparent
             }
@@ -250,13 +271,15 @@ namespace CinemaManagementProject.ViewModel.AdminVM.StatisticalManagementVM
             catch (System.Data.Entity.Core.EntityException e)
             {
                 Console.WriteLine(e);
-                CustomMessageBox.ShowOk("Mất kết nối cơ sở dữ liệu", "Lỗi", "OK", Views.CustomMessageBoxImage.Error);
+                if (Properties.Settings.Default.isEnglish) CustomMessageBox.ShowOk("Unable to connect to database", "Error", "OK", Views.CustomMessageBoxImage.Error);
+                else CustomMessageBox.ShowOk("Mất kết nối cơ sở dữ liệu", "Lỗi", "OK", Views.CustomMessageBoxImage.Error);
                 throw;
             }
             catch (Exception e)
             {
                 Console.WriteLine(e);
-                CustomMessageBox.ShowOk("Lỗi hệ thống", "Lỗi", "OK", Views.CustomMessageBoxImage.Error);
+                if (Properties.Settings.Default.isEnglish) CustomMessageBox.ShowOk("System error", "Error", "OK", Views.CustomMessageBoxImage.Error);
+                else CustomMessageBox.ShowOk("Lỗi hệ thống", "Lỗi", "OK", Views.CustomMessageBoxImage.Error);
                 throw;
             }
         }
@@ -292,13 +315,13 @@ namespace CinemaManagementProject.ViewModel.AdminVM.StatisticalManagementVM
             {
             new LineSeries
             {
-                Title = "Thu",
+                Title = Properties.Settings.Default.isEnglish ? "Income" : "Thu",
                 Values = new ChartValues<float>(dailyRevenue),
                 Fill = Brushes.Transparent,
             },
             new LineSeries
             {
-                Title = "Chi",
+                Title = Properties.Settings.Default.isEnglish ? "Expenditure" : "Chi",
                 Values = new ChartValues<float>(dailyExpense),
                 Fill = Brushes.Transparent,
             }
@@ -307,12 +330,14 @@ namespace CinemaManagementProject.ViewModel.AdminVM.StatisticalManagementVM
             catch (System.Data.Entity.Core.EntityException e)
             {
                 Console.WriteLine(e);
-                CustomMessageBox.ShowOk("Mất kết nối cơ sở dữ liệu", "Lỗi", "OK", Views.CustomMessageBoxImage.Error);
+                if (Properties.Settings.Default.isEnglish) CustomMessageBox.ShowOk("Unable to connect to database", "Error", "OK", Views.CustomMessageBoxImage.Error);
+                else CustomMessageBox.ShowOk("Mất kết nối cơ sở dữ liệu", "Lỗi", "OK", Views.CustomMessageBoxImage.Error);
             }
             catch (Exception e)
             {
                 Console.WriteLine(e);
-                CustomMessageBox.ShowOk("Lỗi hệ thống", "Lỗi", "OK", Views.CustomMessageBoxImage.Error);
+                if (Properties.Settings.Default.isEnglish) CustomMessageBox.ShowOk("System error", "Error", "OK", Views.CustomMessageBoxImage.Error);
+                else CustomMessageBox.ShowOk("Lỗi hệ thống", "Lỗi", "OK", Views.CustomMessageBoxImage.Error);
             }
         }
         public void CalculateTrueIncome(List<float> l1, List<float> l2)

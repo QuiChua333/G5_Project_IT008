@@ -92,8 +92,12 @@
                                                        CommandParameter="{Binding ElementName=periodbox}" />
                                     </i:EventTrigger>
                                 </i:Interaction.Triggers>
-                                <ComboBoxItem>Theo năm</ComboBoxItem>
-                                <ComboBoxItem>Theo tháng</ComboBoxItem>
+                                <ComboBoxItem Content="{DynamicResource IncomeStatistical_ComboBox_TheoNam}" 
+                                              HorizontalContentAlignment="Center" 
+                                              VerticalContentAlignment="Center"/>
+                                <ComboBoxItem Content="{DynamicResource IncomeStatistical_ComboBox_TheoThang}" 
+                                              HorizontalContentAlignment="Center" 
+                                              VerticalContentAlignment="Center"/>
                             </ComboBox>
                         </Grid>
 
@@ -191,7 +195,7 @@
                                                        FontWeight="Bold" 
                                                        FontSize="16"
                                                        Foreground="{StaticResource Gray1}"/>
-                                                <Label Content="{Binding TicketReve}" />
+                                                <Label Content="{Binding TicketReve}" FontSize="12"/>
                                             </StackPanel>
                                             <StackPanel Grid.Column="1" HorizontalAlignment="Center">
                                                 <Label Content="{DynamicResource IncomeStatistical_Label_SanPham}" FontSize="16" Foreground="{StaticResource Gray1}"/>
@@ -201,7 +205,7 @@
                                                        FontSize="16"/>
                                                 <Label Content="{Binding ProductReve}"
                                                        Foreground="{StaticResource Gray1}"
-                                                       FontSize="16"/>
+                                                       FontSize="12"/>
                                             </StackPanel>
                                         </Grid>
                                     </Grid>
@@ -236,10 +240,10 @@
                                                 <Label Content="{DynamicResource IncomeStatistical_Label_SanPham}"  Foreground="{StaticResource Gray1}"
                                                        FontSize="16" />
                                                 <Label Content="{Binding ProductExPc}"
-                                                           FontWeight="Bold" Foreground="{StaticResource Gray1}"
+                                                       FontWeight="Bold" Foreground="{StaticResource Gray1}"
                                                        FontSize="16" />
                                                 <Label Content="{Binding ProductExpe}" Foreground="{StaticResource Gray1}"
-                                                       FontSize="16"/>
+                                                       FontSize="12"/>
                                             </StackPanel>
                                             <StackPanel Grid.Column="1" HorizontalAlignment="Center">
                                                 <Label Content="{DynamicResource IncomeStatistical_Label_SuaChua}" Foreground="{StaticResource Gray1}"
@@ -248,7 +252,7 @@
                                                            FontWeight="Bold" Foreground="{StaticResource Gray1}"
                                                        FontSize="16"/>
                                                 <Label Content="{Binding RepairExpe}" Foreground="{StaticResource Gray1}"
-                                                       FontSize="16" />
+                                                       FontSize="12" />
                                             </StackPanel>
                                         </Grid>
                                     </Grid>
