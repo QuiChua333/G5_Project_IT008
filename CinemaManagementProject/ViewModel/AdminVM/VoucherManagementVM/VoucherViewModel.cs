@@ -78,6 +78,7 @@ namespace CinemaManagementProject.ViewModel.AdminVM.VoucherManagementVM
         public ICommand RefreshEmailListCM { get; set; }
         public ICommand LessEmailCM { get; set; }
         public ICommand CloseWindowCM { get; set; }
+        public ICommand CloseWindowVoucherCM { get; set; }
 
         public VoucherViewModel()
         {
@@ -617,6 +618,13 @@ namespace CinemaManagementProject.ViewModel.AdminVM.VoucherManagementVM
                     }
                 }
                 
+                p.Close();
+
+            });
+            CloseWindowVoucherCM = new RelayCommand<Window>((p) => { return true; }, (p) =>
+            {
+                
+
                 p.Close();
 
             });

@@ -392,7 +392,7 @@ namespace CinemaManagementProject.ViewModel.AdminVM.VoucherManagementVM
 
             ListViewVoucher = new ObservableCollection<VoucherDTO>();
 
-            if (SelectedCbbFilter.Content.ToString() == "Toàn bộ")
+            if (SelectedCbbFilter.Tag.ToString() == "Toàn bộ")
             {
                 ListViewVoucher = new ObservableCollection<VoucherDTO>(StoreAllMini);
             }

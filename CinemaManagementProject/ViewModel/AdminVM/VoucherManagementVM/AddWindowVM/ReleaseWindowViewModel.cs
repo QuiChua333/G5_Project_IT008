@@ -198,9 +198,9 @@ namespace CinemaManagementProject.ViewModel.AdminVM.VoucherManagementVM
         public async Task RefreshEmailList()
         {
             if (ReleaseCustomerList is null) return;
-            switch (ReleaseCustomerList.Content.ToString())
+            switch (ReleaseCustomerList.Tag.ToString())
             {
-                case "Top 5 khách hàng trong tháng":
+                case "TOP_5_CUSTOMER":
                     {
                         List<CustomerDTO> list = await CustomerService.Ins.GetTop5CustomerEmail();
                         ListCustomerEmail = new ObservableCollection<CustomerEmail>();
@@ -213,13 +213,13 @@ namespace CinemaManagementProject.ViewModel.AdminVM.VoucherManagementVM
                         ReleaseVoucherList = new ObservableCollection<VoucherDTO>(GetRandomUnreleasedCode(ListCustomerEmail.Count * int.Parse(PerCus.Content.ToString())));
                         return;
                     }
-                case "Khác":
+                case "COMMON":
                     {
                         ListCustomerEmail = new ObservableCollection<CustomerEmail>();
                         ReleaseVoucherList = new ObservableCollection<VoucherDTO>(GetRandomUnreleasedCode(ListCustomerEmail.Count * int.Parse(PerCus.Content.ToString())));
                         return;
                     }
-                case "Khách hàng mới trong tháng":
+                case "NEW_CUSTOMER":
                     {
                         ListCustomerEmail = new ObservableCollection<CustomerEmail>();
                         try
