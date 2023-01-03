@@ -35,7 +35,7 @@
     <viewmodel10:StaffVM x:Key="StaffVM"/>
     <viewmodel11:MovieScheduleWindowViewModel x:Key="MovieScheduleWindowVM" />
     <viewmodel12:TicketWindowViewModel x:Key="TicketWindowVM" />
-    <!--<viewmodel13:TicketBillVM x:Key="BillTicketVM" />-->
+    <viewmodel13:TicketBillVM x:Key="BillTicketVM" />
     <viewmodel14:TroubleManagementViewModel x:Key="TroubleManagementVM"/>
     <viewmodel15:FilmBookingVM x:Key="FilmBookingVM"/>
     <viewmodel16:TroublePageViewModel x:Key="TroublePageVM"/>

@@ -67,17 +67,17 @@ namespace CinemaManagementProject.ViewModel.AdminVM.FoodManagementVM
                     {
                         LoadProductListView(Operation.UPDATE_PROD_QUANTITY);
                         p.Close();
-                        CustomMessageBox.ShowOk(MessageReturn, "Thông báo", "Ok", Views.CustomMessageBoxImage.Success);
+                        CustomMessageBox.ShowOk(MessageReturn,isEN? "Notice":"Thông báo", "Ok", Views.CustomMessageBoxImage.Success);
                     }    
                 }
                 else
                 {
-                    CustomMessageBox.ShowOkCancel("Giá nhập hoặc số lượng không hợp lệ", "Cảnh báo", "OK", "Cancel");
+                    CustomMessageBox.ShowOkCancel( isEN? "Invalid input price or quantity!" : "Giá nhập hoặc số lượng không hợp lệ", isEN? "Warning":"Cảnh báo", "OK", isEN? "Cancel" :"Hủy");
                 }
             }
             else
             {
-                CustomMessageBox.ShowOkCancel("Vui lòng chọn sản phẩm cần nhập", "Cảnh báo", "OK", "Cancel");
+                CustomMessageBox.ShowOkCancel(isEN ? "Please choose the product to import" : "Vui lòng chọn sản phẩm cần nhập",isEN? "Waring" : "Cảnh báo", "OK", isEN? "Cancel" : "Hủy");
             }
             
         }

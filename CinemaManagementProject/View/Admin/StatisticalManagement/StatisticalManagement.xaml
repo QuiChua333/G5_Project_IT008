@@ -95,22 +95,23 @@
         </StackPanel>
         <!--Frame-->
         <Grid Grid.Row="1">
-            <Border CornerRadius="20" Background="{StaticResource LightGrayAthens}"  BorderBrush="Gray" BorderThickness="0.3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="20,0,20,20">
-                <Border.Effect>
-                    <DropShadowEffect BlurRadius="10" Direction="270" Color="Black" ShadowDepth="4" Opacity="0.25"/>
-                </Border.Effect>
-                <Frame x:Name="mainFrame"
+            <Grid VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="20">
+                <Rectangle VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Fill="White" Opacity="0.5" RadiusX="20" RadiusY="20"/>
+                <Border CornerRadius="20" Background="Transparent" >
+                    <Border.Effect>
+                        <DropShadowEffect BlurRadius="10" Direction="270" Color="Black" ShadowDepth="4" Opacity="0.25"/>
+                    </Border.Effect>
+                    <Frame x:Name="mainFrame"
                    Margin="0,0,0,0">
-                    <i:Interaction.Triggers>
-                        <i:EventTrigger EventName="Loaded">
-                            <i:InvokeCommandAction Command="{Binding LoadAllStatisticalCM}"
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="Loaded">
+                                <i:InvokeCommandAction Command="{Binding LoadAllStatisticalCM}"
                                                CommandParameter="{Binding ElementName=card1}" />
-                        </i:EventTrigger>
-                    </i:Interaction.Triggers>
-                </Frame>
-            </Border>
-            
-
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </Frame>
+                </Border>
+            </Grid>
         </Grid>
 
         <Grid VerticalAlignment="Top"

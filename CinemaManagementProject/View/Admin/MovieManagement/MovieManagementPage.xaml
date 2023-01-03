@@ -10,305 +10,288 @@
       Title="MovieManagementPage"
       x:Name="mainPage"      
       DataContext="{StaticResource FilmVM}">
-    
-    
-
     <i:Interaction.Triggers>
         <i:EventTrigger EventName="Loaded">
             <i:InvokeCommandAction Command="{Binding FirstLoadCM}" />
         </i:EventTrigger>
     </i:Interaction.Triggers>
-
-   
-    <Grid>
-        <Grid Grid.Column="1">
+    <Grid HorizontalAlignment="Stretch"
+             VerticalAlignment="Stretch"
+             Margin="20">
+        <Rectangle HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Fill="White" Opacity="0.5" RadiusX="20" RadiusY="20"/>
+        <Border Background="Transparent" CornerRadius="20">
             <Grid>
-                <Grid.Effect>
-                    <DropShadowEffect 
-         			    BlurRadius="10"
-                        Color="Gray"
-                        ShadowDepth="5"
-                        Opacity=".35"
-                        Direction="270"
-                    />
-                </Grid.Effect>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="80"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
 
-                <Border Background="{StaticResource LightGrayAthens}" BorderBrush="White" BorderThickness="0" CornerRadius="20" Margin="20" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-                    <Grid>
+                <Grid Grid.Row="0">
 
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="80"/>
-                            <RowDefinition/>
-                        </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="70*"/>
+                        <ColumnDefinition Width="30*"/>
+                    </Grid.ColumnDefinitions>
 
-                        <Grid Grid.Row="0">
+                    <StackPanel Orientation="Horizontal" Grid.Column="0">
 
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="70*"/>
-                                <ColumnDefinition Width="30*"/>
-                            </Grid.ColumnDefinitions>
+                        <Search:Search IconSize="20" 
+                                        Height="40" 
+                                        Margin="30, 17, 0, 17"  
+                                        Width="400"
+                                        Corner="18"
+                                        FontFamily="{StaticResource MaterialDesignFont}"
+                                        FontSize="15"    
+                                        FontWeight="Thin" 
+                                        PlaceHolder="Tìm kiếm"
+                                        SearchTextChange="Search_SearchTextChange"
+                                        x:Name="SearchBox"/>
+                        <Border>
+                            <Border.Effect>
+                                <DropShadowEffect
+                                    BlurRadius="10"
+                                    Color="Black"
+                                    ShadowDepth="4"
+                                    Opacity=".25"
+                                    Direction="270"/>
+                            </Border.Effect>
+                            <Button Style="{StaticResource CustomButton}" 
+                                    Width="105" 
+                                    Height="40" 
+                                    Margin="30,5,0,0"
+                                    Command="{Binding LoadAddMovieCM}">
+                                <Grid>
+                                    <TextBlock Text="{DynamicResource MovieManagementPage_TextBlock_Them}"
+                                                FontFamily="{DynamicResource MaterialDesignFont}"
+                                                FontWeight="Medium"
+                                                FontSize="16"/>
+                                    <materialDesign:PackIcon Kind="PlusCircleOutline"
+                                                VerticalAlignment="Center"
+                                                Margin="45,0,0,0"
+                                                Width="20"
+                                                Height="20"/>
+                                </Grid>
+                            </Button>
+                        </Border>
 
-                            <StackPanel Orientation="Horizontal" Grid.Column="0">
+                    </StackPanel>
 
-                                <Search:Search IconSize="20" 
-                                               Height="40" 
-                                               Margin="30, 17, 0, 17"  
-                                               Width="400"
-                                               Corner="18"
-                                               FontFamily="{StaticResource MaterialDesignFont}"
-                                               FontSize="15"    
-                                               FontWeight="Thin" 
-                                               PlaceHolder="Tìm kiếm"
-                                               SearchTextChange="Search_SearchTextChange"
-                                               x:Name="SearchBox"/>
-                                <Border>
-                                    <Border.Effect>
-                                        <DropShadowEffect
-                                            BlurRadius="10"
-                                            Color="Black"
-                                            ShadowDepth="4"
-                                            Opacity=".25"
-                                            Direction="270"/>
-                                    </Border.Effect>
-                                    <Button Style="{StaticResource CustomButton}" 
-                                            Width="105" 
-                                            Height="40" 
-                                            Margin="30,5,0,0"
-                                            Command="{Binding LoadAddMovieCM}">
-                                        <Grid>
-                                            <TextBlock Text="{DynamicResource MovieManagementPage_TextBlock_Them}"
-                                                       FontFamily="{DynamicResource MaterialDesignFont}"
-                                                       FontWeight="Medium"
-                                                       FontSize="16"/>
-                                            <materialDesign:PackIcon Kind="PlusCircleOutline"
-                                                     VerticalAlignment="Center"
-                                                     Margin="45,0,0,0"
-                                                     Width="20"
-                                                     Height="20"/>
-                                        </Grid>
-                                    </Button>
-                                </Border>
+                    <Grid Grid.Column="1">
+                        <Border>
 
-                            </StackPanel>
+                            <Border.Effect>
+                                <DropShadowEffect
+                                    BlurRadius="10"
+                                    Color="Black"
+                                    ShadowDepth="4"
+                                    Opacity=".25"
+                                    Direction="270"/>
+                            </Border.Effect>
 
-                            <Grid Grid.Column="1">
-                                <Border>
-
-                                    <Border.Effect>
-                                        <DropShadowEffect
-                                            BlurRadius="10"
-                                            Color="Black"
-                                            ShadowDepth="4"
-                                            Opacity=".25"
-                                            Direction="270"/>
-                                    </Border.Effect>
-
-                                    <Button Style="{StaticResource CustomButton}" 
-                                            Width="150" 
-                                            Height="46" 
-                                            Margin="32,0,0,0"
-                                            Command="{Binding ExportFileCM}">
-                                        <StackPanel Orientation="Horizontal" 
-                                                    Width="143" 
-                                                    HorizontalAlignment="Center" >
-                                            <materialDesign:PackIcon Kind="FileExport" 
-                                                                     Width="30" 
-                                                                     Height="30"/>
-                                            <TextBlock  FontFamily="{StaticResource MaterialDesignFont}" 
-                                                        Text="{DynamicResource MovieManagementPage_TextBlock_XuatFileExcel}" 
-                                                        FontSize="16"
-                                                        FontWeight="Normal"
-                                                        Margin="2,5,0,0"/>
-                                        </StackPanel>
-                                    </Button>
-                                </Border>
-                            </Grid>
-                        </Grid>
-
-                        <Grid Grid.Row="1">
-                            <Border Grid.Row="1" 
-                                    Margin="20 0 20 20" 
-                                    CornerRadius="20" 
-                                    Background="White">
-                                <materialDesign:Card UniformCornerRadius="20">
-                                    <ScrollViewer VerticalScrollBarVisibility="Auto"  >
-                                        <ListView x:Name="MovieListView"
-                                                  ItemsSource="{Binding FilmList}"
-                                                  SelectedItem="{Binding SelectedItem}"
-                                                  Focusable="True"
-                                                  FontFamily="{StaticResource MaterialDesignFont}"
-                                                  Foreground="Black"
-                                                  FontSize="14"
-                                                  ToolTip="Nháy đúp để xem chi tiết">
-                                            <i:Interaction.Triggers>
-                                                <i:EventTrigger EventName="MouseDoubleClick">
-                                                    <i:InvokeCommandAction Command="{Binding LoadInforMovieCM}" />
-                                                </i:EventTrigger>
-                                            </i:Interaction.Triggers>
-                                            <ListView.View>
-                                                <GridView>
-                                                    <GridViewColumn Width="300">
-                                                        <GridViewColumn.Header>
-                                                            <TextBlock Text="{DynamicResource MovieManagementPage_TextBlock_TenPhim}" FontSize="14" FontWeight="SemiBold" Foreground="Black"/>
-                                                        </GridViewColumn.Header>
-                                                        <GridViewColumn.CellTemplate>
-                                                            <DataTemplate>
-                                                                <TextBlock Text="{Binding FilmName}" 
-                                                                           FontSize="14" 
-                                                                           VerticalAlignment="Center"/>
-                                                            </DataTemplate>
-                                                        </GridViewColumn.CellTemplate>
-                                                    </GridViewColumn>
-
-                                                    <GridViewColumn Width="130">
-                                                        <GridViewColumn.Header>
-                                                            <TextBlock Text="{DynamicResource MovieManagementPage_TextBlock_LoaiPhim}" FontSize="14" FontWeight="SemiBold" Foreground="Black"/>
-                                                        </GridViewColumn.Header>
-                                                        <GridViewColumn.CellTemplate>
-                                                            <DataTemplate>
-                                                                <TextBlock Text="{Binding FilmType}"
-                                                                           FontSize="14"
-                                                                           Margin="40,0,0,0"
-                                                                           VerticalAlignment="Center"/>
-                                                            </DataTemplate>
-                                                        </GridViewColumn.CellTemplate>
-                                                    </GridViewColumn>
-
-                                                    <GridViewColumn Width="130">
-                                                        <GridViewColumn.Header>
-                                                            <TextBlock Text="{DynamicResource MovieManagementPage_TextBlock_QuocGia}" FontSize="14" FontWeight="SemiBold" Foreground="Black"/>
-                                                        </GridViewColumn.Header>
-                                                        <GridViewColumn.CellTemplate>
-                                                            <DataTemplate>
-                                                                <TextBlock Text="{Binding Country}"
-                                                                           FontSize="14" 
-                                                                           Margin="18,0,0,0"
-                                                                           VerticalAlignment="Center"/>
-                                                            </DataTemplate>
-                                                        </GridViewColumn.CellTemplate>
-                                                    </GridViewColumn>
-
-                                                    <GridViewColumn Width="200" >
-                                                        <GridViewColumn.Header>
-                                                            <TextBlock Text="{DynamicResource MovieManagementPage_TextBlock_TheLoai}" FontSize="14" FontWeight="SemiBold" Foreground="Black"/>
-                                                        </GridViewColumn.Header>
-                                                        <GridViewColumn.CellTemplate>
-                                                            <DataTemplate>
-                                                                <TextBlock Text="{Binding Genre}"
-                                                                           FontSize="14" 
-                                                                           Margin="18,0,0,0"
-                                                                           VerticalAlignment="Center"/>
-                                                            </DataTemplate>
-                                                        </GridViewColumn.CellTemplate>
-                                                    </GridViewColumn>
-
-                                                    <GridViewColumn Width="182">
-                                                        <GridViewColumn.Header>
-                                                            <TextBlock Text="{DynamicResource MovieManagementPage_TextBlock_ThoiLuong(Phut)}" FontSize="14" FontWeight="SemiBold" Foreground="Black"/>
-                                                        </GridViewColumn.Header>
-                                                        <GridViewColumn.CellTemplate>
-                                                            <DataTemplate>
-                                                                <TextBlock Text="{Binding DurationFilm}"
-                                                                           FontSize="14"
-                                                                           Margin="60,0,0,0"
-                                                                           VerticalAlignment="Center"/>
-                                                            </DataTemplate>
-                                                        </GridViewColumn.CellTemplate>
-                                                    </GridViewColumn>
-
-                                                    <GridViewColumn>
-                                                        <GridViewColumn.CellTemplate>
-                                                            <DataTemplate>
-                                                                <StackPanel Orientation="Horizontal">
-                                                                    <Border BorderBrush="Black"
-                                                                            BorderThickness="0.5"
-                                                                            CornerRadius="5"
-                                                                            Cursor="Hand">
-                                                                        <Border.Style>
-                                                                            <Style TargetType="Border">
-                                                                                <Style.Triggers>
-                                                                                    <Trigger Property="IsMouseOver" Value="True">
-                                                                                        <Setter Property="Background" Value="#00e5ff" />
-                                                                                    </Trigger>
-                                                                                </Style.Triggers>
-                                                                            </Style>
-                                                                        </Border.Style>
-
-                                                                        <StackPanel>
-                                                                            <materialDesign:PackIcon Kind="Pencil"
-                                                                                                     Width="22"
-                                                                                                     Height="22" 
-                                                                                                     VerticalAlignment="Center" 
-                                                                                                     HorizontalAlignment="Center"
-                                                                                                     Cursor="Hand" />
-                                                                        </StackPanel>
-                                                                        <i:Interaction.Triggers>
-                                                                            <i:EventTrigger EventName="MouseLeftButtonUp">
-                                                                                <i:InvokeCommandAction Command="{Binding ElementName=MovieListView, Path=DataContext.LoadEditMovieCM}" />
-                                                                            </i:EventTrigger>
-                                                                        </i:Interaction.Triggers>
-
-                                                                    </Border>
-
-                                                                    <Border BorderThickness="0.5"
-                                                                            BorderBrush="Black"
-                                                                            CornerRadius="5"
-                                                                            Margin="10,0,0,0"
-                                                                            Cursor="Hand">
-                                                                        <Border.Style>
-                                                                            <Style TargetType="Border">
-                                                                                <Style.Triggers>
-                                                                                    <Trigger Property="IsMouseOver" Value="True">
-                                                                                        <Setter Property="Background" Value="#ff6255" />
-                                                                                    </Trigger>
-                                                                                </Style.Triggers>
-                                                                            </Style>
-                                                                        </Border.Style>
-
-                                                                        <StackPanel>
-                                                                            <materialDesign:PackIcon Kind="GarbageCanEmpty"
-                                                                                                     Width="22"
-                                                                                                     Height="22"
-                                                                                                     VerticalAlignment="Center" 
-                                                                                                     HorizontalAlignment="Center"
-                                                                                                     Cursor="Hand" />
-                                                                        </StackPanel>
-                                                                        <i:Interaction.Triggers>
-                                                                            <i:EventTrigger EventName="MouseLeftButtonUp">
-                                                                                <i:InvokeCommandAction Command="{Binding ElementName=MovieListView, Path=DataContext.LoadDeleteMovieCM}" />
-                                                                            </i:EventTrigger>
-                                                                        </i:Interaction.Triggers>
-                                                                    </Border>
-                                                                </StackPanel>
-
-                                                            </DataTemplate>
-                                                        </GridViewColumn.CellTemplate>
-                                                    </GridViewColumn>
-                                                </GridView>
-                                            </ListView.View>
-                                        </ListView>
-                                    </ScrollViewer>
-                                </materialDesign:Card>
-                            </Border>
-                            <StackPanel Orientation="Horizontal"
-                                    HorizontalAlignment="Right"
-                                    Margin="0,568,50,0">
-                                <Label Content="{DynamicResource MovieManagementPage_Label_KetQua}"
-                                       FontSize="11" 
-                                       FontWeight="Bold"/>
-                                <Label Content="{Binding FilmList.Count}"
-                                       x:Name="result"
-                                       FontSize="11"
-                                       FontWeight="Bold"/>
-                            </StackPanel>
-                            <ProgressBar Style="{StaticResource MaterialDesignCircularProgressBar}"
-                                             Height="50"
-                                             Width="50"
-                                             IsIndeterminate="{Binding IsLoadding}"/>
-                        </Grid>
+                            <Button Style="{StaticResource CustomButton}" 
+                                    Width="150" 
+                                    Height="46" 
+                                    Margin="32,0,0,0"
+                                    Command="{Binding ExportFileCM}">
+                                <StackPanel Orientation="Horizontal" 
+                                            Width="143" 
+                                            HorizontalAlignment="Center" >
+                                    <materialDesign:PackIcon Kind="FileExport" 
+                                                                Width="30" 
+                                                                Height="30"/>
+                                    <TextBlock  FontFamily="{StaticResource MaterialDesignFont}" 
+                                                Text="{DynamicResource MovieManagementPage_TextBlock_XuatFileExcel}" 
+                                                FontSize="16"
+                                                FontWeight="Normal"
+                                                Margin="2,5,0,0"/>
+                                </StackPanel>
+                            </Button>
+                        </Border>
                     </Grid>
-                </Border>
+                </Grid>
+
+                <Grid Grid.Row="1">
+                    <Border Grid.Row="1" 
+                            Margin="20 0 20 20" 
+                            CornerRadius="20" 
+                            Background="White">
+                        <materialDesign:Card UniformCornerRadius="20">
+                            <ScrollViewer VerticalScrollBarVisibility="Auto"  >
+                                <ListView x:Name="MovieListView"
+                                            ItemsSource="{Binding FilmList}"
+                                            SelectedItem="{Binding SelectedItem}"
+                                            Focusable="True"
+                                            FontFamily="{StaticResource MaterialDesignFont}"
+                                            Foreground="Black"
+                                            FontSize="14"
+                                            ToolTip="Nháy đúp để xem chi tiết">
+                                    <i:Interaction.Triggers>
+                                        <i:EventTrigger EventName="MouseDoubleClick">
+                                            <i:InvokeCommandAction Command="{Binding LoadInforMovieCM}" />
+                                        </i:EventTrigger>
+                                    </i:Interaction.Triggers>
+                                    <ListView.View>
+                                        <GridView>
+                                            <GridViewColumn Width="300">
+                                                <GridViewColumn.Header>
+                                                    <TextBlock Text="{DynamicResource MovieManagementPage_TextBlock_TenPhim}" FontSize="14" FontWeight="SemiBold" Foreground="Black"/>
+                                                </GridViewColumn.Header>
+                                                <GridViewColumn.CellTemplate>
+                                                    <DataTemplate>
+                                                        <TextBlock Text="{Binding FilmName}" 
+                                                                    FontSize="14" 
+                                                                    VerticalAlignment="Center"/>
+                                                    </DataTemplate>
+                                                </GridViewColumn.CellTemplate>
+                                            </GridViewColumn>
+
+                                            <GridViewColumn Width="130">
+                                                <GridViewColumn.Header>
+                                                    <TextBlock Text="{DynamicResource MovieManagementPage_TextBlock_LoaiPhim}" FontSize="14" FontWeight="SemiBold" Foreground="Black"/>
+                                                </GridViewColumn.Header>
+                                                <GridViewColumn.CellTemplate>
+                                                    <DataTemplate>
+                                                        <TextBlock Text="{Binding FilmType}"
+                                                                    FontSize="14"
+                                                                    Margin="40,0,0,0"
+                                                                    VerticalAlignment="Center"/>
+                                                    </DataTemplate>
+                                                </GridViewColumn.CellTemplate>
+                                            </GridViewColumn>
+
+                                            <GridViewColumn Width="130">
+                                                <GridViewColumn.Header>
+                                                    <TextBlock Text="{DynamicResource MovieManagementPage_TextBlock_QuocGia}" FontSize="14" FontWeight="SemiBold" Foreground="Black"/>
+                                                </GridViewColumn.Header>
+                                                <GridViewColumn.CellTemplate>
+                                                    <DataTemplate>
+                                                        <TextBlock Text="{Binding Country}"
+                                                                    FontSize="14" 
+                                                                    Margin="18,0,0,0"
+                                                                    VerticalAlignment="Center"/>
+                                                    </DataTemplate>
+                                                </GridViewColumn.CellTemplate>
+                                            </GridViewColumn>
+
+                                            <GridViewColumn Width="200" >
+                                                <GridViewColumn.Header>
+                                                    <TextBlock Text="{DynamicResource MovieManagementPage_TextBlock_TheLoai}" FontSize="14" FontWeight="SemiBold" Foreground="Black"/>
+                                                </GridViewColumn.Header>
+                                                <GridViewColumn.CellTemplate>
+                                                    <DataTemplate>
+                                                        <TextBlock Text="{Binding Genre}"
+                                                                    FontSize="14" 
+                                                                    Margin="18,0,0,0"
+                                                                    VerticalAlignment="Center"/>
+                                                    </DataTemplate>
+                                                </GridViewColumn.CellTemplate>
+                                            </GridViewColumn>
+
+                                            <GridViewColumn Width="182">
+                                                <GridViewColumn.Header>
+                                                    <TextBlock Text="{DynamicResource MovieManagementPage_TextBlock_ThoiLuong(Phut)}" FontSize="14" FontWeight="SemiBold" Foreground="Black"/>
+                                                </GridViewColumn.Header>
+                                                <GridViewColumn.CellTemplate>
+                                                    <DataTemplate>
+                                                        <TextBlock Text="{Binding DurationFilm}"
+                                                                    FontSize="14"
+                                                                    Margin="60,0,0,0"
+                                                                    VerticalAlignment="Center"/>
+                                                    </DataTemplate>
+                                                </GridViewColumn.CellTemplate>
+                                            </GridViewColumn>
+
+                                            <GridViewColumn>
+                                                <GridViewColumn.CellTemplate>
+                                                    <DataTemplate>
+                                                        <StackPanel Orientation="Horizontal">
+                                                            <Border BorderBrush="Black"
+                                                                    BorderThickness="0.5"
+                                                                    CornerRadius="5"
+                                                                    Cursor="Hand">
+                                                                <Border.Style>
+                                                                    <Style TargetType="Border">
+                                                                        <Style.Triggers>
+                                                                            <Trigger Property="IsMouseOver" Value="True">
+                                                                                <Setter Property="Background" Value="#00e5ff" />
+                                                                            </Trigger>
+                                                                        </Style.Triggers>
+                                                                    </Style>
+                                                                </Border.Style>
+
+                                                                <StackPanel>
+                                                                    <materialDesign:PackIcon Kind="Pencil"
+                                                                                                Width="22"
+                                                                                                Height="22" 
+                                                                                                VerticalAlignment="Center" 
+                                                                                                HorizontalAlignment="Center"
+                                                                                                Cursor="Hand" />
+                                                                </StackPanel>
+                                                                <i:Interaction.Triggers>
+                                                                    <i:EventTrigger EventName="MouseLeftButtonUp">
+                                                                        <i:InvokeCommandAction Command="{Binding ElementName=MovieListView, Path=DataContext.LoadEditMovieCM}" />
+                                                                    </i:EventTrigger>
+                                                                </i:Interaction.Triggers>
+
+                                                            </Border>
+
+                                                            <Border BorderThickness="0.5"
+                                                                    BorderBrush="Black"
+                                                                    CornerRadius="5"
+                                                                    Margin="10,0,0,0"
+                                                                    Cursor="Hand">
+                                                                <Border.Style>
+                                                                    <Style TargetType="Border">
+                                                                        <Style.Triggers>
+                                                                            <Trigger Property="IsMouseOver" Value="True">
+                                                                                <Setter Property="Background" Value="#ff6255" />
+                                                                            </Trigger>
+                                                                        </Style.Triggers>
+                                                                    </Style>
+                                                                </Border.Style>
+
+                                                                <StackPanel>
+                                                                    <materialDesign:PackIcon Kind="GarbageCanEmpty"
+                                                                                                Width="22"
+                                                                                                Height="22"
+                                                                                                VerticalAlignment="Center" 
+                                                                                                HorizontalAlignment="Center"
+                                                                                                Cursor="Hand" />
+                                                                </StackPanel>
+                                                                <i:Interaction.Triggers>
+                                                                    <i:EventTrigger EventName="MouseLeftButtonUp">
+                                                                        <i:InvokeCommandAction Command="{Binding ElementName=MovieListView, Path=DataContext.LoadDeleteMovieCM}" />
+                                                                    </i:EventTrigger>
+                                                                </i:Interaction.Triggers>
+                                                            </Border>
+                                                        </StackPanel>
+
+                                                    </DataTemplate>
+                                                </GridViewColumn.CellTemplate>
+                                            </GridViewColumn>
+                                        </GridView>
+                                    </ListView.View>
+                                </ListView>
+                            </ScrollViewer>
+                        </materialDesign:Card>
+                    </Border>
+                    <StackPanel Orientation="Horizontal"
+                            HorizontalAlignment="Right"
+                            Margin="0,568,50,0">
+                        <Label Content="{DynamicResource MovieManagementPage_Label_KetQua}"
+                                FontSize="11" 
+                                FontWeight="Bold"/>
+                        <Label Content="{Binding FilmList.Count}"
+                                x:Name="result"
+                                FontSize="11"
+                                FontWeight="Bold"/>
+                    </StackPanel>
+                    <ProgressBar Style="{StaticResource MaterialDesignCircularProgressBar}"
+                                        Height="50"
+                                        Width="50"
+                                        IsIndeterminate="{Binding IsLoadding}"/>
+                </Grid>
             </Grid>
-        </Grid>
+        </Border>
     </Grid>
 </Page>

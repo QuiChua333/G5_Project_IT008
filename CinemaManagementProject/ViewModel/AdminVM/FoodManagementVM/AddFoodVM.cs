@@ -29,7 +29,7 @@ namespace CinemaManagementProject.ViewModel.AdminVM.FoodManagementVM
 
                 if (newProduct.ProductImage is null)
                 {
-                    CustomMessageBox.ShowOk("Lỗi phát sinh trong quá trình lưu ảnh. Vui lòng thử lại!", "Lỗi", "Ok", Views.CustomMessageBoxImage.Error);
+                    CustomMessageBox.ShowOk(isEN? "Error arises during the saving process. Please try again!":"Lỗi phát sinh trong quá trình lưu ảnh. Vui lòng thử lại!", isEN? "Error" : "Lỗi", "Ok", Views.CustomMessageBoxImage.Error);
                     return;
                 }
                 (bool issuccessAddFood, string messageReturn) = await ProductService.Ins.AddNewProduct(newProduct);
@@ -37,7 +37,7 @@ namespace CinemaManagementProject.ViewModel.AdminVM.FoodManagementVM
                 {
                     wd.Close();
                     LoadProductListView(Utils.Operation.CREATE, newProduct);
-                    CustomMessageBox.ShowOk(messageReturn, "Thông báo", "Ok", Views.CustomMessageBoxImage.Success);
+                    CustomMessageBox.ShowOk(messageReturn, isEN? "Notice" : "Thông báo", "Ok", Views.CustomMessageBoxImage.Success);
                     filePath = null;
                     using (var db = new CinemaManagementProjectEntities())
                     {
@@ -57,12 +57,12 @@ namespace CinemaManagementProject.ViewModel.AdminVM.FoodManagementVM
                 }
                 else
                 {
-                    CustomMessageBox.ShowOk(messageReturn, "Lỗi", "Ok", Views.CustomMessageBoxImage.Error);
+                    CustomMessageBox.ShowOk(messageReturn, isEN? "Error" : "Lỗi", "Ok", Views.CustomMessageBoxImage.Error);
                 }
             }
             else
             {
-                CustomMessageBox.ShowOk("Bạn chưa nhập dữ liệu", "Cảnh báo", "Ok", Views.CustomMessageBoxImage.Warning);
+                CustomMessageBox.ShowOk(isEN ? "You have not entered data yet!" : "Bạn chưa nhập dữ liệu!", isEN? "Warning" : "Cảnh báo", "Ok", Views.CustomMessageBoxImage.Warning);
             }
         }
     }

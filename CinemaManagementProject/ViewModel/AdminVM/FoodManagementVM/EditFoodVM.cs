@@ -75,7 +75,7 @@ namespace CinemaManagementProject.ViewModel.AdminVM.FoodManagementVM
 
                     if (EditedProduct.ProductImage is null)
                     {
-                        CustomMessageBox.ShowOk("Lỗi phát sinh trong quá trình lưu ảnh. Vui lòng thử lại!", "Lỗi", "Ok", Views.CustomMessageBoxImage.Error);
+                        CustomMessageBox.ShowOk(isEN ? "Error arises during the saving process. Please try again!" : "Lỗi phát sinh trong quá trình lưu ảnh. Vui lòng thử lại!", isEN ? "Error" : "Lỗi", "Ok", Views.CustomMessageBoxImage.Error);
                         return;
                     }
                 }  
@@ -88,17 +88,16 @@ namespace CinemaManagementProject.ViewModel.AdminVM.FoodManagementVM
                 {
                     wd.Close();
                     LoadProductListView(Operation.UPDATE, EditedProduct);
-                    CustomMessageBox.ShowOk(messageFromUpdateProduct, "Thông báo", "OK", Views.CustomMessageBoxImage.Success);
+                    CustomMessageBox.ShowOk(messageFromUpdateProduct, isEN ? "Notice" : "Thông báo", "Ok", Views.CustomMessageBoxImage.Success);
                 }
                 else
                 {
-                    CustomMessageBox.ShowOkCancel(messageFromUpdateProduct, "Lỗi", "Ok", "Cancel", Views.CustomMessageBoxImage.Error);
+                    CustomMessageBox.ShowOk(messageFromUpdateProduct, isEN ? "Error" : "Lỗi", isEN ? "Cancel" : "Hủy", Views.CustomMessageBoxImage.Error);
                 }    
             }
             else
             {
-                CustomMessageBox.ShowOk("Vui lòng nhập đầy đủ thông tin", "Cảnh báo", "Ok", Views.CustomMessageBoxImage.Warning);
-
+                CustomMessageBox.ShowOk(isEN ? "Please enter the full information!":"Vui lòng nhập đầy đủ thông tin!",isEN? "Warning": "Cảnh báo", "Ok", Views.CustomMessageBoxImage.Warning);
             }
         }
     }

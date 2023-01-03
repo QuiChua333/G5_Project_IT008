@@ -3,7 +3,6 @@ using CinemaManagementProject.Model;
 using CinemaManagementProject.Model.Service;
 using CinemaManagementProject.Utilities;
 using CinemaManagementProject.View.Staff;
-using CinemaManagementProject.View.Staff.OrderFoodManagement;
 using CinemaManagementProject.View.Staff.TicketBill;
 using CinemaManagementProject.View.Staff.TicketWindow;
 using CinemaManagementProject.Views;
@@ -152,6 +151,7 @@ namespace CinemaManagementProject.ViewModel.StaffVM.OrderFoodManagementVM
 
         public ICommand BuyCommand { get; set; }
         public ICommand BackToTicketBookingPage { get; set; }
+        public ICommand DeleteItemInBillStackCM { get; set; }
         //
         //
         //
@@ -194,7 +194,7 @@ namespace CinemaManagementProject.ViewModel.StaffVM.OrderFoodManagementVM
                 try
                 {
                     FoodList = new ObservableCollection<ProductDTO>();
-                    string category = SelectedItemFilter.Content.ToString();
+                    string category = SelectedItemFilter.Tag.ToString();
                     if (category == "Tất cả")
                     {
                         FoodList = new ObservableCollection<ProductDTO>(StoreAllFood);
@@ -394,21 +394,26 @@ namespace CinemaManagementProject.ViewModel.StaffVM.OrderFoodManagementVM
                     CustomMessageBox.ShowOk("Lỗi hệ thống", "Lỗi", "OK", CustomMessageBoxImage.Error);
                 }
             });
+            DeleteItemInBillStackCM = new RelayCommand<object>((p) => { return true; }, (p) =>
+            {
+                if(SelectedItem != null)
+                {
+                    DeleteOrderProduct(SelectedItem);
+                }
+            });
         }
         public void DeleteOrderProduct(ProductDTO ProductSelected)
         {
-            //if (OrderList[i].Id == ProductSelected.Id)
-            //{
-            //    for (int j = 0; j < StoreAllFood.Count; j++)
-            //    {
-            //        if (StoreAllFood[j].Id == OrderList[i].Id)
-            //        {
-            //            StoreAllFood[i].Quantity += 1;
-            //            OrderList[i].Quantity -= 1;
-            //            OrderList.Remove(SelectedItem);
-            //        }
-            //    }
-            //}
+            for(int i = 0; i < StoreAllFood.Count;i++)
+            {
+                if (StoreAllFood[i].Id == ProductSelected.Id)
+                {
+                    StoreAllFood[i].Quantity += ProductSelected.Quantity;
+                    OrderList.Remove(ProductSelected);
+                    ReCaculatorSum();
+                    ReLoadProduct();
+                }    
+            }    
         }
         public void ReLoadProduct()
         {

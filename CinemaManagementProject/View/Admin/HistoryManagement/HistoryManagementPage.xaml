@@ -28,7 +28,7 @@
 
     <Grid HorizontalAlignment="Stretch"
              VerticalAlignment="Stretch"
-             Margin="20">
+             >
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="127*"/>
             <ColumnDefinition Width="96*"/>
@@ -66,16 +66,8 @@
                             CommandParameter="{Binding ElementName=MainListViewFrame}"/>
         </StackPanel>
         <Border Grid.Row="1" 
-                Background="{StaticResource LightGrayAthens}" 
+                Background="Transparent" 
                 CornerRadius="20" Grid.ColumnSpan="2" >
-            <Border.Effect>
-                <DropShadowEffect
-                    BlurRadius="10"
-                    Color="Black"
-                    ShadowDepth="4"
-                    Opacity=".25"
-                    Direction="270"/>
-            </Border.Effect>
             <Grid>
                 <Frame x:Name="MainListViewFrame">
                     <i:Interaction.Triggers>
