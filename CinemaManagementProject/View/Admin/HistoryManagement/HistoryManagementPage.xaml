@@ -6,7 +6,8 @@
       xmlns:local="clr-namespace:CinemaManagementProject.View.Admin.HistoryManagement" xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
       mc:Ignorable="d" 
       Title="HistoryManagementPage" 
-      Background="{StaticResource LightBlueSpindle}"
+      Background="Transparent"
+      AllowDrop="True"
       DataContext="{StaticResource Import_ExportManagementVM}"  
       ShowsNavigationUI="False"      
       x:Name="mainPage">

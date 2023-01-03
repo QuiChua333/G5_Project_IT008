@@ -250,19 +250,23 @@
                     </Grid.ColumnDefinitions>
                     <TextBlock Text="{DynamicResource AddStaffWindow_TextBlock_Ngaybatdau}"
                                FontFamily="{StaticResource MaterialDesignFont}"
-                               FontSize="15"                                
+                               FontSize="15"       
+                               Grid.Column="0"
                                FontWeight="Regular" 
                                HorizontalAlignment="Right" 
                                VerticalAlignment="Center"/>
                     <DatePicker Width="250"
                                 Style="{StaticResource MaterialDesignFloatingHintDatePicker}"
                                 HorizontalAlignment="Left"
-                                Margin="20 0 45 10"  
+                                Margin="20 -20 45 0"
                                 FontSize="15"
-                                IsEnabled="True"
+                                Foreground="Black"
+                                IsEnabled="False"
                                 Grid.Column="1"
                                 x:Name="StartDate"
-                                SelectedDate="{Binding StartDate, Mode=TwoWay}" VerticalAlignment="Bottom">
+                                SelectedDate="{Binding StartDate, Mode=TwoWay}" 
+                                
+                                >
                     </DatePicker>
 
                 </Grid>
