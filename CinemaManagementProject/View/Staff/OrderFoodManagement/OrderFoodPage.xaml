@@ -41,13 +41,14 @@
         </Grid.RowDefinitions>
         <Rectangle 
             x:Name="FoodPageView"
-            Fill="#F3F5F7"
+            Fill="White"
             Grid.Row="0"
             Grid.Column="0"
             Grid.RowSpan="2"
             RadiusX="20"
             RadiusY="20" 
             Grid.ColumnSpan="2"
+            Opacity="0.5"
         />
         
         <Grid x:Name="Header_ThanhToan" Grid.Row="0" Grid.Column="1">

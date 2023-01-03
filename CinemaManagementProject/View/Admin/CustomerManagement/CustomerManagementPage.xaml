@@ -35,11 +35,13 @@
             <i:InvokeCommandAction Command="{Binding FirstLoadCM}"></i:InvokeCommandAction>
         </i:EventTrigger>
     </i:Interaction.Triggers>
-    <Border  Background="{StaticResource LightGrayAthens}" 
-             CornerRadius="20"
-             HorizontalAlignment="Stretch"
+    <Grid HorizontalAlignment="Stretch"
              VerticalAlignment="Stretch"
              Margin="20">
+        <Rectangle Grid.RowSpan="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Fill="White" Opacity="0.5" RadiusX="20" RadiusY="20"/>
+        <Border  Background="Transparent"
+             CornerRadius="20"
+             >
         <Border.Effect>
             <DropShadowEffect
                     BlurRadius="10"
@@ -385,4 +387,6 @@
 
         </Grid>
     </Border>
+    </Grid>
+
 </Page>

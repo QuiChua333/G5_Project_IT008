@@ -6,7 +6,6 @@
       xmlns:local="clr-namespace:CinemaManagementProject.View.Admin.HistoryManagement" xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
       mc:Ignorable="d" 
       Title="HistoryManagementPage" 
-      Background="{StaticResource LightBlueSpindle}"
       DataContext="{StaticResource Import_ExportManagementVM}"
       
       ShowsNavigationUI="False"      
@@ -30,13 +29,17 @@
     <Grid HorizontalAlignment="Stretch"
              VerticalAlignment="Stretch"
              Margin="20">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="127*"/>
+            <ColumnDefinition Width="96*"/>
+        </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="50"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
         <StackPanel Orientation="Horizontal" 
                     HorizontalAlignment="Left" 
-                    Grid.Row="0">
+                    Grid.Row="0" Grid.ColumnSpan="2">
             <RadioButton    Style="{StaticResource MaterialDesignTabRadioButtonTop}"
                             BorderBrush="Blue"
                             VerticalAlignment="Top"
@@ -64,7 +67,7 @@
         </StackPanel>
         <Border Grid.Row="1" 
                 Background="{StaticResource LightGrayAthens}" 
-                CornerRadius="20" >
+                CornerRadius="20" Grid.ColumnSpan="2" >
             <Border.Effect>
                 <DropShadowEffect
                     BlurRadius="10"

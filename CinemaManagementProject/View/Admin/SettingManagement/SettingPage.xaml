@@ -29,7 +29,8 @@
     </i:Interaction.Triggers>
     <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="20">
         <Rectangle
-            Fill="#F3F5F7"
+            Fill="White"
+            Opacity="0.5"
             RadiusX="20"
             RadiusY="20" 
         />
