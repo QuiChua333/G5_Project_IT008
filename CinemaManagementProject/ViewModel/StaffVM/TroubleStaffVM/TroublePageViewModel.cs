@@ -238,7 +238,7 @@ namespace CinemaManagementProject.ViewModel.StaffVM.TroubleStaffVM
         public void FilterTroubleList()
         {
             TroubleList.Clear();
-            if (FiltercbbItem.Content.ToString() == "Toàn bộ")
+            if (FiltercbbItem.Tag.ToString() == "Toàn bộ")
             {
                 for (int i = 0; i < GetAllTrouble.Count; ++i)
                 {
@@ -249,7 +249,7 @@ namespace CinemaManagementProject.ViewModel.StaffVM.TroubleStaffVM
             {
                 for (int i = 0; i < GetAllTrouble.Count; ++i)
                 {
-                    if (GetAllTrouble[i].TroubleStatus == FiltercbbItem.Content.ToString())
+                    if (GetAllTrouble[i].TroubleStatus == FiltercbbItem.Tag.ToString())
                     {
                         TroubleList.Add(GetAllTrouble[i]);
                     }

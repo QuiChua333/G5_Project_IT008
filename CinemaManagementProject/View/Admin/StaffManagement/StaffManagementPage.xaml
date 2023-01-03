@@ -90,7 +90,7 @@
                         </Rectangle.Effect>
                     </Rectangle>
                     <TextBox x:Name="FilterBox" 
-                             materialDesign:HintAssist.Hint="Search"
+                             materialDesign:HintAssist.Hint="{DynamicResource CustomerManagementPage_search_TimKiem}"
                              Grid.Column="1"
                              AllowDrop="True"
                              VerticalAlignment="Center" 
@@ -122,7 +122,7 @@
                                                  Width="24" 
                                                  Height="24"/>
                         <TextBlock FontFamily="{StaticResource MaterialDesignFont}" 
-                                   Text="Thêm"       
+                                   Text="{DynamicResource AddFoodWindow_button_Them}"  
                                    FontSize="14"
                                    Margin="5,4,0,0"/>
                     </StackPanel>
@@ -146,7 +146,7 @@
                         <ListView  
                                   FontSize="14" 
                                   x:Name="lvStaff" 
-                                  Margin="-20 0 0 0" 
+                                  Margin="0 0 0 0" 
                                   FontFamily="{StaticResource MaterialDesignFont}"
                                   ItemsSource="{Binding StaffList}"
                                   SelectedItem="{Binding SelectedItem}">
@@ -175,7 +175,7 @@
                                     <GridViewColumn
                                                     Width="145" >
                                         <GridViewColumn.Header>
-                                            <TextBlock Text="Họ và tên" 
+                                            <TextBlock Text="{DynamicResource StaffManagementPage_ListviewHeader_Hovaten}"
                                                        FontSize="14" 
                                                        FontWeight="SemiBold"  
                                                        Foreground="Black"></TextBlock>
@@ -190,9 +190,9 @@
                                         </GridViewColumn.CellTemplate>
                                     </GridViewColumn>
                                     <GridViewColumn
-                                                    Width="85"  >
+                                                    Width="83"  >
                                         <GridViewColumn.Header>
-                                            <TextBlock Text="GT" 
+                                            <TextBlock Text="{DynamicResource StaffManagementPage_ListviewHeader_Gioitinh}"
                                                        FontSize="14" 
                                                        FontWeight="SemiBold"  
                                                        Foreground="Black"></TextBlock>
@@ -207,9 +207,9 @@
                                         </GridViewColumn.CellTemplate>
                                     </GridViewColumn>
                                     <GridViewColumn 
-                                                    Width="120">
+                                                    Width="109">
                                         <GridViewColumn.Header>
-                                            <TextBlock Text="NgSinh" 
+                                            <TextBlock Text="{DynamicResource StaffManagementPage_ListviewHeader_Ngaysinh}"
                                                        FontSize="14" 
                                                        FontWeight="SemiBold"  
                                                        Foreground="Black"></TextBlock>
@@ -224,9 +224,9 @@
                                         </GridViewColumn.CellTemplate>
                                     </GridViewColumn>
                                     <GridViewColumn
-                                                    Width="110" >
+                                                    Width="100" >
                                         <GridViewColumn.Header>
-                                            <TextBlock Text="SĐT" 
+                                            <TextBlock Text="{DynamicResource AddStaffWindow_TextBlock_Sodienthoai}"
                                                        FontSize="14" 
                                                        FontWeight="SemiBold"  
                                                        Foreground="Black"></TextBlock>
@@ -258,9 +258,9 @@
                                         </GridViewColumn.CellTemplate>
                                     </GridViewColumn>
                                     <GridViewColumn 
-                                                    Width="131">
+                                                    Width="124">
                                         <GridViewColumn.Header>
-                                            <TextBlock Text="Ngày vào"                                                        
+                                            <TextBlock Text="{DynamicResource StaffManagementPage_ListviewHeader_Ngayvao}"                                                        
                                                        FontSize="14" 
                                                        FontWeight="SemiBold"  
                                                        Foreground="Black"></TextBlock>
@@ -277,7 +277,7 @@
                                     <GridViewColumn 
                                                     Width="130">
                                         <GridViewColumn.Header>
-                                            <TextBlock Text="Chức vụ"
+                                            <TextBlock Text="{DynamicResource AddStaffWindow_TextBlock_Chucvu}"
                                                        FontSize="14"
                                                        FontWeight="SemiBold"  
                                                        Foreground="Black"></TextBlock>

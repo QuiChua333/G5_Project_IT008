@@ -3,11 +3,9 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:CinemaManagementProject.View.Staff.TicketBill"
       mc:Ignorable="d" 
       xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-      xmlns:Component="clr-namespace:CinemaManagementProject.Component"
       d:DesignHeight="660" d:DesignWidth="1300"
       FontSize="16"
       DataContext="{StaticResource BillTicketVM}"
@@ -54,7 +52,7 @@
                     </i:Interaction.Triggers>
                 </Border>
 
-                <Label  Content="THANH TOÁN HÓA ĐƠN" 
+                <Label  Content="{DynamicResource TicketBillFoodPage_Label_ThanhToanHoaDon}" 
                         FontSize="28" 
                         Foreground="#8DC1F0"
                         FontFamily="{StaticResource MaterialDesignFont}"
@@ -65,7 +63,7 @@
                         <DropShadowEffect BlurRadius="1" Direction="-45" Color="#000000" ShadowDepth="1.5" Opacity="0.5"/>
                     </Label.Effect>
                 </Label>
-                
+
             </StackPanel>
 
         </Border>
@@ -96,14 +94,16 @@
                         </Grid.RowDefinitions>
 
                         <Grid Grid.Row="0">
-                            <Label Content="             Thông tin khách hàng"
+                            <Label Content="{DynamicResource TicketBillFoodPage_Label_ThongTinKhachHang}"
                                    FontSize="18"
                                    Width="300"
                                    FontFamily="{StaticResource MaterialDesignFont}"
                                    FontWeight="Bold"
                                    BorderThickness="0,0,0,3"
                                    BorderBrush="#8DC1F0"
-                                   Margin="10 10 10 0" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                   VerticalContentAlignment="Center"
+                                   HorizontalContentAlignment="Center"
+                                   HorizontalAlignment="Center" VerticalAlignment="Center" />
                         </Grid>
 
                         <Grid Grid.Row="1">
@@ -133,6 +133,10 @@
                                             Value="0 0 10 4" />
                                     <Setter Property="Padding"
                                             Value="0 0 0 0" />
+                                    <Setter Property="VerticalAlignment"
+                                            Value="Bottom" />
+                                    <Setter Property="VerticalContentAlignment"
+                                            Value="Bottom" />
                                 </Style>
                             </Grid.Resources>
 
@@ -140,7 +144,7 @@
                                   VerticalAlignment="Top">
                                 <CheckBox IsThreeState="False"
                                           IsChecked="{Binding IsWalkinGuest}"
-                                          Content="Khách vãng lai"
+                                          Content="{DynamicResource TicketBillFoodPage_CheckBox_Content_KhachVangLai}"
                                           Margin="30 0 0 0"
                                           FontSize="16"
                                           FontFamily="{StaticResource MaterialDesignFont}"
@@ -160,14 +164,13 @@
                                     <ColumnDefinition Width="90" />
                                 </Grid.ColumnDefinitions>
 
-                                <TextBlock Text="Điện thoại:"
+                                <TextBlock Text="{DynamicResource TicketBillFoodPage_TextBlock_DienThoai}"
                                            FontSize="16"        
-                                           Margin="10 15 15 0"
-                                           FontFamily="{StaticResource MaterialDesignFont}"
+                                           Margin="0,0,15,8"
+                                           FontFamily="{StaticResource MaterialDesignFont}" VerticalAlignment="Bottom"
                                            />
-                                <TextBox Grid.Column="1"
-                                                                           
-                                         Text="{Binding PhoneNumber, Mode=TwoWay}"/>
+                                <TextBox Grid.Column="1"                             
+                                         Text="{Binding PhoneNumber, Mode=TwoWay}" />
                                 <Button Grid.Column="2"
                                         Background="#4887FA"
                                         Content="{materialDesign:PackIcon PhoneCheckOutline}"
@@ -195,7 +198,7 @@
                             <Grid Height="45"
                                   VerticalAlignment="Top"
                                   Margin="0 85 0 0">
-                                <Label Content="Số điện thoại chưa đăng ký!"
+                                <Label Content="{DynamicResource TicketBillFoodPage_Label_SoDienThoaiChuaDangKy}"
                                        FontSize="16"
                                        VerticalAlignment="Bottom"
                                        HorizontalAlignment="Center"
@@ -222,7 +225,9 @@
                                 <Label FontSize="16"
                                        VerticalAlignment="Top"
                                        HorizontalAlignment="Center">
-                                    <Hyperlink Command="{Binding OpenSignUpCM}">Đăng ký tài khoản mới</Hyperlink>
+                                    <Hyperlink Command="{Binding OpenSignUpCM}" >
+                                        <TextBlock Margin="0,0,0,0" FontSize="16" Text="{DynamicResource TicketBillFoodPage_TextBlock_DangKyTaiKhoangMoi}"/>
+                                    </Hyperlink>
 
                                 </Label>
                                 <Grid.Style>
@@ -247,7 +252,7 @@
                                     <ColumnDefinition />
                                 </Grid.ColumnDefinitions>
 
-                                <TextBlock Text="Họ và tên:" />
+                                <TextBlock Text="{DynamicResource TicketBillFoodPage_TextBlock_HoVaTen}" />
                                 <TextBox Grid.Column="1" 
                                          Margin="0 0 100 0"
                                          Text="{Binding NameSignUp, Mode=TwoWay}"/>
@@ -293,7 +298,7 @@
                             <Grid Height="60"
                                   VerticalAlignment="Top"
                                   Margin="0 263 0 0">
-                                <Button Content="Đăng ký"
+                                <Button Content="{DynamicResource TicketBillFoodPage_Button_DangKy}"
                                         Width="110"
                                         Background="#4887FA"
                                         VerticalAlignment="Bottom"
@@ -327,7 +332,7 @@
                                     <ColumnDefinition />
                                 </Grid.ColumnDefinitions>
 
-                                <TextBlock Text="Họ và tên:"
+                                <TextBlock Text="{DynamicResource TicketBillFoodPage_TextBlock_HoVaTen}"
                                            FontSize="16"
                                            FontFamily="{StaticResource MaterialDesignFont}"/>
                                 <TextBox Grid.Column="1"
@@ -520,7 +525,7 @@
                                     VerticalAlignment="Bottom"
                                     HorizontalAlignment="Right"
                                     Margin="0 0 30 30"
-                                    Content="Thanh toán"
+                                    Content="{DynamicResource TicketBillFoodPage_Button_ThanhToan}"
                                     Command="{Binding PayFoodCM}">
                                 <Button.Style>
                                     <Style TargetType="Button"
@@ -564,14 +569,17 @@
 
                         <!---HEADER-->
                         <Grid Grid.Row="0">
-                            <Label Content="                           Đồ ăn"
+                            <Label Content="{DynamicResource TicketBillFoodPage_Label_DoAn}"
                                    FontSize="18"       
                                    Width="300"
                                    FontFamily="{StaticResource MaterialDesignFont}"
                                    FontWeight="Bold"
                                    BorderThickness="0,0,0,3"
                                    BorderBrush="#8DC1F0"
-                                   Margin="10 10 10 0" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                   HorizontalContentAlignment="Center"
+                                   VerticalContentAlignment="Center"
+                                   HorizontalAlignment="Center" 
+                                   VerticalAlignment="Center" />
                         </Grid>
                         <!--#endregion-->
 
@@ -658,7 +666,7 @@
                                                     <ColumnDefinition />
                                                 </Grid.ColumnDefinitions>
 
-                                                <Label Content="Tổng: "
+                                                <Label Content="{DynamicResource TicketBillFoodPage_Label_Tong}"
                                                        Grid.Column="0"
                                                        FontSize="16" />
                                                 <Label x:Name="_totalproduct"
@@ -683,7 +691,7 @@
                                     <ColumnDefinition />
                                 </Grid.ColumnDefinitions>
 
-                                <Label Content="Tổng tiền: "
+                                <Label Content="{DynamicResource TicketBillFoodPage_Label_TongTien}"
                                        FontSize="16"
                                        Grid.Column="0" />
                                 <Label Content="{Binding TotalPriceFood}"
@@ -696,10 +704,10 @@
                                     <ColumnDefinition />
                                     <ColumnDefinition />
                                 </Grid.ColumnDefinitions>
-                                <Label Content="Phí giao dịch: "
+                                <Label Content="{DynamicResource TicketBillFoodPage_Label_PhiGiaoDich}"
                                        FontSize="16"
                                        Grid.Column="0" />
-                                <Label Content="Miễn phí"
+                                <Label Content="{DynamicResource TicketBillFoodPage_Label_MienPhi}"
                                        FontSize="16"
                                        Grid.Column="1"
                                        HorizontalAlignment="Right" />
@@ -709,7 +717,7 @@
                                     <ColumnDefinition />
                                     <ColumnDefinition />
                                 </Grid.ColumnDefinitions>
-                                <Label Content="Khuyến mãi: "
+                                <Label Content="{DynamicResource TicketBillFoodPage_Label_KhuyenMai}"
                                        FontSize="16"
                                        Grid.Column="0" />
                                 <Label Content="{Binding DiscountStr}"
@@ -722,7 +730,7 @@
                                     <ColumnDefinition />
                                     <ColumnDefinition />
                                 </Grid.ColumnDefinitions>
-                                <Label Content="Sau khuyến mãi: "
+                                <Label Content="{DynamicResource TicketBillFoodPage_Label_SauKhuyenMai}"
                                        FontSize="16"
                                        Grid.Column="0" />
                                 <Label Content="{Binding LastPriceStr}"

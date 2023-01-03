@@ -117,7 +117,7 @@ namespace CinemaManagementProject.ViewModel.AdminVM.CustomerManagementVM
                 IsGettingSource = true;
                 if (SelectedPeriod != null)
                 {
-                    switch (SelectedPeriod.Content.ToString())
+                    switch (SelectedPeriod.Tag.ToString())
                     {
                         case "Theo năm":
                             {
@@ -234,8 +234,31 @@ namespace CinemaManagementProject.ViewModel.AdminVM.CustomerManagementVM
             if (SelectedTime is null) return;
             if (SelectedTime.ToString().Length == 4) return;
             try
-            {
-                CustomerList = new ObservableCollection<CustomerDTO>(await CustomerService.Ins.GetAllCustomerByTime(selectedyear, int.Parse(SelectedTime.ToString().Remove(0, 6))));
+            { 
+                if (SelectedTime == "Tháng 1"|| SelectedTime == "January")
+                    CustomerList = new ObservableCollection<CustomerDTO>(await CustomerService.Ins.GetAllCustomerByTime(selectedyear, 1));
+                if (SelectedTime == "Tháng 2" || SelectedTime == "February")
+                    CustomerList = new ObservableCollection<CustomerDTO>(await CustomerService.Ins.GetAllCustomerByTime(selectedyear, 2));
+                if (SelectedTime == "Tháng 3" || SelectedTime == "March")
+                    CustomerList = new ObservableCollection<CustomerDTO>(await CustomerService.Ins.GetAllCustomerByTime(selectedyear, 3));
+                if (SelectedTime == "Tháng 4" || SelectedTime == "April")
+                    CustomerList = new ObservableCollection<CustomerDTO>(await CustomerService.Ins.GetAllCustomerByTime(selectedyear, 4));
+                if (SelectedTime == "Tháng 5" || SelectedTime == "May")
+                    CustomerList = new ObservableCollection<CustomerDTO>(await CustomerService.Ins.GetAllCustomerByTime(selectedyear, 5));
+                if (SelectedTime == "Tháng 6" || SelectedTime == "June")
+                    CustomerList = new ObservableCollection<CustomerDTO>(await CustomerService.Ins.GetAllCustomerByTime(selectedyear, 6));
+                if (SelectedTime == "Tháng 7" || SelectedTime == "July")
+                    CustomerList = new ObservableCollection<CustomerDTO>(await CustomerService.Ins.GetAllCustomerByTime(selectedyear, 7));
+                if (SelectedTime == "Tháng 8" || SelectedTime == "August")
+                    CustomerList = new ObservableCollection<CustomerDTO>(await CustomerService.Ins.GetAllCustomerByTime(selectedyear, 8));
+                if (SelectedTime == "Tháng 9" || SelectedTime == "September")
+                    CustomerList = new ObservableCollection<CustomerDTO>(await CustomerService.Ins.GetAllCustomerByTime(selectedyear, 9));
+                if (SelectedTime == "Tháng 10" || SelectedTime == "October")
+                    CustomerList = new ObservableCollection<CustomerDTO>(await CustomerService.Ins.GetAllCustomerByTime(selectedyear, 10));
+                if (SelectedTime == "Tháng 11" || SelectedTime == "November")
+                    CustomerList = new ObservableCollection<CustomerDTO>(await CustomerService.Ins.GetAllCustomerByTime(selectedyear, 11));
+                if (SelectedTime == "Tháng 12" || SelectedTime == "December")
+                    CustomerList = new ObservableCollection<CustomerDTO>(await CustomerService.Ins.GetAllCustomerByTime(selectedyear, 12));
             }
             catch (System.Data.Entity.Core.EntityException e)
             {

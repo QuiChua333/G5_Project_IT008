@@ -47,7 +47,7 @@
                             FontFamily="{StaticResource MaterialDesignFont}"
                             FontSize="16"
                             IsChecked="True"
-                            Content="Nhập kho"
+                            Content="{DynamicResource HistoryManagementPage_RadioButton_Nhapkho}"
                             Cursor="Hand"
                             Command="{Binding LoadImportPageCM}"
                             CommandParameter="{Binding ElementName=MainListViewFrame}"
@@ -61,7 +61,7 @@
                             FontSize="16"
                             IsChecked="False"
                             Margin="10,5,0,0"
-                            Content="Hóa đơn"
+                            Content="{DynamicResource HistoryManagementPage_RadioButton_Hoadon}"
                             Command="{Binding LoadExportPageCM}"
                             CommandParameter="{Binding ElementName=MainListViewFrame}"/>
         </StackPanel>

@@ -27,6 +27,8 @@
             <RowDefinition Height="80"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
+        
+        
         <Rectangle 
             x:Name="FoodPageView"
             Fill="#F3F5F7"
@@ -36,8 +38,10 @@
             RadiusX="20"
             RadiusY="20" 
             Grid.ColumnSpan="2" />
-        <Grid Grid.Column="0" Grid.ColumnSpan="2" 
-              Margin="0,94,0,0" Grid.RowSpan="2" >
+        <Grid Grid.Column="0"
+              Grid.ColumnSpan="2" 
+              Margin="0,94,0,0"
+              Grid.RowSpan="2" >
             <Rectangle 
                 Fill="White"
                 Margin="20,0,20,20"
@@ -66,15 +70,59 @@
                 <ColumnDefinition Width="170"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-
+            <StackPanel Grid.Column="1" 
+                        Grid.Row="0" >
+                <Grid Height="46"
+                      Width="300" 
+                      Margin="-318, 17, 0, 17"  >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="52"/>
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <Rectangle
+                            Fill="White"
+                            Grid.ColumnSpan="2"
+                            RadiusX="20"
+                            RadiusY="20">
+                        <Rectangle.Effect>
+                            <DropShadowEffect
+                                    BlurRadius="10"
+                                    Color="Black"
+                                    ShadowDepth="4"
+                                    Opacity=".25"
+                                    Direction="270"/>
+                        </Rectangle.Effect>
+                    </Rectangle>
+                    <TextBox x:Name="FilterBox" 
+                             materialDesign:HintAssist.Hint="{DynamicResource CustomerManagementPage_search_TimKiem}"
+                             Grid.Column="1"
+                             AllowDrop="True"
+                             VerticalAlignment="Center" 
+                             Margin="20,0,20,0" 
+                             FontSize="15" 
+                             Opacity=".5" 
+                             FontFamily="{StaticResource MaterialDesignFont}"
+                             FontWeight="Regular"
+                             TextChanged="FilterBox_TextChanged"
+                             BorderThickness="0,0,0,0" 
+                             Padding="0,4,0,4"/>
+                    <Image x:Name="IconSeach" 
+                           Source="{StaticResource IconSearch}"
+                           Grid.Column="0"
+                           Width="20" Height="20"
+                           Margin="20,0,0,0"
+                           HorizontalAlignment="Right"
+                           VerticalAlignment="Center"/>
+                </Grid>
+            </StackPanel>
             <Border CornerRadius="14"
-                    Grid.Column="1" 
+                    Grid.Column="2" 
                     Grid.Row="0" 
                     HorizontalAlignment="Left"                   
-                    Margin="-20, 17, 0, 17"
+                    Margin="-280, 17, 0, 17"
                     Background="White"
                     Height="46"
-                    Width="200"
+                    Width="170"
                     BorderBrush="Black">
                 <Border.Effect>
                     <DropShadowEffect
@@ -84,28 +132,27 @@
                             Opacity=".25"
                             Direction="270"/>
                 </Border.Effect>
-                <ComboBox   Width="200"
+                <ComboBox   Width="170"
                             VerticalAlignment="Top"
                             HorizontalAlignment="Center"
                             Style="{StaticResource styleButton}"
                             SelectedIndex="0"  
-                            Padding="10"
+                            Padding="13 14 10 14"
                             BorderThickness="0"
-                            
                             x:Name="filtercbb"
                             SelectedItem="{Binding FiltercbbItem,Mode=OneWayToSource}" 
-                            Margin="0,8,0,0">
+                            >
                     <i:Interaction.Triggers>
                         <i:EventTrigger EventName="SelectionChanged">
                             <i:InvokeCommandAction Command="{Binding FilterListTroubleCommand}"
                                                    CommandParameter="{Binding ElementName=filtercbb}" />
                         </i:EventTrigger>
                     </i:Interaction.Triggers>
-                    <ComboBoxItem Tag="Toàn bộ">Toàn bộ</ComboBoxItem>
-                    <ComboBoxItem Tag="Chờ tiếp nhận">Chờ tiếp nhận</ComboBoxItem>
-                    <ComboBoxItem Tag="Đang giải quyết">Đang giải quyết</ComboBoxItem>
-                    <ComboBoxItem Tag="Đã giải quyết">Đã giải quyết</ComboBoxItem>
-                    <ComboBoxItem Tag="Đã hủy">Đã hủy</ComboBoxItem>
+                    <ComboBoxItem Tag="Toàn bộ" Content="{DynamicResource TroubleManagementPage_ComboboxItem_Toanbo}"></ComboBoxItem>
+                    <ComboBoxItem Tag="Chờ tiếp nhận" Content="{DynamicResource TroublePage_ComboboxItem_Chotiepnhan}"></ComboBoxItem>
+                    <ComboBoxItem Tag="Đang giải quyết" Content="{DynamicResource TroubleManagementPage_ComboboxItem_Danggiaiquyet}"></ComboBoxItem>
+                    <ComboBoxItem Tag="Đã giải quyết" Content="{DynamicResource TroubleManagementPage_ComboboxItem_Dagiaiquyet}"></ComboBoxItem>
+                    <ComboBoxItem Tag="Đã hủy" Content="{DynamicResource TroubleManagementPage_ComboboxItem_Dahuy}"></ComboBoxItem>
                 </ComboBox>
             </Border>
             <Border Grid.Row="0"
@@ -120,19 +167,19 @@
                 </Border.Effect>
                 <Button Style="{StaticResource CustomButton}"      
                         Width="110" 
-                        Height="40" 
-                        Margin="0,0,0,0"
+                        Height="36" 
+                        Margin="50,0,-40,0"
                         Command="{Binding OpenAddTroubleCommand}">
                     <StackPanel Orientation="Horizontal" 
                                     Width="150" >
                         <materialDesign:PackIcon Kind="PlusCircleOutline" 
                                                 Width="22" 
                                                 Height="22"/>
-                        <TextBlock FontFamily="{StaticResource Medium}" 
-                                    Text="Báo cáo" 
-                                    FontWeight="Medium"
+                        <TextBlock FontWeight="Normal"
+                                    Text="{DynamicResource TroublePage_Button_Baocao}"
+                                    FontFamily="{StaticResource MaterialDesignFont}"
                                     FontSize="14"
-                                    Margin="5,4,0,0"/>
+                                    Margin="5,2,0,0"/>
                     </StackPanel>
                 </Button>
 
@@ -172,31 +219,32 @@
                                 <GridViewColumn 
                                                 Width="500">
                                     <GridViewColumn.Header>
-                                        
-                                        <TextBlock Text="Sự cố"
+
+                                        <TextBlock Text="{DynamicResource admin_sideBar_SuCo}"
                                                    Margin="10 0 0 0"
                                                    FontSize="14"
-                                                   FontWeight="SemiBold"></TextBlock>
+                                                   FontWeight="SemiBold"
+                                                   Foreground="Black"></TextBlock>
                                     </GridViewColumn.Header>
                                     <GridViewColumn.CellTemplate>
                                         <DataTemplate>
                                             <StackPanel Orientation="Horizontal">
                                                 <Border Margin="-50 0 0 0"
-                                                        Width="80"
-                                                        Height="90">
+                                                        Width="60"
+                                                        Height="70">
                                                     <Border.Background>
                                                         <ImageBrush x:Name="smallimg"
                                                                     Stretch="Fill"
                                                                     ImageSource="{Binding Image}" />
                                                     </Border.Background>
                                                 </Border>
-                                                <StackPanel Margin="10,20,0,0">
+                                                <StackPanel Margin="10,30,0,0">
                                                     <Label Content="{Binding TroubleType}"
                                                        FontSize="16"
                                                        FontWeight="Bold"
                                                        Width="300" />
                                                     <StackPanel Orientation="Horizontal">
-                                                        <Label Content="Chi phí:"
+                                                        <Label Content="{DynamicResource EditTroubleInformation_Inprocess_Label_Chiphi}"
                                                            FontSize="14" />
                                                         <Label Content="{Binding RepairCostStr}"
                                                            FontSize="14" />
@@ -210,29 +258,31 @@
                                 <GridViewColumn 
                                                 Width="150">
                                     <GridViewColumn.Header>
-                                        <TextBlock Text="Ngày gửi"
+                                        <TextBlock Text="{DynamicResource TroublePage_ListviewHeader_Ngaygui}"
                                                    FontSize="14"
-                                                   FontWeight="SemiBold"></TextBlock>
+                                                   FontWeight="SemiBold"
+                                                   Foreground="Black"></TextBlock>
                                     </GridViewColumn.Header>
                                     <GridViewColumn.CellTemplate>
                                         <DataTemplate>
                                             <TextBlock Text="{Binding SubmittedAt, StringFormat=dd/MM/yyyy}"
                                                        FontSize="14"
-                                                       Margin="-40,34,0,0" />
+                                                       Margin="-40,30,0,0" />
                                         </DataTemplate>
                                     </GridViewColumn.CellTemplate>
                                 </GridViewColumn>
                                 <GridViewColumn 
                                             Width="170">
                                     <GridViewColumn.Header>
-                                        <TextBlock Text="Trạng thái"
+                                        <TextBlock Text="{DynamicResource TroublePage_ListviewHeader_TrangThai}"
                                                    FontSize="14"
-                                                   FontWeight="SemiBold"></TextBlock>
+                                                   FontWeight="SemiBold"
+                                                   Foreground="Black"></TextBlock>
                                     </GridViewColumn.Header>
                                     <GridViewColumn.CellTemplate>
                                         <DataTemplate>
                                             <Border BorderThickness="1"
-                                                Margin="-46,25,0,0"
+                                                Margin="-46,30,0,0"
                                                 CornerRadius="18">
                                                 <TextBlock Text="{Binding TroubleStatus}"
                                                        FontSize="14"

@@ -6,8 +6,8 @@
       xmlns:local="clr-namespace:CinemaManagementProject.View.Admin.HistoryManagement"
       mc:Ignorable="d" 
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"       
-      xmlns:Search="clr-namespace:CinemaManagementProject.Component.Search" xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
-      
+      xmlns:Search="clr-namespace:CinemaManagementProject.Component.Search" 
+      xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
       Title="ImportHistoryPage"
       DataContext="{StaticResource Import_ExportManagementVM}"
       ShowsNavigationUI="False"
@@ -218,8 +218,8 @@
                         </Border.Effect>
                         <Button     Style="{StaticResource CustomButton}" 
                                 Width="150" 
-                                Height="46" 
-                                Margin="326,0,0,0"
+                                Height="46"  
+                                Margin="-80 0 0 0"
                                 Command="{Binding ExportFileCM}">
                             <StackPanel Orientation="Horizontal" 
                                     Width="143" 

@@ -70,7 +70,7 @@
                         </Rectangle.Effect>
                     </Rectangle>
                     <TextBox x:Name="_FilterBox" 
-                                 materialDesign:HintAssist.Hint="Search"
+                                 materialDesign:HintAssist.Hint="Tìm kiếm"
                                  Grid.Column="1"
                                  AllowDrop="True"
                                  VerticalAlignment="Center" 
@@ -369,6 +369,8 @@
 
                                                         <ListBox.ItemContainerStyle>
                                                             <Style TargetType="ListBoxItem">
+                                                                <Setter Property="Margin" Value="-4 10 -4 0"></Setter>
+                                                                <Setter Property="MaxWidth" Value="180"></Setter>
 
                                                                 <Setter Property="SnapsToDevicePixels"
                                                            Value="False" />
@@ -503,8 +505,8 @@
                   Visibility="Collapsed"
                   x:Name="ShadowMask" />
             <ProgressBar Style="{StaticResource MaterialDesignCircularProgressBar}"
-                         Height="100"
-                         Width="100"
+                         Height="80"
+                         Width="80"
                          Grid.RowSpan="2"
                          IsIndeterminate="{Binding IsLoading}" />
         </Grid>

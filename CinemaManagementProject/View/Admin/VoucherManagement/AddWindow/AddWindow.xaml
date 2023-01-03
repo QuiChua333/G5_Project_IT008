@@ -96,7 +96,7 @@
 
                         <Label
                             Padding="0"
-                            Content="{DynamicResource AddWindow_ButtonLabelInfo}"
+                            Content="{DynamicResource AddWindow_ButtonLabel_Info}"
                             Foreground="#000000"
                             FontFamily="{DynamicResource MaterialDesignFont}"
                             FontWeight="Black"
@@ -121,7 +121,7 @@
 
                         <Label
                             Padding="0"
-                            Content="{DynamicResource AddWindow_ButtonLabel_ListVoucher}"
+                            Content="{DynamicResource AddWindow_ButtonLabel_ListVouchers}"
                             Foreground="#000000"
                             FontFamily="{DynamicResource MaterialDesignFont}"
                             FontWeight="Black"

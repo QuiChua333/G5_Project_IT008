@@ -53,22 +53,25 @@ namespace CinemaManagementProject.View.Admin.CustomerManagement
             ComboBoxItem s = (ComboBoxItem)periodbox1.SelectedItem;
             if(Time1!= null)
             {
-                switch (s.Content.ToString())
+                switch (s.Tag.ToString())
                 {
                     case "Theo năm":
                         {
+                            boder.Visibility = Visibility.Visible;
                             Time1.Visibility = Visibility.Visible;
                             GetYearSource(Time1);
                             return;
                         }
                     case "Theo tháng":
                         {
+                            boder.Visibility = Visibility.Visible;
                             Time1.Visibility = Visibility.Visible;
                             GetMonthSource(Time1);
                             return;
                         }
                     case "Toàn bộ":
                         {
+                            boder.Visibility = Visibility.Collapsed;
                             Time1.Visibility = Visibility.Collapsed;
                             return;
                         }

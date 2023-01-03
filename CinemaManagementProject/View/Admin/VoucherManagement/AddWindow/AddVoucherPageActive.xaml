@@ -291,7 +291,7 @@
                     <Grid Grid.Column="2" Margin="-30,0,0,0">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="50*"/>
-                            <ColumnDefinition Width="60*"/>
+                            <ColumnDefinition Width="70*"/>
                         </Grid.ColumnDefinitions>
                         <Label Grid.Column="0"
                                    Content="{DynamicResource AddInfoPage_Label_Status}"
@@ -365,7 +365,7 @@
                                                 </GridViewColumn.CellTemplate>
                                             </GridViewColumn>
                                             <GridViewColumn Header="{DynamicResource AddVoucherPage_ListViewHeader0}"
-                                                Width="140">
+                                                Width="150">
                                                 <GridViewColumn.CellTemplate>
                                                     <DataTemplate>
                                                         <TextBlock Text="{Binding VoucherCode}"
@@ -431,7 +431,7 @@
             </Grid>
         </Grid>
         <Grid Grid.Row="1">
-            <Label Content="Đang chọn:"
+            <Label Content="{DynamicResource AddVoucherPage_Label_Choosing}"
                        FontSize="14"
                        FontWeight="Medium"
                        FontFamily="{DynamicResource MaterialDesignFont}"
@@ -460,7 +460,7 @@
                            Margin="0,0,20,0">
 
             </TextBlock>
-            <Label Content="Kết quả:"
+            <Label Content="{DynamicResource VoucherManagementPage_Label_Result}"
                    
                        FontSize="14"   
                        FontFamily="{DynamicResource MaterialDesignFont}"
