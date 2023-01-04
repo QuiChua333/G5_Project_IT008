@@ -167,18 +167,21 @@ namespace CinemaManagementProject.ViewModel.StaffVM.OrderFoodManagementVM
                 try
                 {
                     isEN = Properties.Settings.Default.isEnglish;
-                    if (TicketWindowViewModel.mainListOrder != null) OrderList = new ObservableCollection<ProductDTO>(TicketWindowViewModel.mainListOrder);
-                    FoodList = new ObservableCollection<ProductDTO>();
-                    OrderList = new ObservableCollection<ProductDTO>();
-                    IsLoadding = true;
                     StoreAllFood = new ObservableCollection<ProductDTO>(await Task.Run(() => ProductService.Ins.GetAllProduct()));
-                    IsLoadding = false;
                     FoodList = new ObservableCollection<ProductDTO>(StoreAllFood);
+                    if (TicketWindowViewModel.mainListOrder != null)
+                    {
+                        OrderList = new ObservableCollection<ProductDTO>(TicketWindowViewModel.mainListOrder);
+                        LoadCurrentQuantityProductWhenBackFromBill();
+                    }
+                    else
+                    {
+                        OrderList = new ObservableCollection<ProductDTO>();
+                    } 
                     if (checkOnlyFoodOfPage)
                         ShowBackIcon = false;
                     else
                         ShowBackIcon = true;
-                    TotalPrice = 0;
                 }
                 catch (EntityException e)
                 {
@@ -259,7 +262,7 @@ namespace CinemaManagementProject.ViewModel.StaffVM.OrderFoodManagementVM
                     }
                     else
                     {
-                        CustomMessageBox.ShowOk("Sản phẩm này đã hết hàng", "Cảnh báo", "Ok", Views.CustomMessageBoxImage.Warning);
+                        CustomMessageBox.ShowOk(isEN? "This product is out of stock" : "Sản phẩm này đã hết hàng",isEN? "Warning" : "Cảnh báo", "Ok", Views.CustomMessageBoxImage.Warning);
                     }
                 }
             });
@@ -424,6 +427,13 @@ namespace CinemaManagementProject.ViewModel.StaffVM.OrderFoodManagementVM
             {
                 TotalPrice += OrderList[i].Price * OrderList[i].Quantity;
             }
+        }
+        public void LoadCurrentQuantityProductWhenBackFromBill()
+        {
+            for(int i = 0; i < OrderList.Count; i++)
+                for(int j = 0; j < FoodList.Count; j++)
+                    if (OrderList[i].Id == FoodList[j].Id)
+                        FoodList[j].Quantity -= OrderList[i].Quantity;
         }
     }
 }
