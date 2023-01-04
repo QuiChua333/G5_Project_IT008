@@ -309,8 +309,6 @@ namespace CinemaManagementProject.ViewModel.StaffVM.TicketBillVM
             //
             //
             Staff = StaffVM.currentStaff;
-            //
-            float TotalFullMoviePrice = 0;
             // Food
             ListFood = new ObservableCollection<ProductDTO>();
             ListFood = OrderFoodManagementVM.OrderFoodManagementVM.ListOrder;
@@ -969,13 +967,11 @@ namespace CinemaManagementProject.ViewModel.StaffVM.TicketBillVM
                     }
                     catch (System.Data.Entity.Core.EntityException e)
                     {
-                        Console.WriteLine(e);
                         if (Properties.Settings.Default.isEnglish) CustomMessageBox.ShowOk("Unable to connect to database", "Error", "OK", Views.CustomMessageBoxImage.Error);
                         else CustomMessageBox.ShowOk("Mất kết nối cơ sở dữ liệu", "Lỗi", "OK", Views.CustomMessageBoxImage.Error);
                     }
                     catch (Exception e)
                     {
-                        Console.WriteLine(e);
                         if (Properties.Settings.Default.isEnglish) CustomMessageBox.ShowOk("System error", "Error", "OK", Views.CustomMessageBoxImage.Error);
                         else CustomMessageBox.ShowOk("Lỗi hệ thống", "Lỗi", "OK", Views.CustomMessageBoxImage.Error);
                     }

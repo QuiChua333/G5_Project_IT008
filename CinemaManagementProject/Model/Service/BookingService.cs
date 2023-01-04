@@ -124,14 +124,14 @@ namespace CinemaManagementProject.Model.Service
                     string billCode = await CreateNewBill(context, bill);
 
                     //Ticket
-                   
+
                     AddNewTickets(context, billCode, newTicketList);
 
                     //Product
                     bool addSuccess = await AddNewProductBills(context, billCode, orderedProductList);
                     if (!addSuccess)
                     {
-                        return (false, IsEnglish?"The number of products is not enough to satisfy!":"Số lượng sản phẩm không đủ để đáp ứng!");
+                        return (false, IsEnglish ? "The number of products is not enough to satisfy!" : "Số lượng sản phẩm không đủ để đáp ứng!");
                     }
                     await context.SaveChangesAsync();
                 }
@@ -146,10 +146,11 @@ namespace CinemaManagementProject.Model.Service
                         return (false, error);
                     }
                 }
-                return (false, IsEnglish?"The recently booked seats list contains already booked seats. Please come back!":"Danh sách ghế vừa đặt có chứa ghế đã được đặt. Vui lòng quay lại!");
+                return (false, IsEnglish ? "The recently booked seats list contains already booked seats. Please come back!" : "Danh sách ghế vừa đặt có chứa ghế đã được đặt. Vui lòng quay lại!");
             }
             catch (Exception e)
             {
+
                 Console.WriteLine(e);
                 return (false, e.Message);
             }
@@ -256,7 +257,7 @@ namespace CinemaManagementProject.Model.Service
             if (bill.VoucherIdList != null && bill.VoucherIdList.Count > 0)
             {
                 string voucherIds = string.Join(",", bill.VoucherIdList);
-                var sql = $@"Update [Voucher] SET Status = N'{VOUCHER_STATUS.USED}', CustomerId = '{newBill.CustomerId}' , UsedAt = GETDATE()  WHERE Id IN ({voucherIds})";
+                var sql = $@"Update [Voucher] SET VoucherStatus = N'{VOUCHER_STATUS.USED}', CustomerId = '{newBill.CustomerId}' , UsedAt = GETDATE()  WHERE Id IN ({voucherIds})";
                 await context.Database.ExecuteSqlCommandAsync(sql);
             }
             return maxBillCode;
