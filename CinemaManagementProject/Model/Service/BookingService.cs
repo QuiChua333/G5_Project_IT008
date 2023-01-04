@@ -87,7 +87,6 @@ namespace CinemaManagementProject.Model.Service
             }
             catch (Exception e)
             {
-                Console.WriteLine(e);
                 return (false, IsEnglish?"System Error":"Lỗi hệ thống");
             }
 
@@ -150,8 +149,7 @@ namespace CinemaManagementProject.Model.Service
             }
             catch (Exception e)
             {
-                Console.WriteLine(e);
-                return (false, e.Message);
+                return (false, IsEnglish ? "System Error" : "Lỗi hệ thống");
             }
             return (true, IsEnglish?"Successful transaction execution!":"Thực hiện giao dịch thành công!");
         }
@@ -256,7 +254,7 @@ namespace CinemaManagementProject.Model.Service
             if (bill.VoucherIdList != null && bill.VoucherIdList.Count > 0)
             {
                 string voucherIds = string.Join(",", bill.VoucherIdList);
-                var sql = $@"Update [Voucher] SET Status = N'{VOUCHER_STATUS.USED}', CustomerId = '{newBill.CustomerId}' , UsedAt = GETDATE()  WHERE Id IN ({voucherIds})";
+                var sql = $@"Update [Voucher] SET VoucherStatus = N'{VOUCHER_STATUS.USED}', CustomerId = '{newBill.CustomerId}' , UsedAt = GETDATE()  WHERE Id IN ({voucherIds})";
                 await context.Database.ExecuteSqlCommandAsync(sql);
             }
             return maxBillCode;
