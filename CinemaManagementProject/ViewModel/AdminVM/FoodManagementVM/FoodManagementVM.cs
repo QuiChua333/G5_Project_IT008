@@ -145,14 +145,15 @@ namespace CinemaManagementProject.ViewModel.AdminVM.FoodManagementVM
                     StoreAllFood = new ObservableCollection<ProductDTO>(await Task.Run(() => ProductService.Ins.GetAllProduct()));
                     IsLoadding = false;
                     FoodList = new ObservableCollection<ProductDTO>(StoreAllFood);
+                    isEN = Properties.Settings.Default.isEnglish;
                 }
                 catch (EntityException e)
                 {
-                    CustomMessageBox.ShowOk(isEN ? "Lost database connection" : "Mất kết nối cơ sở dữ liệu", isEN ? "Error" : "Lỗi", "OK");
+                    CustomMessageBox.ShowOk(isEN ? "Lost database connection" : "Mất kết nối cơ sở dữ liệu", isEN ? "Error" : "Lỗi", "OK", Views.CustomMessageBoxImage.Error);
                 }
                 catch(Exception e)
                 {
-                    CustomMessageBox.ShowOk(isEN ? "System Error" : "Lỗi hệ thống", isEN? "Error" : "Lỗi", "Ok");
+                    CustomMessageBox.ShowOk(isEN ? "System Error" : "Lỗi hệ thống", isEN? "Error" : "Lỗi", "Ok", Views.CustomMessageBoxImage.Error);
                 }
             });
             FilterComboboxFoodCM = new RelayCommand<ComboBox>((p) => { return true; }, (p) =>
@@ -174,11 +175,11 @@ namespace CinemaManagementProject.ViewModel.AdminVM.FoodManagementVM
                 }
                 catch (EntityException e)
                 {
-                    CustomMessageBox.ShowOk(isEN ? "Lost database connection" : "Mất kết nối cơ sở dữ liệu", isEN ? "Error" : "Lỗi", "OK");
+                    CustomMessageBox.ShowOk(isEN ? "Lost database connection" : "Mất kết nối cơ sở dữ liệu", isEN ? "Error" : "Lỗi", "OK", Views.CustomMessageBoxImage.Error);
                 }
                 catch (Exception e)
                 {
-                    CustomMessageBox.ShowOk(isEN ? "System Error" : "Lỗi hệ thống", isEN? "Error" : "Lỗi", "Ok");
+                    CustomMessageBox.ShowOk(isEN ? "System Error" : "Lỗi hệ thống", isEN? "Error" : "Lỗi", "Ok", Views.CustomMessageBoxImage.Error);
                 }
             });
             OpenImportFoodCM = new RelayCommand<object>((p) => { return true; }, (p) =>

@@ -139,6 +139,7 @@ namespace CinemaManagementProject.ViewModel.StaffVM.OrderFoodManagementVM
                 OnPropertyChanged();
             }
         }
+        private bool isEN = Properties.Settings.Default.isEnglish;
         //
         //Command
         //
@@ -165,6 +166,7 @@ namespace CinemaManagementProject.ViewModel.StaffVM.OrderFoodManagementVM
             {
                 try
                 {
+                    isEN = Properties.Settings.Default.isEnglish;
                     if (TicketWindowViewModel.mainListOrder != null) OrderList = new ObservableCollection<ProductDTO>(TicketWindowViewModel.mainListOrder);
                     FoodList = new ObservableCollection<ProductDTO>();
                     OrderList = new ObservableCollection<ProductDTO>();
@@ -176,17 +178,15 @@ namespace CinemaManagementProject.ViewModel.StaffVM.OrderFoodManagementVM
                         ShowBackIcon = false;
                     else
                         ShowBackIcon = true;
-                    
+                    TotalPrice = 0;
                 }
                 catch (EntityException e)
                 {
-                    MessageBox.Show(e.Message);
-                    CustomMessageBox.ShowOk("Mất kết nối cơ sở dữ liệu", "Lỗi", "Ok");
+                    CustomMessageBox.ShowOk(isEN ? "Lost database connection" : "Mất kết nối cơ sở dữ liệu", isEN ? "Error" : "Lỗi", "OK", Views.CustomMessageBoxImage.Error);
                 }
                 catch (Exception e)
                 {
-                    MessageBox.Show(e.Message);
-                    CustomMessageBox.ShowOk("Lỗi hệ thống", "Lỗi", "Ok");
+                    CustomMessageBox.ShowOk(isEN ? "System Error" : "Lỗi hệ thống", isEN ? "Error" : "Lỗi", "Ok", Views.CustomMessageBoxImage.Error);
                 }
             });
             FilterComboboxFoodCM = new RelayCommand<ComboBox>((p) => { return true; }, (p) =>
@@ -208,13 +208,11 @@ namespace CinemaManagementProject.ViewModel.StaffVM.OrderFoodManagementVM
                 }
                 catch (EntityException e)
                 {
-                    MessageBox.Show(e.Message);
-                    CustomMessageBox.ShowOk("Mất kết nối cơ sở dữ liệu", "Lỗi", "Ok");
+                    CustomMessageBox.ShowOk(isEN ? "Lost database connection" : "Mất kết nối cơ sở dữ liệu", isEN ? "Error" : "Lỗi", "OK", Views.CustomMessageBoxImage.Error);
                 }
                 catch (Exception e)
                 {
-                    MessageBox.Show(e.Message);
-                    CustomMessageBox.ShowOk("Lỗi hệ thống", "Lỗi", "Ok");
+                    CustomMessageBox.ShowOk(isEN ? "System Error" : "Lỗi hệ thống", isEN ? "Error" : "Lỗi", "Ok", Views.CustomMessageBoxImage.Error);
                 }
             });
             SelectedProductToBillCM = new RelayCommand<ListBox>((p) => { return true; }, (p) =>

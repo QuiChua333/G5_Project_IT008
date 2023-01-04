@@ -127,6 +127,7 @@ namespace CinemaManagementProject.ViewModel.StaffVM.FilmBookingVM
                 OnPropertyChanged();
             }
         }
+        public bool isEN = Properties.Settings.Default.isEnglish;
         //
         //
         //
@@ -142,6 +143,7 @@ namespace CinemaManagementProject.ViewModel.StaffVM.FilmBookingVM
         {
             FirstLoadCM = new RelayCommand<ComboBox>((p) => { return true; }, async (p) =>
             {
+                isEN = Properties.Settings.Default.isEnglish;
                 SelectedDate = DateTime.Now;
                 FilmShowTimeList = new ObservableCollection<FilmDTO>();
                 try
@@ -151,11 +153,11 @@ namespace CinemaManagementProject.ViewModel.StaffVM.FilmBookingVM
                 }
                 catch (System.Data.Entity.Core.EntityException)
                 {
-                    CustomMessageBox.ShowOk("Mất kết nối cơ sở dữ liệu", "Lỗi", "Ok");
+                    CustomMessageBox.ShowOk(isEN ? "Lost database connection" : "Mất kết nối cơ sở dữ liệu", isEN ? "Error" : "Lỗi", "OK", Views.CustomMessageBoxImage.Error);
                 }
                 catch (Exception)
                 {
-                    CustomMessageBox.ShowOk("Lỗi hệ thống", "Lỗi", "Ok");
+                    CustomMessageBox.ShowOk(isEN ? "System Error" : "Lỗi hệ thống", isEN ? "Error" : "Lỗi", "Ok", Views.CustomMessageBoxImage.Error);
                 }
             });
             SelectedDateChangedCM = new RelayCommand<ComboBox>((p) => { return true; }, async (p) =>
@@ -170,11 +172,11 @@ namespace CinemaManagementProject.ViewModel.StaffVM.FilmBookingVM
                     }
                     catch (System.Data.Entity.Core.EntityException)
                     {
-                        CustomMessageBox.ShowOk("Mất kết nối cơ sở dữ liệu", "Lỗi", "Ok");
+                        CustomMessageBox.ShowOk(isEN ? "Lost database connection" : "Mất kết nối cơ sở dữ liệu", isEN ? "Error" : "Lỗi", "OK", Views.CustomMessageBoxImage.Error);
                     }
                     catch (Exception)
                     {
-                        CustomMessageBox.ShowOk("Lỗi hệ thống", "Lỗi", "Ok");
+                        CustomMessageBox.ShowOk(isEN ? "System Error" : "Lỗi hệ thống", isEN ? "Error" : "Lỗi", "Ok", Views.CustomMessageBoxImage.Error);
                     }
                 }    
             });
@@ -192,11 +194,11 @@ namespace CinemaManagementProject.ViewModel.StaffVM.FilmBookingVM
                         }
                         catch (System.Data.Entity.Core.EntityException)
                         {
-                            CustomMessageBox.ShowOk("Mất kết nối cơ sở dữ liệu", "Lỗi", "Ok");
+                            CustomMessageBox.ShowOk(isEN ? "Lost database connection" : "Mất kết nối cơ sở dữ liệu", isEN ? "Error" : "Lỗi", "OK", Views.CustomMessageBoxImage.Error);
                         }
                         catch (Exception)
                         {
-                            CustomMessageBox.ShowOk("Lỗi hệ thống", "Lỗi", "Ok");
+                            CustomMessageBox.ShowOk(isEN ? "System Error" : "Lỗi hệ thống", isEN ? "Error" : "Lỗi", "Ok", Views.CustomMessageBoxImage.Error);
                         }
                     }
                 }
@@ -229,11 +231,11 @@ namespace CinemaManagementProject.ViewModel.StaffVM.FilmBookingVM
                     }
                     catch (System.Data.Entity.Core.EntityException e)
                     {
-                        CustomMessageBox.ShowOk("Mất kết nối cơ sở dữ liệu", "Lỗi", "OK", Views.CustomMessageBoxImage.Error);
+                        CustomMessageBox.ShowOk(isEN ? "Lost database connection" : "Mất kết nối cơ sở dữ liệu", isEN ? "Error" : "Lỗi", "OK", Views.CustomMessageBoxImage.Error);
                     }
                     catch (Exception e)
                     {
-                        CustomMessageBox.ShowOk("Lỗi hệ thống", "Lỗi", "OK", Views.CustomMessageBoxImage.Error);
+                        CustomMessageBox.ShowOk(isEN ? "System Error" : "Lỗi hệ thống", isEN ? "Error" : "Lỗi", "Ok", Views.CustomMessageBoxImage.Error);
                     }
                 }
             });
@@ -241,7 +243,7 @@ namespace CinemaManagementProject.ViewModel.StaffVM.FilmBookingVM
         public void GetAllCurrentGenre(ComboBox filter)
         {
             CurrentGenreSource = new ObservableCollection<string>();
-            CurrentGenreSource.Add("Tất cả");
+            CurrentGenreSource.Add(isEN? "All" : "Tất cả");
             for (int i = 0; i < FilmShowTimeList.Count; i++)
             {
                 if (!CurrentGenreSource.Contains(FilmShowTimeList[i].Genre))

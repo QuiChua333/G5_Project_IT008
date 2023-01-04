@@ -47,6 +47,7 @@ namespace CinemaManagementProject.ViewModel.LoginVM
             get { return _newPassword; }
             set { _newPassword = value; }
         }
+        private bool isEN = Properties.Settings.Default.isEnglish;
         public ICommand LoginPageCM { get; set; }
         public ICommand SendEmailCM { get; set; }
         public ICommand CheckCodeCM { get; set; }
@@ -68,7 +69,7 @@ namespace CinemaManagementProject.ViewModel.LoginVM
                         SendMailToStaff(CurrentEmail, randomCode);
                     }
                     else
-                        p.Content = "Không phải tài khoản nhân viên công ty";
+                        p.Content = isEN ? "Not a company employee account!":"Không phải tài khoản nhân viên công ty!";
                 }
 
             });
@@ -77,7 +78,7 @@ namespace CinemaManagementProject.ViewModel.LoginVM
                 if (CurrentCode == randomCode.ToString())
                     LoginVM.MainFrame.Content = new ChangePassPage();
                 else
-                    p.Content = "Mã code vừa nhập chưa chính xác";
+                    p.Content = isEN? "The code has just enter is incorrect!" : "Mã code vừa nhập chưa chính xác!";
             });
             ConfirmNewPassCM = new RelayCommand<PasswordBox>((p) => { return true; }, async (p) =>
             {
@@ -102,12 +103,12 @@ namespace CinemaManagementProject.ViewModel.LoginVM
         {
             if (string.IsNullOrEmpty(email))
             {
-                lableError.Content = "Vui lòng nhập đủ thông tin";
+                lableError.Content = isEN? "Please enter full infomation" : "Vui lòng nhập đủ thông tin";
                 return false;
             }
             if(!EmailFormat.IsValidEmail(email))
             {
-                lableError.Content = "Vui lòng nhập đúng địa chỉ Email";
+                lableError.Content = isEN? "Please enter the right email address" : "Vui lòng nhập đúng địa chỉ Email";
                 return false;
             }
             lableError.Content = "";
@@ -124,7 +125,7 @@ namespace CinemaManagementProject.ViewModel.LoginVM
                 //Tạo mail
                 MailMessage mail = new MailMessage(APP_EMAIL, staffEmail);
                 mail.To.Add(staffEmail);
-                mail.Subject = "Lấy lại mật khẩu đăng nhập";
+                mail.Subject = isEN? "Regain the login password" : "Lấy lại mật khẩu đăng nhập";
                 //Attach file
                 mail.IsBodyHtml = true;
 

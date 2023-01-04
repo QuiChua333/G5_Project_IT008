@@ -83,6 +83,7 @@ namespace CinemaManagementProject.ViewModel.AdminVM
             get { return _avatarSource; }
             set { _avatarSource = value; OnPropertyChanged(); }
         }
+        private bool isEN = Properties.Settings.Default.isEnglish;
         public ICommand FirstLoadCM { get; set; }
         public ICommand VoucherCommand { get; set; }
         public ICommand ShowTimeViewCommand { get; set; }
@@ -125,7 +126,7 @@ namespace CinemaManagementProject.ViewModel.AdminVM
             SettingCommand = new RelayCommand(Setting);
             LogOutCommand = new RelayCommand<Window>((p) => { return true; }, (p) =>
             {
-                if (CustomMessageBox.ShowOkCancel("Bạn thật sự muốn đăng xuất không?", "Cảnh báo", "Đăng xuất", "Không", Views.CustomMessageBoxImage.Warning) == CustomMessageBoxResult.OK)
+                if (CustomMessageBox.ShowOkCancel(isEN? "Do you really want to log out?" : "Bạn thật sự muốn đăng xuất không?",isEN? "Warning" : "Cảnh báo",isEN? "Log out" : "Đăng xuất",isEN? "No" : "Không", Views.CustomMessageBoxImage.Warning) == CustomMessageBoxResult.OK)
                 {
                     if (p != null)
                     {
