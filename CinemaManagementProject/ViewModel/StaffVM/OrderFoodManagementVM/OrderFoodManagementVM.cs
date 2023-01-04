@@ -139,6 +139,7 @@ namespace CinemaManagementProject.ViewModel.StaffVM.OrderFoodManagementVM
                 OnPropertyChanged();
             }
         }
+        private bool isEN = Properties.Settings.Default.isEnglish;
         //
         //Command
         //
@@ -165,28 +166,30 @@ namespace CinemaManagementProject.ViewModel.StaffVM.OrderFoodManagementVM
             {
                 try
                 {
-                    if (TicketWindowViewModel.mainListOrder != null) OrderList = new ObservableCollection<ProductDTO>(TicketWindowViewModel.mainListOrder);
-                    FoodList = new ObservableCollection<ProductDTO>();
-                    OrderList = new ObservableCollection<ProductDTO>();
-                    IsLoadding = true;
+                    isEN = Properties.Settings.Default.isEnglish;
                     StoreAllFood = new ObservableCollection<ProductDTO>(await Task.Run(() => ProductService.Ins.GetAllProduct()));
-                    IsLoadding = false;
                     FoodList = new ObservableCollection<ProductDTO>(StoreAllFood);
+                    if (TicketWindowViewModel.mainListOrder != null)
+                    {
+                        OrderList = new ObservableCollection<ProductDTO>(TicketWindowViewModel.mainListOrder);
+                        LoadCurrentQuantityProductWhenBackFromBill();
+                    }
+                    else
+                    {
+                        OrderList = new ObservableCollection<ProductDTO>();
+                    } 
                     if (checkOnlyFoodOfPage)
                         ShowBackIcon = false;
                     else
                         ShowBackIcon = true;
-                    
                 }
                 catch (EntityException e)
                 {
-                    MessageBox.Show(e.Message);
-                    CustomMessageBox.ShowOk("Mất kết nối cơ sở dữ liệu", "Lỗi", "Ok");
+                    CustomMessageBox.ShowOk(isEN ? "Lost database connection" : "Mất kết nối cơ sở dữ liệu", isEN ? "Error" : "Lỗi", "OK", Views.CustomMessageBoxImage.Error);
                 }
                 catch (Exception e)
                 {
-                    MessageBox.Show(e.Message);
-                    CustomMessageBox.ShowOk("Lỗi hệ thống", "Lỗi", "Ok");
+                    CustomMessageBox.ShowOk(isEN ? "System Error" : "Lỗi hệ thống", isEN ? "Error" : "Lỗi", "Ok", Views.CustomMessageBoxImage.Error);
                 }
             });
             FilterComboboxFoodCM = new RelayCommand<ComboBox>((p) => { return true; }, (p) =>
@@ -208,13 +211,11 @@ namespace CinemaManagementProject.ViewModel.StaffVM.OrderFoodManagementVM
                 }
                 catch (EntityException e)
                 {
-                    MessageBox.Show(e.Message);
-                    CustomMessageBox.ShowOk("Mất kết nối cơ sở dữ liệu", "Lỗi", "Ok");
+                    CustomMessageBox.ShowOk(isEN ? "Lost database connection" : "Mất kết nối cơ sở dữ liệu", isEN ? "Error" : "Lỗi", "OK", Views.CustomMessageBoxImage.Error);
                 }
                 catch (Exception e)
                 {
-                    MessageBox.Show(e.Message);
-                    CustomMessageBox.ShowOk("Lỗi hệ thống", "Lỗi", "Ok");
+                    CustomMessageBox.ShowOk(isEN ? "System Error" : "Lỗi hệ thống", isEN ? "Error" : "Lỗi", "Ok", Views.CustomMessageBoxImage.Error);
                 }
             });
             SelectedProductToBillCM = new RelayCommand<ListBox>((p) => { return true; }, (p) =>
@@ -261,7 +262,7 @@ namespace CinemaManagementProject.ViewModel.StaffVM.OrderFoodManagementVM
                     }
                     else
                     {
-                        CustomMessageBox.ShowOk("Sản phẩm này đã hết hàng", "Cảnh báo", "Ok", Views.CustomMessageBoxImage.Warning);
+                        CustomMessageBox.ShowOk(isEN? "This product is out of stock" : "Sản phẩm này đã hết hàng",isEN? "Warning" : "Cảnh báo", "Ok", Views.CustomMessageBoxImage.Warning);
                     }
                 }
             });
@@ -426,6 +427,13 @@ namespace CinemaManagementProject.ViewModel.StaffVM.OrderFoodManagementVM
             {
                 TotalPrice += OrderList[i].Price * OrderList[i].Quantity;
             }
+        }
+        public void LoadCurrentQuantityProductWhenBackFromBill()
+        {
+            for(int i = 0; i < OrderList.Count; i++)
+                for(int j = 0; j < FoodList.Count; j++)
+                    if (OrderList[i].Id == FoodList[j].Id)
+                        FoodList[j].Quantity -= OrderList[i].Quantity;
         }
     }
 }

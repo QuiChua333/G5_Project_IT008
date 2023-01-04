@@ -193,7 +193,8 @@ namespace CinemaManagementProject.ViewModel.StaffVM.SettingStaffVM
             { 
                 if(string.IsNullOrEmpty(StaffName))
                 {
-                    CustomMessageBox.ShowOk("Không được để tên trống", "Cảnh báo", "OK", Views.CustomMessageBoxImage.Warning);
+                    CustomMessageBox.ShowOk(IsEnglish ? "Do not leave the blank name!" : "Không được để tên trống!", IsEnglish ? "Warning" : "Cảnh báo", "OK", Views.CustomMessageBoxImage.Warning);
+
                     return;
                 }
                 if(IsEdit == false)
@@ -206,11 +207,11 @@ namespace CinemaManagementProject.ViewModel.StaffVM.SettingStaffVM
                     (bool isSuccessEdit, string messageReturn) = await Task.Run(() => SettingService.Ins.EditName(StaffName, currentStaff.Id));
                     if(isSuccessEdit == false)
                     {
-                        CustomMessageBox.ShowOkCancel(messageReturn, "Lỗi", "OK", "Hủy", Views.CustomMessageBoxImage.Error);
+                        CustomMessageBox.ShowOkCancel(messageReturn, IsEnglish ? "Error" : "Lỗi", "OK", IsEnglish ? "Cancel" : "Hủy", Views.CustomMessageBoxImage.Error);
                         return;
                     }
                     currentStaff.StaffName = StaffName;
-                    CustomMessageBox.ShowOkCancel(messageReturn, "Thành công", "OK", "Hủy", Views.CustomMessageBoxImage.Success);
+                    CustomMessageBox.ShowOkCancel(messageReturn, IsEnglish ? "Success" : "Thành công", "OK", IsEnglish ? "Cancel" : "Hủy", Views.CustomMessageBoxImage.Success);
                     p.Kind = MaterialDesignThemes.Wpf.PackIconKind.Pencil;
                     IsEdit = false;
                 }
@@ -227,7 +228,7 @@ namespace CinemaManagementProject.ViewModel.StaffVM.SettingStaffVM
                 {
                     if (!EmailFormat.IsValidEmail(StaffEmail))
                     {
-                        CustomMessageBox.ShowOkCancel("Email không đúng", "Lỗi", "Ok", "Hủy", Views.CustomMessageBoxImage.Error);
+                        CustomMessageBox.ShowOkCancel(IsEnglish ? "Invalid Email" : "Email không đúng", IsEnglish ? "Error" : "Lỗi", "Ok", IsEnglish ? "Cancel" : "Hủy", Views.CustomMessageBoxImage.Error);
                         return;
                     }
                     else
@@ -248,24 +249,24 @@ namespace CinemaManagementProject.ViewModel.StaffVM.SettingStaffVM
                 {
                     if (string.IsNullOrEmpty(StaffName))
                     {
-                        CustomMessageBox.ShowOk("Không được để tên trống", "Cảnh báo", "OK", Views.CustomMessageBoxImage.Warning);
+                        CustomMessageBox.ShowOk(IsEnglish ? "Do not leave the blank name!" : "Không được để tên trống!", IsEnglish ? "Warning" : "Cảnh báo", "OK", Views.CustomMessageBoxImage.Warning);
                         return;
                     }
                     (bool isSuccessEdit, string messageReturn) = await Task.Run(() => SettingService.Ins.EditEmail(StaffEmail, currentStaff.Id));
                     if (isSuccessEdit == false)
                     {
-                        CustomMessageBox.ShowOkCancel(messageReturn, "Lỗi", "OK", "Hủy", Views.CustomMessageBoxImage.Error);
+                        CustomMessageBox.ShowOkCancel(messageReturn, IsEnglish ? "Error" : "Lỗi", "OK", IsEnglish ? "Cancel" : "Hủy", Views.CustomMessageBoxImage.Error);
                         return;
                     }
                     currentStaff.Email = StaffEmail;
-                    CustomMessageBox.ShowOkCancel(messageReturn, "Thành công", "OK", "Hủy", Views.CustomMessageBoxImage.Success);
+                    CustomMessageBox.ShowOkCancel(messageReturn, IsEnglish ? "Success" : "Thành công", "OK", IsEnglish ? "Cancel" : "Hủy", Views.CustomMessageBoxImage.Success);
                     IconEditEmail = PackIconKind.Pencil;
                     confirmWD.Close();
                     IsEditEmail = false;
 
                 }
                 else
-                    Error = "Mã code vừa nhập chưa chính xác";
+                    Error = IsEnglish ? "This code is invalid!" : "Mã code vừa nhập chưa chính xác!";
             });
             UploadImageCM = new RelayCommand<object>((p) => { return true; }, (p) =>
             {
@@ -291,8 +292,8 @@ namespace CinemaManagementProject.ViewModel.StaffVM.SettingStaffVM
                         fs.Read(photo_aray, 0, photo_aray.Length);
                         updateStaff.Avatar = photo_aray;
                         context.SaveChanges();
-                        CustomMessageBox.ShowOk("Cập nhật thành công", "Thông báo", "OK", Views.CustomMessageBoxImage.Success);
-                    }    
+                        CustomMessageBox.ShowOk(IsEnglish ? "Update successful" : "Cập nhật thành công", IsEnglish ? "Notice" : "Thông báo", "OK", Views.CustomMessageBoxImage.Success);
+                    }
                 }
             });
             ChangePassCM = new RelayCommand<object>((p) => { return true; }, (p) =>
@@ -314,16 +315,16 @@ namespace CinemaManagementProject.ViewModel.StaffVM.SettingStaffVM
 
                         updateStaff.UserPass = p.Password;
                         await db.SaveChangesAsync();
-                        CustomMessageBox.ShowOk("Cập nhật thành công", "Thông báo", "OK", Views.CustomMessageBoxImage.Success);
+                        CustomMessageBox.ShowOk(IsEnglish ? "Update successful" : "Cập nhật thành công", IsEnglish ? "Notice" : "Thông báo", "OK", Views.CustomMessageBoxImage.Success);
                     }
                 }
                 catch(EntityException)
                 {
-                    CustomMessageBox.ShowOk("Mất kết nối cơ sở dữ liệu", "Lỗi", "OK", Views.CustomMessageBoxImage.Error);
+                    CustomMessageBox.ShowOk(IsEnglish ? "Lost database connection" : "Mất kết nối cơ sở dữ liệu", IsEnglish ? "Error" : "Lỗi", "OK", Views.CustomMessageBoxImage.Error);
                 }
                 catch (Exception e)
                 {
-                    CustomMessageBox.ShowOk("Lỗi hệ thống", "Lỗi", "OK", Views.CustomMessageBoxImage.Error);
+                    CustomMessageBox.ShowOk(IsEnglish ? "System Error" : "Lỗi hệ thống", IsEnglish ? "Error" : "Lỗi", "Ok", Views.CustomMessageBoxImage.Error);
                 }
             });
             AutoStartAppCM = new RelayCommand<ToggleButton>((p) => { return true; }, (p) =>
@@ -375,7 +376,7 @@ namespace CinemaManagementProject.ViewModel.StaffVM.SettingStaffVM
                     Error = string.Empty;
                 }
                 else
-                    Error = "Sai mật khẩu";
+                    Error = IsEnglish ? "Wrong password" : "Sai mật khẩu";
             });
             CloseResetPassCM = new RelayCommand<Window>((p) => { return true; }, (p) =>
             {
@@ -407,7 +408,7 @@ namespace CinemaManagementProject.ViewModel.StaffVM.SettingStaffVM
                 //Tạo mail
                 MailMessage mail = new MailMessage(APP_EMAIL, staffEmail);
                 mail.To.Add(staffEmail);
-                mail.Subject = "Xác minh tài khoản người dùng";
+                mail.Subject = IsEnglish ? "Verification of user accounts" : "Xác minh tài khoản người dùng";
                 //Attach file
                 mail.IsBodyHtml = true;
 
@@ -430,7 +431,7 @@ namespace CinemaManagementProject.ViewModel.StaffVM.SettingStaffVM
             }
             catch (Exception ex)
             {
-                CustomMessageBox.ShowOk("Lỗi hệ thống", "Lỗi", "OK", Views.CustomMessageBoxImage.Error);
+                CustomMessageBox.ShowOk(IsEnglish ? "System Error" : "Lỗi hệ thống", IsEnglish ? "Error" : "Lỗi", "Ok", Views.CustomMessageBoxImage.Error);
             }
         }
         public void LoadImage()
