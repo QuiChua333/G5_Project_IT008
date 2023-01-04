@@ -1,5 +1,6 @@
 ﻿using CinemaManagementProject.DTOs;
 using CinemaManagementProject.Model;
+using CinemaManagementProject.ViewModel.AdminVM.VoucherManagementVM;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -16,6 +17,7 @@ namespace CinemaManagementProject.Utils
 
         public static (string, List<string>) GetListCode(int quantity, int length, string firstChars, string lastChars, VoucherReleaseDTO voucherRelease)
         {
+            bool IsEnglish = VoucherViewModel.IsEnglish;
             List<string> ListCode = new List<string>();
             var chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
             var random = new Random();
@@ -23,7 +25,7 @@ namespace CinemaManagementProject.Utils
             int minimumLength = (int)Math.Ceiling(Math.Log(quantity, 36));
             if (randomLength < minimumLength)
             {
-                return ("Không thể tạo được đúng số lượng voucher với yêu cầu trên!", null);
+                return (IsEnglish?"Unable to generate the correct number of vouchers with this request!":"Không thể tạo được đúng số lượng voucher với yêu cầu trên!", null);
 
             }
             for (int i = 0; i < quantity; i++)

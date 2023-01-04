@@ -99,17 +99,19 @@ namespace CinemaManagementProject.ViewModel.AdminVM.VoucherManagementVM
         {
             if (string.IsNullOrEmpty(VoucherReleaseName))
             {
-                CustomMessageBox.ShowOk("Vui lòng nhập đủ thông tin", "Cảnh báo", "Ok", CustomMessageBoxImage.Warning);
+                CustomMessageBox.ShowOk(IsEnglish ? "Please enter enough information!" : "Vui lòng nhập đủ thông tin!", IsEnglish ? "Warning" : "Cảnh báo", "Ok", CustomMessageBoxImage.Warning);
+
                 return;
             }
             if (Price >= MinimizeTotal)
             {
-                CustomMessageBox.ShowOk("Mệnh giá voucher phải bé hơn tổng tối thiểu", "Cảnh báo", "Ok", CustomMessageBoxImage.Warning);
+                CustomMessageBox.ShowOk(IsEnglish ? "Voucher face value must be less than the minimum total" : "Mệnh giá voucher phải bé hơn tổng tối thiểu", IsEnglish ? "Warning" : "Cảnh báo", "Ok", CustomMessageBoxImage.Warning);
+
                 return;
             }
             if (StartDate > EndDate)
             {
-                CustomMessageBox.ShowOk("Ngày hiệu lực không hợp lệ", "Cảnh báo", "Ok", CustomMessageBoxImage.Warning);
+                CustomMessageBox.ShowOk(IsEnglish ? "Invalid effective date" : "Ngày hiệu lực không hợp lệ", IsEnglish ? "Warning" : "Cảnh báo", "Ok", CustomMessageBoxImage.Warning);
                 return;
             }
 
@@ -132,7 +134,7 @@ namespace CinemaManagementProject.ViewModel.AdminVM.VoucherManagementVM
 
             if (isSucess)
             {
-                CustomMessageBox.ShowOk(addSuccess, "Thông báo", "Ok", CustomMessageBoxImage.Success);
+                CustomMessageBox.ShowOk(addSuccess, IsEnglish?"Notification":"Thông báo", "Ok", CustomMessageBoxImage.Success);
 
                 try
                 {
@@ -148,24 +150,26 @@ namespace CinemaManagementProject.ViewModel.AdminVM.VoucherManagementVM
                 }
                 catch (System.Data.Entity.Core.EntityException e)
                 {
-                    CustomMessageBox.ShowOk("Mất kết nối cơ sở dữ liệu", "Lỗi", "OK", CustomMessageBoxImage.Error);
+                    CustomMessageBox.ShowOk(IsEnglish ? "Unable to connect to database" : "Mất kết nối cơ sở dữ liệu", IsEnglish ? "Error" : "Lỗi", "OK", CustomMessageBoxImage.Error);
+
                 }
                 catch (Exception e)
                 {
-                    CustomMessageBox.ShowOk("Lỗi hệ thống", "Lỗi", "OK", CustomMessageBoxImage.Error);
+                    CustomMessageBox.ShowOk(IsEnglish ? "System Error" : "Lỗi hệ thống", IsEnglish ? "Error" : "Lỗi", "OK", CustomMessageBoxImage.Error);
+
                 }
 
             }
             else
             {
-                CustomMessageBox.ShowOk(addSuccess, "Lỗi", "OK", CustomMessageBoxImage.Error);
+                CustomMessageBox.ShowOk(addSuccess, IsEnglish ? "Error" : "Lỗi", "OK", CustomMessageBoxImage.Error);
             }
         }
         public async Task DeleteMiniVoucherFunc()
         {
             if (WaitingMiniVoucher.Count == 0)
             {
-                CustomMessageBox.ShowOk("Danh sách chọn đang trống!", "Cảnh báo", "Ok", CustomMessageBoxImage.Warning);
+                CustomMessageBox.ShowOk(IsEnglish ? "The pick list is empty!":"Danh sách chọn đang trống!", IsEnglish?"Warning":"Cảnh báo", "Ok", CustomMessageBoxImage.Warning);
                 return;
             }
 
@@ -173,7 +177,7 @@ namespace CinemaManagementProject.ViewModel.AdminVM.VoucherManagementVM
 
             if (deleteSuccess)
             {
-                CustomMessageBox.ShowOk(messageFromDelete, "Thông báo", "Ok", CustomMessageBoxImage.Success);
+                CustomMessageBox.ShowOk(messageFromDelete, IsEnglish ? "Notification" : "Thông báo", "Ok", CustomMessageBoxImage.Success);
                 try
                 {
                     (VoucherReleaseDTO voucherReleaseDetail, bool haveAnyUsedVoucher) = await VoucherService.Ins.GetVoucherReleaseDetails(SelectedItem.VoucherReleaseCode);
@@ -192,18 +196,18 @@ namespace CinemaManagementProject.ViewModel.AdminVM.VoucherManagementVM
                 }
                 catch (System.Data.Entity.Core.EntityException e)
                 {
-                    Console.WriteLine(e);
-                    CustomMessageBox.ShowOk("Mất kết nối cơ sở dữ liệu", "Lỗi", "OK", CustomMessageBoxImage.Error);
+                    CustomMessageBox.ShowOk(IsEnglish ? "Unable to connect to database" : "Mất kết nối cơ sở dữ liệu", IsEnglish ? "Error" : "Lỗi", "OK", CustomMessageBoxImage.Error);
+
                 }
                 catch (Exception e)
                 {
-                    Console.WriteLine(e);
-                    CustomMessageBox.ShowOk("Lỗi hệ thống", "Lỗi", "OK", CustomMessageBoxImage.Error);
+                    CustomMessageBox.ShowOk(IsEnglish ? "System Error" : "Lỗi hệ thống", IsEnglish ? "Error" : "Lỗi", "OK", CustomMessageBoxImage.Error);
+
                 }
             }
             else
             {
-                CustomMessageBox.ShowOk(messageFromDelete, "Lỗi", "Ok", CustomMessageBoxImage.Error);
+                CustomMessageBox.ShowOk(messageFromDelete, IsEnglish ? "Error" : "Lỗi", "Ok", CustomMessageBoxImage.Error);
             }
         }
         public void CheckAllMiniVoucherFunc(bool func)
@@ -213,7 +217,7 @@ namespace CinemaManagementProject.ViewModel.AdminVM.VoucherManagementVM
                 WaitingMiniVoucher.Clear();
                 foreach (var item in StoreAllMini)
                 {
-                    if (item.VoucherStatus != "Ðã phát hành")
+                    if (item.VoucherStatus != "Ðã phát hành" && item.VoucherStatus != "Published")
                     {
                         WaitingMiniVoucher.Add(item.Id);
                         item.IsChecked = true;
@@ -227,7 +231,7 @@ namespace CinemaManagementProject.ViewModel.AdminVM.VoucherManagementVM
                 WaitingMiniVoucher.Clear();
                 foreach (var item in StoreAllMini)
                 {
-                    if (item.VoucherStatus != "Ðã phát hành")
+                    if (item.VoucherStatus != "Ðã phát hành" && item.VoucherStatus != "Published")
                     {
                         item.IsChecked = false;
                     }

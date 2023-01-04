@@ -106,6 +106,7 @@
     <system:String x:Key="ReleaseVoucher_Label_NumberOfEmails">Tổng số Email:</system:String>
     <system:String x:Key="ReleaseVoucher_Label_ShowEmail">Xem</system:String>
     <system:String x:Key="ReleaseVoucher_Label_ListOfSelectedVouchers">Danh sách voucher đã chọn</system:String>
+    <system:String x:Key="ReleaseVoucher_Label_Code">Mã:</system:String>
     <system:String x:Key="ReleaseVoucher_Label_Number">Số lượng:</system:String>
     <system:String x:Key="ReleaseVoucher_Button_Accept">Xác nhận</system:String>
     <system:String x:Key="TicketBookingPage_Label_NumberOfSeats">Tổng số ghế:</system:String>

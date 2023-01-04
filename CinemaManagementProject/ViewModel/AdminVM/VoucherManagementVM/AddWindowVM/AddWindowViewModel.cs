@@ -168,17 +168,17 @@ namespace CinemaManagementProject.ViewModel.AdminVM.VoucherManagementVM
         {
             if (string.IsNullOrEmpty(VoucherReleaseName))
             {
-                CustomMessageBox.ShowOk("Vui lòng nhập đủ thông tin", "Cảnh báo", "Ok", CustomMessageBoxImage.Warning);
+                CustomMessageBox.ShowOk(IsEnglish?"Please enter enough information!":"Vui lòng nhập đủ thông tin!", IsEnglish ? "Warning":"Cảnh báo", "Ok", CustomMessageBoxImage.Warning);
                 return;
             }
             if (Price >= MinimizeTotal)
             {
-                CustomMessageBox.ShowOk("Mệnh giá voucher phải bé hơn tổng tối thiểu", "Cảnh báo", "Ok", CustomMessageBoxImage.Warning);
+                CustomMessageBox.ShowOk(IsEnglish?"Voucher face value must be less than the minimum total":"Mệnh giá voucher phải bé hơn tổng tối thiểu", IsEnglish ? "Warning" : "Cảnh báo", "Ok", CustomMessageBoxImage.Warning);
                 return;
             }
             if (StartDate > EndDate)
             {
-                CustomMessageBox.ShowOk("Ngày hiệu lực không hợp lệ", "Cảnh báo", "Ok", CustomMessageBoxImage.Warning);
+                CustomMessageBox.ShowOk(IsEnglish?"Invalid effective date":"Ngày hiệu lực không hợp lệ", IsEnglish ? "Warning" : "Cảnh báo", "Ok", CustomMessageBoxImage.Warning);
                 return;
             }
             VoucherReleaseDTO vr = new VoucherReleaseDTO
@@ -207,7 +207,7 @@ namespace CinemaManagementProject.ViewModel.AdminVM.VoucherManagementVM
                 EditInfoPage w = new EditInfoPage();
                 LoadEditInfoViewDataFunc(w);
                 mainFrame.Content = w;
-                CustomMessageBox.ShowOk(addSuccess, "Thông báo", "Ok", CustomMessageBoxImage.Success);
+                CustomMessageBox.ShowOk(addSuccess, IsEnglish?"Notification":"Thông báo", "Ok", CustomMessageBoxImage.Success);
                 ListBigVoucher.Insert(0,newVoucherRelease);
                 try
                 {
@@ -222,17 +222,19 @@ namespace CinemaManagementProject.ViewModel.AdminVM.VoucherManagementVM
                 }
                 catch (System.Data.Entity.Core.EntityException e)
                 {
-                    CustomMessageBox.ShowOk("Mất kết nối cơ sở dữ liệu", "Lỗi", "OK", CustomMessageBoxImage.Error);
+                    CustomMessageBox.ShowOk(IsEnglish ? "Unable to connect to database" : "Mất kết nối cơ sở dữ liệu", IsEnglish ? "Error" : "Lỗi", "OK", CustomMessageBoxImage.Error);
+
                 }
                 catch (Exception e)
                 {
-                    CustomMessageBox.ShowOk("Lỗi hệ thống", "Lỗi", "OK", CustomMessageBoxImage.Error);
+                    CustomMessageBox.ShowOk(IsEnglish ? "System Error" : "Lỗi hệ thống", IsEnglish ? "Error" : "Lỗi", "OK", CustomMessageBoxImage.Error);
+
                 }
 
             }
             else
             {
-                CustomMessageBox.ShowOk(addSuccess, "Lỗi", "OK", CustomMessageBoxImage.Error);
+                CustomMessageBox.ShowOk(addSuccess, IsEnglish ? "Error" : "Lỗi", "OK", CustomMessageBoxImage.Error);
             }
         }
         public async Task SaveMiniVoucherFunc()
@@ -241,7 +243,7 @@ namespace CinemaManagementProject.ViewModel.AdminVM.VoucherManagementVM
             {
                 if (string.IsNullOrEmpty(item.VoucherCode))
                 {
-                    CustomMessageBox.ShowOk("Các trường không được để trống", "Cảnh báo", "Ok", CustomMessageBoxImage.Warning);
+                    CustomMessageBox.ShowOk(IsEnglish?"Fields cannot be left blank":"Các trường không được để trống", IsEnglish ? "Warning" : "Cảnh báo", "Ok", CustomMessageBoxImage.Warning);
                     return;
                 }
             }
@@ -249,7 +251,7 @@ namespace CinemaManagementProject.ViewModel.AdminVM.VoucherManagementVM
             {
                 if (ListMiniVoucher[ListMiniVoucher.Count - 1].VoucherCode == ListMiniVoucher[i].VoucherCode)
                 {
-                    CustomMessageBox.ShowOk("Đã có mã bị trùng", "Cảnh báo", "Ok", CustomMessageBoxImage.Warning);
+                    CustomMessageBox.ShowOk(IsEnglish?"There is a duplicate code":"Đã có mã bị trùng", IsEnglish ? "Warning" : "Cảnh báo", "Ok", CustomMessageBoxImage.Warning);
                     return;
                 }
             }
@@ -258,7 +260,7 @@ namespace CinemaManagementProject.ViewModel.AdminVM.VoucherManagementVM
 
             if (createSuccess)
             {
-;                CustomMessageBox.ShowOk(message, "Thông báo", "Ok", CustomMessageBoxImage.Success);
+;                CustomMessageBox.ShowOk(message, IsEnglish ? "Notification" : "Thông báo", "Ok", CustomMessageBoxImage.Success);
                 if (ListViewVoucher != null) ListViewVoucher = new ObservableCollection<VoucherDTO>(ListViewVoucher.Concat(newListCode));
                 else ListViewVoucher = new ObservableCollection<VoucherDTO>(newListCode);
                 SelectedItem.Vouchers = new ObservableCollection<VoucherDTO>(ListViewVoucher);
@@ -295,11 +297,13 @@ namespace CinemaManagementProject.ViewModel.AdminVM.VoucherManagementVM
                 }
                 catch (System.Data.Entity.Core.EntityException e)
                 {
-                    CustomMessageBox.ShowOk("Mất kết nối cơ sở dữ liệu", "Lỗi", "OK", CustomMessageBoxImage.Error);
+                    CustomMessageBox.ShowOk(IsEnglish ? "Unable to connect to database" : "Mất kết nối cơ sở dữ liệu", IsEnglish ? "Error" : "Lỗi", "OK", CustomMessageBoxImage.Error);
+
                 }
                 catch (Exception e)
                 {
-                    CustomMessageBox.ShowOk("Lỗi hệ thống", "Lỗi", "OK", CustomMessageBoxImage.Error);
+                    CustomMessageBox.ShowOk(IsEnglish ? "System Error" : "Lỗi hệ thống", IsEnglish ? "Error" : "Lỗi", "OK", CustomMessageBoxImage.Error);
+
                 }
                 if (AddVoucherPage.TopCheck !=null && AddVoucherPage.CBB != null)
                 {
@@ -318,21 +322,21 @@ namespace CinemaManagementProject.ViewModel.AdminVM.VoucherManagementVM
             }
             else
             {
-                CustomMessageBox.ShowOk(message, "Lỗi","Ok",CustomMessageBoxImage.Error);
+                CustomMessageBox.ShowOk(message, IsEnglish ? "Error" : "Lỗi", "Ok",CustomMessageBoxImage.Error);
             }
         }
         public async Task SaveListMiniVoucherFunc()
         {
             if (Quantity == 0 || Length == 0 || string.IsNullOrEmpty(FirstChar) || string.IsNullOrEmpty(LastChar))
             {
-                CustomMessageBox.ShowOk("Không được để trống!", "Cảnh báo", "Ok", CustomMessageBoxImage.Warning);
+                CustomMessageBox.ShowOk(IsEnglish?"Can't be left blank!":"Không được để trống!", IsEnglish ? "Warning" : "Cảnh báo", "Ok", CustomMessageBoxImage.Warning);
                 return;
             }
             
             (string error, List<string> listCode) = await Task<(string, List<string>)>.Run(() => Helper.GetListCode(Quantity, Length, FirstChar, LastChar,selectedItem));
             if (error != null)
             {
-                CustomMessageBox.ShowOk(error, "Lỗi", "Ok", CustomMessageBoxImage.Error);
+                CustomMessageBox.ShowOk(error, IsEnglish ? "Error" : "Lỗi", "Ok", CustomMessageBoxImage.Error);
                 return;
             }
 
@@ -342,7 +346,7 @@ namespace CinemaManagementProject.ViewModel.AdminVM.VoucherManagementVM
 
             if (createSuccess)
             {
-                CustomMessageBox.ShowOk(createRandomSuccess, "Thông báo", "Ok", CustomMessageBoxImage.Success);
+                CustomMessageBox.ShowOk(createRandomSuccess, IsEnglish ? "Notification" : "Thông báo", "Ok", CustomMessageBoxImage.Success);
 
                 ListViewVoucher = new ObservableCollection<VoucherDTO>(ListViewVoucher.Concat(newListCode));
 
@@ -386,7 +390,7 @@ namespace CinemaManagementProject.ViewModel.AdminVM.VoucherManagementVM
             }
             else
             {
-                CustomMessageBox.ShowOk(createRandomSuccess, "Lỗi", "Ok", CustomMessageBoxImage.Error);
+                CustomMessageBox.ShowOk(createRandomSuccess, IsEnglish ? "Error" : "Lỗi", "Ok", CustomMessageBoxImage.Error);
             }
         }
 
@@ -425,13 +429,13 @@ namespace CinemaManagementProject.ViewModel.AdminVM.VoucherManagementVM
             }
             catch (System.Data.Entity.Core.EntityException e)
             {
-                Console.WriteLine(e);
-                CustomMessageBox.ShowOk("Mất kết nối cơ sở dữ liệu", "Lỗi", "OK", CustomMessageBoxImage.Error);
+                CustomMessageBox.ShowOk(IsEnglish ? "Unable to connect to database" : "Mất kết nối cơ sở dữ liệu", IsEnglish ? "Error" : "Lỗi", "OK", CustomMessageBoxImage.Error);
+
             }
             catch (Exception e)
             {
-                Console.WriteLine(e);
-                CustomMessageBox.ShowOk("Lỗi hệ thống", "Lỗi", "OK", CustomMessageBoxImage.Error);
+                CustomMessageBox.ShowOk(IsEnglish ? "System Error" : "Lỗi hệ thống", IsEnglish ? "Error" : "Lỗi", "OK", CustomMessageBoxImage.Error);
+
             }
         }
 
