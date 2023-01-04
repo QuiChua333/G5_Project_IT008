@@ -80,6 +80,7 @@ namespace CinemaManagementProject.ViewModel.LoginVM
             }
         }
 
+        public bool isEN = Properties.Settings.Default.isEnglish;
         public static Frame MainFrame { get; set; }
         public ICommand LoadLoginPageCM { get; set; }
         public ICommand LoadForgotPageCM { get; set; }
@@ -152,7 +153,7 @@ namespace CinemaManagementProject.ViewModel.LoginVM
         {
             if (string.IsNullOrEmpty(userNameOrEmail) || string.IsNullOrEmpty(passWord))
             {
-                lableError.Content = "Vui lòng nhập đủ thông tin";
+                lableError.Content = isEN? "Please enter enough information" : "Vui lòng nhập đủ thông tin";
                 return;
             }
 
