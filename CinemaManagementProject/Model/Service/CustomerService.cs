@@ -213,7 +213,7 @@ namespace CinemaManagementProject.Model.Service
 
                     if (isExistPhone)
                     {
-                        return (false, "Số điện thoại này đã tồn tại");
+                        return (false, Properties.Settings.Default.isEnglish == false? "Số điện thoại này đã tồn tại": "This phone number already exists");
                     }
 
                     if (!string.IsNullOrEmpty(updatedCus.Email))
@@ -221,7 +221,7 @@ namespace CinemaManagementProject.Model.Service
                         bool isExistEmail = await context.Customers.AnyAsync(c => c.Id != updatedCus.Id && c.Email == updatedCus.Email);
                         if (isExistEmail)
                         {
-                            return (false, "Email này đã tồn tại");
+                            return (false, Properties.Settings.Default.isEnglish == false ? "Email này đã tồn tại": "This email already exists");
                         }
                     }
                     var cus = await context.Customers.FindAsync(updatedCus.Id);
@@ -231,12 +231,12 @@ namespace CinemaManagementProject.Model.Service
                     cus.Email = updatedCus.Email;
 
                     await context.SaveChangesAsync();
-                    return (true, "Cập nhật thành công");
+                    return (true, Properties.Settings.Default.isEnglish == false ? "Cập nhật thành công" : "Update successful");
                 }
             }
             catch (Exception)
             {
-                return (false, "Lỗi hệ thống");
+                return (false, Properties.Settings.Default.isEnglish == false ? "Lỗi hệ thống": "System error");
             }
         }
 
@@ -249,17 +249,17 @@ namespace CinemaManagementProject.Model.Service
                     var cus = await context.Customers.FindAsync(id);
                     if (cus is null || (bool)cus.IsDeleted)
                     {
-                        return (false, "Khách hàng không tồn tại!");
+                        return (false, Properties.Settings.Default.isEnglish == false ? "Khách hàng không tồn tại!": "Customer does not exist!");
                     }
 
                     cus.IsDeleted = true;
                     await context.SaveChangesAsync();
-                    return (true, "Xóa thành công");
+                    return (true, Properties.Settings.Default.isEnglish == false ? "Xóa thành công": "Delete Successful");
                 }
             }
             catch (Exception)
             {
-                return (false, "Lỗi hệ thống");
+                return (false, Properties.Settings.Default.isEnglish == false ? "Lỗi hệ thống" : "System error");
             }
         }
       

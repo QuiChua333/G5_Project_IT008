@@ -8,7 +8,7 @@
         xmlns:i="http://schemas.microsoft.com/xaml/behaviors"   
         mc:Ignorable="d"
         Title="EditStaffWindow" 
-        Height="500" Width="500"
+        Height="520" Width="520"
         WindowStyle="none" 
         Name="SuaNV"   
         DataContext="{StaticResource StaffManagementVM}"
@@ -40,7 +40,7 @@
     <Border Background="White" 
             CornerRadius="20"
             BorderBrush="DarkGray"
-            BorderThickness="1">
+            BorderThickness="1" Height="500" Width="500">
         <Border.Effect>
             <DropShadowEffect
                                 BlurRadius="10"
@@ -161,8 +161,8 @@
                                 Height="40"
                                 x:Name="Gender"
                                 SelectedItem="{Binding Gender, Mode=TwoWay}">
-                        <ComboBoxItem Content="Nam" />
-                        <ComboBoxItem Content="Nữ" />
+                        <ComboBoxItem Tag="Nam" Content="{DynamicResource AddStaffWindow_TextBlock_Nam}"/>
+                        <ComboBoxItem Tag="Nữ" Content="{DynamicResource AddStaffWindow_TextBlock_Nu}"/>
                     </ComboBox>
                 </Grid>
                 <Grid Grid.Row="3" 
@@ -238,8 +238,8 @@
                                 FontFamily="{StaticResource MaterialDesignFont}"
                                 FontSize="15"
                                 SelectedItem="{Binding Role,Mode=TwoWay}">
-                        <ComboBoxItem Content="Quản lý" />
-                        <ComboBoxItem Content="Nhân viên" />
+                        <ComboBoxItem Tag="Quản lý" Content="{DynamicResource AddStaffWindow_TextBlock_Quanly}"/>
+                        <ComboBoxItem Tag="Nhân viên" Content="{DynamicResource AddStaffWindow_TextBlock_Nhanvien}"/>
                     </ComboBox>
                 </Grid>
                 <Grid Grid.Row="7" 

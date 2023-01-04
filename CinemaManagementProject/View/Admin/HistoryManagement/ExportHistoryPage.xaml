@@ -115,7 +115,7 @@
                                     Margin="20, 17, 0, 17"
                                     Background="White"
                                     Height="46"
-                                    Width="125"
+                                    Width="160"
                                     BorderBrush="Black">
                                 <Border.Effect>
                                     <DropShadowEffect
@@ -126,12 +126,13 @@
                                         Direction="270"/>
                                 </Border.Effect>
                                 <ComboBox   SelectedValuePath="Tag"
-                                            SelectedIndex="0"
+                                            SelectedIndex="1"
                                             x:Name="cbbFilter"
                                             BorderThickness="0"
                                             Style="{StaticResource styleButton}" 
                                             Margin="0,0,0,0"
-                                            Padding="15 14 15 13" >
+                                            Padding="15 14 15 13" 
+                                            Background="Transparent">
 
                                     <ComboBoxItem Content="{DynamicResource ExportHistoryPage_ComboboxItem_Madon}"  Tag="Mã đơn"/>
                                     <ComboBoxItem Content="{DynamicResource ExportHistoryPage_ComboboxItem_Khachhang}" Tag="Khách hàng" />
@@ -159,6 +160,7 @@
                                             Padding="15 14 15 13"
                                             x:Name="Filterbox"
                                             BorderThickness="0"
+                                            Background="Transparent"
                                             SelectedItem="{Binding SelectedItemFilter}"
                                             SelectionChanged="ComboBox_SelectionChanged_1" 
                                             VerticalAlignment="Top">
@@ -222,6 +224,7 @@
                                                 Padding="0,10,10,0"
                                                 BorderThickness="0"
                                                 Visibility="Visible"
+                                                Background="Transparent"
                                                 x:Name="timepicker"
                                                 SelectedDate="{Binding SelectedDate,Mode=TwoWay}">
                                         <i:Interaction.Triggers>
@@ -302,7 +305,7 @@
                             </i:Interaction.Triggers>
                             <ListView.View >
                                 <GridView  >
-                                    <GridViewColumn  Width="112">
+                                    <GridViewColumn  Width="111">
                                         <GridViewColumn.Header>
                                             <TextBlock Text="{DynamicResource ExportHistoryPage_ListviewHeader_Madon}"
                                                        FontSize="14" 
@@ -319,7 +322,7 @@
                                         </GridViewColumn.CellTemplate>
                                     </GridViewColumn>
                                     <GridViewColumn 
-                                                    Width="160" >
+                                                    Width="150" >
                                         <GridViewColumn.Header>
                                             <TextBlock Text="{DynamicResource ExportHistoryPage_ListviewHeader_Ngayxuat}"
                                                        FontSize="14" 
@@ -336,7 +339,7 @@
                                         </GridViewColumn.CellTemplate>
                                     </GridViewColumn>
                                     <GridViewColumn  
-                                                    Width="160"  >
+                                                    Width="170"  >
                                         <GridViewColumn.Header>
                                             <TextBlock Text="{DynamicResource ExportHistoryPage_ListviewHeader_Khachhang}"
                                                        FontSize="14" 
@@ -353,7 +356,7 @@
                                         </GridViewColumn.CellTemplate>
                                     </GridViewColumn>
                                     <GridViewColumn 
-                                                    Width="170">
+                                                    Width="165">
                                         <GridViewColumn.Header>
                                             <TextBlock Text="{DynamicResource ExportHistoryPage_ListviewHeader_Sodienthoai}"
                                                        FontSize="14" 

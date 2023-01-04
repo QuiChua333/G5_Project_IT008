@@ -29,7 +29,7 @@
 
     <Grid HorizontalAlignment="Stretch"
              VerticalAlignment="Stretch"
-             Margin="20 -50 20 20">
+             Margin="20 -30 20 20">
         <Grid.RowDefinitions>
             <RowDefinition Height="50"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
@@ -38,7 +38,7 @@
                     HorizontalAlignment="Left" 
                     Grid.Row="0">
             <RadioButton    Style="{StaticResource MaterialDesignTabRadioButtonTop}"
-                            BorderBrush="Blue"
+                            BorderBrush="Pink"
                             VerticalAlignment="Top"
                             Height="40"
                             FontFamily="{StaticResource MaterialDesignFont}"
@@ -50,7 +50,7 @@
                             CommandParameter="{Binding ElementName=MainListViewFrame}"
                             Margin="20,5,0,0"/>
             <RadioButton    Style="{StaticResource MaterialDesignTabRadioButtonTop}"
-                            BorderBrush="Blue"
+                            BorderBrush="Pink"
                             VerticalAlignment="Top"
                             Cursor="Hand"
                             Height="40"

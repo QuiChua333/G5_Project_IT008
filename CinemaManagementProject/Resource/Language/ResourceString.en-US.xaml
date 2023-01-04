@@ -578,6 +578,10 @@
     <system:String x:Key="AddStaffWindow_TextBlock_Taikhoan">Account:</system:String>
     <system:String x:Key="AddStaffWindow_TextBlock_Matkhau">Password:</system:String>
     <system:String x:Key="AddStaffWindow_TextBlock_Nhaplaimatkhau">Re-enter password:</system:String>
+    <system:String x:Key="AddStaffWindow_TextBlock_Nam">Male</system:String>
+    <system:String x:Key="AddStaffWindow_TextBlock_Nu">Female</system:String>
+    <system:String x:Key="AddStaffWindow_TextBlock_Quanly">Manager</system:String>
+    <system:String x:Key="AddStaffWindow_TextBlock_Nhanvien">Staff</system:String>
     <system:String x:Key="AddStaffWindow_button_Huy">Cancel</system:String>
     <system:String x:Key="AddStaffWindow_button_Luu">Confirm</system:String>
     <system:String x:Key="TroubleManagementPage_search_Timkiem">Search</system:String>
@@ -644,6 +648,8 @@
     <system:String x:Key="EditTroubleWindow_Label_Trangthai">Status:</system:String>
     <system:String x:Key="EditTroubleWindow_Label_Chotiepnhan">Waiting</system:String>
     <system:String x:Key="EditTroubleWindow_Label_Ngaybaocao">Report date</system:String>
+    <system:String x:Key="EditTroubleWindow_Label_binhthuong">Normal</system:String>
+    <system:String x:Key="EditTroubleWindow_Label_Nghiemtrong">Serious</system:String>
     <system:String x:Key="EditTroubleWindow_Label_Mucdo">Level:</system:String>
     <system:String x:Key="EditTroubleWindow_Label_Mota">Description</system:String>
     <system:String x:Key="EditTroubleWindow_Label_Motaloi">Description trouble</system:String>

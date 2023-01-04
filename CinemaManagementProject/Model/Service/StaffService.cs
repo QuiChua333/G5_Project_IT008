@@ -106,11 +106,11 @@ namespace CinemaManagementProject.Model.Service
 
                     if (PhoneNumberIsExist)
                     {
-                        return (false, "Số điện thoại đã tồn tại!", null);
+                        return (false, Properties.Settings.Default.isEnglish == false ? "Số điện thoại đã tồn tại!": "Phone number already exists!", null);
                     }
                     if (usernameIsExist)
                     {
-                        return (false, "Tài khoản đã tồn tại!", null);
+                        return (false, Properties.Settings.Default.isEnglish == false ? "Tài khoản đã tồn tại!": "Account already exists!", null);
                     }
 
                     if (newStaff.Email != null)
@@ -118,7 +118,7 @@ namespace CinemaManagementProject.Model.Service
                         bool emailIsExist = await context.Staffs.AnyAsync(s => s.Email == newStaff.Email);
                         if (emailIsExist)
                         {
-                            return (false, "Email đã được đăng kí!", null);
+                            return (false, Properties.Settings.Default.isEnglish == false ? "Email đã được đăng kí!": "The Email was registered!", null);
                         }
                     }
 
@@ -134,13 +134,13 @@ namespace CinemaManagementProject.Model.Service
             }
             catch (System.Data.Entity.Core.EntityException)
             {
-                return (false, "Mất kết nối cơ sở dữ liệu", null);
+                return (false, Properties.Settings.Default.isEnglish == false ? "Mất kết nối cơ sở dữ liệu": "Unable to connect to database", null);
             }
             catch (Exception e)
             {
                 return (false, /*"Lỗi hệ thống"*/ e.Message, null);
             }
-            return (true, "Thêm nhân viên mới thành công", newStaff);
+            return (true, Properties.Settings.Default.isEnglish == false ? "Thêm nhân viên mới thành công": "Add New Employee Successfully", newStaff);
         }
         private Staff Copy(StaffDTO s)
         {
@@ -168,7 +168,7 @@ namespace CinemaManagementProject.Model.Service
 
                     if (usernameIsExist)
                     {
-                        return (false, "Tài khoản đăng nhập đã tồn tại");
+                        return (false, Properties.Settings.Default.isEnglish == false ? "Tài khoản đăng nhập đã tồn tại" : "Account already exists!" );
                     }
 
                     if (updatedStaff.Email != null)
@@ -176,7 +176,7 @@ namespace CinemaManagementProject.Model.Service
                         bool emailIsExist = await context.Staffs.AnyAsync(s => s.Email == updatedStaff.Email && s.Id != updatedStaff.Id);
                         if (emailIsExist)
                         {
-                            return (false, "Email đã được đăng kí!");
+                            return (false, Properties.Settings.Default.isEnglish == false ? "Email đã được đăng kí!" : "The Email was registered!");
                         }
                     }
 
@@ -184,13 +184,13 @@ namespace CinemaManagementProject.Model.Service
 
                     if (PhoneNumberIsExist)
                     {
-                        return (false, "Số điện thoại đã tồn tại!");
+                        return (false, Properties.Settings.Default.isEnglish == false ? "Số điện thoại đã tồn tại!": "Phone number already exists!");
                     }
 
                     Staff staff = await context.Staffs.FindAsync(updatedStaff.Id);
                     if (staff == null)
                     {
-                        return (false, "Nhân viên không tồn tại");
+                        return (false, Properties.Settings.Default.isEnglish == false ? "Nhân viên không tồn tại": "Staff does not exist");
                     }
 
                     staff.DateOfBirth = updatedStaff.DateOfBirth;
@@ -208,14 +208,14 @@ namespace CinemaManagementProject.Model.Service
             }
             catch (System.Data.Entity.Core.EntityException)
             {
-                return (false, "Mất kết nối cơ sở dữ liệu");
+                return (false, Properties.Settings.Default.isEnglish == false ? "Mất kết nối cơ sở dữ liệu" : "Unable to connect to database");
             }
             catch (Exception e)
             {
                 Console.WriteLine(e);
                 return (false, "Error Server");
             }
-            return (true, "Cập nhật thành công");
+            return (true, Properties.Settings.Default.isEnglish == false ? "Cập nhật thành công": "Update successful");
 
         }
 
@@ -228,7 +228,7 @@ namespace CinemaManagementProject.Model.Service
                     Staff staff = await context.Staffs.FindAsync(StaffId);
                     if (staff is null)
                     {
-                        return (false, "Tài khoản không tồn tại");
+                        return (false, Properties.Settings.Default.isEnglish == false ? "Tài khoản không tồn tại": "Account does not exist");
                     }
 
                     //staff.UserPass = Helper.MD5Hash(newPassword);
@@ -237,14 +237,14 @@ namespace CinemaManagementProject.Model.Service
             }
             catch (System.Data.Entity.Core.EntityException)
             {
-                return (false, "Mất kết nối cơ sở dữ liệu");
+                return (false, Properties.Settings.Default.isEnglish == false ? "Mất kết nối cơ sở dữ liệu" : "Unable to connect to database");
             }
             catch (Exception e)
             {
                 Console.WriteLine(e);
-                return (false, "Lỗi hệ thống");
+                return (false, Properties.Settings.Default.isEnglish == false ? "Lỗi hệ thống": "System error");
             }
-            return (true, "Cập nhật mật khẩu thành công");
+            return (true, Properties.Settings.Default.isEnglish == false ? "Cập nhật mật khẩu thành công": "Password update successful");
 
         }
         public async Task<(bool, string)> DeleteStaff(string Id)
@@ -258,7 +258,7 @@ namespace CinemaManagementProject.Model.Service
                                          select p).FirstOrDefaultAsync();
                     if (staff is null || staff?.IsDeleted == true)
                     {
-                        return (false, "Nhân viên không tồn tại!");
+                        return (false, Properties.Settings.Default.isEnglish == false ? "Nhân viên không tồn tại" : "Staff does not exist");
                     }
                     staff.IsDeleted = true;
                     staff.UserName = null;
@@ -269,13 +269,13 @@ namespace CinemaManagementProject.Model.Service
             }
             catch (System.Data.Entity.Core.EntityException)
             {
-                return (false, "Mất kết nối cơ sở dữ liệu");
+                return (false, Properties.Settings.Default.isEnglish == false ? "Mất kết nối cơ sở dữ liệu" : "Unable to connect to database");
             }
             catch (Exception)
             {
-                return (false, $"Lỗi hệ thống.");
+                return (false, Properties.Settings.Default.isEnglish == false ? "Lỗi hệ thống" : "System error");
             }
-            return (true, "Xóa nhân viên thành công");
+            return (true, Properties.Settings.Default.isEnglish == false ? "Xóa nhân viên thành công": "Delete employee successfully");
         }
 
         /// <summary>
@@ -294,12 +294,12 @@ namespace CinemaManagementProject.Model.Service
                                    select p).FirstOrDefault();
                     if (staff is null || staff?.IsDeleted == true)
                     {
-                        return ("Tài khoản đăng nhập không tồn tại!", null, null);
+                        return (Properties.Settings.Default.isEnglish == false ? "Tài khoản không tồn tại" : "Account does not exist", null, null);
                     }
 
                     if (staff.Email is null)
                     {
-                        return ("Tài khoản chưa đăng kí email. Vui lòng liên hệ quản lý để được hỗ trợ", null, null);
+                        return (Properties.Settings.Default.isEnglish == false ? "Tài khoản chưa đăng kí email. Vui lòng liên hệ quản lý để được hỗ trợ": "The account has not registered email. Please contact the manager for support", null, null);
                     }
 
                     return (null, staff.Email, staff.Id.ToString());
@@ -307,7 +307,7 @@ namespace CinemaManagementProject.Model.Service
             }
             catch (Exception)
             {
-                return ($"Lỗi hệ thống.", null, null);
+                return (Properties.Settings.Default.isEnglish == false ? "Lỗi hệ thống" : "System error", null, null);
             }
         }
 
