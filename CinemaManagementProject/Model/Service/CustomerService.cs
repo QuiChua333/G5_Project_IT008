@@ -44,7 +44,7 @@ namespace CinemaManagementProject.Model.Service
                                         Email = s.Email,
                                         PhoneNumber = s.PhoneNumber,
                                         FirstDate = (DateTime)s.FirstDate,
-                                        //Expense = (float)s.Bills.Sum(b => b.TotalPrize)
+                                        Expense = (float)s.Bills.Sum(b => b.TotalPrize)
                                     }).ToList();
                 }
             }
