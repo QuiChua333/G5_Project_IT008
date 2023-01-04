@@ -21,7 +21,7 @@ namespace CinemaManagementProject.ViewModel.StaffVM.TicketVM
         public static FilmDTO tempFilm;
         public static string showTimeRoom;
         public static List<Label> listlabel = new List<Label>();
-
+        public static bool IsEnglish = false;
 
         public ICommand SelectedSeatCM { get; set; }
         public ICommand LoadStatusSeatCM { get; set; }

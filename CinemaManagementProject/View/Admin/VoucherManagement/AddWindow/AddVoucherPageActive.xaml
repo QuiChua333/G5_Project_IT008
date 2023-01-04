@@ -70,7 +70,7 @@
                         <Search:Search Width="200"                                         
                                            Height="30"
                                            Corner="10"
-                                           PlaceHolder="Tìm Kiếm"
+                                           PlaceHolder="Search"
                                            IconSize="20"
                                            Margin="0,0,0,5"
                                        x:Name="SearchBox"
