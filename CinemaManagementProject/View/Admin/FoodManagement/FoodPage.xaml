@@ -40,13 +40,14 @@
         </Grid.RowDefinitions>
         <Rectangle
             x:Name="FoodPageView"
-            Fill="#F3F5F7"
+            Fill="White"
             Grid.Row="0"
             Grid.Column="0"
             Grid.RowSpan="2"
             RadiusX="20"
             RadiusY="20" 
             Grid.ColumnSpan="2"
+            Opacity="0.5"
         />
         <!--Header-->
         <StackPanel Orientation="Horizontal" Grid.ColumnSpan="2">
@@ -79,9 +80,9 @@
                     </Rectangle>
                     <Image Source="{StaticResource IconFilter}" Width="20" Height="20"></Image>
                     <ComboBox x:Name="FilterCombobox" SelectedItem="{Binding SelectedItemFilter}" SelectedIndex="0" Foreground="Black" Grid.Column="1" Background="Transparent" VerticalAlignment="Center" FontSize="16" FontWeight="Medium" Margin="0,0,10,0" SelectionChanged="FilterCombobox_SelectionChanged" >
-                        <ComboBoxItem FontWeight="Regular" Content="{DynamicResource food_comboboxItem_TatCa}"></ComboBoxItem>
-                        <ComboBoxItem FontWeight="Regular" Content="{DynamicResource food_comboboxItem_DoAn}"></ComboBoxItem>
-                        <ComboBoxItem FontWeight="Regular" Content="{DynamicResource food_comboboxItem_NuocUong}"></ComboBoxItem>
+                        <ComboBoxItem FontWeight="Regular" Tag="Tất cả" Content="{DynamicResource food_comboboxItem_TatCa}"></ComboBoxItem>
+                        <ComboBoxItem FontWeight="Regular" Tag="Đồ ăn" Content="{DynamicResource food_comboboxItem_DoAn}"></ComboBoxItem>
+                        <ComboBoxItem FontWeight="Regular" Tag="Nước uống" Content="{DynamicResource food_comboboxItem_NuocUong}"></ComboBoxItem>
                     </ComboBox>
                 </Grid>
             </Grid>

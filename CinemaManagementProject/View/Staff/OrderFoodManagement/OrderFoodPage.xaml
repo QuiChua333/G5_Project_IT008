@@ -41,13 +41,14 @@
         </Grid.RowDefinitions>
         <Rectangle 
             x:Name="FoodPageView"
-            Fill="#F3F5F7"
+            Fill="White"
             Grid.Row="0"
             Grid.Column="0"
             Grid.RowSpan="2"
             RadiusX="20"
             RadiusY="20" 
             Grid.ColumnSpan="2"
+            Opacity="0.5"
         />
         
         <Grid x:Name="Header_ThanhToan" Grid.Row="0" Grid.Column="1">
@@ -100,7 +101,7 @@
                         <Style TargetType="{x:Type ListBoxItem}">
                             <Setter Property="Background" Value="Transparent"/>
                             <Setter Property="Height" Value="105"/>
-                            <Setter Property="Margin" Value="0, 2, 0, 0"/>
+                            <Setter Property="Margin" Value="10,2,10,0"/>
                             <Setter Property="Template">
                                 <Setter.Value>
                                     <ControlTemplate TargetType="{x:Type ListBoxItem}">
@@ -124,7 +125,7 @@
                     <ListBox.ItemTemplate>
                         <DataTemplate>
                             <Grid>
-                                <Grid Height="98" Margin="0,5,0,0" Width="300">
+                                <Grid Height="98" Margin="10,5,10,0" HorizontalAlignment="Stretch">
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="*"></ColumnDefinition>
                                         <ColumnDefinition Width="2.3*"></ColumnDefinition>
@@ -229,6 +230,13 @@
                                             </Grid>
                                         </Grid>
                                     </Grid>
+                                    <Border x:Name="DeleteElement" Cursor="Hand" Width="20" Height="20" Background="White" CornerRadius="20" Grid.ColumnSpan="2" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,10,10,0">
+                                        <Border.InputBindings>
+                                            <MouseBinding Command="{Binding ElementName=BillStack, Path=DataContext.DeleteItemInBillStackCM}"
+                                                                  MouseAction="LeftClick" />
+                                        </Border.InputBindings>
+                                        <materialDesign:PackIcon Kind="Minimize" Width="20" Height="20"/>
+                                    </Border>
                                 </Grid>
                             </Grid>
                         </DataTemplate>
@@ -352,9 +360,9 @@
                         </Rectangle>
                         <Image Source="{StaticResource IconFilter}" Width="20" Height="20"></Image>
                         <ComboBox x:Name="FilterCombobox" SelectedItem="{Binding SelectedItemFilter}" SelectedIndex="0" Foreground="Black" Grid.Column="1" Background="Transparent" VerticalAlignment="Center" FontSize="16" FontWeight="Medium" Margin="0,0,10,0" SelectionChanged="FilterCombobox_SelectionChanged" >
-                            <ComboBoxItem FontWeight="Regular" Content="{DynamicResource orderfood_comboboxItem_TatCa}"></ComboBoxItem>
-                            <ComboBoxItem FontWeight="Regular" Content="{DynamicResource orderfood_comboboxItem_DoAn}"></ComboBoxItem>
-                            <ComboBoxItem FontWeight="Regular" Content="{DynamicResource orderfood_comboboxItem_NuocUong}"></ComboBoxItem>
+                            <ComboBoxItem FontWeight="Regular" Tag="Tất cả" Content="{DynamicResource orderfood_comboboxItem_TatCa}"></ComboBoxItem>
+                            <ComboBoxItem FontWeight="Regular" Tag="Đồ ăn" Content="{DynamicResource orderfood_comboboxItem_DoAn}"></ComboBoxItem>
+                            <ComboBoxItem FontWeight="Regular" Tag="Nước uống" Content="{DynamicResource orderfood_comboboxItem_NuocUong}"></ComboBoxItem>
                         </ComboBox>
                     </Grid>
                 </Grid>

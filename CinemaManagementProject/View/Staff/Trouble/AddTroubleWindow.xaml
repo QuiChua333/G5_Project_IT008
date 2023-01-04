@@ -11,9 +11,9 @@
         TextOptions.TextRenderingMode="Auto"
         Background="Transparent"
         FontFamily="{DynamicResource MaterialDesignFont}"
-        Height="400"
+        Height="420"
         DataContext="{StaticResource TroublePageVM}"        
-        Width="800"
+        Width="820"
         WindowStartupLocation="CenterScreen"
         WindowStyle="None"
         MouseDown="Window_MouseDown"        
@@ -30,7 +30,7 @@
     <Border Background="White"
             BorderBrush="DarkGray"
             BorderThickness="1"
-            CornerRadius="20">
+            CornerRadius="20" Width="800" Height="400">
         <Border.Effect>
             <DropShadowEffect
                     BlurRadius="10"
@@ -226,8 +226,8 @@
                                           VerticalContentAlignment="Bottom"
                                           SelectedIndex="0"
                                           SelectedItem="{Binding Level,Mode=OneWayToSource}" Width="120">
-                                    <ComboBoxItem>Bình thường</ComboBoxItem>
-                                    <ComboBoxItem>Nghiêm trọng</ComboBoxItem>
+                                    <ComboBoxItem Tag="Bình thường" Content="{DynamicResource EditTroubleWindow_Label_binhthuong}"></ComboBoxItem>
+                                    <ComboBoxItem Tag="Nghiêm trọng" Content="{DynamicResource EditTroubleWindow_Label_Nghiemtrong}"></ComboBoxItem>
                                 </ComboBox>
                             </StackPanel>
                         </StackPanel>

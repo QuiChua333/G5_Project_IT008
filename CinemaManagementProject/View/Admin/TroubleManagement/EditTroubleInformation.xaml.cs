@@ -34,13 +34,13 @@ namespace CinemaManagementProject.View.Admin.TroubleManagement
         {
             ComboBox cbb = sender as ComboBox;
 
-            if (cbb.SelectedValue.ToString() == "Đã hủy")
+            if (cbb.SelectedIndex == 2)
             {
                 _Finishday.Visibility = Visibility.Collapsed;
                 _startday.Visibility = Visibility.Collapsed;
                 _cost.Visibility = Visibility.Collapsed;
             }
-            else if (cbb.SelectedValue.ToString() == "Đang giải quyết")
+            else if (cbb.SelectedIndex == 0)
             {
                 _startday.IsEnabled = true;
                 _cost.IsEnabled = false;
@@ -50,7 +50,7 @@ namespace CinemaManagementProject.View.Admin.TroubleManagement
                 _startday.Visibility = Visibility.Visible;
                 _cost.Visibility = Visibility.Collapsed;
             }
-            else if (cbb.SelectedValue.ToString() == "Đã giải quyết")
+            else if (cbb.SelectedIndex == 1)
         {
                 _startday.IsEnabled = false;
                 start.SelectedDate = System.DateTime.Today;

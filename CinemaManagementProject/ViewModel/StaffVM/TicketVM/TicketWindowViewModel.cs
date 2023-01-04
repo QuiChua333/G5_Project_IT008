@@ -39,6 +39,7 @@ namespace CinemaManagementProject.ViewModel.StaffVM.TicketVM
                 Output_ToString();
                 ReCalculate();
                 seatQuantity = ListSeat.Count.ToString();
+                currChoose = 0;
             });
             CloseTicketWindowCM = new RelayCommand<FrameworkElement>((p) => { return p == null ? false : true; }, (p) =>
             {

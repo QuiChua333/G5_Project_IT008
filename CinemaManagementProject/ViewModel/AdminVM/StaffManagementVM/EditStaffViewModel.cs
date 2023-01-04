@@ -1,5 +1,6 @@
 ﻿using CinemaManagementProject.DTOs;
 using CinemaManagementProject.Model.Service;
+using CinemaManagementProject.Views;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,7 +26,10 @@ namespace CinemaManagementProject.ViewModel.AdminVM.StaffManagementVM
                 {
                     if (!Utils.RegexUtilities.IsValidEmail(Mail))
                     {
-                        CustomMessageBox.ShowOk("Email không hợp lệ", "Cảnh báo", "OK", Views.CustomMessageBoxImage.Warning);
+                        if (Properties.Settings.Default.isEnglish == false)
+                            CustomMessageBox.ShowOk("Email không hợp lệ", "Cảnh báo", "OK", Views.CustomMessageBoxImage.Warning);
+                        else CustomMessageBox.ShowOk("Invalid email", "Warning", "OK", Views.CustomMessageBoxImage.Warning);
+
                         return;
                     }
                 }
@@ -37,10 +41,10 @@ namespace CinemaManagementProject.ViewModel.AdminVM.StaffManagementVM
                 StaffDTO staff = new StaffDTO();
                 staff.Id = SelectedItem.Id;
                 staff.StaffName = Fullname;
-                staff.Gender = Gender.Content.ToString();
+                staff.Gender = Gender.Tag.ToString();
                 staff.DateOfBirth = Born;
                 staff.PhoneNumber = Phone;
-                staff.Position = Role.Content.ToString();
+                staff.Position = Role.Tag.ToString();
                 staff.StartDate = StartDate;
                 staff.UserName = TaiKhoan;
                 staff.Email = Mail;
@@ -50,16 +54,16 @@ namespace CinemaManagementProject.ViewModel.AdminVM.StaffManagementVM
                 {
                     LoadStaffListView(Utils.Operation.UPDATE, staff);
                     p.Close();
-                    CustomMessageBox.ShowOk(messageFromUpdateStaff, "Thông báo", "OK", Views.CustomMessageBoxImage.Success);
+                    CustomMessageBox.ShowOk(messageFromUpdateStaff, Properties.Settings.Default.isEnglish == false ? "Thông báo" : "Notify", "OK", Views.CustomMessageBoxImage.Success);
                 }
                 else
                 {
-                    CustomMessageBox.ShowOk(messageFromUpdateStaff, "Lỗi", "OK", Views.CustomMessageBoxImage.Error);
+                    CustomMessageBox.ShowOk(messageFromUpdateStaff, Properties.Settings.Default.isEnglish == false ? "Lỗi" : "Error", "OK", Views.CustomMessageBoxImage.Error);
                 }
             }
             else
             {
-                CustomMessageBox.ShowOk(error, "Cảnh báo", "OK", Views.CustomMessageBoxImage.Warning);
+                CustomMessageBox.ShowOk(error, Properties.Settings.Default.isEnglish == false ? "Cảnh báo" : "Warning", "OK", Views.CustomMessageBoxImage.Warning);
             }
         }
     }

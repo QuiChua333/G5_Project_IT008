@@ -114,7 +114,7 @@
                                     Margin="20, 17, 0, 17"
                                     Background="White"
                                     Height="46"
-                                    Width="130"
+                                    Width="145"
                                     BorderBrush="Black">
                                 <Border.Effect>
                                     <DropShadowEffect
@@ -126,6 +126,7 @@
                                 </Border.Effect>
                                 <ComboBox   SelectedValuePath="Tag"
                                             SelectedIndex="0"
+                                            Background="Transparent"
                                             BorderThickness="0"
                                             Style="{StaticResource styleButton}" 
                                             Margin="0,0,0,-3"                            
@@ -154,6 +155,7 @@
                                             BorderThickness="0"
                                             Style="{StaticResource styleButton}" 
                                             Margin="0,0,0,-3"
+                                            Background="Transparent"
                                             x:Name="filtercbb"                            
                                             SelectedItem="{Binding SelectedImportItemFilter}"
                                             SelectionChanged="ComboBox_SelectionChanged_1">
@@ -188,6 +190,7 @@
                                           Margin="10 0 0 5"
                                           Padding="0,10,10,0"
                                           FontSize="15"
+                                          Background="Transparent"
                                           x:Name="cbbmonth"
                                           SelectedIndex="{Binding SelectedImportMonth,Mode=TwoWay}">
                                     <i:Interaction.Triggers>

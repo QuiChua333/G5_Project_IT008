@@ -10,6 +10,7 @@ using System.Windows.Input;
 using System.Windows;
 using CinemaManagementProject.View.Staff.Trouble;
 using CinemaManagementProject.Utils;
+using CinemaManagementProject.Views;
 
 namespace CinemaManagementProject.ViewModel.StaffVM.TroubleStaffVM
 {
@@ -32,7 +33,17 @@ namespace CinemaManagementProject.ViewModel.StaffVM.TroubleStaffVM
             w1.staffName.Text = SelectedItem.StaffName;
             w1.cbxStatusError.Text = SelectedItem.TroubleStatus;
             w1.submitdate.Text =( (DateTime)SelectedItem.SubmittedAt).ToShortDateString();
-            Level.Content = SelectedItem.Level;
+            if (Properties.Settings.Default.isEnglish == false)
+            {
+                if (SelectedItem.Level == "Bình thường") w1.cbblevel.Text = "Bình thường";
+                if (SelectedItem.Level == "Nghiêm trọng") w1.cbblevel.Text = "Nghiêm trọng";
+            }
+            else
+            {
+                if (SelectedItem.Level == "Bình thường") w1.cbblevel.Text = "Normal";
+                if (SelectedItem.Level == "Nghiêm trọng") w1.cbblevel.Text = "Serious";
+            }
+
             Description = SelectedItem.Description;
             TroubleID = SelectedItem.Id;
 
@@ -47,7 +58,7 @@ namespace CinemaManagementProject.ViewModel.StaffVM.TroubleStaffVM
                 {
                     Id = TroubleID,
                     TroubleType = TroubleType,
-                    Level = Level.Content.ToString(),
+                    Level = Level.Tag.ToString(),
                     Description = Description,
                     StaffId = StaffVM.currentStaff.Id,
                 };
@@ -64,7 +75,9 @@ namespace CinemaManagementProject.ViewModel.StaffVM.TroubleStaffVM
 
                     if (tb.Image is null)
                     {
-                        CustomMessageBox.ShowOk("Lỗi phát sinh trong quá trình lưu ảnh. Vui lòng thử lại", "Thông báo","OK",Views.CustomMessageBoxImage.Error);
+                        if (Properties.Settings.Default.isEnglish == false)
+                            CustomMessageBox.ShowOk("Lỗi phát sinh trong quá trình lưu ảnh. Vui lòng thử lại", "Thông báo", "OK", Views.CustomMessageBoxImage.Error);
+                        else CustomMessageBox.ShowOk("An error occurred while saving the image. Please try again", "Notify", "OK", Views.CustomMessageBoxImage.Error);
                         return;
                     }
                 }
@@ -78,19 +91,25 @@ namespace CinemaManagementProject.ViewModel.StaffVM.TroubleStaffVM
                 if (successUpdateTB)
                 {
                     isSaving = false;
-                    CustomMessageBox.ShowOk("Cập nhật thành công!", "Thông báo", "OK", Views.CustomMessageBoxImage.Success);
+                    if (Properties.Settings.Default.isEnglish == false)
+                        CustomMessageBox.ShowOk("Cập nhật thành công!", "Thông báo", "OK", Views.CustomMessageBoxImage.Success);
+                    else CustomMessageBox.ShowOk("Update successful!", "Notify", "OK", Views.CustomMessageBoxImage.Success);
                     await GetData();
 
                     p.Close();
                 }
                 else
                 {
-                    CustomMessageBox.ShowOk("Lỗi hệ thống", "Thông báo", "OK", Views.CustomMessageBoxImage.Error);
+                    if (Properties.Settings.Default.isEnglish == false)
+                        CustomMessageBox.ShowOk("Lỗi hệ thống", "Lỗi", "OK", CustomMessageBoxImage.Error);
+                    else CustomMessageBox.ShowOk("System Error", "Error", "OK", CustomMessageBoxImage.Error);
                 }
             }
             else
             {
-                CustomMessageBox.ShowOk("Vui lòng nhập đủ thông tin", "Thông báo", "OK", Views.CustomMessageBoxImage.Warning);
+                if (Properties.Settings.Default.isEnglish == false)
+                    CustomMessageBox.ShowOk("Vui lòng nhập đủ thông tin!", "Cảnh báo", "OK", Views.CustomMessageBoxImage.Warning);
+                else CustomMessageBox.ShowOk("Please enter enough information!", "Warning", "OK", Views.CustomMessageBoxImage.Warning);
             }
         }
 

@@ -194,7 +194,7 @@ namespace CinemaManagementProject.ViewModel.AdminVM.SettingVM
             { 
                 if(string.IsNullOrEmpty(StaffName))
                 {
-                    CustomMessageBox.ShowOk("Không được để tên trống", "Cảnh báo", "OK", Views.CustomMessageBoxImage.Warning);
+                    CustomMessageBox.ShowOk(IsEnglish? "Do not leave the blank name!" : "Không được để tên trống!", IsEnglish? "Warning" : "Cảnh báo", "OK", Views.CustomMessageBoxImage.Warning);
                     return;
                 }
                 if(IsEdit == false)
@@ -207,11 +207,11 @@ namespace CinemaManagementProject.ViewModel.AdminVM.SettingVM
                     (bool isSuccessEdit, string messageReturn) = await Task.Run(() => SettingService.Ins.EditName(StaffName, currentStaff.Id));
                     if(isSuccessEdit == false)
                     {
-                        CustomMessageBox.ShowOkCancel(messageReturn, "Lỗi", "OK", "Hủy", Views.CustomMessageBoxImage.Error);
+                        CustomMessageBox.ShowOkCancel(messageReturn, IsEnglish? "Error" : "Lỗi", "OK",IsEnglish? "Cancel" : "Hủy", Views.CustomMessageBoxImage.Error);
                         return;
                     }
                     currentStaff.StaffName = StaffName;
-                    CustomMessageBox.ShowOkCancel(messageReturn, "Thành công", "OK", "Hủy", Views.CustomMessageBoxImage.Success);
+                    CustomMessageBox.ShowOkCancel(messageReturn,IsEnglish? "Success" :"Thành công", "OK",IsEnglish? "Cancel" : "Hủy", Views.CustomMessageBoxImage.Success);
                     p.Kind = MaterialDesignThemes.Wpf.PackIconKind.Pencil;
                     IsEdit = false;
                 }
@@ -228,7 +228,7 @@ namespace CinemaManagementProject.ViewModel.AdminVM.SettingVM
                 {
                     if (!EmailFormat.IsValidEmail(StaffEmail))
                     {
-                        CustomMessageBox.ShowOkCancel("Email không đúng", "Lỗi", "Ok", "Hủy", Views.CustomMessageBoxImage.Error);
+                        CustomMessageBox.ShowOkCancel ( IsEnglish? "Invalid Email" : "Email không đúng", "Lỗi", "Ok", "Hủy", Views.CustomMessageBoxImage.Error);
                         return;
                     }
                     else

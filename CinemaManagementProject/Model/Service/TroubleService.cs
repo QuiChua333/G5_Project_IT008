@@ -96,7 +96,7 @@ namespace CinemaManagementProject.Model.Service
 
                     await context.SaveChangesAsync();
 
-                    return (true, "Cập nhật thành công");
+                    return (true, Properties.Settings.Default.isEnglish == false ? "Cập nhật thành công": "Update successful");
                 }
             }
             catch (Exception e)

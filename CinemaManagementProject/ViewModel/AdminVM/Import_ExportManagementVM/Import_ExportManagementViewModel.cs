@@ -13,6 +13,7 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows;
 using SaveFileDialog = System.Windows.Forms.SaveFileDialog;
+using CinemaManagementProject.Views;
 
 namespace CinemaManagementProject.ViewModel.AdminVM.Import_ExportManagementVM
 {
@@ -186,12 +187,17 @@ namespace CinemaManagementProject.ViewModel.AdminVM.Import_ExportManagementVM
                     catch (System.Data.Entity.Core.EntityException e)
                     {
                         Console.WriteLine(e);
-                        CustomMessageBox.ShowOk("Mất kết nối cơ sở dữ liệu", "Lỗi","OK", Views.CustomMessageBoxImage.Error);
+                        if (Properties.Settings.Default.isEnglish == false)
+                            CustomMessageBox.ShowOk("Mất kết nối cơ sở dữ liệu", "Lỗi", "OK", CustomMessageBoxImage.Error);
+                        else CustomMessageBox.ShowOk("Unable to connect to database", "Error", "OK", CustomMessageBoxImage.Error);
+
                     }
                     catch (Exception e)
                     {
                         Console.WriteLine(e);
-                        CustomMessageBox.ShowOk("Lỗi hệ thống", "Lỗi", "OK", Views.CustomMessageBoxImage.Error);
+                        if (Properties.Settings.Default.isEnglish == false)
+                            CustomMessageBox.ShowOk("Lỗi hệ thống", "Lỗi", "OK", CustomMessageBoxImage.Error);
+                        else CustomMessageBox.ShowOk("System Error", "Error", "OK", CustomMessageBoxImage.Error);
                     }
 
                     if (BillDetail.TicketInfo is null)
@@ -280,7 +286,10 @@ namespace CinemaManagementProject.ViewModel.AdminVM.Import_ExportManagementVM
                                 app.Quit();
 
                                 Mouse.OverrideCursor = System.Windows.Input.Cursors.Arrow;
-                                CustomMessageBox.ShowOk("Xuất file thành công", "Thông báo", "OK", Views.CustomMessageBoxImage.Success);
+                                if (Properties.Settings.Default.isEnglish == false)
+                                    CustomMessageBox.ShowOk("Xuất file thành công", "Thông báo", "OK", Views.CustomMessageBoxImage.Success);
+
+                                else CustomMessageBox.ShowOk("Export file successful", "Notify", "OK", Views.CustomMessageBoxImage.Success);
                             }
                         }
                         break;
@@ -326,7 +335,10 @@ namespace CinemaManagementProject.ViewModel.AdminVM.Import_ExportManagementVM
                                 app.Quit();
 
                                 Mouse.OverrideCursor = System.Windows.Input.Cursors.Arrow;
-                                CustomMessageBox.ShowOk("Xuất file thành công", "Thông báo", "OK", Views.CustomMessageBoxImage.Success);
+                                if (Properties.Settings.Default.isEnglish == false)
+                                    CustomMessageBox.ShowOk("Xuất file thành công", "Thông báo", "OK", Views.CustomMessageBoxImage.Success);
+
+                                else CustomMessageBox.ShowOk("Export file successful", "Notify", "OK", Views.CustomMessageBoxImage.Success);
                             }
                         }
                         break;
@@ -353,13 +365,17 @@ namespace CinemaManagementProject.ViewModel.AdminVM.Import_ExportManagementVM
                         catch (System.Data.Entity.Core.EntityException e)
                         {
                             Console.WriteLine(e);
-                            CustomMessageBox.ShowOk("Mất kết nối cơ sở dữ liệu", "Lỗi", "OK", Views.CustomMessageBoxImage.Error);
+                            if (Properties.Settings.Default.isEnglish == false)
+                                CustomMessageBox.ShowOk("Mất kết nối cơ sở dữ liệu", "Lỗi", "OK", CustomMessageBoxImage.Error);
+                            else CustomMessageBox.ShowOk("Unable to connect to database", "Error", "OK", CustomMessageBoxImage.Error);
                             throw;
                         }
                         catch (Exception e)
                         {
                             Console.WriteLine(e);
-                            CustomMessageBox.ShowOk("Lỗi hệ thống", "Lỗi", "OK", Views.CustomMessageBoxImage.Error);
+                            if (Properties.Settings.Default.isEnglish == false)
+                                CustomMessageBox.ShowOk("Lỗi hệ thống", "Lỗi", "OK", CustomMessageBoxImage.Error);
+                            else CustomMessageBox.ShowOk("System Error", "Error", "OK", CustomMessageBoxImage.Error);
                             throw;
                         }
 
@@ -392,13 +408,17 @@ namespace CinemaManagementProject.ViewModel.AdminVM.Import_ExportManagementVM
                         catch (System.Data.Entity.Core.EntityException e)
                         {
                             Console.WriteLine(e);
-                            CustomMessageBox.ShowOk("Mất kết nối cơ sở dữ liệu", "Lỗi", "OK", Views.CustomMessageBoxImage.Error);
+                            if (Properties.Settings.Default.isEnglish == false)
+                                CustomMessageBox.ShowOk("Mất kết nối cơ sở dữ liệu", "Lỗi", "OK", CustomMessageBoxImage.Error);
+                            else CustomMessageBox.ShowOk("Unable to connect to database", "Error", "OK", CustomMessageBoxImage.Error);
                             throw;
                         }
                         catch (Exception e)
                         {
                             Console.WriteLine(e);
-                            CustomMessageBox.ShowOk("Lỗi hệ thống", "Lỗi", "OK", Views.CustomMessageBoxImage.Error);
+                            if (Properties.Settings.Default.isEnglish == false)
+                                CustomMessageBox.ShowOk("Lỗi hệ thống", "Lỗi", "OK", CustomMessageBoxImage.Error);
+                            else CustomMessageBox.ShowOk("System Error", "Error", "OK", CustomMessageBoxImage.Error);
                             throw;
                         }
 
@@ -416,13 +436,17 @@ namespace CinemaManagementProject.ViewModel.AdminVM.Import_ExportManagementVM
                         catch (System.Data.Entity.Core.EntityException e)
                         {
                             Console.WriteLine(e);
-                            CustomMessageBox.ShowOk("Mất kết nối cơ sở dữ liệu", "Lỗi", "OK", Views.CustomMessageBoxImage.Error);
+                            if (Properties.Settings.Default.isEnglish == false)
+                                CustomMessageBox.ShowOk("Mất kết nối cơ sở dữ liệu", "Lỗi", "OK", CustomMessageBoxImage.Error);
+                            else CustomMessageBox.ShowOk("Unable to connect to database", "Error", "OK", CustomMessageBoxImage.Error);
                             throw;
                         }
                         catch (Exception e)
                         {
                             Console.WriteLine(e);
-                            CustomMessageBox.ShowOk("Lỗi hệ thống", "Lỗi", "OK", Views.CustomMessageBoxImage.Error);
+                            if (Properties.Settings.Default.isEnglish == false)
+                                CustomMessageBox.ShowOk("Lỗi hệ thống", "Lỗi", "OK", CustomMessageBoxImage.Error);
+                            else CustomMessageBox.ShowOk("System Error", "Error", "OK", CustomMessageBoxImage.Error);
                             throw;
                         }
 
@@ -483,12 +507,16 @@ namespace CinemaManagementProject.ViewModel.AdminVM.Import_ExportManagementVM
             catch (System.Data.Entity.Core.EntityException e)
             {
                 Console.WriteLine(e);
-                CustomMessageBox.ShowOk("Mất kết nối cơ sở dữ liệu", "Lỗi", "OK", Views.CustomMessageBoxImage.Error);
+                if (Properties.Settings.Default.isEnglish == false)
+                    CustomMessageBox.ShowOk("Mất kết nối cơ sở dữ liệu", "Lỗi", "OK", CustomMessageBoxImage.Error);
+                else CustomMessageBox.ShowOk("Unable to connect to database", "Error", "OK", CustomMessageBoxImage.Error);
             }
             catch (Exception e)
             {
-                Console.WriteLine(e); 
-                CustomMessageBox.ShowOk("Lỗi hệ thống", "Lỗi", "OK", Views.CustomMessageBoxImage.Error);
+                Console.WriteLine(e);
+                if (Properties.Settings.Default.isEnglish == false)
+                    CustomMessageBox.ShowOk("Lỗi hệ thống", "Lỗi", "OK", CustomMessageBoxImage.Error);
+                else CustomMessageBox.ShowOk("System Error", "Error", "OK", CustomMessageBoxImage.Error);
             }
         }
         public async Task CheckImportMonthFilter()
@@ -501,12 +529,16 @@ namespace CinemaManagementProject.ViewModel.AdminVM.Import_ExportManagementVM
             catch (System.Data.Entity.Core.EntityException e)
             {
                 Console.WriteLine(e);
-                CustomMessageBox.ShowOk("Mất kết nối cơ sở dữ liệu", "Lỗi", "OK", Views.CustomMessageBoxImage.Error);
+                if (Properties.Settings.Default.isEnglish == false)
+                    CustomMessageBox.ShowOk("Mất kết nối cơ sở dữ liệu", "Lỗi", "OK", CustomMessageBoxImage.Error);
+                else CustomMessageBox.ShowOk("Unable to connect to database", "Error", "OK", CustomMessageBoxImage.Error);
             }
             catch (Exception e)
             {
                 Console.WriteLine(e);
-                CustomMessageBox.ShowOk("Lỗi hệ thống", "Lỗi", "OK", Views.CustomMessageBoxImage.Error);
+                if (Properties.Settings.Default.isEnglish == false)
+                    CustomMessageBox.ShowOk("Lỗi hệ thống", "Lỗi", "OK", CustomMessageBoxImage.Error);
+                else CustomMessageBox.ShowOk("System Error", "Error", "OK", CustomMessageBoxImage.Error);
             }
 
         }

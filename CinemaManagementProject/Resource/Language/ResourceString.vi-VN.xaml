@@ -69,6 +69,7 @@
     <system:String x:Key="AddWindow_ButtonLabel_Info">Thông tin</system:String>
     <system:String x:Key="AddWindow_ButtonLabel_ListVouchers">Danh sách voucher</system:String>
     <system:String x:Key="EditWindow_Title">THÔNG TIN ĐỢT PHÁT HÀNH</system:String>
+    <system:String x:Key="AddVoucher_Label_VoucherCode">Mã voucher:</system:String>
     <system:String x:Key="AddVoucherPage_TextBlock_Function">Chức năng</system:String>
     <system:String x:Key="AddVoucherPage_TextBlock_DeleteVoucher">Xóa voucher</system:String>
     <system:String x:Key="AddVoucherPage_TextBlock_AddVoucher">Thêm voucher</system:String>
@@ -577,6 +578,10 @@
     <system:String x:Key="AddStaffWindow_TextBlock_Taikhoandangnhap">Tài khoản đăng nhập</system:String>
     <system:String x:Key="AddStaffWindow_TextBlock_Taikhoan">Tài khoản:</system:String>
     <system:String x:Key="AddStaffWindow_TextBlock_Matkhau">Mật khẩu:</system:String>
+    <system:String x:Key="AddStaffWindow_TextBlock_Nam">Nam</system:String>
+    <system:String x:Key="AddStaffWindow_TextBlock_Nu">Nữ</system:String>
+    <system:String x:Key="AddStaffWindow_TextBlock_Quanly">Quản lý</system:String>
+    <system:String x:Key="AddStaffWindow_TextBlock_Nhanvien">Nhân viên</system:String>
     <system:String x:Key="AddStaffWindow_TextBlock_Nhaplaimatkhau">Nhập lại mật khẩu:</system:String>
     <system:String x:Key="AddStaffWindow_button_Huy">Hủy</system:String>
     <system:String x:Key="AddStaffWindow_button_Luu">Hoàn tất</system:String>
@@ -599,6 +604,8 @@
     <system:String x:Key="EditTroubleInformation_Label_Ngayhoanthanh">Ngày hoàn thành:</system:String>
     <system:String x:Key="EditTroubleInformation_Label_Chiphi">Chi phí:</system:String>
     <system:String x:Key="EditTroubleInformation_Button_Dong">Đóng</system:String>
+    <system:String x:Key="EditTroubleWindow_Label_binhthuong">Bình thường</system:String>
+    <system:String x:Key="EditTroubleWindow_Label_Nghiemtrong">Nghiêm trọng</system:String>
     <system:String x:Key="EditTroubleInformation_Button_Luu">Lưu</system:String>
     <system:String x:Key="EditTroubleInformation_Inprocess_Label_Chinhsuasuco">CHỈNH SỬA SỰ CỐ</system:String>
     <system:String x:Key="EditTroubleInformation_Inprocess_Label_Mucdo">Mức độ:</system:String>
@@ -658,5 +665,6 @@
     <system:String x:Key="AddTroubleWindow_Label_Mota">Mô tả</system:String>
     <system:String x:Key="AddTroubleWindow_Label_Motaloi">Mô tả lỗi</system:String>
     <system:String x:Key="AddTroubleWindow_button_Xacnhan">Xác nhận</system:String>
+    
 <!--***-->
 </ResourceDictionary>

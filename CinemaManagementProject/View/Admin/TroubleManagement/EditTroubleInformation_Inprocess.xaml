@@ -14,18 +14,19 @@
         WindowStartupLocation="CenterScreen"
         MouseDown="Window_MouseDown"
         AllowsTransparency="True"
-        Height="455" Width="805">
+        Height="470" Width="820">
     <Grid Height="450" Width="800">
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
             <RowDefinition Height="7*" />
+            <RowDefinition Height="*" />
         </Grid.RowDefinitions>
         <Border Grid.Row="0" 
-                Grid.RowSpan="2" 
+                Grid.RowSpan="3" 
                 Background="White"        
                 CornerRadius="20"
                 BorderBrush="DarkGray"
-                BorderThickness="1">
+                BorderThickness="1" Height="450" Width="800">
             <Border.Effect>
                 <DropShadowEffect
                                 BlurRadius="10"
@@ -81,7 +82,7 @@
 
             <Border BorderThickness="2"  
                     BorderBrush="Black" 
-                    Margin="20 20 20 60" >
+                    Margin="20 20 20 10" >
                 <Border.Background>
                     <ImageBrush ImageSource="{Binding SelectedItem.Image}" />
                 </Border.Background>
@@ -112,24 +113,25 @@
                     </Style>
                 </Grid.Resources>
                 <StackPanel Grid.Row="0" 
-                            Margin="0,0,0,3" 
+                            Margin="0,10,0,3" 
                             Grid.RowSpan="2">
-                    <StackPanel Orientation="Vertical">
+                    <StackPanel Orientation="Horizontal">
                         <TextBlock Text="{Binding SelectedItem.TroubleType}"
                                     FontWeight="Medium"
-                                    FontSize="16" />
-                        <StackPanel Orientation="Horizontal" >
-                            <TextBlock Text="{DynamicResource AddTroubleWindow_Label_Mucdo}"
-                                           Margin="120,3,0,0"
+                                    FontSize="18" 
+                                   Foreground="Red"/>
+                        <TextBlock Text="{DynamicResource AddTroubleWindow_Label_Mucdo}"
+                                           Margin="90,3,0,0"
                                            FontSize="15" />
                             <TextBlock Text="{Binding SelectedItem.Level}"
                                            TextWrapping="Wrap"
-                                           Margin="0,3,0,0"
+                                           Margin="0,3,30,0"
                                            FontSize="16" />
-                        </StackPanel>
+                        
                     </StackPanel>
                     <Border BorderThickness="0,0,0,0.5"
-                                BorderBrush="Black">
+                            BorderBrush="Black"
+                            Margin="0 10 25 0">
                         <TextBlock Text="{Binding SelectedItem.Description}"
                                     TextWrapping="Wrap"
                                     FontSize="15" Height="40" />
@@ -141,19 +143,19 @@
                                        FontWeight="Medium"/>
                             <TextBlock Text="{Binding SelectedItem.SubmittedAt,StringFormat=dd/MM/yyyy HH:mm:ss}" 
                                        FontSize="16"
-                                       Margin="0 10 0 0"/>
+                                       Margin="0 5 0 0"/>
                         </StackPanel>
                         <StackPanel Margin="160,10,0,0">
                             <TextBlock  Text="{DynamicResource EditTroubleInformation_Inprocess_Label_Nhanvienbaocao}"
                                         FontSize="16"
                                         FontWeight="Medium"/>
                             <TextBlock FontSize="16"
-                                       Margin="0 10 0 0"
+                                       Margin="0 5 0 0"
                                        Text="{Binding SelectedItem.StaffName}" />
                         </StackPanel>
                     </StackPanel>
 
-                    <StackPanel Margin="0,0,0,0" 
+                    <StackPanel Margin="0,-10,0,0" 
                                 Orientation="Horizontal"
                                 Height="50">
                         <TextBlock  Text="{DynamicResource AddTroubleWindow_Label_Trangthai}"
@@ -161,19 +163,20 @@
                                     Margin="0 14 0 0"
                                     FontWeight="Medium"/>
                         <ComboBox   Width="150"
-                                    Margin="10 0 0 8"
+                                    Margin="10 0 0 3"
                                     Padding="0,5,0,5"
                                     Height="36"
                                     VerticalContentAlignment="Bottom"        
                                     FontSize="16"
+                                    x:Name="cbbstatus"
                                     materialDesign:HintAssist.HintOpacity="1"
                                     materialDesign:HintAssist.Hint="{Binding SelectedItem.TroubleStatus}"
                                     SelectionChanged="ComboBox_SelectionChanged"
                                     HorizontalAlignment="Left"
-                                    SelectedValuePath="Content"
+                                    SelectedValuePath="Tag"
                                     SelectedItem="{Binding SelectedStatus,Mode=OneWayToSource}" VerticalAlignment="Bottom">
-                            <ComboBoxItem Content="Đã giải quyết" />
-                            <ComboBoxItem Content="Đã hủy" />
+                            <ComboBoxItem Tag="Đã giải quyết" Content="{DynamicResource TroubleManagementPage_ComboboxItem_Dagiaiquyet}"/>
+                            <ComboBoxItem Tag="Đã hủy" Content="{DynamicResource TroubleManagementPage_ComboboxItem_Dahuy}"/>
                         </ComboBox>
 
                     </StackPanel>
@@ -197,7 +200,7 @@
                                     SelectedDate="{Binding SelectedDate,Mode=TwoWay}" VerticalAlignment="Bottom" />
                     </StackPanel>
 
-                    <StackPanel Margin="0,28,0,0"
+                    <StackPanel Margin="0,20,0,0"
                                 x:Name="_Finishday"
                                 IsEnabled="False" 
                                 Orientation="Horizontal">
@@ -217,7 +220,7 @@
                                     SelectedDate="{Binding SelectedFinishDate,Mode=TwoWay}" VerticalAlignment="Bottom" />
                     </StackPanel>
 
-                    <StackPanel Margin="0,26,0,0"
+                    <StackPanel Margin="0,27,0,0"
                                 x:Name="_cost"
                                 IsEnabled="False" 
                                 Orientation="Horizontal" 
@@ -235,29 +238,31 @@
                                     TextChanged="TextBox_TextChanged"
                                     Text="{Binding RepairCost,Mode=TwoWay}" />
                     </StackPanel>
-                    <StackPanel  Orientation="Horizontal" 
-                                 HorizontalAlignment="Right"
-                                Margin="0 0 20 0">
-                        <Button x:Name="CancelButton" 
-                                Style="{StaticResource CustomButton}" 
-                                Width="90" Height="36" 
-                                Click="Button_Click_1"
-                                Background="Red"
-                                HorizontalAlignment="Right" 
-                                Margin="0,0,0,0"
-                                Content="{DynamicResource EditTroubleInformation_Button_Dong}"></Button>
-                        <Button x:Name="SaveButton" Style="{StaticResource CustomButton}" 
-                                Width="90" Height="36" 
-                                HorizontalAlignment="Right" 
-                                Margin="10,0,0,0"
-                                Content="{DynamicResource AddStaffWindow_button_Luu}"
-                                Command="{Binding UpdateTroubleListCM}"
-                                CommandParameter="{Binding ElementName=window}"></Button>
-                    </StackPanel>
+                    
 
                 </StackPanel>
             </Grid>
 
         </Grid>
+        <StackPanel  Orientation="Horizontal" 
+                     Grid.Row="2"
+                                 HorizontalAlignment="Right"
+                                Margin="0 0 20 0">
+            <Button x:Name="CancelButton" 
+                                Style="{StaticResource CustomButton}" 
+                                Width="90" Height="36" 
+                                Click="Button_Click_1"
+                                Background="Red"
+                                HorizontalAlignment="Right" 
+                                Margin="0,-20,0,0"
+                                Content="{DynamicResource EditTroubleInformation_Button_Dong}"></Button>
+            <Button x:Name="SaveButton" Style="{StaticResource CustomButton}" 
+                                Width="90" Height="36" 
+                                HorizontalAlignment="Right" 
+                                Margin="10,-20,0,0"
+                                Content="{DynamicResource AddStaffWindow_button_Luu}"
+                                Command="{Binding UpdateTroubleListCM}"
+                                CommandParameter="{Binding ElementName=window}"></Button>
+        </StackPanel>
     </Grid>
 </Window>
