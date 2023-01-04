@@ -149,12 +149,16 @@ namespace CinemaManagementProject.ViewModel.AdminVM.StaffManagementVM
                 catch (System.Data.Entity.Core.EntityException e)
                 {
                     Console.WriteLine(e);
-                    CustomMessageBox.ShowOk("Mất kết nối cơ sở dữ liệu", "Lỗi","OK", CustomMessageBoxImage.Error);
+                    if (Properties.Settings.Default.isEnglish == false)
+                        CustomMessageBox.ShowOk("Mất kết nối cơ sở dữ liệu", "Lỗi", "OK", CustomMessageBoxImage.Error);
+                    else CustomMessageBox.ShowOk("Unable to connect to database", "Error", "OK", CustomMessageBoxImage.Error);
                 }
                 catch (Exception e)
                 {
                     Console.WriteLine(e);
-                    CustomMessageBox.ShowOk("Lỗi hệ thống", "Lỗi", "OK", CustomMessageBoxImage.Error);
+                    if (Properties.Settings.Default.isEnglish == false)
+                        CustomMessageBox.ShowOk("Lỗi hệ thống", "Lỗi", "OK", CustomMessageBoxImage.Error);
+                    else CustomMessageBox.ShowOk("System Error", "Error", "OK", CustomMessageBoxImage.Error);
                 }
             });
             GetListViewCommand = new RelayCommand<ListView>((p) => { return true; },
@@ -204,11 +208,15 @@ namespace CinemaManagementProject.ViewModel.AdminVM.StaffManagementVM
                          if (successDeleteStaff)
                          {
                              LoadStaffListView(Utils.Operation.DELETE);
-                             CustomMessageBox.ShowOk("Xóa thành công!", "Thông báo", "OK", CustomMessageBoxImage.Success);
+                             if (Properties.Settings.Default.isEnglish == false)
+                                 CustomMessageBox.ShowOk("Xóa thành công!", "Thông báo", "OK", CustomMessageBoxImage.Success);
+                             else CustomMessageBox.ShowOk("Delete successful!", "Notify", "OK", CustomMessageBoxImage.Success);
                          }
                          else
                          {
-                             CustomMessageBox.ShowOk("Lỗi hệ thống!", "Lỗi", "OK", CustomMessageBoxImage.Error);
+                             if (Properties.Settings.Default.isEnglish == false)
+                                 CustomMessageBox.ShowOk("Lỗi hệ thống", "Lỗi", "OK", CustomMessageBoxImage.Error);
+                             else CustomMessageBox.ShowOk("System Error", "Error", "OK", CustomMessageBoxImage.Error);
                          }
                      }
                  });
@@ -228,18 +236,24 @@ namespace CinemaManagementProject.ViewModel.AdminVM.StaffManagementVM
                     ResetData();
 
                     wd._FullName.Text = SelectedItem.StaffName;
-                    string x = SelectedItem.Gender;
-                    if (x == "Nam")
-                    {
+                    
+                        
+                    if (Properties.Settings.Default.isEnglish == false)
                         wd.Gender.Text = SelectedItem.Gender;
-                    }
                     else
                     {
-                        wd.Gender.Text = "Nữ";
+                        if (SelectedItem.Gender == "Nam") wd.Gender.Text = "Male";
+                        if (SelectedItem.Gender == "Nữ") wd.Gender.Text = "Female";
                     }
                     wd.Date.Text = SelectedItem.DateOfBirth.ToString();
                     wd._Phone.Text = SelectedItem.PhoneNumber.ToString();
-                    wd.Role.Text = SelectedItem.Position;
+                    if (Properties.Settings.Default.isEnglish == false)
+                        wd.Role.Text = SelectedItem.Position;
+                    else
+                    {
+                        if (SelectedItem.Position == "Quản lý") wd.Role.Text = "Manager";
+                        if (SelectedItem.Position == "Nhân viên") wd.Role.Text = "Staff";
+                    }
                     wd.StartDate.Text = SelectedItem.StartDate.ToString();
                     wd._TaiKhoan.Text = SelectedItem.UserName;
                     wd._Mail.Text = SelectedItem.Email;
@@ -350,10 +364,10 @@ namespace CinemaManagementProject.ViewModel.AdminVM.StaffManagementVM
             {
                 if (string.IsNullOrEmpty(MatKhau))
                 {
-                    return (false, "Vui lòng nhập mật khẩu");
+                    return (false, Properties.Settings.Default.isEnglish == false ? "Vui lòng nhập mật khẩu" : "Please enter a password");
                 }
                 if (MatKhau != RePass)
-                    return (false, "Mật khẩu và mật khẩu nhập lại không trùng khớp!");
+                    return (false, Properties.Settings.Default.isEnglish == false ? "Mật khẩu và mật khẩu nhập lại không trùng khớp!" : "Password and re-entered password do not match!");
             }
 
             (bool ageValid, string error) = ValidateAge((DateTime)Born);
@@ -365,7 +379,7 @@ namespace CinemaManagementProject.ViewModel.AdminVM.StaffManagementVM
 
             if (!Helper.IsPhoneNumber(Phone))
             {
-                return (false, "Số điện thoại không hợp lệ");
+                return (false, Properties.Settings.Default.isEnglish == false ? "Số điện thoại không hợp lệ": "Invalid phone number");
             }
 
             return (true, null);

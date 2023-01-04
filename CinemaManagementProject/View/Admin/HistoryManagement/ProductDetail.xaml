@@ -12,9 +12,10 @@
         Background="Transparent"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         x:Name="mainWin"
-        Height="720"
-        Width="450"
+        Height="740"
+        Width="470"
         FontFamily="{StaticResource MaterialDesignFont}"
+        Foreground="Black"
         MouseLeftButtonDown="Window_MouseLeftButtonDown"
         DataContext="{StaticResource Import_ExportManagementVM}">
     <Window.Triggers>
@@ -36,7 +37,8 @@
     <Border Background="White"
             BorderThickness="1"
             CornerRadius="10"
-            BorderBrush="DarkGray">
+            BorderBrush="DarkGray" Height="720"
+        Width="450">
         <Border.Effect>
             <DropShadowEffect
                                 BlurRadius="10"

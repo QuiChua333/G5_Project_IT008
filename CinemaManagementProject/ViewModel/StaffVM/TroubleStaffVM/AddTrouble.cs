@@ -10,6 +10,7 @@ using System.Windows.Input;
 using System.Windows;
 using CinemaManagementProject.View.Staff.Trouble;
 using CinemaManagementProject.Utils;
+using CinemaManagementProject.Views;
 
 namespace CinemaManagementProject.ViewModel.StaffVM.TroubleStaffVM
 {
@@ -30,14 +31,16 @@ namespace CinemaManagementProject.ViewModel.StaffVM.TroubleStaffVM
                 string troubleImage = await CloudinaryService.Ins.UploadImage(filepath);
                 if (troubleImage is null)
                 {
-                    CustomMessageBox.ShowOk("Lỗi phát sinh trong quá trình lưu ảnh. Vui lòng thử lại", "Thông báo","OK", Views.CustomMessageBoxImage.Error);
+                    if (Properties.Settings.Default.isEnglish == false)
+                        CustomMessageBox.ShowOk("Lỗi phát sinh trong quá trình lưu ảnh. Vui lòng thử lại", "Thông báo", "OK", Views.CustomMessageBoxImage.Error);
+                    else CustomMessageBox.ShowOk("An error occurred while saving the image. Please try again", "Notify", "OK", Views.CustomMessageBoxImage.Error);
                     return;
                 }
 
                 TroubleDTO trouble = new TroubleDTO
                 {
                     TroubleType = TroubleType,
-                    Level = Level.Content.ToString(),
+                    Level = Level.Tag.ToString(),
                     Description = Description,
                     Image = troubleImage,
                     StaffId = StaffVM.currentStaff.Id,
@@ -49,19 +52,25 @@ namespace CinemaManagementProject.ViewModel.StaffVM.TroubleStaffVM
                 if (successAddtrouble)
                 {
                     IsSaving = false;
-                    CustomMessageBox.ShowOk("Thêm sự cố thành công", "Thông báo", "OK", Views.CustomMessageBoxImage.Success);
+                    if (Properties.Settings.Default.isEnglish == false)
+                        CustomMessageBox.ShowOk("Thêm sự cố thành công", "Thông báo", "OK", Views.CustomMessageBoxImage.Success);
+                    else CustomMessageBox.ShowOk("Add trouble successful", "Notify", "OK", Views.CustomMessageBoxImage.Success);
                     GetAllTrouble = new System.Collections.ObjectModel.ObservableCollection<TroubleDTO>(await TroubleService.Ins.GetAllTrouble());
                     TroubleList = new System.Collections.ObjectModel.ObservableCollection<TroubleDTO>(GetAllTrouble);
                     p.Close();
                 }
                 else
                 {
-                    CustomMessageBox.ShowOk("Lỗi hệ thống", "Lỗi", "OK", Views.CustomMessageBoxImage.Error);
+                    if (Properties.Settings.Default.isEnglish == false)
+                        CustomMessageBox.ShowOk("Lỗi hệ thống", "Lỗi", "OK", CustomMessageBoxImage.Error);
+                    else CustomMessageBox.ShowOk("System Error", "Error", "OK", CustomMessageBoxImage.Error);
                 }
             }
             else
             {
-                CustomMessageBox.ShowOk("Vui lòng nhập đủ thông tin!", "Cảnh báo", "OK", Views.CustomMessageBoxImage.Warning);
+                if (Properties.Settings.Default.isEnglish == false)
+                    CustomMessageBox.ShowOk("Vui lòng nhập đủ thông tin!", "Cảnh báo", "OK", Views.CustomMessageBoxImage.Warning);
+                else CustomMessageBox.ShowOk("Please enter enough information!", "Warning", "OK", Views.CustomMessageBoxImage.Warning);
             }
         }
     }

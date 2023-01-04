@@ -22,17 +22,17 @@ namespace CinemaManagementProject.ViewModel.AdminVM.StaffManagementVM
                 if (updatePassSuccesss)
                 {
                     p.Close();
-                    CustomMessageBox.ShowOk(message, "Thông báo", "OK", Views.CustomMessageBoxImage.Success);
+                    CustomMessageBox.ShowOk(message, Properties.Settings.Default.isEnglish == false ? "Thông báo" : "Notify", "OK", Views.CustomMessageBoxImage.Success);
                 }
                 else
                 {
-                    CustomMessageBox.ShowOk(message, "Lỗi", "OK", Views.CustomMessageBoxImage.Error);
+                    CustomMessageBox.ShowOk(message, Properties.Settings.Default.isEnglish == false ? "Lỗi" : "Error", "OK", Views.CustomMessageBoxImage.Error);
                 }
 
             }
             else
             {
-                CustomMessageBox.ShowOk(error, "Cảnh báo","OK", Views.CustomMessageBoxImage.Warning );
+                CustomMessageBox.ShowOk(error, Properties.Settings.Default.isEnglish == false ? "Cảnh báo" : "Warning", "OK", Views.CustomMessageBoxImage.Warning );
             }
         }
         public (bool valid, string error) IsValidPassword(Operation oper)
@@ -41,10 +41,10 @@ namespace CinemaManagementProject.ViewModel.AdminVM.StaffManagementVM
             {
                 if (string.IsNullOrEmpty(MatKhau))
                 {
-                    return (false, "Vui lòng nhập mật khẩu");
+                    return (false, Properties.Settings.Default.isEnglish == false ? "Vui lòng nhập mật khẩu": "Please enter a password");
                 }
                 if (MatKhau != RePass)
-                    return (false, "Mật khẩu và mật khẩu nhập lại không trùng khớp!");
+                    return (false, Properties.Settings.Default.isEnglish == false ? "Mật khẩu và mật khẩu nhập lại không trùng khớp!": "Password and re-entered password do not match!");
             }
             return (true, null);
         }

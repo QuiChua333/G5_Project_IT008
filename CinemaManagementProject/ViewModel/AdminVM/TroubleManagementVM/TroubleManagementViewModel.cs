@@ -1,6 +1,7 @@
 ﻿using CinemaManagementProject.DTOs;
 using CinemaManagementProject.Model.Service;
 using CinemaManagementProject.View.Admin.TroubleManagement;
+using CinemaManagementProject.Views;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -22,6 +23,7 @@ namespace CinemaManagementProject.ViewModel.AdminVM.TroubleManagementVM
             set { _isGettingSource = value; OnPropertyChanged(); }
         }
 
+        
         private ComboBoxItem _selectedCbbItem;
         public ComboBoxItem SelectedCbbItem 
         { 
@@ -99,7 +101,10 @@ namespace CinemaManagementProject.ViewModel.AdminVM.TroubleManagementVM
                
                 if (SelectedStatus is null)
                 {
-                    CustomMessageBox.ShowOk("Không hợp lệ!", "Cảnh báo", "OK", Views.CustomMessageBoxImage.Warning);
+                    if (Properties.Settings.Default.isEnglish == false)
+                        CustomMessageBox.ShowOk("Không hợp lệ!", "Cảnh báo", "OK", Views.CustomMessageBoxImage.Warning);
+                    else CustomMessageBox.ShowOk("Invalid!", "Warning", "OK", Views.CustomMessageBoxImage.Warning);
+
                     return;
                 }
                 IsSaving = true;
@@ -110,75 +115,75 @@ namespace CinemaManagementProject.ViewModel.AdminVM.TroubleManagementVM
 
         public async Task UpdateErrorFunc(Window p)
         {
-            if(SelectedStatus.Content.ToString() == Utils.STATUS.WAITING)
+            if(SelectedStatus.Tag.ToString() == Utils.STATUS.WAITING)
             {
                 TroubleDTO UpdTrouble = new TroubleDTO
                 {
                     Id=SelectedItem.Id,
                     SubmittedAt=SelectedItem.SubmittedAt,
-                    TroubleStatus= SelectedStatus.Content.ToString(),
+                    TroubleStatus= SelectedStatus.Tag.ToString(),
                 };
                 (bool isSucess, string mess) = await TroubleService.Ins.UpdateStatusTrouble(UpdTrouble);
                 if (isSucess)
                 {
                  
-                    CustomMessageBox.ShowOk(mess, "Thông báo", "OK", Views.CustomMessageBoxImage.Success);
+                    CustomMessageBox.ShowOk(mess, Properties.Settings.Default.isEnglish == false? "Thông báo": "Notify", "OK", Views.CustomMessageBoxImage.Success);
                     await ReloadErrorList();
                     p.Close();
                 }
                 else
                 {
-                    CustomMessageBox.ShowOk(mess, "Lỗi", "OK", Views.CustomMessageBoxImage.Error);
+                    CustomMessageBox.ShowOk(mess, Properties.Settings.Default.isEnglish == false ? "Lỗi":"Error", "OK", Views.CustomMessageBoxImage.Error);
                 }
             }
-            else if (SelectedStatus.Content.ToString() == Utils.STATUS.CANCLE)
+            else if (SelectedStatus.Tag.ToString() == Utils.STATUS.CANCLE)
             {
                 TroubleDTO trouble = new TroubleDTO
                 {
                     Id = SelectedItem.Id,
-                    TroubleStatus = SelectedStatus.Content.ToString(),
+                    TroubleStatus = SelectedStatus.Tag.ToString(),
                 };
 
                 (bool isS, string mess) = await TroubleService.Ins.UpdateStatusTrouble(trouble);
 
                 if (isS)
                 {
-                    CustomMessageBox.ShowOk(mess, "Thông báo", "OK", Views.CustomMessageBoxImage.Success);
+                    CustomMessageBox.ShowOk(mess, Properties.Settings.Default.isEnglish == false ? "Thông báo" : "Notify", "OK", Views.CustomMessageBoxImage.Success);
                     await ReloadErrorList();
                     p.Close();
                 }
                 else
                 {
-                    CustomMessageBox.ShowOk(mess, "Lỗi", "OK", Views.CustomMessageBoxImage.Error);
+                    CustomMessageBox.ShowOk(mess, Properties.Settings.Default.isEnglish == false ? "Lỗi" : "Error", "OK", Views.CustomMessageBoxImage.Error);
                 }
             }
-            else if (SelectedStatus.Content.ToString() == Utils.STATUS.IN_PROGRESS)
+            else if (SelectedStatus.Tag.ToString() == Utils.STATUS.IN_PROGRESS)
             {
                 TroubleDTO trouble = new TroubleDTO
                 {
                     Id = SelectedItem.Id,
                     StartDate = SelectedDate,
-                    TroubleStatus = SelectedStatus.Content.ToString(),
+                    TroubleStatus = SelectedStatus.Tag.ToString(),
                 };
 
                 (bool isS, string mess) = await TroubleService.Ins.UpdateStatusTrouble(trouble);
 
                 if (isS)
                 {
-                    CustomMessageBox.ShowOk(mess, "Thông báo", "OK", Views.CustomMessageBoxImage.Success);
+                    CustomMessageBox.ShowOk(mess, Properties.Settings.Default.isEnglish == false ? "Thông báo" : "Notify", "OK", Views.CustomMessageBoxImage.Success);
                     await ReloadErrorList();
                     p.Close();
                 }
                 else
                 {
-                    CustomMessageBox.ShowOk(mess, "Lỗi", "OK", Views.CustomMessageBoxImage.Error);
+                    CustomMessageBox.ShowOk(mess, Properties.Settings.Default.isEnglish == false ? "Lỗi" : "Error", "OK", Views.CustomMessageBoxImage.Error);
                 }
             }
-            else if (SelectedStatus.Content.ToString() == Utils.STATUS.DONE)
+            else if (SelectedStatus.Tag.ToString() == Utils.STATUS.DONE)
             {
                 if (SelectedItem.StartDate > SelectedFinishDate)
                 {
-                    CustomMessageBox.ShowOk("Ngày không hợp lệ!","Lỗi","OK", Views.CustomMessageBoxImage.Error);
+                    CustomMessageBox.ShowOk(Properties.Settings.Default.isEnglish == false ? "Ngày không hợp lệ!" : "Invalid date!", Properties.Settings.Default.isEnglish == false ? "Lỗi" : "Error", "OK", Views.CustomMessageBoxImage.Error);
                     return;
                 }
                 TroubleDTO trouble = new TroubleDTO
@@ -186,7 +191,7 @@ namespace CinemaManagementProject.ViewModel.AdminVM.TroubleManagementVM
                     Id = SelectedItem.Id,
                     StartDate = SelectedDate,
                     FinishDate = SelectedFinishDate,
-                    TroubleStatus = SelectedStatus.Content.ToString(),
+                    TroubleStatus = SelectedStatus.Tag.ToString(),
                     RepairCost = RepairCost,
                 };
 
@@ -194,13 +199,13 @@ namespace CinemaManagementProject.ViewModel.AdminVM.TroubleManagementVM
 
                 if (isS)
                 {
-                    CustomMessageBox.ShowOk(mess, "Thông báo", "OK", Views.CustomMessageBoxImage.Success);
+                    CustomMessageBox.ShowOk(mess, Properties.Settings.Default.isEnglish == false ? "Thông báo" : "Notify", "OK", Views.CustomMessageBoxImage.Success);
                     await ReloadErrorList();
                     p.Close();
                 }
                 else
                 {
-                    CustomMessageBox.ShowOk(mess, "Lỗi", "OK", Views.CustomMessageBoxImage.Error);
+                    CustomMessageBox.ShowOk(mess, Properties.Settings.Default.isEnglish == false ? "Lỗi" : "Error", "OK", Views.CustomMessageBoxImage.Error);
                 }
 
             }
@@ -228,18 +233,25 @@ namespace CinemaManagementProject.ViewModel.AdminVM.TroubleManagementVM
                 }
                 catch (Exception e)
                 {
-                    CustomMessageBox.ShowOk("Lỗi hệ thống", "Lỗi", "OK", Views.CustomMessageBoxImage.Error);
+                    if (Properties.Settings.Default.isEnglish == false)
+                        CustomMessageBox.ShowOk("Lỗi hệ thống", "Lỗi", "OK", CustomMessageBoxImage.Error);
+                    else CustomMessageBox.ShowOk("System Error", "Error", "OK", CustomMessageBoxImage.Error);
                 }
             }
             catch (System.Data.Entity.Core.EntityException e)
             {
                 Console.WriteLine(e);
-                CustomMessageBox.ShowOk("Mất kết nối cơ sở dữ liệu", "Lỗi", "OK", Views.CustomMessageBoxImage.Error);
+                if (Properties.Settings.Default.isEnglish == false)
+                    CustomMessageBox.ShowOk("Mất kết nối cơ sở dữ liệu", "Lỗi", "OK", CustomMessageBoxImage.Error);
+                else CustomMessageBox.ShowOk("Unable to connect to database", "Error", "OK", CustomMessageBoxImage.Error);
                 throw;
             }
             catch (Exception e)
             {
-                CustomMessageBox.ShowOk("Lỗi hệ thống", "Lỗi", "OK", Views.CustomMessageBoxImage.Error);
+                Console.WriteLine(e);
+                if (Properties.Settings.Default.isEnglish == false)
+                    CustomMessageBox.ShowOk("Lỗi hệ thống", "Lỗi", "OK", CustomMessageBoxImage.Error);
+                else CustomMessageBox.ShowOk("System Error", "Error", "OK", CustomMessageBoxImage.Error);
             }
         }
 
@@ -250,18 +262,18 @@ namespace CinemaManagementProject.ViewModel.AdminVM.TroubleManagementVM
             RepairCost = 0;
             if (SelectedItem.TroubleStatus == Utils.STATUS.DONE)
             {
-                TroubleInformation w = new TroubleInformation();
-                w.ShowDialog();
+                TroubleInformation wd = new TroubleInformation();
+                wd.ShowDialog();
             }
             else if (SelectedItem.TroubleStatus == Utils.STATUS.WAITING)
             {
-                EditTroubleInformation w = new EditTroubleInformation();
-                w.ShowDialog();
+                EditTroubleInformation wd = new EditTroubleInformation();
+                wd.ShowDialog();
             }
             else if (SelectedItem.TroubleStatus == Utils.STATUS.IN_PROGRESS)
             {
-                EditTroubleInformation_Inprocess w = new EditTroubleInformation_Inprocess();
-                w.ShowDialog();
+                EditTroubleInformation_Inprocess wd = new EditTroubleInformation_Inprocess();
+                wd.ShowDialog();
             }
         }
     }

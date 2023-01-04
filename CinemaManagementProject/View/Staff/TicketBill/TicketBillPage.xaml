@@ -254,7 +254,7 @@
                                 <TextBlock Text="{DynamicResource TicketBillFoodPage_TextBlock_HoVaTen}" />
 
                                 <TextBox Grid.Column="1"
-                                         Margin="0 0 30 0"
+                                         Margin="0 0 30 06"
                                          Text="{Binding NameSignUp, Mode=TwoWay}" />
                                 <Grid.Style>
                                     <Style>
@@ -280,7 +280,7 @@
 
                                 <TextBlock Text="Email:" />
                                 <TextBox Grid.Column="1"
-                                         Margin="0 0 30 0"
+                                         Margin="0 0 30 06"
                                          Text="{Binding EmailSignUp, Mode=TwoWay}" />
                                 <Grid.Style>
                                     <Style>

@@ -6,8 +6,9 @@
       xmlns:local="clr-namespace:CinemaManagementProject.View.Admin.HistoryManagement" xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
       mc:Ignorable="d" 
       Title="HistoryManagementPage" 
-      DataContext="{StaticResource Import_ExportManagementVM}"
-      
+      Background="Transparent"
+      AllowDrop="True"
+      DataContext="{StaticResource Import_ExportManagementVM}"  
       ShowsNavigationUI="False"      
       x:Name="mainPage">
     <Page.Triggers>
@@ -28,20 +29,16 @@
 
     <Grid HorizontalAlignment="Stretch"
              VerticalAlignment="Stretch"
-             >
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="127*"/>
-            <ColumnDefinition Width="96*"/>
-        </Grid.ColumnDefinitions>
+             Margin="20 -30 20 20">
         <Grid.RowDefinitions>
             <RowDefinition Height="50"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
         <StackPanel Orientation="Horizontal" 
                     HorizontalAlignment="Left" 
-                    Grid.Row="0" Grid.ColumnSpan="2">
+                    Grid.Row="0">
             <RadioButton    Style="{StaticResource MaterialDesignTabRadioButtonTop}"
-                            BorderBrush="Blue"
+                            BorderBrush="Pink"
                             VerticalAlignment="Top"
                             Height="40"
                             FontFamily="{StaticResource MaterialDesignFont}"
@@ -53,7 +50,7 @@
                             CommandParameter="{Binding ElementName=MainListViewFrame}"
                             Margin="20,5,0,0"/>
             <RadioButton    Style="{StaticResource MaterialDesignTabRadioButtonTop}"
-                            BorderBrush="Blue"
+                            BorderBrush="Pink"
                             VerticalAlignment="Top"
                             Cursor="Hand"
                             Height="40"
@@ -67,7 +64,15 @@
         </StackPanel>
         <Border Grid.Row="1" 
                 Background="Transparent" 
-                CornerRadius="20" Grid.ColumnSpan="2" >
+                CornerRadius="20" >
+            <Border.Effect>
+                <DropShadowEffect
+                    BlurRadius="10"
+                    Color="Black"
+                    ShadowDepth="4"
+                    Opacity=".25"
+                    Direction="270"/>
+            </Border.Effect>
             <Grid>
                 <Frame x:Name="MainListViewFrame">
                     <i:Interaction.Triggers>

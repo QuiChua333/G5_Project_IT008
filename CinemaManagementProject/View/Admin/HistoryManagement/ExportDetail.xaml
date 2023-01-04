@@ -11,8 +11,8 @@
         AllowsTransparency="True"
         Background="Transparent"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-        Height="725"
-        Width="905"
+        Height="740"
+        Width="930"
         x:Name="mainWin"
         FontFamily="{StaticResource MaterialDesignFont}"
         MouseLeftButtonDown="Window_MouseLeftButtonDown"
@@ -73,7 +73,7 @@
                                 VerticalAlignment="Top"
                                 HorizontalAlignment="Right"
                                 Grid.Row="0"
-                                Margin="200 10 0 0">
+                                Margin="225 10 0 0">
 
                         <Button Command="{Binding CloseCM}"
                                 CommandParameter="{Binding ElementName=mainWin}"
@@ -123,6 +123,8 @@
                                 BorderBrush="#8DC1F0">
                             <Label Content="{DynamicResource ExportDetail_Label_Vexemphim}"
                                    FontSize="20"
+                                   Foreground="Black"
+                                   FontFamily="{StaticResource MaterialDesignFont}"
                                    FontWeight="Bold"
                                    VerticalAlignment="Center" 
                                    HorizontalAlignment="Center" />
@@ -133,7 +135,7 @@
                                 Margin="30,0,30,0">
                             <StackPanel>
                                 <StackPanel Orientation="Horizontal">
-                                    <Grid Width="400">
+                                    <Grid Width="385">
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="15*" />
                                             <ColumnDefinition Width="85*" />
@@ -141,15 +143,19 @@
 
                                         <Label Content="{DynamicResource ExportDetail_Label_Phim}"
                                                Grid.Column="0"
-                                               FontSize="16" />
+                                               FontSize="16"
+                                               Foreground="Black"
+                                                FontFamily="{StaticResource MaterialDesignFont}"/>
                                         <Label Grid.Column="1"
                                                HorizontalAlignment="Right"
                                                FontSize="16"
-                                               x:Name="_moviename" />
+                                               x:Name="_moviename"
+                                               Foreground="Black"
+                                               FontFamily="{StaticResource MaterialDesignFont}"/>
                                     </Grid>
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal">
-                                    <Grid Width="400"
+                                    <Grid Width="385"
                                           Margin="0,10,0,0">
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition />
@@ -158,15 +164,19 @@
 
                                         <Label Content="{DynamicResource ExportDetail_Label_Suatchieu}"
                                                Grid.Column="0"
-                                               FontSize="16" />
+                                               FontSize="16" Margin="0,0,68,0" 
+                                               Foreground="Black"
+                                                FontFamily="{StaticResource MaterialDesignFont}"/>
                                         <Label Content="{Binding BillDetail.TicketInfo.ShowtimeInfo}"
                                                Grid.Column="1"
                                                HorizontalAlignment="Right"
-                                               FontSize="20" />
+                                               FontSize="20"
+                                               Foreground="Black"
+                                                FontFamily="{StaticResource MaterialDesignFont}"/>
                                     </Grid>
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal">
-                                    <Grid Width="400"
+                                    <Grid Width="385"
                                           Margin="0,10,0,0">
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition />
@@ -175,14 +185,18 @@
 
                                         <Label Content="{DynamicResource ExportDetail_Label_Rap}"
                                                Grid.Column="0"
-                                               FontSize="16" />
+                                               FontSize="16"
+                                               Foreground="Black"
+                                                FontFamily="{StaticResource MaterialDesignFont}"/>
                                         <Label Content="FATFILMFO Cinema"
                                                Grid.Column="1"                                               
-                                               FontSize="16" />
+                                               FontSize="16"
+                                               Foreground="Black"
+                                                FontFamily="{StaticResource MaterialDesignFont}"/>
                                     </Grid>
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal">
-                                    <Grid Width="400"
+                                    <Grid Width="385"
                                           Margin="0,10,0,0">
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition />
@@ -191,15 +205,19 @@
 
                                         <Label Content="{DynamicResource ExportDetail_Label_Phongchieu}"
                                                Grid.Column="0"
-                                               FontSize="16" />
+                                               FontSize="16"
+                                               Foreground="Black"
+                                                FontFamily="{StaticResource MaterialDesignFont}"/>
                                         <Label Content="{Binding BillDetail.TicketInfo.RoomName}"
                                                Grid.Column="1"
                                                HorizontalAlignment="Right"
-                                               FontSize="16" />
+                                               FontSize="16"
+                                               Foreground="Black"
+                                                FontFamily="{StaticResource MaterialDesignFont}"/>
                                     </Grid>
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal">
-                                    <Grid Width="400"
+                                    <Grid Width="385"
                                           Margin="0,10,0,0">
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition />
@@ -208,15 +226,19 @@
 
                                         <Label Content="{DynamicResource ExportDetail_Label_Ghe}"
                                                Grid.Column="0"
-                                               FontSize="16" />
+                                               FontSize="16"
+                                               Foreground="Black"
+                                                FontFamily="{StaticResource MaterialDesignFont}"/>
                                         <Label Content="{Binding BillDetail.TicketInfo.SeatInfo}"
                                                Grid.Column="1"
                                                HorizontalAlignment="Right"
-                                               FontSize="16" />
+                                               FontSize="16" 
+                                               Foreground="Black"
+                                                FontFamily="{StaticResource MaterialDesignFont}"/>
                                     </Grid>
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal">
-                                    <Grid Width="400"
+                                    <Grid Width="385"
                                           Margin="0,10,0,0">
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition />
@@ -225,11 +247,15 @@
 
                                         <Label Content="{DynamicResource ExportDetail_Label_Giave}"
                                                Grid.Column="0"
-                                               FontSize="16" />
+                                               FontSize="16" 
+                                               Foreground="Black"
+                                                FontFamily="{StaticResource MaterialDesignFont}"/>
                                         <Label Grid.Column="1"
                                                HorizontalAlignment="Right"
                                                FontSize="16"
-                                               x:Name="_price" />
+                                               x:Name="_price"
+                                               Foreground="Black"
+                                                FontFamily="{StaticResource MaterialDesignFont}"/>
                                     </Grid>
                                 </StackPanel>
                             </StackPanel>
@@ -241,7 +267,7 @@
                             <StackPanel>
                                 <StackPanel Orientation="Horizontal"
                                             Margin="0,10,0,0">
-                                    <Grid Width="400">
+                                    <Grid Width="385">
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="25*" />
                                             <ColumnDefinition Width="75*" />
@@ -249,15 +275,19 @@
 
                                         <Label Content="{DynamicResource ExportDetail_Label_Nguoidat}"
                                                Grid.Column="0"
-                                               FontSize="16" />
+                                               FontSize="16"
+                                               Foreground="Black"
+                                                FontFamily="{StaticResource MaterialDesignFont}"/>
                                         <Label Content="{Binding BillDetail.CustomerName}"
                                                Grid.Column="1"
                                                HorizontalAlignment="Right"
-                                               FontSize="16" />
+                                               FontSize="16"
+                                               Foreground="Black"
+                                                FontFamily="{StaticResource MaterialDesignFont}"/>
                                     </Grid>
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal">
-                                    <Grid Width="400"
+                                    <Grid Width="385"
                                           Margin="0,10,0,0">
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition />
@@ -266,15 +296,19 @@
 
                                         <Label Content="{DynamicResource ExportDetail_Label_Sodienthoai}"
                                                Grid.Column="0"
-                                               FontSize="16" />
+                                               FontSize="16" 
+                                               Foreground="Black"
+                                                FontFamily="{StaticResource MaterialDesignFont}"/>
                                         <Label Content="{Binding BillDetail.PhoneNumber}"
                                                Grid.Column="1"
                                                HorizontalAlignment="Right"
-                                               FontSize="16" />
+                                               FontSize="16"
+                                               Foreground="Black"
+                                                FontFamily="{StaticResource MaterialDesignFont}"/>
                                     </Grid>
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal">
-                                    <Grid Width="400"
+                                    <Grid Width="385"
                                           Margin="0,10,0,0">
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition />
@@ -283,11 +317,15 @@
 
                                         <Label Content="{DynamicResource ExportDetail_Label_Thoigian}"
                                                Grid.Column="0"
-                                               FontSize="16" />
+                                               FontSize="16" 
+                                               Foreground="Black"
+                                                FontFamily="{StaticResource MaterialDesignFont}"/>
                                         <Label Grid.Column="1"
                                                HorizontalAlignment="Right"
                                                FontSize="16"
-                                               x:Name="_time" />
+                                               x:Name="_time" 
+                                               Foreground="Black"
+                                                FontFamily="{StaticResource MaterialDesignFont}"/>
                                     </Grid>
                                 </StackPanel>
                             </StackPanel>
@@ -298,7 +336,7 @@
                                 Margin="30,0,30,0">
                             <StackPanel>
                                 <StackPanel Orientation="Horizontal">
-                                    <Grid Width="400">
+                                    <Grid Width="385">
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition />
                                             <ColumnDefinition />
@@ -306,11 +344,15 @@
 
                                         <Label Content="{DynamicResource ExportDetail_Label_Tong}"
                                                Grid.Column="0"
-                                               FontSize="16" />
+                                               FontSize="16" 
+                                               Foreground="Black"
+                                                FontFamily="{StaticResource MaterialDesignFont}"/>
                                         <Label x:Name="_totalticket"
                                                Grid.Column="1"
                                                HorizontalAlignment="Right"
-                                               FontSize="16" />
+                                               FontSize="16"
+                                               Foreground="Black"
+                                                FontFamily="{StaticResource MaterialDesignFont}"/>
                                     </Grid>
                                 </StackPanel>
                             </StackPanel>
@@ -338,6 +380,8 @@
                                 BorderThickness="0,0,0,0.5">
                             <Label Content="{DynamicResource ExportDetail_Label_Sanpham}"
                                    FontSize="20"
+                                   Foreground="Black"
+                                   FontFamily="{StaticResource MaterialDesignFont}"
                                    FontWeight="Bold"
                                    HorizontalAlignment="Center" 
                                    VerticalAlignment="Center" />
@@ -365,7 +409,9 @@
                                                             Grid.Column="0">
                                                     <StackPanel Orientation="Horizontal">
                                                         <TextBlock Text="{Binding ProductName}"
-                                                                   FontSize="16" />
+                                                                   FontSize="16"
+                                                                   Foreground="Black"
+                                                                    FontFamily="{StaticResource MaterialDesignFont}"/>
                                                         <StackPanel Orientation="Horizontal"
                                                                     Margin="50,0,0,0">
                                                             <TextBlock Text="{Binding Quantity}"
@@ -403,7 +449,7 @@
                             Margin="30,0,30,0">
                         <StackPanel>
                             <StackPanel Orientation="Horizontal">
-                                <Grid Width="400">
+                                <Grid Width="385">
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition />
                                         <ColumnDefinition />
@@ -411,11 +457,15 @@
 
                                     <Label Content="{DynamicResource ExportDetail_Label_Tong}"
                                            Grid.Column="0"
-                                           FontSize="16" />
+                                           FontSize="16"
+                                           Foreground="Black"
+                                                FontFamily="{StaticResource MaterialDesignFont}"/>
                                     <Label x:Name="_totalproduct"
                                            Grid.Column="1"
                                            HorizontalAlignment="Right"
-                                           FontSize="16" />
+                                           FontSize="16" 
+                                           Foreground="Black"
+                                                FontFamily="{StaticResource MaterialDesignFont}"/>
                                 </Grid>
                             </StackPanel>
                         </StackPanel>
@@ -435,11 +485,15 @@
                     </Grid.ColumnDefinitions>
                     <Label Content="{DynamicResource ExportDetail_Label_Tong}"
                            FontSize="16"
-                           Grid.Column="1" />
+                           Grid.Column="1" 
+                           Foreground="Black"
+                                                FontFamily="{StaticResource MaterialDesignFont}"/>
                     <Label Content="{Binding BillDetail.OriginalTotalPriceStr}"
                            FontSize="16"
                            Grid.Column="2"
-                           HorizontalAlignment="Right" />
+                           HorizontalAlignment="Right" 
+                           Foreground="Black"
+                                                FontFamily="{StaticResource MaterialDesignFont}"/>
                 </Grid>
                 <Grid>
                     <Grid.ColumnDefinitions>
@@ -449,11 +503,15 @@
                     </Grid.ColumnDefinitions>
                     <Label Content="{DynamicResource ExportDetail_Label_Phigiaodich}"
                            FontSize="16"
-                           Grid.Column="1" />
+                           Grid.Column="1" 
+                           Foreground="Black"
+                                                FontFamily="{StaticResource MaterialDesignFont}"/>
                     <Label Content="{DynamicResource ExportDetail_Label_Mienphi}"
                            FontSize="16"
                            Grid.Column="2"
-                           HorizontalAlignment="Right" />
+                           HorizontalAlignment="Right" 
+                           Foreground="Black"
+                                                FontFamily="{StaticResource MaterialDesignFont}"/>
                 </Grid>
                 <Grid>
                     <Grid.ColumnDefinitions>
@@ -463,11 +521,15 @@
                     </Grid.ColumnDefinitions>
                     <Label Content="{DynamicResource ExportDetail_Label_Khuyenmai}"
                            FontSize="16"
-                           Grid.Column="1" />
+                           Grid.Column="1" 
+                           Foreground="Black"
+                                                FontFamily="{StaticResource MaterialDesignFont}"/>
                     <Label Content="{Binding BillDetail.DiscountPriceStr}"
                            FontSize="16"
                            Grid.Column="2"
-                           HorizontalAlignment="Right" />
+                           HorizontalAlignment="Right"
+                           Foreground="Black"
+                                                FontFamily="{StaticResource MaterialDesignFont}"/>
                 </Grid>
                 <Grid>
                     <Grid.ColumnDefinitions>
@@ -477,12 +539,16 @@
                     </Grid.ColumnDefinitions>
                     <Label Content="{DynamicResource ExportDetail_Label_Saukhuyenmai}"
                            FontSize="16"
-                           Grid.Column="1" />
+                           Grid.Column="1" 
+                           Foreground="Black"
+                                                FontFamily="{StaticResource MaterialDesignFont}"/>
                     <Label Content="{Binding BillDetail.TotalPriceStr}"
                            FontSize="16"
                            Grid.Column="2"
                            FontWeight="Bold"
-                           HorizontalAlignment="Right" />
+                           HorizontalAlignment="Right"
+                           Foreground="Black"
+                                                FontFamily="{StaticResource MaterialDesignFont}"/>
                 </Grid>
             </StackPanel>
 

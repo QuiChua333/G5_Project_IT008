@@ -277,7 +277,7 @@ namespace CinemaManagementProject.ViewModel.StaffVM.TroubleStaffVM
         public bool IsValidData()
         {
             return !string.IsNullOrEmpty(TroubleType)
-                     && !string.IsNullOrEmpty(Description) && !string.IsNullOrEmpty(Level.Content.ToString());
+                     && !string.IsNullOrEmpty(Description) && !string.IsNullOrEmpty(Level.Tag.ToString());
         }
         public void LoadImage()
         {

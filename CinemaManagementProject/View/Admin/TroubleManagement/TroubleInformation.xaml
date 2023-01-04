@@ -13,7 +13,7 @@
         FontSize="15"
         MouseDown="Window_MouseDown"
         AllowsTransparency="True"
-        Height="450" Width="800"
+        Height="470" Width="820"
         x:Name="Trouble_Information"
         WindowStartupLocation="CenterScreen"
 >
@@ -27,7 +27,7 @@
                 Background="White"        
                 CornerRadius="20"
                 BorderBrush="DarkGray"
-                BorderThickness="1">
+                BorderThickness="1" Height="450" Width="800">
             <Border.Effect>
                 <DropShadowEffect
                                 BlurRadius="10"
@@ -114,23 +114,24 @@
                     </Style>
                 </Grid.Resources>
                 <StackPanel Grid.Row="0" 
-                            Margin="0,0,0,3" 
+                            Margin="0,10,0,3" 
                             Grid.RowSpan="2">
                     <StackPanel Orientation="Horizontal">
                         <TextBlock Text="{Binding SelectedItem.TroubleType}"
                                     FontWeight="Medium"
-                                    FontSize="16" />
+                                    FontSize="18" 
+                                   Foreground="Red"/>
                         <TextBlock Text="{DynamicResource AddTroubleWindow_Label_Mucdo}"
-                                       Margin="120,3,0,0"
+                                       Margin="90,3,0,0"
                                        FontSize="14" />
                         <TextBlock Text="{Binding SelectedItem.Level}"
                                        TextWrapping="Wrap"
-                                       Margin="0,3,0,0"
+                                       Margin="0,3,30,0"
                                        FontSize="16" />
                     </StackPanel>
                     <Border BorderThickness="0,0,0,0.5"
                                 BorderBrush="Black"
-                            Margin="0 0 20 0">
+                            Margin="0 10 20 0">
                         <TextBlock Text="{Binding SelectedItem.Description}"
                                     TextWrapping="Wrap"
                                     FontSize="15" Height="46" />
@@ -142,14 +143,14 @@
                                        FontWeight="Medium"/>
                             <TextBlock Text="{Binding SelectedItem.SubmittedAt,StringFormat=dd/MM/yyyy HH:mm:ss}" 
                                        FontSize="16"
-                                       Margin="0 10 0 0"/>
+                                       Margin="0 5 0 0"/>
                         </StackPanel>
                         <StackPanel Margin="160,10,0,0">
                             <TextBlock  Text="{DynamicResource EditTroubleInformation_Inprocess_Label_Nhanvienbaocao}"
                                         FontSize="16"
                                         FontWeight="Medium"/>
                             <TextBlock FontSize="16"
-                                       Margin="0 10 0 0"
+                                       Margin="0 5 0 0"
                                        Text="{Binding SelectedItem.StaffName}" />
                         </StackPanel>
                     </StackPanel>
@@ -160,8 +161,8 @@
                         <TextBlock  Text="{DynamicResource AddTroubleWindow_Label_Trangthai}"
                                     FontSize="16"
                                     FontWeight="Medium"/>
-                        <TextBlock Width="140"
-                                    Text="{Binding SelectedItem.TroubleStatus}"
+                        <TextBlock  Width="140"
+                                    x:Name="cbbstatus"
                                     HorizontalAlignment="Left" />
                     </StackPanel>
 
@@ -189,7 +190,7 @@
                                        Text="{Binding SelectedItem.FinishDate,StringFormat=dd/MM/yyyy HH:mm:ss}" />
                     </StackPanel>
 
-                    <StackPanel Margin="0,14,0,0"
+                    <StackPanel Margin="0,0,0,0"
                                 x:Name="_cost"
                                 IsEnabled="False" 
                                 Orientation="Horizontal" 
@@ -209,7 +210,7 @@
                                 Click="Button_Click_1"
                                 Background="Red"
                                 HorizontalAlignment="Right" 
-                                Margin="0,0,10,0"
+                                Margin="0,10,20,0"
                                 Content="{DynamicResource EditTroubleInformation_Button_Dong}"></Button>
                        
                     </StackPanel>

@@ -14,8 +14,8 @@
         DataContext="{StaticResource CustomerManagementVM}"
         Name="SuaKH"
         ResizeMode="NoResize"
-        Height="325"
-        Width="505"
+        Height="340"
+        Width="520"
         WindowStartupLocation="CenterScreen"
         Title="EditCustomerWindow">
     <Border BorderBrush="Gray"
@@ -70,7 +70,7 @@
                  Height="50" 
                 Background="Transparent">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="120" />
+                    <ColumnDefinition Width="150" />
                     <ColumnDefinition />
                 </Grid.ColumnDefinitions>
                 <TextBlock Text="{DynamicResource EditCustomerWindow_TextBlock_Hovaten}" 
@@ -85,7 +85,7 @@
 
             <Grid Height="50" Background="Transparent">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="120" />
+                    <ColumnDefinition Width="150" />
                     <ColumnDefinition Width="109.134" />
                     <ColumnDefinition />
                 </Grid.ColumnDefinitions>
@@ -119,7 +119,7 @@
                 <DatePickerTextBox Width="340"
                          HorizontalAlignment="Left"
                          VerticalAlignment="Bottom"
-                         Margin="5,0,0,8"
+                         Margin="5,0,30,8"
                          FontSize="16"
                          Grid.Column="1"
                          Style="{StaticResource MaterialDesignDatePickerTextBox}"
@@ -135,7 +135,7 @@
             <Grid Background="Transparent"
                    Height="50">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="120" />
+                    <ColumnDefinition Width="150" />
                     <ColumnDefinition />
                 </Grid.ColumnDefinitions>
                 <TextBlock Text="{DynamicResource EditCustomerWindow_TextBlock_Sodienthoai}"  FontSize="16" />
@@ -147,7 +147,7 @@
             <Grid Background="Transparent"
                    Height="50">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="120" />
+                    <ColumnDefinition Width="150" />
                     <ColumnDefinition />
                 </Grid.ColumnDefinitions>
                 <TextBlock Text="Email" FontSize="16" />

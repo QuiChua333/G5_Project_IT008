@@ -1,6 +1,7 @@
 ﻿using CinemaManagementProject.DTOs;
 using CinemaManagementProject.Model.Service;
 using CinemaManagementProject.Utils;
+using CinemaManagementProject.Views;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,7 +25,9 @@ namespace CinemaManagementProject.ViewModel.AdminVM.StaffManagementVM
                 {
                     if (!Utils.RegexUtilities.IsValidEmail(Mail))
                     {
-                        CustomMessageBox.ShowOk("Email không hợp lệ","Cảnh báo","OK", Views.CustomMessageBoxImage.Warning);
+                        if (Properties.Settings.Default.isEnglish == false)
+                            CustomMessageBox.ShowOk("Email không hợp lệ", "Cảnh báo", "OK", CustomMessageBoxImage.Warning);
+                        else CustomMessageBox.ShowOk("Invalid email", "Warning", "OK", CustomMessageBoxImage.Warning);
                         return;
                     }
                 }
@@ -35,10 +38,10 @@ namespace CinemaManagementProject.ViewModel.AdminVM.StaffManagementVM
             {
                 StaffDTO staff = new StaffDTO();
                 staff.StaffName = Fullname;
-                staff.Gender = Gender.Content.ToString();
+                staff.Gender = Gender.Tag.ToString();
                 staff.DateOfBirth = Born;
                 staff.PhoneNumber = Phone;
-                staff.Position = Role.Content.ToString();
+                staff.Position = Role.Tag.ToString();
                 staff.StartDate = StartDate;
                 staff.UserName = TaiKhoan;
                 staff.UserPass = MatKhau;
@@ -50,16 +53,16 @@ namespace CinemaManagementProject.ViewModel.AdminVM.StaffManagementVM
                 {
                     LoadStaffListView(Operation.CREATE, newStaff);
                     p.Close();
-                    CustomMessageBox.ShowOk(messageFromAddStaff, "Thông báo", "OK", Views.CustomMessageBoxImage.Success);
+                    CustomMessageBox.ShowOk(messageFromAddStaff, Properties.Settings.Default.isEnglish == false? "Thông báo": "Notify", "OK", Views.CustomMessageBoxImage.Success);
                 }
                 else
                 {
-                    CustomMessageBox.ShowOk(messageFromAddStaff, "Lỗi", "OK", Views.CustomMessageBoxImage.Error);
+                    CustomMessageBox.ShowOk(messageFromAddStaff, Properties.Settings.Default.isEnglish == false ? "Lỗi":"Error", "OK", Views.CustomMessageBoxImage.Error);
                 }
             }
             else
             {
-                CustomMessageBox.ShowOk(error, "Cảnh báo", "OK", Views.CustomMessageBoxImage.Warning);
+                CustomMessageBox.ShowOk(error, Properties.Settings.Default.isEnglish == false ? "Cảnh báo":"Warning", "OK", Views.CustomMessageBoxImage.Warning);
             }
         }
         private (bool, string) ValidateAge(DateTime birthDate)
@@ -73,7 +76,7 @@ namespace CinemaManagementProject.ViewModel.AdminVM.StaffManagementVM
             // Go back to the year in which the person was born in case of a leap year
             if (birthDate.DayOfYear > today.DayOfYear) age--;
 
-            if (age < 18) return (false, "Nhân viên chưa đủ 18 tuổi!");
+            if (age < 18) return (false, Properties.Settings.Default.isEnglish == false ? "Nhân viên chưa đủ 18 tuổi!" : "Employees under 18 years old!");
             return (true, null);
         }
     }

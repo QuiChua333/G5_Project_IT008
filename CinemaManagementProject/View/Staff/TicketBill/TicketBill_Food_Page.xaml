@@ -254,7 +254,7 @@
 
                                 <TextBlock Text="{DynamicResource TicketBillFoodPage_TextBlock_HoVaTen}" />
                                 <TextBox Grid.Column="1" 
-                                         Margin="0 0 100 0"
+                                         Margin="0 0 100 6"
                                          Text="{Binding NameSignUp, Mode=TwoWay}"/>
                                 <Grid.Style>
                                     <Style>
@@ -280,7 +280,7 @@
 
                                 <TextBlock Text="Email:" />
                                 <TextBox Grid.Column="1" 
-                                         Margin="0 0 100 0"
+                                         Margin="0 0 100 6"
                                          Text="{Binding EmailSignUp, Mode=TwoWay}"/>
                                 <Grid.Style>
                                     <Style>
@@ -401,7 +401,7 @@
                                            FontFamily="{StaticResource MaterialDesignFont}"
                                            />
                                 <TextBox Grid.Column="1"
-                                         Margin="10 0 10 4"
+                                         Margin="10 0 10 7"
                                          Text="{Binding VoucherID, Mode=TwoWay}" />
                                 <Button Grid.Column="2"
                                         VerticalAlignment="Bottom"

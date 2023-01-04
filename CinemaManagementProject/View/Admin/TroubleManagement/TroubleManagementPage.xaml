@@ -141,6 +141,7 @@
                             SelectedIndex="0"  
                             Padding="13 14 13 14"
                             BorderThickness="0"
+                            Background="Transparent"
                             x:Name="filtercbb"
                             SelectedItem="{Binding SelectedCbbItem,Mode=OneWayToSource}" 
                             SelectionChanged="filtercbb_SelectionChanged">
@@ -215,7 +216,7 @@
                                                            FontWeight="Bold"
                                                            Width="300" />
                                                     <StackPanel Orientation="Horizontal">
-                                                        <Label  Content="Chi phí:"
+                                                        <Label  Content="{DynamicResource EditTroubleInformation_Inprocess_Label_Chiphi}"
                                                                 FontSize="14" />
                                                         <Label  Content="{Binding RepairCostStr}"
                                                                 FontSize="14" />
@@ -237,7 +238,7 @@
                                         <DataTemplate>
                                             <TextBlock Text="{Binding SubmittedAt, StringFormat=dd/MM/yyyy}"
                                                        FontSize="16"
-                                                       Margin="-30,30,0,0" />
+                                                       Margin="-28,30,0,0" />
                                         </DataTemplate>
                                     </GridViewColumn.CellTemplate>
                                 </GridViewColumn>
@@ -251,7 +252,7 @@
                                     <GridViewColumn.CellTemplate>
                                         <DataTemplate>
                                             <Border BorderThickness="1"
-                                                Margin="-34,22,0,0"
+                                                Margin="-39,22,0,0"
                                                 BorderBrush="{Binding TroubleStatus, Converter={StaticResource StatusBrushConverter}}"
                                                 CornerRadius="18">
                                                 <TextBlock Text="{Binding TroubleStatus}"

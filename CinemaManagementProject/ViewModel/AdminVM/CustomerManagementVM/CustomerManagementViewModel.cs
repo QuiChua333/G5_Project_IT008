@@ -169,7 +169,8 @@ namespace CinemaManagementProject.ViewModel.AdminVM.CustomerManagementVM
 
             DeleteCustomerCommand = new RelayCommand<Window>((p) => { return true; }, async (p) =>
             {
-               CustomMessageBoxResult kq = CustomMessageBox.ShowOkCancel("Bạn có chắc muốn xoá khách hàng này không?", "Cảnh báo", "OK", "Cancel", Views.CustomMessageBoxImage.Warning);
+
+               CustomMessageBoxResult kq = CustomMessageBox.ShowOkCancel(Properties.Settings.Default.isEnglish == false?"Bạn có chắc muốn xoá khách hàng này không?": "Are you sure you want to delete this customer?", Properties.Settings.Default.isEnglish == false ? "Cảnh báo":"Warning", "OK", "Cancel", Views.CustomMessageBoxImage.Warning);
                 if (kq == CustomMessageBoxResult.OK)
                 {
                     IsGettingSource = true;
@@ -181,11 +182,14 @@ namespace CinemaManagementProject.ViewModel.AdminVM.CustomerManagementVM
                     if (isSuccess)
                     {
                         LoadCustomerListView(Utils.Operation.DELETE);
-                        CustomMessageBox.ShowOk("Xóa thành công!", "Thông báo", "OK", CustomMessageBoxImage.Success);
+                        if (Properties.Settings.Default.isEnglish == false)
+                            CustomMessageBox.ShowOk("Xóa thành công!", "Thông báo", "OK", CustomMessageBoxImage.Success);
+                        else CustomMessageBox.ShowOk("Delete successful!", "Notify", "OK", CustomMessageBoxImage.Success);
+
                     }
                     else
                     {
-                        CustomMessageBox.ShowOk(messageFromUpdate, "Thông báo", "OK", CustomMessageBoxImage.Error);
+                        CustomMessageBox.ShowOk(messageFromUpdate, Properties.Settings.Default.isEnglish == false? "Thông báo": "Notify", "OK", CustomMessageBoxImage.Error);
 
                     }
                 }
@@ -218,13 +222,16 @@ namespace CinemaManagementProject.ViewModel.AdminVM.CustomerManagementVM
             catch (System.Data.Entity.Core.EntityException e)
             {
                 Console.WriteLine(e);
-                CustomMessageBox.ShowOk("Mất kết nối cơ sở dữ liệu", "Lỗi", "OK", CustomMessageBoxImage.Error);
+                if(Properties.Settings.Default.isEnglish == false)
+                    CustomMessageBox.ShowOk("Mất kết nối cơ sở dữ liệu", "Lỗi", "OK", CustomMessageBoxImage.Error);
+                else CustomMessageBox.ShowOk("Unable to connect to database", "Error", "OK", CustomMessageBoxImage.Error);
             }
             catch (Exception e)
             {
                 Console.WriteLine(e);
-                CustomMessageBox.ShowOk("Lỗi hệ thống", "Lỗi", "OK", CustomMessageBoxImage.Error);
-
+                if (Properties.Settings.Default.isEnglish == false)
+                    CustomMessageBox.ShowOk("Lỗi hệ thống", "Lỗi", "OK", CustomMessageBoxImage.Error);
+                else CustomMessageBox.ShowOk("System Error", "Error", "OK", CustomMessageBoxImage.Error);
             }
             selectedyear = int.Parse(SelectedTime.ToString());
 
@@ -263,12 +270,16 @@ namespace CinemaManagementProject.ViewModel.AdminVM.CustomerManagementVM
             catch (System.Data.Entity.Core.EntityException e)
             {
                 Console.WriteLine(e);
-                CustomMessageBox.ShowOk("Mất kết nối cơ sở dữ liệu", "Lỗi", "OK", CustomMessageBoxImage.Error);
+                if (Properties.Settings.Default.isEnglish == false)
+                    CustomMessageBox.ShowOk("Mất kết nối cơ sở dữ liệu", "Lỗi", "OK", CustomMessageBoxImage.Error);
+                else CustomMessageBox.ShowOk("Unable to connect to database", "Error", "OK", CustomMessageBoxImage.Error);
             }
             catch (Exception e)
             {
                 Console.WriteLine(e);
-                CustomMessageBox.ShowOk("Lỗi hệ thống", "Lỗi", "OK", CustomMessageBoxImage.Error);
+                if (Properties.Settings.Default.isEnglish == false)
+                    CustomMessageBox.ShowOk("Lỗi hệ thống", "Lỗi", "OK", CustomMessageBoxImage.Error);
+                else CustomMessageBox.ShowOk("System Error", "Error", "OK", CustomMessageBoxImage.Error);
             }
         }
         public async Task EditCustomer(Window p)
@@ -277,7 +288,10 @@ namespace CinemaManagementProject.ViewModel.AdminVM.CustomerManagementVM
             {
                 if (!Utils.RegexUtilities.IsValidEmail(Mail))
                 {
-                    CustomMessageBox.ShowOk("Email không hợp lệ", "Cảnh báo", "OK", CustomMessageBoxImage.Warning);
+                    if (Properties.Settings.Default.isEnglish == false)
+                        CustomMessageBox.ShowOk("Email không hợp lệ", "Cảnh báo", "OK", CustomMessageBoxImage.Warning);
+                    else CustomMessageBox.ShowOk("Invalid email", "Warning", "OK", CustomMessageBoxImage.Warning);
+                    
                     return;
                 }
             }
@@ -298,16 +312,24 @@ namespace CinemaManagementProject.ViewModel.AdminVM.CustomerManagementVM
                 {
                     LoadCustomerListView(Utils.Operation.UPDATE, cus);
                     p.Close();
-                    CustomMessageBox.ShowOk("Cập nhật thành công!", "Thông báo", "OK", CustomMessageBoxImage.Success);
+                    if (Properties.Settings.Default.isEnglish == false)
+                        CustomMessageBox.ShowOk("Cập nhật thành công!", "Thông báo", "OK", CustomMessageBoxImage.Success);
+                    else CustomMessageBox.ShowOk("Update successful!", "Thông báo", "OK", CustomMessageBoxImage.Success);
+                    
                 }
                 else
                 {
-                    CustomMessageBox.ShowOk(messageFromUpdate, "Thông báo", "OK", CustomMessageBoxImage.Error);
+                    if (Properties.Settings.Default.isEnglish == false)
+                        CustomMessageBox.ShowOk(messageFromUpdate, "Thông báo", "OK", CustomMessageBoxImage.Error);
+                    else CustomMessageBox.ShowOk(messageFromUpdate, "Warning", "OK", CustomMessageBoxImage.Error);
                 }
             }
             else
             {
-                CustomMessageBox.ShowOk(error, "Cảnh báo", "OK", CustomMessageBoxImage.Warning);
+                if (Properties.Settings.Default.isEnglish == false)
+                    CustomMessageBox.ShowOk(error, "Cảnh báo", "OK", CustomMessageBoxImage.Warning);
+                else CustomMessageBox.ShowOk(error, "Cảnh báo", "OK", CustomMessageBoxImage.Warning);
+
             }
         }
 
@@ -315,11 +337,11 @@ namespace CinemaManagementProject.ViewModel.AdminVM.CustomerManagementVM
         {
             if (string.IsNullOrEmpty(Fullname))
             {
-                return (false, "Thông tin thiếu! Vui lòng bổ sung");
+                return (false, Properties.Settings.Default.isEnglish == false? "Thông tin thiếu! Vui lòng bổ sung": "Missing information! Please add");
             }
             if (!Helper.IsPhoneNumber(Phone))
             {
-                return (false, "Số điện thoại không hợp lệ");
+                return (false, Properties.Settings.Default.isEnglish == false ? "Số điện thoại không hợp lệ" : "Invalid phone number");
             }
             return (true, null);
         }

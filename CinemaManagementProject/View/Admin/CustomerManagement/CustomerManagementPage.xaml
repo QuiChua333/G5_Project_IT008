@@ -113,7 +113,7 @@
                         Margin="20, 17, 0, 17"
                         Background="White"
                         Height="46"
-                        Width="140"
+                        Width="150"
                         BorderBrush="Black">
                         <Border.Effect>
                             <DropShadowEffect
@@ -127,6 +127,8 @@
                                 SelectedIndex="0"
                                 UseLayoutRounding="False"
                                 BorderThickness="0"
+                                Background="Transparent"
+                                Foreground="Black"
                                 Style="{StaticResource styleButton}" 
                                 Name="cbbFilter"
                                 Padding="10 14 10 14" >
@@ -159,6 +161,7 @@
                                     x:Name="periodbox1"
                                     Padding="10 14 10 14"
                                     BorderThickness="0"
+                                    Background="Transparent"
                                     SelectedItem="{Binding SelectedPeriod}"
                                     SelectionChanged="periodbox1_SelectionChanged"
                                     Loaded="periodbox1_Loaded">
@@ -197,6 +200,7 @@
                                     Margin="0,0,0,-3" 
                                     BorderThickness="0"
                                     x:Name="Time1"   
+                                    Background="Transparent"
                                     Visibility="Collapsed"
                                     SelectedItem="{Binding SelectedTime,Mode=OneWayToSource}">
                                 <i:Interaction.Triggers>
@@ -272,12 +276,12 @@
                                                            Margin="20 6 0 0"
                                                            FontSize="14" 
                                                            FontFamily="{StaticResource MaterialDesignFont}"/>
-                                                </DataTemplate>
-                                            </GridViewColumn.CellTemplate>
-                                        </GridViewColumn>
-                                        <GridViewColumn Width="146">
-                                            <GridViewColumn.Header>
-                                                <TextBlock Text="{DynamicResource CustomerManagementPage_ListviewHeader_SoDienThoai}"
+                                            </DataTemplate>
+                                        </GridViewColumn.CellTemplate>
+                                    </GridViewColumn>
+                                    <GridViewColumn Width="159">
+                                        <GridViewColumn.Header>
+                                            <TextBlock Text="{DynamicResource CustomerManagementPage_ListviewHeader_SoDienThoai}"
                                                        FontSize="14" 
                                                        FontWeight="SemiBold" 
                                                        Foreground="Black"/>
@@ -288,12 +292,12 @@
                                                            Margin="20 6 0 0"
                                                            FontSize="14" 
                                                            FontFamily="{StaticResource MaterialDesignFont}"/>
-                                                </DataTemplate>
-                                            </GridViewColumn.CellTemplate>
-                                        </GridViewColumn>
-                                        <GridViewColumn Width="250">
-                                            <GridViewColumn.Header>
-                                                <TextBlock Text="Email" 
+                                            </DataTemplate>
+                                        </GridViewColumn.CellTemplate>
+                                    </GridViewColumn>
+                                    <GridViewColumn Width="220">
+                                        <GridViewColumn.Header>
+                                            <TextBlock Text="Email" 
                                                        FontSize="14" 
                                                        FontWeight="SemiBold" 
                                                        Foreground="Black"/>
@@ -304,12 +308,12 @@
                                                            Margin="20 6 0 0"
                                                            FontSize="14" 
                                                            FontFamily="{StaticResource MaterialDesignFont}"/>
-                                                </DataTemplate>
-                                            </GridViewColumn.CellTemplate>
-                                        </GridViewColumn>
-                                        <GridViewColumn Width="150" >
-                                            <GridViewColumn.Header>
-                                                <TextBlock Text="{DynamicResource CustomerManagementPage_ListviewHeader_NgayDangKy}"
+                                            </DataTemplate>
+                                        </GridViewColumn.CellTemplate>
+                                    </GridViewColumn>
+                                    <GridViewColumn Width="165" >
+                                        <GridViewColumn.Header>
+                                            <TextBlock Text="{DynamicResource CustomerManagementPage_ListviewHeader_NgayDangKy}"
                                                        FontSize="14" 
                                                        FontWeight="SemiBold" 
                                                        Foreground="Black"/>
@@ -320,12 +324,12 @@
                                                            Margin="20 6 0 0"
                                                            FontSize="14" 
                                                            FontFamily="{StaticResource MaterialDesignFont}"/>
-                                                </DataTemplate>
-                                            </GridViewColumn.CellTemplate>
-                                        </GridViewColumn>
-                                        <GridViewColumn Width="154">
-                                            <GridViewColumn.Header>
-                                                <TextBlock Text="{DynamicResource CustomerManagementPage_ListviewHeader_Chitieuthang}"
+                                            </DataTemplate>
+                                        </GridViewColumn.CellTemplate>
+                                    </GridViewColumn>
+                                    <GridViewColumn Width="178">
+                                        <GridViewColumn.Header>
+                                            <TextBlock Text="{DynamicResource CustomerManagementPage_ListviewHeader_Chitieuthang}"
                                                        FontSize="14" 
                                                        FontWeight="SemiBold" 
                                                        Foreground="Black"/>
