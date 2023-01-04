@@ -295,7 +295,7 @@
                                                 <ListBox.ItemTemplate>
                                                     <DataTemplate>
                                                         <Grid Margin="90,0,0,0">
-                                                            <Label Content="Mã:" 
+                                                            <Label Content="{DynamicResource ReleaseVoucher_Label_Code}" 
                                                                    FontWeight="Regular"
                                                                    Foreground="Black"
                                                                    FontFamily="{DynamicResource MaterialDesignFont}" 

@@ -51,7 +51,7 @@
                                 FontSize="14"
                                 FontWeight="Medium"
                                 FontFamily="{DynamicResource MaterialDesignFont}"
-                                PlaceHolder="Tìm kiếm"
+                                PlaceHolder="Search"
                                 IconSize="23" 
                                 SearchTextChange="Search_SearchTextChange"
                                 x:Name="SearchBox"/>

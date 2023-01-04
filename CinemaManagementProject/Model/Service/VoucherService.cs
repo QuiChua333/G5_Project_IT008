@@ -1,5 +1,6 @@
 ﻿using CinemaManagementProject.DTOs;
 using CinemaManagementProject.Utils;
+using CinemaManagementProject.ViewModel.AdminVM.VoucherManagementVM;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -13,6 +14,7 @@ namespace CinemaManagementProject.Model.Service
 {
     public class VoucherService
     {
+        private bool IsEnglish = false;
         private static VoucherService _ins;
         public static VoucherService Ins
         {
@@ -74,6 +76,7 @@ namespace CinemaManagementProject.Model.Service
         }
         public async Task<(bool, string, VoucherReleaseDTO newVR)> CreateVoucherRelease(VoucherReleaseDTO newVR)
         {
+            IsEnglish = VoucherViewModel.IsEnglish;
             try
             {
                 using (var context = new CinemaManagementProjectEntities())
@@ -97,12 +100,12 @@ namespace CinemaManagementProject.Model.Service
                     await context.SaveChangesAsync();
 
                     newVR.VoucherReleaseCode = voucherRelease.VoucherReleaseCode;
-                    return (true, "Thêm đợt phát hành mới thành công", newVR);
+                    return (true, IsEnglish?"Successfully added a new release!":"Thêm đợt phát hành mới thành công!", newVR);
                 }
             }
             catch (Exception e)
             {
-                return (false, "Lỗi hệ thống", null);
+                return (false, IsEnglish ? "System Error" : "Lỗi hệ thống", null);
             }
         }
         public async Task<(VoucherReleaseDTO, bool haveAnyUsedVoucher)> GetVoucherReleaseDetails(string Code)
@@ -147,6 +150,7 @@ namespace CinemaManagementProject.Model.Service
         }
         public async Task<(bool, string)> UpdateVoucherRelease(VoucherReleaseDTO upVoucherR)
         {
+            IsEnglish = VoucherViewModel.IsEnglish;
             try
             {
                 using (var context = new CinemaManagementProjectEntities())
@@ -165,16 +169,17 @@ namespace CinemaManagementProject.Model.Service
 
                     await context.SaveChangesAsync();
 
-                    return (true, "Cập nhật đợt phát hành thành công!");
+                    return (true, IsEnglish?"Successfully updated new release!":"Cập nhật đợt phát hành thành công!");
                 }
             }
             catch (Exception e)
             {
-                return (false, "Lỗi");
+                return (false, IsEnglish?"Error":"Lỗi");
             }
         }
         public async Task<(bool, string)> DeteleVoucherRelease(string VrCode)
         {
+            IsEnglish = VoucherViewModel.IsEnglish;
             try
             {
                 using (var context = new CinemaManagementProjectEntities())
@@ -182,12 +187,12 @@ namespace CinemaManagementProject.Model.Service
                     VoucherRelease voucherRelease = (await context.VoucherReleases.FirstOrDefaultAsync(x => x.VoucherReleaseCode == VrCode));
                     voucherRelease.IsDeleted= true;
                     await context.SaveChangesAsync();
-                    return (true, "Xóa đợt phát hành thành công");
+                    return (true, IsEnglish?"Successfully deleted a release!":"Xóa đợt phát hành thành công!");
                 }
             }
             catch (Exception e)
             {
-                return (false, "Lỗi hệ thống");
+                return (false, IsEnglish ? "System Error" : "Lỗi hệ thống");
             }
         }
         public async Task<(bool, string)> DeteleVouchers(List<int> ListCodeId)
@@ -198,16 +203,17 @@ namespace CinemaManagementProject.Model.Service
                 {
                     context.Vouchers.RemoveRange(context.Vouchers.Where(v => ListCodeId.Contains(v.Id)));
                     await context.SaveChangesAsync();
-                    return (true, "Xóa danh sách voucher thành công");
+                    return (true, IsEnglish? "Successfully deleted a voucher list!" : "Xóa danh sách voucher thành công!");
                 }
             }
             catch (Exception e)
             {
-                return (false, "Lỗi hệ thống");
+                return (false, IsEnglish ? "System Error" : "Lỗi hệ thống");
             }
         }
         public async Task<(bool, string, List<VoucherDTO> voucherList)> CreateVoucher(int voucherReleaseId, List<VoucherDTO> ListVoucher)
         {
+            IsEnglish = VoucherViewModel.IsEnglish;
             try
             {
                 List<string> ListCode = ListVoucher.Select(v => v.VoucherCode).ToList();
@@ -218,7 +224,7 @@ namespace CinemaManagementProject.Model.Service
                     
                     if (IsExist)
                     {
-                        return (false, "Mã voucher đã tồn tại!", null);
+                        return (false, IsEnglish?"Voucher code already exists!":"Mã voucher đã tồn tại!", null);
                     }
                     VoucherRelease vl = await context.VoucherReleases.FindAsync(voucherReleaseId);
                     List<Voucher> vouchers = ListCode.Select(c => new Voucher
@@ -231,7 +237,7 @@ namespace CinemaManagementProject.Model.Service
 
                     context.Vouchers.AddRange(vouchers);
                     await context.SaveChangesAsync();
-                    return (true, "Thêm voucher thành công", vouchers.Select(v => new VoucherDTO
+                    return (true, IsEnglish?"Successfully added vouchers!":"Thêm voucher thành công!", vouchers.Select(v => new VoucherDTO
                     {
                         VoucherReleaseId = (int)v.VoucherReleaseId,
                         Id = v.Id,
@@ -242,11 +248,12 @@ namespace CinemaManagementProject.Model.Service
             }
             catch (Exception e) 
             {
-                return (false, "Lỗi hệ thống", null);
+                return (false, IsEnglish ? "System Error" : "Lỗi hệ thống", null);
             }
         }
         public async Task<(bool, string, List<VoucherDTO> voucherList)> CreateRandomVoucherList(VoucherReleaseDTO voucherRelease, List<string> ListCode)
         {
+            IsEnglish = VoucherViewModel.IsEnglish;
             try
             {
                 List<Voucher> vouchers = ListCode.Select(c => new Voucher
@@ -262,7 +269,7 @@ namespace CinemaManagementProject.Model.Service
                 {
                     context.Vouchers.AddRange(vouchers);
                     await context.SaveChangesAsync();
-                    return (true, "Thêm danh sách voucher thành công", vouchers.Select(v => new VoucherDTO
+                    return (true, IsEnglish? "Successfully added a voucher list!" : "Thêm danh sách voucher thành công", vouchers.Select(v => new VoucherDTO
                     {
                         VoucherReleaseId = (int)v.VoucherReleaseId,
                         Id = v.Id,
@@ -274,11 +281,12 @@ namespace CinemaManagementProject.Model.Service
             }
             catch (Exception)
             {
-                return (false, "Lỗi hệ thống", null);
+                return (false, IsEnglish ? "System Error" : "Lỗi hệ thống", null);
             }
         }
         public async Task<(bool, string)> ReleaseMultiVoucher(List<int> ListCodeId)
         {
+            IsEnglish = VoucherViewModel.IsEnglish;
             try
             {
                 string idList = string.Join(",", ListCodeId);
@@ -287,15 +295,16 @@ namespace CinemaManagementProject.Model.Service
                     var sql = $@"Update [Voucher] SET VoucherStatus = '{VOUCHER_STATUS.REALEASED}', ReleaseAt = GETDATE()  WHERE Id IN ({idList})";
                     await context.Database.ExecuteSqlCommandAsync(sql);
                 }
-                return (true, "Phát hành thành công");
+                return (true, IsEnglish?"Successfully release!":"Phát hành thành công!");
             }
             catch (Exception e)
             {
-                return (false, "Lỗi hệ thống");
+                return (false, IsEnglish ? "System Error" : "Lỗi hệ thống");
             }
         }
         public async Task<(string error, VoucherDTO)> GetVoucherInfo(string Code)
         {
+            IsEnglish = VoucherViewModel.IsEnglish;
             using (var context = new CinemaManagementProjectEntities())
             {
                 try
@@ -326,34 +335,34 @@ namespace CinemaManagementProject.Model.Service
 
                     if (voucher is null || !voucher.VoucherInfo.VoucherReleaseStatus || voucher.VoucherStatus == VOUCHER_STATUS.UNRELEASED)
                     {
-                        return ("Mã giảm giá không tồn tại", null);
+                        return (IsEnglish?"Voucher code does not exist!":"Mã giảm giá không tồn tại!", null);
                     }
 
                     if (voucher.VoucherInfo.EndDate < DateTime.Now)
                     {
-                        return ("Mã giảm giá đã hết hạn sử dụng", null);
+                        return (IsEnglish?"Expired voucher code!":"Mã giảm giá đã hết hạn sử dụng!", null);
                     }
 
                     if (voucher.VoucherStatus == VOUCHER_STATUS.USED)
                     {
-                        return ("Mã giảm giá đã sử dụng", null);
+                        return (IsEnglish?"Used voucher code!":"Mã giảm giá đã sử dụng!", null);
                     }
 
                     voucher.Price = voucher.VoucherInfo.Price;
                     voucher.TypeObject = voucher.VoucherInfo.TypeObject;
                     voucher.EnableMerge = voucher.VoucherInfo.EnableMerge;
 
-                    voucher.VoucherInfoStr = $"Giảm {String.Format(CultureInfo.InvariantCulture, "{0:#,#}", voucher.Price)} đ ({voucher.TypeObject})";
+                    voucher.VoucherInfoStr = IsEnglish?$"Discount {String.Format(CultureInfo.InvariantCulture, "{0:#,#}", voucher.Price)} đ ({voucher.TypeObject})" :$"Giảm {String.Format(CultureInfo.InvariantCulture, "{0:#,#}", voucher.Price)} đ ({voucher.TypeObject})";
 
                     return (null, voucher);
                 }
                 catch (System.Data.Entity.Core.EntityException)
                 {
-                    return ("Mất kết nối cơ sở dữ liệu", null);
+                    return (IsEnglish ? "Unable to connect to database" : "Mất kết nối cơ sở dữ liệu", null);
                 }
                 catch (Exception)
                 {
-                    return ("Lỗi hệ thống", null);
+                    return (IsEnglish ? "System Error" : "Lỗi hệ thống", null);
                 }
             }
         }
