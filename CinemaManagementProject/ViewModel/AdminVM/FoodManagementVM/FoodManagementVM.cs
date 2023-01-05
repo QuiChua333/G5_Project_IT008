@@ -164,13 +164,17 @@ namespace CinemaManagementProject.ViewModel.AdminVM.FoodManagementVM
                     string category = SelectedItemFilter.Tag.ToString();
                     if (category == "Tất cả")
                     {
+                        IsLoadding = true;
                         FoodList = new ObservableCollection<ProductDTO>(StoreAllFood);
+                        IsLoadding = false;
                     }    
                     else
                     {
+                        IsLoadding = true;
                         for (int i = 0; i < StoreAllFood.Count; i++)
                             if (StoreAllFood[i].Category == category)
                                 FoodList.Add(StoreAllFood[i]);
+                        IsLoadding = false;
                     }
                 }
                 catch (EntityException e)
@@ -191,7 +195,9 @@ namespace CinemaManagementProject.ViewModel.AdminVM.FoodManagementVM
             });
             ImportFoodCM = new RelayCommand<Window>((p) => { return true; }, async (p) =>
             {
+                IsLoadding = true;
                 await ImportFood(p);
+                IsLoadding = false;
             });
             CloseImportFoodCM = new RelayCommand<Window>((p) => { return true; }, (p) =>
             {
@@ -207,14 +213,18 @@ namespace CinemaManagementProject.ViewModel.AdminVM.FoodManagementVM
             OpenEditFoodCM = new RelayCommand<object>((p) => { return true; }, async (p) =>
             {
                 EditFoodWindow wd = new EditFoodWindow();
-                
+
+                IsLoadding = true;
                 await LoadEditFood(wd);
+                IsLoadding = false;
 
                 wd.ShowDialog();
             });
             SaveEditFoodCM = new RelayCommand<Window>((p) => { return true; }, async (p) =>
             {
+                IsLoadding = true;
                 await SaveFood(p);
+                IsLoadding = false;
             });
             CloseEditFoodCM = new RelayCommand<Window>((p) => { return true; }, (p) =>
             {
@@ -226,9 +236,11 @@ namespace CinemaManagementProject.ViewModel.AdminVM.FoodManagementVM
                 Id = SelectedItem.Id;
                 if(CustomMessageBox.ShowOkCancel(isEN? "Do you want to remove this product?" : "Bạn có muốn xóa sản phẩm này không?",isEN ? "Warning": "Cảnh báo", isEN ? "Remove" : "Xóa", isEN ? "No" : "Không", Views.CustomMessageBoxImage.Warning) == Views.CustomMessageBoxResult.OK)
                 {
+                    IsLoadding=true;
                     (bool isSuccessDelete, string messageReturn) = await ProductService.Ins.DeleteProduct(Id);
+                    IsLoadding = false;
 
-                    if(isSuccessDelete)
+                    if (isSuccessDelete)
                     {
                         LoadProductListView(Operation.DELETE);
                         CustomMessageBox.ShowOkCancel(messageReturn,isEN?"Success": "Thành công", "Ok", isEN ? "Cancel": "Hủy", Views.CustomMessageBoxImage.Success);
@@ -242,7 +254,9 @@ namespace CinemaManagementProject.ViewModel.AdminVM.FoodManagementVM
             });
             AddFoodCM = new RelayCommand<Window>((p) => { return true; }, async(p) =>
             {
+                IsLoadding = true;
                 await AddProduct(p);
+                IsLoadding = false;
             });
             CloseAddFoodCM = new RelayCommand<Window>((p) => { return true; }, (p) =>
             {
