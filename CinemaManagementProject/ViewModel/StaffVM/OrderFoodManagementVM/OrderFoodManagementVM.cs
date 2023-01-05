@@ -169,14 +169,18 @@ namespace CinemaManagementProject.ViewModel.StaffVM.OrderFoodManagementVM
                     isEN = Properties.Settings.Default.isEnglish;
                     StoreAllFood = new ObservableCollection<ProductDTO>(await Task.Run(() => ProductService.Ins.GetAllProduct()));
                     FoodList = new ObservableCollection<ProductDTO>(StoreAllFood);
-                    if (TicketWindowViewModel.mainListOrder != null)
+                    if (ListOrder != null)
                     {
-                        OrderList = new ObservableCollection<ProductDTO>(TicketWindowViewModel.mainListOrder);
+                        OrderList = new ObservableCollection<ProductDTO>(ListOrder);
                         LoadCurrentQuantityProductWhenBackFromBill();
+
+
                     }
                     else
                     {
                         OrderList = new ObservableCollection<ProductDTO>();
+                        TotalPrice = 0;
+                       
                     } 
                     if (checkOnlyFoodOfPage)
                         ShowBackIcon = false;
@@ -383,6 +387,7 @@ namespace CinemaManagementProject.ViewModel.StaffVM.OrderFoodManagementVM
                 try
                 {
                     IsBacking = true;
+                    ListOrder = null;
                     TicketWindow tk = Application.Current.Windows.OfType<TicketWindow>().FirstOrDefault();
                     tk.TicketBookingFrame.Content = new TicketBookingPage();
                 }
@@ -435,5 +440,7 @@ namespace CinemaManagementProject.ViewModel.StaffVM.OrderFoodManagementVM
                     if (OrderList[i].Id == FoodList[j].Id)
                         FoodList[j].Quantity -= OrderList[i].Quantity;
         }
+
+        
     }
 }
