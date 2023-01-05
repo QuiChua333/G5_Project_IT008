@@ -221,7 +221,9 @@
                                           Margin="10 19 0 0"
                                           BorderThickness="0"
                                           VerticalContentAlignment="Bottom"
-                                          SelectedIndex="0"
+                                          materialDesign:HintAssist.HintOpacity="1"
+                                          materialDesign:HintAssist.Hint="{Binding SelectedItem.Level}"
+                                          
                                           SelectedItem="{Binding Level,Mode=TwoWay}" Width="117">
                                     <ComboBoxItem Tag="Bình thường" Content="{DynamicResource EditTroubleWindow_Label_binhthuong}"></ComboBoxItem>
                                     <ComboBoxItem Tag="Nghiêm trọng" Content="{DynamicResource EditTroubleWindow_Label_Nghiemtrong}"></ComboBoxItem>

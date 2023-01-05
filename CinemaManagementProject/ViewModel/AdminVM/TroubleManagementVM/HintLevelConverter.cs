@@ -17,9 +17,9 @@ namespace CinemaManagementProject.ViewModel.AdminVM.TroubleManagementVM
             // Retrieve the format string and use it to format the value.
             string text = value as string;
 
-            if (text == Utils.LEVEL.CRITICAL)
+            if (text == Utils.LEVEL.CRITICAL || text == "Serious")
                 return Visibility.Visible;
-            else if (text == Utils.LEVEL.NORMAL)
+            else if (text == Utils.LEVEL.NORMAL || text == "Normal")
                 return Visibility.Hidden;
             return Visibility.Visible;
         }

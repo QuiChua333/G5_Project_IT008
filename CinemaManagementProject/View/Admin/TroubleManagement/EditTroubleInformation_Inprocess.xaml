@@ -42,56 +42,47 @@
                 Margin="30 0 30 0"
                 BorderBrush="#8DC1F0"
                 BorderThickness="0 0 0 3">
-            <StackPanel Orientation="Horizontal">
-                <Label
+            <Label
                     FontFamily="{StaticResource MaterialDesignFont}"
                     FontSize="28"
                     Foreground="#8DC1F0"
                     FontWeight="Bold"
-                    HorizontalAlignment="Center"
-                    VerticalAlignment="Center"
-                    Content="{DynamicResource EditTroubleInformation_Label_Chinhsuasuco}"
-                    Margin="240,0,0,0"
+                    Content="{DynamicResource EditTroubleInformation_Label_Chinhsuasuco}" HorizontalAlignment="Center" VerticalAlignment="Center" 
                 >
-                    <Label.Effect>
-                        <DropShadowEffect BlurRadius="1" Direction="-45" Color="#000000" ShadowDepth="1.5" Opacity="0.5"/>
-                    </Label.Effect>
-                </Label>
-
-                <Button Click="Button_Click_1"
-                        Width="70"
-                        ToolBar.OverflowMode="AsNeeded"
-                        Background="Transparent"
-                        Foreground="Black"
-                        BorderBrush="Transparent"
-                        materialDesign:ButtonAssist.CornerRadius="0,10,0,0"
-                        Margin="200,-6,0,0">
-                    <materialDesign:PackIcon Kind="WindowClose"
-                                             Height="30"
-                                             Width="30"
-                                                     Padding="0" />
-                </Button>
-
-            </StackPanel>
+                <Label.Effect>
+                    <DropShadowEffect BlurRadius="1" Direction="-45" Color="#000000" ShadowDepth="1.5" Opacity="0.5"/>
+                </Label.Effect>
+            </Label>
         </Border>
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="1.8*"/>
+                <ColumnDefinition Width="2.4*"/>
             </Grid.ColumnDefinitions>
 
-            <Border BorderThickness="2"  
-                    BorderBrush="Black" 
-                    Margin="20 20 20 10" >
-                <Border.Background>
-                    <ImageBrush ImageSource="{Binding SelectedItem.Image}" />
-                </Border.Background>
-            </Border>
+            <Grid Grid.Column="0">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="{DynamicResource AddTroubleWindow_Label_Mucdo}"
+                                       Margin="20,30,0,0"
+                                       FontSize="14" />
+                    <TextBlock Text="{Binding SelectedItem.Level}"
+                                       TextWrapping="Wrap"
+                                       Margin="05,28,30,0"
+                                       FontSize="16" />
+                </StackPanel>
+                <Border BorderThickness="2"  
+                        BorderBrush="Black" 
+                        Margin="20 60 20 30" >
+                    <Border.Background>
+                        <ImageBrush ImageSource="{Binding SelectedItem.Image}" />
+                    </Border.Background>
+                </Border>
+            </Grid>
 
             <Grid Grid.Column="1"
-                      Margin="10">
+                      Margin="20 10 10 10 ">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="90*" />
+                    <RowDefinition  Height="90*" />
                     <RowDefinition Height="10*" />
                 </Grid.RowDefinitions>
                 <Grid.Resources>
@@ -113,59 +104,46 @@
                     </Style>
                 </Grid.Resources>
                 <StackPanel Grid.Row="0" 
-                            Margin="0,10,0,3" 
+                            Margin="0,0,0,3" 
                             Grid.RowSpan="2">
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="{Binding SelectedItem.TroubleType}"
-                                    FontWeight="Medium"
-                                    FontSize="18" 
-                                   Foreground="Red"/>
-                        <TextBlock Text="{DynamicResource AddTroubleWindow_Label_Mucdo}"
-                                           Margin="90,3,0,0"
-                                           FontSize="15" />
-                            <TextBlock Text="{Binding SelectedItem.Level}"
-                                           TextWrapping="Wrap"
-                                           Margin="0,3,30,0"
-                                           FontSize="16" />
-                        
-                    </StackPanel>
+                    <TextBlock  Text="{Binding SelectedItem.TroubleType}"
+                                FontWeight="Medium"
+                                FontSize="18" 
+                                Foreground="Red"/>
                     <Border BorderThickness="0,0,0,0.5"
                             BorderBrush="Black"
-                            Margin="0 10 25 0">
+                            Margin="0 10 20 0">
                         <TextBlock Text="{Binding SelectedItem.Description}"
                                     TextWrapping="Wrap"
                                     FontSize="15" Height="40" />
                     </Border>
-                    <StackPanel Orientation="Horizontal">
-                        <StackPanel Margin="0,10,0,0">
+                    <StackPanel Margin="0,10,0,0" Orientation="Horizontal">
                             <TextBlock Text="{DynamicResource EditTroubleInformation_Inprocess_Label_Ngaytiepnhan}"
                                        FontSize="16"
                                        FontWeight="Medium"/>
                             <TextBlock Text="{Binding SelectedItem.SubmittedAt,StringFormat=dd/MM/yyyy HH:mm:ss}" 
                                        FontSize="16"
-                                       Margin="0 5 0 0"/>
-                        </StackPanel>
-                        <StackPanel Margin="160,10,0,0">
-                            <TextBlock  Text="{DynamicResource EditTroubleInformation_Inprocess_Label_Nhanvienbaocao}"
-                                        FontSize="16"
-                                        FontWeight="Medium"/>
-                            <TextBlock FontSize="16"
-                                       Margin="0 5 0 0"
-                                       Text="{Binding SelectedItem.StaffName}" />
-                        </StackPanel>
+                                       Margin="5 0 0 0"/>
+                    </StackPanel>
+                    <StackPanel Margin="0,20,0,0" Orientation="Horizontal">
+                        <TextBlock  Text="{DynamicResource EditTroubleInformation_Inprocess_Label_Nhanvienbaocao}"
+                                    FontSize="16"
+                                    FontWeight="Medium"/>
+                        <TextBlock FontSize="16"
+                                    Margin="5 0 0 0"
+                                    Text="{Binding SelectedItem.StaffName}" />
                     </StackPanel>
 
-                    <StackPanel Margin="0,-10,0,0" 
+
+                    <StackPanel Margin="0,20,0,0" 
                                 Orientation="Horizontal"
-                                Height="50">
+                                >
                         <TextBlock  Text="{DynamicResource AddTroubleWindow_Label_Trangthai}"
                                     FontSize="16" 
-                                    Margin="0 14 0 0"
                                     FontWeight="Medium"/>
                         <ComboBox   Width="150"
-                                    Margin="10 0 0 3"
+                                    Margin="10 -6 0 3"
                                     Padding="0,5,0,5"
-                                    Height="36"
                                     VerticalContentAlignment="Bottom"        
                                     FontSize="16"
                                     x:Name="cbbstatus"
@@ -181,7 +159,7 @@
 
                     </StackPanel>
 
-                    <StackPanel Margin="0,16,0,0"
+                    <StackPanel Margin="0,20,0,0"
                                 x:Name="_startday"
                                 IsEnabled="False" 
                                 Orientation="Horizontal">
@@ -192,8 +170,7 @@
                         <DatePicker Width="125"
                                     HorizontalAlignment="Left"                                       
                                     Padding="10,7,15,-7"
-                                    Height="40"
-                                    Margin="10 -17 0 0"
+                                    Margin="10 -15 0 0"
                                     FontSize="16"
                                     x:Name="start"
                                     Style="{StaticResource MaterialDesignFloatingHintDatePicker}"
@@ -211,7 +188,7 @@
                                     x:Name="Finishdatepicker"
                                     Padding="10,7,15,-7"
                                     Height="40"
-                                    Margin="10 -14 0 0"
+                                    Margin="10 -12 0 0"
                                     FontSize="16"
                                     
                                     HorizontalAlignment="Left"
@@ -220,7 +197,7 @@
                                     SelectedDate="{Binding SelectedFinishDate,Mode=TwoWay}" VerticalAlignment="Bottom" />
                     </StackPanel>
 
-                    <StackPanel Margin="0,27,0,0"
+                    <StackPanel Margin="0,20,0,0"
                                 x:Name="_cost"
                                 IsEnabled="False" 
                                 Orientation="Horizontal" 

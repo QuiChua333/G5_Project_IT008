@@ -19,11 +19,11 @@ namespace CinemaManagementProject.ViewModel.AdminVM.TroubleManagementVM
             // Retrieve the format string and use it to format the value.
             string text = value as string;
 
-            if (text == Utils.STATUS.WAITING)
+            if (text == Utils.STATUS.WAITING || text == "Waiting")
                 return new SolidColorBrush(Colors.Red);
-            else if (text == Utils.STATUS.DONE)
+            else if (text == Utils.STATUS.DONE || text == "Solved")
                 return new SolidColorBrush(Colors.ForestGreen);
-            else if (text == Utils.STATUS.IN_PROGRESS)
+            else if (text == Utils.STATUS.IN_PROGRESS || text == "Solving")
                 return (SolidColorBrush)new BrushConverter().ConvertFromString("#DDC1C107");
             else
                 return new SolidColorBrush(Colors.Gray);
@@ -45,11 +45,11 @@ namespace CinemaManagementProject.ViewModel.AdminVM.TroubleManagementVM
             // Retrieve the format string and use it to format the value.
             string text = value as string;
 
-            if (text == Utils.STATUS.WAITING)
+            if (text == Utils.STATUS.WAITING || text == "Waiting")
                 return Visibility.Visible;
-            else if (text == Utils.STATUS.DONE)
+            else if (text == Utils.STATUS.DONE || text == "Solved")
                 return Visibility.Visible;
-            else if (text == Utils.STATUS.IN_PROGRESS)
+            else if (text == Utils.STATUS.IN_PROGRESS || text == "Solving")
                 return Visibility.Visible;
             else
                 return Visibility.Hidden;

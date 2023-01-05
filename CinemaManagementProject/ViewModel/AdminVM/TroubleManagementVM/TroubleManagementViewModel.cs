@@ -224,11 +224,65 @@ namespace CinemaManagementProject.ViewModel.AdminVM.TroubleManagementVM
 
                     if ((string)SelectedCbbItem.Tag == "Toàn bộ")
                     {
-                        TroubleList = new ObservableCollection<TroubleDTO>(troubleDTOs);
+                        if (Properties.Settings.Default.isEnglish == false)
+                            TroubleList = new ObservableCollection<TroubleDTO>(troubleDTOs);
+                        else
+                        {
+                            foreach (TroubleDTO troubleDTO in troubleDTOs)
+                            {
+                                TroubleDTO newTB = new TroubleDTO();
+                                newTB.Id = troubleDTO.Id;
+                                newTB.TroubleType = troubleDTO.TroubleType;
+                                newTB.Description = troubleDTO.Description;
+                                newTB.RepairCost = troubleDTO.RepairCost;
+                                newTB.SubmittedAt = troubleDTO.SubmittedAt;
+                                newTB.StartDate = troubleDTO.StartDate;
+                                newTB.FinishDate = troubleDTO.FinishDate;
+                                newTB.StaffId = troubleDTO.StaffId;
+                                newTB.Image = troubleDTO.Image;
+                                newTB.StaffName = troubleDTO.StaffName;
+                                if (troubleDTO.Level == "Bình thường") newTB.Level = "Normal";
+                                if (troubleDTO.Level == "Nghiêm trọng") newTB.Level = "Serious";
+                                if (troubleDTO.TroubleStatus == "Chờ tiếp nhận") newTB.TroubleStatus = "Waiting";
+                                if (troubleDTO.TroubleStatus == "Đang giải quyết") newTB.TroubleStatus = "Solving";
+                                if (troubleDTO.TroubleStatus == "Đã giải quyết") newTB.TroubleStatus = "Solved";
+                                if (troubleDTO.TroubleStatus == "Đã hủy") newTB.TroubleStatus = "Cancelled";
+                                TroubleList.Add(newTB);
+                            }
+                        }
                     }
                     else
                     {
-                        TroubleList = new ObservableCollection<TroubleDTO>(troubleDTOs.Where(tr => tr.TroubleStatus == SelectedCbbItem.Tag.ToString()));
+                        if (Properties.Settings.Default.isEnglish == false)
+                            TroubleList = new ObservableCollection<TroubleDTO>(troubleDTOs.Where(tr => tr.TroubleStatus == SelectedCbbItem.Tag.ToString()));
+                        else
+                        {
+                            foreach (TroubleDTO troubleDTO in troubleDTOs)
+                            {
+                                if (troubleDTO.TroubleStatus == SelectedCbbItem.Tag.ToString())
+                                {
+                                    TroubleDTO newTB = new TroubleDTO();
+                                    newTB.Id = troubleDTO.Id;
+                                    newTB.TroubleType = troubleDTO.TroubleType;
+                                    newTB.Description = troubleDTO.Description;
+                                    newTB.RepairCost = troubleDTO.RepairCost;
+                                    newTB.SubmittedAt = troubleDTO.SubmittedAt;
+                                    newTB.StartDate = troubleDTO.StartDate;
+                                    newTB.FinishDate = troubleDTO.FinishDate;
+                                    newTB.StaffId = troubleDTO.StaffId;
+                                    newTB.Image = troubleDTO.Image;
+                                    newTB.StaffName = troubleDTO.StaffName;
+                                    if (troubleDTO.Level == "Bình thường") newTB.Level = "Normal";
+                                    if (troubleDTO.Level == "Nghiêm trọng") newTB.Level = "Serious";
+                                    if (troubleDTO.TroubleStatus == "Chờ tiếp nhận") newTB.TroubleStatus = "Waiting";
+                                    if (troubleDTO.TroubleStatus == "Đang giải quyết") newTB.TroubleStatus = "Solving";
+                                    if (troubleDTO.TroubleStatus == "Đã giải quyết") newTB.TroubleStatus = "Solved";
+                                    if (troubleDTO.TroubleStatus == "Đã hủy") newTB.TroubleStatus = "Cancelled";
+                                    TroubleList.Add(newTB);
+
+                                }
+                            }
+                        }
                     }
                 }
                 catch (Exception e)
@@ -260,17 +314,17 @@ namespace CinemaManagementProject.ViewModel.AdminVM.TroubleManagementVM
             SelectedDate = DateTime.Today;
             SelectedFinishDate = DateTime.Today;
             RepairCost = 0;
-            if (SelectedItem.TroubleStatus == Utils.STATUS.DONE)
+            if (SelectedItem.TroubleStatus == Utils.STATUS.DONE || SelectedItem.TroubleStatus == "Solved")
             {
                 TroubleInformation wd = new TroubleInformation();
                 wd.ShowDialog();
             }
-            else if (SelectedItem.TroubleStatus == Utils.STATUS.WAITING)
+            else if (SelectedItem.TroubleStatus == Utils.STATUS.WAITING || SelectedItem.TroubleStatus == "Waiting")
             {
                 EditTroubleInformation wd = new EditTroubleInformation();
                 wd.ShowDialog();
             }
-            else if (SelectedItem.TroubleStatus == Utils.STATUS.IN_PROGRESS)
+            else if (SelectedItem.TroubleStatus == Utils.STATUS.IN_PROGRESS || SelectedItem.TroubleStatus == "Solving")
             {
                 EditTroubleInformation_Inprocess wd = new EditTroubleInformation_Inprocess();
                 wd.ShowDialog();

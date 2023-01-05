@@ -18,7 +18,7 @@ namespace CinemaManagementProject.ViewModel.StaffVM.TroubleStaffVM
             // Retrieve the format string and use it to format the value.
             string text = value as string;
 
-            if (text == Utils.STATUS.WAITING)
+            if (text == Utils.STATUS.WAITING||text=="Waiting")
                 return Visibility.Visible;
             else
                 return Visibility.Collapsed;

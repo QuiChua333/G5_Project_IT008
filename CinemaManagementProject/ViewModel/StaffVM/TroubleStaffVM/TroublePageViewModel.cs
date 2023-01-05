@@ -237,21 +237,70 @@ namespace CinemaManagementProject.ViewModel.StaffVM.TroubleStaffVM
         }
         public void FilterTroubleList()
         {
-            TroubleList.Clear();
+            TroubleList = new ObservableCollection<TroubleDTO>();
+            
             if (FiltercbbItem.Tag.ToString() == "Toàn bộ")
-            {
-                for (int i = 0; i < GetAllTrouble.Count; ++i)
+            {   
+                if (Properties.Settings.Default.isEnglish == false)
+                    TroubleList = new ObservableCollection<TroubleDTO>(GetAllTrouble);
+                else
                 {
-                    TroubleList.Add(GetAllTrouble[i]);
+                    foreach (TroubleDTO troubleDTO in GetAllTrouble)
+                    {
+                        TroubleDTO newTB = new TroubleDTO
+                        {
+                            Id = troubleDTO.Id,
+                            TroubleType = troubleDTO.TroubleType,
+                            Description = troubleDTO.Description,
+                            RepairCost = troubleDTO.RepairCost,
+                            SubmittedAt = troubleDTO.SubmittedAt,
+                            StartDate = troubleDTO.StartDate,
+                            FinishDate = troubleDTO.FinishDate,
+                            StaffId = troubleDTO.StaffId,
+                            Image = troubleDTO.Image,
+                            StaffName = troubleDTO.StaffName
+                        };
+                        if (troubleDTO.Level == "Bình thường") newTB.Level = "Normal";
+                        if (troubleDTO.Level == "Nghiêm trọng") newTB.Level = "Serious";
+                        if (troubleDTO.TroubleStatus == "Chờ tiếp nhận") newTB.TroubleStatus = "Waiting";
+                        if (troubleDTO.TroubleStatus == "Đang giải quyết") newTB.TroubleStatus = "Solving";
+                        if (troubleDTO.TroubleStatus == "Đã giải quyết") newTB.TroubleStatus = "Solved";
+                        if (troubleDTO.TroubleStatus == "Đã hủy") newTB.TroubleStatus = "Cancelled";
+                        TroubleList.Add(newTB);
+                    }
+                    
                 }
             }
             else
             {
-                for (int i = 0; i < GetAllTrouble.Count; ++i)
+                if (Properties.Settings.Default.isEnglish == false)
+                    TroubleList = new ObservableCollection<TroubleDTO>(GetAllTrouble.Where(tr => tr.TroubleStatus == FiltercbbItem.Tag.ToString()));
+                else
                 {
-                    if (GetAllTrouble[i].TroubleStatus == FiltercbbItem.Tag.ToString())
+                    foreach (TroubleDTO troubleDTO in GetAllTrouble)
                     {
-                        TroubleList.Add(GetAllTrouble[i]);
+                        if (troubleDTO.TroubleStatus == FiltercbbItem.Tag.ToString())
+                        {
+                            TroubleDTO newTB = new TroubleDTO();
+                            newTB.Id = troubleDTO.Id;
+                            newTB.TroubleType = troubleDTO.TroubleType;
+                            newTB.Description = troubleDTO.Description;
+                            newTB.RepairCost = troubleDTO.RepairCost;
+                            newTB.SubmittedAt = troubleDTO.SubmittedAt;
+                            newTB.StartDate = troubleDTO.StartDate;
+                            newTB.FinishDate = troubleDTO.FinishDate;
+                            newTB.StaffId = troubleDTO.StaffId;
+                            newTB.Image = troubleDTO.Image;
+                            newTB.StaffName = troubleDTO.StaffName;
+                            if (troubleDTO.Level == "Bình thường") newTB.Level = "Normal";
+                            if (troubleDTO.Level == "Nghiêm trọng") newTB.Level = "Serious";
+                            if (troubleDTO.TroubleStatus == "Chờ tiếp nhận") newTB.TroubleStatus = "Waiting";
+                            if (troubleDTO.TroubleStatus == "Đang giải quyết") newTB.TroubleStatus = "Solving";
+                            if (troubleDTO.TroubleStatus == "Đã giải quyết") newTB.TroubleStatus = "Solved";
+                            if (troubleDTO.TroubleStatus == "Đã hủy") newTB.TroubleStatus = "Cancelled";
+                            TroubleList.Add(newTB);
+
+                        }
                     }
                 }
             }
@@ -259,7 +308,35 @@ namespace CinemaManagementProject.ViewModel.StaffVM.TroubleStaffVM
         public async Task GetData()
         {
             GetAllTrouble = new ObservableCollection<TroubleDTO>(await Task.Run(() => TroubleService.Ins.GetAllTrouble()));
-            TroubleList = new ObservableCollection<TroubleDTO>(GetAllTrouble);
+            TroubleList = new ObservableCollection<TroubleDTO>();
+            if (Properties.Settings.Default.isEnglish == false)
+                TroubleList = new ObservableCollection<TroubleDTO>(GetAllTrouble);
+            else
+            {
+                foreach (TroubleDTO troubleDTO in GetAllTrouble)
+                {
+                    TroubleDTO newTB = new TroubleDTO
+                    {
+                        Id = troubleDTO.Id,
+                        TroubleType = troubleDTO.TroubleType,
+                        Description = troubleDTO.Description,
+                        RepairCost = troubleDTO.RepairCost,
+                        SubmittedAt = troubleDTO.SubmittedAt,
+                        StartDate = troubleDTO.StartDate,
+                        FinishDate = troubleDTO.FinishDate,
+                        StaffId = troubleDTO.StaffId,
+                        Image = troubleDTO.Image,
+                        StaffName = troubleDTO.StaffName
+                    };
+                    if (troubleDTO.Level == "Bình thường") newTB.Level = "Normal";
+                    if (troubleDTO.Level == "Nghiêm trọng") newTB.Level = "Serious";
+                    if (troubleDTO.TroubleStatus == "Chờ tiếp nhận") newTB.TroubleStatus = "Waiting";
+                    if (troubleDTO.TroubleStatus == "Đang giải quyết") newTB.TroubleStatus = "Solving";
+                    if (troubleDTO.TroubleStatus == "Đã giải quyết") newTB.TroubleStatus = "Solved";
+                    if (troubleDTO.TroubleStatus == "Đã hủy") newTB.TroubleStatus = "Cancelled";
+                    TroubleList.Add(newTB);
+                }
+            }
         }
         public void RenewWindowData()
         {

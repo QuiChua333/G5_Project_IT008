@@ -40,11 +40,12 @@
 
         <Border x:Name="Header" 
                 Grid.Row="0"
-                Margin="30 0 30 0"
                 BorderBrush="#8DC1F0"
-                BorderThickness="0 0 0 3">
-            <StackPanel Orientation="Horizontal">
-                <Label
+                BorderThickness="0 0 0 3" 
+                HorizontalAlignment="Center" 
+                Width="723">
+
+            <Label
                     FontFamily="{StaticResource MaterialDesignFont}"
                     FontSize="28"
                     Foreground="#8DC1F0"
@@ -52,45 +53,43 @@
                     HorizontalAlignment="Center"
                     VerticalAlignment="Center"
                     Content="{DynamicResource TroubleInformation_Label_Chitietsuco}"
-                    Margin="240,0,0,0"
+                    Margin="0,0,0,0"
                 >
-                    <Label.Effect>
-                        <DropShadowEffect BlurRadius="1" Direction="-45" Color="#000000" ShadowDepth="1.5" Opacity="0.5"/>
-                    </Label.Effect>
-                </Label>
+                <Label.Effect>
+                    <DropShadowEffect BlurRadius="1" Direction="-45" Color="#000000" ShadowDepth="1.5" Opacity="0.5"/>
+                </Label.Effect>
+            </Label>
 
-                <Button Click="Button_Click_1"
-                        Width="70"
-                        ToolBar.OverflowMode="AsNeeded"
-                        Background="Transparent"
-                        Foreground="Black"
-                        BorderBrush="Transparent"
-                        materialDesign:ButtonAssist.CornerRadius="0,10,0,0"
-                        Margin="240,-6,0,0">
-                    <materialDesign:PackIcon Kind="WindowClose"
-                                             Height="30"
-                                             Width="30"
-                                                     Padding="0" />
-                </Button>
 
-            </StackPanel>
+
+
         </Border>
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="1.8*"/>
+                <ColumnDefinition Width="2.4*"/>
             </Grid.ColumnDefinitions>
-
-            <Border BorderThickness="2"  
-                    BorderBrush="Black" 
-                    Margin="20 20 20 60" >
-                <Border.Background>
-                    <ImageBrush ImageSource="{Binding SelectedItem.Image}" />
-                </Border.Background>
-            </Border>
+            <Grid Grid.Column="0">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="{DynamicResource AddTroubleWindow_Label_Mucdo}"
+                                       Margin="20,30,0,0"
+                                       FontSize="14" />
+                    <TextBlock Text="{Binding SelectedItem.Level}"
+                                       TextWrapping="Wrap"
+                                       Margin="05,30,30,0"
+                                       FontSize="16" />
+                </StackPanel>
+                <Border BorderThickness="2"  
+                        BorderBrush="Black" 
+                        Margin="20 60 20 80" >
+                    <Border.Background>
+                        <ImageBrush ImageSource="{Binding SelectedItem.Image}" />
+                    </Border.Background>
+                </Border>
+            </Grid>
 
             <Grid Grid.Column="1"
-                      Margin="10">
+                      Margin="20 10 10 10">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="90*" />
                     <RowDefinition Height="10*" />
@@ -114,83 +113,80 @@
                     </Style>
                 </Grid.Resources>
                 <StackPanel Grid.Row="0" 
-                            Margin="0,10,0,3" 
+                            Margin="0,0,0,3" 
                             Grid.RowSpan="2">
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="{Binding SelectedItem.TroubleType}"
-                                    FontWeight="Medium"
-                                    FontSize="18" 
-                                   Foreground="Red"/>
-                        <TextBlock Text="{DynamicResource AddTroubleWindow_Label_Mucdo}"
-                                       Margin="90,3,0,0"
-                                       FontSize="14" />
-                        <TextBlock Text="{Binding SelectedItem.Level}"
-                                       TextWrapping="Wrap"
-                                       Margin="0,3,30,0"
-                                       FontSize="16" />
-                    </StackPanel>
+                    <TextBlock Text="{Binding SelectedItem.TroubleType}"
+                                FontWeight="Medium"
+                                FontSize="18" 
+                                Foreground="Red" HorizontalAlignment="Left" VerticalAlignment="Center"/>
                     <Border BorderThickness="0,0,0,0.5"
-                                BorderBrush="Black"
+                            BorderBrush="Black"
                             Margin="0 10 20 0">
                         <TextBlock Text="{Binding SelectedItem.Description}"
                                     TextWrapping="Wrap"
-                                    FontSize="15" Height="46" />
+                                    FontSize="15" Height="40" />
                     </Border>
-                    <StackPanel Orientation="Horizontal">
-                        <StackPanel Margin="0,10,0,0">
-                            <TextBlock Text="{DynamicResource EditTroubleInformation_Inprocess_Label_Ngaytiepnhan}"
-                                       FontSize="16"
-                                       FontWeight="Medium"/>
-                            <TextBlock Text="{Binding SelectedItem.SubmittedAt,StringFormat=dd/MM/yyyy HH:mm:ss}" 
-                                       FontSize="16"
-                                       Margin="0 5 0 0"/>
-                        </StackPanel>
-                        <StackPanel Margin="160,10,0,0">
-                            <TextBlock  Text="{DynamicResource EditTroubleInformation_Inprocess_Label_Nhanvienbaocao}"
-                                        FontSize="16"
-                                        FontWeight="Medium"/>
-                            <TextBlock FontSize="16"
-                                       Margin="0 5 0 0"
-                                       Text="{Binding SelectedItem.StaffName}" />
-                        </StackPanel>
+                   
+                    <StackPanel Margin="0,10,0,0"
+                                Orientation="Horizontal">
+                        <TextBlock Text="{DynamicResource EditTroubleInformation_Inprocess_Label_Ngaytiepnhan}"
+                                    FontSize="16"
+                                    FontWeight="Medium"/>
+                        <TextBlock Text="{Binding SelectedItem.SubmittedAt,StringFormat=dd/MM/yyyy HH:mm:ss}" 
+                                    FontSize="16"
+                                    Margin="5 0 0 0"/>
+                    </StackPanel>
+                    <StackPanel Margin="0,20,0,0"
+                                Orientation="Horizontal">
+                        <TextBlock  Text="{DynamicResource EditTroubleInformation_Inprocess_Label_Nhanvienbaocao}"
+                                    FontSize="16"
+                                    FontWeight="Medium"/>
+                        <TextBlock FontSize="16"
+                                    Margin="05 0 0 0"
+                                    Text="{Binding SelectedItem.StaffName}" />
                     </StackPanel>
 
-                    <StackPanel Margin="0,0,0,0"
-                                Height="50"
+
+                    <StackPanel Margin="0,20,0,0"
+                                
                                 Orientation="Horizontal">
                         <TextBlock  Text="{DynamicResource AddTroubleWindow_Label_Trangthai}"
                                     FontSize="16"
                                     FontWeight="Medium"/>
                         <TextBlock  Width="140"
-                                    x:Name="cbbstatus"
+                                    Margin="5 01 0 0"                   
+                                    Text="{DynamicResource TroubleManagementPage_ComboboxItem_Dagiaiquyet}"
                                     HorizontalAlignment="Left" />
                     </StackPanel>
 
-                    <StackPanel Margin="0,0,0,0"
+                    <StackPanel Margin="0,20,0,0"
                                 x:Name="_startday"
                                 IsEnabled="False"
-                                Height="50"
+                                
                                 Orientation="Horizontal">
                         <TextBlock Text="{DynamicResource EditTroubleInformation_Inprocess_Label_Ngaysua}"
                                    FontSize="16"
+                                   
                                    FontWeight="Medium"/>
                         <TextBlock HorizontalAlignment="Left"
-                                    Text="{Binding SelectedItem.StartDate,StringFormat=dd/MM/yyyy HH:mm:ss}" />
+                                   Margin="5 2 0 0"
+                                   Text="{Binding SelectedItem.StartDate,StringFormat=dd/MM/yyyy HH:mm:ss}" />
                     </StackPanel>
 
-                    <StackPanel Margin="0,0,0,0"
+                    <StackPanel Margin="0,20,0,0"
                                 x:Name="_Finishday"
                                 IsEnabled="False"
-                                Height="50"
+                                
                                 Orientation="Horizontal">
                         <TextBlock Text="{DynamicResource EditTroubleInformation_Inprocess_Label_Ngayhoanthanh}"
                                    FontSize="16"
-                                    FontWeight="Medium"/>
+                                   FontWeight="Medium"/>
                         <TextBlock HorizontalAlignment="Left"
-                                       Text="{Binding SelectedItem.FinishDate,StringFormat=dd/MM/yyyy HH:mm:ss}" />
+                                   Margin="5 2 0 0"
+                                   Text="{Binding SelectedItem.FinishDate,StringFormat=dd/MM/yyyy HH:mm:ss}" />
                     </StackPanel>
 
-                    <StackPanel Margin="0,0,0,0"
+                    <StackPanel Margin="0,20,0,0"
                                 x:Name="_cost"
                                 IsEnabled="False" 
                                 Orientation="Horizontal" 
@@ -199,7 +195,8 @@
                                    FontSize="16"
                                    FontWeight="Medium" Height="26"/>
                         <TextBlock HorizontalAlignment="Left"
-                                       Text="{Binding SelectedItem.RepairCostStr}" />
+                                   Margin="5 1 0 0"                                  
+                                   Text="{Binding SelectedItem.RepairCostStr}" />
                     </StackPanel>
                     <StackPanel  Orientation="Horizontal" 
                                  HorizontalAlignment="Right"
@@ -210,9 +207,9 @@
                                 Click="Button_Click_1"
                                 Background="Red"
                                 HorizontalAlignment="Right" 
-                                Margin="0,10,20,0"
+                                Margin="0,0,20,0"
                                 Content="{DynamicResource EditTroubleInformation_Button_Dong}"></Button>
-                       
+
                     </StackPanel>
 
                 </StackPanel>

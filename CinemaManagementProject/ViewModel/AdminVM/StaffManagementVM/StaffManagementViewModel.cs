@@ -144,7 +144,34 @@ namespace CinemaManagementProject.ViewModel.AdminVM.StaffManagementVM
             {
                 try
                 {
-                    StaffList = new ObservableCollection<StaffDTO>(await StaffService.Ins.GetAllStaff());
+                    List<StaffDTO> staffDTOs = await StaffService.Ins.GetAllStaff();
+
+                    StaffList = new ObservableCollection<StaffDTO>();
+
+                    if (Properties.Settings.Default.isEnglish == false)
+                        StaffList = new ObservableCollection<StaffDTO>(staffDTOs);
+                    else
+                    {
+                        foreach(StaffDTO staff in staffDTOs)
+                        {
+                            StaffDTO newstaff = new StaffDTO();
+                            newstaff.Id = staff.Id;
+                            newstaff.StaffName = staff.StaffName; 
+                            newstaff.DateOfBirth = staff.DateOfBirth;
+                            newstaff.Email = staff.Email;
+                            newstaff.PhoneNumber = staff.PhoneNumber;
+                            newstaff.StartDate = staff.StartDate;
+                            newstaff.UserName = staff.UserName;
+                            newstaff.UserPass = staff.UserPass;
+                            newstaff.Avatar = staff.Avatar;
+                            newstaff.BenefitContribution=staff.BenefitContribution;
+                            if (staff.Gender == "Nam") newstaff.Gender = "Male";
+                            else newstaff.Gender = "Female";
+                            if (staff.Gender == "Nhân viên") newstaff.Position = "Staff";
+                            else newstaff.Position = "Manager";
+                            StaffList.Add(newstaff);
+                        }
+                    }
                 }
                 catch (System.Data.Entity.Core.EntityException e)
                 {
@@ -236,24 +263,10 @@ namespace CinemaManagementProject.ViewModel.AdminVM.StaffManagementVM
                     ResetData();
 
                     wd._FullName.Text = SelectedItem.StaffName;
-                    
-                        
-                    if (Properties.Settings.Default.isEnglish == false)
-                        wd.Gender.Text = SelectedItem.Gender;
-                    else
-                    {
-                        if (SelectedItem.Gender == "Nam") wd.Gender.Text = "Male";
-                        if (SelectedItem.Gender == "Nữ") wd.Gender.Text = "Female";
-                    }
+                    wd.Gender.Text = SelectedItem.Gender;
                     wd.Date.Text = SelectedItem.DateOfBirth.ToString();
                     wd._Phone.Text = SelectedItem.PhoneNumber.ToString();
-                    if (Properties.Settings.Default.isEnglish == false)
-                        wd.Role.Text = SelectedItem.Position;
-                    else
-                    {
-                        if (SelectedItem.Position == "Quản lý") wd.Role.Text = "Manager";
-                        if (SelectedItem.Position == "Nhân viên") wd.Role.Text = "Staff";
-                    }
+                    wd.Role.Text = SelectedItem.Position;
                     wd.StartDate.Text = SelectedItem.StartDate.ToString();
                     wd._TaiKhoan.Text = SelectedItem.UserName;
                     wd._Mail.Text = SelectedItem.Email;
