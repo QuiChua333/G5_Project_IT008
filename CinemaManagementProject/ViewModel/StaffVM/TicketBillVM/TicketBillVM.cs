@@ -185,6 +185,8 @@ namespace CinemaManagementProject.ViewModel.StaffVM.TicketBillVM
             set { _DiscountStr = value; OnPropertyChanged(); }
         }
 
+        
+
         private string _LastPriceStr;
         public string LastPriceStr
         {

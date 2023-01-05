@@ -211,7 +211,7 @@
                                                   Background="Transparent"
                                                   Series="{Binding NewCusPie}" 
                                                   Width="220" Height="180"/>
-                                    <Grid Height="24" Width="130" Margin="140,190,0,0">
+                                    <Grid Height="24" Width="130" Margin="146,184,0,0">
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="65*"/>
                                             <ColumnDefinition Width="35*"/>

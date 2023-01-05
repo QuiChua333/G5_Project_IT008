@@ -16,7 +16,7 @@ namespace CinemaManagementProject.DTOs
         public int CustomerId { get; set; }
         public string CustomerName { get; set; }
 
-        public string VoucherInfoStr;
+        public string VoucherInfoStr { get; set; }
         public VoucherReleaseDTO VoucherInfo;
         public double Price  { get; set; }
         public bool EnableMerge { get; set; }

@@ -317,7 +317,7 @@
     <system:String x:Key="RankingStatistical_ComboBox_Thang11">Tháng 11</system:String>
     <system:String x:Key="RankingStatistical_ComboBox_Thang12">Tháng 12</system:String>
     <system:String x:Key="RankingStatistical_Label_HangNhat">Hạng nhất</system:String>
-    <system:String x:Key="RankingStatistical_Label_KhachVangLai">Khách vãng lai</system:String>
+    <system:String x:Key="RankingStatistical_Label_KhachVangLai">Khách vãng lai:</system:String>
     <system:String x:Key="RankingStatistical_Label_Top5KhachHangChiTieuNhieuNhat">Top 5 khách hàng chi tiêu nhiều nhất</system:String>
     <system:String x:Key="RankingStatistical_TextBlock_STT">STT</system:String>
     <system:String x:Key="RankingStatistical_TextBlock_TenKhachHang">Tên khách hàng</system:String>

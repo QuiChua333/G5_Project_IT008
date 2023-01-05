@@ -437,7 +437,7 @@
                                               PreviewMouseWheel="ScrollViewer_PreviewMouseWheel">
                                     <ListBox ItemsSource="{Binding ListVoucher}"
                                              x:Name="listBox"
-                                             SelectedItem="{Binding SelectedItem}">
+                                             SelectedItem="{Binding SelectedItem}" d:ItemsSource="{d:SampleData ItemCount=5}">
                                         <ListBox.ItemTemplate>
                                             <DataTemplate>
                                                 <Grid Width="330">
@@ -447,20 +447,24 @@
                                                     </Grid.ColumnDefinitions>
 
                                                     <Grid Grid.Column="0">
-                                                        <Grid.RowDefinitions>
-                                                            <RowDefinition />
-                                                            <RowDefinition />
-                                                        </Grid.RowDefinitions>
+                                                        <Border>
+                                                            <Grid>
+                                                                <Grid.RowDefinitions>
+                                                                    <RowDefinition />
+                                                                    <RowDefinition />
+                                                                </Grid.RowDefinitions>
 
-                                                        <TextBlock Grid.Row="0"
+                                                                <TextBlock Grid.Row="0"
                                                                    Text="{Binding VoucherCode}"
                                                                    FontSize="16"
                                                                    FontWeight="DemiBold" />
-                                                        <TextBlock Grid.Row="1"
+                                                                <TextBlock Grid.Row="1"
                                                                    Text="{Binding VoucherInfoStr}"
                                                                    FontSize="16"
                                                                    FontWeight="Light"
                                                                    HorizontalAlignment="Right" />
+                                                            </Grid>
+                                                        </Border>
                                                     </Grid>
 
                                                     <Grid Grid.Column="1">
@@ -710,6 +714,7 @@
                                                                TextWrapping="Wrap"
                                                                Grid.Column="1"
                                                                HorizontalAlignment="Right"
+                                                               Margin="0,0,5,0"
                                                                FontSize="16"
                                                                FontWeight="Bold" />
                                                 </Grid>
@@ -821,7 +826,7 @@
                                         <ItemsControl ItemsSource="{Binding ListFoodDisplay}">
                                             <ItemsControl.ItemTemplate>
                                                 <DataTemplate>
-                                                    <Border  Height="800"
+                                                    <Border  Height="80"
                                                              Margin="0,5,0,5"
                                                              BorderBrush="LightGray"
                                                              BorderThickness="0,0,0,1">
@@ -877,23 +882,21 @@
                                         Margin="20,0,20,11">
                                     <StackPanel VerticalAlignment="Center"
                                                 Margin="0 2 0 0">
-                                        <StackPanel Orientation="Horizontal">
-                                            <Grid Width="380">
-                                                <Grid.ColumnDefinitions>
-                                                    <ColumnDefinition />
-                                                    <ColumnDefinition />
-                                                </Grid.ColumnDefinitions>
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition />
+                                                <ColumnDefinition />
+                                            </Grid.ColumnDefinitions>
 
-                                                <Label Content="{DynamicResource TicketBillPage_Label_Tong}"
+                                            <Label Content="{DynamicResource TicketBillPage_Label_Tong}"
                                                        Grid.Column="0"
                                                        FontSize="16" />
-                                                <Label x:Name="_totalproduct"
+                                            <Label x:Name="_totalproduct"
                                                        Grid.Column="1"
                                                        HorizontalAlignment="Right"
                                                        FontSize="16"
                                                        Content="{Binding TotalPriceFood}" />
-                                            </Grid>
-                                        </StackPanel>
+                                        </Grid>
                                     </StackPanel>
                                 </Border>
                             </Grid>
