@@ -317,7 +317,7 @@
     <system:String x:Key="RankingStatistical_ComboBox_Thang11">November</system:String>
     <system:String x:Key="RankingStatistical_ComboBox_Thang12">December</system:String>
     <system:String x:Key="RankingStatistical_Label_HangNhat">Firstclass</system:String>
-    <system:String x:Key="RankingStatistical_Label_KhachVangLai">Visitors</system:String>
+    <system:String x:Key="RankingStatistical_Label_KhachVangLai">Visitors:</system:String>
     <system:String x:Key="RankingStatistical_Label_Top5KhachHangChiTieuNhieuNhat">Top 5 highest spending customers</system:String>
     <system:String x:Key="RankingStatistical_TextBlock_STT">Id</system:String>
     <system:String x:Key="RankingStatistical_TextBlock_TenKhachHang">Customer Name</system:String>

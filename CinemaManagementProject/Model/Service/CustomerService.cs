@@ -54,7 +54,7 @@ namespace CinemaManagementProject.Model.Service
             }
 
             return customerlist;
-      
+
         }
         public async Task<CustomerDTO> FindCustomerInfo(string phoneNumber)
         {
