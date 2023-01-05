@@ -389,6 +389,8 @@ namespace CinemaManagementProject.ViewModel.StaffVM.SettingStaffVM
                 if (p.SelectedItem == null)
                     return;
                 bool isEN = !p.Text.Equals("English") ? true : false;
+                Properties.Settings.Default.isEnglish = isEN;
+                Properties.Settings.Default.Save();
                 LanguageManager.SetLanguageDictionary(isEN ? LanguageManager.ELanguage.English : LanguageManager.ELanguage.VietNamese);
             });
         }

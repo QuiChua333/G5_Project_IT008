@@ -251,7 +251,7 @@
                                                     FontFamily="{StaticResource MaterialDesignFont}"
                                                     FontWeight="Regular"
                                                     FontSize="15"
-                                                    Text="{Binding ReleaseDate}"
+                                                    Text="{Binding DataContext.ReleaseDate}"
                                                 ></TextBlock>
                                             </StackPanel>
                                         </StackPanel>
