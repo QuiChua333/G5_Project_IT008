@@ -65,16 +65,16 @@
             <Grid Grid.Column="0">
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Text="{DynamicResource AddTroubleWindow_Label_Mucdo}"
-                                       Margin="20,30,0,0"
-                                       FontSize="14" />
+                                       Margin="20,52,0,0"
+                                       FontSize="16" />
                     <TextBlock Text="{Binding SelectedItem.Level}"
                                        TextWrapping="Wrap"
-                                       Margin="05,28,30,0"
+                                       Margin="05,50,30,0"
                                        FontSize="16" />
                 </StackPanel>
                 <Border BorderThickness="2"  
                         BorderBrush="Black" 
-                        Margin="20 60 20 30" >
+                        Margin="20,78,20,15" >
                     <Border.Background>
                         <ImageBrush ImageSource="{Binding SelectedItem.Image}" />
                     </Border.Background>
@@ -146,7 +146,7 @@
                                     Margin="0 0 0 0"
                                     FontWeight="Medium"/>
                         <ComboBox   Width="150"
-                                    Margin="10 -5 0 3"
+                                    Margin="10 -4 0 3"
                                     Padding="0,5,0,5"
                                     x:Name="cbbstatus"
                                     materialDesign:HintAssist.Hint="{Binding SelectedItem.TroubleStatus}"
@@ -165,7 +165,7 @@
 
                     </StackPanel>
 
-                    <StackPanel Margin="0,20,0,0"
+                    <StackPanel Margin="0,14,0,0"
                                 x:Name="_startday"
                                 IsEnabled="False" Orientation="Horizontal">
                         <TextBlock Text="{DynamicResource EditTroubleInformation_Inprocess_Label_Ngaysua}"
@@ -174,14 +174,14 @@
                                    FontWeight="Medium"/>
                         <DatePicker Width="115"                                                
                                     Padding="10,7,15,-7"
-                                    Margin="10 -14 0 0"
+                                    Margin="10 -19 0 -2"
                                     x:Name="start"
                                     DisplayDateStart="{Binding SelectedItem.SubmittedAt}"                                                                       
                                     Style="{StaticResource MaterialDesignFloatingHintDatePicker}"
                                     SelectedDate="{Binding SelectedDate,Mode=TwoWay}" VerticalAlignment="Bottom" HorizontalAlignment="Center" />
                     </StackPanel>
 
-                    <StackPanel Margin="0,20,0,0"
+                    <StackPanel Margin="0,14,0,0"
                                 x:Name="_Finishday"
                                 IsEnabled="False" 
                                 Orientation="Horizontal">
@@ -192,7 +192,7 @@
                         <DatePicker Width="125"
                                     x:Name="Finishdatepicker"
                                     Padding="10,7,15,-7"
-                                    Margin="10 -10 0 0"
+                                    Margin="10 -10 0 -3"
                                     Visibility="Collapsed"
                                     FontSize="16"
                                     Style="{StaticResource MaterialDesignFloatingHintDatePicker}"                                   
@@ -200,7 +200,7 @@
                                     SelectedDate="{Binding SelectedFinishDate,Mode=TwoWay}" />
                     </StackPanel>
 
-                    <StackPanel Margin="0,20,0,0"
+                    <StackPanel Margin="0,18,0,0"
                                 x:Name="_cost"
                                 IsEnabled="False" 
                                 Orientation="Horizontal" 
@@ -208,7 +208,8 @@
                         <TextBlock Text="{DynamicResource EditTroubleInformation_Inprocess_Label_Chiphi}"
                                    FontSize="16"
                                    FontWeight="Medium"/>
-                        <TextBox    Width="80"                      
+                        <TextBox    Width="80"   
+                                    Margin="10 -14 0 0"
                                     Padding="0,-10,0,0"
                                     x:Name="costval"
                                     FontSize="16"

@@ -9,6 +9,7 @@ using System.Runtime.InteropServices.ComTypes;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Media.Media3D;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace CinemaManagementProject.Model.Service
 {
@@ -37,6 +38,7 @@ namespace CinemaManagementProject.Model.Service
                               select new StaffDTO
                               {
                                   Id = s.Id,
+                                  MaNV=s.MaNV,
                                   DateOfBirth = s.DateOfBirth,
                                   Gender = s.Gender,
                                   UserName = s.UserName,
@@ -61,6 +63,7 @@ namespace CinemaManagementProject.Model.Service
                                              select new StaffDTO
                                              {
                                                  Id = staff.Id,
+                                                 MaNV= staff.MaNV,
                                                  StaffName = staff.StaffName,
                                                  Gender = staff.Gender,
                                                  DateOfBirth = (DateTime)staff.DateOfBirth,
@@ -89,11 +92,17 @@ namespace CinemaManagementProject.Model.Service
                 return (false, "Lỗi hệ thống", null);
             }
         }
-        private string CreateNextStaffId(string maxId)
+        private string CreateNextStaffCode(string maxCode)
         {
-            //NVxxx
-            string newIdString = $"000{int.Parse(maxId.Substring(2)) + 1}";
-            return "NV" + newIdString.Substring(newIdString.Length - 3, 3);
+            if (maxCode is null)
+            {
+                return "NV0001";
+            }
+            int index = (int.Parse(maxCode.Substring(2)) + 1);
+            string CodeID = index.ToString();
+            while (CodeID.Length < 4) CodeID = "0" + CodeID;
+
+            return "NV" + CodeID;
         }
         public async Task<(bool, string, StaffDTO)> AddStaff(StaffDTO newStaff)
         {
@@ -122,11 +131,21 @@ namespace CinemaManagementProject.Model.Service
                         }
                     }
 
-                    var maxId = await context.Staffs.MaxAsync(s => s.Id);
-                    Staff st = Copy(newStaff);
-                    st.Id = maxId + 1;
-                    newStaff.Id = st.Id;
-                    //st.UserPass = Helper.MD5Hash(newStaff.UserPass);
+                    var maxId = await context.Staffs.MaxAsync(s => s.MaNV);
+                    Staff st = new Staff
+                    {
+                        MaNV = CreateNextStaffCode(maxId),
+                        StaffName = newStaff.StaffName,
+                        PhoneNumber = newStaff.PhoneNumber,
+                        Email = newStaff.Email,
+                        Gender= newStaff.Gender,
+                        DateOfBirth = newStaff.DateOfBirth,
+                        Position=newStaff.Position,
+                        IsDeleted = false,
+                        StartDate=newStaff.StartDate,
+                        UserName=newStaff.UserName,
+                        UserPass = newStaff.UserPass
+                    };
 
                     context.Staffs.Add(st);
                     await context.SaveChangesAsync();

@@ -137,7 +137,7 @@ namespace CinemaManagementProject.Model.Service
         {
             if (maxCode is null)
             {
-                return "KH0000";
+                return "KH0001";
             }
             int index = (int.Parse(maxCode.Substring(2)) + 1);
             string CodeID = index.ToString();

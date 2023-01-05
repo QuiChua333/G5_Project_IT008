@@ -156,7 +156,7 @@
                             </ListView.ItemContainerStyle>
                             <ListView.View >
                                 <GridView >
-                                    <GridViewColumn  Width="66">
+                                    <GridViewColumn  Width="90">
                                         <GridViewColumn.Header >
                                             <TextBlock Text="ID" 
                                                        Margin="-20 0 0 0"
@@ -166,7 +166,7 @@
                                             </GridViewColumn.Header>
                                             <GridViewColumn.CellTemplate >
                                                 <DataTemplate>
-                                                    <TextBlock Text="{Binding Id}"
+                                                    <TextBlock Text="{Binding MaNV}"
                                                            FontSize="14" 
                                                            FontFamily="{StaticResource MaterialDesignFont}"
                                                            Margin="0 6 0 0"/>

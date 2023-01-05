@@ -72,16 +72,16 @@
             <Grid Grid.Column="0">
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Text="{DynamicResource AddTroubleWindow_Label_Mucdo}"
-                                       Margin="20,30,0,0"
-                                       FontSize="14" />
+                                       Margin="20,52,0,0"
+                                       FontSize="16" />
                     <TextBlock Text="{Binding SelectedItem.Level}"
                                        TextWrapping="Wrap"
-                                       Margin="05,30,30,0"
+                                       Margin="05,50,30,0"
                                        FontSize="16" />
                 </StackPanel>
                 <Border BorderThickness="2"  
                         BorderBrush="Black" 
-                        Margin="20 60 20 80" >
+                        Margin="20 78 20 70" >
                     <Border.Background>
                         <ImageBrush ImageSource="{Binding SelectedItem.Image}" />
                     </Border.Background>

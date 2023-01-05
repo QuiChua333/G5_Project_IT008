@@ -223,7 +223,7 @@
                                     <GridViewColumn.Header>
 
                                         <TextBlock Text="{DynamicResource admin_sideBar_SuCo}"
-                                                   Margin="10 0 0 0"
+                                                   Margin="40 0 0 0"
                                                    FontSize="14"
                                                    FontWeight="SemiBold"
                                                    Foreground="Black"></TextBlock>
@@ -231,8 +231,11 @@
                                     <GridViewColumn.CellTemplate>
                                         <DataTemplate>
                                             <StackPanel Orientation="Horizontal">
-                                                <Border Margin="-70 0 0 0"
+                                                <Border Margin="-10 0 0 0"
+                                                        BorderBrush="Black"
+                                                        BorderThickness="1"
                                                         Width="60"
+                                                        CornerRadius="8"
                                                         Height="70">
                                                     <Border.Background>
                                                         <ImageBrush x:Name="smallimg"
@@ -269,7 +272,7 @@
                                         <DataTemplate>
                                             <TextBlock Text="{Binding SubmittedAt, StringFormat=dd/MM/yyyy}"
                                                        FontSize="14"
-                                                       Margin="-25,30,0,0" />
+                                                       Margin="-25,27,0,0" />
                                         </DataTemplate>
                                     </GridViewColumn.CellTemplate>
                                 </GridViewColumn>
@@ -282,10 +285,11 @@
                                                    Foreground="Black"></TextBlock>
                                     </GridViewColumn.Header>
                                     <GridViewColumn.CellTemplate>
-                                        <DataTemplate>
+                                        <DataTemplate >
                                             <Border BorderThickness="1"
-                                                Margin="-66,20,0,0"
-                                                CornerRadius="18">
+                                                Margin="-70,17,0,0"
+                                                CornerRadius="18"
+                                                    >
                                                 <TextBlock Text="{Binding TroubleStatus}"
                                                        FontSize="14"
                                                        Margin="7"
@@ -300,7 +304,7 @@
                                             <Border Cursor="Hand"
                                                     BorderBrush="Black"
                                                     BorderThickness="1"
-                                                    Margin="20,30,0,0"
+                                                    Margin="20,24,0,0"
                                                     CornerRadius="5"
                                                     Visibility="{Binding TroubleStatus,Converter={StaticResource EditConverter}}">
                                                 <Border.Style>

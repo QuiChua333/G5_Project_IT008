@@ -314,7 +314,7 @@
                                         </GridViewColumn.Header>
                                         <GridViewColumn.CellTemplate >
                                             <DataTemplate>
-                                                <TextBlock  Text="{Binding Id}"
+                                                <TextBlock  Text="{Binding BillCode}"
                                                                 FontSize="14" 
                                                                 FontFamily="{StaticResource MaterialDesignFont}"
                                                                 Margin="20 6 0 0"/>

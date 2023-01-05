@@ -100,7 +100,7 @@
                 </Grid.ColumnDefinitions>
 
                 <StackPanel Grid.Column="0"
-                            Margin="30 20 20 20">
+                            Margin="30 50 20 20">
 
                     <Border BorderBrush="Black"    
                             BorderThickness="2"
@@ -144,7 +144,7 @@
                                  TextWrapping="Wrap"
                                  FontSize="16"
                                  Width="446"
-                                 
+                                 Margin="0 04 0 0"
                                  VerticalContentAlignment="Bottom"
                                  TextAlignment="Left"
                                  Background="White"
@@ -251,7 +251,7 @@
                                      Foreground="Black"
                                      materialDesign:ValidationAssist.Background="White"
                                      Text="{Binding Description, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
-                                     Height="90" Width="524" />
+                                     Height="101" Width="524" />
                         </StackPanel>
                         <Button Content="{DynamicResource AddTroubleWindow_button_Xacnhan}"
                                 Background="#007bff"
@@ -265,7 +265,7 @@
                                 materialDesign:ButtonAssist.CornerRadius="8"
                                 Command="{Binding SaveTroubleCM}"
                                 CommandParameter="{Binding ElementName=Add_Trouble_Page}" 
-                                Margin="430,140,27,-15" />
+                                Margin="430,150,27,-15" />
                     </Grid>
                 </Grid>
             </Grid>
