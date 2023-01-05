@@ -247,7 +247,7 @@
                                 </ListView.ItemContainerStyle>
                                 <ListView.View>
                                     <GridView >
-                                        <GridViewColumn Width="77">
+                                        <GridViewColumn Width="85">
                                             <GridViewColumn.Header>
                                                 <TextBlock Text="ID" 
                                                        FontSize="14" 

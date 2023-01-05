@@ -69,7 +69,7 @@
                                        FontSize="16" />
                     <TextBlock Text="{Binding SelectedItem.Level}"
                                        TextWrapping="Wrap"
-                                       Margin="05,50,30,0"
+                                       Margin="05,52,30,0"
                                        FontSize="16" />
                 </StackPanel>
                 <Border BorderThickness="2"  

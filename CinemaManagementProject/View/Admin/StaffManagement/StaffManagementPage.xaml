@@ -156,7 +156,7 @@
                             </ListView.ItemContainerStyle>
                             <ListView.View >
                                 <GridView >
-                                    <GridViewColumn  Width="90">
+                                    <GridViewColumn  Width="100">
                                         <GridViewColumn.Header >
                                             <TextBlock Text="ID" 
                                                        Margin="-20 0 0 0"
