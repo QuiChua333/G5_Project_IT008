@@ -433,77 +433,78 @@
 
                             <Grid VerticalAlignment="Stretch"  
                                   Margin="10 240 10 60">
-                                <ScrollViewer VerticalScrollBarVisibility="Auto"
+                                <ScrollViewer VerticalScrollBarVisibility="Hidden"
+                                              HorizontalScrollBarVisibility="Hidden"
                                               PreviewMouseWheel="ScrollViewer_PreviewMouseWheel">
                                     <ListBox ItemsSource="{Binding ListVoucher}"
                                              x:Name="listBox"
-                                             SelectedItem="{Binding SelectedItem}" d:ItemsSource="{d:SampleData ItemCount=5}">
+                                             HorizontalContentAlignment="Center"
+                                             VerticalContentAlignment="Center"
+                                             SelectedItem="{Binding SelectedItem}" 
+                                             d:ItemsSource="{d:SampleData ItemCount=5}">
                                         <ListBox.ItemTemplate>
                                             <DataTemplate>
-                                                <Grid Width="330">
-                                                    <Grid.ColumnDefinitions>
-                                                        <ColumnDefinition Width="250" />
-                                                        <ColumnDefinition />
-                                                    </Grid.ColumnDefinitions>
+                                                <materialDesign:Card UniformCornerRadius="10" Background="{StaticResource LightGrayAthens}">
+                                                    <Grid Width="330" Height="50">
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="80*" />
+                                                            <ColumnDefinition Width="20*"/>
+                                                        </Grid.ColumnDefinitions>
 
-                                                    <Grid Grid.Column="0">
-                                                        <Border>
-                                                            <Grid>
-                                                                <Grid.RowDefinitions>
-                                                                    <RowDefinition />
-                                                                    <RowDefinition />
-                                                                </Grid.RowDefinitions>
+                                                        <Grid Grid.Column="0">
+                                                            <Grid.RowDefinitions>
+                                                                <RowDefinition />
+                                                                <RowDefinition />
+                                                            </Grid.RowDefinitions>
 
-                                                                <TextBlock Grid.Row="0"
-                                                                   Text="{Binding VoucherCode}"
-                                                                   FontSize="16"
-                                                                   FontWeight="DemiBold" />
-                                                                <TextBlock Grid.Row="1"
-                                                                   Text="{Binding VoucherInfoStr}"
-                                                                   FontSize="16"
-                                                                   FontWeight="Light"
-                                                                   HorizontalAlignment="Right" />
-                                                            </Grid>
-                                                        </Border>
-                                                    </Grid>
+                                                            <TextBlock Grid.Row="0"
+                                                                       Text="{Binding VoucherCode}"
+                                                                       FontSize="18"
+                                                                       Margin="20,4,0,0"
+                                                                       FontWeight="DemiBold" />
+                                                            <TextBlock Grid.Row="1"
+                                                                       Text="{Binding VoucherInfoStr}"
+                                                                       FontSize="14"
+                                                                       FontWeight="Light"
+                                                                       Margin="20,4,0,0"
+                                                                       HorizontalAlignment="Left" />
+                                                        </Grid>
 
-                                                    <Grid Grid.Column="1">
-                                                        <Border VerticalAlignment="Center"
+                                                        <Grid Grid.Column="1">
+                                                            <Border VerticalAlignment="Top"
                                                                 HorizontalAlignment="Right"
+                                                                    Margin="0,6,20,0"
                                                                 Height="25"
                                                                 Width="25"
-                                                                Margin="0 0 25 0"
                                                                 Cursor="Hand"
-                                                                CornerRadius="8">
-                                                            <Label VerticalAlignment="Center"
-                                                                   HorizontalAlignment="Center"
-                                                                   Height="25"
-                                                                   Width="25"
-                                                                   Content="X"
-                                                                   VerticalContentAlignment="Center"
-                                                                   HorizontalContentAlignment="Center">
-                                                            </Label>
-                                                            <Border.Style>
-                                                                <Style TargetType="Border">
-                                                                    <Style.Triggers>
-                                                                        <Trigger Property="IsMouseOver"
+                                                                CornerRadius="10">
+                                                                <Image Source="{StaticResource IconExit}" 
+                                                                       Height="12" Width="12" 
+                                                                       HorizontalAlignment="Center" 
+                                                                       VerticalAlignment="Center"/>
+                                                                <Border.Style>
+                                                                    <Style TargetType="Border">
+                                                                        <Style.Triggers>
+                                                                            <Trigger Property="IsMouseOver"
                                                                          Value="True">
-                                                                            <Setter Property="Background"
+                                                                                <Setter Property="Background"
                                                                             Value="#ff6255" />
-                                                                        </Trigger>
-                                                                    </Style.Triggers>
-                                                                </Style>
-                                                            </Border.Style>
-                                                            <i:Interaction.Triggers>
-                                                                <i:EventTrigger EventName="MouseLeftButtonUp">
-                                                                    <i:InvokeCommandAction Command="{Binding ElementName=listBox, Path=DataContext.DeleteVoucherCM}" />
-                                                                </i:EventTrigger>
-                                                            </i:Interaction.Triggers>
-                                                        </Border>
+                                                                            </Trigger>
+                                                                        </Style.Triggers>
+                                                                    </Style>
+                                                                </Border.Style>
+                                                                <i:Interaction.Triggers>
+                                                                    <i:EventTrigger EventName="MouseLeftButtonUp">
+                                                                        <i:InvokeCommandAction Command="{Binding ElementName=listBox, Path=DataContext.DeleteVoucherCM}" />
+                                                                    </i:EventTrigger>
+                                                                </i:Interaction.Triggers>
+                                                            </Border>
+
+                                                        </Grid>
 
                                                     </Grid>
-
-                                                </Grid>
+                                                </materialDesign:Card>
+                                                
                                             </DataTemplate>
                                         </ListBox.ItemTemplate>
                                     </ListBox>
@@ -821,7 +822,8 @@
                                         BorderThickness="0,0,0,2"
                                         BorderBrush="#8DC1F0"
                                         Margin="20,10,20,0">
-                                    <ScrollViewer VerticalScrollBarVisibility="Auto"
+                                    <ScrollViewer VerticalScrollBarVisibility="Hidden"
+                                              HorizontalScrollBarVisibility="Hidden"
                                                   x:Name="scrollview">
                                         <ItemsControl ItemsSource="{Binding ListFoodDisplay}">
                                             <ItemsControl.ItemTemplate>
