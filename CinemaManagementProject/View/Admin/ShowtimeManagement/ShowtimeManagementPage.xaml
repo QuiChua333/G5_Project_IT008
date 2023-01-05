@@ -32,11 +32,9 @@
             </BeginStoryboard>
         </EventTrigger>
     </Page.Triggers>
-
-    <Border Background="#f0f2f5"
-              HorizontalAlignment="Stretch"
-                VerticalAlignment="Stretch"
-                Margin="20"
+    <Grid VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="20">
+        <Rectangle VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Fill="White" Opacity="0.5" RadiusX="20" RadiusY="20"/>
+        <Border Background="Transparent"
             CornerRadius="20">
 
         <Grid >
@@ -511,4 +509,5 @@
                          IsIndeterminate="{Binding IsLoading}" />
         </Grid>
     </Border>
+    </Grid>
 </Page>

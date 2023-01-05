@@ -169,12 +169,12 @@
 
                                 <TextBlock Text="{DynamicResource TicketBillPage_TextBlock_DienThoai}" Margin="10 15 15 0" />
 
-                                <TextBox Grid.Column="1" Text="{Binding PhoneNumber, Mode=TwoWay}"/>
+                                <TextBox Grid.Column="1" Text="{Binding PhoneNumber, Mode=TwoWay}" Margin="0,0,10,6"/>
 
                                 <Button Grid.Column="2"
                                         Content="{materialDesign:PackIcon PhoneCheckOutline}"
                                         VerticalAlignment="Bottom"
-                                        Margin="10 0 30 0"
+                                        Margin="2 0 30 4"
                                         Height="32"
                                         Width="50"
                                         Style="{StaticResource CustomButton}"
@@ -252,7 +252,7 @@
 
                                 <TextBlock Text="{DynamicResource TicketBillPage_TextBlock_HoVaTen}" />
                                 <TextBox Grid.Column="1" 
-                                         Margin="0 0 100 06"
+                                         Margin="10 0 100 6"
                                          Text="{Binding NameSignUp, Mode=TwoWay}"/>
                                 <Grid.Style>
                                     <Style>
@@ -277,7 +277,7 @@
 
                                 <TextBlock Text="Email:" />
                                 <TextBox Grid.Column="1" 
-                                         Margin="0 0 100 06"
+                                         Margin="0 0 100 6"
                                          Text="{Binding EmailSignUp, Mode=TwoWay}"/>
                                 <Grid.Style>
                                     <Style>
@@ -362,7 +362,7 @@
                                 <TextBlock Text="Email:" Margin="0,23,15,0" VerticalAlignment="Top" />
                                 <TextBox Grid.Column="1"
                                          IsEnabled="False"
-                                         Margin="0,0,100,0"
+                                         Margin="0,0,100,6"
                                          VerticalContentAlignment="Bottom"
                                          VerticalAlignment="Center" 
                                          Text="{Binding Email}"
@@ -390,15 +390,15 @@
                                     <ColumnDefinition Width="90" />
                                 </Grid.ColumnDefinitions>
 
-                                <TextBlock Text="Voucher:" Margin="10 15 5 0" />
+                                <TextBlock Text="Voucher:" Margin="0,10,-5,0" />
 
                                 <TextBox Grid.Column="1"
-                                         Margin="10 0 15 4"
+                                         Margin="20 0 15 8"
                                          Text="{Binding VoucherID, Mode=TwoWay}" />
 
                                 <Button Grid.Column="2"
                                         VerticalAlignment="Bottom"
-                                        Margin="6 0 30 0"
+                                        Margin="2 0 30 4"
                                         Height="32"
                                         Width="50"
                                         Style="{StaticResource CustomButton}"

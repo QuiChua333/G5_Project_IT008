@@ -380,7 +380,7 @@
                                              IsEnabled="{Binding Path=IsChecked, ElementName=MaterialDesignOutlinedTextBoxEnabledComboBox}"
                                              Style="{StaticResource MaterialDesignOutlinedTextBox}"
                                              TextWrapping="Wrap"
-                                             VerticalScrollBarVisibility="Auto" 
+                                             VerticalScrollBarVisibility="Hidden" 
                                              x:Name="_filmDescribe" Height="240"/>
                                 </Grid>
                             </Border>
@@ -487,7 +487,7 @@
                                         FontSize="30"
                                         Height="60"
                                         Width="140"
-                                        Margin="0,30,0,0"
+                                        Margin="0,14,0,0"
                                         Background="#4887FA"
                                         materialDesign:ButtonAssist.CornerRadius="10"
                                         Command="{Binding UpdateMovieCM}"

@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ScrollBar;
 
 namespace CinemaManagementProject.View.Admin.StatisticalManagement
 {
@@ -29,7 +30,7 @@ namespace CinemaManagementProject.View.Admin.StatisticalManagement
             ComboBoxItem s = (ComboBoxItem)periodbox1.SelectedItem;
             if (s != null)
             {
-                switch (s.Tag.ToString())
+                switch (s.Content.ToString())
                 {
                     case "Theo năm":
                         {
@@ -37,6 +38,16 @@ namespace CinemaManagementProject.View.Admin.StatisticalManagement
                             return;
                         }
                     case "Theo tháng":
+                        {
+                            GetMonthSource(Time1);
+                            return;
+                        }
+                    case "By Year":
+                        {
+                            GetYearSource(Time1);
+                            return;
+                        }
+                    case "By Month":
                         {
                             GetMonthSource(Time1);
                             return;
@@ -54,7 +65,7 @@ namespace CinemaManagementProject.View.Admin.StatisticalManagement
             ComboBoxItem s = (ComboBoxItem)periodbox2.SelectedItem;
             if (s != null)
             {
-                switch (s.Tag.ToString())
+                switch (s.Content.ToString())
                 {
                     case "Theo năm":
                         {
@@ -62,6 +73,16 @@ namespace CinemaManagementProject.View.Admin.StatisticalManagement
                             return;
                         }
                     case "Theo tháng":
+                        {
+                            GetMonthSource(Time2);
+                            return;
+                        }
+                    case "By Year":
+                        {
+                            GetYearSource(Time2);
+                            return;
+                        }
+                    case "By Month":
                         {
                             GetMonthSource(Time2);
                             return;
@@ -95,23 +116,39 @@ namespace CinemaManagementProject.View.Admin.StatisticalManagement
 
             List<string> l = new List<string>();
 
-            l.Add("Tháng 1");
-            l.Add("Tháng 2");
-            l.Add("Tháng 3");
-            l.Add("Tháng 4");
-            l.Add("Tháng 5");
-            l.Add("Tháng 6");
-            l.Add("Tháng 7");
-            l.Add("Tháng 8");
-            l.Add("Tháng 9");
-            l.Add("Tháng 10");
-            l.Add("Tháng 11");
-            l.Add("Tháng 12");
+            if (Properties.Settings.Default.isEnglish)
+            {
+                l.Add("January");
+                l.Add("February");
+                l.Add("March");
+                l.Add("April");
+                l.Add("May");
+                l.Add("June");
+                l.Add("July");
+                l.Add("August");
+                l.Add("September");
+                l.Add("October");
+                l.Add("November");
+                l.Add("December");
+            }
+            else
+            {
+                l.Add("Tháng 1");
+                l.Add("Tháng 2");
+                l.Add("Tháng 3");
+                l.Add("Tháng 4");
+                l.Add("Tháng 5");
+                l.Add("Tháng 6");
+                l.Add("Tháng 7");
+                l.Add("Tháng 8");
+                l.Add("Tháng 9");
+                l.Add("Tháng 10");
+                l.Add("Tháng 11");
+                l.Add("Tháng 12");
+            }
 
             cbb.ItemsSource = l;
             cbb.SelectedIndex = DateTime.Today.Month - 1;
         }
-
-       
     }
 }

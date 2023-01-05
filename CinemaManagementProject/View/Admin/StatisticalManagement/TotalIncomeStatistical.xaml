@@ -84,7 +84,7 @@
                                 <Image Source="{StaticResource IconFilter}" Width="20" Height="20"></Image>
                                 <ComboBox SelectedItem="{Binding SelectedBestSellPeriod}"
                                           materialDesign:HintAssist.Hint="{DynamicResource TotalIncomeStatistical_ComboBox_Hint_LocTheo}"
-                                           Foreground="{StaticResource Gray1}"
+                                          Foreground="{StaticResource Gray1}"
                                           Grid.Column="1" 
                                           Background="Transparent" 
                                           FontFamily="{StaticResource MaterialDesignFont}" 
@@ -104,8 +104,12 @@
                                                        CommandParameter="{Binding ElementName=periodbox1}" />
                                         </i:EventTrigger>
                                     </i:Interaction.Triggers>
-                                    <ComboBoxItem Tag="Theo năm" IsSelected="True" FontWeight="Regular">Theo năm</ComboBoxItem>
-                                    <ComboBoxItem Tag="Theo tháng" FontWeight="Regular">Theo tháng</ComboBoxItem>
+                                    <ComboBoxItem Content="{DynamicResource TotalIncomeStatistical_ComboBox_TheoNam}" 
+                                              HorizontalContentAlignment="Center" 
+                                              VerticalContentAlignment="Center"/>
+                                    <ComboBoxItem Content="{DynamicResource TotalIncomeStatistical_ComboBox_TheoThang}" 
+                                              HorizontalContentAlignment="Center" 
+                                              VerticalContentAlignment="Center"/>
                                 </ComboBox>
                             </Grid>
 
@@ -206,7 +210,7 @@
                                                                                                    AncestorType={x:Type ListViewItem}}, 
                                                                                                    Converter={StaticResource IndexConverter}}" 
                                                                     FontSize="14"
-                                                                    Margin="30,0,0,0" />
+                                                                    Margin="20,0,0,0" />
                                                     </DataTemplate>
                                                 </GridViewColumn.CellTemplate>
                                             </GridViewColumn>
@@ -224,24 +228,27 @@
 
                                             <GridViewColumn Width="130">
                                                 <GridViewColumn.Header>
-                                                    <TextBlock Text="{DynamicResource TotalIncomeStatistical_TextBlock_DoanhThu}" FontWeight="SemiBold" Foreground="Black"/>
+                                                    <TextBlock Text="{DynamicResource TotalIncomeStatistical_TextBlock_DoanhThu}" FontWeight="SemiBold" Foreground="Black" Margin="-20,0,0,0"/>
                                                 </GridViewColumn.Header>
                                                 <GridViewColumn.CellTemplate>
                                                     <DataTemplate>
-                                                        <TextBlock Text="{Binding RevenueStr}" FontSize="14" Margin="24,0,0,0" />
+                                                        <TextBlock Text="{Binding RevenueStr}" FontSize="14" Margin="0,0,0,0" />
                                                     </DataTemplate>
                                                 </GridViewColumn.CellTemplate>
                                             </GridViewColumn>
 
                                             <GridViewColumn Width="96">
                                                 <GridViewColumn.Header>
-                                                    <TextBlock Text="{DynamicResource TotalIncomeStatistical_TextBlock_SoVe}" FontWeight="SemiBold" Foreground="Black"/>
+                                                    <TextBlock Text="{DynamicResource TotalIncomeStatistical_TextBlock_SoVe}" 
+                                                               FontWeight="SemiBold" 
+                                                               Foreground="Black"
+                                                               Margin="-60,0,0,0"/>
                                                 </GridViewColumn.Header>
                                                 <GridViewColumn.CellTemplate>
                                                     <DataTemplate>
                                                         <TextBlock Text="{Binding TicketCount}"
                                                                    FontSize="14"
-                                                                   Margin="34,0,0,0" />
+                                                                   Margin="-30,0,0,0" />
                                                     </DataTemplate>
                                                 </GridViewColumn.CellTemplate>
                                             </GridViewColumn>
@@ -308,8 +315,12 @@
                                                        CommandParameter="{Binding ElementName=periodbox2}" />
                                         </i:EventTrigger>
                                     </i:Interaction.Triggers>
-                                    <ComboBoxItem Tag="Theo năm"  IsSelected="True" FontWeight="Regular">Theo năm</ComboBoxItem>
-                                    <ComboBoxItem Tag="Theo tháng" FontWeight="Regular">Theo tháng</ComboBoxItem>
+                                    <ComboBoxItem Content="{DynamicResource TotalIncomeStatistical_ComboBox_TheoNam}" 
+                                              HorizontalContentAlignment="Center" 
+                                              VerticalContentAlignment="Center"/>
+                                    <ComboBoxItem Content="{DynamicResource TotalIncomeStatistical_ComboBox_TheoThang}" 
+                                              HorizontalContentAlignment="Center" 
+                                              VerticalContentAlignment="Center"/>
                                 </ComboBox>
                             </Grid>
 
@@ -410,7 +421,7 @@
                                                                                                    AncestorType={x:Type ListViewItem}}, 
                                                                                                    Converter={StaticResource IndexConverter}}" 
                                                                     FontSize="14"
-                                                                    Margin="30,0,0,0" />
+                                                                    Margin="20,0,0,0" />
                                                     </DataTemplate>
                                                 </GridViewColumn.CellTemplate>
                                             </GridViewColumn>
@@ -434,7 +445,7 @@
                                                 </GridViewColumn.Header>
                                                 <GridViewColumn.CellTemplate>
                                                     <DataTemplate>
-                                                        <TextBlock Text="{Binding RevenueStr}" FontSize="14" Margin="24,0,0,0"/>
+                                                        <TextBlock Text="{Binding RevenueStr}" FontSize="14" Margin="20,0,0,0"/>
                                                     </DataTemplate>
                                                 </GridViewColumn.CellTemplate>
                                             </GridViewColumn>
@@ -447,7 +458,7 @@
                                                     <DataTemplate>
                                                         <TextBlock Text="{Binding SalesQuantity}"
                                                                    FontSize="14"
-                                                                   Margin="44,0,0,0" />
+                                                                   Margin="38,0,0,0" />
                                                     </DataTemplate>
                                                 </GridViewColumn.CellTemplate>
                                             </GridViewColumn>

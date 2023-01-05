@@ -387,7 +387,7 @@
                                              IsEnabled="{Binding Path=IsChecked, ElementName=MaterialDesignOutlinedTextBoxEnabledComboBox}"
                                              Style="{StaticResource MaterialDesignOutlinedTextBox}"
                                              TextWrapping="Wrap"
-                                             VerticalScrollBarVisibility="Auto" 
+                                             VerticalScrollBarVisibility="Hidden" 
                                              x:Name="_filmDescribe" Height="240"/>
                                 </Grid>
                             </Border>

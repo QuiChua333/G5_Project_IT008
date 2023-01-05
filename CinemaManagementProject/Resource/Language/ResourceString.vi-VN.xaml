@@ -69,6 +69,7 @@
     <system:String x:Key="AddWindow_ButtonLabel_Info">Thông tin</system:String>
     <system:String x:Key="AddWindow_ButtonLabel_ListVouchers">Danh sách voucher</system:String>
     <system:String x:Key="EditWindow_Title">THÔNG TIN ĐỢT PHÁT HÀNH</system:String>
+    <system:String x:Key="AddVoucher_Label_VoucherCode">Mã voucher:</system:String>
     <system:String x:Key="AddVoucherPage_TextBlock_Function">Chức năng</system:String>
     <system:String x:Key="AddVoucherPage_TextBlock_DeleteVoucher">Xóa voucher</system:String>
     <system:String x:Key="AddVoucherPage_TextBlock_AddVoucher">Thêm voucher</system:String>
@@ -105,6 +106,7 @@
     <system:String x:Key="ReleaseVoucher_Label_NumberOfEmails">Tổng số Email:</system:String>
     <system:String x:Key="ReleaseVoucher_Label_ShowEmail">Xem</system:String>
     <system:String x:Key="ReleaseVoucher_Label_ListOfSelectedVouchers">Danh sách voucher đã chọn</system:String>
+    <system:String x:Key="ReleaseVoucher_Label_Code">Mã:</system:String>
     <system:String x:Key="ReleaseVoucher_Label_Number">Số lượng:</system:String>
     <system:String x:Key="ReleaseVoucher_Button_Accept">Xác nhận</system:String>
     <system:String x:Key="TicketBookingPage_Label_NumberOfSeats">Tổng số ghế:</system:String>

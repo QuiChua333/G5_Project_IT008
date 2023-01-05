@@ -39,6 +39,7 @@ namespace CinemaManagementProject.ViewModel.StaffVM.TicketVM
                 Output_ToString();
                 ReCalculate();
                 seatQuantity = ListSeat.Count.ToString();
+                currChoose = 0;
             });
             CloseTicketWindowCM = new RelayCommand<FrameworkElement>((p) => { return p == null ? false : true; }, (p) =>
             {
@@ -85,7 +86,7 @@ namespace CinemaManagementProject.ViewModel.StaffVM.TicketVM
                     }
                     if (WaitingList.Count + 1 > 7)
                     {
-                        CustomMessageBox.ShowOk("Bạn chỉ được đặt tối đa 7 ghế!", "Lỗi", "Ok", Views.CustomMessageBoxImage.Error);
+                        CustomMessageBox.ShowOk(IsEnglish?"You can only book a maximum of 7 seats!":"Bạn chỉ được đặt tối đa 7 ghế!", IsEnglish?"Error":"Lỗi", "Ok", Views.CustomMessageBoxImage.Error);
            
                         return;
         }
@@ -124,13 +125,14 @@ namespace CinemaManagementProject.ViewModel.StaffVM.TicketVM
             {
                 TicketWindow tk = Application.Current.Windows.OfType<TicketWindow>().FirstOrDefault();
                 tk.TicketBookingFrame.Content = new TicketBookingPage();
+                IsEnglish = Properties.Settings.Default.isEnglish;
             });
 
             LoadFoodPageCM = new RelayCommand<object>((p) => { return true; }, (p) =>
             {
                 if (WaitingList.Count == 0)
                 {
-                    CustomMessageBox.ShowOk("Vui lòng chọn ghế trước khi sang bước tiếp theo", "Cảnh báo", "Ok", Views.CustomMessageBoxImage.Warning);
+                    CustomMessageBox.ShowOk(IsEnglish?"Please select a seat before going to the next step!":"Vui lòng chọn ghế trước khi sang bước tiếp theo!", IsEnglish?"Warning":"Cảnh báo", "Ok", Views.CustomMessageBoxImage.Warning);
 
                     return;
                 }

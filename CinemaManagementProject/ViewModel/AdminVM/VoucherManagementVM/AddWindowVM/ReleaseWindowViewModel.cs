@@ -61,23 +61,23 @@ namespace CinemaManagementProject.ViewModel.AdminVM.VoucherManagementVM
 
         public async Task ReleaseVoucherFunc(ReleaseVoucher p)
         {
-            string mess = "Số voucher không chia hết cho khách hàng!";
+            string mess = IsEnglish?"The number of vouchers is not divisible by the customer!":"Số voucher không chia hết cho khách hàng!";
             if (ReleaseVoucherList.Count == 0)
             {
-                CustomMessageBox.ShowOk("Danh sách voucher đang trống!", "Cảnh báo", "Ok", CustomMessageBoxImage.Warning);
+                CustomMessageBox.ShowOk(IsEnglish ? "Voucher list is empty!":"Danh sách voucher đang trống!", IsEnglish ? "Warning":"Cảnh báo", "Ok", CustomMessageBoxImage.Warning);
                 return;
             }
             foreach (var item in ListCustomerEmail)
             {
                 if (string.IsNullOrEmpty(item.Email))
                 {
-                    CustomMessageBox.ShowOk("Tồn tại email trống", "Cảnh báo", "Ok", CustomMessageBoxImage.Warning);
+                    CustomMessageBox.ShowOk(IsEnglish ? "Empty email exists":"Tồn tại email trống", IsEnglish ? "Warning" : "Cảnh báo", "Ok", CustomMessageBoxImage.Warning);
 
                     return;
                 }
                 if (!Utils.RegexUtilities.IsValidEmail(item.Email))
                 {
-                    CustomMessageBox.ShowOk("Tồn tại email không hợp lệ", "Cảnh báo", "Ok", CustomMessageBoxImage.Warning);
+                    CustomMessageBox.ShowOk(IsEnglish ? "Invalid email exists":"Tồn tại email không hợp lệ", IsEnglish ? "Warning" : "Cảnh báo", "Ok", CustomMessageBoxImage.Warning);
                     return;
                 }
             }
@@ -86,14 +86,14 @@ namespace CinemaManagementProject.ViewModel.AdminVM.VoucherManagementVM
             {
                 if (ListCustomerEmail.Count == 0)
                 {
-                    CustomMessageBox.ShowOk("Danh sách khách hàng đang trống!", "Cảnh báo", "Ok", CustomMessageBoxImage.Warning);
+                    CustomMessageBox.ShowOk(IsEnglish ? "Customer list is empty!":"Danh sách khách hàng đang trống!", IsEnglish ? "Warning" : "Cảnh báo", "Ok", CustomMessageBoxImage.Warning);
                     return;
                 }
                 else
                 {
                     if (ReleaseVoucherList.Count % ListCustomerEmail.Count != 0)
                     {              
-                        CustomMessageBox.ShowOk(mess, "Cảnh báo", "Ok", CustomMessageBoxImage.Warning);
+                        CustomMessageBox.ShowOk(mess, IsEnglish ? "Warning" : "Cảnh báo", "Ok", CustomMessageBoxImage.Warning);
                         return;
                     }
                 }
@@ -103,20 +103,20 @@ namespace CinemaManagementProject.ViewModel.AdminVM.VoucherManagementVM
             {
                 if (ListCustomerEmail.Count == 0)
                 {
-                    CustomMessageBox.ShowOk("Danh sách khách hàng đang trống!", "Cảnh báo", "Ok", CustomMessageBoxImage.Warning);
+                    CustomMessageBox.ShowOk(IsEnglish ? "Customer list is empty!" : "Danh sách khách hàng đang trống!", IsEnglish ? "Warning" : "Cảnh báo", "Ok", CustomMessageBoxImage.Warning);
                     return;
                 }
                 if (ReleaseVoucherList.Count > ListCustomerEmail.Count)
                 {
                     if (ReleaseVoucherList.Count % ListCustomerEmail.Count != 0)
                     {
-                        CustomMessageBox.ShowOk(mess, "Cảnh báo", "Ok", CustomMessageBoxImage.Warning);
+                        CustomMessageBox.ShowOk(mess, IsEnglish ? "Warning" : "Cảnh báo", "Ok", CustomMessageBoxImage.Warning);
                         return;
                     }
                 }
                 else if (ReleaseVoucherList.Count < ListCustomerEmail.Count)
                 {
-                    CustomMessageBox.ShowOk(mess, "Cảnh báo", "Ok", CustomMessageBoxImage.Warning);
+                    CustomMessageBox.ShowOk(mess, IsEnglish ? "Warning" : "Cảnh báo", "Ok", CustomMessageBoxImage.Warning);
                     return;
                 }
             }
@@ -124,7 +124,7 @@ namespace CinemaManagementProject.ViewModel.AdminVM.VoucherManagementVM
             if (ReleaseVoucherList.Count != int.Parse(PerCus.Content.ToString()) * ListCustomerEmail.Count)
             {
                 int per = ReleaseVoucherList.Count / ListCustomerEmail.Count;
-                CustomMessageBoxResult res = CustomMessageBox.ShowOkCancel($"Còn lại tối đa {per} voucher/khách hàng.\nBạn có chắc muốn gửi không?", "Cảnh báo", "Yes", "No", CustomMessageBoxImage.Warning);
+                CustomMessageBoxResult res = CustomMessageBox.ShowOkCancel(IsEnglish? $"Maximum {per} vouchers left per customer.\nAre you sure you want to send it?":$"Còn lại tối đa {per} voucher/khách hàng.\nBạn có chắc muốn gửi không?", IsEnglish ? "Warning" : "Cảnh báo", "Yes", "No", CustomMessageBoxImage.Warning);
                 if (res ==CustomMessageBoxResult.Cancel)
                     return;
             }
@@ -141,7 +141,7 @@ namespace CinemaManagementProject.ViewModel.AdminVM.VoucherManagementVM
 
             if (!sendSuccess)
             {
-                CustomMessageBox.ShowOk(messageFromSendEmail, "Thông báo", "Ok", CustomMessageBoxImage.Error);
+                CustomMessageBox.ShowOk(messageFromSendEmail, IsEnglish?"Notification":"Thông báo", "Ok", CustomMessageBoxImage.Error);
                 return;
             }
 
@@ -154,7 +154,7 @@ namespace CinemaManagementProject.ViewModel.AdminVM.VoucherManagementVM
 
             if (releaseSuccess)
             {
-                CustomMessageBox.ShowOk(messageFromRelease, "Thông báo", "Ok", CustomMessageBoxImage.Success);
+                CustomMessageBox.ShowOk(messageFromRelease, IsEnglish ? "Notification" : "Thông báo", "Ok", CustomMessageBoxImage.Success);
                 WaitingMiniVoucher.Clear();
                 ReleaseVoucherList.Clear();
                 try
@@ -162,6 +162,13 @@ namespace CinemaManagementProject.ViewModel.AdminVM.VoucherManagementVM
                     (VoucherReleaseDTO voucherReleaseDetail, bool haveAnyUsedVoucher) = await VoucherService.Ins.GetVoucherReleaseDetails(SelectedItem.VoucherReleaseCode);
 
                     SelectedItem = voucherReleaseDetail;
+                    if (Properties.Settings.Default.isEnglish == true)
+                    {
+                        foreach (VoucherDTO item in selectedItem.Vouchers)
+                        {
+                            item.VoucherStatus = ConvertVoucherStatusToEnglish(item.VoucherStatus);
+                        }
+                    }
                     ListViewVoucher = new ObservableCollection<VoucherDTO>(SelectedItem.Vouchers);
                     StoreAllMini = new ObservableCollection<VoucherDTO>(ListViewVoucher);
                     if (AddVoucherPage.TopCheck != null && AddVoucherPage.CBB != null)
@@ -178,13 +185,11 @@ namespace CinemaManagementProject.ViewModel.AdminVM.VoucherManagementVM
                 }
                 catch (System.Data.Entity.Core.EntityException e)
                 {
-                    Console.WriteLine(e);
-                    CustomMessageBox.ShowOk("Mất kết nối cơ sở dữ liệu", "Lỗi", "Ok", CustomMessageBoxImage.Error);
+                    CustomMessageBox.ShowOk(IsEnglish ? "Unable to connect to database" : "Mất kết nối cơ sở dữ liệu", IsEnglish ? "Error" : "Lỗi", "OK", CustomMessageBoxImage.Error);
                 }
                 catch (Exception e)
                 {
-                    Console.WriteLine(e);
-                    CustomMessageBox.ShowOk("Lỗi hệ thống", "Lỗi", "Ok", CustomMessageBoxImage.Error);
+                    CustomMessageBox.ShowOk(IsEnglish ? "System Error" : "Lỗi hệ thống", IsEnglish ? "Error" : "Lỗi", "OK", CustomMessageBoxImage.Error);
 
                 }
 
@@ -192,15 +197,15 @@ namespace CinemaManagementProject.ViewModel.AdminVM.VoucherManagementVM
             }
             else
             {
-                CustomMessageBox.ShowOk(messageFromRelease, "Lỗi", "Ok", CustomMessageBoxImage.Error);
+                CustomMessageBox.ShowOk(messageFromRelease, IsEnglish ? "Error" : "Lỗi", "Ok", CustomMessageBoxImage.Error);
             }
         }
         public async Task RefreshEmailList()
         {
             if (ReleaseCustomerList is null) return;
-            switch (ReleaseCustomerList.Content.ToString())
+            switch (ReleaseCustomerList.Tag.ToString())
             {
-                case "Top 5 khách hàng trong tháng":
+                case "TOP_5_CUSTOMER":
                     {
                         List<CustomerDTO> list = await CustomerService.Ins.GetTop5CustomerEmail();
                         ListCustomerEmail = new ObservableCollection<CustomerEmail>();
@@ -213,13 +218,13 @@ namespace CinemaManagementProject.ViewModel.AdminVM.VoucherManagementVM
                         ReleaseVoucherList = new ObservableCollection<VoucherDTO>(GetRandomUnreleasedCode(ListCustomerEmail.Count * int.Parse(PerCus.Content.ToString())));
                         return;
                     }
-                case "Khác":
+                case "COMMON":
                     {
                         ListCustomerEmail = new ObservableCollection<CustomerEmail>();
                         ReleaseVoucherList = new ObservableCollection<VoucherDTO>(GetRandomUnreleasedCode(ListCustomerEmail.Count * int.Parse(PerCus.Content.ToString())));
                         return;
                     }
-                case "Khách hàng mới trong tháng":
+                case "NEW_CUSTOMER":
                     {
                         ListCustomerEmail = new ObservableCollection<CustomerEmail>();
                         try
@@ -237,14 +242,14 @@ namespace CinemaManagementProject.ViewModel.AdminVM.VoucherManagementVM
                         }
                         catch (System.Data.Entity.Core.EntityException e)
                         {
-                            Console.WriteLine(e);
-                            CustomMessageBox.ShowOk("Mất kết nối cơ sở dữ liệu", "Lỗi", "Ok", CustomMessageBoxImage.Error);
+                            CustomMessageBox.ShowOk(IsEnglish ? "Unable to connect to database" : "Mất kết nối cơ sở dữ liệu", IsEnglish ? "Error" : "Lỗi", "OK", CustomMessageBoxImage.Error);
+
 
                         }
                         catch (Exception e)
                         {
-                            Console.WriteLine(e);
-                            CustomMessageBox.ShowOk("Lỗi hệ thống", "Lỗi", "Ok", CustomMessageBoxImage.Error);
+                            CustomMessageBox.ShowOk(IsEnglish ? "System Error" : "Lỗi hệ thống", IsEnglish ? "Error" : "Lỗi", "OK", CustomMessageBoxImage.Error);
+
 
                         }
                         return;
@@ -255,7 +260,7 @@ namespace CinemaManagementProject.ViewModel.AdminVM.VoucherManagementVM
 
         public List<VoucherDTO> GetRandomUnreleasedCode(int quantity)
         {
-            return StoreAllMini.Where(v => v.VoucherStatus == VOUCHER_STATUS.UNRELEASED).Take(quantity).ToList();
+            return StoreAllMini.Where(v => v.VoucherStatus == VOUCHER_STATUS.UNRELEASED || ConvertVoucherStatusToVN(v.VoucherStatus) == VOUCHER_STATUS.UNRELEASED).Take(quantity).ToList();
         }
 
         bool IsExport = false;
@@ -275,14 +280,14 @@ namespace CinemaManagementProject.ViewModel.AdminVM.VoucherManagementVM
                         ws.Cells.Style.Font.Size  = 12;
                         ws.Cells.Style.Font.Name = "Times New Roman";
 
-                        ws.Cells[1, 1] = "Tên đợt phát hành: " + SelectedItem.VoucherReleaseName;
-                        ws.Cells[2, 1] = "Ngày phát hành: " + DateTime.Today;
-                        ws.Cells[3, 1] = "Hiệu lực đến: " + SelectedItem.EndDate;
-                        ws.Cells[4, 1] = "Số lượng: " + ReleaseVoucherList.Count;
-                        ws.Cells[5, 1] = "Mệnh giá: " + Utils.Helper.FormatVNMoney((float)SelectedItem.Price);
-                        ws.Cells[6, 1] = "Mặt hàng áp dụng: " + SelectedItem.TypeObject;
-                        ws.Cells[8, 5] = "ID voucher";
-                        ws.Cells[8, 6] = "Mã voucher";
+                        ws.Cells[1, 1] = IsEnglish ? "Release name: " : "Tên đợt phát hành: " + SelectedItem.VoucherReleaseName;
+                        ws.Cells[2, 1] = IsEnglish ? "Release date: " : "Ngày phát hành: " + DateTime.Today;
+                        ws.Cells[3, 1] = IsEnglish ? "End date: " : "Hiệu lực đến: " + SelectedItem.EndDate;
+                        ws.Cells[4, 1] = IsEnglish ? "Quantity: " : "Số lượng: " + ReleaseVoucherList.Count;
+                        ws.Cells[5, 1] = IsEnglish ? "Price: " : "Mệnh giá: " + Utils.Helper.FormatVNMoney((float)SelectedItem.Price);
+                        ws.Cells[6, 1] = IsEnglish ? "Object type: " : "Mặt hàng áp dụng: " + SelectedItem.TypeObject;
+                        ws.Cells[8, 5] = IsEnglish ? "Number: " : "ID voucher";
+                        ws.Cells[8, 6] = IsEnglish ? "Voucher code: " : "Mã voucher";
 
                         int i2 = 9;
 
@@ -322,12 +327,12 @@ namespace CinemaManagementProject.ViewModel.AdminVM.VoucherManagementVM
                     listSendEmailTask.Add(sendEmailForACustomer(type, customerList[i], ListCodePerEmailList[i]));
                 }
                 await Task.WhenAny(listSendEmailTask);
-                return (true, "Gửi thành công");
+                return (true, IsEnglish?"Submitted successfully":"Gửi thành công");
 
             }
             catch (Exception)
             {
-                return (false, "Phát sinh lỗi trong quá trình gửi mail. Vui lòng thử lại!");
+                return (false, IsEnglish ? "An error occurred while sending email. Please try again!" : "Phát sinh lỗi trong quá trình gửi mail. Vui lòng thử lại!");
             }
         }
 
@@ -351,11 +356,11 @@ namespace CinemaManagementProject.ViewModel.AdminVM.VoucherManagementVM
             mail.To.Add(customerEmail.Email);
             if (type == EMAIL_TYPE.NEW_CUSTOMER)
             {
-                mail.Subject = "Chào mừng khách hàng mới";
+                mail.Subject = IsEnglish ? "Welcome new customers":"Chào mừng khách hàng mới";
             }
             else
             {
-                mail.Subject = "Tri ân khách hàng";
+                mail.Subject = IsEnglish ? "Customer Gratitude":"Tri ân khách hàng";
             }
             return smtp.SendMailAsync(mail);
         }

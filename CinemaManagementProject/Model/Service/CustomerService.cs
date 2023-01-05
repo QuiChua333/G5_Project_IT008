@@ -44,7 +44,7 @@ namespace CinemaManagementProject.Model.Service
                                         Email = s.Email,
                                         PhoneNumber = s.PhoneNumber,
                                         FirstDate = (DateTime)s.FirstDate,
-                                        Expense = (float)s.Bills.Sum(b => b.TotalPrize)
+                                        Expense = s.Bills.Sum(b => b.TotalPrize) ?? 0
                                     }).ToList();
                 }
             }
@@ -156,7 +156,7 @@ namespace CinemaManagementProject.Model.Service
                         bool isExistEmail = await context.Customers.AnyAsync(c => c.Email == newCus.Email);
                         if (isExistEmail)
                         {
-                            return (false, "Email này đã tồn tại", null);
+                            return (false, Properties.Settings.Default.isEnglish ? "This email already exists" : "Email này đã tồn tại", null);
                         }
                     }
 
@@ -165,7 +165,7 @@ namespace CinemaManagementProject.Model.Service
                     {
                         if (!(bool)cus.IsDeleted)
                         {
-                            return (false, "Số điện thoại này đã tồn tại", null);
+                            return (false, Properties.Settings.Default.isEnglish ? "This phone number already exists" : "Số điện thoại này đã tồn tại", null);
                         }
                         else
                         {
@@ -194,7 +194,7 @@ namespace CinemaManagementProject.Model.Service
 
                     context.Customers.Add(newCusomer);
                     await context.SaveChangesAsync();
-                    return (true, "Đăng ký thành công", newCusomer.MaKH);
+                    return (true, Properties.Settings.Default.isEnglish ? "Register successfully" : "Đăng ký thành công", newCusomer.MaKH);
                 }
             }
             catch (Exception e)

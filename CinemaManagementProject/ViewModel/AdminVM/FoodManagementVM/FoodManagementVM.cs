@@ -111,6 +111,7 @@ namespace CinemaManagementProject.ViewModel.AdminVM.FoodManagementVM
             get { return _Image; }
             set { _Image = value; OnPropertyChanged(); }
         }
+        private bool isEN = Properties.Settings.Default.isEnglish;
         //
         //Command
         //
@@ -132,7 +133,6 @@ namespace CinemaManagementProject.ViewModel.AdminVM.FoodManagementVM
         //
         //
         //
-
         public FoodManagementVM()
         {
             IsImageChanged = false;
@@ -145,16 +145,15 @@ namespace CinemaManagementProject.ViewModel.AdminVM.FoodManagementVM
                     StoreAllFood = new ObservableCollection<ProductDTO>(await Task.Run(() => ProductService.Ins.GetAllProduct()));
                     IsLoadding = false;
                     FoodList = new ObservableCollection<ProductDTO>(StoreAllFood);
+                    isEN = Properties.Settings.Default.isEnglish;
                 }
                 catch (EntityException e)
                 {
-                    MessageBox.Show(e.Message);
-                    CustomMessageBox.ShowOk("Mất kết nối cơ sở dữ liệu", "Lỗi", "Ok");
+                    CustomMessageBox.ShowOk(isEN ? "Lost database connection" : "Mất kết nối cơ sở dữ liệu", isEN ? "Error" : "Lỗi", "OK", Views.CustomMessageBoxImage.Error);
                 }
                 catch(Exception e)
                 {
-                    MessageBox.Show(e.Message);
-                    CustomMessageBox.ShowOk("Lỗi hệ thống", "Lỗi", "Ok");
+                    CustomMessageBox.ShowOk(isEN ? "System Error" : "Lỗi hệ thống", isEN? "Error" : "Lỗi", "Ok", Views.CustomMessageBoxImage.Error);
                 }
             });
             FilterComboboxFoodCM = new RelayCommand<ComboBox>((p) => { return true; }, (p) =>
@@ -162,7 +161,7 @@ namespace CinemaManagementProject.ViewModel.AdminVM.FoodManagementVM
                 try
                 {
                     FoodList = new ObservableCollection<ProductDTO>();
-                    string category = SelectedItemFilter.Content.ToString();
+                    string category = SelectedItemFilter.Tag.ToString();
                     if (category == "Tất cả")
                     {
                         FoodList = new ObservableCollection<ProductDTO>(StoreAllFood);
@@ -176,13 +175,11 @@ namespace CinemaManagementProject.ViewModel.AdminVM.FoodManagementVM
                 }
                 catch (EntityException e)
                 {
-                    MessageBox.Show(e.Message);
-                    CustomMessageBox.ShowOk("Mất kết nối cơ sở dữ liệu", "Lỗi", "Ok");
+                    CustomMessageBox.ShowOk(isEN ? "Lost database connection" : "Mất kết nối cơ sở dữ liệu", isEN ? "Error" : "Lỗi", "OK", Views.CustomMessageBoxImage.Error);
                 }
                 catch (Exception e)
                 {
-                    MessageBox.Show(e.Message);
-                    CustomMessageBox.ShowOk("Lỗi hệ thống", "Lỗi", "Ok");
+                    CustomMessageBox.ShowOk(isEN ? "System Error" : "Lỗi hệ thống", isEN? "Error" : "Lỗi", "Ok", Views.CustomMessageBoxImage.Error);
                 }
             });
             OpenImportFoodCM = new RelayCommand<object>((p) => { return true; }, (p) =>
@@ -227,14 +224,14 @@ namespace CinemaManagementProject.ViewModel.AdminVM.FoodManagementVM
             RemoveFoodCM = new RelayCommand<object>((p) => { return true; }, async (p) =>
             {
                 Id = SelectedItem.Id;
-                if(CustomMessageBox.ShowOkCancel("Bạn có muốn xóa sản phẩm này không?", "Cảnh báo", "Xóa", "Không", Views.CustomMessageBoxImage.Warning) == Views.CustomMessageBoxResult.OK)
+                if(CustomMessageBox.ShowOkCancel(isEN? "Do you want to remove this product?" : "Bạn có muốn xóa sản phẩm này không?",isEN ? "Warning": "Cảnh báo", isEN ? "Remove" : "Xóa", isEN ? "No" : "Không", Views.CustomMessageBoxImage.Warning) == Views.CustomMessageBoxResult.OK)
                 {
                     (bool isSuccessDelete, string messageReturn) = await ProductService.Ins.DeleteProduct(Id);
 
                     if(isSuccessDelete)
                     {
                         LoadProductListView(Operation.DELETE);
-                        CustomMessageBox.ShowOkCancel(messageReturn, "Thành công", "Ok", "Hủy", Views.CustomMessageBoxImage.Success);
+                        CustomMessageBox.ShowOkCancel(messageReturn,isEN?"Success": "Thành công", "Ok", isEN ? "Cancel": "Hủy", Views.CustomMessageBoxImage.Success);
                     }    
                 }   
             });

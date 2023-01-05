@@ -1,5 +1,6 @@
 ﻿using CinemaManagementProject.DTOs;
 using CinemaManagementProject.Utils;
+using CinemaManagementProject.ViewModel.StaffVM.TicketVM;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -12,6 +13,7 @@ namespace CinemaManagementProject.Model.Service
 {
     public class BookingService
     {
+        private bool IsEnglish = false;
         private static BookingService _ins;
         public static BookingService Ins
         {
@@ -45,9 +47,10 @@ namespace CinemaManagementProject.Model.Service
         /// <returns></returns>
         public async Task<(bool IsSuccess, string message)> CreateTicketBooking(BillDTO bill, List<TicketDTO> newTicketList)
         {
+            IsEnglish = TicketWindowViewModel.IsEnglish;
             if (newTicketList.Count() == 0)
             {
-                return (false, "Vui lòng chọn ghế!");
+                return (false, IsEnglish?"Please choose a seat!":"Vui lòng chọn ghế!");
             }
             try
             {
@@ -85,10 +88,10 @@ namespace CinemaManagementProject.Model.Service
             catch (Exception e)
             {
                 Console.WriteLine(e);
-                return (false, $"Lỗi hệ thống");
+                return (false, IsEnglish?"System Error":"Lỗi hệ thống");
             }
 
-            return (true, "Đặt vé thành công");
+            return (true, IsEnglish?"Ticket booking successful!":"Đặt vé thành công!");
         }
 
         /// <summary>
@@ -100,9 +103,10 @@ namespace CinemaManagementProject.Model.Service
         /// <returns></returns>
         public async Task<(bool IsSuccess, string message)> CreateFullOptionBooking(BillDTO bill, List<TicketDTO> newTicketList, List<ProductBillInfoDTO> orderedProductList)
         {
+            IsEnglish = TicketWindowViewModel.IsEnglish;
             if (newTicketList.Count() == 0)
             {
-                return (false, "Vui lòng chọn ghế!");
+                return (false, IsEnglish ? "Please choose a seat!" : "Vui lòng chọn ghế!");
             }
             try
             {
@@ -120,14 +124,14 @@ namespace CinemaManagementProject.Model.Service
                     string billCode = await CreateNewBill(context, bill);
 
                     //Ticket
-                   
+
                     AddNewTickets(context, billCode, newTicketList);
 
                     //Product
                     bool addSuccess = await AddNewProductBills(context, billCode, orderedProductList);
                     if (!addSuccess)
                     {
-                        return (false, "Số lượng sản phẩm không đủ để đáp ứng!");
+                        return (false, IsEnglish ? "The number of products is not enough to satisfy!" : "Số lượng sản phẩm không đủ để đáp ứng!");
                     }
                     await context.SaveChangesAsync();
                 }
@@ -142,19 +146,21 @@ namespace CinemaManagementProject.Model.Service
                         return (false, error);
                     }
                 }
-                return (false, "Danh sách ghế vừa đặt có chứa ghế đã được đặt. Vui lòng quay lại!");
+                return (false, IsEnglish ? "The recently booked seats list contains already booked seats. Please come back!" : "Danh sách ghế vừa đặt có chứa ghế đã được đặt. Vui lòng quay lại!");
             }
             catch (Exception e)
             {
+
                 Console.WriteLine(e);
                 return (false, e.Message);
             }
-            return (true, "Thực hiện giao dịch thành công");
+            return (true, IsEnglish?"Successful transaction execution!":"Thực hiện giao dịch thành công!");
         }
 
 
         private async Task<string> UpdateSeatsBooked(CinemaManagementProjectEntities context, List<TicketDTO> newTicketList)
         {
+            IsEnglish = TicketWindowViewModel.IsEnglish;
             var idSeatList = new List<int>();
             newTicketList.ForEach(s => idSeatList.Add(s.SeatId));
 
@@ -176,7 +182,7 @@ namespace CinemaManagementProject.Model.Service
             }
             if (bookedSeats.Count > 0)
             {
-                return ($"Ghế {string.Join(", ", bookedSeats)} đã được đặt!");
+                return (IsEnglish?$"Seat list {string.Join(", ", bookedSeats)} already booked!" :$"Ghế {string.Join(", ", bookedSeats)} đã được đặt!");
             }
 
             return null;
@@ -189,6 +195,7 @@ namespace CinemaManagementProject.Model.Service
         /// <returns></returns>
         public async Task<(bool IsSuccess, string message)> CreateProductOrder(BillDTO bill, List<ProductBillInfoDTO> orderedProductList)
         {
+            IsEnglish = TicketWindowViewModel.IsEnglish;
             try
             {
                 using (var context = new CinemaManagementProjectEntities())
@@ -200,7 +207,7 @@ namespace CinemaManagementProject.Model.Service
                     bool addSuccess = await AddNewProductBills(context, billId, orderedProductList);
                     if (!addSuccess)
                     {
-                        return (false, "Số lượng sản phẩm không đủ để đáp ứng!");
+                        return (false, IsEnglish ? "The number of products is not enough to satisfy!" : "Số lượng sản phẩm không đủ để đáp ứng!");
                     }
 
                     await context.SaveChangesAsync();
@@ -208,10 +215,9 @@ namespace CinemaManagementProject.Model.Service
             }
             catch (Exception e)
             {
-                Console.WriteLine(e);
-                return (false, $"Error Server {e}");
+                return (false, IsEnglish ? "System Error" : "Lỗi hệ thống");
             }
-            return (true, "Mua sản phẩm thành công");
+            return (true,IsEnglish?"Successful product purchase!!": "Mua sản phẩm thành công!");
         }
 
 
@@ -251,7 +257,7 @@ namespace CinemaManagementProject.Model.Service
             if (bill.VoucherIdList != null && bill.VoucherIdList.Count > 0)
             {
                 string voucherIds = string.Join(",", bill.VoucherIdList);
-                var sql = $@"Update [Voucher] SET Status = N'{VOUCHER_STATUS.USED}', CustomerId = '{newBill.CustomerId}' , UsedAt = GETDATE()  WHERE Id IN ({voucherIds})";
+                var sql = $@"Update [Voucher] SET VoucherStatus = N'{VOUCHER_STATUS.USED}', CustomerId = '{newBill.CustomerId}' , UsedAt = GETDATE()  WHERE Id IN ({voucherIds})";
                 await context.Database.ExecuteSqlCommandAsync(sql);
             }
             return maxBillCode;

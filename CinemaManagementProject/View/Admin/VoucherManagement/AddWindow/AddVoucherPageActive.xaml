@@ -70,7 +70,7 @@
                         <Search:Search Width="200"                                         
                                            Height="30"
                                            Corner="10"
-                                           PlaceHolder="Tìm Kiếm"
+                                           PlaceHolder="Search"
                                            IconSize="20"
                                            Margin="0,0,0,5"
                                        x:Name="SearchBox"
@@ -127,7 +127,7 @@
                                                                          Height="20"
                                                                          VerticalAlignment="Center"
                                                                          Margin="0,0,10,0"/>
-                                                <TextBlock Text="Xóa voucher"
+                                                <TextBlock Text="{DynamicResource AddVoucherPage_TextBlock_DeleteVoucher}"
                                                            FontSize="12"
                                                            FontFamily="{DynamicResource MaterialDesignFont}"
                                                            FontWeight="Black"
@@ -153,7 +153,7 @@
                                                                          Height="20"
                                                                          VerticalAlignment="Center"
                                                                          Margin="0,0,10,0"/>
-                                                <TextBlock Text="Thêm voucher"
+                                                <TextBlock Text="{DynamicResource AddVoucherPage_TextBlock_AddVoucher}"
                                                            FontSize="12"
                                                            FontFamily="{DynamicResource MaterialDesignFont}"
                                                            FontWeight="Black"
@@ -180,7 +180,7 @@
                                                                          Height="20"
                                                                          VerticalAlignment="Center"
                                                                          Margin="0,0,10,0"/>
-                                                <TextBlock Text="Thêm danh sách voucher"
+                                                <TextBlock Text="{DynamicResource AddVoucherPage_TextBlock_AddListVouchers}"
                                                            FontSize="12"
                                                            FontFamily="{DynamicResource MaterialDesignFont}"
                                                            FontWeight="Black"

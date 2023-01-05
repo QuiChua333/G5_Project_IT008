@@ -35,61 +35,61 @@
             <i:InvokeCommandAction Command="{Binding FirstLoadCM}"></i:InvokeCommandAction>
         </i:EventTrigger>
     </i:Interaction.Triggers>
-    <Border     Background="{StaticResource LightGrayAthens}" CornerRadius="20"
-                HorizontalAlignment="Stretch"
-             VerticalAlignment="Stretch"
-             Margin="20">
-        <Border.Effect>
-            <DropShadowEffect
+    <Grid VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="20">
+        <Rectangle VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Fill="White" Opacity="0.5" RadiusX="20" RadiusY="20"/>
+        <Border     Background="Transparent" CornerRadius="20"
+        >
+            <Border.Effect>
+                <DropShadowEffect
                     BlurRadius="10"
                     Color="Black"
                     ShadowDepth="4"
                     Opacity=".25"
                     Direction="270"/>
-        </Border.Effect>
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="100"/>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
-            <Grid.Resources>
-                <Style x:Key="styleButton" 
+            </Border.Effect>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="100"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.Resources>
+                    <Style x:Key="styleButton" 
                        TargetType="ComboBox" 
                        BasedOn="{StaticResource MaterialDesignOutlinedComboBox}">
-                    <Setter Property="Background" Value="Transparent"/>
-                    <Setter Property="Foreground" Value="Black"/>
-                    <Setter Property="BorderBrush" Value="Gray"/>
-                    <Setter Property="BorderThickness" Value="0"/>
-                    <Setter Property="FontFamily" Value="{StaticResource MaterialDesignFont}"/>
-                    <Setter Property="FontSize" Value="15"/>
-                    <Setter Property="FontWeight" Value="Normal"/>
-                </Style>
-            </Grid.Resources>
-            <StackPanel Grid.Row="0" 
+                        <Setter Property="Background" Value="Transparent"/>
+                        <Setter Property="Foreground" Value="Black"/>
+                        <Setter Property="BorderBrush" Value="Gray"/>
+                        <Setter Property="BorderThickness" Value="0"/>
+                        <Setter Property="FontFamily" Value="{StaticResource MaterialDesignFont}"/>
+                        <Setter Property="FontSize" Value="15"/>
+                        <Setter Property="FontWeight" Value="Normal"/>
+                    </Style>
+                </Grid.Resources>
+                <StackPanel Grid.Row="0" 
                         Orientation="Horizontal" 
                         HorizontalAlignment="Left">
-                <Grid Height="46"
+                    <Grid Height="46"
                       Width="350" 
                       Margin="20, 17, 0, 17"  >
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="52"/>
-                        <ColumnDefinition />
-                    </Grid.ColumnDefinitions>
-                    <Rectangle
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="52"/>
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <Rectangle
                             Fill="White"
                             Grid.ColumnSpan="2"
                             RadiusX="20"
                             RadiusY="20">
-                        <Rectangle.Effect>
-                            <DropShadowEffect
+                            <Rectangle.Effect>
+                                <DropShadowEffect
                                     BlurRadius="10"
                                     Color="Black"
                                     ShadowDepth="4"
                                     Opacity=".25"
                                     Direction="270"/>
-                        </Rectangle.Effect>
-                    </Rectangle>
-                    <TextBox x:Name="FilterBox" 
+                            </Rectangle.Effect>
+                        </Rectangle>
+                        <TextBox x:Name="FilterBox" 
                              materialDesign:HintAssist.Hint="{DynamicResource CustomerManagementPage_search_TimKiem}"
                              Grid.Column="1"
                              AllowDrop="True"
@@ -102,56 +102,56 @@
                              TextChanged="FilterBox_TextChanged"
                              BorderThickness="0,0,0,0" 
                              Padding="0,4,0,4"/>
-                    <Image x:Name="IconSeach" 
+                        <Image x:Name="IconSeach" 
                            Source="{StaticResource IconSearch}"
                            Grid.Column="0"
                            Width="20" Height="20"
                            Margin="20,0,0,0"
                            HorizontalAlignment="Right"
                            VerticalAlignment="Center"/>
-                </Grid>
-                
-                <Button Style="{StaticResource CustomButton}" 
+                    </Grid>
+
+                    <Button Style="{StaticResource CustomButton}" 
                         Width="100" 
                         Height="40" 
                         Margin="30,0,0,0"
                         Command="{Binding OpenAddStaffCommand}">
-                    <StackPanel Orientation="Horizontal" 
+                        <StackPanel Orientation="Horizontal" 
                                 Width="143" >
-                        <materialDesign:PackIcon Kind="PlusCircleOutline" 
+                            <materialDesign:PackIcon Kind="PlusCircleOutline" 
                                                  Width="24" 
                                                  Height="24"/>
-                        <TextBlock FontFamily="{StaticResource MaterialDesignFont}" 
+                            <TextBlock FontFamily="{StaticResource MaterialDesignFont}" 
                                    Text="{DynamicResource AddFoodWindow_button_Them}"  
                                    FontSize="14"
                                    Margin="5,4,0,0"/>
-                    </StackPanel>
-                </Button>
-            </StackPanel>
-            <Border Grid.Row="1" 
+                        </StackPanel>
+                    </Button>
+                </StackPanel>
+                <Border Grid.Row="1" 
                     Margin="20 0 20 20" 
                     CornerRadius="20" 
                     Background="White">
-                <Border.Effect>
-                    <DropShadowEffect
+                    <Border.Effect>
+                        <DropShadowEffect
                             BlurRadius="10"
                             Color="Black"
                             ShadowDepth="4"
                             Opacity=".25"
                             Direction="270"/>
-                </Border.Effect>
-                <materialDesign:Card UniformCornerRadius="20" 
+                    </Border.Effect>
+                    <materialDesign:Card UniformCornerRadius="20" 
                                      Background="Transparent">
-                    <ScrollViewer VerticalScrollBarVisibility="Auto"  >
-                        <ListView  
+                        <ScrollViewer VerticalScrollBarVisibility="Auto"  >
+                            <ListView  
                                   FontSize="14" 
                                   x:Name="lvStaff" 
                                   Margin="0 0 0 0" 
                                   FontFamily="{StaticResource MaterialDesignFont}"
                                   ItemsSource="{Binding StaffList}"
                                   SelectedItem="{Binding SelectedItem}">
-                            <ListView.ItemContainerStyle>
-                                <Style   TargetType="{x:Type ListViewItem}"
+                                <ListView.ItemContainerStyle>
+                                    <Style   TargetType="{x:Type ListViewItem}"
                                          BasedOn="{StaticResource MaterialDesignGridViewItem}"/>
                             </ListView.ItemContainerStyle>
                             <ListView.View >
@@ -163,10 +163,10 @@
                                                        FontSize="14" 
                                                        FontWeight="SemiBold"  
                                                        Foreground="Black"></TextBlock>
-                                        </GridViewColumn.Header>
-                                        <GridViewColumn.CellTemplate >
-                                            <DataTemplate>
-                                                <TextBlock Text="{Binding Id}"
+                                            </GridViewColumn.Header>
+                                            <GridViewColumn.CellTemplate >
+                                                <DataTemplate>
+                                                    <TextBlock Text="{Binding Id}"
                                                            FontSize="14" 
                                                            FontFamily="{StaticResource MaterialDesignFont}"
                                                            Margin="0 6 0 0"/>
@@ -175,8 +175,8 @@
                                     </GridViewColumn>
                                     <GridViewColumn
                                                     Width="145" >
-                                        <GridViewColumn.Header>
-                                            <TextBlock Text="{DynamicResource StaffManagementPage_ListviewHeader_Hovaten}"
+                                            <GridViewColumn.Header>
+                                                <TextBlock Text="{DynamicResource StaffManagementPage_ListviewHeader_Hovaten}"
                                                        FontSize="14" 
                                                        Margin="-48 0 0 0"
                                                        FontWeight="SemiBold"  
@@ -242,13 +242,13 @@
                                                            Margin="-30 6 0 0"
                                                            FontSize="14" 
                                                            FontFamily="{StaticResource MaterialDesignFont}"/>
-                                            </DataTemplate>
-                                        </GridViewColumn.CellTemplate>
-                                    </GridViewColumn>
-                                    <GridViewColumn
+                                                </DataTemplate>
+                                            </GridViewColumn.CellTemplate>
+                                        </GridViewColumn>
+                                        <GridViewColumn
                                                     Width="200">
-                                        <GridViewColumn.Header>
-                                            <TextBlock Text="Email" 
+                                            <GridViewColumn.Header>
+                                                <TextBlock Text="Email" 
                                                        FontSize="14" 
                                                        Margin="-50 0 0 0"
                                                        FontWeight="SemiBold"  
@@ -296,76 +296,77 @@
                                                            Margin="-30 6 0 0"
                                                            FontSize="14" 
                                                            FontFamily="{StaticResource MaterialDesignFont}"/>
-                                            </DataTemplate>
-                                        </GridViewColumn.CellTemplate>
-                                    </GridViewColumn>
-                                    <GridViewColumn>
-                                        <GridViewColumn.CellTemplate>
-                                            <DataTemplate>
-                                                <StackPanel VerticalAlignment="Center"
+                                                </DataTemplate>
+                                            </GridViewColumn.CellTemplate>
+                                        </GridViewColumn>
+                                        <GridViewColumn>
+                                            <GridViewColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <StackPanel VerticalAlignment="Center"
                                                             Orientation="Horizontal" 
                                                             Margin="-30 0 0 5">
                                                     <Border BorderBrush="Black"
                                                             BorderThickness="1"
                                                             CornerRadius="6"
                                                             Cursor="Hand">
-                                                        <Border.Style>
-                                                            <Style TargetType="{x:Type Border}">
-                                                                <Style.Triggers>
-                                                                    <Trigger Property="IsMouseOver"
+                                                            <Border.Style>
+                                                                <Style TargetType="{x:Type Border}">
+                                                                    <Style.Triggers>
+                                                                        <Trigger Property="IsMouseOver"
                                                                                 Value="True">
-                                                                        <Setter Property="Background"
+                                                                            <Setter Property="Background"
                                                                                     Value="#00e5ff" />
-                                                                    </Trigger>
-                                                                </Style.Triggers>
-                                                            </Style>
-                                                        </Border.Style>
-                                                        <materialDesign:PackIcon Kind="Pencil"
+                                                                        </Trigger>
+                                                                    </Style.Triggers>
+                                                                </Style>
+                                                            </Border.Style>
+                                                            <materialDesign:PackIcon Kind="Pencil"
                                                                                  Width="22"
                                                                                  Height="22"
                                                                                  Cursor="Hand" />
-                                                        <i:Interaction.Triggers>
-                                                            <i:EventTrigger EventName="MouseLeftButtonUp">
-                                                                <i:InvokeCommandAction Command="{Binding ElementName=lvStaff, Path=DataContext.OpenEditStaffCommand}" />
-                                                            </i:EventTrigger>
-                                                        </i:Interaction.Triggers>
-                                                    </Border>
-                                                    <Border Margin="10 0 0 0"
+                                                            <i:Interaction.Triggers>
+                                                                <i:EventTrigger EventName="MouseLeftButtonUp">
+                                                                    <i:InvokeCommandAction Command="{Binding ElementName=lvStaff, Path=DataContext.OpenEditStaffCommand}" />
+                                                                </i:EventTrigger>
+                                                            </i:Interaction.Triggers>
+                                                        </Border>
+                                                        <Border Margin="10 0 0 0"
                                                             BorderBrush="Black"
                                                             BorderThickness="1"
                                                             CornerRadius="6"
                                                             Cursor="Hand">
-                                                        <Border.Style>
-                                                            <Style TargetType="{x:Type Border}">
-                                                                <Style.Triggers>
-                                                                    <Trigger Property="IsMouseOver"
+                                                            <Border.Style>
+                                                                <Style TargetType="{x:Type Border}">
+                                                                    <Style.Triggers>
+                                                                        <Trigger Property="IsMouseOver"
                                                                                 Value="True">
-                                                                        <Setter Property="Background"
+                                                                            <Setter Property="Background"
                                                                                     Value="#ff6255" />
-                                                                    </Trigger>
-                                                                </Style.Triggers>
-                                                            </Style>
-                                                        </Border.Style>
-                                                        <materialDesign:PackIcon Kind="GarbageCanEmpty"
+                                                                        </Trigger>
+                                                                    </Style.Triggers>
+                                                                </Style>
+                                                            </Border.Style>
+                                                            <materialDesign:PackIcon Kind="GarbageCanEmpty"
                                                                                  Width="22"
                                                                                  Height="22"
                                                                                  Cursor="Hand" />
-                                                        <i:Interaction.Triggers>
-                                                            <i:EventTrigger EventName="MouseLeftButtonUp">
-                                                                <i:InvokeCommandAction Command="{Binding ElementName=lvStaff, Path=DataContext.DeleteStaffCommand}" />
-                                                            </i:EventTrigger>
-                                                        </i:Interaction.Triggers>
-                                                    </Border>
-                                                </StackPanel>
-                                            </DataTemplate>
-                                        </GridViewColumn.CellTemplate>
-                                    </GridViewColumn>
-                                </GridView>
-                            </ListView.View>
-                        </ListView>
-                    </ScrollViewer>
-                </materialDesign:Card>
-            </Border>
-        </Grid>
-    </Border>
+                                                            <i:Interaction.Triggers>
+                                                                <i:EventTrigger EventName="MouseLeftButtonUp">
+                                                                    <i:InvokeCommandAction Command="{Binding ElementName=lvStaff, Path=DataContext.DeleteStaffCommand}" />
+                                                                </i:EventTrigger>
+                                                            </i:Interaction.Triggers>
+                                                        </Border>
+                                                    </StackPanel>
+                                                </DataTemplate>
+                                            </GridViewColumn.CellTemplate>
+                                        </GridViewColumn>
+                                    </GridView>
+                                </ListView.View>
+                            </ListView>
+                        </ScrollViewer>
+                    </materialDesign:Card>
+                </Border>
+            </Grid>
+        </Border>
+    </Grid>
 </Page>

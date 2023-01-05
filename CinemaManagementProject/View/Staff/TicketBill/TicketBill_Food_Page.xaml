@@ -170,12 +170,12 @@
                                            FontFamily="{StaticResource MaterialDesignFont}" VerticalAlignment="Bottom"
                                            />
                                 <TextBox Grid.Column="1"                             
-                                         Text="{Binding PhoneNumber, Mode=TwoWay}" />
+                                         Text="{Binding PhoneNumber, Mode=TwoWay}" Margin="0,0,8,6"/>
                                 <Button Grid.Column="2"
                                         Background="#4887FA"
                                         Content="{materialDesign:PackIcon PhoneCheckOutline}"
                                         VerticalAlignment="Bottom"
-                                        Margin="10 0 30 0"
+                                        Margin="2 0 30 4"
                                         Height="32"
                                         Width="50"
                                         Style="{StaticResource CustomButton}"
@@ -255,7 +255,7 @@
                                 <TextBlock Text="{DynamicResource TicketBillFoodPage_TextBlock_HoVaTen}" />
                                 <TextBox Grid.Column="1" 
                                          Margin="0 0 100 6"
-                                         Text="{Binding NameSignUp, Mode=TwoWay}"/>
+                                         Text="{Binding NameSignUp, Mode=TwoWay}" />
                                 <Grid.Style>
                                     <Style>
                                         <Style.Triggers>
@@ -280,7 +280,7 @@
 
                                 <TextBlock Text="Email:" />
                                 <TextBox Grid.Column="1" 
-                                         Margin="0 0 100 6"
+                                         Margin="0 0 100 8"
                                          Text="{Binding EmailSignUp, Mode=TwoWay}"/>
                                 <Grid.Style>
                                     <Style>
@@ -337,7 +337,7 @@
                                            FontFamily="{StaticResource MaterialDesignFont}"/>
                                 <TextBox Grid.Column="1"
                                          IsEnabled="False"
-                                         Margin="0 0 100 0"
+                                         Margin="0 0 100 6"
                                          VerticalContentAlignment="Bottom"
                                          VerticalAlignment="Center" 
                                          Text="{Binding Name}"
@@ -369,7 +369,7 @@
                                 <TextBox Grid.Column="1"
                                          FontSize="16"
                                          IsEnabled="False"
-                                         Margin="0 0 100 0"
+                                         Margin="0 0 100 6"
                                          VerticalContentAlignment="Bottom"
                                          VerticalAlignment="Center" 
                                          Text="{Binding Email}"
@@ -397,16 +397,16 @@
                                 </Grid.ColumnDefinitions>
 
                                 <TextBlock Text="Voucher:"
-                                           Margin="10 15 5 0" 
+                                           Margin="0,10,-5,0" 
                                            FontFamily="{StaticResource MaterialDesignFont}"
                                            />
                                 <TextBox Grid.Column="1"
-                                         Margin="10 0 10 7"
+                                         Margin="20 0 12 8"
                                          Text="{Binding VoucherID, Mode=TwoWay}" />
                                 <Button Grid.Column="2"
                                         VerticalAlignment="Bottom"
                                         Background="#4887FA"
-                                        Margin="6 0 30 0"
+                                        Margin="2 0 30 4"
                                         Height="32"
                                         Width="50"
                                         Style="{StaticResource CustomButton}"

@@ -174,13 +174,17 @@ namespace CinemaManagementProject.ViewModel.AdminVM.MovieManagementVM
                     FilmList = new ObservableCollection<FilmDTO>(await Task.Run(() => FilmService.Ins.GetAllFilm()));
                     IsLoadding = false;
                 }
-                catch (System.Data.Entity.Core.EntityException)
+                catch (System.Data.Entity.Core.EntityException e)
                 {
-                    CustomMessageBox.ShowOk("Mất kết nối cơ sở dữ liệu", "Lỗi", "Ok");
+                    Console.WriteLine(e);
+                    if (Properties.Settings.Default.isEnglish) CustomMessageBox.ShowOk("Unable to connect to database", "Error", "OK", Views.CustomMessageBoxImage.Error);
+                    else CustomMessageBox.ShowOk("Mất kết nối cơ sở dữ liệu", "Lỗi", "OK", Views.CustomMessageBoxImage.Error);
                 }
-                catch (Exception)
+                catch (Exception e)
                 {
-                    CustomMessageBox.ShowOk("Lỗi hệ thống", "Lỗi", "Ok");
+                    Console.WriteLine(e);
+                    if (Properties.Settings.Default.isEnglish) CustomMessageBox.ShowOk("System error", "Error", "OK", Views.CustomMessageBoxImage.Error);
+                    else CustomMessageBox.ShowOk("Lỗi hệ thống", "Lỗi", "OK", Views.CustomMessageBoxImage.Error);
                 }
             });
             LoadInforMovieCM = new RelayCommand<object>((p) => { return true; }, (p) =>
@@ -208,8 +212,8 @@ namespace CinemaManagementProject.ViewModel.AdminVM.MovieManagementVM
             LoadDeleteMovieCM = new RelayCommand<object>((p) => { return true; }, async (p) =>
             {
      
-                string message = "Bạn có chắc muốn xoá phim này không? Dữ liệu không thể phục hồi sau khi xoá!";
-                CustomMessageBoxResult kq = CustomMessageBox.ShowOkCancel(message, "Cảnh báo", "Xác nhận", "Hủy", CustomMessageBoxImage.Warning);
+                string message = Properties.Settings.Default.isEnglish? "Are you sure you want to delete this movie? Data cannot be recovered after deletion!" : "Bạn có chắc muốn xoá phim này không? Dữ liệu không thể phục hồi sau khi xoá!";
+                CustomMessageBoxResult kq = CustomMessageBox.ShowOkCancel(message, Properties.Settings.Default.isEnglish ? "Warning" : "Cảnh báo", Properties.Settings.Default.isEnglish ? "Confirm":"Xác nhận", Properties.Settings.Default.isEnglish ? "Cancel" : "Hủy", CustomMessageBoxImage.Warning);
 
                 if (kq == CustomMessageBoxResult.OK)
                 {
@@ -223,11 +227,11 @@ namespace CinemaManagementProject.ViewModel.AdminVM.MovieManagementVM
                     {
                         LoadMovieListView(Operation.DELETE);
                         SelectedItem = null;
-                        CustomMessageBox.ShowOk(messageFromDelMovie, "Thông báo", "OK", CustomMessageBoxImage.Success);
+                        CustomMessageBox.ShowOk(messageFromDelMovie, Properties.Settings.Default.isEnglish ? "Notification" : "Thông báo", "OK", CustomMessageBoxImage.Success);
                     }
                     else
                     {
-                        CustomMessageBox.ShowOk(messageFromDelMovie, "Lỗi", "OK", CustomMessageBoxImage.Error);
+                        CustomMessageBox.ShowOk(messageFromDelMovie, Properties.Settings.Default.isEnglish ? "Error" : "Lỗi", "OK", CustomMessageBoxImage.Error);
                     }
                 }
             });
@@ -307,11 +311,11 @@ namespace CinemaManagementProject.ViewModel.AdminVM.MovieManagementVM
                 Microsoft.Office.Interop.Excel.Worksheet ws = (Microsoft.Office.Interop.Excel.Worksheet)wb.Worksheets[1];
 
 
-                ws.Cells[1, 1] = "Tên phim";
-                ws.Cells[1, 2] = "Loại phim";
-                ws.Cells[1, 3] = "Quốc gia";
-                ws.Cells[1, 4] = "Thể loại";
-                ws.Cells[1, 5] = "Thời lượng phim (phút)";
+                ws.Cells[1, 1] = Properties.Settings.Default.isEnglish? "Film name" : "Tên phim";
+                ws.Cells[1, 2] = Properties.Settings.Default.isEnglish ? "Film type" : "Loại phim";
+                ws.Cells[1, 3] = Properties.Settings.Default.isEnglish ? "Country" : "Quốc gia";
+                ws.Cells[1, 4] = Properties.Settings.Default.isEnglish ? "Category" : "Thể loại";
+                ws.Cells[1, 5] = Properties.Settings.Default.isEnglish ? "Duration Film (minutes)" : "Thời lượng phim (phút)";
 
                 int i2 = 2;
                 foreach (var item in FilmList)
@@ -330,7 +334,7 @@ namespace CinemaManagementProject.ViewModel.AdminVM.MovieManagementVM
 
                 Mouse.OverrideCursor = System.Windows.Input.Cursors.Arrow;
 
-                CustomMessageBox.ShowOk("Xuất file thành công", "Thông báo", "OK", CustomMessageBoxImage.Success);
+                CustomMessageBox.ShowOk(Properties.Settings.Default.isEnglish ? "File export success" : "Xuất file thành công", Properties.Settings.Default.isEnglish ? "Notification":"Thông báo", "OK", CustomMessageBoxImage.Success);
 
             }
         }
