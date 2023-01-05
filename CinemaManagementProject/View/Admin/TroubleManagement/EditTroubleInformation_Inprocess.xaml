@@ -63,16 +63,16 @@
             <Grid Grid.Column="0">
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Text="{DynamicResource AddTroubleWindow_Label_Mucdo}"
-                                       Margin="20,30,0,0"
-                                       FontSize="14" />
+                                       Margin="20,52,0,0"
+                                       FontSize="16" />
                     <TextBlock Text="{Binding SelectedItem.Level}"
                                        TextWrapping="Wrap"
-                                       Margin="05,28,30,0"
+                                       Margin="05,50,30,0"
                                        FontSize="16" />
                 </StackPanel>
                 <Border BorderThickness="2"  
                         BorderBrush="Black" 
-                        Margin="20 60 20 30" >
+                        Margin="20 78 20 15" >
                     <Border.Background>
                         <ImageBrush ImageSource="{Binding SelectedItem.Image}" />
                     </Border.Background>
@@ -197,7 +197,7 @@
                                     SelectedDate="{Binding SelectedFinishDate,Mode=TwoWay}" VerticalAlignment="Bottom" />
                     </StackPanel>
 
-                    <StackPanel Margin="0,20,0,0"
+                    <StackPanel Margin="0,18,0,0"
                                 x:Name="_cost"
                                 IsEnabled="False" 
                                 Orientation="Horizontal" 

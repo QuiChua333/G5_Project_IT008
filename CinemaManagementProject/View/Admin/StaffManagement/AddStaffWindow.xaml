@@ -107,7 +107,7 @@
                         <Setter Property="Padding"
                                 Value="0 0 20 0" />
                         <Setter Property="VerticalContentAlignment"
-                                Value="Center" />
+                                Value="Bottom" />
                         <Setter Property="FontSize" Value="15"></Setter>
                         <Setter Property="FontFamily" Value="{StaticResource MaterialDesignFont}"></Setter>
                     </Style>
@@ -153,7 +153,7 @@
                                FontWeight="Regular" 
                                HorizontalAlignment="Right" 
                                VerticalAlignment="Center"/>
-                    <ComboBox   VerticalContentAlignment="Center"
+                    <ComboBox   VerticalContentAlignment="Bottom"
                                 Padding="0 12 0 0"
                                 Margin="20 -20 45 0"
                                 Grid.Column="1"
@@ -178,9 +178,10 @@
                                FontWeight="Regular" 
                                HorizontalAlignment="Right" 
                                VerticalAlignment="Center"/>
-                    <DatePicker     Margin="20 -20 45 0"
+                    <DatePicker     Margin="20 -20 45 -9"
                                     Style="{StaticResource MaterialDesignFloatingHintDatePicker}"
                                     Grid.Column="1"
+                                    VerticalContentAlignment="Bottom"
                                     x:Name="Date"
                                     SelectedDate="{Binding Born, Mode=TwoWay}" 
                                     FontFamily="{StaticResource MaterialDesignFont}"
@@ -230,7 +231,7 @@
                                FontWeight="Regular" 
                                HorizontalAlignment="Right" 
                                VerticalAlignment="Center"/>
-                    <ComboBox   VerticalContentAlignment="Center"
+                    <ComboBox   VerticalContentAlignment="Bottom"
                                 Padding="0 12 0 0"
                                 Margin="20 -20 45 0"
                                 Grid.Column="1"
@@ -258,7 +259,7 @@
                     <DatePicker Width="252"
                                 Style="{StaticResource MaterialDesignFloatingHintDatePicker}"
                                 HorizontalAlignment="Left"
-                                Margin="20 -10 45 0"                          
+                                Margin="20 -12 45 0"                          
                                 Grid.Column="1"
                                 x:Name="StartDate"
                                 FontSize="15"

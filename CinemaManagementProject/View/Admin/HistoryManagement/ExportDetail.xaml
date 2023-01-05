@@ -170,7 +170,7 @@
                                         <Label Content="{Binding BillDetail.TicketInfo.ShowtimeInfo}"
                                                Grid.Column="1"
                                                HorizontalAlignment="Right"
-                                               FontSize="20"
+                                               FontSize="16"
                                                Foreground="Black"
                                                 FontFamily="{StaticResource MaterialDesignFont}"/>
                                     </Grid>
@@ -192,7 +192,7 @@
                                                Grid.Column="1"                                               
                                                FontSize="16"
                                                Foreground="Black"
-                                                FontFamily="{StaticResource MaterialDesignFont}"/>
+                                                FontFamily="{StaticResource MaterialDesignFont}" HorizontalAlignment="Right"/>
                                     </Grid>
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal">
@@ -459,13 +459,13 @@
                                            Grid.Column="0"
                                            FontSize="16"
                                            Foreground="Black"
-                                                FontFamily="{StaticResource MaterialDesignFont}"/>
+                                           FontFamily="{StaticResource MaterialDesignFont}"/>
                                     <Label x:Name="_totalproduct"
                                            Grid.Column="1"
                                            HorizontalAlignment="Right"
                                            FontSize="16" 
                                            Foreground="Black"
-                                                FontFamily="{StaticResource MaterialDesignFont}"/>
+                                           FontFamily="{StaticResource MaterialDesignFont}"/>
                                 </Grid>
                             </StackPanel>
                         </StackPanel>

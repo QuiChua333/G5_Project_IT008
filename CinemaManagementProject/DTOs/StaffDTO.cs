@@ -11,6 +11,7 @@ namespace CinemaManagementProject.DTOs
     public class StaffDTO
     {
         public int Id { get; set; }
+        public string MaNV { get; set; }
         public string StaffName { get; set; }
         public string Gender { get; set; }
         public Nullable<System.DateTime> DateOfBirth { get; set; }

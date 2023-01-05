@@ -156,6 +156,7 @@ namespace CinemaManagementProject.ViewModel.AdminVM.StaffManagementVM
                         {
                             StaffDTO newstaff = new StaffDTO();
                             newstaff.Id = staff.Id;
+                            newstaff.MaNV = staff.MaNV;
                             newstaff.StaffName = staff.StaffName; 
                             newstaff.DateOfBirth = staff.DateOfBirth;
                             newstaff.Email = staff.Email;
@@ -167,7 +168,7 @@ namespace CinemaManagementProject.ViewModel.AdminVM.StaffManagementVM
                             newstaff.BenefitContribution=staff.BenefitContribution;
                             if (staff.Gender == "Nam") newstaff.Gender = "Male";
                             else newstaff.Gender = "Female";
-                            if (staff.Gender == "Nhân viên") newstaff.Position = "Staff";
+                            if (staff.Position == "Nhân viên") newstaff.Position = "Staff";
                             else newstaff.Position = "Manager";
                             StaffList.Add(newstaff);
                         }
