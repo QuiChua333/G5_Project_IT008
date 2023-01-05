@@ -18,6 +18,7 @@ using CinemaManagementProject.ViewModel.StaffVM.TicketBillVM;
 using CinemaManagementProject.View.Staff.OrderFoodManagement;
 using System.Windows.Navigation;
 using System.Collections.ObjectModel;
+using Microsoft.Office.Core;
 
 namespace CinemaManagementProject.ViewModel.StaffVM.TicketVM
 {
@@ -39,7 +40,8 @@ namespace CinemaManagementProject.ViewModel.StaffVM.TicketVM
                 Output_ToString();
                 ReCalculate();
                 seatQuantity = ListSeat.Count.ToString();
-                currChoose = 0;
+
+                
             });
             CloseTicketWindowCM = new RelayCommand<FrameworkElement>((p) => { return p == null ? false : true; }, (p) =>
             {
@@ -115,8 +117,17 @@ namespace CinemaManagementProject.ViewModel.StaffVM.TicketVM
                         {
                             img.Source = new BitmapImage(new Uri("pack://application:,,,/CinemaManagementProject;component/Resource/Images/isReady.png"));
                         }
+                        if (WaitingList.Count > 0)
+                        {
+                            if (item.SeatPosition == lb.Content.ToString() && item.SeatStatus == false)
+                                if (WaitingList.Exists(w => w.SeatPosition == item.SeatPosition))
+                                {
+                                    img.Source = new BitmapImage(new Uri("pack://application:,,,/CinemaManagementProject;component/Resource/Images/currChoose.png"));
+                                }
+                        }
 
                     }
+                    
                     isBooked = ListSeat.Count(x => x.SeatStatus == true);
                     isReady = ListSeat.Count(x => x.SeatStatus == false); 
                 }

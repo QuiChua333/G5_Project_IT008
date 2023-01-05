@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Imaging;
 
 namespace CinemaManagementProject.ViewModel.StaffVM.TicketVM
 {
@@ -187,15 +188,9 @@ namespace CinemaManagementProject.ViewModel.StaffVM.TicketVM
             ListStatusSeat = new List<SeatSettingDTO>();
             ListSeat1 = new ObservableCollection<SeatSettingDTO>();
             ListSeat2 = new ObservableCollection<SeatSettingDTO>();
-            WaitingList = new List<SeatSettingDTO>();
+            if (WaitingList== null) { WaitingList = new List<SeatSettingDTO>(); }
+            currChoose = WaitingList.Count;
 
-            //if (OrderFoodManagementVM.IsBacking)
-            //{
-            //    OrderFoodManagementVM.IsBacking = false;
-            //    TicketBookingPage tk = new TicketBookingPage();
-            //    tk.SeatListBox1.ItemTemplate.LoadContent();
-
-            //}
 
             foreach (var item in ListSeat)
             {
@@ -209,6 +204,7 @@ namespace CinemaManagementProject.ViewModel.StaffVM.TicketVM
                 }
                 if (item.SeatStatus)
                     ListStatusSeat.Add(item);
+               
             }
             
             
