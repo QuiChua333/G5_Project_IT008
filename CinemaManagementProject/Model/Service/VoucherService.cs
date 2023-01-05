@@ -66,13 +66,13 @@ namespace CinemaManagementProject.Model.Service
             
             if (maxCode is null)
             {
-                return "FatFimFoo0000";
+                return "FatFilmFoo0000";
             }
-            int index = (int.Parse(maxCode.Substring(9)) + 1);
+            int index = (int.Parse(maxCode.Substring(10)) + 1);
             string CodeID = index.ToString();
             while (CodeID.Length < 4) CodeID = "0" + CodeID;
 
-            return "FatFimFoo" + CodeID;
+            return "FatFilmFoo" + CodeID;
         }
         public async Task<(bool, string, VoucherReleaseDTO newVR)> CreateVoucherRelease(VoucherReleaseDTO newVR)
         {
@@ -100,9 +100,10 @@ namespace CinemaManagementProject.Model.Service
                     await context.SaveChangesAsync();
 
                     newVR.VoucherReleaseCode = voucherRelease.VoucherReleaseCode;
-                    return (true, IsEnglish?"Successfully added a new release!":"Thêm đợt phát hành mới thành công!", newVR);
+                    return (true, IsEnglish ? "Successfully added a new release!" : "Thêm đợt phát hành mới thành công!", newVR);
                 }
             }
+
             catch (Exception e)
             {
                 return (false, IsEnglish ? "System Error" : "Lỗi hệ thống", null);
@@ -232,7 +233,7 @@ namespace CinemaManagementProject.Model.Service
                         VoucherCode = c,
                         VoucherReleaseId = voucherReleaseId,
                         VoucherStatus = VOUCHER_STATUS.UNRELEASED,
-                        EnableMerge=vl.VoucherReleaseStatus,
+                        EnableMerge=vl.EnableMerge,
                     }).ToList();
 
                     context.Vouchers.AddRange(vouchers);
@@ -261,7 +262,7 @@ namespace CinemaManagementProject.Model.Service
                     VoucherCode = c,
                     VoucherReleaseId = voucherRelease.Id,
                     VoucherStatus = VOUCHER_STATUS.UNRELEASED,
-                    EnableMerge = voucherRelease.VoucherReleaseStatus,
+                    EnableMerge = voucherRelease.EnableMerge,
                     
                 }).ToList();
 
@@ -292,7 +293,7 @@ namespace CinemaManagementProject.Model.Service
                 string idList = string.Join(",", ListCodeId);
                 using (var context = new CinemaManagementProjectEntities())
                 {
-                    var sql = $@"Update [Voucher] SET VoucherStatus = '{VOUCHER_STATUS.REALEASED}', ReleaseAt = GETDATE()  WHERE Id IN ({idList})";
+                    var sql = $@"Update [Voucher] SET VoucherStatus = N'{VOUCHER_STATUS.REALEASED}', ReleaseAt = GETDATE()  WHERE Id IN ({idList})";
                     await context.Database.ExecuteSqlCommandAsync(sql);
                 }
                 return (true, IsEnglish?"Successfully release!":"Phát hành thành công!");

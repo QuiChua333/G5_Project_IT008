@@ -133,13 +133,10 @@ namespace CinemaManagementProject.ViewModel.StaffVM.TicketVM
                 if (WaitingList.Count == 0)
                 {
                     CustomMessageBox.ShowOk(IsEnglish?"Please select a seat before going to the next step!":"Vui lòng chọn ghế trước khi sang bước tiếp theo!", IsEnglish?"Warning":"Cảnh báo", "Ok", Views.CustomMessageBoxImage.Warning);
-
                     return;
                 }
-                if (OrderFoodManagementVM.OrderFoodManagementVM.ListOrder!= null)
-                {
-                    OrderFoodManagementVM.OrderFoodManagementVM.ListOrder.Clear();
-                }
+                
+               
                 TicketWindow tk = Application.Current.Windows.OfType<TicketWindow>().FirstOrDefault();
                 tk.TicketBookingFrame.Content = new OrderFoodPage();
             });

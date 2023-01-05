@@ -4,6 +4,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        
         xmlns:local="clr-namespace:CinemaManagementProject.View.Admin.VoucherManagement.AddWindow"
         mc:Ignorable="d"
         Title="ReleaseVoucher"  WindowStyle="None"
@@ -12,7 +13,7 @@
         AllowsTransparency="True" 
         xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
         DataContext="{StaticResource VoucherVM}" MouseLeftButtonDown="Window_MouseLeftButtonDown"
-        >
+        x:Name="mainWindow">
     <Border CornerRadius="15" Background="#F5F5F5" BorderBrush="Gray" BorderThickness="0.3" Height="450" Width="840">
         <Border.Effect>
             <DropShadowEffect BlurRadius="10" Direction="270" Color="Black" ShadowDepth="4" Opacity="0.25"/>
@@ -354,7 +355,15 @@
                         Margin="0,0,40,0"
                         Width="80" 
                         Height="30"
-                        Command="{Binding ReleaseVoucherCM}">
+                        x:Name="acBtn">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="Click">
+                            <i:InvokeCommandAction Command="{Binding ReleaseVoucherCM}" CommandParameter="{Binding ElementName=acBtn}"/>
+                        </i:EventTrigger>
+                        <i:EventTrigger EventName="Click">
+                            <i:InvokeCommandAction Command="{Binding CloseWindowVoucherCM}" CommandParameter="{Binding ElementName=mainWindow}"/>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
                 </Button>
             </Grid>
         </Grid>
