@@ -259,7 +259,7 @@ namespace CinemaManagementProject.Model.Service
                                     DurationFilm = (int)film.Duration,
                                     Country = film.Country,
                                     FilmInfor = film.FilmInfo,
-                                    ReleaseDate = (DateTime)film.ReleaseDate,
+                                    ReleaseDate = film.ReleaseDate.Value,
                                     FilmType = film.FilmType,
                                     Author = film.Author,
                                     Image = film.Image,

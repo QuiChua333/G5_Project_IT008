@@ -148,6 +148,7 @@ namespace CinemaManagementProject.ViewModel.StaffVM.FilmBookingVM
                 FilmShowTimeList = new ObservableCollection<FilmDTO>();
                 try
                 {
+                    ReleaseDate = DateTime.Now;
                     FilmShowTimeList = new ObservableCollection<FilmDTO>(await Task.Run(() => FilmService.Ins.GetShowingMovieByDay(SelectedDate)));
                     GetAllCurrentGenre(p);
                 }
