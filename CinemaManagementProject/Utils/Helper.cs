@@ -36,7 +36,7 @@ namespace CinemaManagementProject.Utils
                 {
                     stringChars[j] = chars[random.Next(chars.Length)];
                 }
-                string newCode = new String(stringChars);
+                string newCode = firstChars + new String(stringChars) + lastChars;
                 var isExist = ListCode.Any(code => code == newCode);
                 if (isExist)
                 {
@@ -57,7 +57,7 @@ namespace CinemaManagementProject.Utils
                     i--;
                     continue;
                 }
-                ListCode.Add(firstChars + newCode + lastChars);
+                ListCode.Add(newCode);
             }
 
             return (null, ListCode);

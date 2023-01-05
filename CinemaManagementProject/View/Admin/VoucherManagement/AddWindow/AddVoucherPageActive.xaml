@@ -316,7 +316,7 @@
                             <ComboBoxItem Tag="Toàn bộ" Content="{DynamicResource AddVoucherPage_CBB0}" FontSize="14"/>
                             <ComboBoxItem Tag="Chưa phát hành" Content="{DynamicResource AddVoucherPage_CBB1}" FontSize="14"/>
                             <ComboBoxItem Tag="Đã phát hành" Content="{DynamicResource AddVoucherPage_CBB2}" FontSize="14"/>
-                                <ComboBoxItem Tag="Đã sử dụng" Content="{DynamicResource AddVoucherPage_CBB3}" FontSize="14"/>
+                             <ComboBoxItem Tag="Đã sử dụng" Content="{DynamicResource AddVoucherPage_CBB3}" FontSize="14"/>
                         </ComboBox>
                     </Grid>
                 </Grid>
@@ -467,7 +467,7 @@
                        FontWeight="Medium"
                        VerticalAlignment="Center"
                        HorizontalAlignment="Right"
-                       Margin="0,0,30,0">
+                       Margin="0,0,35,0">
             </Label>
 
 

@@ -87,7 +87,6 @@ namespace CinemaManagementProject.Model.Service
             }
             catch (Exception e)
             {
-                Console.WriteLine(e);
                 return (false, IsEnglish?"System Error":"Lỗi hệ thống");
             }
 
@@ -150,9 +149,7 @@ namespace CinemaManagementProject.Model.Service
             }
             catch (Exception e)
             {
-
-                Console.WriteLine(e);
-                return (false, e.Message);
+                return (false, IsEnglish ? "System Error" : "Lỗi hệ thống");
             }
             return (true, IsEnglish?"Successful transaction execution!":"Thực hiện giao dịch thành công!");
         }

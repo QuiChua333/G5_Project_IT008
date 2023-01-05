@@ -411,7 +411,9 @@ namespace CinemaManagementProject.ViewModel.AdminVM.VoucherManagementVM
             else
             {
 
-                ListViewVoucher = new ObservableCollection<VoucherDTO>(StoreAllMini.Where(v => v.VoucherStatus == SelectedCbbFilter.Tag.ToString()).ToList());
+                
+
+                ListViewVoucher = new ObservableCollection<VoucherDTO>(StoreAllMini.Where(v => v.VoucherStatus.Trim() == SelectedCbbFilter.Tag.ToString().Trim()).ToList());
                 if (Properties.Settings.Default.isEnglish == true)
                 {
                     ListViewVoucher = new ObservableCollection<VoucherDTO>(StoreAllMini.Where(v => ConvertVoucherStatusToVN(v.VoucherStatus) == SelectedCbbFilter.Tag.ToString()).ToList());
