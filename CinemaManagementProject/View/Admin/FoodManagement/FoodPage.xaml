@@ -373,6 +373,11 @@
                             </DataTemplate>
                         </ListBox.ItemTemplate>
                     </ListBox>
+                    <ProgressBar Style="{StaticResource MaterialDesignCircularProgressBar}"
+                                 Height="100"
+                                 Width="100"
+                                 IsIndeterminate="{Binding IsLoadding}"
+                                 VerticalAlignment="Center" HorizontalAlignment="Center"/>
                 </Grid>
             </ScrollViewer>
         </Grid>

@@ -111,6 +111,7 @@ namespace CinemaManagementProject.ViewModel.StaffVM
             _currentView = new FilmBookingVM.FilmBookingVM();
             LogOutCommand = new RelayCommand<Window>((p) => { return true; }, (p) =>
             {
+                isEN = Properties.Settings.Default.isEnglish;
                 if (CustomMessageBox.ShowOkCancel(isEN ? "Do you really want to log out?" : "Bạn thật sự muốn đăng xuất không?", isEN ? "Warning" : "Cảnh báo", isEN ? "Log out" : "Đăng xuất", isEN ? "No" : "Không", Views.CustomMessageBoxImage.Warning) == CustomMessageBoxResult.OK)
                 {
                     if (p != null)
