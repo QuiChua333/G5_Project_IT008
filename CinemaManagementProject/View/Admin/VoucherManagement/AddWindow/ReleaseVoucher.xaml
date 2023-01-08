@@ -358,11 +358,9 @@
                         x:Name="acBtn">
                     <i:Interaction.Triggers>
                         <i:EventTrigger EventName="Click">
-                            <i:InvokeCommandAction Command="{Binding ReleaseVoucherCM}" CommandParameter="{Binding ElementName=acBtn}"/>
+                            <i:InvokeCommandAction Command="{Binding ReleaseVoucherCM}" CommandParameter="{Binding ElementName=mainWindow}"/>
                         </i:EventTrigger>
-                        <i:EventTrigger EventName="Click">
-                            <i:InvokeCommandAction Command="{Binding CloseWindowVoucherCM}" CommandParameter="{Binding ElementName=mainWindow}"/>
-                        </i:EventTrigger>
+                       
                     </i:Interaction.Triggers>
                 </Button>
             </Grid>

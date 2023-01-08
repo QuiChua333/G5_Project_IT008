@@ -217,7 +217,7 @@ namespace CinemaManagementProject.ViewModel.AdminVM.VoucherManagementVM
                 WaitingMiniVoucher.Clear();
                 foreach (var item in StoreAllMini)
                 {
-                    if (item.VoucherStatus != "Ðã phát hành" && item.VoucherStatus != "Published")
+                    if (item.VoucherStatus != "Ðã phát hành" && item.VoucherStatus != "Released")
                     {
                         WaitingMiniVoucher.Add(item.Id);
                         item.IsChecked = true;
@@ -231,7 +231,7 @@ namespace CinemaManagementProject.ViewModel.AdminVM.VoucherManagementVM
                 WaitingMiniVoucher.Clear();
                 foreach (var item in StoreAllMini)
                 {
-                    if (item.VoucherStatus != "Ðã phát hành" && item.VoucherStatus != "Published")
+                    if (item.VoucherStatus != "Ðã phát hành" && item.VoucherStatus != "Released")
                     {
                         item.IsChecked = false;
                     }

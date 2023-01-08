@@ -434,6 +434,11 @@ namespace CinemaManagementProject.ViewModel.AdminVM.VoucherManagementVM
                         CustomMessageBox.ShowOk(IsEnglish?"Existing used voucher!":"Tồn tại voucher đã sử dụng!", IsEnglish?"Warning":"Cảnh báo", "Ok", CustomMessageBoxImage.Warning);
                         return;
                     }
+                    if (item.VoucherStatus == "Đã phát hành" || item.VoucherStatus == "Released")
+                    {
+                        CustomMessageBox.ShowOk(IsEnglish ? "Existing released voucher!" : "Tồn tại voucher đã phát hành!", IsEnglish ? "Warning" : "Cảnh báo", "Ok", CustomMessageBoxImage.Warning);
+                        return;
+                    }
                 }
                 IsReleaseVoucherLoading = true;
 
@@ -614,6 +619,7 @@ namespace CinemaManagementProject.ViewModel.AdminVM.VoucherManagementVM
                 await ReleaseVoucherFunc(p);
 
                 IsReleaseVoucherLoading = false;
+                p.Close();
 
             });
             RefreshEmailListCM = new RelayCommand<object>((p) => { return true; }, async (p) =>

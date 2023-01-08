@@ -76,8 +76,8 @@
     <system:String x:Key="AddVoucherPage_TextBlock_AddListVouchers">Add Voucher List</system:String>
     <system:String x:Key="AddVoucherPage_Label_Choosing">Choosing:</system:String>
     <system:String x:Key="AddVoucherPage_CBB0">All</system:String>
-    <system:String x:Key="AddVoucherPage_CBB1">Not released yet</system:String>
-    <system:String x:Key="AddVoucherPage_CBB2">Published</system:String>
+    <system:String x:Key="AddVoucherPage_CBB1">Unreleased</system:String>
+    <system:String x:Key="AddVoucherPage_CBB2">Released</system:String>
     <system:String x:Key="AddVoucherPage_CBB3">Used</system:String>
     <system:String x:Key="AddVoucherPage_ListViewHeader0">Voucher Code</system:String>
     <system:String x:Key="AddVoucherPage_ListViewHeader1">Customer</system:String>

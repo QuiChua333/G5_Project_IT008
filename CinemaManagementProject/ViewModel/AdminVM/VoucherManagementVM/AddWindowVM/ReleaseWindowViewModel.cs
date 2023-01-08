@@ -280,12 +280,12 @@ namespace CinemaManagementProject.ViewModel.AdminVM.VoucherManagementVM
                         ws.Cells.Style.Font.Size  = 12;
                         ws.Cells.Style.Font.Name = "Times New Roman";
 
-                        ws.Cells[1, 1] = IsEnglish ? "Release name: " : "Tên đợt phát hành: " + SelectedItem.VoucherReleaseName;
-                        ws.Cells[2, 1] = IsEnglish ? "Release date: " : "Ngày phát hành: " + DateTime.Today;
-                        ws.Cells[3, 1] = IsEnglish ? "End date: " : "Hiệu lực đến: " + SelectedItem.EndDate;
-                        ws.Cells[4, 1] = IsEnglish ? "Quantity: " : "Số lượng: " + ReleaseVoucherList.Count;
-                        ws.Cells[5, 1] = IsEnglish ? "Price: " : "Mệnh giá: " + Utils.Helper.FormatVNMoney((float)SelectedItem.Price);
-                        ws.Cells[6, 1] = IsEnglish ? "Object type: " : "Mặt hàng áp dụng: " + SelectedItem.TypeObject;
+                        ws.Cells[1, 1] = (IsEnglish ? "Release name: " : "Tên đợt phát hành: ") + SelectedItem.VoucherReleaseName;
+                        ws.Cells[2, 1] = (IsEnglish ? "Release date: " : "Ngày phát hành: ") + DateTime.Today;
+                        ws.Cells[3, 1] = (IsEnglish ? "End date: " : "Hiệu lực đến: ") + SelectedItem.EndDate;
+                        ws.Cells[4, 1] = (IsEnglish ? "Quantity: " : "Số lượng: ") + ReleaseVoucherList.Count;
+                        ws.Cells[5, 1] = (IsEnglish ? "Price: " : "Mệnh giá: ") + Utils.Helper.FormatVNMoney((float)SelectedItem.Price);
+                        ws.Cells[6, 1] = (IsEnglish ? "Object type: " : "Mặt hàng áp dụng: ") + SelectedItem.TypeObject;
                         ws.Cells[8, 5] = IsEnglish ? "Number: " : "ID voucher";
                         ws.Cells[8, 6] = IsEnglish ? "Voucher code: " : "Mã voucher";
 

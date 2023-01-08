@@ -292,6 +292,13 @@ namespace CinemaManagementProject.ViewModel.AdminVM.VoucherManagementVM
                 {
                     (VoucherReleaseDTO voucherReleaseDetail, _) = await VoucherService.Ins.GetVoucherReleaseDetails(selectedItem.VoucherReleaseCode);
                     SelectedItem = voucherReleaseDetail;
+                    if (Properties.Settings.Default.isEnglish == true)
+                    {
+                        foreach (VoucherDTO item in selectedItem.Vouchers)
+                        {
+                            item.VoucherStatus = ConvertVoucherStatusToEnglish(item.VoucherStatus);
+                        }
+                    }
                     ListViewVoucher = new ObservableCollection<VoucherDTO>(SelectedItem.Vouchers);
                     StoreAllMini = new ObservableCollection<VoucherDTO>(ListViewVoucher);
                 }
@@ -349,8 +356,9 @@ namespace CinemaManagementProject.ViewModel.AdminVM.VoucherManagementVM
                 CustomMessageBox.ShowOk(createRandomSuccess, IsEnglish ? "Notification" : "Thông báo", "Ok", CustomMessageBoxImage.Success);
 
                 ListViewVoucher = new ObservableCollection<VoucherDTO>(ListViewVoucher.Concat(newListCode));
-
+               
                 SelectedItem.Vouchers = new ObservableCollection<VoucherDTO>(ListViewVoucher);
+                
                 StoreAllMini = new ObservableCollection<VoucherDTO>(ListViewVoucher);
 
                 for (int i = 0; i < ListBigVoucher.Count; i++)
@@ -374,6 +382,30 @@ namespace CinemaManagementProject.ViewModel.AdminVM.VoucherManagementVM
                         SelectedItem = ListBigVoucher[i];
                         return;
                     }
+                }
+                try
+                {
+                    (VoucherReleaseDTO voucherReleaseDetail, _) = await VoucherService.Ins.GetVoucherReleaseDetails(selectedItem.VoucherReleaseCode);
+                    SelectedItem = voucherReleaseDetail;
+                    if (Properties.Settings.Default.isEnglish == true)
+                    {
+                        foreach (VoucherDTO item in selectedItem.Vouchers)
+                        {
+                            item.VoucherStatus = ConvertVoucherStatusToEnglish(item.VoucherStatus);
+                        }
+                    }
+                    ListViewVoucher = new ObservableCollection<VoucherDTO>(SelectedItem.Vouchers);
+                    StoreAllMini = new ObservableCollection<VoucherDTO>(ListViewVoucher);
+                }
+                catch (System.Data.Entity.Core.EntityException e)
+                {
+                    CustomMessageBox.ShowOk(IsEnglish ? "Unable to connect to database" : "Mất kết nối cơ sở dữ liệu", IsEnglish ? "Error" : "Lỗi", "OK", CustomMessageBoxImage.Error);
+
+                }
+                catch (Exception e)
+                {
+                    CustomMessageBox.ShowOk(IsEnglish ? "System Error" : "Lỗi hệ thống", IsEnglish ? "Error" : "Lỗi", "OK", CustomMessageBoxImage.Error);
+
                 }
                 if (AddVoucherPage.TopCheck != null && AddVoucherPage.CBB != null)
                 {
@@ -480,11 +512,11 @@ namespace CinemaManagementProject.ViewModel.AdminVM.VoucherManagementVM
                     }
                 case "Chưa phát hành":
                     {
-                        return "Not released yet";
+                        return "Unreleased";
                     }
                 case "Đã phát hành":
                     {
-                        return "Published";
+                        return "Released";
                     }
                 default:
                     {
@@ -500,11 +532,11 @@ namespace CinemaManagementProject.ViewModel.AdminVM.VoucherManagementVM
                     {
                         return "Toàn bộ";
                     }
-                case "Not released yet":
+                case "Unreleased":
                     {
                         return "Chưa phát hành";
                     }
-                case "Published":
+                case "Released":
                     {
                         return "Đã phát hành";
                     }
