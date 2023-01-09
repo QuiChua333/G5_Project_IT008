@@ -22,7 +22,7 @@
         </i:EventTrigger>
     </i:Interaction.Triggers>
 
-    <Grid>
+    <Grid Margin="0,-30,0,0">
         <Grid.RowDefinitions>
             <RowDefinition Height="60" />
             <RowDefinition />
@@ -45,7 +45,7 @@
                                       x:Name="card1">
                     <StackPanel Orientation="Horizontal">
                         <RadioButton Style="{StaticResource MaterialDesignTabRadioButtonBottom}"
-                            BorderBrush="Blue"
+                            BorderBrush="#0F2851"
                             VerticalAlignment="Top"
                             Height="40"
                             FontFamily="{StaticResource MaterialDesignFont}"
@@ -57,7 +57,7 @@
                             CommandParameter="{Binding ElementName=card1}"
                             Margin="20,5,0,0"/>
                         <RadioButton Style="{StaticResource MaterialDesignTabRadioButtonBottom}"
-                            BorderBrush="Blue"
+                            BorderBrush="#0F2851"
                             VerticalAlignment="Top"
                             Height="40"
                             FontFamily="{StaticResource MaterialDesignFont}"
@@ -69,7 +69,7 @@
                             Command="{Binding LoadRankStatisticalCM}"
                             CommandParameter="{Binding ElementName=card1}"/>
                         <RadioButton Style="{StaticResource MaterialDesignTabRadioButtonBottom}"
-                            BorderBrush="Blue"
+                            BorderBrush="#0F2851"
                             VerticalAlignment="Top"
                             Height="40"
                             FontFamily="{StaticResource MaterialDesignFont}"

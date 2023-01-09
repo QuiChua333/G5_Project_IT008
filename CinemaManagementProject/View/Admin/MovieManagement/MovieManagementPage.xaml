@@ -124,7 +124,7 @@
                                             FontFamily="{StaticResource MaterialDesignFont}"
                                             Foreground="Black"
                                             FontSize="14"
-                                            ToolTip="Nháy đúp để xem chi tiết">
+                                            ToolTip="Nháy đúp để xem chi tiết" d:ItemsSource="{d:SampleData ItemCount=5}">
                                     <i:Interaction.Triggers>
                                         <i:EventTrigger EventName="MouseDoubleClick">
                                             <i:InvokeCommandAction Command="{Binding LoadInforMovieCM}" />
@@ -139,8 +139,9 @@
                                                 <GridViewColumn.CellTemplate>
                                                     <DataTemplate>
                                                         <TextBlock Text="{Binding FilmName}" 
-                                                                    FontSize="14" 
-                                                                    VerticalAlignment="Center"/>
+                                                                   FontSize="14" 
+                                                                   VerticalAlignment="Center"
+                                                                   Margin="18,0,0,0"/>
                                                     </DataTemplate>
                                                 </GridViewColumn.CellTemplate>
                                             </GridViewColumn>

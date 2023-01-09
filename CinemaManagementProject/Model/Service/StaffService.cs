@@ -38,7 +38,7 @@ namespace CinemaManagementProject.Model.Service
                               select new StaffDTO
                               {
                                   Id = s.Id,
-                                  MaNV=s.MaNV,
+                                  MaNV = s.MaNV,
                                   DateOfBirth = s.DateOfBirth,
                                   Gender = s.Gender,
                                   UserName = s.UserName,

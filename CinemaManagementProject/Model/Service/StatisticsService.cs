@@ -48,6 +48,7 @@ namespace CinemaManagementProject.Model.Service
                        (statis, cus) => new CustomerDTO
                        {
                            Id = cus.Id,
+                           CustomerCode = cus.MaKH,
                            CustomerName = cus.CustomerName,
                            PhoneNumber = cus.PhoneNumber,
                            Expense = (float)statis.Expense
@@ -125,6 +126,7 @@ namespace CinemaManagementProject.Model.Service
                         (statis, cus) => new CustomerDTO
                         {
                             Id = cus.Id,
+                            CustomerCode = cus.MaKH,
                             CustomerName = cus.CustomerName,
                             PhoneNumber = cus.PhoneNumber,
                             Expense = (float)statis.Expense
@@ -173,6 +175,7 @@ namespace CinemaManagementProject.Model.Service
                     (statis, staff) => new StaffDTO
                     {
                         Id = staff.Id,
+                        MaNV = staff.MaNV,
                         StaffName = staff.StaffName,
                         BenefitContribution = statis.BenefitContribution
                     }).ToListAsync();
@@ -207,6 +210,7 @@ namespace CinemaManagementProject.Model.Service
                    (statis, staff) => new StaffDTO
                    {
                        Id = staff.Id,
+                       MaNV = staff.MaNV,
                        StaffName = staff.StaffName,
                        BenefitContribution = statis.BenefitContribution
                    }).ToListAsync();

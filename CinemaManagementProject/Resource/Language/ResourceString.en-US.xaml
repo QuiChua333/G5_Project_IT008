@@ -236,7 +236,7 @@
     <system:String x:Key="AddMovieWindow_Label_TenPhim">Movie name</system:String>
     <system:String x:Key="AddMovieWindow_Label_TacGia">Author</system:String>
     <system:String x:Key="AddMovieWindow_Label_TheLoai">Category</system:String>
-    <system:String x:Key="AddMovieWindow_Label_ThoiLuong">Duration</system:String>
+    <system:String x:Key="AddMovieWindow_Label_ThoiLuong">Duration (minutes)</system:String>
     <system:String x:Key="AddMovieWindow_TextBox_Hint_Phut">Minute</system:String>
     <system:String x:Key="AddMovieWindow_Label_QuocGia">Country</system:String>
     <system:String x:Key="AddMovieWindow_Label_NamPhatHanh">Release year</system:String>
@@ -247,7 +247,7 @@
     <system:String x:Key="DetailMovieWindow_Label_TenPhim">Movie name</system:String>
     <system:String x:Key="DetailMovieWindow_Label_TacGia">Author</system:String>
     <system:String x:Key="DetailMovieWindow_Label_TheLoai">Category</system:String>
-    <system:String x:Key="DetailMovieWindow_Label_ThoiLuong">Duration</system:String>
+    <system:String x:Key="DetailMovieWindow_Label_ThoiLuong">Duration (minutes)</system:String>
     <system:String x:Key="DetailMovieWindow_TextBox_Hint_Phut">Minute</system:String>
     <system:String x:Key="DetailMovieWindow_Label_QuocGia">Country</system:String>
     <system:String x:Key="DetailMovieWindow_Label_NamPhatHanh">Release year</system:String>
@@ -257,7 +257,7 @@
     <system:String x:Key="EditMovieWindow_Label_TenPhim">Movie name</system:String>
     <system:String x:Key="EditMovieWindow_Label_TacGia">Author</system:String>
     <system:String x:Key="EditMovieWindow_Label_TheLoai">Category</system:String>
-    <system:String x:Key="EditMovieWindow_Label_ThoiLuong">Duration</system:String>
+    <system:String x:Key="EditMovieWindow_Label_ThoiLuong">Duration (minutes)</system:String>
     <system:String x:Key="EditMovieWindow_TextBox_Hint_Phut">Minute</system:String>
     <system:String x:Key="EditMovieWindow_Label_QuocGia">Country</system:String>
     <system:String x:Key="EditMovieWindow_Label_NamPhatHanh">Release year</system:String>
