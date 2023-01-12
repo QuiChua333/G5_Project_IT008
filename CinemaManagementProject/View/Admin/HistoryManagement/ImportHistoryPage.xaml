@@ -49,7 +49,7 @@
             <Grid.Resources>
                 <Style x:Key="styleButton" 
                        TargetType="ComboBox" 
-                       BasedOn="{StaticResource MaterialDesignOutlinedComboBox}">
+                       BasedOn="{StaticResource MaterialDesignComboBox}">
                     <Setter Property="Background" Value="Transparent"/>
                     <Setter Property="Foreground" Value="Black"/>
                     <Setter Property="BorderBrush" Value="Gray"/>
@@ -129,7 +129,7 @@
                                             Background="Transparent"
                                             BorderThickness="0"
                                             Style="{StaticResource styleButton}" 
-                                            Margin="0,0,0,-3"                            
+                                            Padding="10 14 10 14"                        
                                             x:Name="cbbFilter">
                                     <ComboBoxItem Content="{DynamicResource ImportHistoryPage_ComboboxItem_Madon}" Tag="Mã đơn"/>
                                     <ComboBoxItem Content="{DynamicResource ImportHistoryPage_ComboboxItem_Nhanvien}" Tag="Nhân viên"/>
@@ -154,7 +154,7 @@
                                             SelectedIndex="0"
                                             BorderThickness="0"
                                             Style="{StaticResource styleButton}" 
-                                            Margin="0,0,0,-3"
+                                            Padding="10 14 10 14"
                                             Background="Transparent"
                                             x:Name="filtercbb"                            
                                             SelectedItem="{Binding SelectedImportItemFilter}"

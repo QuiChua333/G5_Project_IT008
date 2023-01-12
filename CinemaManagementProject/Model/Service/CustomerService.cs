@@ -44,7 +44,7 @@ namespace CinemaManagementProject.Model.Service
                                         Email = s.Email,
                                         PhoneNumber = s.PhoneNumber,
                                         FirstDate = (DateTime)s.FirstDate,
-                                        Expense = s.Bills.Sum(b => b.TotalPrize) ?? 0
+                                        Expense = s.Bills.Sum(b => b.TotalPrize) ?? 0 
                                     }).ToList();
                 }
             }
@@ -101,7 +101,7 @@ namespace CinemaManagementProject.Model.Service
                             PhoneNumber = c.PhoneNumber,
                             Email = c.Email,
                             FirstDate = (DateTime)c.FirstDate,
-                            Expense = (float)c.Bills.Where(b => ((DateTime)c.FirstDate).Year == year).Sum(b => b.TotalPrize)
+                            Expense = c.Bills.Where(b => ((DateTime)b.CreateDate).Year == year).Sum(b => b.TotalPrize) ?? 0
                         }).ToListAsync();
 
                         return customer;
@@ -111,7 +111,7 @@ namespace CinemaManagementProject.Model.Service
                 {
                     using (var context = new CinemaManagementProjectEntities())
                     {
-                        var customer = await context.Customers.Where(c => !(bool)c.IsDeleted && (DateTime)c.FirstDate == DateTime.Today && c.FirstDate.Value.Month == month)
+                        var customer = await context.Customers.Where(c => !(bool)c.IsDeleted && ((DateTime)c.FirstDate).Year == DateTime.Today.Year && ((DateTime)c.FirstDate).Month == month)
                             .Select(c => new CustomerDTO
                             {
                                 Id = c.Id,
@@ -120,7 +120,7 @@ namespace CinemaManagementProject.Model.Service
                                 PhoneNumber = c.PhoneNumber,
                                 Email = c.Email,
                                 FirstDate = (DateTime)c.FirstDate,
-                                Expense = (float)c.Bills.Where(b => ((DateTime)c.FirstDate).Year == year && ((DateTime)c.FirstDate).Month == month).Sum(b => b.TotalPrize) 
+                                Expense =c.Bills.Where(b => ((DateTime)b.CreateDate).Year == year && ((DateTime)b.CreateDate).Month == month).Sum(b => b.TotalPrize) ?? 0
                             }).ToListAsync();
 
                         return customer;

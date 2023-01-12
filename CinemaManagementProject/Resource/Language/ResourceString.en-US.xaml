@@ -442,7 +442,7 @@
     <system:String x:Key="CustomerManagementPage_ListviewHeader_TenKhachHang">Customer Name</system:String>
     <system:String x:Key="CustomerManagementPage_ListviewHeader_SoDienThoai">Phone Number</system:String>
     <system:String x:Key="CustomerManagementPage_ListviewHeader_NgayDangKy">Registered Date</system:String>
-    <system:String x:Key="CustomerManagementPage_ListviewHeader_Chitieuthang">Monthly spending</system:String>
+    <system:String x:Key="CustomerManagementPage_ListviewHeader_Chitieuthang">Spending</system:String>
     <system:String x:Key="EditCustomerWindow_Label_SUATHONGTINKHACHANG">EDIT CUSTOMER INFORMATION</system:String>
     <system:String x:Key="EditCustomerWindow_TextBlock_Hovaten">Customer Name</system:String>
     <system:String x:Key="EditCustomerWindow_TextBlock_Ngaydangky">Registered Date</system:String>

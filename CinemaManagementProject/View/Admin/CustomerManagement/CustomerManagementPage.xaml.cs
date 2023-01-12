@@ -33,13 +33,13 @@ namespace CinemaManagementProject.View.Admin.CustomerManagement
             switch (cbbFilter.SelectedValue)
             {
                 case "Mã khách hàng":
-                    return ((item as CustomerDTO).Id.ToString().IndexOf(FilterBox.Text, StringComparison.OrdinalIgnoreCase) >= 0);
+                    return ((item as CustomerDTO).CustomerCode.ToString().IndexOf(FilterBox.Text, StringComparison.OrdinalIgnoreCase) >= 0);
                 case "Tên khách hàng":
                     return ((item as CustomerDTO).CustomerName.IndexOf(FilterBox.Text, StringComparison.OrdinalIgnoreCase) >= 0);
                 case "Số điện thoại":
                     return ((item as CustomerDTO).PhoneNumber.IndexOf(FilterBox.Text, StringComparison.OrdinalIgnoreCase) >= 0);
                 default:
-                    return ((item as CustomerDTO).Id.ToString().IndexOf(FilterBox.Text, StringComparison.OrdinalIgnoreCase) >= 0);
+                    return ((item as CustomerDTO).CustomerCode.ToString().IndexOf(FilterBox.Text, StringComparison.OrdinalIgnoreCase) >= 0);
             }
         }
 
@@ -87,7 +87,7 @@ namespace CinemaManagementProject.View.Admin.CustomerManagement
             List<string> l = new List<string>();
 
             int now = -1;
-            for (int i = 2020; i <= System.DateTime.Now.Year; i++)
+            for (int i = 2021; i <= System.DateTime.Now.Year; i++)
             {
                 now++;
                 l.Add(i.ToString());

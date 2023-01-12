@@ -51,7 +51,7 @@
             </Border.Effect>
             <Grid>
                 <Grid.Resources>
-                    <Style x:Key="styleButton" TargetType="{x:Type ComboBox}" BasedOn="{StaticResource MaterialDesignOutlinedComboBox}">
+                    <Style x:Key="styleButton" TargetType="{x:Type ComboBox}" BasedOn="{StaticResource MaterialDesignComboBox}">
                         <Setter Property="Background" Value="Transparent"/>
                         <Setter Property="Foreground" Value="Black"/>
                         <Setter Property="BorderBrush" Value="Gray"/>
@@ -68,8 +68,8 @@
                 <StackPanel Grid.Row="0" 
                         Orientation="Horizontal" >
                     <Grid Height="46"
-                      Width="350" 
-                      Margin="20, 17, 0, 17"  >
+                          Width="350" 
+                          Margin="20, 17, 0, 17"  >
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="52"/>
                             <ColumnDefinition />
@@ -109,34 +109,36 @@
                            HorizontalAlignment="Right"
                            VerticalAlignment="Center"/>
                     </Grid>
-                    <Border CornerRadius="12"
-                        Margin="20, 17, 0, 17"
-                        Background="White"
-                        Height="46"
-                        Width="150"
-                        BorderBrush="Black">
-                        <Border.Effect>
-                            <DropShadowEffect
-                            BlurRadius="10"
-                            Color="Black"
-                            ShadowDepth="4"
-                            Opacity=".25"
-                            Direction="270"/>
-                        </Border.Effect>
+                    
+                    <Grid Width="150" 
+                          Height="44" 
+                          Margin="20, 17, 0, 17">
+                        <Rectangle Fill="White" 
+                                   RadiusX="12" 
+                                   RadiusY="12">
+                            <Rectangle.Effect>
+                                <DropShadowEffect
+                                        BlurRadius="10"
+                                        Opacity="0.25"
+                                        Direction="270"
+                                        Color="Black"
+                                    />
+                            </Rectangle.Effect>
+                        </Rectangle>
                         <ComboBox   SelectedValuePath="Tag"
-                                SelectedIndex="0"
-                                UseLayoutRounding="False"
-                                BorderThickness="0"
-                                Background="Transparent"
-                                Foreground="Black"
-                                Style="{StaticResource styleButton}" 
-                                Name="cbbFilter"
-                                Padding="10 14 10 14" >
+                                    SelectedIndex="0"
+                                    UseLayoutRounding="False"
+                                    BorderThickness="0"
+                                    Background="Transparent"
+                                    Foreground="Black"
+                                    Style="{StaticResource styleButton}" 
+                                    Name="cbbFilter"
+                                    Padding="10 14 10 14" >
                             <ComboBoxItem  Foreground="Black" Content="{DynamicResource CustomerManagementPage_ComboboxItem_MaKhachHang}" Tag="Mã khách hàng" />
                             <ComboBoxItem  Foreground="Black" Content="{DynamicResource CustomerManagementPage_ComboboxItem_TenKhachHang}" Tag="Tên khách hàng"/>
                             <ComboBoxItem  Foreground="Black" Content="{DynamicResource CustomerManagementPage_ComboboxItem_SoDienThoai}" Tag="Số điện thoại"/>
                         </ComboBox>
-                    </Border>
+                    </Grid>
                     <StackPanel Margin="250 0 0 0"
                         Orientation="Horizontal" >
 
@@ -181,13 +183,13 @@
                             </ComboBox>
                         </Border>
                         <Border CornerRadius="12"
-                            Margin="10, 17, 30, 17"
-                            Background="White"
-                            Height="46"
-                            Width="140"
-                            BorderBrush="Black"
-                            x:Name="boder"
-                            Visibility="Collapsed">
+                                Margin="10, 17, 30, 17"
+                                Background="White"
+                                Height="46"
+                                Width="140"
+                                BorderBrush="Black"
+                                x:Name="boder"
+                                Visibility="Collapsed">
                             <Border.Effect>
                                 <DropShadowEffect
                                 BlurRadius="10"
@@ -197,12 +199,12 @@
                                 Direction="270"/>
                             </Border.Effect>
                             <ComboBox   Style="{StaticResource styleButton}" 
-                                    Margin="0,0,0,-3" 
-                                    BorderThickness="0"
-                                    x:Name="Time1"   
-                                    Background="Transparent"
-                                    Visibility="Collapsed"
-                                    SelectedItem="{Binding SelectedTime,Mode=OneWayToSource}">
+                                        Padding="10 14 10 14"
+                                        BorderThickness="0"
+                                        x:Name="Time1"   
+                                        Background="Transparent"
+                                        Visibility="Collapsed"
+                                        SelectedItem="{Binding SelectedTime,Mode=OneWayToSource}">
                                 <i:Interaction.Triggers>
                                     <i:EventTrigger EventName="Loaded">
                                         <i:InvokeCommandAction Command="{Binding ChangePeriodCM}"

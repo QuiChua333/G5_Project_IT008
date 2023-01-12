@@ -68,7 +68,11 @@
                         <ColumnDefinition Width="40"/>
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
-                    <Rectangle Grid.Column="0" Grid.ColumnSpan="2" Fill="White" RadiusX="10" RadiusY="10">
+                    <Rectangle Grid.Column="0" 
+                               Grid.ColumnSpan="2" 
+                               Fill="White" 
+                               RadiusX="10" 
+                               RadiusY="10">
                         <Rectangle.Effect>
                             <DropShadowEffect
                                         BlurRadius="10"
@@ -79,10 +83,26 @@
                         </Rectangle.Effect>
                     </Rectangle>
                     <Image Source="{StaticResource IconFilter}" Width="20" Height="20"></Image>
-                    <ComboBox x:Name="FilterCombobox" SelectedItem="{Binding SelectedItemFilter}" SelectedIndex="0" Foreground="Black" Grid.Column="1" Background="Transparent" VerticalAlignment="Center" FontSize="16" FontWeight="Medium" Margin="0,0,10,0" SelectionChanged="FilterCombobox_SelectionChanged" >
-                        <ComboBoxItem FontWeight="Regular" Tag="Tất cả" Content="{DynamicResource food_comboboxItem_TatCa}"></ComboBoxItem>
-                        <ComboBoxItem FontWeight="Regular" Tag="Đồ ăn" Content="{DynamicResource food_comboboxItem_DoAn}"></ComboBoxItem>
-                        <ComboBoxItem FontWeight="Regular" Tag="Nước uống" Content="{DynamicResource food_comboboxItem_NuocUong}"></ComboBoxItem>
+                    <ComboBox x:Name="FilterCombobox" 
+                              SelectedItem="{Binding SelectedItemFilter}" 
+                              SelectedIndex="0" 
+                              Foreground="Black" 
+                              Grid.Column="1" 
+                              Background="Transparent" 
+                              VerticalAlignment="Center" 
+                              FontSize="16" 
+                              FontWeight="Medium" 
+                              Margin="0,0,10,0" 
+                              SelectionChanged="FilterCombobox_SelectionChanged" >
+                        <ComboBoxItem FontWeight="Regular" 
+                                      Tag="Tất cả" 
+                                      Content="{DynamicResource food_comboboxItem_TatCa}"></ComboBoxItem>
+                        <ComboBoxItem FontWeight="Regular" 
+                                      Tag="Đồ ăn" 
+                                      Content="{DynamicResource food_comboboxItem_DoAn}"></ComboBoxItem>
+                        <ComboBoxItem FontWeight="Regular" 
+                                      Tag="Nước uống" 
+                                      Content="{DynamicResource food_comboboxItem_NuocUong}"></ComboBoxItem>
                     </ComboBox>
                 </Grid>
             </Grid>

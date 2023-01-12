@@ -442,7 +442,7 @@
     <system:String x:Key="CustomerManagementPage_ListviewHeader_TenKhachHang">Tên khách hàng</system:String>
     <system:String x:Key="CustomerManagementPage_ListviewHeader_SoDienThoai">Số điện thoại</system:String>
     <system:String x:Key="CustomerManagementPage_ListviewHeader_NgayDangKy">Ngày đăng ký</system:String>
-    <system:String x:Key="CustomerManagementPage_ListviewHeader_Chitieuthang">Chi tiêu tháng</system:String>
+    <system:String x:Key="CustomerManagementPage_ListviewHeader_Chitieuthang">Chi tiêu</system:String>
     <system:String x:Key="EditCustomerWindow_Label_SUATHONGTINKHACHANG">SỬA THÔNG TIN KHÁCH HÀNG</system:String>
     <system:String x:Key="EditCustomerWindow_TextBlock_Hovaten">Họ và tên</system:String>
     <system:String x:Key="EditCustomerWindow_TextBlock_Ngaydangky">Ngày đăng ký</system:String>
@@ -481,7 +481,7 @@
     <system:String x:Key="ImportHistoryPage_search_TimKiem">Tìm Kiếm</system:String>
     <system:String x:Key="ImportHistoryPage_ComboboxItem_Madon">Mã đơn</system:String>
     <system:String x:Key="ImportHistoryPage_ComboboxItem_Nhanvien">Nhân viên</system:String>
-    <system:String x:Key="ImportHistoryPage_ComboboxItem_Sanpham">Sản</system:String>
+    <system:String x:Key="ImportHistoryPage_ComboboxItem_Sanpham">Sản phẩm</system:String>
     <system:String x:Key="ImportHistoryPage_ComboboxItem_Toanbo">Toàn bộ</system:String>
     <system:String x:Key="ImportHistoryPage_ComboboxItem_Theothang">Theo tháng</system:String>
     <system:String x:Key="ImportHistoryPage_ComboboxItem_Thang1">Tháng 1</system:String>

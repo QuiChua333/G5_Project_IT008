@@ -19,7 +19,7 @@ namespace CinemaManagementProject.DTOs
         public string CustomerName { get; set; }
         public string PhoneNumber { get; set; }
         public string Email { get; set; }
-        public DateTime FirstDate { get; set; }
+        public Nullable<System.DateTime> FirstDate { get; set; }
 
         //Expense
         public bool IsDeleted { get; set; }
