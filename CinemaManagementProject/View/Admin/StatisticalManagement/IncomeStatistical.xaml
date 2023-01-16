@@ -13,7 +13,6 @@
       Title="IncomeStatistical"
       DataContext="{StaticResource StatisticalManagementVM}">
 
-
     <Page.Triggers>
         <EventTrigger RoutedEvent="Page.Loaded">
             <BeginStoryboard>
