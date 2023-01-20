@@ -1,0 +1,595 @@
+﻿<Page x:Class="CinemaManagementProject.View.Staff.HelpScreen.HelpScreen"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+      mc:Ignorable="d" 
+      Title="HelpScreen"
+      DataContext="{StaticResource HelpScreenVM}">
+
+    <Grid Width="1166.667" Height="700" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="20">
+        <Rectangle
+            Fill="White"
+            Opacity="0.5"
+            RadiusX="20"
+            RadiusY="20" 
+        />
+        <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="20">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="45*"/>
+                <RowDefinition Height="45*"/>
+                <RowDefinition Height="10*"/>
+            </Grid.RowDefinitions>
+            <Rectangle
+                x:Name="SettingPageView"
+                Fill="White"
+                Grid.Row="0"
+                Grid.RowSpan="3"
+                RadiusX="20"
+                RadiusY="20">
+                <Rectangle.Effect>
+                    <DropShadowEffect
+                        BlurRadius="10"
+                        Direction="270"
+                        Color="Black"
+                        Opacity="0.25"/>
+                </Rectangle.Effect>
+            </Rectangle>
+
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="25*"/>
+                    <ColumnDefinition Width="75*"/>
+                </Grid.ColumnDefinitions>
+
+                <Grid Grid.Column="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="80*"/>
+                        <RowDefinition Height="20*"/>
+                    </Grid.RowDefinitions>
+
+                    <Image Source="{StaticResource LogoMain}" Grid.Row="0" Height="220" Width="220"/>
+                    <TextBlock Grid.Row="1" 
+                               Text="FatFilmFo"
+                               HorizontalAlignment="Center" 
+                               VerticalAlignment="Center"
+                               FontSize="38" 
+                               FontFamily="{StaticResource MaterialDesignFont}" 
+                               FontWeight="SemiBold"/>
+                </Grid>
+
+                <Grid Grid.Column="1" Margin="0,20,0,0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="28*"/>
+                        <RowDefinition Height="22*"/>
+                        <RowDefinition Height="22*"/>
+                        <RowDefinition Height="14*"/>
+                        <RowDefinition Height="14*"/>
+                    </Grid.RowDefinitions>
+                    <Label Content="TẬP ĐOÀN FATFILMFO GROUP"
+                           FontSize="38"
+                           FontWeight="Bold"
+                           Grid.Row="0"
+                           Margin="20,16,0,0"/>
+                    <TextBlock Grid.Row="1" 
+                               Text="Giấy CNDKDN: 0303675394, đăng ký lần đầu ngày 14/10/2015, đăng ký lần thứ 5 ngày 24/11/2022, cấp bởi Sở KHDT thành phố Hồ Chí Minh."
+                               FontSize="16"
+                               Focusable="False"
+                               TextWrapping="Wrap"
+                               VerticalAlignment="Center"
+                               Margin="30,0,50,0"
+                               Foreground="#565D65"
+                               FontWeight="Medium"/>
+                    <TextBlock Grid.Row="2" 
+                               Text="Địa chỉ: Trường ĐH Công nghệ Thông Tin, ĐHQG Thành phố Hồ Chí Minh - Khu phố 6, phường Linh Trung, thành phố Thủ Đức."
+                               FontSize="16"
+                               Focusable="False"
+                               TextWrapping="Wrap"
+                               VerticalAlignment="Center"
+                               Margin="30,0,50,0"
+                               Foreground="#565D65"
+                               FontWeight="Medium"/>
+                    <Grid Grid.Row="3">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="11*"/>
+                            <ColumnDefinition Width="89*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Content="Hotline: "
+                               Grid.Column="0"
+                               FontSize="16"
+                               VerticalAlignment="Top"
+                               HorizontalAlignment="Left"
+                               Margin="26,0,0,0"
+                               Foreground="#565D65"
+                               FontWeight="Medium"/>
+                        <Label Grid.Column="1"
+                               FontSize="16"
+                               Content="0379361210"
+                               VerticalAlignment="Top"
+                               FontWeight="Medium"
+                               Foreground="#1A1884">
+                            <Label.Style>
+                                <Style TargetType="Label">
+                                    <Setter Property="Cursor" Value="Arrow"/>
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Foreground" Value="#DD4141"></Setter>
+                                            <Setter Property="Cursor" Value="Hand"/>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Label.Style>
+                        </Label>
+                    </Grid>
+                    <TextBlock Grid.Row="4"
+                               Text="COPYRIGHT 2019 CJ FATFILMFO, ALL RIGHT RESERVED ."
+                               FontSize="16"
+                               TextWrapping="Wrap"
+                               Focusable="False"
+                               VerticalAlignment="Top"
+                               Margin="30,0,50,0"
+                               Foreground="#565D65"
+                               FontWeight="Medium"/>
+                </Grid>
+            </Grid>
+            <Border Grid.Row="1" BorderBrush="Black" CornerRadius="20" BorderThickness="2" Margin="20,0,20,0">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="30*"/>
+                        <ColumnDefinition Width="40*"/>
+                        <ColumnDefinition Width="30*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid Grid.Column="0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="20*"/>
+                            <RowDefinition Height="80*"/>
+                        </Grid.RowDefinitions>
+                        <Label Grid.Row="0" 
+                               Content="Điều khoảng chung"
+                               FontSize="26"
+                               Foreground="Black"
+                               FontWeight="Bold"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"/>
+                        <Grid Grid.Row="1">
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+
+                            <Label Grid.Row="0"
+                                   x:Name="GeneralTermButton"
+                                   FontSize="20"
+                                   Content ="Điều khoản chung"
+                                   VerticalAlignment="Center"
+                                   HorizontalAlignment="Left"
+                                   Margin="40,0,0,0"
+                                   FontWeight="Medium"
+                                   Foreground="#565D65">
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="MouseLeftButtonDown">
+                                        <i:InvokeCommandAction Command="{Binding Load_General_Term}"
+                                                               CommandParameter="{Binding ElementName=GeneralTermButton}"/>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                                <Label.Style>
+                                    <Style TargetType="Label">
+                                        <Setter Property="Cursor" Value="Arrow"/>
+                                        <Style.Triggers>
+                                            <Trigger Property="IsMouseOver" Value="True">
+                                                <Setter Property="Foreground" Value="#DD4141"></Setter>
+                                                <Setter Property="Cursor" Value="Hand"/>
+                                            </Trigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </Label.Style>
+                            </Label>
+
+                            <Label Grid.Row="1"
+                                   FontSize="20"
+                                   Content="Điều khoản giao dịch"
+                                   VerticalAlignment="Center"
+                                   HorizontalAlignment="Left"
+                                   Margin="40,0,0,0"
+                                   FontWeight="Medium"
+                                   Foreground="#565D65">
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="MouseLeftButtonDown">
+                                        <i:InvokeCommandAction Command="{Binding Load_Trading_Terms}"
+                                                               CommandParameter="{Binding ElementName=GeneralTermButton}"/>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                                <Label.Style>
+                                    <Style TargetType="Label">
+                                        <Setter Property="Cursor" Value="Arrow"/>
+                                        <Style.Triggers>
+                                            <Trigger Property="IsMouseOver" Value="True">
+                                                <Setter Property="Foreground" Value="#DD4141"></Setter>
+                                                <Setter Property="Cursor" Value="Hand"/>
+                                            </Trigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </Label.Style>
+                            </Label>
+
+                            <Label Grid.Row="2"
+                                   FontSize="20"
+                                   Content="Chính sách bảo mật"
+                                   VerticalAlignment="Center"
+                                   HorizontalAlignment="Left"
+                                   Margin="40,0,0,0"
+                                   FontWeight="Medium"
+                                   Foreground="#565D65">
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="MouseLeftButtonDown">
+                                        <i:InvokeCommandAction Command="{Binding Load_Privacy_Policy}"
+                                                               CommandParameter="{Binding ElementName=GeneralTermButton}"/>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                                <Label.Style>
+                                    <Style TargetType="Label">
+                                        <Setter Property="Cursor" Value="Arrow"/>
+                                        <Style.Triggers>
+                                            <Trigger Property="IsMouseOver" Value="True">
+                                                <Setter Property="Foreground" Value="#DD4141"></Setter>
+                                                <Setter Property="Cursor" Value="Hand"/>
+                                            </Trigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </Label.Style>
+                            </Label>
+
+                            <Label Grid.Row="3"
+                                   FontSize="20"
+                                   Content="Câu hỏi thường gặp"
+                                   VerticalAlignment="Center"
+                                   HorizontalAlignment="Left"
+                                   Margin="40,0,0,0"
+                                   FontWeight="Medium"
+                                   Foreground="#565D65">
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="MouseLeftButtonDown">
+                                        <i:InvokeCommandAction Command="{Binding Load_Frequently_asked_questions}"
+                                                               CommandParameter="{Binding ElementName=GeneralTermButton}"/>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                                <Label.Style>
+                                    <Style TargetType="Label">
+                                        <Setter Property="Cursor" Value="Arrow"/>
+                                        <Style.Triggers>
+                                            <Trigger Property="IsMouseOver" Value="True">
+                                                <Setter Property="Foreground" Value="#DD4141"></Setter>
+                                                <Setter Property="Cursor" Value="Hand"/>
+                                            </Trigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </Label.Style>
+                            </Label>
+                        </Grid>
+
+                    </Grid>
+
+                    <Grid Grid.Column="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="20*"/>
+                            <RowDefinition Height="80*"/>
+                        </Grid.RowDefinitions>
+                        <Label Grid.Row="0" 
+                               Content="Chăm sóc khách hàng"
+                               FontSize="26"
+                               Foreground="Black"
+                               FontWeight="Bold"
+                               HorizontalAlignment="Left"
+                               Margin="40,0,0,0"
+                               VerticalAlignment="Center"/>
+                        <Grid Grid.Row="1">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="80*"/>
+                                <RowDefinition Height="20*"/>
+                            </Grid.RowDefinitions>
+                            <Grid Grid.Row="0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="30*"/>
+                                    <ColumnDefinition Width="30*"/>
+                                    <ColumnDefinition Width="40*"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid Grid.Column="0">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                    </Grid.RowDefinitions>
+                                    <Label Grid.Row="0"
+                                           Content="Kỹ thuật: "
+                                           FontSize="20"
+                                           VerticalAlignment="Center"
+                                           HorizontalAlignment="Left"
+                                           Margin="20,0,0,0"
+                                           FontWeight="Medium"
+                                           Foreground="#565D65"/>
+                                    <Label Grid.Row="1"
+                                           Content="Khiếu nại: "
+                                           FontSize="20"
+                                           VerticalAlignment="Center"
+                                           HorizontalAlignment="Left"
+                                           Margin="20,0,0,0"
+                                           FontWeight="Medium"
+                                           Foreground="#565D65"/>
+                                    <Label Grid.Row="2"
+                                           Content="Bảo hành: "
+                                           FontSize="20"
+                                           VerticalAlignment="Center"
+                                           HorizontalAlignment="Left"
+                                           Margin="20,0,0,0"
+                                           FontWeight="Medium"
+                                           Foreground="#565D65"/>
+                                </Grid>
+                                <Grid Grid.Column="1">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                    </Grid.RowDefinitions>
+
+                                    <Label Grid.Row="0"
+                                           FontSize="20"
+                                           Content="0379361210"
+                                           VerticalAlignment="Center"
+                                           HorizontalAlignment="Left"
+                                           FontWeight="Medium"
+                                           Foreground="#1A1884">
+                                        <Label.Style>
+                                            <Style TargetType="Label">
+                                                <Setter Property="Cursor" Value="Arrow"/>
+                                                <Style.Triggers>
+                                                    <Trigger Property="IsMouseOver" Value="True">
+                                                        <Setter Property="Foreground" Value="#DD4141"></Setter>
+                                                        <Setter Property="Cursor" Value="Hand"/>
+                                                    </Trigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </Label.Style>
+                                    </Label>
+
+                                    <Label Grid.Row="1"
+                                           FontSize="20"
+                                           Content="0379361210"
+                                           VerticalAlignment="Center"
+                                           HorizontalAlignment="Left"
+                                           FontWeight="Medium"
+                                           Foreground="#1A1884">
+                                        <Label.Style>
+                                            <Style TargetType="Label">
+                                                <Setter Property="Cursor" Value="Arrow"/>
+                                                <Style.Triggers>
+                                                    <Trigger Property="IsMouseOver" Value="True">
+                                                        <Setter Property="Foreground" Value="#DD4141"></Setter>
+                                                        <Setter Property="Cursor" Value="Hand"/>
+                                                    </Trigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </Label.Style>
+                                    </Label>
+
+                                    <Label Grid.Row="2"
+                                           FontSize="20"
+                                           Content="0379361210"
+                                           VerticalAlignment="Center"
+                                           HorizontalAlignment="Left"
+                                           FontWeight="Medium"
+                                           Foreground="#1A1884">
+                                        <Label.Style>
+                                            <Style TargetType="Label">
+                                                <Setter Property="Cursor" Value="Arrow"/>
+                                                <Style.Triggers>
+                                                    <Trigger Property="IsMouseOver" Value="True">
+                                                        <Setter Property="Foreground" Value="#DD4141"></Setter>
+                                                        <Setter Property="Cursor" Value="Hand"/>
+                                                    </Trigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </Label.Style>
+                                    </Label>
+                                </Grid>
+                                <Grid Grid.Column="2">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                    </Grid.RowDefinitions>
+
+                                    <Label Grid.Row="0"
+                                           FontSize="20"
+                                           Content="(7:30 - 22:00)"
+                                           VerticalAlignment="Center"
+                                           HorizontalAlignment="Left"
+                                           FontWeight="Medium"
+                                           Foreground="#565D65">
+                                        <Label.Style>
+                                            <Style TargetType="Label">
+                                                <Setter Property="Cursor" Value="Arrow"/>
+                                                <Style.Triggers>
+                                                    <Trigger Property="IsMouseOver" Value="True">
+                                                        <Setter Property="Foreground" Value="#DD4141"></Setter>
+                                                        <Setter Property="Cursor" Value="Hand"/>
+                                                    </Trigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </Label.Style>
+                                    </Label>
+
+                                    <Label Grid.Row="1"
+                                           FontSize="20"
+                                           Content="(8:00 - 21:30)"
+                                           VerticalAlignment="Center"
+                                           HorizontalAlignment="Left"
+                                           FontWeight="Medium"
+                                           Foreground="#565D65">
+                                        <Label.Style>
+                                            <Style TargetType="Label">
+                                                <Setter Property="Cursor" Value="Arrow"/>
+                                                <Style.Triggers>
+                                                    <Trigger Property="IsMouseOver" Value="True">
+                                                        <Setter Property="Foreground" Value="#DD4141"></Setter>
+                                                        <Setter Property="Cursor" Value="Hand"/>
+                                                    </Trigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </Label.Style>
+                                    </Label>
+
+                                    <Label Grid.Row="2"
+                                           FontSize="20"
+                                           Content="(8:00 - 21:00)"
+                                           VerticalAlignment="Center"
+                                           HorizontalAlignment="Left"
+                                           FontWeight="Medium"
+                                           Foreground="#565D65">
+                                        <Label.Style>
+                                            <Style TargetType="Label">
+                                                <Setter Property="Cursor" Value="Arrow"/>
+                                                <Style.Triggers>
+                                                    <Trigger Property="IsMouseOver" Value="True">
+                                                        <Setter Property="Foreground" Value="#DD4141"></Setter>
+                                                        <Setter Property="Cursor" Value="Hand"/>
+                                                    </Trigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </Label.Style>
+                                    </Label>
+                                </Grid>
+                            </Grid>
+                            <Grid Grid.Row="1">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="35*"/>
+                                    <ColumnDefinition Width="70*"/>
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Column="0"
+                                       Content="Email hỗ trợ: "
+                                       FontSize="20"
+                                       VerticalAlignment="Center"
+                                       HorizontalAlignment="Left"
+                                       Margin="20,0,0,0"
+                                       FontWeight="Medium"
+                                       Foreground="#565D65"/>
+                                <Label Grid.Column="1"
+                                       FontSize="20"
+                                       Content="phatrongtinh1508@gmail.com"
+                                       VerticalAlignment="Center"
+                                       HorizontalAlignment="Left"
+                                       FontWeight="Medium"
+                                       Foreground="#1A1884">
+                                    <Label.Style>
+                                        <Style TargetType="Label">
+                                            <Setter Property="Cursor" Value="Arrow"/>
+                                            <Style.Triggers>
+                                                <Trigger Property="IsMouseOver" Value="True">
+                                                    <Setter Property="Foreground" Value="#DD4141"></Setter>
+                                                    <Setter Property="Cursor" Value="Hand"/>
+                                                </Trigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </Label.Style>
+                                </Label>
+                            </Grid>
+                        </Grid>
+                    </Grid>
+
+                    <Grid Grid.Column="2">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="20*"/>
+                            <RowDefinition Height="80*"/>
+                        </Grid.RowDefinitions>
+                        <Label Grid.Row="0" 
+                               Content="Thông tin liên hệ"
+                               FontSize="26"
+                               Foreground="Black"
+                               FontWeight="Bold"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"
+                               Margin="20,0,0,0"/>
+                        <Grid Grid.Row="1">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <Grid Grid.Column="0">
+                                <Button Height="70"
+                                        materialDesign:ButtonAssist.CornerRadius="6"
+                                        Background="Transparent"
+                                        BorderThickness="0"
+                                        BorderBrush="Transparent">
+                                    <Button.Content>
+                                        <Image VerticalAlignment="Center" 
+                                               HorizontalAlignment="Center" 
+                                               Source="{StaticResource iconFace}" 
+                                               Width="50" Height="50"/>
+                                    </Button.Content>
+                                </Button>
+                            </Grid>
+
+                            <Grid Grid.Column="1">
+                                <Button Height="70"
+                                    materialDesign:ButtonAssist.CornerRadius="6"
+                                    Background="Transparent"
+                                    BorderThickness="0"
+                                    BorderBrush="Transparent">
+                                    <Button.Content>
+                                        <Image VerticalAlignment="Center" 
+                                               HorizontalAlignment="Center" 
+                                               Source="{StaticResource iconZalo}" 
+                                               Width="50" Height="50"/>
+                                    </Button.Content>
+                                </Button>
+                            </Grid>
+
+                            <Grid Grid.Column="2">
+                                <Button Height="70"
+                                    materialDesign:ButtonAssist.CornerRadius="6"
+                                    Background="Transparent"
+                                    BorderThickness="0"
+                                    BorderBrush="Transparent">
+                                    <Button.Content>
+                                        <Image VerticalAlignment="Center" 
+                                               HorizontalAlignment="Center" 
+                                               Source="{StaticResource iconTiwter}" 
+                                               Width="50" Height="50"/>
+                                    </Button.Content>
+                                </Button>
+                            </Grid>
+
+                            <Grid Grid.Column="3">
+                                <Button Height="70"
+                                    materialDesign:ButtonAssist.CornerRadius="6"
+                                    Background="Transparent"
+                                    BorderThickness="0"
+                                    BorderBrush="Transparent">
+                                    <Button.Content>
+                                        <Image VerticalAlignment="Center" 
+                                               HorizontalAlignment="Center" 
+                                               Source="{StaticResource iconInstaram}" 
+                                               Width="50" Height="50"/>
+                                    </Button.Content>
+                                </Button>
+                            </Grid>
+
+                        </Grid>
+                    </Grid>
+                </Grid>
+            </Border>
+
+            <Label Content="Chúng tôi hy vọng sẽ mang lại những trải nghiệm tốt nhất cho bạn !"
+                       FontSize="24"
+                       Grid.Row="2"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Top"
+                       FontWeight="Bold"/>
+        </Grid>
+    </Grid>
+</Page>

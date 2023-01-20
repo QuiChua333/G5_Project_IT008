@@ -63,7 +63,7 @@
                                      
                                      HorizontalAlignment="Right"
                                      Margin="5,0"
-                                     Foreground="#E6C067"
+                                     Foreground="#67C6E6"
                                      FontWeight="Bold"/>
                 </Button>
             </Grid>
@@ -74,14 +74,14 @@
                     <ColumnDefinition Width="5*"/>
                 </Grid.ColumnDefinitions>
                 <Grid Grid.Column="1">
-                    <Border  BorderBrush="#E6C067" BorderThickness="0,0,0,4"/>
+                    <Border  BorderBrush="#67C6E6" BorderThickness="0,0,0,4"/>
                     <Label Padding="0" 
                            Content="{DynamicResource AddShowtimeWindow_Title}" 
                            FontSize="28" 
                            FontWeight="Bold" 
                            VerticalAlignment="Center" 
                            HorizontalAlignment="Center" 
-                           Foreground="#E6C067" 
+                           Foreground="#67C6E6" 
                            FontFamily="{DynamicResource MaterialDesignFont}">
                         <Label.Effect>
                             <DropShadowEffect BlurRadius="1" Direction="-45" Color="#000000" ShadowDepth="1.5" Opacity="0.5"/>
@@ -272,7 +272,7 @@
 
                     </Grid>
                     <Grid Grid.Row="3">
-                        <Border CornerRadius="15" Background="#E6C067" BorderBrush="Gray" BorderThickness="0.3">
+                        <Border CornerRadius="15" Background="#67C6E6" BorderBrush="Gray" BorderThickness="0.3">
                             <Border.Effect>
                                 <DropShadowEffect BlurRadius="5" Direction="270" Color="#ccc" ShadowDepth="4" Opacity="0.25"/>
                             </Border.Effect>
@@ -394,7 +394,7 @@
                                 </StackPanel>
                             </Grid>
                             <Grid Grid.Column="2">
-                                <Border CornerRadius="0,15,0,0" Background="#7BBCF6" BorderBrush="Gray" BorderThickness="0.3" VerticalAlignment="Top">
+                                <Border CornerRadius="0,15,0,0" Background="Transparent" BorderBrush="Gray" BorderThickness="0" VerticalAlignment="Top">
                                     <Border.Effect>
                                         <DropShadowEffect BlurRadius="5" Direction="270" Color="#ccc" ShadowDepth="4" Opacity="0.25"/>
                                     </Border.Effect>

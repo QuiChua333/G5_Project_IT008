@@ -38,7 +38,7 @@
                                      Width="35"
                                      VerticalAlignment="Center"
                                      HorizontalAlignment="Right"
-                                     Foreground="#E6C067"
+                                     Foreground="#67C6E6"
                                      FontWeight="Bold"/>
                 </Button>
                
@@ -55,14 +55,14 @@
                                      Height="30"
                                      Width="30"
                                      VerticalAlignment="Center"
-                                     Foreground="#E6C067"
+                                     Foreground="#67C6E6"
                                      
                                      HorizontalAlignment="Right"
                                      />
                 </Button>
             </Grid>
             <Grid Grid.Row="1"
-                  Background="#E6C067">
+                  Background="#67C6E6">
                 <Grid Margin="30,10">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="30*"/>
@@ -112,7 +112,7 @@
                 </Grid.ColumnDefinitions>
                 <Grid Grid.Column="0">
                     <Border BorderThickness="0,0,4,0"
-                            BorderBrush="#E6C067">
+                            BorderBrush="#67C6E6">
 
                         <Grid>
                             <Grid.RowDefinitions>
@@ -245,7 +245,7 @@
                                         x:Name="_Room"
                                         FontSize="16"
                                         Visibility="Collapsed"
-                                        Background="#F1E99D"
+                                        Background="#67C6E6"
                                         Foreground="#000000"
                                         FontFamily="{DynamicResource MaterialDesignFont}"
                                         HorizontalAlignment="Left" />

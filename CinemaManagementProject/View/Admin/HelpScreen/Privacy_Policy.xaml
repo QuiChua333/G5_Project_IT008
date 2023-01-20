@@ -1,0 +1,501 @@
+﻿<Window x:Class="CinemaManagementProject.View.Admin.HelpScreen.Privacy_Policy"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        mc:Ignorable="d"
+        Width="1120" Height="660"
+        AllowsTransparency="True"
+        Background="Transparent"
+        WindowStyle="None"
+        x:Name="privacypolicy"
+        WindowStartupLocation="CenterScreen"
+        Title="Privacy_Policy" 
+        DataContext="{StaticResource HelpScreenVM}">
+    <Border CornerRadius="20" 
+                BorderBrush="DarkGray"
+                Background="#F5F5F5"
+                BorderThickness="1">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <Border BorderBrush="#67C6E6" BorderThickness="0,0,0,4" Margin="35,0,35,0"/>
+                <Label Padding="0" 
+                           Content="Chính sách bảo mật" 
+                           FontSize="25" 
+                           FontWeight="Bold" 
+                           VerticalAlignment="Center" 
+                           HorizontalAlignment="Center" 
+                           Foreground="#8DC1F0" 
+                           FontFamily="{DynamicResource MaterialDesignFont}">
+                    <Label.Effect>
+                        <DropShadowEffect BlurRadius="1" Direction="-45" Color="#000000" ShadowDepth="1.5" Opacity="0.5"/>
+                    </Label.Effect>
+                </Label>
+                <Button Width="60" Height="46" 
+                        HorizontalAlignment="Right" 
+                        VerticalAlignment="Center" 
+                        Background="Transparent" 
+                        BorderThickness="0"
+                        Margin="0,0,10,0"
+                        Command="{Binding CloseCM}"
+                        CommandParameter="{Binding ElementName=privacypolicy}">
+                    <materialDesign:PackIcon Kind="Close" 
+                                     Height="34"
+                                     Width="34"
+                                     VerticalAlignment="Center"
+                                     Foreground="#000000" 
+                                     HorizontalAlignment="Center"/>
+                </Button>
+            </Grid>
+
+            <Grid Grid.Row="1">
+                <Border Background="#FFFFFF" 
+                        BorderThickness="1"
+                        Margin="20"
+                        CornerRadius="20">
+                    <Border.Effect>
+                        <DropShadowEffect
+                                    BlurRadius="10"
+                                    Color="Black"
+                                    ShadowDepth="4"
+                                    Opacity=".25"
+                                    Direction="270"/>
+                    </Border.Effect>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="15*"/>
+                            <RowDefinition Height="85*"/>
+                        </Grid.RowDefinitions>
+                        <TextBlock Text="* Việc bạn sử dụng ưng dụng này đồng nghĩa với việc bạn đồng ý với những thỏa thuận dưới đây. Nếu bạn không đồng ý, xin vui lòng không sử dụng ứng dụng."
+                                   FontSize="20"
+                                   Focusable="False"
+                                   Grid.Row="0"
+                                   Margin="20,20,20,0"
+                                   TextWrapping="Wrap"
+                                   Foreground="Black"
+                                   FontStyle="Italic"
+                                   FontWeight="DemiBold"/>
+
+                        <Grid Grid.Row="1">
+                            <Border Background="Transparent" 
+                                    BorderThickness="2"
+                                    Margin="20"
+                                    CornerRadius="20"
+                                    BorderBrush="Black">
+                                <ScrollViewer HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden">
+                                    <StackPanel>
+                                        <Grid Height="370" VerticalAlignment="Top">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="7*"/>
+                                                <RowDefinition Height="93*"/>
+                                            </Grid.RowDefinitions>
+                                            <TextBlock Text="1. Mục đích và phạm vi thu thập thông tin:" 
+                                                   Grid.Row="0"
+                                                   FontSize="16"
+                                                   FontWeight="Bold"
+                                                   Margin="20,0,0,0"
+                                                   Focusable="False"
+                                                   Foreground="Black"
+                                                   TextDecorations="Underline"/>
+                                            <StackPanel Grid.Row="1">
+                                                <TextBlock TextWrapping="Wrap"
+                                                   Width="970"
+                                                   HorizontalAlignment="Left"
+                                                   FontSize="16"
+                                                   Margin="40,4,20,0"
+                                                   Focusable="False"
+                                                           FontStyle="Italic"
+                                                   Foreground="Black">
+                                                    1.1 Việc thu thập thông tin cá nhân được thực hiện trên cơ sở khách hàng tự khai báo để đăng ký thành viên FatFilmFo tại ứng dụng FatFilmFo, tùy từng thời điểm, thông tin thu thập sẽ bao gồm nhưng không giới hạn ở:
+                                                </TextBlock>
+                                                <TextBlock TextWrapping="Wrap"
+                                                   Width="970"
+                                                   HorizontalAlignment="Left"
+                                                   FontSize="16"
+                                                   Margin="60,4,20,0"
+                                                   Focusable="False"
+                                                   Foreground="Black">
+                                                    - Thông tin cá nhân như: họ tên, giới tính, ngày, tháng, năm sinh.
+                                                </TextBlock>
+                                                <TextBlock TextWrapping="Wrap"
+                                                   Width="970"
+                                                   HorizontalAlignment="Left"
+                                                   FontSize="16"
+                                                   Margin="60,4,20,0"
+                                                   Focusable="False"
+                                                   Foreground="Black">
+                                                    - Thông tin liên lạc như: địa chỉ, số điện thoại di động, email.
+                                                </TextBlock>
+                                                <TextBlock TextWrapping="Wrap"
+                                                   Width="970"
+                                                   HorizontalAlignment="Left"
+                                                   FontSize="16"
+                                                   Margin="60,4,20,0"
+                                                   Focusable="False"
+                                                   Foreground="Black">
+                                                    - Các thông tin khác phục vụ cho chương trình khách hàng thân thiết (nếu có).
+                                                </TextBlock>
+                                                <TextBlock TextWrapping="Wrap"
+                                                   Width="970"
+                                                   HorizontalAlignment="Left"
+                                                   FontSize="16"
+                                                   Margin="40,4,20,0"
+                                                   Focusable="False"
+                                                           FontStyle="Italic"
+                                                   Foreground="Black">
+                                                    1.2 Mục đích thu thập thông tin khách hàng bao gồm:
+                                                </TextBlock>
+                                                <TextBlock TextWrapping="Wrap"
+                                                   Width="970"
+                                                   HorizontalAlignment="Left"
+                                                   FontSize="16"
+                                                   Margin="60,4,20,0"
+                                                   Focusable="False"
+                                                   Foreground="Black">
+                                                    - Cung cấp các dịch vụ, sản phẩm theo nhu cầu của khách hàng.
+                                                </TextBlock>
+                                                <TextBlock TextWrapping="Wrap"
+                                                   Width="970"
+                                                   HorizontalAlignment="Left"
+                                                   FontSize="16"
+                                                   Margin="60,4,20,0"
+                                                   Focusable="False"
+                                                   Foreground="Black">
+                                                    - Liên hệ xác nhận khi khách hàng đăng ký sử dụng dịch vụ, xác lập giao dịch trên ứng dụng FatFilmFo.
+                                                </TextBlock>
+                                                <TextBlock TextWrapping="Wrap"
+                                                   Width="970"
+                                                   HorizontalAlignment="Left"
+                                                   FontSize="16"
+                                                   Margin="60,4,20,0"
+                                                   Focusable="False"
+                                                   Foreground="Black">
+                                                    - Thực hiện việc quản lý ứng dụng FatFilmFo, gửi thông tin cập nhật về ứng dụng FatFilmFo, các chương trình khuyến mại, ưu đãi/tri ân tới khách hàng.
+                                                </TextBlock>
+                                                <TextBlock TextWrapping="Wrap"
+                                                   Width="970"
+                                                   HorizontalAlignment="Left"
+                                                   FontSize="16"
+                                                   Margin="60,4,20,0"
+                                                   Focusable="False"
+                                                   Foreground="Black">
+                                                    - Bảo đảm quyền lợi của khách hàng khi phát hiện các hành động giả mạo, phá hoại tài khoản, lừa đảo khách hàng.
+                                                </TextBlock>
+                                                <TextBlock TextWrapping="Wrap"
+                                                   Width="970"
+                                                   HorizontalAlignment="Left"
+                                                   FontSize="16"
+                                                   Margin="60,4,20,0"
+                                                   Focusable="False"
+                                                   Foreground="Black">
+                                                    - Liên lạc, hỗ trợ, giải quyết với khách hàng trong các trường hợp đặc biệt.
+                                                </TextBlock>
+                                                <TextBlock TextWrapping="Wrap"
+                                                   Width="970"
+                                                   HorizontalAlignment="Left"
+                                                   FontSize="16"
+                                                           FontStyle="Italic"
+                                                   Margin="40,4,20,0"
+                                                   Focusable="False"
+                                                   Foreground="Black">
+                                                    1.3 Để tránh nghi ngờ, trong quá trình giao dịch thanh toán tại ứng dụng FatFilmFo, FatFilmFo chỉ lưu giữ thông tin chi tiết về đơn hàng đã thanh toán của khách hàng, các thông tin về tài khoản ngân hàng của khách hàng sẽ không được lưu giữ.
+                                                </TextBlock>
+                                            </StackPanel>
+                                            
+                                        </Grid>
+                                        <Grid Height="190" VerticalAlignment="Top">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="14*"/>
+                                                <RowDefinition Height="86*"/>
+                                            </Grid.RowDefinitions>
+                                            <TextBlock Text="2. Phạm vi sử dụng thông tin:" 
+                                                   Grid.Row="0"
+                                                   FontSize="16"
+                                                   FontWeight="Bold"
+                                                   Margin="20,0,0,0"
+                                                   Focusable="False"
+                                                   Foreground="Black"
+                                                   TextDecorations="Underline"/>
+                                            <StackPanel Grid.Row="1">
+                                                <TextBlock TextWrapping="Wrap"
+                                                   Width="970"
+                                                   HorizontalAlignment="Left"
+                                                   FontSize="16"
+                                                   Margin="40,4,20,0"
+                                                           FontStyle="Italic"
+                                                   Focusable="False"
+                                                   Foreground="Black">
+                                                    2.1 FatFilmFo chỉ sử dụng thông tin cá nhân của khách hàng cho các mục đích quy định tại Mục 1 hoặc mục đích khác (nếu có) với điều kiện đã thông báo và được sự đồng ý của khách hàng.
+                                                </TextBlock>
+                                                <TextBlock TextWrapping="Wrap"
+                                                   Width="970"
+                                                   HorizontalAlignment="Left"
+                                                   FontSize="16"
+                                                           FontStyle="Italic"
+                                                   Margin="40,4,20,0"
+                                                   Focusable="False"
+                                                   Foreground="Black">
+                                                    2.2 FatFilmFo sẽ không sử dụng thông tin cá nhân của khách hàng để gửi quảng cáo, giới thiệu dịch vụ và các thông tin có tính thương mại khác khi chưa được khách hàng chấp thuận.
+                                                </TextBlock>
+                                                <TextBlock TextWrapping="Wrap"
+                                                   Width="970"
+                                                   HorizontalAlignment="Left"
+                                                   FontSize="16"
+                                                   Margin="40,4,20,0"
+                                                           FontStyle="Italic"
+                                                   Focusable="False"
+                                                   Foreground="Black">
+                                                    2.3 Khách hàng hiểu và đồng ý rằng FatFilmFo có nghĩa vụ phải cung cấp thông tin khách hàng theo yêu cầu/quyết định của Cơ quan nhà nước có thẩm quyền và/hoặc quy định pháp luật. FatFilmFo sẽ được miễn trừ mọi trách nhiệm liên quan đến bảo mật thông tin trong trường hợp này.
+                                                </TextBlock>
+                                            </StackPanel>
+                                        </Grid>
+                                        <Grid Height="114" VerticalAlignment="Top">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="18*"/>
+                                                <RowDefinition Height="82*"/>
+                                            </Grid.RowDefinitions>
+                                            <TextBlock Text="3. Thời gian lưu trữ thông tin:" 
+                                                   Grid.Row="0"
+                                                   FontSize="16"
+                                                   FontWeight="Bold"
+                                                   Margin="20,0,0,0"
+                                                   Focusable="False"
+                                                   Foreground="Black"
+                                                   TextDecorations="Underline"/>
+                                            <TextBlock TextWrapping="Wrap"
+                                                   Grid.Row="1"
+                                                   Width="970"
+                                                   HorizontalAlignment="Left"
+                                                   FontSize="16"
+                                                       FontStyle="Italic"
+                                                   Margin="40,4,20,0"
+                                                   Focusable="False"
+                                                   Foreground="Black">
+                                                Dữ liệu cá nhân cơ bản của khách hàng đăng ký thành viên FatFilmFo sẽ được lưu trữ cho đến khi có yêu cầu hủy bỏ hoặc tự thành viên đăng nhập và thực hiện đóng tài khoản. Đối với các tài khoản đã đóng chúng tôi vẫn lưu trữ thông tin cá nhân và truy cập của khách hàng để phục vụ cho mục đích phòng chống gian lận, điều tra, giải đáp thắc mắc ... Các thông tin này sẽ được lưu trữ trong hệ thống máy chủ tối đa mười hai (12) tháng. Hết thời hạn này, FatFilmFo sẽ tiến hành xóa vĩnh viễn thông tin cá nhân của khách hàng.
+                                            </TextBlock>
+                                        </Grid>
+                                        <Grid Height="70" VerticalAlignment="Top">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="34*"/>
+                                                <RowDefinition Height="66*"/>
+                                            </Grid.RowDefinitions>
+                                            <TextBlock Text="3. Thời gian lưu trữ thông tin:" 
+                                                   Grid.Row="0"
+                                                   FontSize="16"
+                                                   FontWeight="Bold"
+                                                   Margin="20,0,0,0"
+                                                   Focusable="False"
+                                                   Foreground="Black"
+                                                   TextDecorations="Underline"/>
+                                            <TextBlock TextWrapping="Wrap"
+                                                   Grid.Row="1"
+                                                   Width="970"
+                                                   HorizontalAlignment="Left"
+                                                   FontSize="16"
+                                                   Margin="40,4,20,0"
+                                                       FontStyle="Italic"
+                                                   Focusable="False"
+                                                   Foreground="Black">
+                                                Để thay đổi thông tin cá nhân tài khoản đăng ký trên hệ thống thương mại điện tử của FatFilmFo, khách hàng có thể tự đăng nhập và chỉnh sửa thông tin, dữ liệu cá nhân của mình như: Họ tên, Giới tính, Địa chỉ, Số Điện Thoại, Mật Khẩu, Ngày Tháng Năm Sinh.
+                                            </TextBlock>
+                                        </Grid>
+                                        <Grid Height="280" VerticalAlignment="Top">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="9*"/>
+                                                <RowDefinition Height="91*"/>
+                                            </Grid.RowDefinitions>
+                                            <TextBlock Text="4. Xóa tài khoản FatFilmFo:" 
+                                                   Grid.Row="0"
+                                                   FontSize="16"
+                                                   FontWeight="Bold"
+                                                   Margin="20,0,0,0"
+                                                   Focusable="False"
+                                                   Foreground="Black"
+                                                   TextDecorations="Underline"/>
+                                            <StackPanel Grid.Row="1">
+                                                <TextBlock TextWrapping="Wrap"
+                                                   Width="970"
+                                                   HorizontalAlignment="Left"
+                                                   FontSize="16"
+                                                           FontStyle="Italic"
+                                                   Margin="40,4,20,0"
+                                                   Focusable="False"
+                                                   Foreground="Black">
+                                                    - Bạn chỉ có thể được xóa tài khoản FatFilmFo của mình thông qua nhân viên hoặc quản lý của FatFilmFo và lần lượt làm theo các bước:
+                                                </TextBlock>
+                                                <TextBlock TextWrapping="Wrap"
+                                                   Width="970"
+                                                   HorizontalAlignment="Left"
+                                                   FontSize="16"
+                                                   Margin="60,4,20,0"
+                                                   Focusable="False"
+                                                   Foreground="Black">
+                                                    + Bước 1: Truy cập vào ứng dụng FatFilmFo.
+                                                </TextBlock>
+                                                <TextBlock TextWrapping="Wrap"
+                                                   Width="970"
+                                                   HorizontalAlignment="Left"
+                                                   FontSize="16"
+                                                   Margin="60,4,20,0"
+                                                   Focusable="False"
+                                                   Foreground="Black">
+                                                    + Bước 2: Vào mục Quản lý khách hàng trên ứng dụng FatFilmFo.
+                                                </TextBlock>
+                                                <TextBlock TextWrapping="Wrap"
+                                                   Width="970"
+                                                   HorizontalAlignment="Left"
+                                                   FontSize="16"
+                                                   Margin="60,4,20,0"
+                                                   Focusable="False"
+                                                   Foreground="Black">
+                                                    + Bước 3: Chọn ô Xóa tài khoản.
+                                                </TextBlock>
+                                                <TextBlock TextWrapping="Wrap"
+                                                   Width="970"
+                                                   HorizontalAlignment="Left"
+                                                   FontSize="16"
+                                                   Margin="60,4,20,0"
+                                                   Focusable="False"
+                                                   Foreground="Black">
+                                                    + Bước 4: Chọn Đồng ý để xóa tài khoản.
+                                                </TextBlock>
+                                                <TextBlock TextWrapping="Wrap"
+                                                           Width="970"
+                                                           HorizontalAlignment="Left"
+                                                           FontSize="16"
+                                                           Margin="40,4,20,0"
+                                                           FontWeight="Bold"
+                                                           FontStyle="Italic"
+                                                           Focusable="False"
+                                                           Foreground="Black">  
+                                                    Lưu ý:
+                                                </TextBlock>
+                                                <TextBlock TextWrapping="Wrap"
+                                                   Width="970"
+                                                   HorizontalAlignment="Left"
+                                                   FontSize="16"
+                                                           FontStyle="Italic"
+                                                   Margin="40,4,20,0"
+                                                   Focusable="False"
+                                                   Foreground="Black">
+                                                    - Bạn sẽ mất toàn thông tin về lịch sử mua hàng, vé, vouchers... các quyền lợi thành viên (Nếu có) của tài khoản.
+                                                </TextBlock>
+                                                <TextBlock TextWrapping="Wrap"
+                                                   Width="970"
+                                                   HorizontalAlignment="Left"
+                                                   FontSize="16"
+                                                   Margin="40,4,20,0"
+                                                           FontStyle="Italic"
+                                                   Focusable="False"
+                                                   Foreground="Black">
+                                                    - Sau khi xóa thành công, Tài khoản sẽ không thể khôi phục. Đồng thời bạn không thể đăng nhập lại vào tài khoản đã xóa.
+                                                </TextBlock>
+                                                <TextBlock TextWrapping="Wrap"
+                                                   Width="970"
+                                                   HorizontalAlignment="Left"
+                                                   FontSize="16"
+                                                   Margin="40,4,20,0"
+                                                           FontStyle="Italic"
+                                                   Focusable="False"
+                                                   Foreground="Black">
+                                                    - Các thông tin cá nhân liên quan đến tài khoản FatFilmFo của bạn sẽ bị xóa, FatFilmFo sẽ không chịu trách nhiệm cho bất kỳ mất mát nào về thông tin, dữ liệu sau khi xóa tài khoản.
+                                                </TextBlock>
+                                            </StackPanel>
+                                        </Grid>
+                                        <Grid Height="434" VerticalAlignment="Top">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="6*"/>
+                                                <RowDefinition Height="94*"/>
+                                            </Grid.RowDefinitions>
+                                            <TextBlock Text="5. FatFilmFo cam kết:" 
+                                                   Grid.Row="0"
+                                                   FontSize="16"
+                                                   FontWeight="Bold"
+                                                   Margin="20,0,0,0"
+                                                   Focusable="False"
+                                                   Foreground="Black"
+                                                   TextDecorations="Underline"/>
+                                            <StackPanel Grid.Row="1">
+                                                <TextBlock TextWrapping="Wrap"
+                                                   Grid.Row="1"
+                                                   Width="970"
+                                                   HorizontalAlignment="Left"
+                                                   FontSize="16"
+                                                   Margin="40,4,20,0"
+                                                           FontStyle="Italic"
+                                                   Focusable="False"
+                                                   Foreground="Black">
+                                                    - Mọi thông tin cá nhân của khách hàng thu thập được từ ứng dụng FatFilmFo sẽ được lưu giữ an toàn; chỉ có khách hàng mới có thể truy cập vào tài khoản cá nhân của mình bằng tên đăng nhập và mật khẩu do khách hàng chọn.
+                                                </TextBlock>
+                                                <TextBlock TextWrapping="Wrap"
+                                                   Grid.Row="1"
+                                                   Width="970"
+                                                   HorizontalAlignment="Left"
+                                                   FontSize="16"
+                                                           FontStyle="Italic"
+                                                   Margin="40,4,20,0"
+                                                   Focusable="False"
+                                                   Foreground="Black">
+                                                    - FatFilmFo cam kết bảo mật thông tin, không chia sẻ, tiết lộ, chuyển giao thông tin cá nhân của khách hàng cho bất kỳ bên thứ ba nào khi chưa được sự đồng ý của khách hàng, trừ trường hợp phải thực hiện theo yêu cầu của các cơ quan Nhà nước có thẩm quyền, hoặc theo quy định của pháp luật hoặc việc cung cấp thông tin đó là cần thiết để FatFilmFo cung cấp dịch vụ/ tiện ích cho khách hàng.
+                                                </TextBlock>
+                                                <TextBlock TextWrapping="Wrap"
+                                                   Grid.Row="1"
+                                                   Width="970"
+                                                   HorizontalAlignment="Left"
+                                                   FontSize="16"
+                                                   Margin="40,4,20,0"
+                                                           FontStyle="Italic"
+                                                   Focusable="False"
+                                                   Foreground="Black">
+                                                    - FatFilmFo, bằng nỗ lực tốt nhất của mình, sẽ áp dụng các giải pháp công nghệ để ngăn chặn các hành vi đánh cắp hoặc tiếp cận thông tin trái phép; sử dụng, thay đổi hoặc phá hủy thông tin trái phép. Tuy nhiên, FatFilmFo không thể cam kết sẽ ngăn chặn được tất cả các hành vi xâm phạm, sử dụng thông tin cá nhân trái phép nằm ngoài khả năng kiểm soát của FatFilmFo. FatFilmFo sẽ không chịu trách nhiệm dưới bất kỳ hình thức nào đối với bất kỳ khiếu nại, tranh chấp hoặc thiệt hại nào phát sinh từ hoặc liên quan đến việc truy cập, xâm nhập, sử dụng thông tin trái phép như vậy.
+                                                </TextBlock>
+                                                <TextBlock TextWrapping="Wrap"
+                                                   Grid.Row="1"
+                                                   Width="970"
+                                                   HorizontalAlignment="Left"
+                                                   FontSize="16"
+                                                           FontStyle="Italic"
+                                                   Margin="40,4,20,0"
+                                                   Focusable="False"
+                                                   Foreground="Black">
+                                                    - Trường hợp máy chủ lưu trữ thông tin bị hacker tấn công dẫn đến mất mát dữ liệu cá nhân, gây ảnh hưởng xấu đến khách hàng, FatFilmFo sẽ ngay lập tức thông báo cho khách hàng và trình vụ việc cho cơ quan chức năng điều tra xử lý.
+                                                </TextBlock>
+                                                <TextBlock TextWrapping="Wrap"
+                                                   Grid.Row="1"
+                                                   Width="970"
+                                                   HorizontalAlignment="Left"
+                                                   FontSize="16"
+                                                           FontStyle="Italic"
+                                                   Margin="40,4,20,0"
+                                                   Focusable="False"
+                                                   Foreground="Black">
+                                                    - Khách hàng có nghĩa vụ bảo mật tên đăng ký, mật khẩu và hộp thư điện tử của mình. FatFilmFo sẽ không chịu trách nhiệm dưới bất kỳ hình thức nào đối với các thiệt hại, tổn thất (nếu có) do khách hàng không tuân thủ quy định bảo mật này.
+                                                </TextBlock>
+                                                <TextBlock TextWrapping="Wrap"
+                                                   Grid.Row="1"
+                                                   Width="970"
+                                                   HorizontalAlignment="Left"
+                                                   FontSize="16"
+                                                   Margin="40,4,20,0"
+                                                           FontStyle="Italic"
+                                                   Focusable="False"
+                                                   Foreground="Black">
+                                                    - Khách hàng tuyệt đối không được có các hành vi sử dụng công cụ, chương trình để can thiệp trái phép vào hệ thống hay làm thay dổi dữ liệu của FatFilmFo. Trong trường hợp FatFilmFo phát hiện khách hàng có hành vi cố tình giả mạo, gian lận, phát tán thông tin cá nhân trái phép … FatFilmFo có quyền chuyển thông tin cá nhân của khách hàng cho các cơ quan có thẩm quyền để xử lý theo quy định của pháp luật.
+                                                </TextBlock>
+                                            </StackPanel>
+                                        </Grid>
+                                    </StackPanel>
+                                </ScrollViewer>
+                            </Border>
+                        </Grid>
+                    </Grid>
+                </Border>
+            </Grid>
+        </Grid>
+    </Border>
+</Window>

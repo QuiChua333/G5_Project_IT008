@@ -95,6 +95,7 @@ namespace CinemaManagementProject.ViewModel.AdminVM
         public ICommand TroubleCommand { get; set; }
         public ICommand StatisticalViewCommand { get; set; }
         public ICommand SettingCommand { get; set; }
+        public ICommand HelpScreenCommand { get; set; }
         public ICommand LogOutCommand { get; set; }
         public ICommand OpenAvatarPopupCommand { get; set; }
         public ICommand CloseAvatarPopupCommand { get; set; }
@@ -110,7 +111,7 @@ namespace CinemaManagementProject.ViewModel.AdminVM
         private void Trouble(object obj) => CurrentView = new TroubleManagementVM.TroubleManagementViewModel();
         private void Setting(object obj) => CurrentView = new SettingVM.SettingVM();
 
-
+        private void HelpScreen(object obj) => CurrentView = new HelpScreenVM.HelpScreenVM();
         public AdminVM()
         {
             VoucherCommand = new RelayCommand(Voucher);
@@ -124,6 +125,7 @@ namespace CinemaManagementProject.ViewModel.AdminVM
             StatisticalViewCommand = new RelayCommand(Statistical);
             TroubleCommand = new RelayCommand(Trouble);
             SettingCommand = new RelayCommand(Setting);
+            HelpScreenCommand = new RelayCommand(HelpScreen);
             LogOutCommand = new RelayCommand<Window>((p) => { return true; }, (p) =>
             {
                 isEN = Properties.Settings.Default.isEnglish;

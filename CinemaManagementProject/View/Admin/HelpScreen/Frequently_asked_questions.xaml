@@ -1,0 +1,447 @@
+﻿<Window x:Class="CinemaManagementProject.View.Admin.HelpScreen.Frequently_asked_questions"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        mc:Ignorable="d"
+        Width="1120" Height="660"
+        AllowsTransparency="True"
+        Background="Transparent"
+        WindowStyle="None"
+        x:Name="FAQ"
+        WindowStartupLocation="CenterScreen"
+        Title="Frequently_asked_questions"
+        DataContext="{StaticResource HelpScreenVM}">
+    <Border CornerRadius="20" 
+                BorderBrush="DarkGray"
+                Background="#F5F5F5"
+                BorderThickness="1">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <Border BorderBrush="#67C6E6" BorderThickness="0,0,0,4" Margin="35,0,35,0"/>
+                <Label Padding="0" 
+                           Content="Điều khoản chung" 
+                           FontSize="25" 
+                           FontWeight="Bold" 
+                           VerticalAlignment="Center" 
+                           HorizontalAlignment="Center" 
+                           Foreground="#8DC1F0" 
+                           FontFamily="{DynamicResource MaterialDesignFont}">
+                    <Label.Effect>
+                        <DropShadowEffect BlurRadius="1" Direction="-45" Color="#000000" ShadowDepth="1.5" Opacity="0.5"/>
+                    </Label.Effect>
+                </Label>
+                <Button Width="60" Height="46" 
+                        HorizontalAlignment="Right" 
+                        VerticalAlignment="Center" 
+                        Background="Transparent" 
+                        BorderThickness="0"
+                        Margin="0,0,10,0"
+                        Command="{Binding CloseCM}"
+                        CommandParameter="{Binding ElementName=FAQ}">
+                    <materialDesign:PackIcon Kind="Close" 
+                                     Height="34"
+                                     Width="34"
+                                     VerticalAlignment="Center"
+                                     Foreground="#000000" 
+                                     HorizontalAlignment="Center"/>
+                </Button>
+            </Grid>
+
+            <Grid Grid.Row="1">
+                <Border Background="#FFFFFF" 
+                        BorderThickness="1"
+                        Margin="20"
+                        CornerRadius="20">
+                    <Border.Effect>
+                        <DropShadowEffect
+                                    BlurRadius="10"
+                                    Color="Black"
+                                    ShadowDepth="4"
+                                    Opacity=".25"
+                                    Direction="270"/>
+                    </Border.Effect>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="15*"/>
+                            <RowDefinition Height="85*"/>
+                        </Grid.RowDefinitions>
+                        <TextBlock Text="* Việc bạn sử dụng ưng dụng này đồng nghĩa với việc bạn đồng ý với những thỏa thuận dưới đây. Nếu bạn không đồng ý, xin vui lòng không sử dụng ứng dụng."
+                                   FontSize="20"
+                                   Focusable="False"
+                                   Grid.Row="0"
+                                   Margin="20,20,20,0"
+                                   TextWrapping="Wrap"
+                                   Foreground="Black"
+                                   FontStyle="Italic"
+                                   FontWeight="DemiBold"/>
+
+                        <Grid Grid.Row="1">
+                            <Border Background="Transparent" 
+                                    BorderThickness="2"
+                                    Margin="20"
+                                    CornerRadius="20"
+                                    BorderBrush="Black">
+                                <ScrollViewer HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden">
+                                    <StackPanel>
+                                        <Grid Height="540" VerticalAlignment="Top">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="5*"/>
+                                                <RowDefinition Height="95*"/>
+                                            </Grid.RowDefinitions>
+                                            <TextBlock Text="A - PHIM:" 
+                                                   Grid.Row="0"
+                                                   FontSize="16"
+                                                   FontWeight="Bold"
+                                                   Margin="20,0,0,0"
+                                                   Focusable="False"
+                                                   Foreground="Black"
+                                                   TextDecorations="Underline"/>
+                                            <StackPanel Grid.Row="1">
+                                                <TextBlock TextWrapping="Wrap"
+                                                   Width="970"
+                                                   HorizontalAlignment="Left"
+                                                   FontStyle="Italic"
+                                                   FontSize="16"
+                                                   FontWeight="Bold"
+                                                   Margin="40,4,20,0"
+                                                   Focusable="False"
+                                                   Foreground="Black">
+                                                1, Phân loại phim P, C13, C16, C18 là gì?
+                                                </TextBlock>
+                                                <TextBlock TextWrapping="Wrap"
+                                                   Width="970"
+                                                   HorizontalAlignment="Left"
+                                                   FontStyle="Italic"
+                                                   FontSize="16"
+                                                   Margin="40,4,20,0"
+                                                   Focusable="False"
+                                                   Foreground="Black">
+                                                Căn cứ Thông tư số 12/2015/TT-BVHTTDL của Bộ trưởng Bộ Văn hóa, Thể thao và Du lịch có hiệu lực thi hành từ ngày 01/01/2017, Tiêu chí phân loại phim theo lứa tuổi được quy định như sau:
+                                                </TextBlock>
+                                                <TextBlock TextWrapping="Wrap"
+                                                   Width="970"
+                                                   HorizontalAlignment="Left"
+                                                   FontSize="16"
+                                                   Margin="60,4,20,0"
+                                                   Focusable="False"
+                                                   Foreground="Black">
+                                                    - P: Phim được phép phổ biến rộng rãi đến mọi đối tượng.
+                                                </TextBlock>
+                                                <TextBlock TextWrapping="Wrap"
+                                                   Width="970"
+                                                   HorizontalAlignment="Left"
+                                                   FontSize="16"
+                                                   Margin="60,4,20,0"
+                                                   Focusable="False"
+                                                   Foreground="Black">
+                                                    - C13: Phim cấm phổ biến đến khán giả dưới 13 tuổi.
+                                                </TextBlock>
+                                                <TextBlock TextWrapping="Wrap"
+                                                   Width="970"
+                                                   HorizontalAlignment="Left"
+                                                   FontSize="16"
+                                                   Margin="60,4,20,0"
+                                                   Focusable="False"
+                                                   Foreground="Black">
+                                                    - C16: Phim cấm phổ biến đến khán giả dưới 16 tuổi.
+                                                </TextBlock>
+                                                <TextBlock TextWrapping="Wrap"
+                                                   Width="970"
+                                                   HorizontalAlignment="Left"
+                                                   FontSize="16"
+                                                   Margin="60,4,20,0"
+                                                   Focusable="False"
+                                                   Foreground="Black">
+                                                    - C18: Phim cấm phổ biến đến khán giả dưới 18 tuổi.
+                                                </TextBlock>
+                                                <TextBlock TextWrapping="Wrap"
+                                                   Width="970"
+                                                   HorizontalAlignment="Left"
+                                                   FontStyle="Italic"
+                                                   FontSize="16"
+                                                   Margin="40,4,20,0"
+                                                   Focusable="False"
+                                                   Foreground="Black">
+                                                    Khách hàng vui lòng chứng thực được độ tuổi phù hợp với phim được phân loại như trên. FATFILMFO có quyền từ chối việc bán vé hoặc vào phòng chiếu nếu khách hàng không tuân thủ đúng theo quy định.
+                                                </TextBlock>
+                                                <TextBlock TextWrapping="Wrap"
+                                                   Width="970"
+                                                   HorizontalAlignment="Left"
+                                                   FontStyle="Italic"
+                                                   FontWeight="Bold"
+                                                   FontSize="16"
+                                                   Margin="40,4,20,0"
+                                                   Focusable="False"
+                                                   Foreground="Black">
+                                                    2, Trước khi được trình chiếu tại Việt Nam, các bộ phim phải trải qua sự kiểm duyệt và cấp phép như thế nào?
+                                                </TextBlock>
+                                                <TextBlock TextWrapping="Wrap"
+                                                   Width="970"
+                                                   HorizontalAlignment="Left"
+                                                   FontStyle="Italic"
+                                                   FontSize="16"
+                                                   Margin="40,4,20,0"
+                                                   Focusable="False"
+                                                   Foreground="Black">
+                                                    Tất cả những phim được trình chiếu tại các rạp chiếu phim ở Việt Nam phải được kiểm duyệt, sau đó được cấp giấy phép phát hành và phạm vi phổ biến phim bởi Cục Điện Ảnh thuộc Bộ Văn Hóa, Thể Thao và Du Lịch Việt Nam. Do đó, một số cảnh quay có thể được yêu cầu phải cắt bỏ bởi Cục Điện Ảnh để phù hợp với văn hóa của Việt Nam trước khi lưu hành. Tuy nhiên, không ngoại trừ một số phim sẽ không được cấp phép phát hành tại Việt Nam.
+                                                </TextBlock>
+                                                <TextBlock TextWrapping="Wrap"
+                                                   Width="970"
+                                                   HorizontalAlignment="Left"
+                                                   FontStyle="Italic"
+                                                   FontWeight="Bold"
+                                                   FontSize="16"
+                                                   Margin="40,4,20,0"
+                                                   Focusable="False"
+                                                   Foreground="Black">
+                                                    3, Làm sao để phân biệt phim dành cho mọi lứa tuổi và phim không dành cho trẻ em dưới 13/16/18 tuổi?
+                                                </TextBlock>
+                                                <TextBlock TextWrapping="Wrap"
+                                                   Width="970"
+                                                   HorizontalAlignment="Left"
+                                                   FontStyle="Italic"
+                                                   FontSize="16"
+                                                   Margin="40,4,20,0"
+                                                   Focusable="False"
+                                                   Foreground="Black">
+                                                    Trên áp phích quảng cáo/ứng dụng, biểu tượng P thể hiện phim dành cho mọi lứa tuổi và biểu tượng C13/C16/C18 thể hiện phim dành cho khách hàng có độ tuổi tuần tự từ 13/16/18 tuổi trở lên.
+                                                </TextBlock>
+                                                <TextBlock TextWrapping="Wrap"
+                                                   Width="970"
+                                                   HorizontalAlignment="Left"
+                                                   FontStyle="Italic"
+                                                   FontWeight="Bold"
+                                                   FontSize="16"
+                                                   Margin="40,4,20,0"
+                                                   Focusable="False"
+                                                   Foreground="Black">
+                                                    4, Suất chiếu Đặc Biệt là gì?
+                                                </TextBlock>
+                                                <TextBlock TextWrapping="Wrap"
+                                                   Width="970"
+                                                   HorizontalAlignment="Left"
+                                                   FontStyle="Italic"
+                                                   FontSize="16"
+                                                   Margin="40,4,20,0"
+                                                   Focusable="False"
+                                                   Foreground="Black">
+                                                    Suất Chiếu Đặc Biệt là những suất chiếu được ra rạp trước ngày công chiếu chính thức.
+                                                </TextBlock>
+                                                <TextBlock TextWrapping="Wrap"
+                                                   Width="970"
+                                                   HorizontalAlignment="Left"
+                                                   FontStyle="Italic"
+                                                   FontWeight="Bold"
+                                                   FontSize="16"
+                                                   Margin="40,4,20,0"
+                                                   Focusable="False"
+                                                   Foreground="Black">
+                                                    5, Khởi Chiếu Sớm là gì?
+                                                </TextBlock>
+                                                <TextBlock TextWrapping="Wrap"
+                                                   Width="970"
+                                                   HorizontalAlignment="Left"
+                                                   FontStyle="Italic"
+                                                   FontSize="16"
+                                                   Margin="40,4,20,0"
+                                                   Focusable="False"
+                                                   Foreground="Black">
+                                                    Khởi Chiếu Sớm là bộ phim được chính thức ra rạp trước ngày khởi chiếu đã định.
+                                                </TextBlock>
+                                            </StackPanel>
+                                        </Grid>
+                                        <Grid Height="220" VerticalAlignment="Top">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="11*"/>
+                                                <RowDefinition Height="89*"/>
+                                            </Grid.RowDefinitions>
+                                            <TextBlock Text="B - Bắp Nước - Đồ ăn tại rạp:" 
+                                                   Grid.Row="0"
+                                                   FontSize="16"
+                                                   FontWeight="Bold"
+                                                   Margin="20,0,0,0"
+                                                   Focusable="False"
+                                                   Foreground="Black"
+                                                   TextDecorations="Underline"/>
+                                            <StackPanel Grid.Row="1">
+                                                <TextBlock TextWrapping="Wrap"
+                                                   Width="970"
+                                                   HorizontalAlignment="Left"
+                                                   FontStyle="Italic"
+                                                   FontSize="16"
+                                                   FontWeight="Bold"
+                                                   Margin="40,0,20,0"
+                                                   Focusable="False"
+                                                   Foreground="Black">
+                                                1, Thức ăn, đồ uống mua bên ngoài có được mang vào rạp FATFILMFO không?
+                                                </TextBlock>
+                                                <TextBlock TextWrapping="Wrap"
+                                                   Width="970"
+                                                   HorizontalAlignment="Left"
+                                                   FontStyle="Italic"
+                                                   FontSize="16"
+                                                   Margin="40,4,20,0"
+                                                   Focusable="False"
+                                                   Foreground="Black">
+                                                    Để đảm bảo vệ sinh và an toàn, chỉ thức ăn và đồ uống được mua tại FATFILMFO mới được đem vào rạp chiếu phim. Ngoài ra, bạn cũng không được hút thuốc, dùng kẹo cao su, không quay phim, chụp hình, không nghẹ-gọi điện thoại, không nói chuyện trong rạp chiếu phim. Tất cả những qui định trên để đảm bảo các bạn có thể thưởng thức phim một cách trọn vẹn và tuyệt vời nhất.
+                                                </TextBlock>
+                                                <TextBlock TextWrapping="Wrap"
+                                                   Width="970"
+                                                   HorizontalAlignment="Left"
+                                                   FontStyle="Italic"
+                                                   FontSize="16"
+                                                   FontWeight="Bold"
+                                                   Margin="40,4,20,0"
+                                                   Focusable="False"
+                                                   Foreground="Black">
+                                                    2, Có bao nhiêu vị bắp tại FATFILMFO?
+                                                </TextBlock>
+                                                <TextBlock TextWrapping="Wrap"
+                                                   Width="970"
+                                                   HorizontalAlignment="Left"
+                                                   FontStyle="Italic"
+                                                   FontSize="16"
+                                                   Margin="40,4,20,0"
+                                                   Focusable="False"
+                                                   Foreground="Black">
+                                                    Có 3 loại : Ngọt, phô mai và caramel. Bạn có thể thưởng thức vị ngọt, phô mai , caramel hoặc Mix hai vị tùy chọn.
+                                                </TextBlock>
+                                                <TextBlock TextWrapping="Wrap"
+                                                   Width="970"
+                                                   HorizontalAlignment="Left"
+                                                   FontStyle="Italic"
+                                                   FontSize="16"
+                                                   FontWeight="Bold"
+                                                   Margin="40,4,20,0"
+                                                   Focusable="False"
+                                                   Foreground="Black">
+                                                    3, Tôi có thể mua bắp nước trực tuyến được không?
+                                                </TextBlock>
+                                                <TextBlock TextWrapping="Wrap"
+                                                   Width="970"
+                                                   HorizontalAlignment="Left"
+                                                   FontStyle="Italic"
+                                                   FontSize="16"
+                                                   Margin="40,4,20,0"
+                                                   Focusable="False"
+                                                   Foreground="Black">
+                                                    Được. Bạn có thể mua My Combo, FATFILMFO Combo và các sản phẩm bắp nước trực tuyến và nhận sản phẩm tại rạp vào ngày xem phim.
+                                                </TextBlock>
+                                            </StackPanel>
+                                        </Grid>
+                                        <Grid Height="300" VerticalAlignment="Top">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="9*"/>
+                                                <RowDefinition Height="91*"/>
+                                            </Grid.RowDefinitions>
+                                            <TextBlock Text="C - Voucher Phim:" 
+                                                   Grid.Row="0"
+                                                   FontSize="16"
+                                                   FontWeight="Bold"
+                                                   Margin="20,0,0,0"
+                                                   Focusable="False"
+                                                   Foreground="Black"
+                                                   TextDecorations="Underline"/>
+                                            <StackPanel Grid.Row="1">
+                                                <TextBlock TextWrapping="Wrap"
+                                                   Width="970"
+                                                   HorizontalAlignment="Left"
+                                                   FontStyle="Italic"
+                                                   FontSize="16"
+                                                   FontWeight="Bold"
+                                                   Margin="40,0,20,0"
+                                                   Focusable="False"
+                                                   Foreground="Black">
+                                                    1, FatFilfo có các loại voucher nào?
+                                                </TextBlock>
+                                                <TextBlock TextWrapping="Wrap"
+                                                   Width="970"
+                                                   HorizontalAlignment="Left"
+                                                   FontStyle="Italic"
+                                                   FontSize="16"
+                                                   Margin="40,4,20,0"
+                                                   Focusable="False"
+                                                   Foreground="Black">
+                                                    FatFilmFo có nhiều loại voucher với nhiều loại giá giảm khác nhau vào mỗi dịp lễ, cuối tuần. Bạn có thể tranh thủ những dịp này để có thể nhận được và sử dụng giúp bạn tiết kiệm chi phí khi trải nghiệp dịch vụ của chúng tôi.
+                                                </TextBlock>
+                                                <TextBlock TextWrapping="Wrap"
+                                                   Width="970"
+                                                   HorizontalAlignment="Left"
+                                                   FontStyle="Italic"
+                                                   FontSize="16"
+                                                   FontWeight="Bold"
+                                                   Margin="40,4,20,0"
+                                                   Focusable="False"
+                                                   Foreground="Black">
+                                                    2, Tôi có thể thanh toán trực tuyến bằng voucher không?
+                                                </TextBlock>
+                                                <TextBlock TextWrapping="Wrap"
+                                                   Width="970"
+                                                   HorizontalAlignment="Left"
+                                                   FontStyle="Italic"
+                                                   FontSize="16"
+                                                   Margin="40,4,20,0"
+                                                   Focusable="False"
+                                                   Foreground="Black">
+                                                    Có. Bạn có thể đăng ký mã voucher vào tài khoản thành viên FatFilmFo, và sử dụng voucher như một hình thức thanh toán trực tuyến. Voucher sau khi được đăng ký vào tài khoản thành viên có thể sử dụng trực tuyến mà không cần voucher giấy.
+                                                </TextBlock>
+                                                <TextBlock TextWrapping="Wrap"
+                                                   Width="970"
+                                                   HorizontalAlignment="Left"
+                                                   FontStyle="Italic"
+                                                   FontSize="16"
+                                                   FontWeight="Bold"
+                                                   Margin="40,4,20,0"
+                                                   Focusable="False"
+                                                   Foreground="Black">
+                                                    3, Định nghĩa về giá vé "ngày trong tuần" và "ngày cuối tuần" tại FATFILMFO là gì?
+                                                </TextBlock>
+                                                <TextBlock TextWrapping="Wrap"
+                                                   Width="970"
+                                                   HorizontalAlignment="Left"
+                                                   FontStyle="Italic"
+                                                   FontSize="16"
+                                                   Margin="40,4,20,0"
+                                                   Focusable="False"
+                                                   Foreground="Black">
+                                                    Ngày trong tuần tính từ thứ 2 tới thứ 5. Ngày cuối tuần tính từ thứ 6 tới chủ nhật.
+                                                </TextBlock>
+                                                <TextBlock TextWrapping="Wrap"
+                                                   Width="970"
+                                                   HorizontalAlignment="Left"
+                                                   FontStyle="Italic"
+                                                   FontSize="16"
+                                                   FontWeight="Bold"
+                                                   Margin="40,4,20,0"
+                                                   Focusable="False"
+                                                   Foreground="Black">
+                                                    4, Mua Vé Nhóm (Group Sales) là gì?
+                                                </TextBlock>
+                                                <TextBlock TextWrapping="Wrap"
+                                                   Width="970"
+                                                   HorizontalAlignment="Left"
+                                                   FontStyle="Italic"
+                                                   FontSize="16"
+                                                   Margin="40,4,20,0"
+                                                   Focusable="False"
+                                                   Foreground="Black">
+                                                    Mua Vé Nhóm là chương trình bán vé số lượng lớn với giá vé ưu đãi so với mua vé lẻ thông thường (tối thiểu 7 vé). Vé nhóm được bán dưới dạng voucher, hoặc thẻ quà tặng,...
+                                                </TextBlock>
+                                            </StackPanel>
+                                        </Grid>
+                                    </StackPanel>
+                                </ScrollViewer>
+                            </Border>
+                        </Grid>
+                    </Grid>
+                </Border>
+            </Grid>
+        </Grid>
+    </Border>
+</Window>
