@@ -20,9 +20,32 @@ namespace CinemaManagementProject.ViewModel.AdminVM.HelpScreenVM
         public ICommand Load_Trading_Terms { get; set; }
         public ICommand Load_Frequently_asked_questions { get; set; }
         public ICommand Load_Privacy_Policy { get; set; }
-
+        public ICommand FB_Command { get; set; }
+        public ICommand Zalo_Command { get; set; }
+        public ICommand Twitter_Command { get; set; }
+        public ICommand Instagram_Command { get; set; }
         public HelpScreenVM()
         {
+            Instagram_Command = new RelayCommand<object>((uri) => { return true; }, (uri) =>
+            {
+                string myUri = !uri.ToString().Contains("https://") && !uri.ToString().Contains("http://") ? "http://" + uri.ToString() : uri.ToString();
+                System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo(myUri));
+            });
+            Twitter_Command = new RelayCommand<object>((uri) => { return true; }, (uri) =>
+            {
+                string myUri = !uri.ToString().Contains("https://") && !uri.ToString().Contains("http://") ? "http://" + uri.ToString() : uri.ToString();
+                System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo(myUri));
+            });
+            Zalo_Command = new RelayCommand<object>((uri) => { return true; }, (uri) =>
+            {
+                string myUri = !uri.ToString().Contains("https://") && !uri.ToString().Contains("http://") ? "http://" + uri.ToString() : uri.ToString();
+                System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo(myUri));
+            });
+            FB_Command = new RelayCommand<object>((uri) => { return true; }, (uri) =>
+            {
+                string myUri = !uri.ToString().Contains("https://") && !uri.ToString().Contains("http://") ? "http://" + uri.ToString() : uri.ToString();
+                System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo(myUri));
+            });
             Load_General_Term = new RelayCommand<object>((p) => { return true; }, (p) =>
             {
                 Window w1 = new General_Term();
