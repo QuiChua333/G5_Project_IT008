@@ -417,6 +417,40 @@
     <system:String x:Key="TicketBillPage_Label_KhuyenMai">Promotion:</system:String>
     <system:String x:Key="TicketBillPage_Label_SauKhuyenMai">After promotion:</system:String>
     <system:String x:Key="TicketBillPage_Label_MienPhi">Free</system:String>
+    <system:String x:Key="fre_titleNote">The use of this use means that you agree with the following agreements. If you disagree, please do not use the application.</system:String>
+    <system:String x:Key="fre_titleA">Film</system:String>
+    <system:String x:Key="fre_askA1">1, Classification of movies P, C13, C16, C18?</system:String>
+    <system:String x:Key="fre_ansA1">Pursuant to the Circular No. 12/2015/TT-BVHTTDL of the Minister of Culture, Sports and Tourism takes effect from January 1, 2017, the criteria for classification of film by age are prescribed as follows as follows :</system:String>
+    <system:String x:Key="fre_ansA11">- P: The film is allowed to be widely disseminated to all subjects.</system:String>
+    <system:String x:Key="fre_ansA12">- C13: The film prohibits popular to audiences under 13 years old.</system:String>
+    <system:String x:Key="fre_ansA13">- C16: The film prohibits popular to audiences under 16 years old.</system:String>
+    <system:String x:Key="fre_ansA14">- C18: The film prohibits popular to audiences under 18 years old.</system:String>
+    <system:String x:Key="fre_ansA21">Customers please authenticate the age suitable for the film that is classified as above. Fatfilmfo reserves the right to refuse to sell tickets or go to the mat if the customer does not comply with the regulations.</system:String>
+    <system:String x:Key="fre_askA2">2, before being shown in Vietnam, how do films undergo censorship and licensing?</system:String>
+    <system:String x:Key="fre_ansA2">All films shown in cinemas in Vietnam must be censored, then granted a license and scope of popular film by the Cinema Department of the Ministry of Culture, Sports and Tourism of Vietnam . Therefore, some scenes may be required to be removed by the Cinema Department to suit Vietnam's culture before circulation. However, not except for some films will not be licensed to release in Vietnam.</system:String>
+    <system:String x:Key="fre_askA3">3, How to distinguish movies for all ages and movies not for children under 13/16/18 years old?</system:String>
+    <system:String x:Key="fre_ansA3">On the advertising/application poster, the P symbol shows the film for all ages and the C13/C16/C18 icon shows the film for customers with sequential ages from 13/16/18 years of age and older.</system:String>
+    <system:String x:Key="fre_askA4">4, What is special screening?</system:String>
+    <system:String x:Key="fre_ansA4">Special projections are the projections that are released before the official premiere.</system:String>
+    <system:String x:Key="fre_askA5">5, What is early premiere?</system:String>
+    <system:String x:Key="fre_ansA5">The early premiere is an official movie in the theater before the planning.</system:String>
+    <system:String x:Key="fre_titleB">B - Water corn - Food in theaters:</system:String>
+    <system:String x:Key="fre_askB1">1, Can food and drinks be brought into Fatfilmfo theater?</system:String>
+    <system:String x:Key="fre_ansB1">To ensure hygiene and safety, only food and drinks purchased at Fatfilmfo are brought to the cinema. In addition, you also do not smoke, use chewing gum, do not film, take pictures, do not have phone calls, do not talk in the cinema. All of the above rules to make sure you can enjoy the film in the most complete and wonderful way.</system:String>
+    <system:String x:Key="fre_askB2">2, How many corn flavors at Fatfilmfo?</system:String>
+    <system:String x:Key="fre_ansB2">There are 3 types: sweet, cheese and caramel. You can enjoy the sweetness, cheese, caramel or mix two options.</system:String>
+    <system:String x:Key="fre_askB3">3, Can I buy corn water online?</system:String>
+    <system:String x:Key="fre_ansB3">OK. You can buy My Combo, Fatfilmfo Combo and online corn products and receive products at the theater on the movie day.</system:String>
+    <system:String x:Key="fre_titleC">C - Voucher movie:</system:String>
+    <system:String x:Key="fre_askc1">1, what kind of voucher does Fatfilfo have?</system:String>
+    <system:String x:Key="fre_ansc1">Fatfilmfo has a variety of vouchers with many different types of discounts on every holiday, weekend. You can take advantage of these occasions to be able to get and use to save you costs when experiencing our service.</system:String>
+    <system:String x:Key="fre_askC2">2, can I pay online with a voucher?</system:String>
+    <system:String x:Key="fre_ansc2">Yes. You can register the voucher code to Fatfilmfo member account, and use the voucher as an online payment form. The voucher after being registered to the member account can be used online without paper voucher.</system:String>
+    <system:String x:Key="fre_askC3">3, what is the definition of "week day" and "weekend" fare at Fatfilmfo?</system:String>
+    <system:String x:Key="fre_ansc3">Week's day from Monday to Thursday. Weekends from Friday to Sunday.</system:String>
+    <system:String x:Key="fre_askC4">4, What is the group sales ticket?</system:String>
+    <system:String x:Key="fre_anSC4">Buying group tickets is a large number of ticket sales programs with preferential tickets compared to buying regular retail tickets (at least 7 tickets). Group tickets are sold in the form of vouchers, or gift cards, ...</system:String>
+<!--***-->
     <system:String x:Key="Privacy_Policy_Label_ChinhSachBaoMat">Privacy Policy</system:String>
     <system:String x:Key="Privacy_Policy_TextBlock_Header">* Your use of this application constitutes your agreement to the following agreements. If you do not agree, please do not use the application.</system:String>
     <system:String x:Key="Privacy_Policy_TextBlock_1Dam">1. Purpose and scope of information collection:</system:String>
@@ -719,5 +753,26 @@
     <system:String x:Key="AddTroubleWindow_Label_Mota">Description</system:String>
     <system:String x:Key="AddTroubleWindow_Label_Motaloi">Description trouble</system:String>
     <system:String x:Key="AddTroubleWindow_button_Xacnhan">Confirm</system:String>
-<!--***-->
+
+    <system:String x:Key="generalTerm_textblock_camket">* Your use of this application constitutes your agreement to the following agreements. If you do not agree, please do not use the application.</system:String>
+    <system:String x:Key="generalTerm_textblock_trachnhiem">1. About User Responsibilities:</system:String>
+    <system:String x:Key="generalTerm_textblock_tn">By accessing this application, you agree to accept all risks. FatFilmFo and other partners are not liable for any loss resulting from direct, incidental or indirect consequential; losses and expenses (including legal fees, consulting costs or other expenses) that may be incurred directly or indirectly as a result of accessing the application or downloading data to the device; damage caused by viruses, direct or indirect destruction of other computer systems, telephone lines, hardware, software, program errors, or any other failure; Your computer's transmission line or network connection is slow...</system:String>
+    <system:String x:Key="generalTerm_textblock_noidung">2. About the content on the application:</system:String>
+    <system:String x:Key="generalTerm_textblock_nd">All of the information herein is given to you as truthfully as the facts themselves. FatFilmFo and its related parties make no warranties, or representations, regarding the accuracy, reliability of the use or the results of the use of the content on this application. The content on the app is provided for the benefit of the community and is non-commercial. Individuals and organizations are not allowed to use the content on this application for commercial purposes without the consent of FatFilmFo in writing. Although FatFilmFo strives to regularly update the content in the application, we do not guarantee that the information is current, accurate or complete. All application content is subject to change at any time.</system:String>
+    <system:String x:Key="generalTerm_textblock_banquyen">3. About copyright:</system:String>
+    <system:String x:Key="generalTerm_textblock_bq">FatFilmFo is the copyright holder of this application. Page editing, content, and arrangement are at the sole discretion of FatFilmFo. The modification, alteration, distribution or re-use of the contents of this site for any other purpose is considered a violation of the legal rights of FatFilmFo.</system:String>
+    <system:String x:Key="generalTerm_textblock_sudungtt">4. About using information:</system:String>
+    <system:String x:Key="generalTerm_textblock_sdtt">We will not use your personal information on this app without permission. If you agree to provide personal information, you are protected. Your information will be used for the purpose of contacting you to notify FatFilmFo updates such as movie showtimes, promotions by email or post. Your personal information will not be sent to anyone to use outside of the FatFilmFo application, except for the necessary extensions for you to be able to participate in the application (service providers, partners, companies) advertising agency) and required by law. If we share your personal information with relevant service providers, advertising agencies, and partner companies, we also ask them to protect your personal information in the same way we do. I perform.</system:String>
+    <system:String x:Key="generalTerm_textblock_viectaidl">5. About downloading data:</system:String>
+    <system:String x:Key="generalTerm_textblock_vtdl">If you download software from this application, the software and downloaded data will be copyrighted by FatFilmFo and allowed to be used by you. You do not own the downloaded software and FatFilmFo does not license it to you. You are also not allowed to sell, redistribute, or crack the software…</system:String>
+    <system:String x:Key="generalTerm_textblock_thaydoinoidung">6. About changing content:</system:String>
+    <system:String x:Key="generalTerm_textblock_tdnd">FatFilmFo reserves the right to change, correct and remove such information at any time for any reason.</system:String>
+    <system:String x:Key="generalTerm_textblock_lienketkhac">7. About linking to other sites:</system:String>
+    <system:String x:Key="generalTerm_textblock_lkk">Although this application may be linked to other websites and applications, FatFilmFo does not directly or indirectly endorse, organize, sponsor, behind or merge with such websites and applications, except non this is clearly stated. By accessing the application you understand and accept that FatFilmFo cannot control all of the websites and applications linked to the FatFilmFo application and is not responsible for the content of such linked websites and applications.</system:String>
+    <system:String x:Key="generalTerm_textblock_duathongtinud">8. About uploading information to the application:</system:String>
+    <system:String x:Key="generalTerm_textblock_dttlud">You may not post, or upload to the application, all images, words that are obscene, vulgar, offensive, defamatory, libelous, threatening, illegal or otherwise possible. leads to a violation of the law and legal liability. FatFilmFo and all parties involved in the development and management of the application are not responsible or liable for any consequences arising from the content uploaded by you to the application.</system:String>
+    <system:String x:Key="generalTerm_textblock_luatapdung">9. About applicabled law:</system:String>
+    <system:String x:Key="generalTerm_textblock_lad">All activities arising from the application may be analyzed and evaluated according to the laws of Vietnam and the courts of Ho Chi Minh City. Ho Chi Minh. And you must agree to abide by the separate terms of these courts.</system:String>
+
+    <!--***-->
 </ResourceDictionary>

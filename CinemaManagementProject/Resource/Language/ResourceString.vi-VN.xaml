@@ -471,6 +471,40 @@
     <system:String x:Key="HelpScreen_Label_ThongTingLH">Thông tin liên hệ</system:String>
 
     <!--***-->
+    <system:String x:Key="fre_titleNote">Việc bạn sử dụng ưng dụng này đồng nghĩa với việc bạn đồng ý với những thỏa thuận dưới đây. Nếu bạn không đồng ý, xin vui lòng không sử dụng ứng dụng.</system:String>
+    <system:String x:Key="fre_titleA">Phim</system:String>
+    <system:String x:Key="fre_askA1">1, Phân loại phim P, C13, C16, C18 là gì?</system:String>
+    <system:String x:Key="fre_ansA1">Căn cứ Thông tư số 12/2015/TT-BVHTTDL của Bộ trưởng Bộ Văn hóa, Thể thao và Du lịch có hiệu lực thi hành từ ngày 01/01/2017, Tiêu chí phân loại phim theo lứa tuổi được quy định như sau:</system:String>
+    <system:String x:Key="fre_ansA11">- P: Phim được phép phổ biến rộng rãi đến mọi đối tượng.</system:String>
+    <system:String x:Key="fre_ansA12">- C13: Phim cấm phổ biến đến khán giả dưới 13 tuổi.</system:String>
+    <system:String x:Key="fre_ansA13">- C16: Phim cấm phổ biến đến khán giả dưới 16 tuổi.</system:String>
+    <system:String x:Key="fre_ansA14">- C18: Phim cấm phổ biến đến khán giả dưới 18 tuổi.</system:String>
+    <system:String x:Key="fre_ansA21">Khách hàng vui lòng chứng thực được độ tuổi phù hợp với phim được phân loại như trên. FATFILMFO có quyền từ chối việc bán vé hoặc vào phòng chiếu nếu khách hàng không tuân thủ đúng theo quy định.</system:String>
+    <system:String x:Key="fre_askA2">2, Trước khi được trình chiếu tại Việt Nam, các bộ phim phải trải qua sự kiểm duyệt và cấp phép như thế nào?</system:String>
+    <system:String x:Key="fre_ansA2">Tất cả những phim được trình chiếu tại các rạp chiếu phim ở Việt Nam phải được kiểm duyệt, sau đó được cấp giấy phép phát hành và phạm vi phổ biến phim bởi Cục Điện Ảnh thuộc Bộ Văn Hóa, Thể Thao và Du Lịch Việt Nam. Do đó, một số cảnh quay có thể được yêu cầu phải cắt bỏ bởi Cục Điện Ảnh để phù hợp với văn hóa của Việt Nam trước khi lưu hành. Tuy nhiên, không ngoại trừ một số phim sẽ không được cấp phép phát hành tại Việt Nam.</system:String>
+    <system:String x:Key="fre_askA3">3, Làm sao để phân biệt phim dành cho mọi lứa tuổi và phim không dành cho trẻ em dưới 13/16/18 tuổi?</system:String>
+    <system:String x:Key="fre_ansA3">Trên áp phích quảng cáo/ứng dụng, biểu tượng P thể hiện phim dành cho mọi lứa tuổi và biểu tượng C13/C16/C18 thể hiện phim dành cho khách hàng có độ tuổi tuần tự từ 13/16/18 tuổi trở lên.</system:String>
+    <system:String x:Key="fre_askA4">4, Suất chiếu Đặc Biệt là gì?</system:String>
+    <system:String x:Key="fre_ansA4">Suất Chiếu Đặc Biệt là những suất chiếu được ra rạp trước ngày công chiếu chính thức.</system:String>
+    <system:String x:Key="fre_askA5">5, Khởi Chiếu Sớm là gì?</system:String>
+    <system:String x:Key="fre_ansA5">Khởi Chiếu Sớm là bộ phim được chính thức ra rạp trước ngày khởi chiếu đã định.</system:String>
+    <system:String x:Key="fre_titleB">B - Bắp Nước - Đồ ăn tại rạp:</system:String>
+    <system:String x:Key="fre_askB1">1, Thức ăn, đồ uống mua bên ngoài có được mang vào rạp FATFILMFO không?</system:String>
+    <system:String x:Key="fre_ansB1">Để đảm bảo vệ sinh và an toàn, chỉ thức ăn và đồ uống được mua tại FATFILMFO mới được đem vào rạp chiếu phim. Ngoài ra, bạn cũng không được hút thuốc, dùng kẹo cao su, không quay phim, chụp hình, không nghẹ-gọi điện thoại, không nói chuyện trong rạp chiếu phim. Tất cả những qui định trên để đảm bảo các bạn có thể thưởng thức phim một cách trọn vẹn và tuyệt vời nhất.</system:String>
+    <system:String x:Key="fre_askB2">2, Có bao nhiêu vị bắp tại FATFILMFO?</system:String>
+    <system:String x:Key="fre_ansB2">Có 3 loại : Ngọt, phô mai và caramel. Bạn có thể thưởng thức vị ngọt, phô mai , caramel hoặc Mix hai vị tùy chọn.</system:String>
+    <system:String x:Key="fre_askB3">3, Tôi có thể mua bắp nước trực tuyến được không?</system:String>
+    <system:String x:Key="fre_ansB3">Được. Bạn có thể mua My Combo, FATFILMFO Combo và các sản phẩm bắp nước trực tuyến và nhận sản phẩm tại rạp vào ngày xem phim.</system:String>
+    <system:String x:Key="fre_titleC">C - Voucher Phim:</system:String>
+    <system:String x:Key="fre_askC1">1, FatFilfo có các loại voucher nào?</system:String>
+    <system:String x:Key="fre_ansC1">FatFilmFo có nhiều loại voucher với nhiều loại giá giảm khác nhau vào mỗi dịp lễ, cuối tuần. Bạn có thể tranh thủ những dịp này để có thể nhận được và sử dụng giúp bạn tiết kiệm chi phí khi trải nghiệp dịch vụ của chúng tôi.</system:String>
+    <system:String x:Key="fre_askC2">2, Tôi có thể thanh toán trực tuyến bằng voucher không?</system:String>
+    <system:String x:Key="fre_ansC2">Có. Bạn có thể đăng ký mã voucher vào tài khoản thành viên FatFilmFo, và sử dụng voucher như một hình thức thanh toán trực tuyến. Voucher sau khi được đăng ký vào tài khoản thành viên có thể sử dụng trực tuyến mà không cần voucher giấy.</system:String>
+    <system:String x:Key="fre_askC3">3, Định nghĩa về giá vé "ngày trong tuần" và "ngày cuối tuần" tại FATFILMFO là gì?</system:String>
+    <system:String x:Key="fre_ansC3">Ngày trong tuần tính từ thứ 2 tới thứ 5. Ngày cuối tuần tính từ thứ 6 tới chủ nhật.</system:String>
+    <system:String x:Key="fre_askC4">4, Mua Vé Nhóm (Group Sales) là gì?</system:String>
+    <system:String x:Key="fre_ansC4">Mua Vé Nhóm là chương trình bán vé số lượng lớn với giá vé ưu đãi so với mua vé lẻ thông thường (tối thiểu 7 vé). Vé nhóm được bán dưới dạng voucher, hoặc thẻ quà tặng,...</system:String>
+<!--***-->
     
 <!--Phat-->
     <system:String x:Key="CustomerManagementPage_search_TimKiem">Tìm Kiếm</system:String>
@@ -719,6 +753,27 @@
     <system:String x:Key="AddTroubleWindow_Label_Mota">Mô tả</system:String>
     <system:String x:Key="AddTroubleWindow_Label_Motaloi">Mô tả lỗi</system:String>
     <system:String x:Key="AddTroubleWindow_button_Xacnhan">Xác nhận</system:String>
-    
-<!--***-->
+
+    <system:String x:Key="generalTerm_textblock_camket">* Việc bạn sử dụng ưng dụng này đồng nghĩa với việc bạn đồng ý với những thỏa thuận dưới đây. Nếu bạn không đồng ý, xin vui lòng không sử dụng ứng dụng.</system:String>
+    <system:String x:Key="generalTerm_textblock_trachnhiem">1. Trách nhiệm của người sử dụng:</system:String>
+    <system:String x:Key="generalTerm_textblock_tn">Khi truy cập vào ứng dụng này, bạn đồng ý chấp nhận mọi rủi ro. FatFilmFo và các bên đối tác khác không chịu trách nhiệm về bất kỳ tổn thất nào do những hậu quả trực tiếp, tình cờ hay gián tiếp; những thất thoát, chi phí (bao gồm chi phí pháp lý, chi phí tư vấn hoặc các khoản chi tiêu khác) có thể phát sinh trực tiếp hoặc gián tiếp do việc truy cập ứng dụng hoặc khi tải dữ liệu về máy; những tổn hại gặp phải do virus, hành động phá hoại trực tiếp hay gián tiếp của hệ thống máy tính khác, đường dây điện thoại, phần cứng, phần mềm, lỗi chương trình, hoặc bất kì các lỗi nào khác; đường truyền dẫn của máy tính hoặc nối kết mạng bị chậm…</system:String>
+    <system:String x:Key="generalTerm_textblock_noidung">2. Về nội dung trên ứng dụng:</system:String>
+    <system:String x:Key="generalTerm_textblock_nd">Tất cả những thông tin ở đây được cung cấp cho bạn một cách trung thực như bản thân sự việc. FatFilmFo và các bên liên quan không bảo đảm, hay có bất kỳ tuyên bố nào liên quan đến tính chính xác, tin cậy của việc sử dụng hay kết quả của việc sử dụng nội dung trên ứng dụng này. Nội dung trên ứng dụng được cung cấp vì lợi ích của cộng đồng và có tính phi thương mại. Các cá nhân và tổ chức không được phép sử dụng nội dung trên ứng dụng này với mục đích thương mại mà không có sự ưng thuận của FatFilmFo bằng văn bản. Mặc dù FatFilmFo luôn cố gắng cập nhật thường xuyên các nội dung tại ứng dụng, nhưng chúng tôi không bảo đảm rằng các thông tin đó là mới nhất, chính xác hay đầy đủ. Tất cả các nội dung ứng dụng có thể được thay đổi bất kỳ lúc nào.</system:String>
+    <system:String x:Key="generalTerm_textblock_banquyen">3. Về bản quyền:</system:String>
+    <system:String x:Key="generalTerm_textblock_bq">FatFilmFo là chủ bản quyền của ứng dụng này. Việc chỉnh sửa trang, nội dung, và sắp xếp thuộc về thẩm quyền của FatFilmFo. Sự chỉnh sửa, thay đổi, phân phối hoặc tái sử dụng những nội dung trong trang này vì bất kì mục đích nào khác được xem như vi phạm quyền lợi hợp pháp của FatFilmFo.</system:String>
+    <system:String x:Key="generalTerm_textblock_sudungtt">4. Về việc sử dụng thông tin:</system:String>
+    <system:String x:Key="generalTerm_textblock_sdtt">Chúng tôi sẽ không sử dụng thông tin cá nhân của bạn trên ứng dụng này nếu không được phép. Nếu bạn đồng ý cung cấp thông tin cá nhân, bạn sẽ được bảo vệ. Thông tin của bạn sẽ được sử dụng với mục đích, liên lạc với bạn để thông báo các thông tin cập nhật của FatFilmFo như lịch chiếu phim, khuyến mại qua email hoặc bưu điện. Thông tin cá nhân của bạn sẽ không được gửi cho bất kỳ ai sử dụng ngoài ứng dụng FatFilmFo, ngoại trừ những mở rộng cần thiết để bạn có thể tham gia vào ứng dụng (những nhà cung cấp dịch vụ, đối tác, các công ty quảng cáo) và yêu cầu cung cấp bởi luật pháp. Nếu chúng tôi chia sẻ thông tin cá nhân của bạn cho các nhà cung cấp dịch vụ, công ty quảng cáo, các công ty đối tác liên quan, thì chúng tôi cũng yêu cầu họ bảo vệ thông tin cá nhân của bạn như cách chúng tôi thực hiện.</system:String>
+    <system:String x:Key="generalTerm_textblock_viectaidl">5. Vể việc tải dữ liệu:</system:String>
+    <system:String x:Key="generalTerm_textblock_vtdl">Nếu bạn tải về máy những phần mềm từ ứng dụng này, thì phần mềm và các dữ liệu tải sẽ thuộc bản quyền của FatFilmFo và cho phép bạn sử dụng. Bạn không được sở hữu những phầm mềm đã tải và FatFilmFo không nhượng quyền cho bạn. Bạn cũng không được phép bán, phân phối lại, hay bẻ khóa phần mềm…</system:String>
+    <system:String x:Key="generalTerm_textblock_thaydoinoidung">6. Thay đổi nội dung:</system:String>
+    <system:String x:Key="generalTerm_textblock_tdnd">FatFilmFo giữ quyền thay đổi, chỉnh sửa và loại bỏ những thông tin hợp pháp vào bất kỳ thời điểm nào vì bất kỳ lý do nào.</system:String>
+    <system:String x:Key="generalTerm_textblock_lienketkhac">7. Liên kết với các trang khác:</system:String>
+    <system:String x:Key="generalTerm_textblock_lkk">Mặc dù ứng dụng này có thể được liên kết với những trang web và ứng dụng khác, FatFilmFo không trực tiếp hoặc gián tiếp tán thành, tổ chức, tài trợ, đứng sau hoặc sát nhập với những trang web và ứng dụng đó, trừ phi điều này được nêu ra rõ ràng. Khi truy cập vào ứng dụng bạn phải hiểu và chấp nhận rằng FatFilmFo không thể kiểm soát tất cả những trang web và ứng dụng liên kết với ứng dụng FatFilmFo và cũng không chịu trách nhiệm cho nội dung của những trang web và ứng dụng liên kết.</system:String>
+    <system:String x:Key="generalTerm_textblock_duathongtinud">8. Đưa thông tin lên ứng dụng:</system:String>
+    <system:String x:Key="generalTerm_textblock_dttlud">Bạn không được đưa lên, hoặc chuyển tải lên ứng dụng tất cả những hình ảnh, từ ngữ khiêu dâm, thô tục, xúc phạm, phỉ báng, bôi nhọ, đe dọa, những thông tin không hợp pháp hoặc những thông tin có thể đưa đến việc vi phạm pháp luật, trách nhiệm pháp lý. FatFilmFo và tất cả các bên có liên quan đến việc xây dựng và quản lý ứng dụng không chịu trách nhiệm hoặc có nghĩa vụ pháp lý đối với những phát sinh từ nội dung do bạn tải lên ứng dụng.</system:String>
+    <system:String x:Key="generalTerm_textblock_luatapdung">9. Luật áp dụng:</system:String>
+    <system:String x:Key="generalTerm_textblock_lad">Mọi hoạt động phát sinh từ ứng dụng có thể sẽ được phân tích và đánh giá theo luật pháp Việt Nam và toà án Tp. Hồ Chí Minh. Và bạn phải đồng ý tuân theo các điều khoản riêng của các toà án này.</system:String>
+
+
+    <!--***-->
 </ResourceDictionary>
