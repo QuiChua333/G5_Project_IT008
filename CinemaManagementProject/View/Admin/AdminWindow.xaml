@@ -270,6 +270,7 @@
                 <RadioButton    
                 x:Name="DanhGiaButton"
                 Tag="white"
+                Command="{Binding ReviewCommand}"
             >
                     <RadioButton.Style>
                         <Style TargetType="RadioButton" BasedOn="{StaticResource menuButton}">

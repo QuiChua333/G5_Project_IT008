@@ -20,6 +20,8 @@
                     xmlns:viewmodel18="clr-namespace:CinemaManagementProject.ViewModel.AdminVM"
                     xmlns:viewmodel19="clr-namespace:CinemaManagementProject.ViewModel.AdminVM.SettingVM"
                     xmlns:viewmodel20="clr-namespace:CinemaManagementProject.ViewModel.StaffVM.SettingStaffVM"
+                    xmlns:viewmodel21="clr-namespace:CinemaManagementProject.ViewModel.AdminVM.ReviewManagementVM"
+                    
                     
 >
     <viewmodel1:VoucherViewModel x:Key="VoucherVM" />
@@ -43,4 +45,6 @@
     <viewmodel18:AdminVM x:Key="AdminVM"/>
     <viewmodel19:SettingVM x:Key="SettingVM"/>
     <viewmodel20:SettingStaffVM x:Key="SettingStaffVM"/>
+    <viewmodel21:ReviewManagementVM x:Key="ReviewManagementVM"/>
+
 </ResourceDictionary>

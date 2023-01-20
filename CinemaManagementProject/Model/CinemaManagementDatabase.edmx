@@ -84,6 +84,16 @@
           <Property Name="ProductId" Type="int" Nullable="false" />
           <Property Name="Quantity" Type="int" />
         </EntityType>
+        <EntityType Name="Review">
+          <Key>
+            <PropertyRef Name="BillCode" />
+          </Key>
+          <Property Name="BillCode" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" />
+          <Property Name="IsRespond" Type="bit" />
+          <Property Name="FilmId" Type="int" Nullable="false" />
+          <Property Name="FilmName" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
         <EntityType Name="Room">
           <Key>
             <PropertyRef Name="Id" />
@@ -439,6 +449,7 @@
           <EntitySet Name="ProductBillInfo" EntityType="Self.ProductBillInfo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ProductReceipt" EntityType="Self.ProductReceipt" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ProductStorage" EntityType="Self.ProductStorage" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Review" EntityType="Self.Review" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Room" EntityType="Self.Room" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Seat" EntityType="Self.Seat" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SeatSetting" EntityType="Self.SeatSetting" Schema="dbo" store:Type="Tables" />
@@ -624,6 +635,16 @@
           <Property Name="ProductId" Type="Int32" Nullable="false" />
           <Property Name="Quantity" Type="Int32" />
           <NavigationProperty Name="Product" Relationship="Self.FK_ProductStorage_Product" FromRole="ProductStorage" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="Review">
+          <Key>
+            <PropertyRef Name="BillCode" />
+          </Key>
+          <Property Name="BillCode" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IsDeleted" Type="Boolean" />
+          <Property Name="IsRespond" Type="Boolean" />
+          <Property Name="FilmId" Type="Int32" Nullable="false" />
+          <Property Name="FilmName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
         </EntityType>
         <EntityType Name="Room">
           <Key>
@@ -1003,6 +1024,7 @@
           <EntitySet Name="ProductBillInfoes" EntityType="Self.ProductBillInfo" />
           <EntitySet Name="ProductReceipts" EntityType="Self.ProductReceipt" />
           <EntitySet Name="ProductStorages" EntityType="Self.ProductStorage" />
+          <EntitySet Name="Reviews" EntityType="Self.Review" />
           <EntitySet Name="Rooms" EntityType="Self.Room" />
           <EntitySet Name="Seats" EntityType="Self.Seat" />
           <EntitySet Name="SeatSettings" EntityType="Self.SeatSetting" />
@@ -1178,6 +1200,17 @@
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="ProductId" ColumnName="ProductId" />
                 <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Reviews">
+            <EntityTypeMapping TypeName="CinemaManagementProjectModel.Review">
+              <MappingFragment StoreEntitySet="Review">
+                <ScalarProperty Name="BillCode" ColumnName="BillCode" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="IsRespond" ColumnName="IsRespond" />
+                <ScalarProperty Name="FilmId" ColumnName="FilmId" />
+                <ScalarProperty Name="FilmName" ColumnName="FilmName" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
