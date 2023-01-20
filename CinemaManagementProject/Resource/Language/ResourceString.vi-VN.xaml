@@ -417,6 +417,39 @@
     <system:String x:Key="TicketBillPage_Label_KhuyenMai">Khuyến mãi:</system:String>
     <system:String x:Key="TicketBillPage_Label_SauKhuyenMai">Sau khuyến mãi:</system:String>
     <system:String x:Key="TicketBillPage_Label_MienPhi">Miễn phí</system:String>
+    <system:String x:Key="fre_titleNote">Việc bạn sử dụng ưng dụng này đồng nghĩa với việc bạn đồng ý với những thỏa thuận dưới đây. Nếu bạn không đồng ý, xin vui lòng không sử dụng ứng dụng.</system:String>
+    <system:String x:Key="fre_titleA">Phim</system:String>
+    <system:String x:Key="fre_askA1">1, Phân loại phim P, C13, C16, C18 là gì?</system:String>
+    <system:String x:Key="fre_ansA1">Căn cứ Thông tư số 12/2015/TT-BVHTTDL của Bộ trưởng Bộ Văn hóa, Thể thao và Du lịch có hiệu lực thi hành từ ngày 01/01/2017, Tiêu chí phân loại phim theo lứa tuổi được quy định như sau:</system:String>
+    <system:String x:Key="fre_ansA11">- P: Phim được phép phổ biến rộng rãi đến mọi đối tượng.</system:String>
+    <system:String x:Key="fre_ansA12">- C13: Phim cấm phổ biến đến khán giả dưới 13 tuổi.</system:String>
+    <system:String x:Key="fre_ansA13">- C16: Phim cấm phổ biến đến khán giả dưới 16 tuổi.</system:String>
+    <system:String x:Key="fre_ansA14">- C18: Phim cấm phổ biến đến khán giả dưới 18 tuổi.</system:String>
+    <system:String x:Key="fre_ansA21">Khách hàng vui lòng chứng thực được độ tuổi phù hợp với phim được phân loại như trên. FATFILMFO có quyền từ chối việc bán vé hoặc vào phòng chiếu nếu khách hàng không tuân thủ đúng theo quy định.</system:String>
+    <system:String x:Key="fre_askA2">2, Trước khi được trình chiếu tại Việt Nam, các bộ phim phải trải qua sự kiểm duyệt và cấp phép như thế nào?</system:String>
+    <system:String x:Key="fre_ansA2">Tất cả những phim được trình chiếu tại các rạp chiếu phim ở Việt Nam phải được kiểm duyệt, sau đó được cấp giấy phép phát hành và phạm vi phổ biến phim bởi Cục Điện Ảnh thuộc Bộ Văn Hóa, Thể Thao và Du Lịch Việt Nam. Do đó, một số cảnh quay có thể được yêu cầu phải cắt bỏ bởi Cục Điện Ảnh để phù hợp với văn hóa của Việt Nam trước khi lưu hành. Tuy nhiên, không ngoại trừ một số phim sẽ không được cấp phép phát hành tại Việt Nam.</system:String>
+    <system:String x:Key="fre_askA3">3, Làm sao để phân biệt phim dành cho mọi lứa tuổi và phim không dành cho trẻ em dưới 13/16/18 tuổi?</system:String>
+    <system:String x:Key="fre_ansA3">Trên áp phích quảng cáo/ứng dụng, biểu tượng P thể hiện phim dành cho mọi lứa tuổi và biểu tượng C13/C16/C18 thể hiện phim dành cho khách hàng có độ tuổi tuần tự từ 13/16/18 tuổi trở lên.</system:String>
+    <system:String x:Key="fre_askA4">4, Suất chiếu Đặc Biệt là gì?</system:String>
+    <system:String x:Key="fre_ansA4">Suất Chiếu Đặc Biệt là những suất chiếu được ra rạp trước ngày công chiếu chính thức.</system:String>
+    <system:String x:Key="fre_askA5">5, Khởi Chiếu Sớm là gì?</system:String>
+    <system:String x:Key="fre_ansA5">Khởi Chiếu Sớm là bộ phim được chính thức ra rạp trước ngày khởi chiếu đã định.</system:String>
+    <system:String x:Key="fre_titleB">B - Bắp Nước - Đồ ăn tại rạp:</system:String>
+    <system:String x:Key="fre_askB1">1, Thức ăn, đồ uống mua bên ngoài có được mang vào rạp FATFILMFO không?</system:String>
+    <system:String x:Key="fre_ansB1">Để đảm bảo vệ sinh và an toàn, chỉ thức ăn và đồ uống được mua tại FATFILMFO mới được đem vào rạp chiếu phim. Ngoài ra, bạn cũng không được hút thuốc, dùng kẹo cao su, không quay phim, chụp hình, không nghẹ-gọi điện thoại, không nói chuyện trong rạp chiếu phim. Tất cả những qui định trên để đảm bảo các bạn có thể thưởng thức phim một cách trọn vẹn và tuyệt vời nhất.</system:String>
+    <system:String x:Key="fre_askB2">2, Có bao nhiêu vị bắp tại FATFILMFO?</system:String>
+    <system:String x:Key="fre_ansB2">Có 3 loại : Ngọt, phô mai và caramel. Bạn có thể thưởng thức vị ngọt, phô mai , caramel hoặc Mix hai vị tùy chọn.</system:String>
+    <system:String x:Key="fre_askB3">3, Tôi có thể mua bắp nước trực tuyến được không?</system:String>
+    <system:String x:Key="fre_ansB3">Được. Bạn có thể mua My Combo, FATFILMFO Combo và các sản phẩm bắp nước trực tuyến và nhận sản phẩm tại rạp vào ngày xem phim.</system:String>
+    <system:String x:Key="fre_titleC">C - Voucher Phim:</system:String>
+    <system:String x:Key="fre_askC1">1, FatFilfo có các loại voucher nào?</system:String>
+    <system:String x:Key="fre_ansC1">FatFilmFo có nhiều loại voucher với nhiều loại giá giảm khác nhau vào mỗi dịp lễ, cuối tuần. Bạn có thể tranh thủ những dịp này để có thể nhận được và sử dụng giúp bạn tiết kiệm chi phí khi trải nghiệp dịch vụ của chúng tôi.</system:String>
+    <system:String x:Key="fre_askC2">2, Tôi có thể thanh toán trực tuyến bằng voucher không?</system:String>
+    <system:String x:Key="fre_ansC2">Có. Bạn có thể đăng ký mã voucher vào tài khoản thành viên FatFilmFo, và sử dụng voucher như một hình thức thanh toán trực tuyến. Voucher sau khi được đăng ký vào tài khoản thành viên có thể sử dụng trực tuyến mà không cần voucher giấy.</system:String>
+    <system:String x:Key="fre_askC3">3, Định nghĩa về giá vé "ngày trong tuần" và "ngày cuối tuần" tại FATFILMFO là gì?</system:String>
+    <system:String x:Key="fre_ansC3">Ngày trong tuần tính từ thứ 2 tới thứ 5. Ngày cuối tuần tính từ thứ 6 tới chủ nhật.</system:String>
+    <system:String x:Key="fre_askC4">4, Mua Vé Nhóm (Group Sales) là gì?</system:String>
+    <system:String x:Key="fre_ansC4">Mua Vé Nhóm là chương trình bán vé số lượng lớn với giá vé ưu đãi so với mua vé lẻ thông thường (tối thiểu 7 vé). Vé nhóm được bán dưới dạng voucher, hoặc thẻ quà tặng,...</system:String>
 <!--***-->
     
 <!--Phat-->
