@@ -15,6 +15,7 @@
             <i:InvokeCommandAction Command="{Binding FirstLoadCM}" />
         </i:EventTrigger>
     </i:Interaction.Triggers>
+    
     <Grid HorizontalAlignment="Stretch"
              VerticalAlignment="Stretch"
              Margin="20">

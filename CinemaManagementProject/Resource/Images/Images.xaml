@@ -1,8 +1,6 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-    <!--<ImageSource x:Key="Popcorn">./popcorn.png</ImageSource>-->
     <ImageSource x:Key="BonusGood">./popcorn_drink.jpg</ImageSource>
-
     <ImageSource x:Key="ImportFood">./import_food.png</ImageSource>
     <ImageSource x:Key="Logo">./Logo.png</ImageSource>
     <ImageSource x:Key="Avatar">./avata.jpg</ImageSource>
@@ -12,7 +10,9 @@
     <ImageSource x:Key="isReady">./isReady.png</ImageSource>
     <ImageSource x:Key="currChoose">./currChoose.png</ImageSource>
     <ImageSource x:Key="LogoMain">./LogoMain.png</ImageSource>
-
-
+    <ImageSource x:Key="iconFace">./iconFace.png</ImageSource>
+    <ImageSource x:Key="iconInstaram">./iconInstaram.png</ImageSource>
+    <ImageSource x:Key="iconTiwter">./iconTiwter.png</ImageSource>
+    <ImageSource x:Key="iconZalo">./iconZalo.png</ImageSource>
 
 </ResourceDictionary>

@@ -29,7 +29,7 @@
             </Grid.RowDefinitions>
           
             <Grid Grid.Row="0"
-                  Background="#E6C067">
+                  Background="#67C6E6">
                 <Grid Margin="30,10">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="50*"/>
@@ -183,7 +183,7 @@
                                 </Grid.RowDefinitions>
                                 <Grid Grid.Row="0"
                                       Margin="0,0,20,0">
-                                    <Border CornerRadius="5" Background="#F0DE7E" BorderBrush="Gray" BorderThickness="0.3">
+                                    <Border CornerRadius="5" Background="#67C6E6" BorderBrush="Gray" BorderThickness="0.3">
                                         <Border.Effect>
                                             <DropShadowEffect BlurRadius="10" Direction="270" Color="Black" ShadowDepth="4" Opacity="0.25"/>
                                         </Border.Effect>

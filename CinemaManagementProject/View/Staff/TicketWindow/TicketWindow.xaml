@@ -47,7 +47,7 @@
                                      Width="30"
                                      VerticalAlignment="Center"
                                      HorizontalAlignment="Right"
-                                     Foreground="#E6C067"
+                                     Foreground="#67C6E6"
                                      FontWeight="Bold"/>
                     </Button>
 
@@ -64,7 +64,7 @@
                                      Height="30"
                                      Width="30"
                                      VerticalAlignment="Center"
-                                     Foreground="#E6C067"
+                                     Foreground="#67C6E6"
                                      
                                      HorizontalAlignment="Right"
                                      />

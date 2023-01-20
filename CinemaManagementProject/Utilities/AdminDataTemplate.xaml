@@ -21,6 +21,9 @@
                     xmlns:StatisticalVM="clr-namespace:CinemaManagementProject.ViewModel.AdminVM.StatisticalManagementVM"
                     xmlns:SettingView="clr-namespace:CinemaManagementProject.View.Admin.SettingManagement"
                     xmlns:SettingVM="clr-namespace:CinemaManagementProject.ViewModel.AdminVM.SettingVM"
+                    xmlns:HelpScreenVM="clr-namespace:CinemaManagementProject.ViewModel.AdminVM.HelpScreenVM"
+                    xmlns:HelpScreenView="clr-namespace:CinemaManagementProject.View.Admin.HelpScreen">
+                    xmlns:SettingVM="clr-namespace:CinemaManagementProject.ViewModel.AdminVM.SettingVM"
                     xmlns:ReviewView="clr-namespace:CinemaManagementProject.View.Admin.ReviewManagement"
                     xmlns:ReviewVM="clr-namespace:CinemaManagementProject.ViewModel.AdminVM.ReviewManagementVM">
     <DataTemplate DataType="{x:Type VoucherVM:VoucherViewModel}">
@@ -62,6 +65,11 @@
     <DataTemplate DataType="{x:Type SettingVM:SettingVM}">
         <SettingView:SettingPage></SettingView:SettingPage>
     </DataTemplate>
+
+    <DataTemplate DataType="{x:Type HelpScreenVM:HelpScreenVM}">
+        <HelpScreenView:HelpScreen></HelpScreenView:HelpScreen>
+    </DataTemplate>
+
     
     <DataTemplate DataType="{x:Type ReviewVM:ReviewManagementVM}">
         <ReviewView:ReviewManagementPage></ReviewView:ReviewManagementPage>

@@ -7,7 +7,9 @@
                     xmlns:TroubleViewModel="clr-namespace:CinemaManagementProject.ViewModel.StaffVM.TroubleStaffVM"
                     xmlns:TroubleView="clr-namespace:CinemaManagementProject.View.Staff.Trouble"
                     xmlns:SettingStaffView="clr-namespace:CinemaManagementProject.View.Staff.SettingManagement"
-                    xmlns:SettingStaffVM="clr-namespace:CinemaManagementProject.ViewModel.StaffVM.SettingStaffVM">
+                    xmlns:SettingStaffVM="clr-namespace:CinemaManagementProject.ViewModel.StaffVM.SettingStaffVM"
+                    xmlns:HelpScreenVM="clr-namespace:CinemaManagementProject.ViewModel.StaffVM.HelpScreenVM"
+                    xmlns:HelpScreenView="clr-namespace:CinemaManagementProject.View.Staff.HelpScreen">
     <DataTemplate DataType="{x:Type OrderFoodViewModel:OrderFoodManagementVM}">
         <OrderFoodView:OrderFoodPage></OrderFoodView:OrderFoodPage>
     </DataTemplate>
@@ -19,5 +21,8 @@
     </DataTemplate>
     <DataTemplate DataType="{x:Type SettingStaffVM:SettingStaffVM}">
         <SettingStaffView:SettingPage></SettingStaffView:SettingPage>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type HelpScreenVM:HelpScreenVM}">
+        <HelpScreenView:HelpScreen></HelpScreenView:HelpScreen>
     </DataTemplate>
 </ResourceDictionary>
