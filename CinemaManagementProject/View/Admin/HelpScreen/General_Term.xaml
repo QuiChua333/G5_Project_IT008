@@ -26,7 +26,7 @@
             <Grid Grid.Row="0">
                 <Border BorderBrush="#67C6E6" BorderThickness="0,0,0,4" Margin="35,0,35,0"/>
                 <Label Padding="0" 
-                           Content="Điều khoản chung" 
+                           Content="{DynamicResource generalTerm_label_DieuKhoanChung}" 
                            FontSize="25" 
                            FontWeight="Bold" 
                            VerticalAlignment="Center" 
@@ -72,7 +72,7 @@
                             <RowDefinition Height="15*"/>
                             <RowDefinition Height="85*"/>
                         </Grid.RowDefinitions>
-                        <TextBlock Text="* Việc bạn sử dụng ưng dụng này đồng nghĩa với việc bạn đồng ý với những thỏa thuận dưới đây. Nếu bạn không đồng ý, xin vui lòng không sử dụng ứng dụng."
+                        <TextBlock Text="{DynamicResource generalTerm_textblock_camket}"
                                    FontSize="20"
                                    Focusable="False"
                                    Grid.Row="0"
@@ -95,7 +95,7 @@
                                                 <RowDefinition Height="18*"/>
                                                 <RowDefinition Height="82*"/>
                                             </Grid.RowDefinitions>
-                                            <TextBlock Text="1. Trách nhiệm của người sử dụng:" 
+                                            <TextBlock Text="{DynamicResource generalTerm_textblock_trachnhiem}" 
                                                    Grid.Row="0"
                                                    FontSize="16"
                                                    FontWeight="Bold"
@@ -111,8 +111,9 @@
                                                    FontSize="16"
                                                    Margin="40,4,20,0"
                                                    Focusable="False"
-                                                   Foreground="Black">
-                                            Khi truy cập vào ứng dụng này, bạn đồng ý chấp nhận mọi rủi ro. FatFilmFo và các bên đối tác khác không chịu trách nhiệm về bất kỳ tổn thất nào do những hậu quả trực tiếp, tình cờ hay gián tiếp; những thất thoát, chi phí (bao gồm chi phí pháp lý, chi phí tư vấn hoặc các khoản chi tiêu khác) có thể phát sinh trực tiếp hoặc gián tiếp do việc truy cập ứng dụng hoặc khi tải dữ liệu về máy; những tổn hại gặp phải do virus, hành động phá hoại trực tiếp hay gián tiếp của hệ thống máy tính khác, đường dây điện thoại, phần cứng, phần mềm, lỗi chương trình, hoặc bất kì các lỗi nào khác; đường truyền dẫn của máy tính hoặc nối kết mạng bị chậm…
+                                                   Foreground="Black"
+                                                   Text="{DynamicResource generalTerm_textblock_tn}">
+                                            
                                             </TextBlock>
                                         </Grid>
                                         <Grid Height="160" VerticalAlignment="Top" Margin="0,10,0,0">
@@ -120,7 +121,7 @@
                                                 <RowDefinition Height="18*"/>
                                                 <RowDefinition Height="82*"/>
                                             </Grid.RowDefinitions>
-                                            <TextBlock Text="2. Về nội dung trên ứng dụng:" 
+                                            <TextBlock Text="{DynamicResource generalTerm_textblock_noidung}" 
                                                    Grid.Row="0"
                                                    FontSize="16"
                                                    FontWeight="Bold"
@@ -136,8 +137,8 @@
                                                    FontSize="16"
                                                    Margin="40,0,0,0"
                                                    Focusable="False"
-                                                   Foreground="Black">
-                                                Tất cả những thông tin ở đây được cung cấp cho bạn một cách trung thực như bản thân sự việc. FatFilmFo và các bên liên quan không bảo đảm, hay có bất kỳ tuyên bố nào liên quan đến tính chính xác, tin cậy của việc sử dụng hay kết quả của việc sử dụng nội dung trên ứng dụng này. Nội dung trên ứng dụng được cung cấp vì lợi ích của cộng đồng và có tính phi thương mại. Các cá nhân và tổ chức không được phép sử dụng nội dung trên ứng dụng này với mục đích thương mại mà không có sự ưng thuận của FatFilmFo bằng văn bản. Mặc dù FatFilmFo luôn cố gắng cập nhật thường xuyên các nội dung tại ứng dụng, nhưng chúng tôi không bảo đảm rằng các thông tin đó là mới nhất, chính xác hay đầy đủ. Tất cả các nội dung ứng dụng có thể được thay đổi bất kỳ lúc nào.
+                                                   Foreground="Black"
+                                                   Text="{DynamicResource generalTerm_textblock_nd}"    >
                                             </TextBlock>
                                            
                                         </Grid>
@@ -146,7 +147,7 @@
                                                 <RowDefinition Height="24*"/>
                                                 <RowDefinition Height="76*"/>
                                             </Grid.RowDefinitions>
-                                            <TextBlock Text="3. Về bản quyền:" 
+                                            <TextBlock Text="{DynamicResource generalTerm_textblock_banquyen}" 
                                                    Grid.Row="0"
                                                    FontSize="16"
                                                    FontWeight="Bold"
@@ -162,8 +163,8 @@
                                                    FontSize="16"
                                                    Margin="40,0,0,0"
                                                    Focusable="False"
-                                                   Foreground="Black">
-                                                FatFilmFo  là chủ bản quyền của ứng dụng này. Việc chỉnh sửa trang, nội dung, và sắp xếp thuộc về thẩm quyền của FatFilmFo. Sự chỉnh sửa, thay đổi, phân phối hoặc tái sử dụng những nội dung trong trang này vì bất kì mục đích nào khác được xem như vi phạm quyền lợi hợp pháp của FatFilmFo.
+                                                   Foreground="Black"
+                                                       Text="{DynamicResource generalTerm_textblock_bq}">
                                             </TextBlock>
                                         </Grid>
                                         <Grid Height="180" VerticalAlignment="Top" Margin="0,10,0,0">
@@ -171,7 +172,7 @@
                                                 <RowDefinition Height="18*"/>
                                                 <RowDefinition Height="82*"/>
                                             </Grid.RowDefinitions>
-                                            <TextBlock Text="4. Về việc sử dụng thông tin: " 
+                                            <TextBlock Text="{DynamicResource generalTerm_textblock_sudungtt}" 
                                                    Grid.Row="0"
                                                    FontSize="16"
                                                    FontWeight="Bold"
@@ -187,8 +188,8 @@
                                                        FontStyle="Italic"
                                                    Margin="40,0,0,0"
                                                    Focusable="False"
-                                                   Foreground="Black">
-                                                Chúng tôi sẽ không sử dụng thông tin cá nhân của bạn trên ứng dụng này nếu không được phép. Nếu bạn đồng ý cung cấp thông tin cá nhân, bạn sẽ được bảo vệ. Thông tin của bạn sẽ được sử dụng với mục đích, liên lạc với bạn để thông báo các thông tin cập nhật của FatFilmFo như lịch chiếu phim, khuyến mại qua email hoặc bưu điện. Thông tin cá nhân của bạn sẽ không được gửi cho bất kỳ ai sử dụng ngoài ứng dụng FatFilmFo, ngoại trừ những mở rộng cần thiết để bạn có thể tham gia vào ứng dụng (những nhà cung cấp dịch vụ, đối tác, các công ty quảng cáo) và yêu cầu cung cấp bởi luật pháp. Nếu chúng tôi chia sẻ thông tin cá nhân của bạn cho các nhà cung cấp dịch vụ, công ty quảng cáo, các công ty đối tác liên quan, thì chúng tôi cũng yêu cầu họ bảo vệ thông tin cá nhân của bạn như cách chúng tôi thực hiện.
+                                                   Foreground="Black"
+                                                       Text="{DynamicResource generalTerm_textblock_sdtt}">
                                             </TextBlock>
                                         </Grid>
                                         <Grid Height="90" VerticalAlignment="Top" Margin="0,10,0,0">
@@ -196,7 +197,7 @@
                                                 <RowDefinition Height="24*"/>
                                                 <RowDefinition Height="76*"/>
                                             </Grid.RowDefinitions>
-                                            <TextBlock Text="5. Vể việc tải dữ liệu:" 
+                                            <TextBlock Text="{DynamicResource generalTerm_textblock_viectaidl}" 
                                                    Grid.Row="0"
                                                    FontSize="16"
                                                    FontWeight="Bold"
@@ -212,8 +213,8 @@
                                                        FontStyle="Italic"
                                                    Margin="40,0,0,0"
                                                    Focusable="False"
-                                                   Foreground="Black">
-                                                Nếu bạn tải về máy những phần mềm từ ứng dụng này, thì phần mềm và các dữ liệu tải sẽ thuộc bản quyền của FatFilmFo và cho phép bạn sử dụng. Bạn không được sở hữu những phầm mềm đã tải và FatFilmFo không nhượng quyền cho bạn. Bạn cũng không được phép bán, phân phối lại, hay bẻ khóa phần mềm…
+                                                   Foreground="Black"
+                                                       Text="{DynamicResource generalTerm_textblock_vtdl}">
                                             </TextBlock>
                                         </Grid>
                                         <Grid Height="50" VerticalAlignment="Top" Margin="0,10,0,0">
@@ -221,7 +222,7 @@
                                                 <RowDefinition Height="45*"/>
                                                 <RowDefinition Height="55*"/>
                                             </Grid.RowDefinitions>
-                                            <TextBlock Text="6. Thay đổi nội dung:" 
+                                            <TextBlock Text="{DynamicResource generalTerm_textblock_thaydoinoidung}" 
                                                    Grid.Row="0"
                                                    FontSize="16"
                                                    FontWeight="Bold"
@@ -237,8 +238,8 @@
                                                    Margin="40,0,0,0"
                                                        FontStyle="Italic"
                                                    Focusable="False"
-                                                   Foreground="Black">
-                                                FatFilmFo giữ quyền thay đổi, chỉnh sửa và loại bỏ những thông tin hợp pháp vào bất kỳ thời điểm nào vì bất kỳ lý do nào.
+                                                   Foreground="Black"
+                                                       Text="{DynamicResource generalTerm_textblock_tdnd}">
                                             </TextBlock>
                                         </Grid>
                                         <Grid Height="110" VerticalAlignment="Top" Margin="0,10,0,0">
@@ -246,7 +247,7 @@
                                                 <RowDefinition Height="24*"/>
                                                 <RowDefinition Height="76*"/>
                                             </Grid.RowDefinitions>
-                                            <TextBlock Text="7. Liên kết với các trang khác:" 
+                                            <TextBlock Text="{DynamicResource generalTerm_textblock_lienketkhac}" 
                                                    Grid.Row="0"
                                                    FontSize="16"
                                                    FontWeight="Bold"
@@ -262,8 +263,8 @@
                                                    Margin="40,0,0,0"
                                                        FontStyle="Italic"
                                                    Focusable="False"
-                                                   Foreground="Black">
-                                                Mặc dù ứng dụng này có thể được liên kết với những trang web và ứng dụng khác, FatFilmFo không trực tiếp hoặc gián tiếp tán thành, tổ chức, tài trợ, đứng sau hoặc sát nhập với những trang web và ứng dụng đó, trừ phi điều này được nêu ra rõ ràng. Khi truy cập vào ứng dụng bạn phải hiểu và chấp nhận rằng FatFilmFo không thể kiểm soát tất cả những trang web và ứng dụng liên kết với ứng dụng FatFilmFo và cũng không chịu trách nhiệm cho nội dung của những trang web và ứng dụng liên kết.
+                                                   Foreground="Black"
+                                                       Text="{DynamicResource generalTerm_textblock_lkk}">
                                             </TextBlock>
                                         </Grid>
                                         <Grid Height="110" VerticalAlignment="Top" Margin="0,10,0,0">
@@ -271,7 +272,7 @@
                                                 <RowDefinition Height="24*"/>
                                                 <RowDefinition Height="76*"/>
                                             </Grid.RowDefinitions>
-                                            <TextBlock Text="8. Đưa thông tin lên ứng dụng:" 
+                                            <TextBlock Text="{DynamicResource generalTerm_textblock_duathongtinud}" 
                                                    Grid.Row="0"
                                                    FontSize="16"
                                                    FontWeight="Bold"
@@ -287,8 +288,8 @@
                                                        FontStyle="Italic"
                                                    Margin="40,0,0,0"
                                                    Focusable="False"
-                                                   Foreground="Black">
-                                                Bạn không được đưa lên, hoặc chuyển tải lên ứng dụng tất cả những hình ảnh, từ ngữ khiêu dâm, thô tục, xúc phạm, phỉ báng, bôi nhọ, đe dọa, những thông tin không hợp pháp hoặc những thông tin có thể đưa đến việc vi phạm pháp luật, trách nhiệm pháp lý. FatFilmFo và tất cả các bên có liên quan đến việc xây dựng và quản lý ứng dụng không chịu trách nhiệm hoặc có nghĩa vụ pháp lý đối với những phát sinh từ nội dung do bạn tải lên ứng dụng.
+                                                   Foreground="Black"
+                                                       Text="{DynamicResource generalTerm_textblock_dttlud}">
                                             </TextBlock>
                                         </Grid>
                                         <Grid Height="70" VerticalAlignment="Top" Margin="0,10,0,0">
@@ -296,7 +297,7 @@
                                                 <RowDefinition Height="36*"/>
                                                 <RowDefinition Height="64*"/>
                                             </Grid.RowDefinitions>
-                                            <TextBlock Text="9. Luật áp dụng:" 
+                                            <TextBlock Text="{DynamicResource generalTerm_textblock_luatapdung}" 
                                                    Grid.Row="0"
                                                    FontSize="16"
                                                    FontWeight="Bold"
@@ -312,8 +313,8 @@
                                                    Margin="40,0,0,0"
                                                        FontStyle="Italic"
                                                    Focusable="False"
-                                                   Foreground="Black">
-                                                Mọi hoạt động phát sinh từ ứng dụng có thể sẽ được phân tích và đánh giá theo luật pháp Việt Nam và toà án Tp. Hồ Chí Minh. Và bạn phải đồng ý tuân theo các điều khoản riêng của các toà án này.
+                                                   Foreground="Black"
+                                                       Text="{DynamicResource generalTerm_textblock_lad}">
                                             </TextBlock>
                                         </Grid>
                                     </StackPanel>
