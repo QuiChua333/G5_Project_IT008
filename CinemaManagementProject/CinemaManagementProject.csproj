@@ -729,7 +729,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Resource Include="Resource\Icons\uploadWhite.png" />
     <Resource Include="Resource\Icons\cameraReview.png" />
     <Resource Include="Resource\Icons\image %285%29.png" />
     <Resource Include="Resource\Icons\send.png" />
@@ -744,13 +743,13 @@
       <DependentUpon>CinemaManagementDatabase.edmx</DependentUpon>
       <LastGenOutput>CinemaManagementDatabase.cs</LastGenOutput>
     </Content>
-    <Resource Include="Resource\Icons\uploadWhite.png" />
     <Resource Include="Resource\Images\Backgrond.jpg" />
     <Resource Include="Resource\Images\iconFace.png" />
     <Resource Include="Resource\Images\iconInstaram.png" />
     <Resource Include="Resource\Images\iconTiwter.png" />
     <Resource Include="Resource\Images\iconZalo.png" />
     <Content Include="Resource\EmailTemplate\ThankYouTemplate.txt" />
+    <Resource Include="Resource\Icons\uploadWhite.png" />
     <Content Include="Resource\Styles\MenuButtonUI.xaml">
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
