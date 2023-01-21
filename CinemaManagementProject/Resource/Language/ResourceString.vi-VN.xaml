@@ -486,6 +486,7 @@
     <system:String x:Key="HelpScreen_Label_ThongTingLH">Thông tin liên hệ</system:String>
 
     <!--***-->
+    <system:String x:Key="fre_title">Câu hỏi thường gặp</system:String>
     <system:String x:Key="fre_titleNote">Việc bạn sử dụng ưng dụng này đồng nghĩa với việc bạn đồng ý với những thỏa thuận dưới đây. Nếu bạn không đồng ý, xin vui lòng không sử dụng ứng dụng.</system:String>
     <system:String x:Key="fre_titleA">Phim</system:String>
     <system:String x:Key="fre_askA1">1, Phân loại phim P, C13, C16, C18 là gì?</system:String>
@@ -769,6 +770,7 @@
     <system:String x:Key="AddTroubleWindow_Label_Motaloi">Mô tả lỗi</system:String>
     <system:String x:Key="AddTroubleWindow_button_Xacnhan">Xác nhận</system:String>
 
+    <system:String x:Key="generalTerm_label_title">Điều khoản chung</system:String>
     <system:String x:Key="generalTerm_textblock_camket">* Việc bạn sử dụng ưng dụng này đồng nghĩa với việc bạn đồng ý với những thỏa thuận dưới đây. Nếu bạn không đồng ý, xin vui lòng không sử dụng ứng dụng.</system:String>
     <system:String x:Key="generalTerm_textblock_trachnhiem">1. Trách nhiệm của người sử dụng:</system:String>
     <system:String x:Key="generalTerm_textblock_tn">Khi truy cập vào ứng dụng này, bạn đồng ý chấp nhận mọi rủi ro. FatFilmFo và các bên đối tác khác không chịu trách nhiệm về bất kỳ tổn thất nào do những hậu quả trực tiếp, tình cờ hay gián tiếp; những thất thoát, chi phí (bao gồm chi phí pháp lý, chi phí tư vấn hoặc các khoản chi tiêu khác) có thể phát sinh trực tiếp hoặc gián tiếp do việc truy cập ứng dụng hoặc khi tải dữ liệu về máy; những tổn hại gặp phải do virus, hành động phá hoại trực tiếp hay gián tiếp của hệ thống máy tính khác, đường dây điện thoại, phần cứng, phần mềm, lỗi chương trình, hoặc bất kì các lỗi nào khác; đường truyền dẫn của máy tính hoặc nối kết mạng bị chậm…</system:String>
