@@ -85,6 +85,7 @@ namespace CinemaManagementProject.ViewModel.AdminVM
         }
         private bool isEN = Properties.Settings.Default.isEnglish;
         public ICommand FirstLoadCM { get; set; }
+        public ICommand ReviewCommand { get; set; }
         public ICommand VoucherCommand { get; set; }
         public ICommand ShowTimeViewCommand { get; set; }
         public ICommand CustomerViewCommand { get; set; }
@@ -100,6 +101,7 @@ namespace CinemaManagementProject.ViewModel.AdminVM
         public ICommand OpenAvatarPopupCommand { get; set; }
         public ICommand CloseAvatarPopupCommand { get; set; }
         public ICommand SwitchToSettingTab { get; set; }
+        private void Review(object onj) => CurrentView = new ReviewManagementVM.ReviewManagementVM();
         private void Food(object obj) => CurrentView = new FoodManagementVM.FoodManagementVM();
         private void Voucher(object obj) => CurrentView = new VoucherManagementVM.VoucherViewModel();
         private void ShowTime(object obj) => CurrentView = new ShowtimeManagementVM.ShowtimeMangementViewModel();
@@ -115,6 +117,7 @@ namespace CinemaManagementProject.ViewModel.AdminVM
         public AdminVM()
         {
             VoucherCommand = new RelayCommand(Voucher);
+            ReviewCommand = new RelayCommand(Review);
             ShowTimeViewCommand = new RelayCommand(ShowTime);
             CustomerViewCommand = new RelayCommand(Customer);
             HistoryViewCommand = new RelayCommand(History);

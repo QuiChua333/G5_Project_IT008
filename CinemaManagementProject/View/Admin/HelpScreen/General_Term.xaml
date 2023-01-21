@@ -26,7 +26,7 @@
             <Grid Grid.Row="0">
                 <Border BorderBrush="#67C6E6" BorderThickness="0,0,0,4" Margin="35,0,35,0"/>
                 <Label Padding="0" 
-                           Content="{DynamicResource generalTerm_label_DieuKhoanChung}" 
+                           Content="{DynamicResource generalTerm_label_title}" 
                            FontSize="25" 
                            FontWeight="Bold" 
                            VerticalAlignment="Center" 

@@ -257,6 +257,21 @@
     <system:String x:Key="orderfood_textblock_ThanhToan">Payment</system:String>
     <system:String x:Key="orderfood_textblock_Tong">Total</system:String>
     <system:String x:Key="orderfood_button_XacNhan">Confirm</system:String>
+    <system:String x:Key="DanhGia_textblock_DanhGiaTheo">Sort by</system:String>
+    <system:String x:Key="DanhGia_textblock_LuotBinhLuan">Comments</system:String>
+    <system:String x:Key="DanhGia_textblock_TyLeSao">Rate</system:String>
+    <system:String x:Key="DanhGia_textblock_SapXep">Sort</system:String>
+    <system:String x:Key="DanhGia_textblock_GiamDan">Descending</system:String>
+    <system:String x:Key="DanhGia_textblock_TangDan">Ascending</system:String>
+    <system:String x:Key="DanhGia_textblock_Chon">Choose</system:String>
+    <system:String x:Key="DanhGia_textblock_TatCa">All</system:String>
+    <system:String x:Key="DanhGia_textblock_STT">Id</system:String>
+    <system:String x:Key="DanhGia_textblock_TenPhim">Movie name</system:String>
+    <system:String x:Key="DanhGia_textblock_LuotDanhGia">Comments</system:String>
+    <system:String x:Key="DanhGia_textblock_TrungBinh">Rate</system:String>
+    <system:String x:Key="DanhGia_label_DanhGiaCuaKhachHang">Customer Reviews</system:String>
+    <system:String x:Key="DanhGia_textblock_DaTraLoi">Answered</system:String>
+    <system:String x:Key="DanhGia_textblock_ChuaTraLoi">Not answered</system:String>
 <!--***-->
     
 <!--Tinh-->
@@ -445,6 +460,8 @@
     <system:String x:Key="TicketBillPage_Label_KhuyenMai">Promotion:</system:String>
     <system:String x:Key="TicketBillPage_Label_SauKhuyenMai">After promotion:</system:String>
     <system:String x:Key="TicketBillPage_Label_MienPhi">Free</system:String>
+
+    <system:String x:Key="fre_title">Frequently asked questions</system:String>
     <system:String x:Key="fre_titleNote">The use of this use means that you agree with the following agreements. If you disagree, please do not use the application.</system:String>
     <system:String x:Key="fre_titleA">Film</system:String>
     <system:String x:Key="fre_askA1">1, Classification of movies P, C13, C16, C18?</system:String>
@@ -782,6 +799,7 @@
     <system:String x:Key="AddTroubleWindow_Label_Motaloi">Description trouble</system:String>
     <system:String x:Key="AddTroubleWindow_button_Xacnhan">Confirm</system:String>
 
+    <system:String x:Key="generalTerm_label_title">General Terms</system:String>
     <system:String x:Key="generalTerm_textblock_camket">* Your use of this application constitutes your agreement to the following agreements. If you do not agree, please do not use the application.</system:String>
     <system:String x:Key="generalTerm_textblock_trachnhiem">1. About User Responsibilities:</system:String>
     <system:String x:Key="generalTerm_textblock_tn">By accessing this application, you agree to accept all risks. FatFilmFo and other partners are not liable for any loss resulting from direct, incidental or indirect consequential; losses and expenses (including legal fees, consulting costs or other expenses) that may be incurred directly or indirectly as a result of accessing the application or downloading data to the device; damage caused by viruses, direct or indirect destruction of other computer systems, telephone lines, hardware, software, program errors, or any other failure; Your computer's transmission line or network connection is slow...</system:String>

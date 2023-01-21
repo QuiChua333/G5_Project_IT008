@@ -258,6 +258,21 @@
     <system:String x:Key="orderfood_textblock_ThanhToan">Thanh toán</system:String>
     <system:String x:Key="orderfood_textblock_Tong">Tổng</system:String>
     <system:String x:Key="orderfood_button_XacNhan">Xác nhận</system:String>
+    <system:String x:Key="DanhGia_textblock_DanhGiaTheo">Đánh giá theo</system:String>
+    <system:String x:Key="DanhGia_textblock_LuotBinhLuan">Lượt bình luận</system:String>
+    <system:String x:Key="DanhGia_textblock_TyLeSao">Tỷ lệ sao</system:String>
+    <system:String x:Key="DanhGia_textblock_SapXep">Sắp xếp</system:String>
+    <system:String x:Key="DanhGia_textblock_GiamDan">Giảm dần</system:String>
+    <system:String x:Key="DanhGia_textblock_TangDan">Tăng dần</system:String>
+    <system:String x:Key="DanhGia_textblock_Chon">Chọn</system:String>
+    <system:String x:Key="DanhGia_textblock_TatCa">Tất cả</system:String>
+    <system:String x:Key="DanhGia_textblock_STT">STT</system:String>
+    <system:String x:Key="DanhGia_textblock_TenPhim">Tên phim</system:String>
+    <system:String x:Key="DanhGia_textblock_LuotDanhGia">Lượt đánh giá</system:String>
+    <system:String x:Key="DanhGia_textblock_TrungBinh">Trung bình</system:String>
+    <system:String x:Key="DanhGia_label_DanhGiaCuaKhachHang">Đánh giá của khách hàng</system:String>
+    <system:String x:Key="DanhGia_textblock_DaTraLoi">Đã trả lời</system:String>
+    <system:String x:Key="DanhGia_textblock_ChuaTraLoi">Chưa trả lời</system:String>
 <!--***-->
     
 <!--Tinh-->
@@ -500,6 +515,7 @@
     <system:String x:Key="HelpScreen_Label_ThongTingLH">Thông tin liên hệ</system:String>
 
     <!--***-->
+    <system:String x:Key="fre_title">Câu hỏi thường gặp</system:String>
     <system:String x:Key="fre_titleNote">Việc bạn sử dụng ưng dụng này đồng nghĩa với việc bạn đồng ý với những thỏa thuận dưới đây. Nếu bạn không đồng ý, xin vui lòng không sử dụng ứng dụng.</system:String>
     <system:String x:Key="fre_titleA">Phim</system:String>
     <system:String x:Key="fre_askA1">1, Phân loại phim P, C13, C16, C18 là gì?</system:String>
@@ -783,6 +799,7 @@
     <system:String x:Key="AddTroubleWindow_Label_Motaloi">Mô tả lỗi</system:String>
     <system:String x:Key="AddTroubleWindow_button_Xacnhan">Xác nhận</system:String>
 
+    <system:String x:Key="generalTerm_label_title">Điều khoản chung</system:String>
     <system:String x:Key="generalTerm_textblock_camket">* Việc bạn sử dụng ưng dụng này đồng nghĩa với việc bạn đồng ý với những thỏa thuận dưới đây. Nếu bạn không đồng ý, xin vui lòng không sử dụng ứng dụng.</system:String>
     <system:String x:Key="generalTerm_textblock_trachnhiem">1. Trách nhiệm của người sử dụng:</system:String>
     <system:String x:Key="generalTerm_textblock_tn">Khi truy cập vào ứng dụng này, bạn đồng ý chấp nhận mọi rủi ro. FatFilmFo và các bên đối tác khác không chịu trách nhiệm về bất kỳ tổn thất nào do những hậu quả trực tiếp, tình cờ hay gián tiếp; những thất thoát, chi phí (bao gồm chi phí pháp lý, chi phí tư vấn hoặc các khoản chi tiêu khác) có thể phát sinh trực tiếp hoặc gián tiếp do việc truy cập ứng dụng hoặc khi tải dữ liệu về máy; những tổn hại gặp phải do virus, hành động phá hoại trực tiếp hay gián tiếp của hệ thống máy tính khác, đường dây điện thoại, phần cứng, phần mềm, lỗi chương trình, hoặc bất kì các lỗi nào khác; đường truyền dẫn của máy tính hoặc nối kết mạng bị chậm…</system:String>
