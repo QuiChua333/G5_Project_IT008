@@ -149,7 +149,36 @@
     <system:String x:Key="InforEditShowtimeWindow_Button_Delete">Xóa</system:String>
     <system:String x:Key="InforEditShowtimeWindow_Button_Exit">Thoát</system:String>
     <system:String x:Key="InforEditShowtimeWindow_Label_Total">Tổng số:</system:String>
-<!--***-->
+
+    <system:String x:Key="TradingTerms_Label_Header">Điều khoản giao dịch</system:String>
+    <system:String x:Key="TradingTerms_TextBlock_Signal">* Xin vui lòng đọc kỹ trước khi quyết định Đặt Vé trực tuyến.</system:String>
+    <system:String x:Key="TradingTerms_TextBlock_Scope">1. Phạm Vi Áp Dụng:</system:String>
+    <system:String x:Key="TradingTerms_TextBlock_ScopeContent">Điều kiện dưới đây áp dụng riêng cho chức năng mua vé trực tuyến tại ứng dụng. Khi sử dụng chức năng để đặt chỗ và mua vé, Quý khách mặc nhiên đã chấp thuận và tuân thủ tất cả các chỉ dẫn, điều khoản, điều kiện và lưu ý đăng tải trên ứng dụng, bao gồm nhưng không giới hạn bởi Điều kiện Sử dụng nêu ở đây. Nếu Quý khách không có ý định mua vé trực tuyến hay không đồng ý với bất kỳ điều khoản hay điều kiện nào nêu trong Điều kiện Sử dụng, xin hãy DỪNG VIỆC SỬ DỤNG chức năng này.</system:String>
+    <system:String x:Key="TradingTerms_TextBlock_Condition">2. Điều kiện sử dụng tính năng mua vé trực tuyến:</system:String>
+    <system:String x:Key="TradingTerms_TextBlock_ConditionContent">Quý khách phải đăng ký tài khoản với thông tin xác thực về bản thân và phải cập nhật nếu có bất kỳ thay đổi nào. Mỗi người truy cập phải có trách nhiệm với mật khẩu, tài khoản và hoạt động của mình trên ứng dụng. Hơn nữa, quý khách phải thông báo cho chúng tôi biết khi tài khoản bị truy cập trái phép. Chúng tôi không chịu bất kỳ trách nhiệm nào, dù trực tiếp hay gián tiếp, đối với những thiệt hại hoặc mất mát gây ra do quý khách không tuân thủ quy định.</system:String>
+    <system:String x:Key="TradingTerms_TextBlock_Regulations">3. Quy định về đặt vé trực tuyến:</system:String>
+    <system:String x:Key="TradingTerms_TextBlock_RegulationsContent1">- Thông thường, FatFilmFoo mở bán vé trực tuyến trước ngày chiếu phim, tuy nhiên điều này phụ thuộc vào mỗi phim, mỗi rạp. Nếu suất chiếu bạn muốn đặt chưa được hiển thị trên ứng dụng vào thời điểm khách đặt vé, xin vui lòng quay lại sau, hoặc liên hệ tới số hotline của FatFilmFoo 0379361210 để biết thêm thông tin chi tiết.</system:String>
+    <system:String x:Key="TradingTerms_TextBlock_RegulationsContent2">- FatFilmFoo không cam kết giữ chỗ ngồi cho quý khách cho đến khi quý khách hoàn tất thanh toán cho đơn hàng của mình.</system:String>
+    <system:String x:Key="TradingTerms_TextBlock_RegulationsContent3">- Khách hàng có thể đặt chỗ cho tối đa 7 khách trong mỗi lần thực hiện.</system:String>
+    <system:String x:Key="TradingTerms_TextBlock_RegulationsContent4">- Khi tiến hành các bước thanh toán, cần đọc kĩ các thông tin trên màn hình về rạp chiếu phim, tên phim, suất chiếu, và chỗ ngồi trước khi hoàn tất việc xác nhận tất cả các thông tin về vé.</system:String>
+    <system:String x:Key="TradingTerms_TextBlock_RegulationsContent5">- Quý khách thanh toán giao dịch đặt vé theo quy định tại Chính Sách Thanh Toán đăng tải trên FatFilmFo trước khi nhận mã đặt vé của giao dịch đó. Khi quý khách nhấn (click) vào ô “Thanh toán” để tiến hành thanh toán Đặt chỗ có nghĩa là đã xác nhận rà soát thông tin Đặt chỗ; và đồng ý là Điều Khoản Và Điều Kiện sẽ được áp dụng cho giao dịch mua vé trong giao dịch đó.</system:String>
+    <system:String x:Key="TradingTerms_TextBlock_RegulationsContent6">- Email và tin nhắn xác nhận đặt vé sau khi hoàn thành việc thanh toán vé trực tuyến, quý khách sẽ nhận được thư xác nhận thông tin chi tiết vé đã thanh toán thông qua địa chỉ thư điện tử (email) mà quý khách đã cung cấp. Email xác nhận thông tin đặt vé có thể đi vào hộp thư rác (spam mail) của bạn, vì vậy hãy kiểm tra chúng trước khi liên lạc với FatFilmFoo.</system:String>
+    <system:String x:Key="TradingTerms_TextBlock_RegulationsContent7">- Bằng việc thanh toán qua ứng dụng này, quý khách chấp nhận vị trí ghế ngồi mà bạn đã đặt. Quý khách đồng ý rằng, trong những trường hợp có sự thay đổi về chương trình phim hoặc bất khả kháng, FatFilmFo có quyền hoàn trả lại bất kỳ vé nào từ việc mua bán qua ứng dụng này hoặc thực hiện việc chuyển vé cho bạn qua suất chiếu khác theo yêu cầu của quý khách.</system:String>
+    <system:String x:Key="TradingTerms_TextBlock_RegulationsContent8">- Trong suốt quá trình đăng ký, quý khách đồng ý nhận email quảng cáo từ ứng dụng. Sau đó, nếu không muốn tiếp tục nhận mail, quý khách có thể từ chối bằng cách nhấp vào đường link ở dưới cùng trong mọi email quảng cáo.</system:String>
+    <system:String x:Key="TradingTerms_TextBlock_TicketPrice">4. Giá Vé:</system:String>
+    <system:String x:Key="TradingTerms_TextBlock_TicketPriceContent">Giá vé được niêm yết tại FatFilmFoo là giá bán cuối cùng đã bao gồm thuế Giá trị gia tăng (VAT). Giá vé có thể thay đổi tùy thời điểm và chương trình khuyến mãi kèm theo và sẽ được hiển thị rõ tại trang Thanh toán khi quý khách tiến hành đặt hàng. Giá vé khi đặt vé trực tuyến trên ứng dụng FatFilmFoo là giá vé áp dụng cho nhiều đối tượng người lớn, trẻ em với mức cố định là 45 000 VNĐ.</system:String>
+    <system:String x:Key="TradingTerms_TextBlock_TrademarksAndCopyrights">5. Thương hiệu và bản quyền:</system:String>
+    <system:String x:Key="TradingTerms_TextBlock_TrademarksAndCopyrightsContent">Mọi quyền sở hữu trí tuệ (đã đăng ký hoặc chưa đăng ký), nội dung thông tin và tất cả các thiết kế, văn bản, đồ họa, phần mềm, hình ảnh, video, âm nhạc, âm thanh, biên dịch phần mềm, mã nguồn và phần mềm cơ bản đều là tài sản của FatFilmFo. Toàn bộ nội dung của ứng dụng được bảo vệ theo pháp luật sở hữu trí tuệ của Việt Nam và các công ước, điều ước quốc tế mà Việt Nam tham gia hoặc là thành viên.</system:String>
+    <system:String x:Key="TradingTerms_TextBlock_Law">6. Luật áp dụng và giải quyết tranh chấp:</system:String>
+    <system:String x:Key="TradingTerms_TextBlock_LawContent">Các điều kiện, điều khoản và nội dung của trang web này được điều chỉnh và giải thích theo luật pháp Việt Nam. Các tranh chấp phát sinh từ hoặc liên quan đến (các) giao dịch thực hiện tại ứng dụng này sẽ được ưu tiên giải quyết thông qua thương lượng, hòa giải. Trường hợp các bên không tự giải quyết, tranh chấp sẽ được đưa ra xét xử tại Tòa án cấp có thẩm quyền của Việt Nam.</system:String>
+    <system:String x:Key="TradingTerms_TextBlock_Privacy">7. Quy định về bảo mật:</system:String>
+    <system:String x:Key="TradingTerms_TextBlock_PrivacyContent">Ứng dụng của chúng tôi coi trọng việc bảo mật thông tin và sử dụng các biện pháp tốt nhất bảo vệ thông tin và việc thanh toán của quý khách. Thông tin của quý khách trong quá trình thanh toán sẽ được mã hóa để đảm bảo an toàn. Sau khi quý khách hoàn thành quá trình đặt hàng, quý khách sẽ thoát khỏi chế độ an toàn. Quý khách không được sử dụng bất kỳ chương trình, công cụ hay hình thức nào khác để can thiệp vào hệ thống hay làm thay đổi cấu trúc dữ liệu. Ứng dụng cũng nghiêm cấm việc phát tán, truyền bá hay cổ vũ cho bất kỳ hoạt động nào nhằm can thiệp, phá hoại hay xâm nhập vào dữ liệu của hệ thống. Cá nhân hay tổ chức vi phạm sẽ bị tước bỏ mọi quyền lợi cũng như sẽ bị truy tố trước pháp luật nếu cần thiết. Mọi thông tin giao dịch sẽ được bảo mật trừ trường hợp buộc phải cung cấp theo yêu cầu của tòa án, (các) cơ quan có thẩm quyền hoặc theo quy định của pháp luật.</system:String>
+    <system:String x:Key="TradingTerms_TextBlock_DealWithTheConsequences">8. Giải quyết hậu quả do lỗi nhập sai thông tin thương mại tại FatFilmFoo:</system:String>
+    <system:String x:Key="TradingTerms_TextBlock_DealWithTheConsequencesContent">Khách hàng có trách nhiệm cung cấp thông tin đầy đủ và chính xác khi tham gia giao dịch tại FatFilmFoo. Trong trường hợp khách hàng nhập sai thông tin tại trang giúp đỡ, FatFilmFoo có quyền từ chối thực hiện giao dịch. Ngoài ra, trong mọi trường hợp, khách hàng đều có quyền đơn phương chấm dứt giao dịch nếu đã thực hiện bằng cách thông báo cho FatFilmFoo qua hotline 0379361210.</system:String>
+
+
+
+    <!--***-->
     
 <!--Nhan-->
     <system:String x:Key="filmbooking_search_TimKiem">Tìm kiếm</system:String>
@@ -458,8 +487,8 @@
     <system:String x:Key="HelpScreen_Label_TapDoan">TẬP ĐOÀN FATFILMFO GROUP</system:String>
     <system:String x:Key="HelpScreen_TextBlock_GiayCNDKDN">Giấy CNDKDN: 0303675394, đăng ký lần đầu ngày 14/10/2015, đăng ký lần thứ 5 ngày 24/11/2022, cấp bởi Sở KHDT thành phố Hồ Chí Minh.</system:String>
     <system:String x:Key="HelpScreen_TextBlock_DiaChi">Địa chỉ: Trường ĐH Công nghệ Thông Tin, ĐHQG Thành phố Hồ Chí Minh - Khu phố 6, phường Linh Trung, thành phố Thủ Đức.</system:String>
-    <system:String x:Key="HelpScreen_Label_DieuKhoanChung">Điều khoảng chung</system:String>
-    <system:String x:Key="HelpScreen_TextBlock_DieuKhoangGiaoDich">Điều khoảng giao dịch</system:String>
+    <system:String x:Key="HelpScreen_Label_DieuKhoanChung">Điều khoản chung</system:String>
+    <system:String x:Key="HelpScreen_TextBlock_DieuKhoanGiaoDich">Điều khoản giao dịch</system:String>
     <system:String x:Key="HelpScreen_TextBlock_ChinhSachBaoMat">Chính sách bảo mật</system:String>
     <system:String x:Key="HelpScreen_TextBlock_CauHoiThuongGap">Câu hỏi thường gặp</system:String>
     <system:String x:Key="HelpScreen_Label_ChamSocKH">Chăm sóc khách hàng</system:String>

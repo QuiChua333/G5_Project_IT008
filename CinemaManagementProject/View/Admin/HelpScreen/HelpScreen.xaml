@@ -191,7 +191,7 @@
                             </TextBlock>
 
                             <TextBlock Grid.Row="1"
-                                   Text="{DynamicResource HelpScreen_TextBlock_DieuKhoangGiaoDich}"
+                                   Text="{DynamicResource HelpScreen_TextBlock_DieuKhoanGiaoDich}"
                                    VerticalAlignment="Center"
                                    HorizontalAlignment="Left"
                                    Margin="40,0,0,0">
