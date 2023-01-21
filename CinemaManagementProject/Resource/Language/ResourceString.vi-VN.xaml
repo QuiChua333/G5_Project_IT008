@@ -229,6 +229,21 @@
     <system:String x:Key="orderfood_textblock_ThanhToan">Thanh toán</system:String>
     <system:String x:Key="orderfood_textblock_Tong">Tổng</system:String>
     <system:String x:Key="orderfood_button_XacNhan">Xác nhận</system:String>
+    <system:String x:Key="DanhGia_textblock_DanhGiaTheo">Đánh giá theo</system:String>
+    <system:String x:Key="DanhGia_textblock_LuotBinhLuan">Lượt bình luận</system:String>
+    <system:String x:Key="DanhGia_textblock_TyLeSao">Tỷ lệ sao</system:String>
+    <system:String x:Key="DanhGia_textblock_SapXep">Sắp xếp</system:String>
+    <system:String x:Key="DanhGia_textblock_GiamDan">Giảm dần</system:String>
+    <system:String x:Key="DanhGia_textblock_TangDan">Tăng dần</system:String>
+    <system:String x:Key="DanhGia_textblock_Chon">Chọn</system:String>
+    <system:String x:Key="DanhGia_textblock_TatCa">Tất cả</system:String>
+    <system:String x:Key="DanhGia_textblock_STT">STT</system:String>
+    <system:String x:Key="DanhGia_textblock_TenPhim">Tên phim</system:String>
+    <system:String x:Key="DanhGia_textblock_LuotDanhGia">Lượt đánh giá</system:String>
+    <system:String x:Key="DanhGia_textblock_TrungBinh">Trung bình</system:String>
+    <system:String x:Key="DanhGia_label_DanhGiaCuaKhachHang">Đánh giá của khách hàng</system:String>
+    <system:String x:Key="DanhGia_textblock_DaTraLoi">Đã trả lời</system:String>
+    <system:String x:Key="DanhGia_textblock_ChuaTraLoi">Chưa trả lời</system:String>
 <!--***-->
     
 <!--Tinh-->

@@ -229,6 +229,21 @@
     <system:String x:Key="orderfood_textblock_ThanhToan">Payment</system:String>
     <system:String x:Key="orderfood_textblock_Tong">Total</system:String>
     <system:String x:Key="orderfood_button_XacNhan">Confirm</system:String>
+    <system:String x:Key="DanhGia_textblock_DanhGiaTheo">Sort by</system:String>
+    <system:String x:Key="DanhGia_textblock_LuotBinhLuan">Comments</system:String>
+    <system:String x:Key="DanhGia_textblock_TyLeSao">Rate</system:String>
+    <system:String x:Key="DanhGia_textblock_SapXep">Sort</system:String>
+    <system:String x:Key="DanhGia_textblock_GiamDan">Descending</system:String>
+    <system:String x:Key="DanhGia_textblock_TangDan">Ascending</system:String>
+    <system:String x:Key="DanhGia_textblock_Chon">Choose</system:String>
+    <system:String x:Key="DanhGia_textblock_TatCa">All</system:String>
+    <system:String x:Key="DanhGia_textblock_STT">Id</system:String>
+    <system:String x:Key="DanhGia_textblock_TenPhim">Movie name</system:String>
+    <system:String x:Key="DanhGia_textblock_LuotDanhGia">Comments</system:String>
+    <system:String x:Key="DanhGia_textblock_TrungBinh">Rate</system:String>
+    <system:String x:Key="DanhGia_label_DanhGiaCuaKhachHang">Customer Reviews</system:String>
+    <system:String x:Key="DanhGia_textblock_DaTraLoi">Answered</system:String>
+    <system:String x:Key="DanhGia_textblock_ChuaTraLoi">Not answered</system:String>
 <!--***-->
     
 <!--Tinh-->

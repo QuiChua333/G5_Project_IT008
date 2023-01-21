@@ -53,6 +53,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="BitMiracle.LibTiff.NET, Version=2.4.649.0, Culture=neutral, PublicKeyToken=53879b3e20e7a7d6, processorArchitecture=MSIL">
+      <HintPath>..\packages\BitMiracle.LibTiff.NET.2.4.649\lib\net40\BitMiracle.LibTiff.NET.dll</HintPath>
+    </Reference>
     <Reference Include="CloudinaryDotNet, Version=1.20.0.0, Culture=neutral, PublicKeyToken=c8234dc617ae7841, processorArchitecture=MSIL">
       <HintPath>..\packages\CloudinaryDotNet.1.20.0\lib\net452\CloudinaryDotNet.dll</HintPath>
     </Reference>
@@ -61,6 +64,30 @@
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.Apis, Version=1.58.0.0, Culture=neutral, PublicKeyToken=4b01fa6e34db77ab, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.Apis.1.58.0\lib\net45\Google.Apis.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.Apis.Auth, Version=1.58.0.0, Culture=neutral, PublicKeyToken=4b01fa6e34db77ab, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.Apis.Auth.1.58.0\lib\net461\Google.Apis.Auth.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.Apis.Auth.PlatformServices, Version=1.58.0.0, Culture=neutral, PublicKeyToken=4b01fa6e34db77ab, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.Apis.Auth.1.58.0\lib\net461\Google.Apis.Auth.PlatformServices.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.Apis.Core, Version=1.58.0.0, Culture=neutral, PublicKeyToken=4b01fa6e34db77ab, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.Apis.Core.1.58.0\lib\net45\Google.Apis.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.Apis.PlatformServices, Version=1.58.0.0, Culture=neutral, PublicKeyToken=4b01fa6e34db77ab, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.Apis.1.58.0\lib\net45\Google.Apis.PlatformServices.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.Apis.Sheets.v4, Version=1.58.0.2909, Culture=neutral, PublicKeyToken=4b01fa6e34db77ab, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.Apis.Sheets.v4.1.58.0.2909\lib\net45\Google.Apis.Sheets.v4.dll</HintPath>
+    </Reference>
+    <Reference Include="IronSoftware.Drawing.Common, Version=2022.11.10457.0, Culture=neutral, PublicKeyToken=8d7e55c97b3e9835, processorArchitecture=MSIL">
+      <HintPath>..\packages\IronSoftware.System.Drawing.2022.11.10457\lib\netstandard2.0\IronSoftware.Drawing.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="IronXL, Version=2022.12.11262.0, Culture=neutral, PublicKeyToken=0f5804b6690bad1e, processorArchitecture=MSIL">
+      <HintPath>..\packages\IronXL.Excel.2022.12.11262\lib\netstandard2.0\IronXL.dll</HintPath>
     </Reference>
     <Reference Include="LiveCharts, Version=0.9.7.0, Culture=neutral, PublicKeyToken=0bc1f845d1ebb8df, processorArchitecture=MSIL">
       <HintPath>..\packages\LiveCharts.0.9.7\lib\net45\LiveCharts.dll</HintPath>
@@ -78,11 +105,11 @@
     <Reference Include="Microsoft.Expression.Interactions, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Windows.Interactivity.WPF.2.0.20525\lib\net40\Microsoft.Expression.Interactions.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Extensions.Logging.Abstractions, Version=2.1.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Logging.Abstractions.2.1.0\lib\netstandard2.0\Microsoft.Extensions.Logging.Abstractions.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Xaml.Behaviors, Version=1.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Xaml.Behaviors.Wpf.1.1.39\lib\net45\Microsoft.Xaml.Behaviors.dll</HintPath>
-    </Reference>
-    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Office.Interop.Excel.15.0.4795.1001\lib\net20\Microsoft.Office.Interop.Excel.dll</HintPath>
@@ -90,6 +117,12 @@
     </Reference>
     <Reference Include="Microsoft.Xaml.Behaviors, Version=1.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Xaml.Behaviors.Wpf.1.1.39\lib\net45\Microsoft.Xaml.Behaviors.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="SixLabors.ImageSharp, Version=2.0.0.0, Culture=neutral, PublicKeyToken=d998eea7b14cab13, processorArchitecture=MSIL">
+      <HintPath>..\packages\SixLabors.ImageSharp.2.1.3\lib\net472\SixLabors.ImageSharp.dll</HintPath>
     </Reference>
     <Reference Include="System">
       <HintPath>..\..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.8\System.dll</HintPath>
@@ -142,6 +175,9 @@
       <HintPath>..\packages\System.Security.Principal.Windows.5.0.0\lib\net461\System.Security.Principal.Windows.dll</HintPath>
     </Reference>
     <Reference Include="System.ServiceProcess" />
+    <Reference Include="System.Text.Encoding.CodePages, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Text.Encoding.CodePages.5.0.0\lib\net461\System.Text.Encoding.CodePages.dll</HintPath>
+    </Reference>
     <Reference Include="System.Text.Encodings.Web, Version=7.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Text.Encodings.Web.7.0.0\lib\net462\System.Text.Encodings.Web.dll</HintPath>
     </Reference>
@@ -181,6 +217,7 @@
     <Compile Include="CustomMessageBox.cs" />
     <Compile Include="DTOs\ProductDTO.cs" />
     <Compile Include="DTOs\ProductReceiptDTO.cs" />
+    <Compile Include="DTOs\ReviewDTO.cs" />
     <Compile Include="DTOs\StaffDTO.cs" />
     <Compile Include="DTOs\BillDTO.cs" />
     <Compile Include="DTOs\CustomerDTO.cs" />
@@ -232,6 +269,9 @@
     <Compile Include="Model\ProductStorage.cs">
       <DependentUpon>CinemaManagementDatabase.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\Review.cs">
+      <DependentUpon>CinemaManagementDatabase.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\Room.cs">
       <DependentUpon>CinemaManagementDatabase.tt</DependentUpon>
     </Compile>
@@ -247,6 +287,7 @@
     <Compile Include="Model\Service\ProductService.cs" />
     <Compile Include="Model\Service\BillService.cs" />
     <Compile Include="Model\Service\CustomerService.cs" />
+    <Compile Include="Model\Service\ReviewService.cs" />
     <Compile Include="Model\Service\SeatService.cs" />
     <Compile Include="Model\Service\SettingService.cs" />
     <Compile Include="Model\Service\ShowtimeService.cs" />
@@ -294,6 +335,9 @@
     <Compile Include="ViewModel\AdminVM\FoodManagementVM\FoodManagementVM.cs" />
     <Compile Include="ViewModel\AdminVM\HelpScreenVM\HelpScreenVM.cs" />
     <Compile Include="ViewModel\AdminVM\Import_ExportManagementVM\Import_ExportManagementViewModel.cs" />
+    <Compile Include="ViewModel\AdminVM\ReviewManagementVM\FilmStatistical.cs" />
+    <Compile Include="ViewModel\AdminVM\ReviewManagementVM\RankingManagementVM.cs" />
+    <Compile Include="ViewModel\AdminVM\ReviewManagementVM\ReviewManagementVM.cs" />
     <Compile Include="ViewModel\AdminVM\SettingVM\ResetPassVM.cs" />
     <Compile Include="ViewModel\AdminVM\SettingVM\SettingVM.cs" />
     <Compile Include="ViewModel\AdminVM\ShowtimeManagementVM\AddShowtimeViewModel.cs" />
@@ -368,6 +412,15 @@
     </Compile>
     <Compile Include="View\Admin\HelpScreen\Trading_Terms.xaml.cs">
       <DependentUpon>Trading_Terms.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Admin\ReviewManagement\Item.xaml.cs">
+      <DependentUpon>Item.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Admin\ReviewManagement\ReviewManagementPage.xaml.cs">
+      <DependentUpon>ReviewManagementPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Admin\ReviewManagement\Test.xaml.cs">
+      <DependentUpon>Test.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Admin\SettingManagement\ChooseColorWindow.xaml.cs">
       <DependentUpon>ChooseColorWindow.xaml</DependentUpon>
@@ -676,6 +729,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Resource Include="Resource\Icons\cameraReview.png" />
+    <Resource Include="Resource\Icons\image %285%29.png" />
+    <Resource Include="Resource\Icons\send.png" />
+    <Resource Include="Resource\Icons\paperclip.png" />
     <Content Include="Model\CinemaManagementDatabase.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>CinemaManagementDatabase.edmx</DependentUpon>
@@ -686,12 +743,13 @@
       <DependentUpon>CinemaManagementDatabase.edmx</DependentUpon>
       <LastGenOutput>CinemaManagementDatabase.cs</LastGenOutput>
     </Content>
-    <Resource Include="Resource\Icons\uploadWhite.png" />
     <Resource Include="Resource\Images\Backgrond.jpg" />
     <Resource Include="Resource\Images\iconFace.png" />
     <Resource Include="Resource\Images\iconInstaram.png" />
     <Resource Include="Resource\Images\iconTiwter.png" />
     <Resource Include="Resource\Images\iconZalo.png" />
+    <Content Include="Resource\EmailTemplate\ThankYouTemplate.txt" />
+    <Resource Include="Resource\Icons\uploadWhite.png" />
     <Content Include="Resource\Styles\MenuButtonUI.xaml">
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -741,6 +799,17 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Admin\HelpScreen\Trading_Terms.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Admin\ReviewManagement\Item.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Admin\ReviewManagement\ReviewManagementPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Admin\ReviewManagement\Test.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

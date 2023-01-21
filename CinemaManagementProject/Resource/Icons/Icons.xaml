@@ -22,5 +22,9 @@
     <ImageSource x:Key="IconDollar">./dollar.png</ImageSource>
     <ImageSource x:Key="Telephone">./landline.png</ImageSource>
     <ImageSource x:Key="UploadWhite">./uploadWhite.png</ImageSource>
+    <ImageSource x:Key="IconCamera">./cameraReview.png</ImageSource>
+    <ImageSource x:Key="IconImageFolder">./image (5).png</ImageSource>
+    <ImageSource x:Key="IconSend">./send.png</ImageSource>
+    <ImageSource x:Key="IconPaperclip">./paperclip.png</ImageSource>
 
 </ResourceDictionary>
