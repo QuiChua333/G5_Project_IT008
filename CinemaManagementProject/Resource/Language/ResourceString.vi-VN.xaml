@@ -149,7 +149,36 @@
     <system:String x:Key="InforEditShowtimeWindow_Button_Delete">Xóa</system:String>
     <system:String x:Key="InforEditShowtimeWindow_Button_Exit">Thoát</system:String>
     <system:String x:Key="InforEditShowtimeWindow_Label_Total">Tổng số:</system:String>
-<!--***-->
+
+    <system:String x:Key="TradingTerms_Label_Header">Điều khoản giao dịch</system:String>
+    <system:String x:Key="TradingTerms_TextBlock_Signal">* Xin vui lòng đọc kỹ trước khi quyết định Đặt Vé trực tuyến.</system:String>
+    <system:String x:Key="TradingTerms_TextBlock_Scope">1. Phạm Vi Áp Dụng:</system:String>
+    <system:String x:Key="TradingTerms_TextBlock_ScopeContent">Điều kiện dưới đây áp dụng riêng cho chức năng mua vé trực tuyến tại ứng dụng. Khi sử dụng chức năng để đặt chỗ và mua vé, Quý khách mặc nhiên đã chấp thuận và tuân thủ tất cả các chỉ dẫn, điều khoản, điều kiện và lưu ý đăng tải trên ứng dụng, bao gồm nhưng không giới hạn bởi Điều kiện Sử dụng nêu ở đây. Nếu Quý khách không có ý định mua vé trực tuyến hay không đồng ý với bất kỳ điều khoản hay điều kiện nào nêu trong Điều kiện Sử dụng, xin hãy DỪNG VIỆC SỬ DỤNG chức năng này.</system:String>
+    <system:String x:Key="TradingTerms_TextBlock_Condition">2. Điều kiện sử dụng tính năng mua vé trực tuyến:</system:String>
+    <system:String x:Key="TradingTerms_TextBlock_ConditionContent">Quý khách phải đăng ký tài khoản với thông tin xác thực về bản thân và phải cập nhật nếu có bất kỳ thay đổi nào. Mỗi người truy cập phải có trách nhiệm với mật khẩu, tài khoản và hoạt động của mình trên ứng dụng. Hơn nữa, quý khách phải thông báo cho chúng tôi biết khi tài khoản bị truy cập trái phép. Chúng tôi không chịu bất kỳ trách nhiệm nào, dù trực tiếp hay gián tiếp, đối với những thiệt hại hoặc mất mát gây ra do quý khách không tuân thủ quy định.</system:String>
+    <system:String x:Key="TradingTerms_TextBlock_Regulations">3. Quy định về đặt vé trực tuyến:</system:String>
+    <system:String x:Key="TradingTerms_TextBlock_RegulationsContent1">- Thông thường, FatFilmFoo mở bán vé trực tuyến trước ngày chiếu phim, tuy nhiên điều này phụ thuộc vào mỗi phim, mỗi rạp. Nếu suất chiếu bạn muốn đặt chưa được hiển thị trên ứng dụng vào thời điểm khách đặt vé, xin vui lòng quay lại sau, hoặc liên hệ tới số hotline của FatFilmFoo 0379361210 để biết thêm thông tin chi tiết.</system:String>
+    <system:String x:Key="TradingTerms_TextBlock_RegulationsContent2">- FatFilmFoo không cam kết giữ chỗ ngồi cho quý khách cho đến khi quý khách hoàn tất thanh toán cho đơn hàng của mình.</system:String>
+    <system:String x:Key="TradingTerms_TextBlock_RegulationsContent3">- Khách hàng có thể đặt chỗ cho tối đa 7 khách trong mỗi lần thực hiện.</system:String>
+    <system:String x:Key="TradingTerms_TextBlock_RegulationsContent4">- Khi tiến hành các bước thanh toán, cần đọc kĩ các thông tin trên màn hình về rạp chiếu phim, tên phim, suất chiếu, và chỗ ngồi trước khi hoàn tất việc xác nhận tất cả các thông tin về vé.</system:String>
+    <system:String x:Key="TradingTerms_TextBlock_RegulationsContent5">- Quý khách thanh toán giao dịch đặt vé theo quy định tại Chính Sách Thanh Toán đăng tải trên FatFilmFo trước khi nhận mã đặt vé của giao dịch đó. Khi quý khách nhấn (click) vào ô “Thanh toán” để tiến hành thanh toán Đặt chỗ có nghĩa là đã xác nhận rà soát thông tin Đặt chỗ; và đồng ý là Điều Khoản Và Điều Kiện sẽ được áp dụng cho giao dịch mua vé trong giao dịch đó.</system:String>
+    <system:String x:Key="TradingTerms_TextBlock_RegulationsContent6">- Email và tin nhắn xác nhận đặt vé sau khi hoàn thành việc thanh toán vé trực tuyến, quý khách sẽ nhận được thư xác nhận thông tin chi tiết vé đã thanh toán thông qua địa chỉ thư điện tử (email) mà quý khách đã cung cấp. Email xác nhận thông tin đặt vé có thể đi vào hộp thư rác (spam mail) của bạn, vì vậy hãy kiểm tra chúng trước khi liên lạc với FatFilmFoo.</system:String>
+    <system:String x:Key="TradingTerms_TextBlock_RegulationsContent7">- Bằng việc thanh toán qua ứng dụng này, quý khách chấp nhận vị trí ghế ngồi mà bạn đã đặt. Quý khách đồng ý rằng, trong những trường hợp có sự thay đổi về chương trình phim hoặc bất khả kháng, FatFilmFo có quyền hoàn trả lại bất kỳ vé nào từ việc mua bán qua ứng dụng này hoặc thực hiện việc chuyển vé cho bạn qua suất chiếu khác theo yêu cầu của quý khách.</system:String>
+    <system:String x:Key="TradingTerms_TextBlock_RegulationsContent8">- Trong suốt quá trình đăng ký, quý khách đồng ý nhận email quảng cáo từ ứng dụng. Sau đó, nếu không muốn tiếp tục nhận mail, quý khách có thể từ chối bằng cách nhấp vào đường link ở dưới cùng trong mọi email quảng cáo.</system:String>
+    <system:String x:Key="TradingTerms_TextBlock_TicketPrice">4. Giá Vé:</system:String>
+    <system:String x:Key="TradingTerms_TextBlock_TicketPriceContent">Giá vé được niêm yết tại FatFilmFoo là giá bán cuối cùng đã bao gồm thuế Giá trị gia tăng (VAT). Giá vé có thể thay đổi tùy thời điểm và chương trình khuyến mãi kèm theo và sẽ được hiển thị rõ tại trang Thanh toán khi quý khách tiến hành đặt hàng. Giá vé khi đặt vé trực tuyến trên ứng dụng FatFilmFoo là giá vé áp dụng cho nhiều đối tượng người lớn, trẻ em với mức cố định là 45 000 VNĐ.</system:String>
+    <system:String x:Key="TradingTerms_TextBlock_TrademarksAndCopyrights">5. Thương hiệu và bản quyền:</system:String>
+    <system:String x:Key="TradingTerms_TextBlock_TrademarksAndCopyrightsContent">Mọi quyền sở hữu trí tuệ (đã đăng ký hoặc chưa đăng ký), nội dung thông tin và tất cả các thiết kế, văn bản, đồ họa, phần mềm, hình ảnh, video, âm nhạc, âm thanh, biên dịch phần mềm, mã nguồn và phần mềm cơ bản đều là tài sản của FatFilmFo. Toàn bộ nội dung của ứng dụng được bảo vệ theo pháp luật sở hữu trí tuệ của Việt Nam và các công ước, điều ước quốc tế mà Việt Nam tham gia hoặc là thành viên.</system:String>
+    <system:String x:Key="TradingTerms_TextBlock_Law">6. Luật áp dụng và giải quyết tranh chấp:</system:String>
+    <system:String x:Key="TradingTerms_TextBlock_LawContent">Các điều kiện, điều khoản và nội dung của trang web này được điều chỉnh và giải thích theo luật pháp Việt Nam. Các tranh chấp phát sinh từ hoặc liên quan đến (các) giao dịch thực hiện tại ứng dụng này sẽ được ưu tiên giải quyết thông qua thương lượng, hòa giải. Trường hợp các bên không tự giải quyết, tranh chấp sẽ được đưa ra xét xử tại Tòa án cấp có thẩm quyền của Việt Nam.</system:String>
+    <system:String x:Key="TradingTerms_TextBlock_Privacy">7. Quy định về bảo mật:</system:String>
+    <system:String x:Key="TradingTerms_TextBlock_PrivacyContent">Ứng dụng của chúng tôi coi trọng việc bảo mật thông tin và sử dụng các biện pháp tốt nhất bảo vệ thông tin và việc thanh toán của quý khách. Thông tin của quý khách trong quá trình thanh toán sẽ được mã hóa để đảm bảo an toàn. Sau khi quý khách hoàn thành quá trình đặt hàng, quý khách sẽ thoát khỏi chế độ an toàn. Quý khách không được sử dụng bất kỳ chương trình, công cụ hay hình thức nào khác để can thiệp vào hệ thống hay làm thay đổi cấu trúc dữ liệu. Ứng dụng cũng nghiêm cấm việc phát tán, truyền bá hay cổ vũ cho bất kỳ hoạt động nào nhằm can thiệp, phá hoại hay xâm nhập vào dữ liệu của hệ thống. Cá nhân hay tổ chức vi phạm sẽ bị tước bỏ mọi quyền lợi cũng như sẽ bị truy tố trước pháp luật nếu cần thiết. Mọi thông tin giao dịch sẽ được bảo mật trừ trường hợp buộc phải cung cấp theo yêu cầu của tòa án, (các) cơ quan có thẩm quyền hoặc theo quy định của pháp luật.</system:String>
+    <system:String x:Key="TradingTerms_TextBlock_DealWithTheConsequences">8. Giải quyết hậu quả do lỗi nhập sai thông tin thương mại tại FatFilmFoo:</system:String>
+    <system:String x:Key="TradingTerms_TextBlock_DealWithTheConsequencesContent">Khách hàng có trách nhiệm cung cấp thông tin đầy đủ và chính xác khi tham gia giao dịch tại FatFilmFoo. Trong trường hợp khách hàng nhập sai thông tin tại trang giúp đỡ, FatFilmFoo có quyền từ chối thực hiện giao dịch. Ngoài ra, trong mọi trường hợp, khách hàng đều có quyền đơn phương chấm dứt giao dịch nếu đã thực hiện bằng cách thông báo cho FatFilmFoo qua hotline 0379361210.</system:String>
+
+
+
+    <!--***-->
     
 <!--Nhan-->
     <system:String x:Key="filmbooking_search_TimKiem">Tìm kiếm</system:String>
@@ -432,6 +461,61 @@
     <system:String x:Key="TicketBillPage_Label_KhuyenMai">Khuyến mãi:</system:String>
     <system:String x:Key="TicketBillPage_Label_SauKhuyenMai">Sau khuyến mãi:</system:String>
     <system:String x:Key="TicketBillPage_Label_MienPhi">Miễn phí</system:String>
+    <system:String x:Key="Privacy_Policy_Label_ChinhSachBaoMat">Chính sách bảo mật</system:String>
+    <system:String x:Key="Privacy_Policy_TextBlock_Header">* Việc bạn sử dụng ưng dụng này đồng nghĩa với việc bạn đồng ý với những thỏa thuận dưới đây. Nếu bạn không đồng ý, xin vui lòng không sử dụng ứng dụng.</system:String>
+    <system:String x:Key="Privacy_Policy_TextBlock_1Dam">1. Mục đích và phạm vi thu thập thông tin:</system:String>
+    <system:String x:Key="Privacy_Policy_TextBlock_1_1Nghien">1.1 Việc thu thập thông tin cá nhân được thực hiện trên cơ sở khách hàng tự khai báo để đăng ký thành viên FatFilmFo tại ứng dụng FatFilmFo, tùy từng thời điểm, thông tin thu thập sẽ bao gồm nhưng không giới hạn ở:</system:String>
+    <system:String x:Key="Privacy_Policy_TextBlock_GachDauDong1_Cua_1_1">- Thông tin cá nhân như: họ tên, giới tính, ngày, tháng, năm sinh.</system:String>
+    <system:String x:Key="Privacy_Policy_TextBlock_GachDauDong2_Cua_1_1">- Thông tin liên lạc như: địa chỉ, số điện thoại di động, email.</system:String>
+    <system:String x:Key="Privacy_Policy_TextBlock_GachDauDong3_Cua_1_1">- Các thông tin khác phục vụ cho chương trình khách hàng thân thiết (nếu có).</system:String>
+    <system:String x:Key="Privacy_Policy_TextBlock_1_2Nghien">1.2 Mục đích thu thập thông tin khách hàng bao gồm:</system:String>
+    <system:String x:Key="Privacy_Policy_TextBlock_GachDauDong1_Cua_1_2">- Cung cấp các dịch vụ, sản phẩm theo nhu cầu của khách hàng.</system:String>
+    <system:String x:Key="Privacy_Policy_TextBlock_GachDauDong2_Cua_1_2">- Liên hệ xác nhận khi khách hàng đăng ký sử dụng dịch vụ, xác lập giao dịch trên ứng dụng FatFilmFo.</system:String>
+    <system:String x:Key="Privacy_Policy_TextBlock_GachDauDong3_Cua_1_2">- Thực hiện việc quản lý ứng dụng FatFilmFo, gửi thông tin cập nhật về ứng dụng FatFilmFo, các chương trình khuyến mại, ưu đãi/tri ân tới khách hàng.</system:String>
+    <system:String x:Key="Privacy_Policy_TextBlock_GachDauDong4_Cua_1_2">- Bảo đảm quyền lợi của khách hàng khi phát hiện các hành động giả mạo, phá hoại tài khoản, lừa đảo khách hàng.</system:String>
+    <system:String x:Key="Privacy_Policy_TextBlock_GachDauDong5_Cua_1_2">- Liên lạc, hỗ trợ, giải quyết với khách hàng trong các trường hợp đặc biệt.</system:String>
+    <system:String x:Key="Privacy_Policy_TextBlock_1_3Nghien">1.3 Để tránh nghi ngờ, trong quá trình giao dịch thanh toán tại ứng dụng FatFilmFo, FatFilmFo chỉ lưu giữ thông tin chi tiết về đơn hàng đã thanh toán của khách hàng, các thông tin về tài khoản ngân hàng của khách hàng sẽ không được lưu giữ.</system:String>
+    <system:String x:Key="Privacy_Policy_TextBlock_2Dam">2. Phạm vi sử dụng thông tin:</system:String>
+    <system:String x:Key="Privacy_Policy_TextBlock_2_1Nghien">2.1 FatFilmFo chỉ sử dụng thông tin cá nhân của khách hàng cho các mục đích quy định tại Mục 1 hoặc mục đích khác (nếu có) với điều kiện đã thông báo và được sự đồng ý của khách hàng.</system:String>
+    <system:String x:Key="Privacy_Policy_TextBlock_2_2Nghien">2.2 FatFilmFo sẽ không sử dụng thông tin cá nhân của khách hàng để gửi quảng cáo, giới thiệu dịch vụ và các thông tin có tính thương mại khác khi chưa được khách hàng chấp thuận.</system:String>
+    <system:String x:Key="Privacy_Policy_TextBlock_2_3Nghien">2.3 Khách hàng hiểu và đồng ý rằng FatFilmFo có nghĩa vụ phải cung cấp thông tin khách hàng theo yêu cầu/quyết định của Cơ quan nhà nước có thẩm quyền và/hoặc quy định pháp luật. FatFilmFo sẽ được miễn trừ mọi trách nhiệm liên quan đến bảo mật thông tin trong trường hợp này.</system:String>
+    <system:String x:Key="Privacy_Policy_TextBlock_3Dam">3. Thời gian lưu trữ thông tin:</system:String>
+    <system:String x:Key="Privacy_Policy_TextBlock_GachDauDong1_Cua_3">Dữ liệu cá nhân cơ bản của khách hàng đăng ký thành viên FatFilmFo sẽ được lưu trữ cho đến khi có yêu cầu hủy bỏ hoặc tự thành viên đăng nhập và thực hiện đóng tài khoản. Đối với các tài khoản đã đóng chúng tôi vẫn lưu trữ thông tin cá nhân và truy cập của khách hàng để phục vụ cho mục đích phòng chống gian lận, điều tra, giải đáp thắc mắc ... Các thông tin này sẽ được lưu trữ trong hệ thống máy chủ tối đa mười hai (12) tháng. Hết thời hạn này, FatFilmFo sẽ tiến hành xóa vĩnh viễn thông tin cá nhân của khách hàng.</system:String>
+    <system:String x:Key="Privacy_Policy_TextBlock_GachDauDong2_Cua_3">Để thay đổi thông tin cá nhân tài khoản đăng ký trên hệ thống thương mại điện tử của FatFilmFo, khách hàng có thể tự đăng nhập và chỉnh sửa thông tin, dữ liệu cá nhân của mình như: Họ tên, Giới tính, Địa chỉ, Số Điện Thoại, Mật Khẩu, Ngày Tháng Năm Sinh.</system:String>
+    <system:String x:Key="Privacy_Policy_TextBlock_4Dam">4. Xóa tài khoản FatFilmFo:</system:String>
+    <system:String x:Key="Privacy_Policy_TextBlock_GachDauDong1_Cua_4">- Bạn chỉ có thể được xóa tài khoản FatFilmFo của mình thông qua nhân viên hoặc quản lý của FatFilmFo và lần lượt làm theo các bước:</system:String>
+    <system:String x:Key="Privacy_Policy_TextBlock_Buoc1">+ Bước 1: Truy cập vào ứng dụng FatFilmFo.</system:String>
+    <system:String x:Key="Privacy_Policy_TextBlock_Buoc2">+ Bước 2: Vào mục Quản lý khách hàng trên ứng dụng FatFilmFo.</system:String>
+    <system:String x:Key="Privacy_Policy_TextBlock_Buoc3">+ Bước 3: Chọn ô Xóa tài khoản.</system:String>
+    <system:String x:Key="Privacy_Policy_TextBlock_Buoc4">+ Bước 4: Chọn Đồng ý để xóa tài khoản.</system:String>
+    <system:String x:Key="Privacy_Policy_TextBlock_LuuY">Lưu ý:</system:String>
+    <system:String x:Key="Privacy_Policy_TextBlock_GachDauDong2_Cua_4">- Bạn sẽ mất toàn thông tin về lịch sử mua hàng, vé, vouchers... các quyền lợi thành viên (Nếu có) của tài khoản.</system:String>
+    <system:String x:Key="Privacy_Policy_TextBlock_GachDauDong3_Cua_4">- Sau khi xóa thành công, Tài khoản sẽ không thể khôi phục. Đồng thời bạn không thể đăng nhập lại vào tài khoản đã xóa.</system:String>
+    <system:String x:Key="Privacy_Policy_TextBlock_GachDauDong4_Cua_4">- Các thông tin cá nhân liên quan đến tài khoản FatFilmFo của bạn sẽ bị xóa, FatFilmFo sẽ không chịu trách nhiệm cho bất kỳ mất mát nào về thông tin, dữ liệu sau khi xóa tài khoản.</system:String>
+    <system:String x:Key="Privacy_Policy_TextBlock_5Dam">5. FatFilmFo cam kết:</system:String>
+    <system:String x:Key="Privacy_Policy_TextBlock_GachDauDong1_Cua_5">- Mọi thông tin cá nhân của khách hàng thu thập được từ ứng dụng FatFilmFo sẽ được lưu giữ an toàn; chỉ có khách hàng mới có thể truy cập vào tài khoản cá nhân của mình bằng tên đăng nhập và mật khẩu do khách hàng chọn.</system:String>
+    <system:String x:Key="Privacy_Policy_TextBlock_GachDauDong2_Cua_5">- FatFilmFo cam kết bảo mật thông tin, không chia sẻ, tiết lộ, chuyển giao thông tin cá nhân của khách hàng cho bất kỳ bên thứ ba nào khi chưa được sự đồng ý của khách hàng, trừ trường hợp phải thực hiện theo yêu cầu của các cơ quan Nhà nước có thẩm quyền, hoặc theo quy định của pháp luật hoặc việc cung cấp thông tin đó là cần thiết để FatFilmFo cung cấp dịch vụ/ tiện ích cho khách hàng.</system:String>
+    <system:String x:Key="Privacy_Policy_TextBlock_GachDauDong3_Cua_5">- FatFilmFo, bằng nỗ lực tốt nhất của mình, sẽ áp dụng các giải pháp công nghệ để ngăn chặn các hành vi đánh cắp hoặc tiếp cận thông tin trái phép; sử dụng, thay đổi hoặc phá hủy thông tin trái phép. Tuy nhiên, FatFilmFo không thể cam kết sẽ ngăn chặn được tất cả các hành vi xâm phạm, sử dụng thông tin cá nhân trái phép nằm ngoài khả năng kiểm soát của FatFilmFo. FatFilmFo sẽ không chịu trách nhiệm dưới bất kỳ hình thức nào đối với bất kỳ khiếu nại, tranh chấp hoặc thiệt hại nào phát sinh từ hoặc liên quan đến việc truy cập, xâm nhập, sử dụng thông tin trái phép như vậy.</system:String>
+    <system:String x:Key="Privacy_Policy_TextBlock_GachDauDong4_Cua_5">- Trường hợp máy chủ lưu trữ thông tin bị hacker tấn công dẫn đến mất mát dữ liệu cá nhân, gây ảnh hưởng xấu đến khách hàng, FatFilmFo sẽ ngay lập tức thông báo cho khách hàng và trình vụ việc cho cơ quan chức năng điều tra xử lý.</system:String>
+    <system:String x:Key="Privacy_Policy_TextBlock_GachDauDong5_Cua_5">- Khách hàng có nghĩa vụ bảo mật tên đăng ký, mật khẩu và hộp thư điện tử của mình. FatFilmFo sẽ không chịu trách nhiệm dưới bất kỳ hình thức nào đối với các thiệt hại, tổn thất (nếu có) do khách hàng không tuân thủ quy định bảo mật này.</system:String>
+    <system:String x:Key="Privacy_Policy_TextBlock_GachDauDong6_Cua_5">- Khách hàng tuyệt đối không được có các hành vi sử dụng công cụ, chương trình để can thiệp trái phép vào hệ thống hay làm thay dổi dữ liệu của FatFilmFo. Trong trường hợp FatFilmFo phát hiện khách hàng có hành vi cố tình giả mạo, gian lận, phát tán thông tin cá nhân trái phép … FatFilmFo có quyền chuyển thông tin cá nhân của khách hàng cho các cơ quan có thẩm quyền để xử lý theo quy định của pháp luật.</system:String>
+    <system:String x:Key="HelpScreen_Label_TapDoan">TẬP ĐOÀN FATFILMFO GROUP</system:String>
+    <system:String x:Key="HelpScreen_TextBlock_GiayCNDKDN">Giấy CNDKDN: 0303675394, đăng ký lần đầu ngày 14/10/2015, đăng ký lần thứ 5 ngày 24/11/2022, cấp bởi Sở KHDT thành phố Hồ Chí Minh.</system:String>
+    <system:String x:Key="HelpScreen_TextBlock_DiaChi">Địa chỉ: Trường ĐH Công nghệ Thông Tin, ĐHQG Thành phố Hồ Chí Minh - Khu phố 6, phường Linh Trung, thành phố Thủ Đức.</system:String>
+    <system:String x:Key="HelpScreen_Label_DieuKhoanChung">Điều khoản chung</system:String>
+    <system:String x:Key="HelpScreen_TextBlock_DieuKhoanGiaoDich">Điều khoản giao dịch</system:String>
+    <system:String x:Key="HelpScreen_TextBlock_ChinhSachBaoMat">Chính sách bảo mật</system:String>
+    <system:String x:Key="HelpScreen_TextBlock_CauHoiThuongGap">Câu hỏi thường gặp</system:String>
+    <system:String x:Key="HelpScreen_Label_ChamSocKH">Chăm sóc khách hàng</system:String>
+    <system:String x:Key="HelpScreen_TextBlock_KyThuat">Kỹ thuật:</system:String>
+    <system:String x:Key="HelpScreen_TextBlock_KhieuNai">Khiếu nại:</system:String>
+    <system:String x:Key="HelpScreen_TextBlock_BaoHanh">Bảo hành:</system:String>
+    <system:String x:Key="HelpScreen_Label_EmailHoTro">Email hỗ trợ:</system:String>
+    <system:String x:Key="HelpScreen_Label_Final">Chúng tôi hy vọng sẽ mang lại những trải nghiệm tốt nhất cho bạn !</system:String>
+    <system:String x:Key="HelpScreen_Label_ThongTingLH">Thông tin liên hệ</system:String>
+
+    <!--***-->
+    <system:String x:Key="fre_title">Câu hỏi thường gặp</system:String>
     <system:String x:Key="fre_titleNote">Việc bạn sử dụng ưng dụng này đồng nghĩa với việc bạn đồng ý với những thỏa thuận dưới đây. Nếu bạn không đồng ý, xin vui lòng không sử dụng ứng dụng.</system:String>
     <system:String x:Key="fre_titleA">Phim</system:String>
     <system:String x:Key="fre_askA1">1, Phân loại phim P, C13, C16, C18 là gì?</system:String>
@@ -714,6 +798,28 @@
     <system:String x:Key="AddTroubleWindow_Label_Mota">Mô tả</system:String>
     <system:String x:Key="AddTroubleWindow_Label_Motaloi">Mô tả lỗi</system:String>
     <system:String x:Key="AddTroubleWindow_button_Xacnhan">Xác nhận</system:String>
-    
-<!--***-->
+
+    <system:String x:Key="generalTerm_label_title">Điều khoản chung</system:String>
+    <system:String x:Key="generalTerm_textblock_camket">* Việc bạn sử dụng ưng dụng này đồng nghĩa với việc bạn đồng ý với những thỏa thuận dưới đây. Nếu bạn không đồng ý, xin vui lòng không sử dụng ứng dụng.</system:String>
+    <system:String x:Key="generalTerm_textblock_trachnhiem">1. Trách nhiệm của người sử dụng:</system:String>
+    <system:String x:Key="generalTerm_textblock_tn">Khi truy cập vào ứng dụng này, bạn đồng ý chấp nhận mọi rủi ro. FatFilmFo và các bên đối tác khác không chịu trách nhiệm về bất kỳ tổn thất nào do những hậu quả trực tiếp, tình cờ hay gián tiếp; những thất thoát, chi phí (bao gồm chi phí pháp lý, chi phí tư vấn hoặc các khoản chi tiêu khác) có thể phát sinh trực tiếp hoặc gián tiếp do việc truy cập ứng dụng hoặc khi tải dữ liệu về máy; những tổn hại gặp phải do virus, hành động phá hoại trực tiếp hay gián tiếp của hệ thống máy tính khác, đường dây điện thoại, phần cứng, phần mềm, lỗi chương trình, hoặc bất kì các lỗi nào khác; đường truyền dẫn của máy tính hoặc nối kết mạng bị chậm…</system:String>
+    <system:String x:Key="generalTerm_textblock_noidung">2. Về nội dung trên ứng dụng:</system:String>
+    <system:String x:Key="generalTerm_textblock_nd">Tất cả những thông tin ở đây được cung cấp cho bạn một cách trung thực như bản thân sự việc. FatFilmFo và các bên liên quan không bảo đảm, hay có bất kỳ tuyên bố nào liên quan đến tính chính xác, tin cậy của việc sử dụng hay kết quả của việc sử dụng nội dung trên ứng dụng này. Nội dung trên ứng dụng được cung cấp vì lợi ích của cộng đồng và có tính phi thương mại. Các cá nhân và tổ chức không được phép sử dụng nội dung trên ứng dụng này với mục đích thương mại mà không có sự ưng thuận của FatFilmFo bằng văn bản. Mặc dù FatFilmFo luôn cố gắng cập nhật thường xuyên các nội dung tại ứng dụng, nhưng chúng tôi không bảo đảm rằng các thông tin đó là mới nhất, chính xác hay đầy đủ. Tất cả các nội dung ứng dụng có thể được thay đổi bất kỳ lúc nào.</system:String>
+    <system:String x:Key="generalTerm_textblock_banquyen">3. Về bản quyền:</system:String>
+    <system:String x:Key="generalTerm_textblock_bq">FatFilmFo là chủ bản quyền của ứng dụng này. Việc chỉnh sửa trang, nội dung, và sắp xếp thuộc về thẩm quyền của FatFilmFo. Sự chỉnh sửa, thay đổi, phân phối hoặc tái sử dụng những nội dung trong trang này vì bất kì mục đích nào khác được xem như vi phạm quyền lợi hợp pháp của FatFilmFo.</system:String>
+    <system:String x:Key="generalTerm_textblock_sudungtt">4. Về việc sử dụng thông tin:</system:String>
+    <system:String x:Key="generalTerm_textblock_sdtt">Chúng tôi sẽ không sử dụng thông tin cá nhân của bạn trên ứng dụng này nếu không được phép. Nếu bạn đồng ý cung cấp thông tin cá nhân, bạn sẽ được bảo vệ. Thông tin của bạn sẽ được sử dụng với mục đích, liên lạc với bạn để thông báo các thông tin cập nhật của FatFilmFo như lịch chiếu phim, khuyến mại qua email hoặc bưu điện. Thông tin cá nhân của bạn sẽ không được gửi cho bất kỳ ai sử dụng ngoài ứng dụng FatFilmFo, ngoại trừ những mở rộng cần thiết để bạn có thể tham gia vào ứng dụng (những nhà cung cấp dịch vụ, đối tác, các công ty quảng cáo) và yêu cầu cung cấp bởi luật pháp. Nếu chúng tôi chia sẻ thông tin cá nhân của bạn cho các nhà cung cấp dịch vụ, công ty quảng cáo, các công ty đối tác liên quan, thì chúng tôi cũng yêu cầu họ bảo vệ thông tin cá nhân của bạn như cách chúng tôi thực hiện.</system:String>
+    <system:String x:Key="generalTerm_textblock_viectaidl">5. Vể việc tải dữ liệu:</system:String>
+    <system:String x:Key="generalTerm_textblock_vtdl">Nếu bạn tải về máy những phần mềm từ ứng dụng này, thì phần mềm và các dữ liệu tải sẽ thuộc bản quyền của FatFilmFo và cho phép bạn sử dụng. Bạn không được sở hữu những phầm mềm đã tải và FatFilmFo không nhượng quyền cho bạn. Bạn cũng không được phép bán, phân phối lại, hay bẻ khóa phần mềm…</system:String>
+    <system:String x:Key="generalTerm_textblock_thaydoinoidung">6. Thay đổi nội dung:</system:String>
+    <system:String x:Key="generalTerm_textblock_tdnd">FatFilmFo giữ quyền thay đổi, chỉnh sửa và loại bỏ những thông tin hợp pháp vào bất kỳ thời điểm nào vì bất kỳ lý do nào.</system:String>
+    <system:String x:Key="generalTerm_textblock_lienketkhac">7. Liên kết với các trang khác:</system:String>
+    <system:String x:Key="generalTerm_textblock_lkk">Mặc dù ứng dụng này có thể được liên kết với những trang web và ứng dụng khác, FatFilmFo không trực tiếp hoặc gián tiếp tán thành, tổ chức, tài trợ, đứng sau hoặc sát nhập với những trang web và ứng dụng đó, trừ phi điều này được nêu ra rõ ràng. Khi truy cập vào ứng dụng bạn phải hiểu và chấp nhận rằng FatFilmFo không thể kiểm soát tất cả những trang web và ứng dụng liên kết với ứng dụng FatFilmFo và cũng không chịu trách nhiệm cho nội dung của những trang web và ứng dụng liên kết.</system:String>
+    <system:String x:Key="generalTerm_textblock_duathongtinud">8. Đưa thông tin lên ứng dụng:</system:String>
+    <system:String x:Key="generalTerm_textblock_dttlud">Bạn không được đưa lên, hoặc chuyển tải lên ứng dụng tất cả những hình ảnh, từ ngữ khiêu dâm, thô tục, xúc phạm, phỉ báng, bôi nhọ, đe dọa, những thông tin không hợp pháp hoặc những thông tin có thể đưa đến việc vi phạm pháp luật, trách nhiệm pháp lý. FatFilmFo và tất cả các bên có liên quan đến việc xây dựng và quản lý ứng dụng không chịu trách nhiệm hoặc có nghĩa vụ pháp lý đối với những phát sinh từ nội dung do bạn tải lên ứng dụng.</system:String>
+    <system:String x:Key="generalTerm_textblock_luatapdung">9. Luật áp dụng:</system:String>
+    <system:String x:Key="generalTerm_textblock_lad">Mọi hoạt động phát sinh từ ứng dụng có thể sẽ được phân tích và đánh giá theo luật pháp Việt Nam và toà án Tp. Hồ Chí Minh. Và bạn phải đồng ý tuân theo các điều khoản riêng của các toà án này.</system:String>
+
+
+    <!--***-->
 </ResourceDictionary>

@@ -88,6 +88,7 @@ namespace CinemaManagementProject.ViewModel.StaffVM
         public ICommand CloseAvatarPopupCommand { get; set; }
         public ICommand SwitchToSettingTab { get; set; }
         public ICommand SettingCommand { get; set; }
+        public ICommand HelpScreenCommand { get; set; }
 
         private void OrderFood(object obj)
         {
@@ -101,12 +102,14 @@ namespace CinemaManagementProject.ViewModel.StaffVM
         } 
         private void Trouble(object obj) => CurrentView = new TroubleStaffVM.TroublePageViewModel();
         private void Setting(object obj) => CurrentView = new SettingStaffVM.SettingStaffVM();
+        private void HelpScreen(object obj) => CurrentView = new HelpScreenVM.HelpScreenVM();
         public StaffVM()
         {
             OrderFoodCommand = new RelayCommand(OrderFood);
             FilmBookingCommand = new RelayCommand(FilmBooking);
             TroubleCommand = new RelayCommand(Trouble);
             SettingCommand = new RelayCommand(Setting);
+            HelpScreenCommand = new RelayCommand(HelpScreen);
             //StartPage
             _currentView = new FilmBookingVM.FilmBookingVM();
             LogOutCommand = new RelayCommand<Window>((p) => { return true; }, (p) =>

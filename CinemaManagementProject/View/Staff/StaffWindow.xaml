@@ -333,7 +333,7 @@
                 </RadioButton>
                 <RadioButton   
                             Tag="white"
-                            Command="{Binding Help}">
+                            Command="{Binding HelpScreenCommand}">
                     <RadioButton.Style>
                         <Style TargetType="RadioButton" BasedOn="{StaticResource menuButton}">
                             <Style.Triggers>

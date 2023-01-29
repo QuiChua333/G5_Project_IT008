@@ -25,7 +25,7 @@
             <Grid Grid.Row="0">
                 <Border BorderBrush="#67C6E6" BorderThickness="0,0,0,4" Margin="35,0,35,0"/>
                 <Label Padding="0" 
-                           Content="Điều khoản Giao dịch" 
+                           Content="{DynamicResource TradingTerms_Label_Header}" 
                            FontSize="25" 
                            FontWeight="Bold" 
                            VerticalAlignment="Center" 
@@ -71,7 +71,7 @@
                             <RowDefinition Height="8*"/>
                             <RowDefinition Height="92*"/>
                         </Grid.RowDefinitions>
-                        <TextBlock Text="* Xin vui lòng đọc kỹ trước khi quyết định Đặt Vé trực tuyến."
+                        <TextBlock Text="{DynamicResource TradingTerms_TextBlock_Signal}"
                                    FontSize="20"
                                    Focusable="False"
                                    Grid.Row="0"
@@ -94,7 +94,7 @@
                                                 <RowDefinition Height="18*"/>
                                                 <RowDefinition Height="82*"/>
                                             </Grid.RowDefinitions>
-                                            <TextBlock Text="1. Phạm Vi Áp Dụng:" 
+                                            <TextBlock Text="{DynamicResource TradingTerms_TextBlock_Scope}" 
                                                    Grid.Row="0"
                                                    FontSize="16"
                                                    FontWeight="Bold"
@@ -110,8 +110,9 @@
                                                    FontSize="16"
                                                    Margin="40,4,20,0"
                                                    Focusable="False"
-                                                   Foreground="Black">
-                                                Điều kiện dưới đây áp dụng riêng cho chức năng mua vé trực tuyến tại ứng dụng. Khi sử dụng chức năng để đặt chỗ và mua vé, Quý khách mặc nhiên đã chấp thuận và tuân thủ tất cả các chỉ dẫn, điều khoản, điều kiện và lưu ý đăng tải trên ứng dụng, bao gồm nhưng không giới hạn bởi Điều kiện Sử dụng nêu ở đây. Nếu Quý khách không có ý định mua vé trực tuyến hay không đồng ý với bất kỳ điều khoản hay điều kiện nào nêu trong Điều kiện Sử dụng, xin hãy DỪNG VIỆC SỬ DỤNG chức năng này.
+                                                   Foreground="Black"
+                                                       Text="{DynamicResource TradingTerms_TextBlock_ScopeContent}">
+                                                
                                             </TextBlock>
                                         </Grid>
                                         <Grid Height="114" VerticalAlignment="Top" Margin="0,10,0,0">
@@ -119,7 +120,7 @@
                                                 <RowDefinition Height="18*"/>
                                                 <RowDefinition Height="82*"/>
                                             </Grid.RowDefinitions>
-                                            <TextBlock Text="2. Điều kiện sử dụng tính năng mua vé trực tuyến:" 
+                                            <TextBlock Text="{DynamicResource TradingTerms_TextBlock_Condition}" 
                                                    Grid.Row="0"
                                                    FontSize="16"
                                                    FontWeight="Bold"
@@ -135,8 +136,9 @@
                                                    Margin="40,4,20,0"
                                                        FontStyle="Italic"
                                                    Focusable="False"
-                                                   Foreground="Black">
-                                                Quý khách phải đăng ký tài khoản với thông tin xác thực về bản thân và phải cập nhật nếu có bất kỳ thay đổi nào. Mỗi người truy cập phải có trách nhiệm với mật khẩu, tài khoản và hoạt động của mình trên ứng dụng. Hơn nữa, quý khách phải thông báo cho chúng tôi biết khi tài khoản bị truy cập trái phép. Chúng tôi không chịu bất kỳ trách nhiệm nào, dù trực tiếp hay gián tiếp, đối với những thiệt hại hoặc mất mát gây ra do quý khách không tuân thủ quy định.
+                                                   Foreground="Black"
+                                                       Text="{DynamicResource TradingTerms_TextBlock_ConditionContent}">
+                                                
                                             </TextBlock>
                                         </Grid>
                                         <Grid Height="450" VerticalAlignment="Top" Margin="0,10,0,0">
@@ -144,7 +146,7 @@
                                                 <RowDefinition Height="6*"/>
                                                 <RowDefinition Height="94*"/>
                                             </Grid.RowDefinitions>
-                                            <TextBlock Text="3. Quy định về đặt vé trực tuyến:" 
+                                            <TextBlock Text="{DynamicResource TradingTerms_TextBlock_Regulations}" 
                                                    Grid.Row="0"
                                                    FontSize="16"
                                                    FontWeight="Bold"
@@ -160,8 +162,9 @@
                                                            FontStyle="Italic"
                                                        Margin="40,4,0,0"
                                                        Focusable="False"
-                                                       Foreground="Black">
-                                                        - Thông thường, FatFilmFo mở bán vé trực tuyến trước ngày chiếu phim, tuy nhiên điều này phụ thuộc vào mỗi phim, mỗi rạp. Nếu suất chiếu bạn muốn đặt chưa được hiển thị trên ứng dụng vào thời điểm khách đặt vé, xin vui lòng quay lại sau, hoặc liên hệ tới số hotline của FatFilmFo 0379361210 để biết thêm thông tin chi tiết.
+                                                       Foreground="Black"
+                                                           Text="{DynamicResource TradingTerms_TextBlock_RegulationsContent1}">
+                                                        
                                                 </TextBlock>
                                                 <TextBlock TextWrapping="Wrap"
                                                    Width="970"
@@ -170,8 +173,9 @@
                                                    Margin="40,4,0,0"
                                                            FontStyle="Italic"
                                                    Focusable="False"
-                                                   Foreground="Black">
-                                                    - FatFilmFo không cam kết giữ chỗ ngồi cho quý khách cho đến khi quý khách hoàn tất thanh toán cho đơn hàng của mình.
+                                                   Foreground="Black"
+                                                           Text="{DynamicResource TradingTerms_TextBlock_RegulationsContent2}">
+                                                    
                                                 </TextBlock>
                                                 <TextBlock TextWrapping="Wrap"
                                                    Width="970"
@@ -180,8 +184,9 @@
                                                    Margin="40,4,0,0"
                                                            FontStyle="Italic"
                                                    Focusable="False"
-                                                   Foreground="Black">
-                                                    - Khách hàng có thể đặt chỗ cho tối đa 7 khách trong mỗi lần thực hiện.
+                                                   Foreground="Black"
+                                                           Text="{DynamicResource TradingTerms_TextBlock_RegulationsContent3}">
+                                                    
                                                 </TextBlock>
                                                 <TextBlock TextWrapping="Wrap"
                                                    Width="970"
@@ -190,8 +195,9 @@
                                                    Margin="40,4,0,0"
                                                            FontStyle="Italic"
                                                    Focusable="False"
-                                                   Foreground="Black">
-                                                    - Khi tiến hành các bước thanh toán, cần đọc kĩ các thông tin trên màn hình về rạp chiếu phim, tên phim, suất chiếu, và chỗ ngồi trước khi hoàn tất việc xác nhận tất cả các thông tin về vé.
+                                                   Foreground="Black"
+                                                           Text="{DynamicResource TradingTerms_TextBlock_RegulationsContent4}">
+                                                    
                                                 </TextBlock>
                                                 <TextBlock TextWrapping="Wrap"
                                                    Width="970"
@@ -200,8 +206,9 @@
                                                            FontStyle="Italic"
                                                    Margin="40,4,0,0"
                                                    Focusable="False"
-                                                   Foreground="Black">
-                                                    - Quý khách thanh toán giao dịch đặt vé theo quy định tại Chính Sách Thanh Toán đăng tải trên FatFilmFo trước khi nhận mã đặt vé của giao dịch đó. Khi quý khách nhấn (click) vào ô “Thanh toán” để tiến hành thanh toán Đặt chỗ có nghĩa là đã xác nhận rà soát thông tin Đặt chỗ; và đồng ý là Điều Khoản Và Điều Kiện sẽ được áp dụng cho giao dịch mua vé trong giao dịch đó.
+                                                   Foreground="Black"
+                                                           Text="{DynamicResource TradingTerms_TextBlock_RegulationsContent5}">
+                                                    
                                                 </TextBlock>
                                                 <TextBlock TextWrapping="Wrap"
                                                    Width="970"
@@ -210,8 +217,9 @@
                                                            FontStyle="Italic"
                                                    Margin="40,4,0,0"
                                                    Focusable="False"
-                                                   Foreground="Black">
-                                                    - Email và tin nhắn xác nhận đặt vé sau khi hoàn thành việc thanh toán vé trực tuyến, quý khách sẽ nhận được thư xác nhận thông tin chi tiết vé đã thanh toán thông qua địa chỉ thư điện tử (email) mà quý khách đã cung cấp. Email xác nhận thông tin đặt vé có thể đi vào hộp thư rác (spam mail) của bạn, vì vậy hãy kiểm tra chúng trước khi liên lạc với FatFilmFo.
+                                                   Foreground="Black"
+                                                           Text="{DynamicResource TradingTerms_TextBlock_RegulationsContent6}">
+                                                    
                                                 </TextBlock>
                                                 <TextBlock TextWrapping="Wrap"
                                                    Width="970"
@@ -219,8 +227,9 @@
                                                    FontSize="16"
                                                    Margin="40,4,0,0"
                                                    Focusable="False"
-                                                   Foreground="Black">
-                                                    - Bằng việc thanh toán qua ứng dụng này, quý khách chấp nhận vị trí ghế ngồi mà bạn đã đặt. Quý khách đồng ý rằng, trong những trường hợp có sự thay đổi về chương trình phim hoặc bất khả kháng, FatFilmFo có quyền hoàn trả lại bất kỳ vé nào từ việc mua bán qua ứng dụng này hoặc thực hiện việc chuyển vé cho bạn qua suất chiếu khác theo yêu cầu của quý khách.
+                                                   Foreground="Black"
+                                                           Text="{DynamicResource TradingTerms_TextBlock_RegulationsContent7}">
+                                                    
                                                 </TextBlock>
                                                 <TextBlock TextWrapping="Wrap"
                                                    Width="970"
@@ -229,8 +238,9 @@
                                                            FontStyle="Italic"
                                                    Margin="40,4,0,0"
                                                    Focusable="False"
-                                                   Foreground="Black">
-                                                    - Trong suốt quá trình đăng ký, quý khách đồng ý nhận email quảng cáo từ ứng dụng. Sau đó, nếu không muốn tiếp tục nhận mail, quý khách có thể từ chối bằng cách nhấp vào đường link ở dưới cùng trong mọi email quảng cáo.
+                                                   Foreground="Black"
+                                                           Text="{DynamicResource TradingTerms_TextBlock_RegulationsContent8}">
+                                                    
                                                 </TextBlock>
                                             </StackPanel>
                                             
@@ -240,7 +250,7 @@
                                                 <RowDefinition Height="24*"/>
                                                 <RowDefinition Height="76*"/>
                                             </Grid.RowDefinitions>
-                                            <TextBlock Text="4. Giá Vé:" 
+                                            <TextBlock Text="{DynamicResource TradingTerms_TextBlock_TicketPrice}" 
                                                    Grid.Row="0"
                                                    FontSize="16"
                                                    FontWeight="Bold"
@@ -256,8 +266,9 @@
                                                    Margin="40,4,20,0"
                                                        FontStyle="Italic"
                                                    Focusable="False"
-                                                   Foreground="Black">
-                                                Giá vé được niêm yết tại FatFilmFo là giá bán cuối cùng đã bao gồm thuế Giá trị gia tăng (VAT). Giá vé có thể thay đổi tùy thời điểm và chương trình khuyến mãi kèm theo và sẽ được hiển thị rõ tại trang Thanh toán khi quý khách tiến hành đặt hàng. Giá vé khi đặt vé trực tuyến trên ứng dụng FatFilmFo là giá vé áp dụng cho nhiều đối tượng người lớn, trẻ em với mức cố định là 45 000 VNĐ.
+                                                   Foreground="Black"
+                                                       Text="{DynamicResource TradingTerms_TextBlock_TicketPriceContent}">
+                                                
                                             </TextBlock>
                                         </Grid>
                                         <Grid Height="110" VerticalAlignment="Top">
@@ -265,7 +276,7 @@
                                                 <RowDefinition Height="18*"/>
                                                 <RowDefinition Height="82*"/>
                                             </Grid.RowDefinitions>
-                                            <TextBlock Text="5. Thương hiệu và bản quyền:" 
+                                            <TextBlock Text="{DynamicResource TradingTerms_TextBlock_TrademarksAndCopyrights}" 
                                                    Grid.Row="0"
                                                    FontSize="16"
                                                    FontWeight="Bold"
@@ -281,8 +292,9 @@
                                                        FontStyle="Italic"
                                                    Margin="40,4,20,0"
                                                    Focusable="False"
-                                                   Foreground="Black">
-                                                Mọi quyền sở hữu trí tuệ (đã đăng ký hoặc chưa đăng ký), nội dung thông tin và tất cả các thiết kế, văn bản, đồ họa, phần mềm, hình ảnh, video, âm nhạc, âm thanh, biên dịch phần mềm, mã nguồn và phần mềm cơ bản đều là tài sản của FatFilmFo. Toàn bộ nội dung của ứng dụng được bảo vệ theo pháp luật sở hữu trí tuệ của Việt Nam và các công ước, điều ước quốc tế mà Việt Nam tham gia hoặc là thành viên.
+                                                   Foreground="Black"
+                                                       Text="{DynamicResource TradingTerms_TextBlock_TrademarksAndCopyrightsContent}">
+                                                
                                             </TextBlock>
                                         </Grid>
                                         <Grid Height="90" VerticalAlignment="Top">
@@ -290,7 +302,7 @@
                                                 <RowDefinition Height="22*"/>
                                                 <RowDefinition Height="78*"/>
                                             </Grid.RowDefinitions>
-                                            <TextBlock Text="6. Luật áp dụng và giải quyết tranh chấp:" 
+                                            <TextBlock Text="{DynamicResource TradingTerms_TextBlock_Law}" 
                                                    Grid.Row="0"
                                                    FontSize="16"
                                                    FontWeight="Bold"
@@ -306,8 +318,9 @@
                                                        FontStyle="Italic"
                                                    Margin="40,4,20,0"
                                                    Focusable="False"
-                                                   Foreground="Black">
-                                                Các điều kiện, điều khoản và nội dung của trang web này được điều chỉnh và giải thích theo luật pháp Việt Nam. Các tranh chấp phát sinh từ hoặc liên quan đến (các) giao dịch thực hiện tại ứng dụng này sẽ được ưu tiên giải quyết thông qua thương lượng, hòa giải. Trường hợp các bên không tự giải quyết, tranh chấp sẽ được đưa ra xét xử tại Tòa án cấp có thẩm quyền của Việt Nam.
+                                                   Foreground="Black"
+                                                       Text="{DynamicResource TradingTerms_TextBlock_LawContent}">
+                                                
                                             </TextBlock>
                                         </Grid>
                                         <Grid Height="180" VerticalAlignment="Top">
@@ -315,7 +328,7 @@
                                                 <RowDefinition Height="13*"/>
                                                 <RowDefinition Height="87*"/>
                                             </Grid.RowDefinitions>
-                                            <TextBlock Text="7. Quy định về bảo mật:" 
+                                            <TextBlock Text="{DynamicResource TradingTerms_TextBlock_Privacy}" 
                                                    Grid.Row="0"
                                                    FontSize="16"
                                                    FontWeight="Bold"
@@ -331,8 +344,9 @@
                                                    Margin="40,4,20,0"
                                                        FontStyle="Italic"
                                                    Focusable="False"
-                                                   Foreground="Black">
-                                                Ứng dụng của chúng tôi coi trọng việc bảo mật thông tin và sử dụng các biện pháp tốt nhất bảo vệ thông tin và việc thanh toán của quý khách. Thông tin của quý khách trong quá trình thanh toán sẽ được mã hóa để đảm bảo an toàn. Sau khi quý khách hoàn thành quá trình đặt hàng, quý khách sẽ thoát khỏi chế độ an toàn. Quý khách không được sử dụng bất kỳ chương trình, công cụ hay hình thức nào khác để can thiệp vào hệ thống hay làm thay đổi cấu trúc dữ liệu. Ứng dụng cũng nghiêm cấm việc phát tán, truyền bá hay cổ vũ cho bất kỳ hoạt động nào nhằm can thiệp, phá hoại hay xâm nhập vào dữ liệu của hệ thống. Cá nhân hay tổ chức vi phạm sẽ bị tước bỏ mọi quyền lợi cũng như sẽ bị truy tố trước pháp luật nếu cần thiết. Mọi thông tin giao dịch sẽ được bảo mật trừ trường hợp buộc phải cung cấp theo yêu cầu của tòa án, (các) cơ quan có thẩm quyền hoặc theo quy định của pháp luật.
+                                                   Foreground="Black"
+                                                       Text="{DynamicResource TradingTerms_TextBlock_PrivacyContent}">
+                                                
                                             </TextBlock>
                                         </Grid>
                                         <Grid Height="90" VerticalAlignment="Top">
@@ -340,7 +354,7 @@
                                                 <RowDefinition Height="24*"/>
                                                 <RowDefinition Height="76*"/>
                                             </Grid.RowDefinitions>
-                                            <TextBlock Text="8. Giải quyết hậu quả do lỗi nhập sai thông tin thương mại tại FatFilmFo:" 
+                                            <TextBlock Text="{DynamicResource TradingTerms_TextBlock_DealWithTheConsequences}" 
                                                    Grid.Row="0"
                                                    FontSize="16"
                                                    FontWeight="Bold"
@@ -356,8 +370,9 @@
                                                    Margin="40,4,20,0"
                                                        FontStyle="Italic"
                                                    Focusable="False"
-                                                   Foreground="Black">
-                                                Khách hàng có trách nhiệm cung cấp thông tin đầy đủ và chính xác khi tham gia giao dịch tại FatFilmFo. Trong trường hợp khách hàng nhập sai thông tin tại trang giúp đỡ, FatFilmFo có quyền từ chối thực hiện giao dịch. Ngoài ra, trong mọi trường hợp, khách hàng đều có quyền đơn phương chấm dứt giao dịch nếu đã thực hiện bằng cách thông báo cho FatFilmFo qua hotline 0379361210.
+                                                   Foreground="Black"
+                                                       Text="{DynamicResource TradingTerms_TextBlock_DealWithTheConsequencesContent}">
+                                                
                                             </TextBlock>
                                         </Grid>
                                     </StackPanel>

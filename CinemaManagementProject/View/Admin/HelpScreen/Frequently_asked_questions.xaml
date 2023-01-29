@@ -25,7 +25,7 @@
             <Grid Grid.Row="0">
                 <Border BorderBrush="#67C6E6" BorderThickness="0,0,0,4" Margin="35,0,35,0"/>
                 <Label Padding="0" 
-                           Content="Điều khoản chung" 
+                           Content="{DynamicResource fre_title}" 
                            FontSize="25" 
                            FontWeight="Bold" 
                            VerticalAlignment="Center" 

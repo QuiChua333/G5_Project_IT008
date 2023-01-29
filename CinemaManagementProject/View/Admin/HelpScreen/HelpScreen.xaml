@@ -68,13 +68,13 @@
                         <RowDefinition Height="14*"/>
                         <RowDefinition Height="14*"/>
                     </Grid.RowDefinitions>
-                    <Label Content="TẬP ĐOÀN FATFILMFO GROUP"
+                    <Label Content="{DynamicResource HelpScreen_Label_TapDoan}"
                            FontSize="38"
                            FontWeight="Bold"
                            Grid.Row="0"
                            Margin="20,16,0,0"/>
                     <TextBlock Grid.Row="1" 
-                               Text="Giấy CNDKDN: 0303675394, đăng ký lần đầu ngày 14/10/2015, đăng ký lần thứ 5 ngày 24/11/2022, cấp bởi Sở KHDT thành phố Hồ Chí Minh."
+                               Text="{DynamicResource HelpScreen_TextBlock_GiayCNDKDN}"
                                FontSize="16"
                                Focusable="False"
                                TextWrapping="Wrap"
@@ -83,7 +83,7 @@
                                Foreground="#565D65"
                                FontWeight="Medium"/>
                     <TextBlock Grid.Row="2" 
-                               Text="Địa chỉ: Trường ĐH Công nghệ Thông Tin, ĐHQG Thành phố Hồ Chí Minh - Khu phố 6, phường Linh Trung, thành phố Thủ Đức."
+                               Text="{DynamicResource HelpScreen_TextBlock_DiaChi}"
                                FontSize="16"
                                Focusable="False"
                                TextWrapping="Wrap"
@@ -105,17 +105,17 @@
                                Foreground="#565D65"
                                FontWeight="Medium"/>
                         <Label Grid.Column="1"
-                               FontSize="16"
                                Content="0379361210"
-                               VerticalAlignment="Top"
-                               FontWeight="Medium"
-                               Foreground="#1A1884">
+                               VerticalAlignment="Top">
                             <Label.Style>
                                 <Style TargetType="Label">
                                     <Setter Property="Cursor" Value="Arrow"/>
+                                    <Setter Property="Foreground" Value="#565D65"/>
+                                    <Setter Property="FontSize" Value="16"/>
+                                    <Setter Property="FontWeight" Value="Medium"/>
                                     <Style.Triggers>
                                         <Trigger Property="IsMouseOver" Value="True">
-                                            <Setter Property="Foreground" Value="#DD4141"></Setter>
+                                            <Setter Property="Foreground" Value="Red"></Setter>
                                             <Setter Property="Cursor" Value="Hand"/>
                                         </Trigger>
                                     </Style.Triggers>
@@ -147,7 +147,7 @@
                             <RowDefinition Height="80*"/>
                         </Grid.RowDefinitions>
                         <Label Grid.Row="0" 
-                               Content="Điều khoảng chung"
+                               Content="{DynamicResource HelpScreen_Label_DieuKhoanChung}"
                                FontSize="26"
                                Foreground="Black"
                                FontWeight="Bold"
@@ -161,114 +161,118 @@
                                 <RowDefinition/>
                             </Grid.RowDefinitions>
                             
-                            <Label Grid.Row="0"
+                            <TextBlock Grid.Row="0"
                                    x:Name="GeneralTermButton"
-                                   FontSize="20"
-                                   Content ="Điều khoản chung"
+                                   Text ="{DynamicResource HelpScreen_Label_DieuKhoanChung}"
                                    VerticalAlignment="Center"
                                    HorizontalAlignment="Left"
-                                   Margin="40,0,0,0"
-                                   FontWeight="Medium"
-                                   Foreground="#565D65">
+                                   Margin="40,0,0,0">
                                 <i:Interaction.Triggers>
                                     <i:EventTrigger EventName="MouseLeftButtonDown">
                                         <i:InvokeCommandAction Command="{Binding Load_General_Term}"
                                                                CommandParameter="{Binding ElementName=GeneralTermButton}"/>
                                     </i:EventTrigger>
                                 </i:Interaction.Triggers>
-                                <Label.Style>
-                                    <Style TargetType="Label">
+                                <TextBlock.Style>
+                                    <Style TargetType="TextBlock">
                                         <Setter Property="Cursor" Value="Arrow"/>
+                                        <Setter Property="Foreground" Value="#565D65"/>
+                                        <Setter Property="FontSize" Value="20"/>
+                                        <Setter Property="FontWeight" Value="Medium"/>
                                         <Style.Triggers>
                                             <Trigger Property="IsMouseOver" Value="True">
-                                                <Setter Property="Foreground" Value="#DD4141"></Setter>
+                                                <Setter Property="Foreground" Value="Red"></Setter>
                                                 <Setter Property="Cursor" Value="Hand"/>
+                                                <Setter Property="TextDecorations" Value="Underline"/>
                                             </Trigger>
                                         </Style.Triggers>
                                     </Style>
-                                </Label.Style>
-                            </Label>
+                                </TextBlock.Style>
+                            </TextBlock>
 
-                            <Label Grid.Row="1"
-                                   FontSize="20"
-                                   Content="Điều khoản giao dịch"
+                            <TextBlock Grid.Row="1"
+                                   Text="{DynamicResource HelpScreen_TextBlock_DieuKhoanGiaoDich}"
                                    VerticalAlignment="Center"
                                    HorizontalAlignment="Left"
-                                   Margin="40,0,0,0"
-                                   FontWeight="Medium"
-                                   Foreground="#565D65">
+                                   Margin="40,0,0,0">
                                 <i:Interaction.Triggers>
                                     <i:EventTrigger EventName="MouseLeftButtonDown">
                                         <i:InvokeCommandAction Command="{Binding Load_Trading_Terms}"
                                                                CommandParameter="{Binding ElementName=GeneralTermButton}"/>
                                     </i:EventTrigger>
                                 </i:Interaction.Triggers>
-                                <Label.Style>
-                                    <Style TargetType="Label">
+                                <TextBlock.Style>
+                                    <Style TargetType="TextBlock">
                                         <Setter Property="Cursor" Value="Arrow"/>
+                                        <Setter Property="Foreground" Value="#565D65"/>
+                                        <Setter Property="FontSize" Value="20"/>
+                                        <Setter Property="FontWeight" Value="Medium"/>
                                         <Style.Triggers>
                                             <Trigger Property="IsMouseOver" Value="True">
-                                                <Setter Property="Foreground" Value="#DD4141"></Setter>
+                                                <Setter Property="Foreground" Value="Red"></Setter>
                                                 <Setter Property="Cursor" Value="Hand"/>
+                                                <Setter Property="TextDecorations" Value="Underline"/>
                                             </Trigger>
                                         </Style.Triggers>
                                     </Style>
-                                </Label.Style>
-                            </Label>
+                                </TextBlock.Style>
+                            </TextBlock>
 
-                            <Label Grid.Row="2"
-                                   FontSize="20"
-                                   Content="Chính sách bảo mật"
+                            <TextBlock Grid.Row="2"
+                                   Text="{DynamicResource HelpScreen_TextBlock_ChinhSachBaoMat}"
                                    VerticalAlignment="Center"
                                    HorizontalAlignment="Left"
-                                   Margin="40,0,0,0"
-                                   FontWeight="Medium"
-                                   Foreground="#565D65">
+                                   Margin="40,0,0,0">
                                 <i:Interaction.Triggers>
                                     <i:EventTrigger EventName="MouseLeftButtonDown">
                                         <i:InvokeCommandAction Command="{Binding Load_Privacy_Policy}"
                                                                CommandParameter="{Binding ElementName=GeneralTermButton}"/>
                                     </i:EventTrigger>
                                 </i:Interaction.Triggers>
-                                <Label.Style>
-                                    <Style TargetType="Label">
+                                <TextBlock.Style>
+                                    <Style TargetType="TextBlock">
                                         <Setter Property="Cursor" Value="Arrow"/>
+                                        <Setter Property="Foreground" Value="#565D65"/>
+                                        <Setter Property="FontSize" Value="20"/>
+                                        <Setter Property="FontWeight" Value="Medium"/>
                                         <Style.Triggers>
                                             <Trigger Property="IsMouseOver" Value="True">
-                                                <Setter Property="Foreground" Value="#DD4141"></Setter>
+                                                <Setter Property="Foreground" Value="Red"></Setter>
                                                 <Setter Property="Cursor" Value="Hand"/>
+                                                <Setter Property="TextDecorations" Value="Underline"/>
                                             </Trigger>
                                         </Style.Triggers>
                                     </Style>
-                                </Label.Style>
-                            </Label>
+                                </TextBlock.Style>
+                            </TextBlock>
 
-                            <Label Grid.Row="3"
-                                   FontSize="20"
-                                   Content="Câu hỏi thường gặp"
+                            <TextBlock Grid.Row="3"
+                                   Text="{DynamicResource HelpScreen_TextBlock_CauHoiThuongGap}"
                                    VerticalAlignment="Center"
                                    HorizontalAlignment="Left"
-                                   Margin="40,0,0,0"
-                                   FontWeight="Medium"
-                                   Foreground="#565D65">
+                                   Margin="40,0,0,0">
                                 <i:Interaction.Triggers>
                                     <i:EventTrigger EventName="MouseLeftButtonDown">
                                         <i:InvokeCommandAction Command="{Binding Load_Frequently_asked_questions}"
                                                                CommandParameter="{Binding ElementName=GeneralTermButton}"/>
                                     </i:EventTrigger>
                                 </i:Interaction.Triggers>
-                                <Label.Style>
-                                    <Style TargetType="Label">
+                                <TextBlock.Style>
+                                    <Style TargetType="TextBlock">
                                         <Setter Property="Cursor" Value="Arrow"/>
+                                        <Setter Property="Foreground" Value="#565D65"/>
+                                        <Setter Property="FontSize" Value="20"/>
+                                        <Setter Property="FontWeight" Value="Medium"/>
                                         <Style.Triggers>
                                             <Trigger Property="IsMouseOver" Value="True">
-                                                <Setter Property="Foreground" Value="#DD4141"></Setter>
+                                                <Setter Property="Foreground" Value="Red"></Setter>
                                                 <Setter Property="Cursor" Value="Hand"/>
+                                                <Setter Property="TextDecorations" Value="Underline"/>
                                             </Trigger>
                                         </Style.Triggers>
                                     </Style>
-                                </Label.Style>
-                            </Label>
+                                </TextBlock.Style>
+                            </TextBlock>
                         </Grid>
 
                     </Grid>
@@ -279,7 +283,7 @@
                             <RowDefinition Height="80*"/>
                         </Grid.RowDefinitions>
                         <Label Grid.Row="0" 
-                               Content="Chăm sóc khách hàng"
+                               Content="{DynamicResource HelpScreen_Label_ChamSocKH}"
                                FontSize="26"
                                Foreground="Black"
                                FontWeight="Bold"
@@ -293,9 +297,9 @@
                             </Grid.RowDefinitions>
                             <Grid Grid.Row="0">
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="30*"/>
-                                    <ColumnDefinition Width="30*"/>
-                                    <ColumnDefinition Width="40*"/>
+                                    <ColumnDefinition Width="38*"/>
+                                    <ColumnDefinition Width="27*"/>
+                                    <ColumnDefinition Width="35*"/>
                                 </Grid.ColumnDefinitions>
                                 <Grid Grid.Column="0">
                                     <Grid.RowDefinitions>
@@ -304,7 +308,7 @@
                                         <RowDefinition/>
                                     </Grid.RowDefinitions>
                                     <Label Grid.Row="0"
-                                           Content="Kỹ thuật: "
+                                           Content="{DynamicResource HelpScreen_TextBlock_KyThuat}"
                                            FontSize="20"
                                            VerticalAlignment="Center"
                                            HorizontalAlignment="Left"
@@ -312,7 +316,7 @@
                                            FontWeight="Medium"
                                            Foreground="#565D65"/>
                                     <Label Grid.Row="1"
-                                           Content="Khiếu nại: "
+                                           Content="{DynamicResource HelpScreen_TextBlock_KhieuNai}"
                                            FontSize="20"
                                            VerticalAlignment="Center"
                                            HorizontalAlignment="Left"
@@ -320,7 +324,7 @@
                                            FontWeight="Medium"
                                            Foreground="#565D65"/>
                                     <Label Grid.Row="2"
-                                           Content="Bảo hành: "
+                                           Content="{DynamicResource HelpScreen_TextBlock_BaoHanh}"
                                            FontSize="20"
                                            VerticalAlignment="Center"
                                            HorizontalAlignment="Left"
@@ -336,18 +340,18 @@
                                     </Grid.RowDefinitions>
                                     
                                     <Label Grid.Row="0"
-                                           FontSize="20"
                                            Content="0379361210"
                                            VerticalAlignment="Center"
-                                           HorizontalAlignment="Left"
-                                           FontWeight="Medium"
-                                           Foreground="#1A1884">
+                                           HorizontalAlignment="Left">
                                         <Label.Style>
                                             <Style TargetType="Label">
                                                 <Setter Property="Cursor" Value="Arrow"/>
+                                                <Setter Property="Foreground" Value="#565D65"/>
+                                                <Setter Property="FontSize" Value="20"/>
+                                                <Setter Property="FontWeight" Value="Medium"/>
                                                 <Style.Triggers>
                                                     <Trigger Property="IsMouseOver" Value="True">
-                                                        <Setter Property="Foreground" Value="#DD4141"></Setter>
+                                                        <Setter Property="Foreground" Value="Red"></Setter>
                                                         <Setter Property="Cursor" Value="Hand"/>
                                                     </Trigger>
                                                 </Style.Triggers>
@@ -356,18 +360,18 @@
                                     </Label>
 
                                     <Label Grid.Row="1"
-                                           FontSize="20"
                                            Content="0379361210"
                                            VerticalAlignment="Center"
-                                           HorizontalAlignment="Left"
-                                           FontWeight="Medium"
-                                           Foreground="#1A1884">
+                                           HorizontalAlignment="Left">
                                         <Label.Style>
                                             <Style TargetType="Label">
                                                 <Setter Property="Cursor" Value="Arrow"/>
+                                                <Setter Property="Foreground" Value="#565D65"/>
+                                                <Setter Property="FontSize" Value="20"/>
+                                                <Setter Property="FontWeight" Value="Medium"/>
                                                 <Style.Triggers>
                                                     <Trigger Property="IsMouseOver" Value="True">
-                                                        <Setter Property="Foreground" Value="#DD4141"></Setter>
+                                                        <Setter Property="Foreground" Value="Red"></Setter>
                                                         <Setter Property="Cursor" Value="Hand"/>
                                                     </Trigger>
                                                 </Style.Triggers>
@@ -376,18 +380,18 @@
                                     </Label>
 
                                     <Label Grid.Row="2"
-                                           FontSize="20"
                                            Content="0379361210"
                                            VerticalAlignment="Center"
-                                           HorizontalAlignment="Left"
-                                           FontWeight="Medium"
-                                           Foreground="#1A1884">
+                                           HorizontalAlignment="Left">
                                         <Label.Style>
                                             <Style TargetType="Label">
                                                 <Setter Property="Cursor" Value="Arrow"/>
+                                                <Setter Property="Foreground" Value="#565D65"/>
+                                                <Setter Property="FontSize" Value="20"/>
+                                                <Setter Property="FontWeight" Value="Medium"/>
                                                 <Style.Triggers>
                                                     <Trigger Property="IsMouseOver" Value="True">
-                                                        <Setter Property="Foreground" Value="#DD4141"></Setter>
+                                                        <Setter Property="Foreground" Value="Red"></Setter>
                                                         <Setter Property="Cursor" Value="Hand"/>
                                                     </Trigger>
                                                 </Style.Triggers>
@@ -465,11 +469,11 @@
                             </Grid>
                             <Grid Grid.Row="1">
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="35*"/>
-                                    <ColumnDefinition Width="70*"/>
+                                    <ColumnDefinition Width="40*"/>
+                                    <ColumnDefinition Width="60*"/>
                                 </Grid.ColumnDefinitions>
                                 <Label Grid.Column="0"
-                                       Content="Email hỗ trợ: "
+                                       Content="{DynamicResource HelpScreen_Label_EmailHoTro}"
                                        FontSize="20"
                                        VerticalAlignment="Center"
                                        HorizontalAlignment="Left"
@@ -477,18 +481,18 @@
                                        FontWeight="Medium"
                                        Foreground="#565D65"/>
                                 <Label Grid.Column="1"
-                                       FontSize="20"
-                                       Content="phatrongtinh1508@gmail.com"
+                                       Content="fatfilmfo@gmail.com"
                                        VerticalAlignment="Center"
-                                       HorizontalAlignment="Left"
-                                       FontWeight="Medium"
-                                       Foreground="#1A1884">
+                                       HorizontalAlignment="Left">
                                     <Label.Style>
                                         <Style TargetType="Label">
                                             <Setter Property="Cursor" Value="Arrow"/>
+                                            <Setter Property="Foreground" Value="#565D65"/>
+                                            <Setter Property="FontSize" Value="20"/>
+                                            <Setter Property="FontWeight" Value="Medium"/>
                                             <Style.Triggers>
                                                 <Trigger Property="IsMouseOver" Value="True">
-                                                    <Setter Property="Foreground" Value="#DD4141"></Setter>
+                                                    <Setter Property="Foreground" Value="Red"></Setter>
                                                     <Setter Property="Cursor" Value="Hand"/>
                                                 </Trigger>
                                             </Style.Triggers>
@@ -505,7 +509,7 @@
                             <RowDefinition Height="80*"/>
                         </Grid.RowDefinitions>
                         <Label Grid.Row="0" 
-                               Content="Thông tin liên hệ"
+                               Content="{DynamicResource HelpScreen_Label_ThongTingLH}"
                                FontSize="26"
                                Foreground="Black"
                                FontWeight="Bold"
@@ -521,61 +525,165 @@
                             </Grid.ColumnDefinitions>
                             <Grid Grid.Column="0">
                                 <Button Height="70"
-                                        materialDesign:ButtonAssist.CornerRadius="6"
-                                        Background="Transparent"
-                                        BorderThickness="0"
-                                        BorderBrush="Transparent">
+                                        materialDesign:ButtonAssist.CornerRadius="6">
                                     <Button.Content>
-                                        <Image VerticalAlignment="Center" 
+                                        <Hyperlink NavigateUri="https://www.facebook.com"
+                                                   x:Name="Hyperlink_FB"
+                                                   Command="{Binding FB_Command}"
+                                                   CommandParameter="{Binding ElementName=Hyperlink_FB,Path=NavigateUri}"> 
+                                            <Image VerticalAlignment="Center" 
                                                HorizontalAlignment="Center" 
                                                Source="{StaticResource iconFace}" 
                                                Width="50" Height="50"/>
+                                        </Hyperlink>
                                     </Button.Content>
+                                    <Button.Style>
+                                        <Style TargetType="{x:Type Button}">
+                                            <Setter Property="Background" Value="Transparent"/>
+                                            <Setter Property="BorderThickness" Value="0"/>
+                                            <Setter Property="BorderBrush" Value="Transparent"/>
+                                            <Setter Property="Template">
+                                                <Setter.Value>
+                                                    <ControlTemplate TargetType="{x:Type Button}">
+                                                        <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="20">
+                                                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                                        </Border>
+                                                    </ControlTemplate>
+                                                </Setter.Value>
+                                            </Setter>
+                                            <Style.Triggers>
+                                                <Trigger Property="IsMouseOver" Value="True">
+                                                    <Setter Property="Background" Value="#DBD6D6"/>
+                                                </Trigger>
+                                                <Trigger Property="IsMouseCaptured" Value="True">
+                                                    <Setter Property="Opacity" Value="0.5"/>
+                                                </Trigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </Button.Style>
                                 </Button>
                             </Grid>
 
                             <Grid Grid.Column="1">
                                 <Button Height="70"
-                                    materialDesign:ButtonAssist.CornerRadius="6"
-                                    Background="Transparent"
-                                    BorderThickness="0"
-                                    BorderBrush="Transparent">
+                                        materialDesign:ButtonAssist.CornerRadius="6">
                                     <Button.Content>
-                                        <Image VerticalAlignment="Center" 
+                                        <Hyperlink NavigateUri="https://zalo.me/g/gkpqph676"
+                                                   x:Name="Hyperlink_Zalo"
+                                                   Command="{Binding Zalo_Command}"
+                                                   CommandParameter="{Binding ElementName=Hyperlink_Zalo,Path=NavigateUri}">  
+                                            <Image VerticalAlignment="Center" 
                                                HorizontalAlignment="Center" 
                                                Source="{StaticResource iconZalo}" 
                                                Width="50" Height="50"/>
+                                        </Hyperlink>
                                     </Button.Content>
+                                    <Button.Style>
+                                        <Style TargetType="{x:Type Button}">
+                                            <Setter Property="Background" Value="Transparent"/>
+                                            <Setter Property="BorderThickness" Value="0"/>
+                                            <Setter Property="BorderBrush" Value="Transparent"/>
+                                            <Setter Property="Template">
+                                                <Setter.Value>
+                                                    <ControlTemplate TargetType="{x:Type Button}">
+                                                        <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="20">
+                                                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                                        </Border>
+                                                    </ControlTemplate>
+                                                </Setter.Value>
+                                            </Setter>
+                                            <Style.Triggers>
+                                                <Trigger Property="IsMouseOver" Value="True">
+                                                    <Setter Property="Background" Value="#DBD6D6"/>
+                                                </Trigger>
+                                                <Trigger Property="IsMouseCaptured" Value="True">
+                                                    <Setter Property="Opacity" Value="0.5"/>
+                                                </Trigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </Button.Style>
                                 </Button>
                             </Grid>
 
                             <Grid Grid.Column="2">
                                 <Button Height="70"
-                                    materialDesign:ButtonAssist.CornerRadius="6"
-                                    Background="Transparent"
-                                    BorderThickness="0"
-                                    BorderBrush="Transparent">
+                                        materialDesign:ButtonAssist.CornerRadius="6">
                                     <Button.Content>
-                                        <Image VerticalAlignment="Center" 
+                                        <Hyperlink NavigateUri="https://twitter.com"
+                                                   x:Name="Hyperlink_Twitter"
+                                                   Command="{Binding Twitter_Command}"
+                                                   CommandParameter="{Binding ElementName=Hyperlink_Twitter,Path=NavigateUri}"> 
+                                            <Image VerticalAlignment="Center" 
                                                HorizontalAlignment="Center" 
                                                Source="{StaticResource iconTiwter}" 
                                                Width="50" Height="50"/>
+                                        </Hyperlink>
                                     </Button.Content>
+                                    <Button.Style>
+                                        <Style TargetType="{x:Type Button}">
+                                            <Setter Property="Background" Value="Transparent"/>
+                                            <Setter Property="BorderThickness" Value="0"/>
+                                            <Setter Property="BorderBrush" Value="Transparent"/>
+                                            <Setter Property="Template">
+                                                <Setter.Value>
+                                                    <ControlTemplate TargetType="{x:Type Button}">
+                                                        <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="20">
+                                                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                                        </Border>
+                                                    </ControlTemplate>
+                                                </Setter.Value>
+                                            </Setter>
+                                            <Style.Triggers>
+                                                <Trigger Property="IsMouseOver" Value="True">
+                                                    <Setter Property="Background" Value="#DBD6D6"/>
+                                                </Trigger>
+                                                <Trigger Property="IsMouseCaptured" Value="True">
+                                                    <Setter Property="Opacity" Value="0.5"/>
+                                                </Trigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </Button.Style>
                                 </Button>
                             </Grid>
 
                             <Grid Grid.Column="3">
                                 <Button Height="70"
-                                    materialDesign:ButtonAssist.CornerRadius="6"
-                                    Background="Transparent"
-                                    BorderThickness="0"
-                                    BorderBrush="Transparent">
+                                        materialDesign:ButtonAssist.CornerRadius="6">
                                     <Button.Content>
-                                        <Image VerticalAlignment="Center" 
+                                        <Hyperlink NavigateUri="https://www.instagram.com/"
+                                                   x:Name="Hyperlink_Instagram"
+                                                   Command="{Binding Instagram_Command}"
+                                                   CommandParameter="{Binding ElementName=Hyperlink_Instagram,Path=NavigateUri}"> 
+                                            <Image VerticalAlignment="Center" 
                                                HorizontalAlignment="Center" 
                                                Source="{StaticResource iconInstaram}" 
                                                Width="50" Height="50"/>
+                                        </Hyperlink>
                                     </Button.Content>
+                                    <Button.Style>
+                                        <Style TargetType="{x:Type Button}">
+                                            <Setter Property="Background" Value="Transparent"/>
+                                            <Setter Property="BorderThickness" Value="0"/>
+                                            <Setter Property="BorderBrush" Value="Transparent"/>
+                                            <Setter Property="Template">
+                                                <Setter.Value>
+                                                    <ControlTemplate TargetType="{x:Type Button}">
+                                                        <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="20">
+                                                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                                        </Border>
+                                                    </ControlTemplate>
+                                                </Setter.Value>
+                                            </Setter>
+                                            <Style.Triggers>
+                                                <Trigger Property="IsMouseOver" Value="True">
+                                                    <Setter Property="Background" Value="#DBD6D6"/>
+                                                </Trigger>
+                                                <Trigger Property="IsMouseCaptured" Value="True">
+                                                    <Setter Property="Opacity" Value="0.5"/>
+                                                </Trigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </Button.Style>
                                 </Button>
                             </Grid>
 
@@ -584,12 +692,13 @@
                 </Grid>
             </Border>
 
-            <Label Content="Chúng tôi hy vọng sẽ mang lại những trải nghiệm tốt nhất cho bạn !"
+            <Label Content="{DynamicResource HelpScreen_Label_Final}"
                        FontSize="24"
                        Grid.Row="2"
                        HorizontalAlignment="Center"
                        VerticalAlignment="Top"
                        FontWeight="Bold"/>
+            
         </Grid>
     </Grid>
 </Page>
