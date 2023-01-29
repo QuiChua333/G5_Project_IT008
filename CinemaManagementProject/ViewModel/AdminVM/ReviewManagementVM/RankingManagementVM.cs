@@ -46,9 +46,16 @@ namespace CinemaManagementProject.ViewModel.AdminVM.ReviewManagementVM
         {
             try
             {
-                List < FilmStatistical > listFilm = await Task.Run(() => ReviewService.Ins.GetTop5FilmReview());
-                FilmSelected = listFilm[0];
-                Top5Film = listFilm;
+                (bool isSuccess, List < FilmStatistical > listFilm) = await Task.Run(() => ReviewService.Ins.GetTop5FilmReview());
+                if(isSuccess)
+                {
+                    if (listFilm.Count > 0)
+                        FilmSelected = listFilm[0];
+                    Top5Film = listFilm;
+                }    
+                else
+                   if (Properties.Settings.Default.isEnglish) CustomMessageBox.ShowOk("Please check Internet and try again!", "Error", "Ok", Views.CustomMessageBoxImage.Error);
+                   else CustomMessageBox.ShowOk("Kiểm tra Internet và thử lại!", "Lỗi", "Ok", Views.CustomMessageBoxImage.Error);
             }
             catch (System.Data.Entity.Core.EntityException e)
             {
@@ -65,9 +72,16 @@ namespace CinemaManagementProject.ViewModel.AdminVM.ReviewManagementVM
         {
             try
             {
-                List<FilmStatistical> listFilm = await Task.Run(() => ReviewService.Ins.GetTop5FilmReview(IsDes, IsTotalComment, TopSelected));
-                FilmSelected = listFilm[0];
-                Top5Film = listFilm;
+                (bool isSuccess, List<FilmStatistical> listFilm) = await Task.Run(() => ReviewService.Ins.GetTop5FilmReview(IsDes, IsTotalComment, TopSelected));
+                if (isSuccess)
+                {
+                    if (listFilm.Count > 0)
+                        FilmSelected = listFilm[0];
+                    Top5Film = listFilm;
+                }
+                else
+                    if (Properties.Settings.Default.isEnglish) CustomMessageBox.ShowOk("Please check Internet and try again!", "Error", "Ok", Views.CustomMessageBoxImage.Error);
+                    else CustomMessageBox.ShowOk("Kiểm tra Internet và thử lại!", "Lỗi", "Ok", Views.CustomMessageBoxImage.Error);
             }
             catch (System.Data.Entity.Core.EntityException e)
             {

@@ -23,6 +23,7 @@ using System.Security.Cryptography;
 using Newtonsoft.Json.Linq;
 using System.Runtime.Remoting.Contexts;
 using System.Windows.Controls;
+using System.Net;
 
 namespace CinemaManagementProject.Model.Service
 {
@@ -149,8 +150,9 @@ namespace CinemaManagementProject.Model.Service
                 return ReviewFilmList;
             }
         }
-        public async Task<List<FilmStatistical>> GetTop5FilmReview()
+        public async Task<(bool,List<FilmStatistical>)> GetTop5FilmReview()
         {
+            List < FilmStatistical > listReviewFilmStatical = new List< FilmStatistical >();
             try
             {
                 var service = new SheetsService(new BaseClientService.Initializer()
@@ -159,10 +161,8 @@ namespace CinemaManagementProject.Model.Service
                     ApplicationName = ApplicationName,
                 });
                 SpreadsheetsResource.ValuesResource.GetRequest request = service.Spreadsheets.Values.Get(spreadsheetId, range);
-
                 ValueRange response = request.Execute();
                 IList<IList<Object>> values = response.Values;
-                List < FilmStatistical > listReviewFilmStatical = new List< FilmStatistical >();
                 if (values != null && values.Count > 0)
                 {
                     using (var context = new CinemaManagementProjectEntities())
@@ -179,15 +179,21 @@ namespace CinemaManagementProject.Model.Service
                             item.SetValues(values);
                     }
                 }
-                return listReviewFilmStatical;
+                    return (true,listReviewFilmStatical); 
+            }
+            catch (System.Net.Http.HttpRequestException e)
+            {
+                return (false,listReviewFilmStatical);
             }
             catch (Exception e)
             {
-                return null;
+                CustomMessageBox.ShowOk("Lỗi hệ thống", "Lỗi", "Ok", Views.CustomMessageBoxImage.Error);
+                return (false, null);
             }
         }
-        public async Task<List<FilmStatistical>> GetTop5FilmReview(bool IsDes, bool IsTotalComment, int TopSelected)
+        public async Task<(bool, List<FilmStatistical>)> GetTop5FilmReview(bool IsDes, bool IsTotalComment, int TopSelected)
         {
+            List<FilmStatistical> listReviewFilmStatical = new List<FilmStatistical>();
             try
             {
                 var service = new SheetsService(new BaseClientService.Initializer()
@@ -199,7 +205,6 @@ namespace CinemaManagementProject.Model.Service
 
                 ValueRange response = request.Execute();
                 IList<IList<Object>> values = response.Values;
-                List<FilmStatistical> listReviewFilmStatical = new List<FilmStatistical>();
                 if (values != null && values.Count > 0)
                 {
                     using (var context = new CinemaManagementProjectEntities())
@@ -242,11 +247,16 @@ namespace CinemaManagementProject.Model.Service
                         }    
                     }
                 }
-                return listReviewFilmStatical;
+                return (true,listReviewFilmStatical);
+            }
+            catch (System.Net.Http.HttpRequestException e)
+            {
+                return (false, listReviewFilmStatical);
             }
             catch (Exception e)
             {
-                return null;
+                CustomMessageBox.ShowOk("Lỗi hệ thống", "Lỗi", "Ok", Views.CustomMessageBoxImage.Error);
+                return (false, null);
             }
         }
         public DateTime toDateTime(string stringDT)

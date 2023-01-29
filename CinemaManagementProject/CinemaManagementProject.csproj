@@ -748,6 +748,7 @@
     <Resource Include="Resource\Images\iconInstaram.png" />
     <Resource Include="Resource\Images\iconTiwter.png" />
     <Resource Include="Resource\Images\iconZalo.png" />
+    <Content Include="Resource\EmailTemplate\BillAndReviewFilm.txt" />
     <Content Include="Resource\EmailTemplate\ThankYouTemplate.txt" />
     <Resource Include="Resource\Icons\uploadWhite.png" />
     <Content Include="Resource\Styles\MenuButtonUI.xaml">

@@ -959,6 +959,7 @@ namespace CinemaManagementProject.ViewModel.StaffVM.TicketBillVM
                             MovieScheduleWindow movieScheduleWindow = Application.Current.Windows.OfType<MovieScheduleWindow>().FirstOrDefault();
                             ticketWindow.Close();
                             movieScheduleWindow.Close();
+                            await BookingService.Ins.SendBillToCustomer(Email, bill, MovieName, Date, Time, Room, Seat, Price, DiscountStr, LastPriceStr, productBills);
                         }
                         else
                         {
@@ -1013,6 +1014,7 @@ namespace CinemaManagementProject.ViewModel.StaffVM.TicketBillVM
                             MovieScheduleWindow movieScheduleWindow = Application.Current.Windows.OfType<MovieScheduleWindow>().FirstOrDefault();
                             ticketWindow.Close();
                             movieScheduleWindow.Close();
+                            await BookingService.Ins.SendBillToCustomer(Email, bill, MovieName, Date, Time, Room, Seat, Price,DiscountStr, LastPriceStr);
                         }
                         else
                         {
