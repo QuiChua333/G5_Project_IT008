@@ -22,7 +22,8 @@ namespace CinemaManagementProject.ViewModel.AdminVM.ReviewManagementVM
             foreach (var item in BillCodes)
             {
                 var review = values.FirstOrDefault(i => i[1].ToString() == item);
-                StarList.Add(int.Parse(review[2].ToString()));
+                if(review != null)
+                    StarList.Add(int.Parse(review[2].ToString()));
             }
             TotalStar = StarList.Sum();
             AverageStar = (float)TotalStar / TotalReview;

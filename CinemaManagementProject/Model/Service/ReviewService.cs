@@ -29,7 +29,7 @@ namespace CinemaManagementProject.Model.Service
 {
     internal class ReviewService
     {
-        String spreadsheetId = "1BRmXtWJXzs5DNb9btPPo9inrlSgHSvRVG1BFNB9oxxM";
+        String spreadsheetId = "1uoh3WUmldvlURN9_p51Jeke13rYiLXv67DOm_acGgX8";
         String range = "Review!A2:E";
         string[] Scopes = { SheetsService.Scope.SpreadsheetsReadonly };
         string ApplicationName = "Read Data Google SpeadSheet";
@@ -37,7 +37,7 @@ namespace CinemaManagementProject.Model.Service
 
         private ReviewService() {
 
-            using (var stream = new FileStream("client_secret_64816077460-d8r4m9q2tut7ga31hha2hnsj12qtbifh.apps.googleusercontent.com.json", FileMode.Open, FileAccess.Read))
+            using (var stream = new FileStream("client_secret_260965131938-ipbesmblrqmtvv0u92dcdq4r9icc4l7e.apps.googleusercontent.com.json", FileMode.Open, FileAccess.Read))
             {
                 string credPath = "token.json";
                 credential = GoogleWebAuthorizationBroker.AuthorizeAsync(
@@ -139,6 +139,11 @@ namespace CinemaManagementProject.Model.Service
                 return ReviewFilmList;
                 
             }
+            catch(System.InvalidOperationException e )
+            {
+                CustomMessageBox.ShowOk("Dữ liệu đang được cập nhật trên máy chủ, vui lòng thử lại", "Cảnh báo", "OK", Views.CustomMessageBoxImage.Warning);
+                return ReviewFilmList;
+            }
             catch (EntityException e)
             {
                 CustomMessageBox.ShowOk("Mất kết nối cơ sở dữ liệu", "Lỗi", "OK", Views.CustomMessageBoxImage.Error);
@@ -180,6 +185,11 @@ namespace CinemaManagementProject.Model.Service
                     }
                 }
                     return (true,listReviewFilmStatical); 
+            }
+            catch (System.InvalidOperationException e)
+            {
+                CustomMessageBox.ShowOk("Dữ liệu đang được cập nhật trên máy chủ, vui lòng thử lại", "Cảnh báo", "OK", Views.CustomMessageBoxImage.Warning);
+                return (false, listReviewFilmStatical);
             }
             catch (System.Net.Http.HttpRequestException e)
             {
@@ -248,6 +258,11 @@ namespace CinemaManagementProject.Model.Service
                     }
                 }
                 return (true,listReviewFilmStatical);
+            }
+            catch (System.InvalidOperationException e)
+            {
+                CustomMessageBox.ShowOk("Dữ liệu đang được cập nhật trên máy chủ, vui lòng thử lại", "Cảnh báo", "OK", Views.CustomMessageBoxImage.Warning);
+                return (false, listReviewFilmStatical);
             }
             catch (System.Net.Http.HttpRequestException e)
             {
