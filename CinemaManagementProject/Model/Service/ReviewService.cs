@@ -37,7 +37,7 @@ namespace CinemaManagementProject.Model.Service
 
         private ReviewService() {
 
-            using (var stream = new FileStream("client_secret_260965131938-ipbesmblrqmtvv0u92dcdq4r9icc4l7e.apps.googleusercontent.com.json", FileMode.Open, FileAccess.Read))
+            using (var stream = new FileStream("../../Resource/Json/client_secret_260965131938-ipbesmblrqmtvv0u92dcdq4r9icc4l7e.apps.googleusercontent.com.json", FileMode.Open, FileAccess.Read))
             {
                 string credPath = "token.json";
                 credential = GoogleWebAuthorizationBroker.AuthorizeAsync(

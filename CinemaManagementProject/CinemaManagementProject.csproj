@@ -1124,6 +1124,7 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <None Include="Resource\Json\client_secret_260965131938-ipbesmblrqmtvv0u92dcdq4r9icc4l7e.apps.googleusercontent.com.json" />
     <Resource Include="Resource\Fonts\Montserrat-Black.ttf" />
     <Resource Include="Resource\Fonts\Montserrat-BlackItalic.ttf" />
     <Resource Include="Resource\Fonts\Montserrat-Bold.ttf" />
