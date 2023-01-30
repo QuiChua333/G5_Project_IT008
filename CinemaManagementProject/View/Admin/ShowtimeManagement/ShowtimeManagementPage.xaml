@@ -68,7 +68,7 @@
                         </Rectangle.Effect>
                     </Rectangle>
                     <TextBox x:Name="_FilterBox" 
-                                 materialDesign:HintAssist.Hint="Tìm kiếm"
+                                 materialDesign:HintAssist.Hint="Search"
                                  Grid.Column="1"
                                  AllowDrop="True"
                                  VerticalAlignment="Center" 

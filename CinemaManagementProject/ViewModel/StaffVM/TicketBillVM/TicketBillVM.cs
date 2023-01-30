@@ -895,6 +895,7 @@ namespace CinemaManagementProject.ViewModel.StaffVM.TicketBillVM
                         CustomMessageBox.ShowOk(messageFromBooking, Properties.Settings.Default.isEnglish ? "Notification" : "Thông báo", "OK", Views.CustomMessageBoxImage.Success);
                         StaffWindow tk = Application.Current.Windows.OfType<StaffWindow>().FirstOrDefault();
                         tk.Content.Content = new OrderFoodPage();
+                        OrderFoodManagementVM.OrderFoodManagementVM.ListOrder.Clear();
                     }
                     else
                     {
@@ -960,12 +961,17 @@ namespace CinemaManagementProject.ViewModel.StaffVM.TicketBillVM
                             ticketWindow.Close();
                             movieScheduleWindow.Close();
                             await BookingService.Ins.SendBillToCustomer(Email, bill, MovieName, Date, Time, Room, Seat, Price, DiscountStr, LastPriceStr, productBills);
+                            TicketWindowViewModel.WaitingList.Clear();
+                            OrderFoodManagementVM.OrderFoodManagementVM.ListOrder.Clear();
+
+
                         }
                         else
                         {
                             IsSaving = false;
                             CustomMessageBox.ShowOk(messageFromBooking, Properties.Settings.Default.isEnglish ? "Error" : "Lỗi", "OK", Views.CustomMessageBoxImage.Error);
                         }
+
 
                     }
                     catch (System.Data.Entity.Core.EntityException e)
@@ -1015,6 +1021,7 @@ namespace CinemaManagementProject.ViewModel.StaffVM.TicketBillVM
                             ticketWindow.Close();
                             movieScheduleWindow.Close();
                             await BookingService.Ins.SendBillToCustomer(Email, bill, MovieName, Date, Time, Room, Seat, Price,DiscountStr, LastPriceStr);
+                            TicketWindowViewModel.WaitingList.Clear();
                         }
                         else
                         {

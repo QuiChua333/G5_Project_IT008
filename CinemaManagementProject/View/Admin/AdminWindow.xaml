@@ -237,9 +237,9 @@
                             </Ellipse.Fill>
                         </Ellipse>
                     </Border>
-                    <TextBlock Text="FILMFATFO" Foreground="Black" 
+                    <TextBlock Text="FATFILMFOO" Foreground="Black" 
                                    FontSize="22" FontWeight="Bold" VerticalAlignment="Center"
-                                   Margin="20,16,20,0" FontFamily="Montserrat"></TextBlock>
+                                   Margin="10,16,20,0" FontFamily="Montserrat"></TextBlock>
                 </StackPanel>
                 <!--Phân tích-->
                 <TextBlock Foreground="Black" Margin="10,20,0,5" FontSize="11" Text="{DynamicResource admin_sideBar_PhanTich}"></TextBlock>

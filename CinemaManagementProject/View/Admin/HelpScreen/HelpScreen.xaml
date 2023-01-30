@@ -9,7 +9,7 @@
       Title="HelpScreen"
       DataContext="{StaticResource HelpScreenVM}">
 
-    <Grid Width="1166.667" Height="700" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="20">
+    <Grid  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="20">
         <Rectangle
             Fill="White"
             Opacity="0.5"
@@ -52,7 +52,7 @@
 
                     <Image Source="{StaticResource LogoMain}" Grid.Row="0" Height="220" Width="220"/>
                     <TextBlock Grid.Row="1" 
-                               Text="FatFilmFo"
+                               Text="FatFilmFoo"
                                HorizontalAlignment="Center" 
                                VerticalAlignment="Center"
                                FontSize="38" 
@@ -481,7 +481,7 @@
                                        FontWeight="Medium"
                                        Foreground="#565D65"/>
                                 <Label Grid.Column="1"
-                                       Content="fatfilmfo@gmail.com"
+                                       Content="fatfilmfoo@gmail.com"
                                        VerticalAlignment="Center"
                                        HorizontalAlignment="Left">
                                     <Label.Style>

@@ -40,8 +40,14 @@
                     Padding="0"
                     BorderThickness="0"
                     HorizontalAlignment="Right"
-                    Margin="0,0,25,0" Click="Button_Click_1"
+                    Margin="0,0,25,0" 
                     >
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="Click">
+                                <i:InvokeCommandAction Command="{Binding ExitCM}"
+                                                   CommandParameter="{Binding ElementName=Ticket_Window}" />
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
                         <materialDesign:PackIcon Kind="Close" 
                                      Height="30"
                                      Width="30"

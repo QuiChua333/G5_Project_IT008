@@ -261,7 +261,7 @@
                     </Grid>
                 <StackPanel Margin="35,0,0,0" VerticalAlignment="Center">
                     <StackPanel Orientation="Horizontal" Margin="0,7,0,7">
-                        <TextBlock FontSize="38" FontFamily="{StaticResource MaterialDesignFont}" FontWeight="SemiBold">FatFilmFo</TextBlock>
+                        <TextBlock FontSize="38" FontFamily="{StaticResource MaterialDesignFont}" FontWeight="SemiBold">FatFilmFoo</TextBlock>
                         <Border Cursor="Hand" Margin="10,0,0,0" VerticalAlignment="Center">
                             <Border.Style>
                                 <Style TargetType="{x:Type Border}">
@@ -285,7 +285,7 @@
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" Margin="0,7,0,7">
                         <TextBlock FontSize="18" FontFamily="{StaticResource MaterialDesignFont}" FontWeight="Regular">
-                            FatFilmFo Cinema G5 UIT
+                            FatFilmFoo Cinema G5 UIT
                         </TextBlock>
                         <Border Cursor="Hand" Margin="10,0,0,0" >
                             <Border.Style>

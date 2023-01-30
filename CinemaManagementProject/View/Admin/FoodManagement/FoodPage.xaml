@@ -53,7 +53,7 @@
         <StackPanel Orientation="Horizontal" Grid.ColumnSpan="2">
             <Search:Search
                 x:Name="SearchBox"
-                materialDesign:HintAssist.Hint="{DynamicResource food_search_TimKiem}"
+                materialDesign:HintAssist.Hint="Search"
                 Width="400"
                 Height="44"
                 IconSize="30"

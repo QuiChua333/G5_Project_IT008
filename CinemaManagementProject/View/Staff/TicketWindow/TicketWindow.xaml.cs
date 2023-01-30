@@ -1,4 +1,6 @@
-﻿using System;
+﻿using CinemaManagementProject.ViewModel.StaffVM.OrderFoodManagementVM;
+using CinemaManagementProject.ViewModel.StaffVM.TicketVM;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -26,6 +28,7 @@ namespace CinemaManagementProject.View.Staff.TicketWindow
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
+            
             this.Close();
         }
 

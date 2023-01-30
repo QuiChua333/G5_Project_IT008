@@ -24,7 +24,8 @@ namespace CinemaManagementProject.ViewModel.StaffVM.TicketVM
 {
     public partial class TicketWindowViewModel : BaseViewModel
     {
-        public static ObservableCollection<ProductDTO> mainListOrder; 
+        public static ObservableCollection<ProductDTO> mainListOrder;
+        public ICommand ExitCM { get; set; }
         public ICommand CloseTicketWindowCM { get; set; }
         public ICommand MinimizeTicketWindowCM { get; set; }
         public ICommand MouseMoveWindowCM { get; set; }
@@ -43,6 +44,13 @@ namespace CinemaManagementProject.ViewModel.StaffVM.TicketVM
 
                 
             });
+            ExitCM = new RelayCommand<Window>((p) => { return true; },  (p) =>
+            {
+                TicketWindowViewModel.WaitingList.Clear();
+                OrderFoodManagementVM.OrderFoodManagementVM.ListOrder.Clear();
+                p.Close();
+
+            });
             CloseTicketWindowCM = new RelayCommand<FrameworkElement>((p) => { return p == null ? false : true; }, (p) =>
             {
                 FrameworkElement window = Window.GetWindow(p);
@@ -50,6 +58,9 @@ namespace CinemaManagementProject.ViewModel.StaffVM.TicketVM
                 if (w != null)
                 {
                     w.DataContext = new TicketWindowViewModel();
+                    TicketWindowViewModel.WaitingList.Clear();
+                    OrderFoodManagementVM.OrderFoodManagementVM.ListOrder.Clear();
+                    
                     w.Close();
                 }
             });

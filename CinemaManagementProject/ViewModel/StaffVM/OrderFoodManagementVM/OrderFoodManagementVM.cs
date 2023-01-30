@@ -173,6 +173,10 @@ namespace CinemaManagementProject.ViewModel.StaffVM.OrderFoodManagementVM
                     {
                         OrderList = new ObservableCollection<ProductDTO>(ListOrder);
                         LoadCurrentQuantityProductWhenBackFromBill();
+                        if (ListOrder.Count == 0)
+                        {
+                            TotalPrice = 0;
+                        }
 
 
                     }
