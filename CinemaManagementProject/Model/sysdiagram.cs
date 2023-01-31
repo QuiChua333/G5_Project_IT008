@@ -12,17 +12,12 @@ namespace CinemaManagementProject.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class Review
+    public partial class sysdiagram
     {
-        public string BillCode { get; set; }
-        public Nullable<int> Star { get; set; }
-        public string Comment { get; set; }
-        public Nullable<bool> IsDeleted { get; set; }
-        public Nullable<bool> IsRespond { get; set; }
-        public int FilmId { get; set; }
-        public string FilmName { get; set; }
-    
-        public virtual Bill Bill { get; set; }
-        public virtual Film Film { get; set; }
+        public string name { get; set; }
+        public int principal_id { get; set; }
+        public int diagram_id { get; set; }
+        public Nullable<int> version { get; set; }
+        public byte[] definition { get; set; }
     }
 }

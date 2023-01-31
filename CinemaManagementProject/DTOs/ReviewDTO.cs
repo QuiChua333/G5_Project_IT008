@@ -23,7 +23,7 @@ namespace CinemaManagementProject.DTOs
             OnPropertyChanged(propertyName);
             return true;
         }
-        public string ReviewDate { get; set; }
+        //public string ReviewDate { get; set; }
         public string BillCode { get; set; }
         public string FilmStar { get; set; }
         public string FilmReview { get; set; }

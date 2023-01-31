@@ -181,6 +181,16 @@
                                             Direction="270"/>
                     </Label.Effect>
                 </Label>
+                <Grid Grid.Column="2"
+                       Grid.Row="0"
+                      HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,15,0,0">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="MouseLeftButtonDown">
+                            <i:InvokeCommandAction Command="{Binding ReloadPageCM}"/>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                    <materialDesign:PackIcon Cursor="Hand" Kind="RefreshCircle" Foreground="{StaticResource Gray1}" Width="25" Height="25" Margin="0,0,20,0"/>
+                </Grid>
                 <!---Listview-->
                 <Grid Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="1">
                     <Grid.ColumnDefinitions>

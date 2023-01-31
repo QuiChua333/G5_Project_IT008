@@ -149,8 +149,9 @@ namespace CinemaManagementProject.ViewModel.StaffVM.FilmBookingVM
                 try
                 {
                     ReleaseDate = DateTime.Now;
-                    FilmShowTimeList = new ObservableCollection<FilmDTO>(await Task.Run(() => FilmService.Ins.GetShowingMovieByDay(SelectedDate)));
-                    GetAllCurrentGenre(p);
+                    List<string> listGenre;
+                    (FilmShowTimeList, listGenre) = await Task.Run(() => FilmService.Ins.GetShowingMovieAndGenreByDay(SelectedDate));
+                    GetAllCurrentGenre(listGenre);
                 }
                 catch (System.Data.Entity.Core.EntityException)
                 {
@@ -168,8 +169,9 @@ namespace CinemaManagementProject.ViewModel.StaffVM.FilmBookingVM
                     FilmShowTimeList = new ObservableCollection<FilmDTO>();
                     try
                     {
-                        FilmShowTimeList = new ObservableCollection<FilmDTO>(await Task.Run(() => FilmService.Ins.GetShowingMovieByDay(SelectedDate)));
-                        GetAllCurrentGenre(p);
+                        List<string> listGenre;
+                        (FilmShowTimeList, listGenre) = await Task.Run(() => FilmService.Ins.GetShowingMovieAndGenreByDay(SelectedDate));
+                        GetAllCurrentGenre(listGenre);
                     }
                     catch (System.Data.Entity.Core.EntityException)
                     {
@@ -190,7 +192,8 @@ namespace CinemaManagementProject.ViewModel.StaffVM.FilmBookingVM
                         FilmShowTimeList = new ObservableCollection<FilmDTO>();
                         try
                         {
-                            FilmShowTimeList = new ObservableCollection<FilmDTO>(await Task.Run(() => FilmService.Ins.GetShowingMovieByDay(SelectedDate)));
+                            List<string> listGenre;
+                            (FilmShowTimeList, listGenre) = await Task.Run(() => FilmService.Ins.GetShowingMovieAndGenreByDay(SelectedDate));
                             SelectFilmByFilter();
                         }
                         catch (System.Data.Entity.Core.EntityException)
@@ -241,23 +244,18 @@ namespace CinemaManagementProject.ViewModel.StaffVM.FilmBookingVM
                 }
             });
         }
-        public void GetAllCurrentGenre(ComboBox filter)
+        public void GetAllCurrentGenre(List<string> listGenre)
         {
             CurrentGenreSource = new ObservableCollection<string>();
             CurrentGenreSource.Add(isEN? "All" : "Tất cả");
-            for (int i = 0; i < FilmShowTimeList.Count; i++)
-            {
-                if (!CurrentGenreSource.Contains(FilmShowTimeList[i].Genre))
-                {
-                    CurrentGenreSource.Add(FilmShowTimeList[i].Genre);
-                }    
-            }
+            for (int i = 0; i < listGenre.Count; i++)
+                CurrentGenreSource.Add(listGenre[i]);
         }
         public void SelectFilmByFilter()
         {
             ObservableCollection<FilmDTO> temp = new ObservableCollection<FilmDTO>();
             string SelectedFilterText = SelectedItemFilter.ToString();
-            if(SelectedFilterText == "Tất cả")
+            if(SelectedFilterText == "Tất cả" || SelectedFilterText == "All")
             {
                 return;
             }   

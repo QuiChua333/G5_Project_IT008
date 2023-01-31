@@ -3,6 +3,7 @@ using CinemaManagementProject.Model;
 using CinemaManagementProject.Utils;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Data.Entity.Validation;
@@ -278,6 +279,73 @@ namespace CinemaManagementProject.Model.Service
                 throw e;
             }
             return FilmList;
+        }
+        public async Task<(ObservableCollection<FilmDTO>, List<string>)> GetShowingMovieAndGenreByDay(DateTime date)
+        {
+            ObservableCollection<FilmDTO> FilmList = new ObservableCollection<FilmDTO>();
+            try
+            {
+                using (var context = new CinemaManagementProjectEntities())
+                {
+                    var FilmIdList = await (from showSet in context.ShowTimeSettings
+                                            where DbFunctions.TruncateTime(showSet.ShowDate) == date.Date
+                                            select showSet into S
+                                            from show in S.ShowTimes
+                                            select new
+                                            {
+                                                FilmId = show.FilmId,
+                                                ShowTime = show,
+                                            }).GroupBy(m => m.FilmId).ToListAsync();
+                    for (int i = 0; i < FilmIdList.Count(); i++)
+                    {
+                        int id = (int)FilmIdList[i].Key;
+
+                        List<ShowtimeDTO> showtimeDTOsList = new List<ShowtimeDTO>();
+                        FilmDTO fim = null;
+                        foreach (var m in FilmIdList[i])
+                        {
+                            showtimeDTOsList.Add(new ShowtimeDTO
+                            {
+                                Id = m.ShowTime.Id,
+                                FilmId = m.ShowTime.FilmId,
+                                StartTime = (TimeSpan)m.ShowTime.StartTime,
+                                RoomId = (int)m.ShowTime.ShowTimeSetting.RoomId,
+                                ShowDate = (DateTime)m.ShowTime.ShowTimeSetting.ShowDate,
+                                Price = (float)m.ShowTime.Price
+                            });
+                            if (fim is null)
+                            {
+                                Film film = m.ShowTime.Film;
+
+                                if (film is null)
+                                {
+                                    film = await context.Films.FindAsync(m.ShowTime.FilmId);
+                                }
+                                fim = new FilmDTO
+                                {
+                                    Id = film.Id,
+                                    FilmName = film.FilmName,
+                                    DurationFilm = (int)film.Duration,
+                                    Country = film.Country,
+                                    FilmInfor = film.FilmInfo,
+                                    ReleaseDate = film.ReleaseDate.Value,
+                                    FilmType = film.FilmType,
+                                    Author = film.Author,
+                                    Image = film.Image,
+                                    Genre = film.Genre
+                                };
+                            }
+                        }
+                        FilmList.Add(fim);
+                        FilmList[i].ShowTimes = showtimeDTOsList.OrderBy(s => s.StartTime).ToList();
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+            return (FilmList, FilmList.Select(item => item.Genre).ToList());
         }
     }
     

@@ -103,19 +103,36 @@ namespace CinemaManagementProject.ViewModel.AdminVM.ReviewManagementVM
         public ICommand HideMailBoxCM { get; set; }
         public ICommand LoadFileCM { get; set; }
         public ICommand RemoveFileCM { get; set; }
-      
+        public ICommand ReloadPageCM { get; set; }
 
         public ReviewManagementVM()
         {
-            ItemClickCommand = new RelayCommand<RichTextBox>((p) => { return true; }, async (p) =>
+            ItemClickCommand = new RelayCommand<RichTextBox>((p) => { return true; }, (p) =>
             {
                 IsLoading = true;
                 LoadPieChar();
-                await LoadReviewFilm();
+                LoadReviewFilm();
                 ResetValues(p);
                 IsLoading = false;
             });
             FirstLoadCM = new RelayCommand<ListView>((p) => { return true; },async (p) =>
+            {
+                TopSelected = 5;
+                IsEnglish = Properties.Settings.Default.isEnglish;
+                if (IsEnglish)
+                    TextTitleRank = "Top 5 movies have the most reviews";
+                else
+                    TextTitleRank = "Top 5 phim có lượt đánh giá nhiều nhất";
+                SendMailBox = new System.Windows.Controls.Border();
+                ReviewFilmList = new ObservableCollection<ReviewDTO>();
+                ImageList = new ObservableCollection<ImageBrush>();
+                FileList = new ObservableCollection<TextBlock>();
+                FilmStarPie = new LiveCharts.SeriesCollection();
+                IsLoading = true;
+                await LoadTop5Film();
+                IsLoading = false;
+            });
+            ReloadPageCM = new RelayCommand<object>((p) => { return true; }, async (p) =>
             {
                 TopSelected = 5;
                 IsEnglish = Properties.Settings.Default.isEnglish;
@@ -337,10 +354,10 @@ namespace CinemaManagementProject.ViewModel.AdminVM.ReviewManagementVM
             }
         }
 
-        public async Task LoadReviewFilm()
+        public void LoadReviewFilm()
         {
             IsLoading = true;
-            ReviewFilmList = await Task.Run(() => ReviewService.Ins.GetAllReviewOf(FilmSelected));
+            ReviewFilmList = ReviewService.Ins.GetAllReviewOf(FilmSelected);
             IsLoading = false;
         }
         public void ResetValues(RichTextBox p)

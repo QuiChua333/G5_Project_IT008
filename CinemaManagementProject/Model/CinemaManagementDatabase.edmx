@@ -89,6 +89,8 @@
             <PropertyRef Name="BillCode" />
           </Key>
           <Property Name="BillCode" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Star" Type="int" />
+          <Property Name="Comment" Type="nvarchar(max)" />
           <Property Name="IsDeleted" Type="bit" />
           <Property Name="IsRespond" Type="bit" />
           <Property Name="FilmId" Type="int" Nullable="false" />
@@ -154,6 +156,16 @@
           <Property Name="UserPass" Type="varchar(max)" />
           <Property Name="IsDeleted" Type="bit" />
           <Property Name="Avatar" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
         <EntityType Name="Ticket">
           <Key>
@@ -292,6 +304,30 @@
             </Principal>
             <Dependent Role="ProductStorage">
               <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Review_Bill">
+          <End Role="Bill" Type="Self.Bill" Multiplicity="1" />
+          <End Role="Review" Type="Self.Review" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Bill">
+              <PropertyRef Name="BillCode" />
+            </Principal>
+            <Dependent Role="Review">
+              <PropertyRef Name="BillCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Review_Film">
+          <End Role="Film" Type="Self.Film" Multiplicity="1" />
+          <End Role="Review" Type="Self.Review" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Film">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Review">
+              <PropertyRef Name="FilmId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -456,6 +492,7 @@
           <EntitySet Name="ShowTime" EntityType="Self.ShowTime" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ShowTimeSetting" EntityType="Self.ShowTimeSetting" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Staff" EntityType="Self.Staff" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Ticket" EntityType="Self.Ticket" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Trouble" EntityType="Self.Trouble" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Voucher" EntityType="Self.Voucher" Schema="dbo" store:Type="Tables" />
@@ -487,6 +524,14 @@
           <AssociationSet Name="FK_ProductStorage_Product" Association="Self.FK_ProductStorage_Product">
             <End Role="Product" EntitySet="Product" />
             <End Role="ProductStorage" EntitySet="ProductStorage" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Review_Bill" Association="Self.FK_Review_Bill">
+            <End Role="Bill" EntitySet="Bill" />
+            <End Role="Review" EntitySet="Review" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Review_Film" Association="Self.FK_Review_Film">
+            <End Role="Film" EntitySet="Film" />
+            <End Role="Review" EntitySet="Review" />
           </AssociationSet>
           <AssociationSet Name="FK_Seat_Room" Association="Self.FK_Seat_Room">
             <End Role="Room" EntitySet="Room" />
@@ -555,6 +600,7 @@
           <NavigationProperty Name="Customer" Relationship="Self.FK_Bill_Customer" FromRole="Bill" ToRole="Customer" />
           <NavigationProperty Name="Staff" Relationship="Self.FK_Bill_Staff" FromRole="Bill" ToRole="Staff" />
           <NavigationProperty Name="ProductBillInfoes" Relationship="Self.FK_BillInfo_Bill" FromRole="Bill" ToRole="ProductBillInfo" />
+          <NavigationProperty Name="Review" Relationship="Self.FK_Review_Bill" FromRole="Bill" ToRole="Review" />
           <NavigationProperty Name="Tickets" Relationship="Self.FK_Ticket_Bill" FromRole="Bill" ToRole="Ticket" />
         </EntityType>
         <EntityType Name="Customer">
@@ -586,6 +632,7 @@
           <Property Name="ReleaseDate" Type="DateTime" Precision="3" />
           <Property Name="FilmInfo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="IsDeleted" Type="Boolean" />
+          <NavigationProperty Name="Reviews" Relationship="Self.FK_Review_Film" FromRole="Film" ToRole="Review" />
           <NavigationProperty Name="ShowTimes" Relationship="Self.FK_ShowTime_Film" FromRole="Film" ToRole="ShowTime" />
         </EntityType>
         <EntityType Name="Product">
@@ -641,10 +688,14 @@
             <PropertyRef Name="BillCode" />
           </Key>
           <Property Name="BillCode" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Star" Type="Int32" />
+          <Property Name="Comment" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="IsDeleted" Type="Boolean" />
           <Property Name="IsRespond" Type="Boolean" />
           <Property Name="FilmId" Type="Int32" Nullable="false" />
           <Property Name="FilmName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Bill" Relationship="Self.FK_Review_Bill" FromRole="Review" ToRole="Bill" />
+          <NavigationProperty Name="Film" Relationship="Self.FK_Review_Film" FromRole="Review" ToRole="Film" />
         </EntityType>
         <EntityType Name="Room">
           <Key>
@@ -722,6 +773,16 @@
           <NavigationProperty Name="Bills" Relationship="Self.FK_Bill_Staff" FromRole="Staff" ToRole="Bill" />
           <NavigationProperty Name="ProductReceipts" Relationship="Self.FK_ProductReceive_Staff" FromRole="Staff" ToRole="ProductReceipt" />
           <NavigationProperty Name="Troubles" Relationship="Self.FK_Trouble_Staff" FromRole="Staff" ToRole="Trouble" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
         <EntityType Name="Ticket">
           <Key>
@@ -822,6 +883,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Review_Bill">
+          <End Role="Bill" Type="Self.Bill" Multiplicity="1" />
+          <End Role="Review" Type="Self.Review" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Bill">
+              <PropertyRef Name="BillCode" />
+            </Principal>
+            <Dependent Role="Review">
+              <PropertyRef Name="BillCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Ticket_Bill">
           <End Role="Bill" Type="Self.Bill" Multiplicity="0..1" />
           <End Role="Ticket" Type="Self.Ticket" Multiplicity="*" />
@@ -843,6 +916,18 @@
             </Principal>
             <Dependent Role="Voucher">
               <PropertyRef Name="CustomerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Review_Film">
+          <End Role="Film" Type="Self.Film" Multiplicity="1" />
+          <End Role="Review" Type="Self.Review" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Film">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Review">
+              <PropertyRef Name="FilmId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1031,6 +1116,7 @@
           <EntitySet Name="ShowTimes" EntityType="Self.ShowTime" />
           <EntitySet Name="ShowTimeSettings" EntityType="Self.ShowTimeSetting" />
           <EntitySet Name="Staffs" EntityType="Self.Staff" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
           <EntitySet Name="Tickets" EntityType="Self.Ticket" />
           <EntitySet Name="Troubles" EntityType="Self.Trouble" />
           <EntitySet Name="Vouchers" EntityType="Self.Voucher" />
@@ -1047,6 +1133,10 @@
             <End Role="Bill" EntitySet="Bills" />
             <End Role="ProductBillInfo" EntitySet="ProductBillInfoes" />
           </AssociationSet>
+          <AssociationSet Name="FK_Review_Bill" Association="Self.FK_Review_Bill">
+            <End Role="Bill" EntitySet="Bills" />
+            <End Role="Review" EntitySet="Reviews" />
+          </AssociationSet>
           <AssociationSet Name="FK_Ticket_Bill" Association="Self.FK_Ticket_Bill">
             <End Role="Bill" EntitySet="Bills" />
             <End Role="Ticket" EntitySet="Tickets" />
@@ -1054,6 +1144,10 @@
           <AssociationSet Name="FK_Voucher_Customer" Association="Self.FK_Voucher_Customer">
             <End Role="Customer" EntitySet="Customers" />
             <End Role="Voucher" EntitySet="Vouchers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Review_Film" Association="Self.FK_Review_Film">
+            <End Role="Film" EntitySet="Films" />
+            <End Role="Review" EntitySet="Reviews" />
           </AssociationSet>
           <AssociationSet Name="FK_ShowTime_Film" Association="Self.FK_ShowTime_Film">
             <End Role="Film" EntitySet="Films" />
@@ -1207,6 +1301,8 @@
             <EntityTypeMapping TypeName="CinemaManagementProjectModel.Review">
               <MappingFragment StoreEntitySet="Review">
                 <ScalarProperty Name="BillCode" ColumnName="BillCode" />
+                <ScalarProperty Name="Star" ColumnName="Star" />
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
                 <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
                 <ScalarProperty Name="IsRespond" ColumnName="IsRespond" />
                 <ScalarProperty Name="FilmId" ColumnName="FilmId" />
@@ -1277,6 +1373,17 @@
                 <ScalarProperty Name="UserPass" ColumnName="UserPass" />
                 <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
                 <ScalarProperty Name="Avatar" ColumnName="Avatar" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="CinemaManagementProjectModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -29,7 +29,7 @@ namespace CinemaManagementProject.Model.Service
 {
     internal class ReviewService
     {
-        String spreadsheetId = "1uoh3WUmldvlURN9_p51Jeke13rYiLXv67DOm_acGgX8";
+        String spreadsheetId = "1i-CgWcIC43yh9sk5WcY4NcVsZbWIR3-K2j_mvts9yvw";
         String range = "Review!A2:E";
         string[] Scopes = { SheetsService.Scope.SpreadsheetsReadonly };
         string ApplicationName = "Read Data Google SpeadSheet";
@@ -60,84 +60,39 @@ namespace CinemaManagementProject.Model.Service
             }
             private set { _ins = value; }
         }
-        public async Task<ObservableCollection<ReviewDTO>> GetAllReviewOf(FilmStatistical filmSelected)
+
+        public ObservableCollection<ReviewDTO> GetAllReviewOf(FilmStatistical filmSelected)
         {
             ObservableCollection<ReviewDTO> ReviewFilmList = new ObservableCollection<ReviewDTO>();
             try
             {
-                var service = new SheetsService(new BaseClientService.Initializer()
+                using (CinemaManagementProjectEntities db = new CinemaManagementProjectEntities())
                 {
-                    HttpClientInitializer = credential,
-                    ApplicationName = ApplicationName,
-                });
-                SpreadsheetsResource.ValuesResource.GetRequest request = service.Spreadsheets.Values.Get(spreadsheetId, range);
+                    if (filmSelected == null)
+                        return ReviewFilmList;
 
-                ValueRange response = request.Execute();
-                IList<IList<Object>> values = response.Values;
-                if (values != null && values.Count > 0)
-                {
-                    using (CinemaManagementProjectEntities db = new CinemaManagementProjectEntities())
+                    foreach (var review in db.Reviews)
                     {
-                        foreach (var row in values)
+                        if (review.FilmId == filmSelected.FilmId)
                         {
-                            Bill bill = await db.Bills.FindAsync(row[1].ToString());
-                            if (bill != null)
-                            {
-                                Review review = await db.Reviews.FindAsync(row[1].ToString());
-                                if (review == null)
-                                {
-                                    ReviewDTO ItemReview = new ReviewDTO();
-                                    ItemReview.ReviewDate = row[0].ToString();
-                                    ItemReview.BillCode = row[1].ToString();
-                                    ItemReview.FilmStar = row[2].ToString();
-                                    ItemReview.FilmReview = row[3].ToString();
-                                    ItemReview.CustomerName = bill.Customer.CustomerName;
-                                    ItemReview.ShortName = ToShortName(ItemReview.CustomerName);
-                                    ItemReview.IsDeleted = false;
-                                    ItemReview.IsRespond = false;
-                                    for (int i = 0; i < int.Parse(ItemReview.FilmStar); i++)
-                                        ItemReview.StarList[i] = true;
+                            ReviewDTO ItemReview = new ReviewDTO();
+                            ItemReview.BillCode = review.BillCode.ToString();
+                            ItemReview.FilmStar = review.Star.ToString();
+                            ItemReview.FilmReview = review.Comment.ToString();
+                            ItemReview.CustomerName = review.Bill.Customer.CustomerName;
+                            ItemReview.ShortName = ToShortName(ItemReview.CustomerName);
+                            ItemReview.IsDeleted = false;
+                            ItemReview.IsRespond = false;
+                            for (int i = 0; i < int.Parse(ItemReview.FilmStar); i++)
+                                ItemReview.StarList[i] = true;
 
-                                    review = new Review();
-                                    review.BillCode = row[1].ToString();
-                                    review.IsDeleted = false;
-                                    review.IsRespond = false;
-                                    var item = db.ShowTimes.Find(db.Tickets.FirstOrDefault(tk => tk.BillCode == bill.BillCode).ShowTimeId).Film;
-                                    review.FilmId = item.Id;
-                                    review.FilmName = item.FilmName;
-                                    ReviewFilmList.Add(ItemReview);
-                                    db.Reviews.Add(review);
-                                    await db.SaveChangesAsync();
-                                }
-                                else
-                                {
-                                    if (review.IsDeleted == false)
-                                    {
-                                        if (review.FilmId == filmSelected.FilmId)
-                                        {
-                                            ReviewDTO ItemReview = new ReviewDTO();
-                                            ItemReview.ReviewDate = row[0].ToString();
-                                            ItemReview.BillCode = row[1].ToString();
-                                            ItemReview.FilmStar = row[2].ToString();
-                                            ItemReview.FilmReview = row[3].ToString();
-                                            ItemReview.CustomerName = bill.Customer.CustomerName;
-                                            ItemReview.ShortName = ToShortName(ItemReview.CustomerName);
-                                            ItemReview.IsDeleted = false;
-                                            ItemReview.IsRespond = (bool)review.IsRespond;
-                                            for (int i = 0; i < int.Parse(ItemReview.FilmStar); i++)
-                                                ItemReview.StarList[i] = true;
-                                            ReviewFilmList.Add(ItemReview);
-                                        }
-                                    }
-                                }
-                            }
+                            ReviewFilmList.Add(ItemReview);
                         }
                     }
                 }
-                else
+                if (ReviewFilmList.Count == 0)
                     CustomMessageBox.ShowOk("Không có dữ liệu đánh giá", "Cảnh báo", "Ok", Views.CustomMessageBoxImage.Warning);
                 return ReviewFilmList;
-                
             }
             catch(System.InvalidOperationException e )
             {
@@ -172,9 +127,33 @@ namespace CinemaManagementProject.Model.Service
                 {
                     using (var context = new CinemaManagementProjectEntities())
                     {
+                        foreach (var row in values)
+                        {
+                            Bill bill = await context.Bills.FindAsync(row[1].ToString());
+                            if (bill != null)
+                            {
+                                Review review = await context.Reviews.FindAsync(row[1].ToString());
+                                if (review == null)
+                                {
+                                    review = new Review();
+                                    review.BillCode = row[1].ToString();
+                                    review.IsDeleted = false;
+                                    review.IsRespond = false;
+                                    review.Star = int.Parse(row[2].ToString());
+                                    review.Comment = row[3].ToString();
+
+                                    var item = context.ShowTimes.Find(context.Tickets.FirstOrDefault(tk => tk.BillCode == bill.BillCode).ShowTimeId).Film;
+                                    review.FilmId = item.Id;
+                                    review.FilmName = item.FilmName;
+
+                                    context.Reviews.Add(review);
+                                    await context.SaveChangesAsync();
+                                }
+                            }
+                        }
                         listReviewFilmStatical = await Task.Run(()=> context.Reviews.GroupBy(b => new { b.FilmId, b.FilmName })
                                                                 .Select(gr => new FilmStatistical
-                                                                {
+                                                                { 
                                                                     FilmId = gr.Key.FilmId,
                                                                     Name = gr.Key.FilmName,
                                                                     TotalReview = gr.Count(),
@@ -206,17 +185,6 @@ namespace CinemaManagementProject.Model.Service
             List<FilmStatistical> listReviewFilmStatical = new List<FilmStatistical>();
             try
             {
-                var service = new SheetsService(new BaseClientService.Initializer()
-                {
-                    HttpClientInitializer = credential,
-                    ApplicationName = ApplicationName,
-                });
-                SpreadsheetsResource.ValuesResource.GetRequest request = service.Spreadsheets.Values.Get(spreadsheetId, range);
-
-                ValueRange response = request.Execute();
-                IList<IList<Object>> values = response.Values;
-                if (values != null && values.Count > 0)
-                {
                     using (var context = new CinemaManagementProjectEntities())
                     {
                         listReviewFilmStatical = await Task.Run(() => context.Reviews.GroupBy(b => new { b.FilmId, b.FilmName })
@@ -228,7 +196,7 @@ namespace CinemaManagementProject.Model.Service
                                                                     BillCodes = gr.Select(item => item.BillCode).ToList(),
                                                                 }).ToList());
                         foreach (var item in listReviewFilmStatical)
-                            item.SetValues(values);
+                            item.SetValues();
                         if (IsTotalComment)
                         {
                             if(IsDes)
@@ -255,7 +223,7 @@ namespace CinemaManagementProject.Model.Service
                                 else
                                     listReviewFilmStatical = listReviewFilmStatical.OrderBy(o => o.AverageStar).Take(TopSelected).ToList();
                         }    
-                    }
+                    
                 }
                 return (true,listReviewFilmStatical);
             }

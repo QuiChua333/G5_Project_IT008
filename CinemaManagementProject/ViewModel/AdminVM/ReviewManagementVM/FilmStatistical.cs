@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CinemaManagementProject.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -27,6 +28,21 @@ namespace CinemaManagementProject.ViewModel.AdminVM.ReviewManagementVM
             }
             TotalStar = StarList.Sum();
             AverageStar = (float)TotalStar / TotalReview;
+        }
+        public void SetValues()
+        {
+            using(var db = new CinemaManagementProjectEntities())
+            {
+                StarList = new List<int>();
+                foreach (var item in BillCodes)
+                {
+                    var review = db.Reviews.FirstOrDefault(i => i.BillCode == item);
+                    if (review != null)
+                        StarList.Add(int.Parse(review.Star.ToString()));
+                }
+                TotalStar = StarList.Sum();
+                AverageStar = (float)TotalStar / TotalReview;
+            }    
         }
         public List<int> CountStar()
         {

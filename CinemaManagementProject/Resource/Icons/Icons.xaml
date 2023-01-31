@@ -26,5 +26,5 @@
     <ImageSource x:Key="IconImageFolder">./image (5).png</ImageSource>
     <ImageSource x:Key="IconSend">./send.png</ImageSource>
     <ImageSource x:Key="IconPaperclip">./paperclip.png</ImageSource>
-
+    <ImageSource x:Key="IconRefresh">./refreshIcon.png</ImageSource>
 </ResourceDictionary>
