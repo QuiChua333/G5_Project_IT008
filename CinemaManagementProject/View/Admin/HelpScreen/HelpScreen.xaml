@@ -568,10 +568,10 @@
                                 <Button Height="70"
                                         materialDesign:ButtonAssist.CornerRadius="6">
                                     <Button.Content>
-                                        <Hyperlink NavigateUri="https://zalo.me/g/gkpqph676"
-                                                   x:Name="Hyperlink_Zalo"
-                                                   Command="{Binding Zalo_Command}"
-                                                   CommandParameter="{Binding ElementName=Hyperlink_Zalo,Path=NavigateUri}">  
+                                        <Hyperlink NavigateUri="https://www.facebook.com/profile.php?id=100040989546712"
+                                                   x:Name="Hyperlink_FB_Nhan"
+                                                   Command="{Binding FB_Nhan_Command}"
+                                                   CommandParameter="{Binding ElementName=Hyperlink_FB_Nhan,Path=NavigateUri}">   
                                             <Image VerticalAlignment="Center" 
                                                HorizontalAlignment="Center" 
                                                Source="{StaticResource iconZalo}" 
@@ -609,10 +609,10 @@
                                 <Button Height="70"
                                         materialDesign:ButtonAssist.CornerRadius="6">
                                     <Button.Content>
-                                        <Hyperlink NavigateUri="https://twitter.com"
-                                                   x:Name="Hyperlink_Twitter"
-                                                   Command="{Binding Twitter_Command}"
-                                                   CommandParameter="{Binding ElementName=Hyperlink_Twitter,Path=NavigateUri}"> 
+                                        <Hyperlink NavigateUri="https://www.facebook.com/quichua333"
+                                                   x:Name="Hyperlink_FB_Qui"
+                                                   Command="{Binding FB_Qui_Command}"
+                                                   CommandParameter="{Binding ElementName=Hyperlink_FB_Qui,Path=NavigateUri}">  
                                             <Image VerticalAlignment="Center" 
                                                HorizontalAlignment="Center" 
                                                Source="{StaticResource iconTiwter}" 
@@ -650,10 +650,10 @@
                                 <Button Height="70"
                                         materialDesign:ButtonAssist.CornerRadius="6">
                                     <Button.Content>
-                                        <Hyperlink NavigateUri="https://www.instagram.com/"
-                                                   x:Name="Hyperlink_Instagram"
-                                                   Command="{Binding Instagram_Command}"
-                                                   CommandParameter="{Binding ElementName=Hyperlink_Instagram,Path=NavigateUri}"> 
+                                        <Hyperlink NavigateUri="https://www.facebook.com/profile.php?id=100009796787588"
+                                                   x:Name="Hyperlink_FB_Phat"
+                                                   Command="{Binding FB_Phat_Command}"
+                                                   CommandParameter="{Binding ElementName=Hyperlink_FB_Phat,Path=NavigateUri}"> 
                                             <Image VerticalAlignment="Center" 
                                                HorizontalAlignment="Center" 
                                                Source="{StaticResource iconInstaram}" 
