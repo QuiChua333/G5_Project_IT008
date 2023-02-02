@@ -44,7 +44,6 @@
                                                FontFamily="{StaticResource MaterialDesignFont}"
                                                FontSize="15"    
                                                FontWeight="Thin" 
-                                               PlaceHolder="Search"
                                                SearchTextChange="Search_SearchTextChange"
                                                x:Name="SearchBox"/>
                                 <Border>

@@ -68,7 +68,7 @@
                         </Rectangle.Effect>
                     </Rectangle>
                     <TextBox x:Name="_FilterBox" 
-                                 materialDesign:HintAssist.Hint="Search"
+                                 materialDesign:HintAssist.Hint="{DynamicResource CustomerManagementPage_search_TimKiem}"
                                  Grid.Column="1"
                                  AllowDrop="True"
                                  VerticalAlignment="Center" 

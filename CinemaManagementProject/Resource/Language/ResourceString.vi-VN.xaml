@@ -204,7 +204,7 @@
     <system:String x:Key="food_comboboxItem_TatCa">Tất cả</system:String>
     <system:String x:Key="food_comboboxItem_DoAn">Đồ ăn</system:String>
     <system:String x:Key="food_comboboxItem_NuocUong">Nước uống</system:String>
-    <system:String x:Key="food_search_TimKiem">Search</system:String>
+    <system:String x:Key="food_search_TimKiem">Tìm kiếm</system:String>
     <system:String x:Key="ForgotPassPage_textblock_KhoiPhucMatKhau">Khôi phục mật khẩu</system:String>
     <system:String x:Key="ForgotPassPage_textblock_TaiKhoanCanKhoiPhuc">Tài khoản cần khôi phục</system:String>
     <system:String x:Key="ForgotPassPage_textblock_KhoiPhucMKInfo">Chúng tôi sẽ gửi mã đặt lại mật khẩu thông qua Email liên kết với tài khoản trên</system:String>

@@ -52,7 +52,6 @@
                                 FontSize="14"
                                 FontWeight="Medium"
                                 FontFamily="{DynamicResource MaterialDesignFont}"
-                                PlaceHolder="Search"
                                 IconSize="23" 
                                 SearchTextChange="Search_SearchTextChange"
                                 x:Name="SearchBox"/>

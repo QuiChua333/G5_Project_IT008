@@ -334,7 +334,6 @@
                 </Border>
                 <Search:Search
                     x:Name="SearchBox"
-                    materialDesign:HintAssist.Hint="{DynamicResource orderfood_search_TimKiem}"
                     Width="300"
                     Height="44"
                     IconSize="30"
