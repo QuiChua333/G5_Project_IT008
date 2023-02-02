@@ -435,12 +435,8 @@ namespace CinemaManagementProject.ViewModel.AdminVM.VoucherManagementVM
                         return;
                     }
                 }
-                IsReleaseVoucherLoading = true;
-
+                IsExport = false;
                 await ExportVoucherFunc();
-
-                IsReleaseVoucherLoading = false;
-
                 if (IsExport)
                 {
                     (bool release, string message) = await VoucherService.Ins.ReleaseMultiVoucher(WaitingMiniVoucher);
@@ -491,6 +487,7 @@ namespace CinemaManagementProject.ViewModel.AdminVM.VoucherManagementVM
                         CustomMessageBox.ShowOk(message, IsEnglish ? "Error" : "Lỗi", "OK", CustomMessageBoxImage.Error);
 
                     }
+                    IsExport = false;
                     return;
                 }
             });
@@ -614,6 +611,7 @@ namespace CinemaManagementProject.ViewModel.AdminVM.VoucherManagementVM
                 await ReleaseVoucherFunc(p);
 
                 IsReleaseVoucherLoading = false;
+                p.Close();
 
             });
             RefreshEmailListCM = new RelayCommand<object>((p) => { return true; }, async (p) =>
@@ -637,11 +635,11 @@ namespace CinemaManagementProject.ViewModel.AdminVM.VoucherManagementVM
             });
             CloseWindowVoucherCM = new RelayCommand<Window>((p) => { return true; }, (p) =>
             {
-                
-
+              
                 p.Close();
 
             });
+
 
 
         }

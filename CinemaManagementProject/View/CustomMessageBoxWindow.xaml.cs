@@ -190,21 +190,27 @@ namespace CinemaManagementProject.Views
             {
                
                 case CustomMessageBoxImage.Warning:
+                    System.Media.SystemSounds.Hand.Play();
                     bitmapImage = new BitmapImage(new Uri("pack://application:,,,/CinemaManagementProject;component/Resource/Images/icon_Warning.png"));
                     break;
                 case CustomMessageBoxImage.Success:
+                    System.Media.SystemSounds.Beep.Play();
                     bitmapImage = new BitmapImage(new Uri("pack://application:,,,/CinemaManagementProject;component/Resource/Images/icon_Succes.png"));
                     break;
                 case CustomMessageBoxImage.Error:
+                    System.Media.SystemSounds.Hand.Play();
                     bitmapImage = new BitmapImage(new Uri("pack://application:,,,/CinemaManagementProject;component/Resource/Images/icon_Error.png"));
                     break;
                 case CustomMessageBoxImage.Question:
+                    System.Media.SystemSounds.Beep.Play();
                     bitmapImage = new BitmapImage(new Uri("pack://application:,,,/CinemaManagementProject;component/Resource/Images/icon_Question.png"));
                     break;
                 case CustomMessageBoxImage.Information:
+                    System.Media.SystemSounds.Beep.Play();
                     bitmapImage = new BitmapImage(new Uri("pack://application:,,,/CinemaManagementProject;component/Resource/Images/icon_Info.png"));
                     break;
                 default:
+                    System.Media.SystemSounds.Beep.Play();
                     bitmapImage = new BitmapImage(new Uri("pack://application:,,,/CinemaManagementProject;component/Resource/Images/icon_Info.png"));
                     break;
             }

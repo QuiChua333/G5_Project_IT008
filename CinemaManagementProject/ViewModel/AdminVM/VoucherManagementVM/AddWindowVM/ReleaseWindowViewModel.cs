@@ -262,8 +262,14 @@ namespace CinemaManagementProject.ViewModel.AdminVM.VoucherManagementVM
         {
             return StoreAllMini.Where(v => v.VoucherStatus == VOUCHER_STATUS.UNRELEASED || ConvertVoucherStatusToVN(v.VoucherStatus) == VOUCHER_STATUS.UNRELEASED).Take(quantity).ToList();
         }
+        private bool isExport;
+        public bool IsExport
+        {
+            get { return isExport; }
+            set { isExport = value; OnPropertyChanged(); }
+        }
 
-        bool IsExport = false;
+       
         public async Task ExportVoucherFunc()
         {
             using (SaveFileDialog box = new SaveFileDialog() { Filter = "Excel | *.xlsx | Excel 2003 | *.xls", ValidateNames = true })
@@ -272,6 +278,7 @@ namespace CinemaManagementProject.ViewModel.AdminVM.VoucherManagementVM
                 {
                     await Task.Run(() =>
                     {
+                        IsExport = true;
                         Microsoft.Office.Interop.Excel.Application app = new Microsoft.Office.Interop.Excel.Application();
                         app.Visible = false;
                         Microsoft.Office.Interop.Excel.Workbook wb = app.Workbooks.Add(1);
@@ -303,7 +310,7 @@ namespace CinemaManagementProject.ViewModel.AdminVM.VoucherManagementVM
                         wb.Close();
                         app.Quit();
 
-                        IsExport = true;
+                        
                     });
                 }
                 else
