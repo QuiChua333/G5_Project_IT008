@@ -39,7 +39,7 @@ namespace CinemaManagementProject.ViewModel.AdminVM.ShowtimeManagementVM
             {
                 if(Showtime.TimeOfDay < DateTime.Now.TimeOfDay)
                 {
-                    CustomMessageBox.ShowOk("Vui lòng chọn thời gian chiếu sau" + DateTime.Now.TimeOfDay, "Cảnh báo", "OK", Views.CustomMessageBoxImage.Warning);
+                    CustomMessageBox.ShowOk("Vui lòng chọn thời gian chiếu sau " + DateTime.Now.TimeOfDay, "Cảnh báo", "OK", Views.CustomMessageBoxImage.Warning);
                     return;
                 }
                 ShowtimeDTO temp = new ShowtimeDTO
