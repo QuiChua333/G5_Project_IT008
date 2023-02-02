@@ -81,12 +81,19 @@
                     <ColumnDefinition  Width="70*"/>
                     <ColumnDefinition  Width="30*"/>
                 </Grid.ColumnDefinitions>
-            <Grid Grid.Column="1">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition  Width="20*"/>
-                        <ColumnDefinition  Width="80*"/>
-                    </Grid.ColumnDefinitions>
-                <Image 
+           
+                    <materialDesign:TransitioningContent VerticalAlignment="Center"
+                                                             Height="80" Grid.Column="1">
+                        <materialDesign:TransitioningContent.OpeningEffects>
+                            <materialDesign:TransitionEffect Kind="FadeIn" />
+                            <materialDesign:TransitionEffect Kind="SlideInFromBottom" />
+                        </materialDesign:TransitioningContent.OpeningEffects>
+                    <Grid >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition  Width="20*"/>
+                            <ColumnDefinition  Width="80*"/>
+                        </Grid.ColumnDefinitions>
+                        <Image 
                     Grid.Column="0"
                     Name="Image_MessageBox" 
                     Width="40"
@@ -94,7 +101,7 @@
                     HorizontalAlignment="Right" 
                     VerticalAlignment="Center"
                     Visibility="Collapsed"/>
-                <TextBlock 
+                        <TextBlock 
                     Grid.Column="1"
                     Name="TextBlock_Message"
                     TextWrapping="Wrap" 
@@ -108,7 +115,11 @@
                     HorizontalAlignment="Left"
                     VerticalAlignment="Center"
                      />
-            </Grid>
+                    </Grid>
+                </materialDesign:TransitioningContent>
+                
+                
+            
         </Grid>
 
 

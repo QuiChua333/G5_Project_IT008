@@ -358,14 +358,56 @@
                         x:Name="acBtn">
                     <i:Interaction.Triggers>
                         <i:EventTrigger EventName="Click">
-                            <i:InvokeCommandAction Command="{Binding ReleaseVoucherCM}" CommandParameter="{Binding ElementName=acBtn}"/>
+                            <i:InvokeCommandAction Command="{Binding ReleaseVoucherCM}" CommandParameter="{Binding ElementName=mainWindow}"/>
                         </i:EventTrigger>
-                        <i:EventTrigger EventName="Click">
-                            <i:InvokeCommandAction Command="{Binding CloseWindowVoucherCM}" CommandParameter="{Binding ElementName=mainWindow}"/>
-                        </i:EventTrigger>
+            
                     </i:Interaction.Triggers>
                 </Button>
             </Grid>
+            <Grid Grid.RowSpan="3"
+                  Background="LightGray"
+                  Opacity="0.3">
+                <Grid.Style>
+                    <Style TargetType="Grid">
+                        <Setter Property="Visibility"
+                                Value="Collapsed" />
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding IsReleaseVoucherLoading}"
+                                         Value="True">
+                                <Setter Property="Visibility"
+                                        Value="Visible" />
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Grid.Style>
+            </Grid>
+            <materialDesign:Card Height="100"
+                                 Width="100"
+                                 Grid.RowSpan="2"
+                                 UniformCornerRadius="5">
+                <StackPanel>
+                    <ProgressBar Style="{StaticResource MaterialDesignCircularProgressBar}"
+                                 IsIndeterminate="True"
+                                 Margin="0,30,0,0" />
+                    <Label Content="Đang xử lý..."
+                           HorizontalContentAlignment="Center"
+                           FontSize="15"
+                           Margin="0,10,0,0" />
+                </StackPanel>
+                <materialDesign:Card.Style>
+                    <Style TargetType="materialDesign:Card">
+                        <Setter Property="Visibility"
+                                Value="Collapsed" />
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding IsReleaseVoucherLoading}"
+                                         Value="True">
+                                <Setter Property="Visibility"
+                                        Value="Visible" />
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </materialDesign:Card.Style>
+            </materialDesign:Card>
         </Grid>
     </Border>
 </Window>
