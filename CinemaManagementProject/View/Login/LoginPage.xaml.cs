@@ -23,14 +23,40 @@ namespace CinemaManagementProject.View.Login
         public LoginPage()
         {
             InitializeComponent();
-        }
-
-        private void LoginPg_Loaded(object sender, RoutedEventArgs e)
-        {
             if (Properties.Settings.Default.isRemidUserAndPass)
             {
                 PasswordBoxUser.Password = Properties.Settings.Default.userPassSetting;
             }
+        }
+        public LoginPage(string newPass)
+        {
+            InitializeComponent();
+            PasswordBoxUser.Password = "";
+        }
+
+        private void LoginPg_Loaded(object sender, RoutedEventArgs e)
+        {
+            //if (Properties.Settings.Default.isRemidUserAndPass)
+            //{
+            //    PasswordBoxUser.Password = Properties.Settings.Default.userPassSetting;
+            //}
+        }
+
+        private void ButtonLogin_TouchEnter(object sender, TouchEventArgs e)
+        {
+            MessageBox.Show("Click enter");
+        }
+
+        private void ButtonLogin_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.Key == Key.Enter)
+                MessageBox.Show("Click enter");
+        }
+
+        private void PasswordBoxUser_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+                MessageBox.Show("Click enter");
         }
     }
 }

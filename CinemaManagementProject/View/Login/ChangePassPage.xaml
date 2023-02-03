@@ -76,7 +76,7 @@
                     Foreground="Red" 
             />
             <Grid Width="290">
-                <Button Style="{StaticResource CustomButton}" Name="ConfirmButton" Background="{StaticResource HeavyBlueZodiac}" Width="120" Height="40" HorizontalAlignment="Right" Margin="0,20,0,0" Content="{DynamicResource login_button_XacNhan}">
+                <Button Style="{StaticResource CustomButton}" IsDefault="True" Name="ConfirmButton" Background="{StaticResource HeavyBlueZodiac}" Width="120" Height="40" HorizontalAlignment="Right" Margin="0,20,0,0" Content="{DynamicResource login_button_XacNhan}">
                     <i:Interaction.Triggers>
                         <i:EventTrigger EventName="Click">
                             <i:InvokeCommandAction Command="{Binding ConfirmNewPassCM}"

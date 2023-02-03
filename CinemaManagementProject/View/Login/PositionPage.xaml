@@ -108,7 +108,7 @@
                 </Grid>
             </Grid>
             <Grid Width="290">
-                <Button Style="{StaticResource CustomButton}" Name="ConfirmButton" Content="{DynamicResource login_button_XacNhan}" Background="{StaticResource HeavyBlueZodiac}" Width="120" Height="40" HorizontalAlignment="Right" Margin="0,30,0,0">
+                <Button Style="{StaticResource CustomButton}" IsDefault="True" Name="ConfirmButton" Content="{DynamicResource login_button_XacNhan}" Background="{StaticResource HeavyBlueZodiac}" Width="120" Height="40" HorizontalAlignment="Right" Margin="0,30,0,0">
                     <i:Interaction.Triggers>
                         <i:EventTrigger EventName="Click">
                             <i:InvokeCommandAction Command="{Binding ToWorkingWindowCM}"

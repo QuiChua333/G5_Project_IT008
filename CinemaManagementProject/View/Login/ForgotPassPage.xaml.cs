@@ -71,5 +71,6 @@ namespace CinemaManagementProject.View.Login
         {
 
         }
+
     }
 }

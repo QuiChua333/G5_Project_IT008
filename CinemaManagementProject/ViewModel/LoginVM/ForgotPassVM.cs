@@ -21,6 +21,7 @@ using System.Data.SqlClient;
 using System.Data.Entity;
 using System.Windows.Controls.Primitives;
 using Microsoft.Win32;
+using System.Runtime.CompilerServices;
 
 namespace CinemaManagementProject.ViewModel.LoginVM
 {
@@ -47,6 +48,12 @@ namespace CinemaManagementProject.ViewModel.LoginVM
             get { return _newPassword; }
             set { _newPassword = value; }
         }
+        private bool isLoadding { get; set; }
+        public bool IsLoadding
+        {
+            get { return isLoadding; }
+            set { isLoadding = value; }
+        }
         private bool isEN = Properties.Settings.Default.isEnglish;
         public ICommand LoginPageCM { get; set; }
         public ICommand SendEmailCM { get; set; }
@@ -57,8 +64,12 @@ namespace CinemaManagementProject.ViewModel.LoginVM
             LoginPageCM = new RelayCommand<object>((p) => { return true; }, (p) =>
             {
                 LoginVM.MainFrame.Content = new LoginPage();
+                if (Properties.Settings.Default.isRemidUserAndPass)
+                {
+                    LoginVM.Password = Properties.Settings.Default.userPassSetting;
+                }
             });
-            SendEmailCM = new RelayCommand<Label>((p) => { return true; }, (p) =>
+            SendEmailCM = new RelayCommand<Label>((p) => { return true; }, async (p) =>
             {
                 if(CheckValidEmail(CurrentEmail, p))
                 {
@@ -66,12 +77,13 @@ namespace CinemaManagementProject.ViewModel.LoginVM
                     {
                         Random randomNumber = new Random();
                         randomCode = randomNumber.Next(111111, 999999);
-                        SendMailToStaff(CurrentEmail, randomCode);
+                        IsLoadding = true;
+                        await SendMailToStaff(CurrentEmail, randomCode);
+                        IsLoadding = false;
                     }
                     else
                         p.Content = isEN ? "Not a company employee account!":"Không phải tài khoản nhân viên công ty!";
                 }
-
             });
             CheckCodeCM = new RelayCommand<Label>((p) => { return true; }, (p) =>
             {
@@ -92,10 +104,14 @@ namespace CinemaManagementProject.ViewModel.LoginVM
                             return;
 
                         updateStaff.UserPass = NewPassword;
+                        IsLoadding = true;
                         await db.SaveChangesAsync();
+                        IsLoadding = false;
                     }
-
-                    LoginVM.MainFrame.Content = new LoginPage();
+                    
+                    LoginVM.MainFrame.Content = new LoginPage(NewPassword);
+                    CurrentEmail = "";
+                    CurrentCode = "";
                 }
             });
         }
@@ -114,7 +130,7 @@ namespace CinemaManagementProject.ViewModel.LoginVM
             lableError.Content = "";
             return true;
         }
-        public void SendMailToStaff(string staffEmail, int randomCode)
+        public async Task SendMailToStaff(string staffEmail, int randomCode)
         {
             try
             {
@@ -144,7 +160,7 @@ namespace CinemaManagementProject.ViewModel.LoginVM
                 SmtpServer.UseDefaultCredentials = false;
                 SmtpServer.Credentials = new NetworkCredential(APP_EMAIL, APP_PASSWORD);
                 SmtpServer.EnableSsl = true;
-                SmtpServer.Send(mail);
+                await SmtpServer.SendMailAsync(mail);
             }
             catch (Exception ex)
             {

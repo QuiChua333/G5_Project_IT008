@@ -118,7 +118,7 @@
                             </Style>
                         </TextBlock.Style>
                     </TextBlock>
-                    <Button Style="{StaticResource CustomButton}" Name="ButtonLogin" Content="{DynamicResource login_textblock_DangNhap}" Background="{StaticResource HeavyBlueZodiac}" Width="120" Height="40" Margin="65,0,0,0">
+                    <Button Style="{StaticResource CustomButton}" IsDefault="True" Name="ButtonLogin" Content="{DynamicResource login_textblock_DangNhap}" Background="{StaticResource HeavyBlueZodiac}" Width="120" Height="40" Margin="65,0,0,0">
                         <i:Interaction.Triggers>
                             <i:EventTrigger EventName="Click">
                                 <i:InvokeCommandAction Command="{Binding LoginCM}"

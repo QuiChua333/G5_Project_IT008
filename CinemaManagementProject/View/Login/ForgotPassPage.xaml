@@ -78,8 +78,9 @@
                                         Foreground="{StaticResource HeavyBlueZodiac}"
                                         FontWeight="Regular"
                                         Grid.Column="1"
-                                         Text="{Binding CurrentEmail}"
-                                ></TextBox>
+                                        Text="{Binding CurrentEmail}"
+                                >
+                                </TextBox>
                                 <TextBox Height="35" VerticalAlignment="Bottom"
                                          Name="CodeBox"
                                          FontFamily="{StaticResource MaterialDesignFont}"
@@ -89,6 +90,7 @@
                                          Visibility="Hidden"
                                          Grid.Column="1"
                                          Text="{Binding CurrentCode}"
+                                         
                                 ></TextBox>
                             </Grid> 
                         </Grid>
@@ -144,5 +146,9 @@
                         ></TextBlock>
             </Grid>
         </StackPanel>
+        <ProgressBar Style="{StaticResource MaterialDesignCircularProgressBar}"
+                                        Height="50"
+                                        Width="50"
+                                        IsIndeterminate="{Binding IsLoadding}"/>
     </Grid>
 </Page>

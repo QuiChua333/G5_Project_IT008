@@ -25,15 +25,7 @@ namespace CinemaManagementProject.ViewModel.LoginVM
     public class LoginVM : BaseViewModel
     {
         public Window LoginWindow { get; set; }
-        public string _password { get; set; }
-        public string Password
-        {
-            get
-            {
-                return _password;
-            }
-            set{ _password = value; OnPropertyChanged(); }
-        }
+        public static string Password { get; set; }
         public string _username { get; set; }
         public string Username
         {
@@ -104,6 +96,7 @@ namespace CinemaManagementProject.ViewModel.LoginVM
                     Username = "";
                     Password = "";
                 }
+
                 p.Content = new LoginPage();
             });
             LoadForgotPageCM = new RelayCommand<object>((p) => { return true; }, (p) =>
@@ -114,19 +107,19 @@ namespace CinemaManagementProject.ViewModel.LoginVM
             {
                 Password = p.Password;
             });
-            LoginCM = new RelayCommand<Label>((p) => { return true; }, async(p) =>
+            LoginCM = new RelayCommand<Label>((p) => { return true; }, async (p) =>
             {
                 await CheckValidateAccount(Username, Password, p);
             });
             SaveLoginWindowNameCM = new RelayCommand<Window>((p) => { return true; }, (p) =>
             {
-                if(Properties.Settings.Default.isEnglish == true)
+                if (Properties.Settings.Default.isEnglish == true)
                     LanguageManager.SetLanguageDictionary(LanguageManager.ELanguage.English);
                 LoginWindow = p;
             });
             ToWorkingWindowCM = new RelayCommand<Button>((p) => { return true; }, (p) =>
             {
-                if(CurrentStaff.Position == "Quản lý")
+                if (CurrentStaff.Position == "Quản lý")
                 {
                     LoginWindow.Hide();
                     AdminVM.AdminVM.currentStaff = CurrentStaff;
@@ -134,7 +127,7 @@ namespace CinemaManagementProject.ViewModel.LoginVM
                     stWD.Show();
                     LoginWindow.Close();
                 }
-                else 
+                else
                     if (CurrentStaff.Position == "Nhân viên")
                 {
                     LoginWindow.Hide();
@@ -147,13 +140,23 @@ namespace CinemaManagementProject.ViewModel.LoginVM
             LoginPageCM = new RelayCommand<object>((p) => { return true; }, (p) =>
             {
                 MainFrame.Content = new LoginPage();
+                if (Properties.Settings.Default.isRemidUserAndPass)
+                {
+                    Username = Properties.Settings.Default.userNameSetting;
+                    Password = Properties.Settings.Default.userPassSetting;
+                }
+                else
+                {
+                    Username = "";
+                    Password = "";
+                }
             });
         }
         public async Task CheckValidateAccount(string userNameOrEmail, string passWord, Label lableError)
         {
             if (string.IsNullOrEmpty(userNameOrEmail) || string.IsNullOrEmpty(passWord))
             {
-                lableError.Content = isEN? "Please enter enough information" : "Vui lòng nhập đủ thông tin";
+                lableError.Content = isEN ? "Please enter enough information" : "Vui lòng nhập đủ thông tin";
                 return;
             }
 
