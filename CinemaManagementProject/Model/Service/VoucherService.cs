@@ -202,6 +202,7 @@ namespace CinemaManagementProject.Model.Service
             {
                 using (var context = new CinemaManagementProjectEntities())
                 {
+                    
                     context.Vouchers.RemoveRange(context.Vouchers.Where(v => ListCodeId.Contains(v.Id)));
                     await context.SaveChangesAsync();
                     return (true, IsEnglish? "Successfully deleted a voucher list!" : "Xóa danh sách voucher thành công!");
@@ -210,6 +211,22 @@ namespace CinemaManagementProject.Model.Service
             catch (Exception e)
             {
                 return (false, IsEnglish ? "System Error" : "Lỗi hệ thống");
+            }
+        }
+        public async Task<(bool,List<string>)> GetVoucherStatus(List<int> ListCodeId)
+        {
+            try
+            {
+                using (var context = new CinemaManagementProjectEntities())
+                {
+                    List<string> ListStatus = context.Vouchers.Where(x => ListCodeId.Contains(x.Id)).Select(v => v.VoucherStatus).ToList();
+                   
+                    return (true,ListStatus);
+                }
+            }
+            catch (Exception e)
+            {
+                return (false, null);
             }
         }
         public async Task<(bool, string, List<VoucherDTO> voucherList)> CreateVoucher(int voucherReleaseId, List<VoucherDTO> ListVoucher)

@@ -156,7 +156,7 @@
                             </Label>
 
                             <DatePicker Grid.Column="1"
-                                        IsEnabled="False"
+                                        
                                         Width="130"
                                         HorizontalAlignment="Left"
                                         FontSize="16"

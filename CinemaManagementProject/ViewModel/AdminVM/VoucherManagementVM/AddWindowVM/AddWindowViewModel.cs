@@ -375,6 +375,23 @@ namespace CinemaManagementProject.ViewModel.AdminVM.VoucherManagementVM
                         return;
                     }
                 }
+                try
+                {
+                    (VoucherReleaseDTO voucherReleaseDetail, _) = await VoucherService.Ins.GetVoucherReleaseDetails(selectedItem.VoucherReleaseCode);
+                    SelectedItem = voucherReleaseDetail;
+                    ListViewVoucher = new ObservableCollection<VoucherDTO>(SelectedItem.Vouchers);
+                    StoreAllMini = new ObservableCollection<VoucherDTO>(ListViewVoucher);
+                }
+                catch (System.Data.Entity.Core.EntityException e)
+                {
+                    CustomMessageBox.ShowOk(IsEnglish ? "Unable to connect to database" : "Mất kết nối cơ sở dữ liệu", IsEnglish ? "Error" : "Lỗi", "OK", CustomMessageBoxImage.Error);
+
+                }
+                catch (Exception e)
+                {
+                    CustomMessageBox.ShowOk(IsEnglish ? "System Error" : "Lỗi hệ thống", IsEnglish ? "Error" : "Lỗi", "OK", CustomMessageBoxImage.Error);
+
+                }
                 if (AddVoucherPage.TopCheck != null && AddVoucherPage.CBB != null)
                 {
                     AddVoucherPage.TopCheck.IsChecked = false;

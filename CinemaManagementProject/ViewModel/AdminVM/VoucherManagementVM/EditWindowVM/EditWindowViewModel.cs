@@ -13,6 +13,7 @@ using CinemaManagementProject.Views;
 using CinemaManagementProject.Model.Service;
 using System.Collections.ObjectModel;
 using CinemaManagementProject.View.Admin.VoucherManagement.AddWindow;
+using CinemaManagementProject.Utils;
 
 namespace CinemaManagementProject.ViewModel.AdminVM.VoucherManagementVM
 {
@@ -172,43 +173,61 @@ namespace CinemaManagementProject.ViewModel.AdminVM.VoucherManagementVM
                 CustomMessageBox.ShowOk(IsEnglish ? "The pick list is empty!":"Danh sách chọn đang trống!", IsEnglish?"Warning":"Cảnh báo", "Ok", CustomMessageBoxImage.Warning);
                 return;
             }
-
-            (bool deleteSuccess, string messageFromDelete) = await VoucherService.Ins.DeteleVouchers(WaitingMiniVoucher);
-
-            if (deleteSuccess)
+            (bool result, List<string> ListStatus) = await VoucherService.Ins.GetVoucherStatus(WaitingMiniVoucher);
+            if (result)
             {
-                CustomMessageBox.ShowOk(messageFromDelete, IsEnglish ? "Notification" : "Thông báo", "Ok", CustomMessageBoxImage.Success);
-                try
+                if (ListStatus.Contains(VOUCHER_STATUS.REALEASED))
                 {
-                    (VoucherReleaseDTO voucherReleaseDetail, bool haveAnyUsedVoucher) = await VoucherService.Ins.GetVoucherReleaseDetails(SelectedItem.VoucherReleaseCode);
-                    SelectedItem = voucherReleaseDetail;
-                    ListViewVoucher = new ObservableCollection<VoucherDTO>(SelectedItem.Vouchers);
-                    StoreAllMini = new ObservableCollection<VoucherDTO>(ListViewVoucher);
-                    if (AddVoucherPage.TopCheck != null )
+                    CustomMessageBoxResult kq = CustomMessageBox.ShowOkCancel(IsEnglish ? "The issued voucher exists, are you sure want to delete it?":"Tồn tại voucher đã phát hành, bạn có chắc muốn xóa?", IsEnglish ? "Notification" : "Thông báo", IsEnglish ? "Yes":"Có", IsEnglish ? "No":"Không", CustomMessageBoxImage.Warning);
+                    if (kq == CustomMessageBoxResult.Cancel)
                     {
-                        AddVoucherPage.TopCheck.IsChecked = false;
+                        return;
                     }
-                    if (AddVoucherPageActive.TopCheck != null )
-                    {
-                        AddVoucherPageActive.TopCheck.IsChecked = false;
-                    }
-                    NumberSelected = 0;
-                }
-                catch (System.Data.Entity.Core.EntityException e)
-                {
-                    CustomMessageBox.ShowOk(IsEnglish ? "Unable to connect to database" : "Mất kết nối cơ sở dữ liệu", IsEnglish ? "Error" : "Lỗi", "OK", CustomMessageBoxImage.Error);
 
                 }
-                catch (Exception e)
-                {
-                    CustomMessageBox.ShowOk(IsEnglish ? "System Error" : "Lỗi hệ thống", IsEnglish ? "Error" : "Lỗi", "OK", CustomMessageBoxImage.Error);
+                (bool deleteSuccess, string messageFromDelete) = await VoucherService.Ins.DeteleVouchers(WaitingMiniVoucher);
 
+                if (deleteSuccess)
+                {
+                    CustomMessageBox.ShowOk(messageFromDelete, IsEnglish ? "Notification" : "Thông báo", "Ok", CustomMessageBoxImage.Success);
+                    try
+                    {
+                        (VoucherReleaseDTO voucherReleaseDetail, bool haveAnyUsedVoucher) = await VoucherService.Ins.GetVoucherReleaseDetails(SelectedItem.VoucherReleaseCode);
+                        SelectedItem = voucherReleaseDetail;
+                        ListViewVoucher = new ObservableCollection<VoucherDTO>(SelectedItem.Vouchers);
+                        StoreAllMini = new ObservableCollection<VoucherDTO>(ListViewVoucher);
+                        if (AddVoucherPage.TopCheck != null)
+                        {
+                            AddVoucherPage.TopCheck.IsChecked = false;
+                        }
+                        if (AddVoucherPageActive.TopCheck != null)
+                        {
+                            AddVoucherPageActive.TopCheck.IsChecked = false;
+                        }
+                        NumberSelected = 0;
+                    }
+                    catch (System.Data.Entity.Core.EntityException e)
+                    {
+                        CustomMessageBox.ShowOk(IsEnglish ? "Unable to connect to database" : "Mất kết nối cơ sở dữ liệu", IsEnglish ? "Error" : "Lỗi", "OK", CustomMessageBoxImage.Error);
+
+                    }
+                    catch (Exception e)
+                    {
+                        CustomMessageBox.ShowOk(IsEnglish ? "System Error" : "Lỗi hệ thống", IsEnglish ? "Error" : "Lỗi", "OK", CustomMessageBoxImage.Error);
+
+                    }
                 }
+                else
+                {
+                    CustomMessageBox.ShowOk(messageFromDelete, IsEnglish ? "Error" : "Lỗi", "Ok", CustomMessageBoxImage.Error);
+                }
+
             }
             else
             {
-                CustomMessageBox.ShowOk(messageFromDelete, IsEnglish ? "Error" : "Lỗi", "Ok", CustomMessageBoxImage.Error);
+                CustomMessageBox.ShowOk(IsEnglish ? "System Error" : "Lỗi hệ thống", IsEnglish ? "Error" : "Lỗi", "Ok", CustomMessageBoxImage.Error);
             }
+
         }
         public void CheckAllMiniVoucherFunc(bool func)
         {
