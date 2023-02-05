@@ -79,7 +79,7 @@ namespace CinemaManagementProject.ViewModel.AdminVM.VoucherManagementVM
         public ICommand RefreshEmailListCM { get; set; }
         public ICommand LessEmailCM { get; set; }
         public ICommand CloseWindowCM { get; set; }
-        public ICommand CloseWindowVoucherCM { get; set; }
+   
 
         public VoucherViewModel()
         {
@@ -319,7 +319,11 @@ namespace CinemaManagementProject.ViewModel.AdminVM.VoucherManagementVM
             });
             MoreVoucherCM = new RelayCommand<object>((p) => { return true; }, (p) =>
             {
-
+                if (ListMiniVoucher[ListMiniVoucher.Count - 1].VoucherCode.Length < 3)
+                {
+                    CustomMessageBox.ShowOk(IsEnglish ? "Code length must be 5 characters or more!" : "Độ dài mã phải từ 5 ký tự trở lên!", IsEnglish ? "Warning" : "Cảnh báo", "Ok", CustomMessageBoxImage.Warning);
+                    return;
+                }
                 for (int i = ListMiniVoucher.Count - 2; i >= 0; i--)
                 {
                     if (ListMiniVoucher[ListMiniVoucher.Count - 1].VoucherCode == ListMiniVoucher[i].VoucherCode && !String.IsNullOrEmpty(ListMiniVoucher[ListMiniVoucher.Count - 1].VoucherCode))
@@ -338,7 +342,12 @@ namespace CinemaManagementProject.ViewModel.AdminVM.VoucherManagementVM
             SaveMiniVoucherCM = new RelayCommand<Window>((p) => { return true; }, async (p) =>
             {
                 await SaveMiniVoucherFunc();
-                p.Close();
+                if (IsSucceedSaveMini)
+                {
+                    IsSucceedSaveMini = false;
+                    p.Close();
+                }
+
             });
 
             StoreWaitingListCM = new RelayCommand<CheckBox>((p) => { return true; }, (p) =>
@@ -399,6 +408,13 @@ namespace CinemaManagementProject.ViewModel.AdminVM.VoucherManagementVM
 
                 p.Content = oldstring;
                 p.IsHitTestVisible = true;
+                if (IsSucceedSaveMini)
+                {
+                    AddListVoucher tk = Application.Current.Windows.OfType<AddListVoucher>().FirstOrDefault();
+                    tk.Close();
+                    IsSucceedSaveMini= false;
+                }
+                
             });
             ReleaseVoucherExcelCM = new RelayCommand<object>((p) => { return true; }, async (p) =>
             {
@@ -633,12 +649,7 @@ namespace CinemaManagementProject.ViewModel.AdminVM.VoucherManagementVM
                 p.Close();
 
             });
-            CloseWindowVoucherCM = new RelayCommand<Window>((p) => { return true; }, (p) =>
-            {
-              
-                p.Close();
-
-            });
+           
 
 
 

@@ -85,7 +85,6 @@
                             <RowDefinition Height="*"/>
                             <RowDefinition Height="*"/>
                             <RowDefinition Height="*"/>
-                            <RowDefinition Height="*"/>
                         </Grid.RowDefinitions>
 
                         <Grid Grid.Row="0">
@@ -117,35 +116,8 @@
                                 </TextBox>
                             </Grid>
                         </Grid>
+                  
                         <Grid Grid.Row="1">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
-                            </Grid.ColumnDefinitions>
-
-                            <Grid Grid.Column="0">
-                                <Label Content="{DynamicResource AddListVouchers_Label_LengthOfCode}" 
-                                   FontWeight="Bold" 
-                                   FontFamily="{DynamicResource MaterialDesignFont}" 
-                                   VerticalAlignment="Center" 
-                                   FontSize="14" />
-                            </Grid>
-                            <Grid Grid.Column="1">
-                                <TextBox Grid.Column="1"
-                                     Width="auto"
-                                    Text="{Binding Length}"
-                                    PreviewTextInput="TextBox_PreviewTextInput"
-                                     FontSize="14"
-                                     BorderBrush="#67C6E6"
-                                     VerticalAlignment="Center"
-                                     FontWeight="Medium"
-                                     FontFamily="{DynamicResource MaterialDesignFont}"
-                                     Foreground="{StaticResource Gray1}"
-                                     Padding="10,0,0,0">
-                                </TextBox>
-                            </Grid>
-                        </Grid>
-                        <Grid Grid.Row="2">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="*"/>
@@ -172,7 +144,7 @@
                                 </TextBox>
                             </Grid>
                         </Grid>
-                        <Grid Grid.Row="3">
+                        <Grid Grid.Row="2">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="*"/>
@@ -206,10 +178,22 @@
             </Grid>
             <Grid Grid.Row="3">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="150"/>
+                    <ColumnDefinition Width="300"/>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="100"/>
                 </Grid.ColumnDefinitions>
+                <Grid Grid.Column="0">
+                    <Label Content="{DynamicResource AddListVouchers_Label_Note}"
+                           VerticalAlignment="Center"
+                           Margin="20,0,0,0"
+                           FontWeight="Medium"
+                           FontFamily="{DynamicResource MaterialDesignFont}"
+                           FontStyle="Italic"
+                           FontSize="13">
+                        
+                    </Label>
+                   
+                </Grid>
                 <Grid Grid.Column="2">
                     <Button HorizontalAlignment="Right"
                         VerticalAlignment="Center"
@@ -225,9 +209,7 @@
                             <i:EventTrigger EventName="Click">
                                 <i:InvokeCommandAction Command="{Binding SaveListMiniVoucherCM}" CommandParameter="{Binding ElementName=savelistbtn}"/>
                             </i:EventTrigger>
-                            <i:EventTrigger EventName="Click">
-                                <i:InvokeCommandAction Command="{Binding CloseWindowVoucherCM}" CommandParameter="{Binding ElementName=mainWindow}"/>
-                            </i:EventTrigger>
+                           
                         </i:Interaction.Triggers>
                         
                     </Button>

@@ -89,9 +89,9 @@
     <system:String x:Key="AddVoucherPageActive_TextBlock_ReleasedViaEmail">Released via Email</system:String>
     <system:String x:Key="AddListVouchers_Title_AddListVouchers">Add Voucher List</system:String>
     <system:String x:Key="AddListVouchers_Label_NumberOfVouchers">Number Of Vouchers:</system:String>
-    <system:String x:Key="AddListVouchers_Label_LengthOfCode">Length Of Code:</system:String>
     <system:String x:Key="AddListVouchers_Label_StartingCharacter">Starting Character:</system:String>
     <system:String x:Key="AddListVouchers_Label_EndingCharacter">Ending Character:</system:String>
+    <system:String x:Key="AddListVouchers_Label_Note">Code Format: [Starting char][ID VRL]...[Ending char]</system:String>
     <system:String x:Key="AddVoucher_Title_AddVoucher">ADD VOUCHER</system:String>
     <system:String x:Key="AddVoucher_Label_AddNew">Add new</system:String>
     <system:String x:Key="ListEmail_Title">EMAIL LIST</system:String>

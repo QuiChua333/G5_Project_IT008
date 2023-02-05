@@ -144,12 +144,7 @@ namespace CinemaManagementProject.ViewModel.AdminVM.VoucherManagementVM
             get { return quantity; }
             set { quantity = value; OnPropertyChanged(); }
         }
-        private int length;
-        public int Length
-        {
-            get { return length; }
-            set { length = value; OnPropertyChanged(); }
-        }
+        
 
         private string firstChar;
         public string FirstChar
@@ -237,6 +232,7 @@ namespace CinemaManagementProject.ViewModel.AdminVM.VoucherManagementVM
                 CustomMessageBox.ShowOk(addSuccess, IsEnglish ? "Error" : "Lỗi", "OK", CustomMessageBoxImage.Error);
             }
         }
+        public bool IsSucceedSaveMini = false;
         public async Task SaveMiniVoucherFunc()
         {
             foreach (VoucherDTO item in ListMiniVoucher)
@@ -246,6 +242,11 @@ namespace CinemaManagementProject.ViewModel.AdminVM.VoucherManagementVM
                     CustomMessageBox.ShowOk(IsEnglish?"Fields cannot be left blank":"Các trường không được để trống", IsEnglish ? "Warning" : "Cảnh báo", "Ok", CustomMessageBoxImage.Warning);
                     return;
                 }
+            }
+            if (ListMiniVoucher[ListMiniVoucher.Count - 1].VoucherCode.Length < 3)
+            {
+                CustomMessageBox.ShowOk(IsEnglish ? "Code length must be 5 characters or more!" : "Độ dài mã phải từ 5 ký tự trở lên!", IsEnglish ? "Warning" : "Cảnh báo", "Ok", CustomMessageBoxImage.Warning);
+                return;
             }
             for (int i = ListMiniVoucher.Count - 2; i >= 0; i--)
             {
@@ -260,6 +261,7 @@ namespace CinemaManagementProject.ViewModel.AdminVM.VoucherManagementVM
 
             if (createSuccess)
             {
+                IsSucceedSaveMini = true;
 ;                CustomMessageBox.ShowOk(message, IsEnglish ? "Notification" : "Thông báo", "Ok", CustomMessageBoxImage.Success);
                 if (ListViewVoucher != null) ListViewVoucher = new ObservableCollection<VoucherDTO>(ListViewVoucher.Concat(newListCode));
                 else ListViewVoucher = new ObservableCollection<VoucherDTO>(newListCode);
@@ -327,13 +329,13 @@ namespace CinemaManagementProject.ViewModel.AdminVM.VoucherManagementVM
         }
         public async Task SaveListMiniVoucherFunc()
         {
-            if (Quantity == 0 || Length == 0 || string.IsNullOrEmpty(FirstChar) || string.IsNullOrEmpty(LastChar))
+            if (Quantity == 0  || string.IsNullOrEmpty(FirstChar) || string.IsNullOrEmpty(LastChar))
             {
                 CustomMessageBox.ShowOk(IsEnglish?"Can't be left blank!":"Không được để trống!", IsEnglish ? "Warning" : "Cảnh báo", "Ok", CustomMessageBoxImage.Warning);
                 return;
             }
             
-            (string error, List<string> listCode) = await Task<(string, List<string>)>.Run(() => Helper.GetListCode(Quantity, Length, FirstChar, LastChar,selectedItem));
+            (string error, List<string> listCode) = await Task<(string, List<string>)>.Run(() => Helper.GetListCode(Quantity,  FirstChar, LastChar,selectedItem));
             if (error != null)
             {
                 CustomMessageBox.ShowOk(error, IsEnglish ? "Error" : "Lỗi", "Ok", CustomMessageBoxImage.Error);
@@ -346,6 +348,7 @@ namespace CinemaManagementProject.ViewModel.AdminVM.VoucherManagementVM
 
             if (createSuccess)
             {
+                IsSucceedSaveMini = true;
                 CustomMessageBox.ShowOk(createRandomSuccess, IsEnglish ? "Notification" : "Thông báo", "Ok", CustomMessageBoxImage.Success);
 
                 ListViewVoucher = new ObservableCollection<VoucherDTO>(ListViewVoucher.Concat(newListCode));

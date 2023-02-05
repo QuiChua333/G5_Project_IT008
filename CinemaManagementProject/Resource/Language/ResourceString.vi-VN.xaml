@@ -89,9 +89,9 @@
     <system:String x:Key="AddVoucherPageActive_TextBlock_ReleasedViaEmail">Phát hành qua Email</system:String>
     <system:String x:Key="AddListVouchers_Title_AddListVouchers">THÊM DANH SÁCH VOUCHER</system:String>
     <system:String x:Key="AddListVouchers_Label_NumberOfVouchers">Số lượng voucher:</system:String>
-    <system:String x:Key="AddListVouchers_Label_LengthOfCode">Độ dài mã:</system:String>
     <system:String x:Key="AddListVouchers_Label_StartingCharacter">Kí tự bắt đầu:</system:String>
     <system:String x:Key="AddListVouchers_Label_EndingCharacter">Kí tự kết thúc:</system:String>
+    <system:String x:Key="AddListVouchers_Label_Note">Mã có dạng: [Ký tự đầu][ID VRL]...[Ký tự cuối]</system:String>
     <system:String x:Key="AddVoucher_Title_AddVoucher">THÊM VOUCHER</system:String>
     <system:String x:Key="AddVoucher_Label_AddNew">Thêm mới</system:String>
     <system:String x:Key="ListEmail_Title">DANH SÁCH EMAIL</system:String>
