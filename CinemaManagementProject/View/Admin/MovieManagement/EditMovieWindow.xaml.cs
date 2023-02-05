@@ -30,12 +30,9 @@ namespace CinemaManagementProject.View.Admin.MovieManagement
         {
             this.DragMove();
         }
-
-        private void Duration_PreviewTextInput(object sender, TextCompositionEventArgs e)
-        {
-            e.Handled = !IsTextAllowed(e.Text);
-        }
         private static readonly Regex _regex = new Regex("[^0-9]+"); //regex that matches disallowed text
+        
+       
         private static bool IsTextAllowed(string text)
         {
             return !_regex.IsMatch(text);
@@ -44,7 +41,10 @@ namespace CinemaManagementProject.View.Admin.MovieManagement
         {
             e.Handled = !IsTextAllowed(e.Text);
         }
-
+        private void Duration_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            e.Handled = !IsTextAllowed(e.Text);
+        }
         private void Genre_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
             if (!System.Text.RegularExpressions.Regex.IsMatch(e.Text, "^[a-zA-Z]"))

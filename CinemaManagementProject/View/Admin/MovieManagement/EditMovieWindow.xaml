@@ -194,7 +194,8 @@
                                                      Background="Transparent"
                                                      BorderBrush="#67C6E6"
                                                      Foreground="Black"
-                                                     Text="{Binding filmDuration,Mode=TwoWay}"/>
+                                                     Text="{Binding filmDuration,Mode=TwoWay}"
+                                                 PreviewTextInput="Duration_PreviewTextInput"/>
                                     </Grid>
                                 </Border>
                             </Grid>
@@ -329,7 +330,8 @@
                                                      BorderBrush="#67C6E6"
                                                      Foreground="Black"
                                                      x:Name="_filmYear"
-                                                     Text="{Binding filmYear,Mode=TwoWay}"/>
+                                                     Text="{Binding filmYear,Mode=TwoWay}"
+                                                 PreviewTextInput="Year_PreviewTextInput"/>
                                     </Grid>
                                 </Border>
                             </Grid>
@@ -477,7 +479,8 @@
                                                  BorderThickness="0,0,0,3"
                                                  Background="Transparent"
                                                  BorderBrush="#67C6E6"
-                                                 Foreground="Black"/>
+                                                 Foreground="Black"
+                                             Focusable="False"/>
                                 </Grid>
                             </Border>
                         </Grid>

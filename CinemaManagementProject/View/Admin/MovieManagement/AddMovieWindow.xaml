@@ -196,7 +196,8 @@
                                                      Background="Transparent"
                                                      BorderBrush="#67C6E6"
                                                      Foreground="Black"
-                                                     PreviewTextInput="TextBox_PreviewTextInput"
+                                                     PreviewTextInput="TextBox_PreviewTextInput" 
+                                                    TextChanged="TextBox_TextChanged"
                                                      Text="{Binding filmDuration,Mode=TwoWay}"/>
                                     </Grid>
                                 </Border>
@@ -471,7 +472,7 @@
                                                 VerticalAlignment="Top"
                                                 Margin="20,0,0,0"/>
                                     <TextBox Grid.Row="1"
-                                                 Text="{Binding filmType,Mode=TwoWay}"
+                                                 Text="2D"
                                                  Margin="24,0,30,0"
                                                  VerticalAlignment="Top"
                                                  VerticalContentAlignment="Top"
@@ -482,7 +483,8 @@
                                                  BorderThickness="0,0,0,3"
                                                  Background="Transparent"
                                                  BorderBrush="#67C6E6"
-                                                 Foreground="Black"/>
+                                                 Foreground="Black"
+                                                Focusable="False"/>
                                 </Grid>
                             </Border>
                         </Grid>
