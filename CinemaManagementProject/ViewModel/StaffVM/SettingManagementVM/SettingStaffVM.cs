@@ -211,6 +211,8 @@ namespace CinemaManagementProject.ViewModel.StaffVM.SettingStaffVM
                         return;
                     }
                     currentStaff.StaffName = StaffName;
+                    StaffWindow tk = Application.Current.Windows.OfType<StaffWindow>().FirstOrDefault();
+                    tk.FullNamePopup.Text = StaffName;
                     CustomMessageBox.ShowOkCancel(messageReturn, IsEnglish ? "Success" : "Thành công", "OK", IsEnglish ? "Cancel" : "Hủy", Views.CustomMessageBoxImage.Success);
                     p.Kind = MaterialDesignThemes.Wpf.PackIconKind.Pencil;
                     IsEdit = false;
@@ -259,11 +261,12 @@ namespace CinemaManagementProject.ViewModel.StaffVM.SettingStaffVM
                         return;
                     }
                     currentStaff.Email = StaffEmail;
+                    StaffWindow tk = Application.Current.Windows.OfType<StaffWindow>().FirstOrDefault();
+                    tk.FullEmailPopup.Text = StaffEmail;
                     CustomMessageBox.ShowOkCancel(messageReturn, IsEnglish ? "Success" : "Thành công", "OK", IsEnglish ? "Cancel" : "Hủy", Views.CustomMessageBoxImage.Success);
                     IconEditEmail = PackIconKind.Pencil;
                     confirmWD.Close();
                     IsEditEmail = false;
-
                 }
                 else
                     Error = IsEnglish ? "This code is invalid!" : "Mã code vừa nhập chưa chính xác!";
@@ -291,6 +294,7 @@ namespace CinemaManagementProject.ViewModel.StaffVM.SettingStaffVM
                         byte[] photo_aray = new byte[fs.Length];
                         fs.Read(photo_aray, 0, photo_aray.Length);
                         updateStaff.Avatar = photo_aray;
+                        currentStaff.Avatar = photo_aray;
                         context.SaveChanges();
                         CustomMessageBox.ShowOk(IsEnglish ? "Update successful" : "Cập nhật thành công", IsEnglish ? "Notice" : "Thông báo", "OK", Views.CustomMessageBoxImage.Success);
                     }

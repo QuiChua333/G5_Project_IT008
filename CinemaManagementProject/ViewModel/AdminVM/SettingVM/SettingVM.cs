@@ -33,6 +33,7 @@ using Path = System.IO.Path;
 using CinemaManagementProject.Properties;
 using System.Runtime.Remoting.Metadata.W3cXsd2001;
 using CinemaManagementProject.View;
+using CinemaManagementProject.View.Staff;
 
 namespace CinemaManagementProject.ViewModel.AdminVM.SettingVM
 {
@@ -211,6 +212,8 @@ namespace CinemaManagementProject.ViewModel.AdminVM.SettingVM
                         return;
                     }
                     currentStaff.StaffName = StaffName;
+                    AdminWindow tk = Application.Current.Windows.OfType<AdminWindow>().FirstOrDefault();
+                    tk.FullNamePopup.Text = StaffName;
                     CustomMessageBox.ShowOkCancel(messageReturn,IsEnglish? "Success" :"Thành công", "OK",IsEnglish? "Cancel" : "Hủy", Views.CustomMessageBoxImage.Success);
                     p.Kind = MaterialDesignThemes.Wpf.PackIconKind.Pencil;
                     IsEdit = false;
@@ -259,6 +262,8 @@ namespace CinemaManagementProject.ViewModel.AdminVM.SettingVM
                         return;
                     }
                     currentStaff.Email = StaffEmail;
+                    AdminWindow tk = Application.Current.Windows.OfType<AdminWindow>().FirstOrDefault();
+                    tk.FullEmailPopup.Text = StaffEmail;
                     CustomMessageBox.ShowOkCancel(messageReturn,IsEnglish? "Success" : "Thành công", "OK",IsEnglish? "Cancel" : "Hủy", Views.CustomMessageBoxImage.Success);
                     IconEditEmail = PackIconKind.Pencil;
                     confirmWD.Close();
@@ -291,6 +296,7 @@ namespace CinemaManagementProject.ViewModel.AdminVM.SettingVM
                         byte[] photo_aray = new byte[fs.Length];
                         fs.Read(photo_aray, 0, photo_aray.Length);
                         updateStaff.Avatar = photo_aray;
+                        currentStaff.Avatar = photo_aray;
                         context.SaveChanges();
                         CustomMessageBox.ShowOk(IsEnglish? "Update successful" : "Cập nhật thành công", IsEnglish? "Notice" : "Thông báo", "OK", Views.CustomMessageBoxImage.Success);
                     }    

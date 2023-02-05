@@ -291,6 +291,7 @@ namespace CinemaManagementProject.ViewModel.AdminVM.FoodManagementVM
             Image = "";
             Category = "";
             Price = 0;
+            ImageSource = null;
         }
         public void LoadProductListView(Operation oper, ProductDTO product = null)
         {
