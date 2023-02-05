@@ -180,6 +180,7 @@
                                     Background="White"
                                     Height="46"
                                     Width="140"
+                                    Name="bdexporthp"
                                     BorderBrush="Black"
                                     >
                                 <Border.Effect>
