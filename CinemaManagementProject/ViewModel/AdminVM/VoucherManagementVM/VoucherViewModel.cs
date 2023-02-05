@@ -15,7 +15,7 @@ using MaterialDesignThemes.Wpf;
 using System.Windows.Media;
 using CinemaManagementProject.View.Admin.VoucherManagement.EditWindow;
 using CinemaManagementProject.Utils;
-
+using CinemaManagementProject.Model;
 
 namespace CinemaManagementProject.ViewModel.AdminVM.VoucherManagementVM
 {
@@ -317,9 +317,17 @@ namespace CinemaManagementProject.ViewModel.AdminVM.VoucherManagementVM
             {
                 LessVoucherFunc();
             });
-            MoreVoucherCM = new RelayCommand<object>((p) => { return true; }, (p) =>
+            MoreVoucherCM = new RelayCommand<object>((p) => { return true; }, async (p) =>
             {
-                if (ListMiniVoucher[ListMiniVoucher.Count - 1].VoucherCode.Length < 3)
+                foreach (VoucherDTO item in ListMiniVoucher)
+                {
+                    if (string.IsNullOrEmpty(item.VoucherCode))
+                    {
+                        CustomMessageBox.ShowOk(IsEnglish ? "Fields cannot be left blank" : "Các trường không được để trống", IsEnglish ? "Warning" : "Cảnh báo", "Ok", CustomMessageBoxImage.Warning);
+                        return;
+                    }
+                }
+                if (ListMiniVoucher[ListMiniVoucher.Count - 1].VoucherCode.Length < 5 && ListMiniVoucher[ListMiniVoucher.Count - 1].VoucherCode!="")
                 {
                     CustomMessageBox.ShowOk(IsEnglish ? "Code length must be 5 characters or more!" : "Độ dài mã phải từ 5 ký tự trở lên!", IsEnglish ? "Warning" : "Cảnh báo", "Ok", CustomMessageBoxImage.Warning);
                     return;
@@ -333,11 +341,16 @@ namespace CinemaManagementProject.ViewModel.AdminVM.VoucherManagementVM
                     }
                 }
 
-                ListMiniVoucher.Add(new VoucherDTO
+                bool isAdd = await CheckExistFunc();
+                if (isAdd)
                 {
-                    VoucherCode = "",
-                    VoucherReleaseId = SelectedItem.Id
-                });
+                    ListMiniVoucher.Add(new VoucherDTO
+                    {
+                        VoucherCode = "",
+                        VoucherReleaseId = SelectedItem.Id
+                    });
+                }
+               
             });
             SaveMiniVoucherCM = new RelayCommand<Window>((p) => { return true; }, async (p) =>
             {
@@ -345,7 +358,67 @@ namespace CinemaManagementProject.ViewModel.AdminVM.VoucherManagementVM
                 if (IsSucceedSaveMini)
                 {
                     IsSucceedSaveMini = false;
+                    VoucherReleaseDTO voucherReleaseDetail = new VoucherReleaseDTO();
+                    if (SelectedItem != null)
+                    {
+                        ( voucherReleaseDetail, _) = await VoucherService.Ins.GetVoucherReleaseDetails(SelectedItem.VoucherReleaseCode);
+                    }
+                    try
+                    {
+                        //Loading UI Handler Here
+                        ListBigVoucher = new ObservableCollection<VoucherReleaseDTO>(await VoucherService.Ins.GetAllVoucherReleases());
+                     
+                    }
+                    catch (System.Data.Entity.Core.EntityException e)
+                    {
+                        ;
+                        CustomMessageBox.ShowOk(IsEnglish ? "Unable to connect to database" : "Mất kết nối cơ sở dữ liệu", IsEnglish ? "Error" : "Lỗi", "OK", CustomMessageBoxImage.Error);
+                    }
+                    catch (Exception e)
+                    {
+                        CustomMessageBox.ShowOk(IsEnglish ? "System Error" : "Lỗi hệ thống", IsEnglish ? "Error" : "Lỗi", "OK", CustomMessageBoxImage.Error);
+                    }
+                    SelectedItem = voucherReleaseDetail;
                     p.Close();
+                }
+
+            });
+            SaveListMiniVoucherCM = new RelayCommand<Button>((p) => { return true; }, async (p) =>
+            {
+                string oldstring = p.Content.ToString();
+
+                p.Content = "";
+                p.IsHitTestVisible = false;
+                await SaveListMiniVoucherFunc();
+
+                p.Content = oldstring;
+                p.IsHitTestVisible = true;
+                if (IsSucceedSaveMini)
+                {
+                    VoucherReleaseDTO voucherReleaseDetail = new VoucherReleaseDTO();
+                    AddListVoucher tk = Application.Current.Windows.OfType<AddListVoucher>().FirstOrDefault();
+                    if (SelectedItem != null)
+                    {
+                        (voucherReleaseDetail, _) = await VoucherService.Ins.GetVoucherReleaseDetails(SelectedItem.VoucherReleaseCode);
+                       
+                    }
+                    try
+                    {
+                        //Loading UI Handler Here
+                        ListBigVoucher = new ObservableCollection<VoucherReleaseDTO>(await VoucherService.Ins.GetAllVoucherReleases());
+                    }
+                    catch (System.Data.Entity.Core.EntityException e)
+                    {
+                        ;
+                        CustomMessageBox.ShowOk(IsEnglish ? "Unable to connect to database" : "Mất kết nối cơ sở dữ liệu", IsEnglish ? "Error" : "Lỗi", "OK", CustomMessageBoxImage.Error);
+                    }
+                    catch (Exception e)
+                    {
+                        CustomMessageBox.ShowOk(IsEnglish ? "System Error" : "Lỗi hệ thống", IsEnglish ? "Error" : "Lỗi", "OK", CustomMessageBoxImage.Error);
+                    }
+                    SelectedItem = voucherReleaseDetail;
+                    tk.Close();
+                    IsSucceedSaveMini = false;
                 }
 
             });
@@ -398,24 +471,7 @@ namespace CinemaManagementProject.ViewModel.AdminVM.VoucherManagementVM
                 AddListVoucher w = new AddListVoucher();
                 w.ShowDialog();
             });
-            SaveListMiniVoucherCM = new RelayCommand<Button>((p) => { return true; }, async (p) =>
-            {
-                string oldstring = p.Content.ToString();
-
-                p.Content = "";
-                p.IsHitTestVisible = false;
-                await SaveListMiniVoucherFunc();
-
-                p.Content = oldstring;
-                p.IsHitTestVisible = true;
-                if (IsSucceedSaveMini)
-                {
-                    AddListVoucher tk = Application.Current.Windows.OfType<AddListVoucher>().FirstOrDefault();
-                    tk.Close();
-                    IsSucceedSaveMini= false;
-                }
-                
-            });
+          
             ReleaseVoucherExcelCM = new RelayCommand<object>((p) => { return true; }, async (p) =>
             {
                 if (WaitingMiniVoucher.Count == 0)

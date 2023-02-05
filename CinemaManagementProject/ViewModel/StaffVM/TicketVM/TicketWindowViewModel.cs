@@ -47,7 +47,11 @@ namespace CinemaManagementProject.ViewModel.StaffVM.TicketVM
             ExitCM = new RelayCommand<Window>((p) => { return true; },  (p) =>
             {
                 TicketWindowViewModel.WaitingList.Clear();
-                OrderFoodManagementVM.OrderFoodManagementVM.ListOrder.Clear();
+                if (OrderFoodManagementVM.OrderFoodManagementVM.ListOrder!=null)
+                {
+                    OrderFoodManagementVM.OrderFoodManagementVM.ListOrder.Clear();
+                }
+               
                 p.Close();
 
             });

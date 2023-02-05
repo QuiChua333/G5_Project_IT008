@@ -201,9 +201,9 @@
                     </Border>
                 </Grid>
                 <StackPanel Margin="10,0,0,0" VerticalAlignment="Center">
-                    <TextBlock Text="{Binding StaffName}" FontSize="20" FontFamily="{StaticResource MaterialDesignFont}" FontWeight="Normal"></TextBlock>
+                    <TextBlock x:Name="FullNamePopup" Text="{Binding StaffName, Mode=TwoWay}" FontSize="20" FontFamily="{StaticResource MaterialDesignFont}" FontWeight="Normal"></TextBlock>
                     <Grid Height="2"></Grid>
-                    <TextBlock Text="{Binding StaffEmail}" FontSize="14" FontFamily="{StaticResource MaterialDesignFont}" FontWeight="UltraLight"></TextBlock>
+                    <TextBlock Name="FullEmailPopup" Text="{Binding StaffEmail, Mode=TwoWay}" FontSize="14" FontFamily="{StaticResource MaterialDesignFont}" FontWeight="UltraLight"></TextBlock>
                 </StackPanel>
             </StackPanel>
             <TextBlock Text="{DynamicResource staff_textblock_GoToSetting}" Grid.Row="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Padding="10,5,0,0" FontSize="13" FontFamily="{StaticResource MaterialDesignFont}" FontWeight="Light">

@@ -283,11 +283,11 @@
                                                             />
                                                         </Ellipse.Effect>
                                                     </Ellipse>
-                                                    <Image
-                                                        Source="{Binding ProductImage}"
-                                                        Height="140"
-                                                        Width="140"
-                                                    />
+                                                    <Border CornerRadius="140" Width="140" Height="140" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                                                        <Border.Background>
+                                                            <ImageBrush x:Name="ProductAvatar" Stretch="UniformToFill" ImageSource="{Binding ProductImage}"/>
+                                                        </Border.Background>
+                                                    </Border>
                                                 </Grid>
                                             </Grid>
                                             <Grid 

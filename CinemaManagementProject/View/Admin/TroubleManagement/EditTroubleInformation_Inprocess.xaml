@@ -174,7 +174,7 @@
                                     FontSize="16"
                                     x:Name="start"
                                     Style="{StaticResource MaterialDesignFloatingHintDatePicker}"
-                                    SelectedDate="{Binding SelectedDate,Mode=TwoWay}" VerticalAlignment="Bottom" />
+                                    SelectedDate="{Binding SelectedItem.StartDate,Mode=TwoWay}" VerticalAlignment="Bottom" />
                     </StackPanel>
 
                     <StackPanel Margin="0,20,0,0"

@@ -85,11 +85,11 @@
                             />
                     </Ellipse.Effect>
                 </Ellipse>
-                <Image
-                    Height="220"
-                    Width="220"
-                    Source="{Binding ImageSource}"
-                />
+                <Border CornerRadius="220" Width="220" Height="220" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                    <Border.Background>
+                        <ImageBrush x:Name="ProductAvatar" Stretch="UniformToFill" ImageSource="{Binding ImageSource}"/>
+                    </Border.Background>
+                </Border>
             </Grid>
             <Image 
                 Source="{StaticResource IconUploadImage}" 

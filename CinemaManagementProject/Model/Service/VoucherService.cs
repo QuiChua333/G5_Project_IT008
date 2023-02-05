@@ -229,6 +229,29 @@ namespace CinemaManagementProject.Model.Service
                 return (false, null);
             }
         }
+        public async Task<(bool, string)> GetListVoucher(string VoucherCode)
+        {
+            IsEnglish = VoucherViewModel.IsEnglish;
+            try
+            {
+
+
+                using (var context = new CinemaManagementProjectEntities())
+                {
+                    var IsExist = context.Vouchers.Any(v => VoucherCode == v.VoucherCode);
+
+                    if (IsExist)
+                    {
+                        return (false, IsEnglish ? "Voucher code already exists!" : "Mã voucher đã tồn tại!");
+                    }
+                    else return (true, null);
+                }
+            }
+            catch(Exception e)
+            {
+                return (false, null);
+            }
+        }
         public async Task<(bool, string, List<VoucherDTO> voucherList)> CreateVoucher(int voucherReleaseId, List<VoucherDTO> ListVoucher)
         {
             IsEnglish = VoucherViewModel.IsEnglish;

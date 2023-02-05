@@ -3,6 +3,7 @@ using CinemaManagementProject.View.Admin;
 using CinemaManagementProject.View.Admin.HelpScreen;
 using CinemaManagementProject.View.Admin.MovieManagement;
 using CinemaManagementProject.View.Login;
+using CinemaManagementProject.View.Staff;
 using System;
 using System.Collections.Generic;
 using System.Linq;

@@ -196,6 +196,8 @@ namespace CinemaManagementProject.ViewModel.AdminVM.VoucherManagementVM
                         SelectedItem = voucherReleaseDetail;
                         ListViewVoucher = new ObservableCollection<VoucherDTO>(SelectedItem.Vouchers);
                         StoreAllMini = new ObservableCollection<VoucherDTO>(ListViewVoucher);
+                        ListBigVoucher = new ObservableCollection<VoucherReleaseDTO>(await VoucherService.Ins.GetAllVoucherReleases());
+                        SelectedItem = voucherReleaseDetail;
                         if (AddVoucherPage.TopCheck != null)
                         {
                             AddVoucherPage.TopCheck.IsChecked = false;
@@ -216,6 +218,7 @@ namespace CinemaManagementProject.ViewModel.AdminVM.VoucherManagementVM
                         CustomMessageBox.ShowOk(IsEnglish ? "System Error" : "Lỗi hệ thống", IsEnglish ? "Error" : "Lỗi", "OK", CustomMessageBoxImage.Error);
 
                     }
+                    
                 }
                 else
                 {
