@@ -8,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Data.Entity.Spatial;
 using System.Runtime.Remoting.Messaging;
 using System.Security.Policy;
 using System.Text;
@@ -109,6 +110,7 @@ namespace CinemaManagementProject.ViewModel.AdminVM.CustomerManagementVM
 
             FirstLoadCM = new RelayCommand<object>((p) => { return true; }, async (p) =>
             {
+                selectedyear = DateTime.Now.Year;
                 CustomerList = new ObservableCollection<CustomerDTO>(await Task.Run(() => CustomerService.Ins.GetAllCustomer()));
             });
 

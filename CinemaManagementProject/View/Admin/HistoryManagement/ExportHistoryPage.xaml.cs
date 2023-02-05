@@ -47,7 +47,11 @@ namespace CinemaManagementProject.View.Admin.HistoryManagement
                 case "Khách hàng":
                     return ((item as BillDTO).CustomerName.IndexOf(FilterBox.Text, StringComparison.OrdinalIgnoreCase) >= 0);
                 case "Điện thoại":
-                    return ((item as BillDTO).PhoneNumber.IndexOf(FilterBox.Text, StringComparison.OrdinalIgnoreCase) >= 0);
+                    {
+                        if ((item as BillDTO).PhoneNumber != null)
+                            return ((item as BillDTO).PhoneNumber.IndexOf(FilterBox.Text, StringComparison.OrdinalIgnoreCase) >= 0);
+                        else return false;
+                    }
                 default:
                     return (((item as BillDTO).BillCode).IndexOf(FilterBox.Text, StringComparison.OrdinalIgnoreCase) >= 0);
             }
@@ -65,18 +69,24 @@ namespace CinemaManagementProject.View.Admin.HistoryManagement
                         {
                             cbbmonth.Visibility = System.Windows.Visibility.Collapsed;
                             timepicker.Visibility = System.Windows.Visibility.Collapsed;
+                            bdexporthp.Visibility = System.Windows.Visibility.Collapsed;
+
                             break;
                         }
                     case 1:
                         {
                             cbbmonth.Visibility = System.Windows.Visibility.Collapsed;
                             timepicker.Visibility = System.Windows.Visibility.Visible;
+                            bdexporthp.Visibility = System.Windows.Visibility.Visible;
+
                             break;
                         }
                     case 2:
                         {
                             cbbmonth.Visibility = System.Windows.Visibility.Visible;
                             timepicker.Visibility = System.Windows.Visibility.Collapsed;
+                            bdexporthp.Visibility = System.Windows.Visibility.Visible;
+
                             break;
                         }
                 }

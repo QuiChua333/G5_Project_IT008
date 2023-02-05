@@ -323,7 +323,7 @@ namespace CinemaManagementProject.ViewModel.AdminVM.Import_ExportManagementVM
                                     ws.Cells[i2, 1] = item.BillCode;
                                     ws.Cells[i2, 2] = item.CreatedAt;
                                     ws.Cells[i2, 3] = item.CustomerName;
-                                    ws.Cells[i2, 4] = item.PhoneNumber;
+                                    ws.Cells[i2, 4] = "'"+ item.PhoneNumber;
                                     ws.Cells[i2, 5] = item.OriginalTotalPriceStr;
                                     ws.Cells[i2, 6] = item.DiscountPriceStr;
                                     ws.Cells[i2, 7] = item.TotalPriceStr;

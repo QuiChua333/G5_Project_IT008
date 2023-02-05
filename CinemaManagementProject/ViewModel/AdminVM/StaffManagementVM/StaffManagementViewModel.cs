@@ -210,6 +210,7 @@ namespace CinemaManagementProject.ViewModel.AdminVM.StaffManagementVM
                 {
                     IsSaving = true;
                     await AddStaff(p);
+                    Reload();
                     IsSaving = false;
                 });
             EditStaffCommand = new RelayCommand<Window>((p) => { if (IsSaving) return false; return true; },
@@ -217,6 +218,7 @@ namespace CinemaManagementProject.ViewModel.AdminVM.StaffManagementVM
                 {
                     IsSaving = true;
                     await EditStaff(p);
+                    Reload();
                     IsSaving = false;
                 });
             ChangePassCommand = new RelayCommand<Window>((p) => { if (IsSaving) return false; return true; },
@@ -353,7 +355,57 @@ namespace CinemaManagementProject.ViewModel.AdminVM.StaffManagementVM
             Phone = null;
             TaiKhoan = null;
             MatKhau = null;
-            Mail = null;
+            Mail = null; 
+            RePass = null;
+        }
+        public async void Reload()
+        {
+            try
+            {
+                List<StaffDTO> staffDTOs = await StaffService.Ins.GetAllStaff();
+
+                StaffList = new ObservableCollection<StaffDTO>();
+
+                if (Properties.Settings.Default.isEnglish == false)
+                    StaffList = new ObservableCollection<StaffDTO>(staffDTOs);
+                else
+                {
+                    foreach (StaffDTO staff in staffDTOs)
+                    {
+                        StaffDTO newstaff = new StaffDTO();
+                        newstaff.Id = staff.Id;
+                        newstaff.MaNV = staff.MaNV;
+                        newstaff.StaffName = staff.StaffName;
+                        newstaff.DateOfBirth = staff.DateOfBirth;
+                        newstaff.Email = staff.Email;
+                        newstaff.PhoneNumber = staff.PhoneNumber;
+                        newstaff.StartDate = staff.StartDate;
+                        newstaff.UserName = staff.UserName;
+                        newstaff.UserPass = staff.UserPass;
+                        newstaff.Avatar = staff.Avatar;
+                        newstaff.BenefitContribution = staff.BenefitContribution;
+                        if (staff.Gender == "Nam") newstaff.Gender = "Male";
+                        else newstaff.Gender = "Female";
+                        if (staff.Position == "Nhân viên") newstaff.Position = "Staff";
+                        else newstaff.Position = "Manager";
+                        StaffList.Add(newstaff);
+                    }
+                }
+            }
+            catch (System.Data.Entity.Core.EntityException e)
+            {
+                Console.WriteLine(e);
+                if (Properties.Settings.Default.isEnglish == false)
+                    CustomMessageBox.ShowOk("Mất kết nối cơ sở dữ liệu", "Lỗi", "OK", CustomMessageBoxImage.Error);
+                else CustomMessageBox.ShowOk("Unable to connect to database", "Error", "OK", CustomMessageBoxImage.Error);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                if (Properties.Settings.Default.isEnglish == false)
+                    CustomMessageBox.ShowOk("Lỗi hệ thống", "Lỗi", "OK", CustomMessageBoxImage.Error);
+                else CustomMessageBox.ShowOk("System Error", "Error", "OK", CustomMessageBoxImage.Error);
+            }
         }
         Window GetWindowParent(Window p)
         {

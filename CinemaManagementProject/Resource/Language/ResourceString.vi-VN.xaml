@@ -613,7 +613,7 @@
     <system:String x:Key="ImportHistoryPage_search_TimKiem">Tìm Kiếm</system:String>
     <system:String x:Key="ImportHistoryPage_ComboboxItem_Madon">Mã đơn</system:String>
     <system:String x:Key="ImportHistoryPage_ComboboxItem_Nhanvien">Nhân viên</system:String>
-    <system:String x:Key="ImportHistoryPage_ComboboxItem_Sanpham">Sản</system:String>
+    <system:String x:Key="ImportHistoryPage_ComboboxItem_Sanpham">Sản phẩm</system:String>
     <system:String x:Key="ImportHistoryPage_ComboboxItem_Toanbo">Toàn bộ</system:String>
     <system:String x:Key="ImportHistoryPage_ComboboxItem_Theothang">Theo tháng</system:String>
     <system:String x:Key="ImportHistoryPage_ComboboxItem_Thang1">Tháng 1</system:String>
