@@ -232,6 +232,18 @@ namespace CinemaManagementProject.ViewModel.AdminVM.VoucherManagementVM
                 CustomMessageBox.ShowOk(addSuccess, IsEnglish ? "Error" : "Lỗi", "OK", CustomMessageBoxImage.Error);
             }
         }
+        public async Task<bool> CheckExistFunc()
+        {
+            (bool result, string message) = await VoucherService.Ins.GetListVoucher(ListMiniVoucher[ListMiniVoucher.Count - 1].VoucherCode);
+            if (!result)
+            {
+                CustomMessageBox.ShowOk(message, IsEnglish ? "Warning" : "Cảnh báo", "Ok", CustomMessageBoxImage.Warning);
+                return false;
+            }
+            else return true;
+           
+            
+        }
         public bool IsSucceedSaveMini = false;
         public async Task SaveMiniVoucherFunc()
         {
@@ -243,7 +255,7 @@ namespace CinemaManagementProject.ViewModel.AdminVM.VoucherManagementVM
                     return;
                 }
             }
-            if (ListMiniVoucher[ListMiniVoucher.Count - 1].VoucherCode.Length < 3)
+            if (ListMiniVoucher[ListMiniVoucher.Count - 1].VoucherCode.Length < 5)
             {
                 CustomMessageBox.ShowOk(IsEnglish ? "Code length must be 5 characters or more!" : "Độ dài mã phải từ 5 ký tự trở lên!", IsEnglish ? "Warning" : "Cảnh báo", "Ok", CustomMessageBoxImage.Warning);
                 return;
