@@ -161,7 +161,7 @@ namespace CinemaManagementProject.Model.Service
             }
             catch (Exception)
             {
-                return (false, Properties.Settings.Default.isEnglish ? "The movie has been booked. Can not delete!" : "Phim đã có người đặt. Không thể xóa!");
+                return (false, Properties.Settings.Default.isEnglish ? "The movie had showtime. Can not delete!" : "Phim đã có suất chiếu. Không thể xóa!");
             }
             return (true, Properties.Settings.Default.isEnglish ? "Delete movie successfully" : "Xóa phim thành công");
         }
