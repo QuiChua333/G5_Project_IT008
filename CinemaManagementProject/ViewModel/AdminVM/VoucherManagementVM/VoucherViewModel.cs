@@ -319,7 +319,7 @@ namespace CinemaManagementProject.ViewModel.AdminVM.VoucherManagementVM
             });
             MoreVoucherCM = new RelayCommand<object>((p) => { return true; }, (p) =>
             {
-                if (ListMiniVoucher[ListMiniVoucher.Count - 1].VoucherCode.Length < 3)
+                if (ListMiniVoucher[ListMiniVoucher.Count - 1].VoucherCode.Length < 5 && ListMiniVoucher[ListMiniVoucher.Count - 1].VoucherCode!="")
                 {
                     CustomMessageBox.ShowOk(IsEnglish ? "Code length must be 5 characters or more!" : "Độ dài mã phải từ 5 ký tự trở lên!", IsEnglish ? "Warning" : "Cảnh báo", "Ok", CustomMessageBoxImage.Warning);
                     return;

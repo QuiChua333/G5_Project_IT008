@@ -155,7 +155,7 @@
                                                      BorderBrush="#67C6E6"
                                                      Foreground="Black"
                                                      Text="{Binding filmGenre,Mode=TwoWay}"
-                                                     PreviewTextInput="_filmGenre_PreviewTextInput"/>
+                                                     />
                                     </Grid>
                                 </Border>
                             </Grid>
@@ -294,7 +294,7 @@
                                                      Foreground="Black"
                                                      x:Name="_filmCountry"
                                                      Text="{Binding filmCountry,Mode=TwoWay}"
-                                                     PreviewTextInput="_filmCountry_PreviewTextInput"/>
+                                                     />
                                     </Grid>
                                 </Border>
                             </Grid>

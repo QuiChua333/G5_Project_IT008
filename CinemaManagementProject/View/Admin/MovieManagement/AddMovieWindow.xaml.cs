@@ -51,20 +51,7 @@ namespace CinemaManagementProject.View.Admin.MovieManagement
             this.Close();
             MovieManagementVM.MaskName.Visibility = Visibility.Collapsed;
         }
-        private void _filmGenre_PreviewTextInput(object sender, TextCompositionEventArgs e)
-        {
-            if (!System.Text.RegularExpressions.Regex.IsMatch(e.Text, "^[a-zA-Z]"))
-            {
-                e.Handled = true;
-            }
-        }
-        private void _filmCountry_PreviewTextInput(object sender, TextCompositionEventArgs e)
-        {
-            if (!System.Text.RegularExpressions.Regex.IsMatch(e.Text, "^[a-zA-Z]"))
-            {
-                e.Handled = true;
-            }
-        }
+      
         private void addmoviewindow_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             this.DragMove();
