@@ -81,12 +81,12 @@ namespace CinemaManagementProject.Model.Service
                             ItemReview.FilmReview = review.Comment.ToString();
                             ItemReview.CustomerName = review.Bill.Customer.CustomerName;
                             ItemReview.ShortName = ToShortName(ItemReview.CustomerName);
-                            ItemReview.IsDeleted = false;
-                            ItemReview.IsRespond = false;
+                            ItemReview.IsDeleted = (bool)review.IsDeleted;
+                            ItemReview.IsRespond = (bool)review.IsRespond;
                             for (int i = 0; i < int.Parse(ItemReview.FilmStar); i++)
                                 ItemReview.StarList[i] = true;
-
-                            ReviewFilmList.Add(ItemReview);
+                            if(!ItemReview.IsDeleted)
+                                ReviewFilmList.Add(ItemReview);
                         }
                     }
                 }
