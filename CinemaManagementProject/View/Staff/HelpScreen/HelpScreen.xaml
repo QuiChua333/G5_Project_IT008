@@ -298,8 +298,8 @@
                             <Grid Grid.Row="0">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="38*"/>
-                                    <ColumnDefinition Width="27*"/>
-                                    <ColumnDefinition Width="35*"/>
+                                    <ColumnDefinition Width="30*"/>
+                                    <ColumnDefinition Width="32*"/>
                                 </Grid.ColumnDefinitions>
                                 <Grid Grid.Column="0">
                                     <Grid.RowDefinitions>
@@ -527,10 +527,10 @@
                                 <Button Height="70"
                                         materialDesign:ButtonAssist.CornerRadius="6">
                                     <Button.Content>
-                                        <Hyperlink NavigateUri="https://www.facebook.com"
-                                                   x:Name="Hyperlink_FB"
-                                                   Command="{Binding FB_Command}"
-                                                   CommandParameter="{Binding ElementName=Hyperlink_FB,Path=NavigateUri}">
+                                        <Hyperlink NavigateUri="https://www.facebook.com/profile.php?id=100073316952962"
+                                                   x:Name="Hyperlink_FB_Tinh"
+                                                   Command="{Binding FB_Tinh_Command}"
+                                                   CommandParameter="{Binding ElementName=Hyperlink_FB_Tinh,Path=NavigateUri}"> 
                                             <Image VerticalAlignment="Center" 
                                                HorizontalAlignment="Center" 
                                                Source="{StaticResource iconFace}" 

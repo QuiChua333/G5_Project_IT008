@@ -111,7 +111,7 @@ namespace CinemaManagementProject.Model.Service
                 {
                     using (var context = new CinemaManagementProjectEntities())
                     {
-                        var customer = await context.Customers.Where(c => !(bool)c.IsDeleted && (DateTime)c.FirstDate == DateTime.Today && c.FirstDate.Value.Month == month)
+                        var customer = await context.Customers.Where(c => !(bool)c.IsDeleted && ((DateTime)c.FirstDate).Year == year && c.FirstDate.Value.Month == month)
                             .Select(c => new CustomerDTO
                             {
                                 Id = c.Id,

@@ -15,19 +15,15 @@ namespace CinemaManagementProject.Utils
     public class Helper
     {
 
-        public static (string, List<string>) GetListCode(int quantity, int length, string firstChars, string lastChars, VoucherReleaseDTO voucherRelease)
+        public static (string, List<string>) GetListCode(int quantity,  string firstChars, string lastChars, VoucherReleaseDTO voucherRelease)
         {
             bool IsEnglish = VoucherViewModel.IsEnglish;
+            string IdVRL = voucherRelease.VoucherReleaseCode.Substring(10, 4);
+          
             List<string> ListCode = new List<string>();
             var chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
             var random = new Random();
-            int randomLength = length - firstChars.Length - lastChars.Length;
-            int minimumLength = (int)Math.Ceiling(Math.Log(quantity, 36));
-            if (randomLength < minimumLength)
-            {
-                return (IsEnglish?"Unable to generate the correct number of vouchers with this request!":"Không thể tạo được đúng số lượng voucher với yêu cầu trên!", null);
-
-            }
+            int randomLength = (int)Math.Ceiling(Math.Log(quantity, 36)) + firstChars.Length + lastChars.Length;
             for (int i = 0; i < quantity; i++)
             {
 
@@ -36,7 +32,7 @@ namespace CinemaManagementProject.Utils
                 {
                     stringChars[j] = chars[random.Next(chars.Length)];
                 }
-                string newCode = firstChars + new String(stringChars) + lastChars;
+                string newCode = firstChars + IdVRL +  new String(stringChars) + lastChars;
                 var isExist = ListCode.Any(code => code == newCode);
                 if (isExist)
                 {

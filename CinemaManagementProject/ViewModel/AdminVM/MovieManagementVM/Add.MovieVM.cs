@@ -29,7 +29,7 @@ namespace CinemaManagementProject.ViewModel.AdminVM.MovieManagementVM
                 }
 
                 FilmDTO film = new FilmDTO
-                {
+                {   // check ở đây
                     FilmName = filmName,
                     Country = filmCountry,
                     Author = filmDirector,
@@ -47,7 +47,8 @@ namespace CinemaManagementProject.ViewModel.AdminVM.MovieManagementVM
                 {
                     isSaving = false;
                     CustomMessageBox.ShowOk(messageFromAddMovie, Properties.Settings.Default.isEnglish?"Notification":"Thông báo", "OK", Views.CustomMessageBoxImage.Success);
-                    LoadMovieListView(Operation.CREATE, newMovie);
+                    //LoadMovieListView(Operation.CREATE, newMovie);
+                    ReloadListView();
                     p.Close();
                 }
                 else

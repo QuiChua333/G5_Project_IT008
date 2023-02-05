@@ -83,7 +83,7 @@
                 </Grid.ColumnDefinitions>
            
                     <materialDesign:TransitioningContent VerticalAlignment="Center"
-                                                             Height="80" Grid.Column="1">
+                                                              Grid.Column="1">
                         <materialDesign:TransitioningContent.OpeningEffects>
                             <materialDesign:TransitionEffect Kind="FadeIn" />
                             <materialDesign:TransitionEffect Kind="SlideInFromBottom" />
@@ -107,7 +107,7 @@
                     TextWrapping="Wrap" 
                     MaxWidth="400" 
                     Width="Auto"
-                    FontSize="16"
+                    FontSize="15"
                     FontWeight="Bold"
                     Foreground="#555"
                     FontFamily="{DynamicResource MaterialDesignFont}"

@@ -1,4 +1,5 @@
 ﻿using CinemaManagementProject.DTOs;
+using CinemaManagementProject.View.Admin;
 using CinemaManagementProject.View.Admin.HelpScreen;
 using CinemaManagementProject.View.Admin.MovieManagement;
 using CinemaManagementProject.View.Login;
@@ -20,31 +21,39 @@ namespace CinemaManagementProject.ViewModel.AdminVM.HelpScreenVM
         public ICommand Load_Trading_Terms { get; set; }
         public ICommand Load_Frequently_asked_questions { get; set; }
         public ICommand Load_Privacy_Policy { get; set; }
-        public ICommand FB_Command { get; set; }
+        public ICommand FB_Tinh_Command { get; set; }
         public ICommand FB_Nhan_Command { get; set; }
         public ICommand FB_Qui_Command { get; set; }
         public ICommand FB_Phat_Command { get; set; }
         public HelpScreenVM()
         {
-            FB_Command = new RelayCommand<object>((uri) => { return true; }, (uri) =>
+            FB_Tinh_Command = new RelayCommand<object>((uri) => { return true; }, (uri) =>
             {
                 string myUri = !uri.ToString().Contains("https://") && !uri.ToString().Contains("http://") ? "http://" + uri.ToString() : uri.ToString();
                 System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo(myUri));
+                AdminWindow tk = Application.Current.Windows.OfType<AdminWindow>().FirstOrDefault();
+                tk.Content.Content = new HelpScreen();
             });
             FB_Nhan_Command = new RelayCommand<object>((uri) => { return true; }, (uri) =>
             {
                 string myUri = !uri.ToString().Contains("https://") && !uri.ToString().Contains("http://") ? "http://" + uri.ToString() : uri.ToString();
                 System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo(myUri));
+                AdminWindow tk = Application.Current.Windows.OfType<AdminWindow>().FirstOrDefault();
+                tk.Content.Content = new HelpScreen();
             });
             FB_Qui_Command = new RelayCommand<object>((uri) => { return true; }, (uri) =>
             {
                 string myUri = !uri.ToString().Contains("https://") && !uri.ToString().Contains("http://") ? "http://" + uri.ToString() : uri.ToString();
                 System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo(myUri));
+                AdminWindow tk = Application.Current.Windows.OfType<AdminWindow>().FirstOrDefault();
+                tk.Content.Content = new HelpScreen();
             });
             FB_Phat_Command = new RelayCommand<object>((uri) => { return true; }, (uri) =>
             {
                 string myUri = !uri.ToString().Contains("https://") && !uri.ToString().Contains("http://") ? "http://" + uri.ToString() : uri.ToString();
                 System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo(myUri));
+                AdminWindow tk = Application.Current.Windows.OfType<AdminWindow>().FirstOrDefault();
+                tk.Content.Content = new HelpScreen();
             });
             Load_General_Term = new RelayCommand<object>((p) => { return true; }, (p) =>
             {

@@ -50,14 +50,15 @@
                           Width="350" 
                           Margin="20, 17, 0, 17"  >
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="52"/>
+                        <ColumnDefinition Width="80"/>
                         <ColumnDefinition />
                     </Grid.ColumnDefinitions>
                     <Rectangle
                                 Fill="White"
                                 Grid.ColumnSpan="2"
                                 RadiusX="20"
-                                RadiusY="20">
+                                RadiusY="20"
+                        Margin="30,0,0,0">
                         <Rectangle.Effect>
                             <DropShadowEffect
                                         BlurRadius="10"

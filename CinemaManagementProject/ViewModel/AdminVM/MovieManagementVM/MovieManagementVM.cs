@@ -274,6 +274,28 @@ namespace CinemaManagementProject.ViewModel.AdminVM.MovieManagementVM
                 p.Close();
             });
         }
+        public async void ReloadListView()
+        {
+            FilmList = new ObservableCollection<FilmDTO>();
+            try
+            {
+                IsLoadding = true;
+                FilmList = new ObservableCollection<FilmDTO>(await Task.Run(() => FilmService.Ins.GetAllFilm()));
+                IsLoadding = false;
+            }
+            catch (System.Data.Entity.Core.EntityException e)
+            {
+                Console.WriteLine(e);
+                if (Properties.Settings.Default.isEnglish) CustomMessageBox.ShowOk("Unable to connect to database", "Error", "OK", Views.CustomMessageBoxImage.Error);
+                else CustomMessageBox.ShowOk("Mất kết nối cơ sở dữ liệu", "Lỗi", "OK", Views.CustomMessageBoxImage.Error);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                if (Properties.Settings.Default.isEnglish) CustomMessageBox.ShowOk("System error", "Error", "OK", Views.CustomMessageBoxImage.Error);
+                else CustomMessageBox.ShowOk("Lỗi hệ thống", "Lỗi", "OK", Views.CustomMessageBoxImage.Error);
+            }
+        }
         public void LoadMovieListView(Operation oper = Operation.READ, FilmDTO m = null)
         {
             switch (oper)
@@ -322,7 +344,7 @@ namespace CinemaManagementProject.ViewModel.AdminVM.MovieManagementVM
                 {
 
                     ws.Cells[i2, 1] = item.FilmName;
-                    ws.Cells[i2, 2] = item.FilmType;
+                    ws.Cells[i2, 2] = "2D";
                     ws.Cells[i2, 3] = item.Country;
                     ws.Cells[i2, 4] = item.Genre;
                     ws.Cells[i2, 5] = item.DurationFilm;
@@ -349,7 +371,7 @@ namespace CinemaManagementProject.ViewModel.AdminVM.MovieManagementVM
             ImageSource = null;
             filmYear = null;
             filepath = null;
-            filmType = null;
+            filmType = "2D";
            
         }
         public void LoadImage()
@@ -369,7 +391,7 @@ namespace CinemaManagementProject.ViewModel.AdminVM.MovieManagementVM
             return !string.IsNullOrEmpty(filmName) && filmCountry != null
                 && !string.IsNullOrEmpty(filmDirector) && !string.IsNullOrEmpty(filmDescribe)
                  && filmGenre != null && !string.IsNullOrEmpty(filmYear)
-                && !string.IsNullOrEmpty(filmDuration) && !string.IsNullOrEmpty(filmType);
+                && !string.IsNullOrEmpty(filmDuration);
         }
     }
 }

@@ -37,7 +37,8 @@ namespace CinemaManagementProject.ViewModel.AdminVM.ShowtimeManagementVM
         {
             if (IsValidData())
             {
-                if(Showtime.TimeOfDay < DateTime.Now.TimeOfDay)
+                
+                if(Showtime.TimeOfDay < DateTime.Now.TimeOfDay && showtimeDate.Day <= DateTime.Now.Day)
                 {
                     CustomMessageBox.ShowOk("Vui lòng chọn thời gian chiếu sau " + DateTime.Now.TimeOfDay, "Cảnh báo", "OK", Views.CustomMessageBoxImage.Warning);
                     return;
