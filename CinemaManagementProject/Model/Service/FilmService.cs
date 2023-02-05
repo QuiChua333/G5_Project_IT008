@@ -41,7 +41,7 @@ namespace CinemaManagementProject.Model.Service
                         {
                             Id = p.Id,
                             FilmName = p.FilmName,
-                            FilmType = p.FilmType,
+                            FilmType = "2D",
                             Country = p.Country,
                             Genre = p.Genre,
                             DurationFilm = (int)p.Duration,
@@ -51,6 +51,7 @@ namespace CinemaManagementProject.Model.Service
                             Image = p.Image,
                         }
                     ).ToListAsync();
+                    filmDTOs.Reverse();
                     return filmDTOs;
                 }
             }
@@ -80,7 +81,7 @@ namespace CinemaManagementProject.Model.Service
                         m.Country = newMovie.Country;
                         m.FilmInfo = newMovie.FilmInfor;
                         m.ReleaseDate = newMovie.ReleaseDate;
-                        m.FilmType = newMovie.FilmType;
+                        m.FilmType = "2D";
                         m.Author = newMovie.Author;
                         m.Genre = newMovie.Genre;
                         m.Image = newMovie.Image;
@@ -99,7 +100,7 @@ namespace CinemaManagementProject.Model.Service
                             Country = newMovie.Country,
                             FilmInfo = newMovie.FilmInfor,
                             ReleaseDate = newMovie.ReleaseDate,
-                            FilmType = newMovie.FilmType,
+                            FilmType = "2D",
                             Author = newMovie.Author,
                             Genre = newMovie.Genre,
                             Image = newMovie.Image,
