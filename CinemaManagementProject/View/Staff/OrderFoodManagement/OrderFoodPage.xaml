@@ -157,11 +157,11 @@
                                                 />
                                             </Ellipse.Effect>
                                         </Ellipse>
-                                        <Image
-                                            Source="{Binding ProductImage}"
-                                            Height="80"
-                                            Width="80"
-                                        />
+                                        <Border CornerRadius="80" Width="80" Height="80" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                                            <Border.Background>
+                                                <ImageBrush x:Name="ProductAvatar" Stretch="UniformToFill" ImageSource="{Binding ProductImage}"/>
+                                            </Border.Background>
+                                        </Border>
                                     </Grid>
                                     <Grid Grid.Column="1">
                                         <Grid.RowDefinitions>
@@ -463,11 +463,11 @@
                                                             />
                                                     </Ellipse.Effect>
                                                 </Ellipse>
-                                                <Image
-                                                        Source="{Binding ProductImage}"
-                                                        Height="140"
-                                                        Width="140"
-                                                    />
+                                                <Border CornerRadius="140" Width="140" Height="140" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                                                    <Border.Background>
+                                                        <ImageBrush x:Name="ProductAvatar" Stretch="UniformToFill" ImageSource="{Binding ProductImage}"/>
+                                                    </Border.Background>
+                                                </Border>
                                             </Grid>
                                         </Grid>
                                         <Grid 
