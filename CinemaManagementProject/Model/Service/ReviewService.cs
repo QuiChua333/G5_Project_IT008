@@ -29,7 +29,7 @@ namespace CinemaManagementProject.Model.Service
 {
     internal class ReviewService
     {
-        String spreadsheetId = "1rR_ZzVHCwUHw-38FNbwTv8AfUA47w2bqYdAiXzhkf1A";
+        String spreadsheetId = "12ldfo-mdcbe4ctVUl0I5lYLHXYRiHRNYtvNJYbUqPRs";
         String range = "Review!A2:E";
         string[] Scopes = { SheetsService.Scope.SpreadsheetsReadonly };
         string ApplicationName = "Read Data Google SpeadSheet";
