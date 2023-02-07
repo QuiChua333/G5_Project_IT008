@@ -200,13 +200,16 @@
                                     <Image Source="{Binding Image}"></Image>
                                     <Grid Grid.Row="1" Margin="3,0,0,0">
                                         <StackPanel Margin="5,2,0,0">
+                                            <Label Margin="0" Padding="0">
+                                                
                                             <TextBlock
                                                 FontFamily="{StaticResource MaterialDesignFont}"
                                                 FontWeight="Bold"
                                                 FontSize="18"
                                                 Margin="0,3,0,0"
-                                                Text="{Binding FilmName}"
-                                            ></TextBlock>
+                                                Text="{Binding FilmName}" 
+                                                TextTrimming="CharacterEllipsis"/>
+                                            </Label>
                                             <StackPanel Margin="0,3,0,0" Orientation="Horizontal">
                                                 <TextBlock
                                                     FontFamily="{StaticResource MaterialDesignFont}"
@@ -215,13 +218,15 @@
                                                     Margin="0,0,5,0"
                                                     Text="{DynamicResource filmbooking_textblock_TheLoai}"
                                                 ></TextBlock>
-                                                <TextBlock
+                                                <Label Margin="0" Padding="0">
+                                                    <TextBlock
                                                     FontFamily="{StaticResource MaterialDesignFont}"
                                                     FontWeight="Regular"
                                                     FontSize="15"
                                                     Width="100"
                                                     Text="{Binding Genre}"
-                                                ></TextBlock>
+                                                    TextTrimming="CharacterEllipsis"/>
+                                                </Label>
                                             </StackPanel>
                                             <StackPanel  Margin="0,3,0,0" Orientation="Horizontal">
                                                 <TextBlock

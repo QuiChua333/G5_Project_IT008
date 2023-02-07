@@ -106,17 +106,18 @@
         </Grid>
         <Grid x:Name="Infomation" Grid.Column="2" Margin="0,80,0,0" Grid.Row="1">
             <StackPanel Height="140">
-                <Grid Width="310" Margin="0,5,0,0" >
+                <Grid Width="350" Margin="0,5,0,0" >
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="2*"/>
-                        <ColumnDefinition Width="2.4*"/>
+                        <ColumnDefinition Width="2.1*"/>
+                        <ColumnDefinition Width="2.45*"/>
                     </Grid.ColumnDefinitions>
                     <TextBlock 
                            FontSize="22" 
                            Foreground="{StaticResource LightGrayTundora}"
                            FontFamily="{StaticResource MaterialDesignFont}"
                            FontWeight="Regular"
-                           Height="24" HorizontalAlignment="Right" VerticalAlignment="Center" Width="138"
+                           Height="24" HorizontalAlignment="Right" VerticalAlignment="Center" 
+                        
                         Text="{DynamicResource ImportFoodWindow_label_NhapSanPham}"
                     >
                     </TextBlock>
@@ -136,7 +137,7 @@
                 </Grid>
                 <Grid Width="310" Margin="0,10,0,0">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="2.2*"/>
                         <ColumnDefinition Width="2.4*"/>
                     </Grid.ColumnDefinitions>
                     <TextBlock 
@@ -168,7 +169,7 @@
                 </Grid>
                 <Grid Width="310" Margin="0,10,0,0">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="2.2*"/>
                         <ColumnDefinition Width="2.4*"/>
                     </Grid.ColumnDefinitions>
                     <TextBlock 

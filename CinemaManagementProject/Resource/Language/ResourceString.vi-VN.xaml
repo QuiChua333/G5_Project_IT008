@@ -190,7 +190,7 @@
     <system:String x:Key="AddFoodWindow_label_ThemSanPham">Thêm sản phẩm</system:String>
     <system:String x:Key="AddFoodWindow_button_Them">Thêm</system:String>
     <system:String x:Key="EditFoodWindow_label_ThongTinSanPham">Thông tin sản phẩm</system:String>
-    <system:String x:Key="ImportFoodWindow_label_NhapSanPham">Nhập sản phẩm</system:String>
+    <system:String x:Key="ImportFoodWindow_label_NhapSanPham">Nhập sản phẩm:</system:String>
     <system:String x:Key="ImportFoodWindow_label_TenSanPham">Tên sản phẩm:</system:String>
     <system:String x:Key="ImportFoodWindow_label_GiaNhap">Giá nhập:</system:String>
     <system:String x:Key="ImportFoodWindow_label_SoLuong">Số lượng:</system:String>

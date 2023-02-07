@@ -221,7 +221,7 @@
                                 <GridViewColumn 
                                                 Width="500">
                                     <GridViewColumn.Header>
-
+                            
                                         <TextBlock Text="{DynamicResource admin_sideBar_SuCo}"
                                                    Margin="40 0 0 0"
                                                    FontSize="14"
@@ -244,10 +244,13 @@
                                                     </Border.Background>
                                                 </Border>
                                                 <StackPanel Margin="10,10,0,0">
-                                                    <Label Content="{Binding TroubleType}"
-                                                       FontSize="16"
-                                                       FontWeight="Bold"
-                                                       Width="300" />
+                                                    <Label >
+                                                        <TextBlock Text="{Binding TroubleType}" 
+                                                                   TextTrimming="CharacterEllipsis" 
+                                                                   FontSize="16"
+                                                                   FontWeight="Bold"
+                                                                   Width="300"/>
+                                                    </Label>
                                                     <StackPanel Orientation="Horizontal">
                                                         <Label Content="{DynamicResource EditTroubleInformation_Inprocess_Label_Chiphi}"
                                                            FontSize="14" />

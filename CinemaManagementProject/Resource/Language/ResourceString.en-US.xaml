@@ -189,7 +189,7 @@
     <system:String x:Key="AddFoodWindow_label_ThemSanPham">Extend product</system:String>
     <system:String x:Key="AddFoodWindow_button_Them">Add</system:String>
     <system:String x:Key="EditFoodWindow_label_ThongTinSanPham">Product Info</system:String>
-    <system:String x:Key="ImportFoodWindow_label_NhapSanPham">Import Product</system:String>
+    <system:String x:Key="ImportFoodWindow_label_NhapSanPham">Import Product:</system:String>
     <system:String x:Key="ImportFoodWindow_label_TenSanPham">Product name:</system:String>
     <system:String x:Key="ImportFoodWindow_label_GiaNhap">Import cost:</system:String>
     <system:String x:Key="ImportFoodWindow_label_SoLuong">Quantity:</system:String>

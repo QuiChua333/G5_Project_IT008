@@ -485,7 +485,16 @@ namespace CinemaManagementProject.ViewModel.StaffVM.TicketBillVM
             FirstLoadCM = new RelayCommand<object>((p) => { return true; },
             (p) =>
             {
-                FirtShow();
+                try
+                {
+                    FirtShow();
+                }
+                catch (Exception ex)
+                {
+                    if (Properties.Settings.Default.isEnglish) CustomMessageBox.ShowOk("System error", "Error", "OK", Views.CustomMessageBoxImage.Error);
+                    else CustomMessageBox.ShowOk("Lỗi hệ thống", "Lỗi", "OK", Views.CustomMessageBoxImage.Error);
+                }
+                
 
             });
             SignUpCM = new RelayCommand<object>((p) => { return true; },
