@@ -249,7 +249,9 @@ namespace CinemaManagementProject.ViewModel.StaffVM.FilmBookingVM
             CurrentGenreSource = new ObservableCollection<string>();
             CurrentGenreSource.Add(isEN? "All" : "Tất cả");
             for (int i = 0; i < listGenre.Count; i++)
-                CurrentGenreSource.Add(listGenre[i]);
+            {
+                if (!CurrentGenreSource.Contains(listGenre[i])) CurrentGenreSource.Add(listGenre[i]);
+            }    
         }
         public void SelectFilmByFilter()
         {
