@@ -1,6 +1,5 @@
 # Quản lí rạp chiếu phim
-
- 
+<img source="./ImageApp/FatFilmFoo.png"/>
 
 ## Mô tả 
 
@@ -59,40 +58,21 @@ Hiểu được điều này, nhóm 5 quyết định xây dựng một ứng d�
 
 * Thầy Nguyễn Tấn Toàn, giảng viên Khoa Công Nghệ Phần Mềm, trường Đại học Công nghệ Thông tin, Đại học Quốc gia Thành phố Hồ Chí Minh 
 
-## Hướng dẫn cài đặt 
+## Hướng dẫn cài đặt và kết nối cơ sở dữ liệu
 
-### Với người sử dụng 
+* Cài đặt [Visual Studio 2022](https://visualstudio.microsoft.com/downloads/).
 
-* Download và giải nén phần mềm tại đường dẫn: https://tinyurl.com/FFM2021
+* Cài đặt [SQL Sever 2022](https://www.microsoft.com/en-us/sql-server/sql-server-downloads)
 
-* Cài đặt SQL Server và khởi tạo Database bằng cách query script chứa trong file Database.sql ở server
+* Download phền mềm tại Github: https://github.com/QuiChua333/G5_Project_IT008.git
 
-* Giải nén và chạy file Setup.msi hoặc Setup.exe 
+* Cài đặt SQL Server và copy tên máy chủ
+<img source="./ImageApp/ConnectString.jpg"/>
 
-* Kết nối với server
+* Mở file CinemaManagementProjectg.sln và kết nối phần mềm với Database vừa tạo bằng cách sửa chuỗi Connection String trong file App.config
+<img source="./ImageApp/ChangeString.jpg"/>
 
-* Cách kết nối client pc với server trong mạng LAN 
-
-  * Lấy IP của server pc bằng cách mở Command Prompt và gõ ipconfig 
-
-  * Tìm mục Wireless LAN adapter Local Area Connection* 2 
-
-  * Lấy địa chỉ của IPv4 adress 
-
-  * Sau đó mở file FootballFieldManagement.config.exe ở server pc và sửa connectionString="
-  Server = {0},{1};Initial Catalog = FootballFieldManagement;User ID = {2};Password = {3};Integrated Security = False;Connect Timeout = 20;"
-(trong đó: {0} là địa chỉ IP của server, {1} port kết nối, {2} id tài khoản server, {3} mật khẩu tài khoản)
-  * Lưu thông tin 
-
-* Đăng nhập vào hệ thống với địa chỉ Chủ sân với tên đăng nhập là: admin và mật khẩu là: 1 
-
-### Với nhà phát triển 
-
-* Download và giải nén phền mềm tại Github: https://github.com/ghostlove1001/FootballFieldManagement hoặc tại đường dẫn: https://tinyurl.com/FFM2021
-
-* Cài đặt SQL Server và khởi tạo Database bằng cách query script chứa trong file Database.sql (Có thể mở bằng word, notepad)
-
-* Mở file FootballFieldManagement.sln và kết nối phần mềm với Database vừa tạo   
+* Khởi tạo Database bằng cách query script chứa trong file CinemaManagementDatabase.sql
 
 ## Phản hồi 
 
