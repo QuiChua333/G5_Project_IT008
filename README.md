@@ -65,6 +65,8 @@ Hiểu được điều này, nhóm 5 quyết định xây dựng một ứng d�
 
 * Cài đặt [SQL Sever 2022](https://www.microsoft.com/en-us/sql-server/sql-server-downloads)
 
+* Download [CinemaManagementDatabase.sql](https://drive.google.com/file/d/13NLEl_wsCyYTGFiyjYWBwTJ-r2a8jC7K/view?usp=sharing)
+
 * Download phền mềm tại Github: https://github.com/QuiChua333/G5_Project_IT008.git
 
 * Cài đặt SQL Server và copy tên máy chủ
