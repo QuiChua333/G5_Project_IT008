@@ -165,7 +165,7 @@ namespace CinemaManagementProject.ViewModel.AdminVM.CustomerManagementVM
                 IsSaving = true;
 
                 await EditCustomer(p);
-
+                CustomerList = new ObservableCollection<CustomerDTO>(await Task.Run(() => CustomerService.Ins.GetAllCustomer()));
                 IsSaving = false;
             });
 
