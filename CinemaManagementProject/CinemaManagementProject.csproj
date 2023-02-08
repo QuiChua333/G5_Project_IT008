@@ -53,7 +53,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>icon10.ico</ApplicationIcon>
+    <ApplicationIcon>IconApp\icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="BitMiracle.LibTiff.NET, Version=2.4.649.0, Culture=neutral, PublicKeyToken=53879b3e20e7a7d6, processorArchitecture=MSIL">
@@ -744,7 +744,7 @@
     <Resource Include="Resource\Images\iconInstaram.png" />
     <Resource Include="Resource\Images\iconTiwter.png" />
     <Resource Include="Resource\Images\iconZalo.png" />
-    <Resource Include="icon10.ico" />
+    <Resource Include="IconApp\icon.ico" />
     <Content Include="Model\CinemaManagementDatabase.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>CinemaManagementDatabase.edmx</DependentUpon>
