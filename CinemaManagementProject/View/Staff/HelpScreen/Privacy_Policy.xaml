@@ -12,7 +12,7 @@
         x:Name="privacypolicy"
         WindowStartupLocation="CenterScreen"
         Title="Privacy_Policy" 
-        DataContext="{StaticResource HelpScreenVM}">
+        DataContext="{StaticResource HelpScreenStaffVM}">
     <Border CornerRadius="20" 
                 BorderBrush="DarkGray"
                 Background="#F5F5F5"

@@ -12,7 +12,7 @@
         x:Name="generetermwindow"
         WindowStartupLocation="CenterScreen"
         Title="General_Term"
-        DataContext="{StaticResource HelpScreenVM}">
+        DataContext="{StaticResource HelpScreenAdminVM}">
     
     <Border CornerRadius="20" 
                 BorderBrush="DarkGray"

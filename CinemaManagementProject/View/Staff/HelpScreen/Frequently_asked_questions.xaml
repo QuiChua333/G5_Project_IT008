@@ -12,7 +12,7 @@
         x:Name="FAQ"
         WindowStartupLocation="CenterScreen"
         Title="Frequently_asked_questions"
-        DataContext="{StaticResource HelpScreenVM}">
+        DataContext="{StaticResource HelpScreenStaffVM}">
     <Border CornerRadius="20" 
                 BorderBrush="DarkGray"
                 Background="#F5F5F5"

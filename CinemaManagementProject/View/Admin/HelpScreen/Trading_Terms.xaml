@@ -12,7 +12,7 @@
         x:Name="tradingtermwindow"
         WindowStartupLocation="CenterScreen"
         Title="Trading_Terms"
-        DataContext="{StaticResource HelpScreenVM}">
+        DataContext="{StaticResource HelpScreenAdminVM}">
     <Border CornerRadius="20" 
                 BorderBrush="DarkGray"
                 Background="#F5F5F5"
