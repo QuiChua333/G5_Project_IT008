@@ -1,5 +1,5 @@
 # Quản lí rạp chiếu phim
-<img source="./ImageApp/FatFilmFoo.png"/>
+<img src="./ImageApp/FatFilmFoo.png" width="800"/>
 
 ## Mô tả 
 
@@ -8,11 +8,7 @@
 Một vấn đề lớn được đặt ra là việc quản lý các rạp phim sao cho hiệu quả, chính xác, tránh được rủi ro không nên có. Việc quản lý một rạp phim từ mặt hàng, nhân viên, cho tới lợi nhuận đã không thể thực hiện bằng tay. Quá nhiều sai số làm các chủ rạp phim gặp rất nhiều khó khăn. 
 Hiểu được điều này, nhóm 5 quyết định xây dựng một ứng dụng hỗ trợ các rạp chiếu phim trong việc quản lý, tận dụng những công nghệ tiên tiến để phát triển, mục tiêu hướng đến chính là nâng cao trải nghiệm người dùng về cả giao diện lẫn tốc độ xử lý, kèm theo đó là những tính năng mở rộng phù hợp với thực tiễn.
 
-### Người dùng 
 
-* Chủ rạp phim: vai trò quản lí
-
-* Nhân viên
 
 ### Mục đích ứng dụng
 
@@ -33,6 +29,10 @@ Hiểu được điều này, nhóm 5 quyết định xây dựng một ứng d�
 * Giao diện thân thiện, dễ sử dụng, bố cục hợp lý, hài hoà về màu sắc và mang tính đồng bộ cao, phân quyền cho người dùng thông qua tài khoản.
 * Ứng dụng phải tương thích với đa số các hệ điều hành phổ biến hiện nay như Window Vista SP1, Window 8.1, Window 10, ...Đặc biệt, ứng dụng trong quá trình sử dụng phải hoạt động ổn định, tránh những trường hợp xảy ra lỗi xung đột với hệ thống gây ra khó chịu cho người dùng trong quá trình sử dụng, tệ hơn là ảnh hưởng trực tiếp đến khách hàng của rạp phim. Việc mở rộng, nâng cấp ứng dụng về sau phải dễ dàng khi người dùng có nhu cầu.
 
+#### Người dùng 
+
+* Chủ rạp phim: vai trò quản lí
+* Nhân viên
 ### Công nghệ 
 
 * Hệ thống API: WPF - Mô hình MVVM
@@ -40,6 +40,7 @@ Hiểu được điều này, nhóm 5 quyết định xây dựng một ứng d�
 * Database: SQL Server, Excel Sheet
 * Công cụ quản lý: Git, GitHub
 * Công cụ thiết kế: Figma
+
 
 
 ## Tác giả 
@@ -67,10 +68,10 @@ Hiểu được điều này, nhóm 5 quyết định xây dựng một ứng d�
 * Download phền mềm tại Github: https://github.com/QuiChua333/G5_Project_IT008.git
 
 * Cài đặt SQL Server và copy tên máy chủ
-<img source="./ImageApp/ConnectString.jpg"/>
+<img src="./ImageApp/ConnectString.jpg" width="400"/>
 
-* Mở file CinemaManagementProjectg.sln và kết nối phần mềm với Database vừa tạo bằng cách sửa chuỗi Connection String trong file App.config
-<img source="./ImageApp/ChangeString.jpg"/>
+* Mở file CinemaManagementProjectg.sln và kết nối phần mềm với Database vừa tạo bằng cách sửa chuỗi Connection String (phần bôi đen) trong file App.config
+<img src="./ImageApp/ChangeString.jpg"/>
 
 * Khởi tạo Database bằng cách query script chứa trong file CinemaManagementDatabase.sql
 
