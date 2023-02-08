@@ -1,6 +1,6 @@
 ﻿using CinemaManagementProject.DTOs;
 using CinemaManagementProject.View.Admin;
-using CinemaManagementProject.View.Admin.HelpScreen;
+using CinemaManagementProject.View.Staff.HelpScreen;
 using CinemaManagementProject.View.Admin.MovieManagement;
 using CinemaManagementProject.View.Login;
 using CinemaManagementProject.View.Staff;

@@ -371,6 +371,7 @@ namespace CinemaManagementProject.Model.Service
                             TypeObject = v.VoucherRelease.TypeObject,
                             VoucherReleaseStatus = (bool)v.VoucherRelease.VoucherReleaseStatus,
                             EnableMerge = (bool)v.VoucherRelease.EnableMerge,
+                            IsDeleted = (bool)v.VoucherRelease.IsDeleted,
                         }
                     }).FirstOrDefaultAsync();
 

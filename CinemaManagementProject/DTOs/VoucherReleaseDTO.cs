@@ -22,5 +22,6 @@ namespace CinemaManagementProject.DTOs
         public IList<VoucherDTO> Vouchers { get; set; }
         public int VCount { get; set; }
         public int UnusedVCount { get; set; }
+        public bool IsDeleted { get; set; }
     }
 }

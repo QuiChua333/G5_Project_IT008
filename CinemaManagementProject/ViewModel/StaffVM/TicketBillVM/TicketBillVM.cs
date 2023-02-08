@@ -577,6 +577,15 @@ namespace CinemaManagementProject.ViewModel.StaffVM.TicketBillVM
                 if (!string.IsNullOrEmpty(VoucherID))
                 {
                     (string error, VoucherDTO voucher) = await VoucherService.Ins.GetVoucherInfo(VoucherID);
+                    if (voucher.VoucherInfo.IsDeleted)
+                    {
+                        if (Properties.Settings.Default.isEnglish)
+                            CustomMessageBox.ShowOk("This voucher release issuance is no longer available!", "Error", "OK", Views.CustomMessageBoxImage.Error);
+
+                        else
+                            CustomMessageBox.ShowOk("Đợt phát hành voucher này không còn nữa!", "Lỗi", "OK", Views.CustomMessageBoxImage.Error);
+                        return;
+                    }
                     if (error == null)
                     {
                         if (ListVoucher.Count == 0)
@@ -676,10 +685,21 @@ namespace CinemaManagementProject.ViewModel.StaffVM.TicketBillVM
                 if (!string.IsNullOrEmpty(VoucherID))
                 {
                     (string error, VoucherDTO voucher) = await VoucherService.Ins.GetVoucherInfo(VoucherID);
+                    if (voucher.VoucherInfo.IsDeleted)
+                    {
+                        if (Properties.Settings.Default.isEnglish)
+                            CustomMessageBox.ShowOk("This voucher release issuance is no longer available!", "Error", "OK", Views.CustomMessageBoxImage.Error);
+
+                        else
+                            CustomMessageBox.ShowOk("Đợt phát hành voucher này không còn nữa!", "Lỗi", "OK", Views.CustomMessageBoxImage.Error);
+                        return;
+                    }
                     if (error == null)
                     {
                         if (ListVoucher.Count == 0)
                         {
+
+                            
                             if (voucher.VoucherInfo.MinimizeTotal <= LastPrice)
                             {
                                 ListVoucher.Add(voucher);
@@ -699,6 +719,7 @@ namespace CinemaManagementProject.ViewModel.StaffVM.TicketBillVM
                         }
                         else
                         {
+                            
                             if (voucher.EnableMerge && ListVoucher[0].EnableMerge == false)
                             {
                                 if (Properties.Settings.Default.isEnglish)
@@ -775,6 +796,15 @@ namespace CinemaManagementProject.ViewModel.StaffVM.TicketBillVM
                 if (!string.IsNullOrEmpty(VoucherID))
                 {
                     (string error, VoucherDTO voucher) = await VoucherService.Ins.GetVoucherInfo(VoucherID);
+                    if (voucher.VoucherInfo.IsDeleted)
+                    {
+                        if (Properties.Settings.Default.isEnglish)
+                            CustomMessageBox.ShowOk("This voucher release issuance is no longer available!", "Error", "OK", Views.CustomMessageBoxImage.Error);
+
+                        else
+                            CustomMessageBox.ShowOk("Đợt phát hành voucher này không còn nữa!", "Lỗi", "OK", Views.CustomMessageBoxImage.Error);
+                        return;
+                    }
                     if (error == null)
                     {
                         if (ListVoucher.Count == 0)
